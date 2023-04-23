@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvm45rxpdusoh"]
+[gd_scene load_steps=7 format=3 uid="uid://bvm45rxpdusoh"]
 
 [ext_resource type="Script" path="res://Map/world.gd" id="1_qiij3"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Map/EuropeMap.png" id="1_v5ckb"]
 [ext_resource type="PackedScene" uid="uid://bsuv2fxb0uq4f" path="res://Map/army.tscn" id="2_2lid3"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Map/pos_province.tscn" id="3_6xwkc"]
+[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="3_dkw6f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(235, 142, 352, -154, 882, -163, 1133, 654, 361, 645)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(235, 142, 352, -154, 882, -163, 1133, 654, 361, 645)])
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["world"]]
+position = Vector2(67, 153)
 script = ExtResource("1_qiij3")
 
 [node name="EuropeMap" type="Sprite2D" parent="."]
@@ -19,11 +21,21 @@ scale = Vector2(3.27034, 3.05596)
 texture = ExtResource("1_v5ckb")
 metadata/_edit_lock_ = true
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 1
+position = Vector2(211, 113)
+color = Color(0.472, 0.34, 1, 1)
+texture = ExtResource("3_dkw6f")
+texture_offset = Vector2(31, 189)
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(94, -167, 164, -115, 140, -72, 169, -14, 120, 15, 45, -19, 25, -80, 35, -142)
+vertex_colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
 [node name="Italy" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="North" type="Line2D" parent="Italy"]
-points = PackedVector2Array(404, 100, 451, 94, 488, 119, 552, 114, 635, 78, 641, 23, 667, 17, 655, -18, 576, -19, 459, 2, 372, 60, 405, 100)
+points = PackedVector2Array(401, 98, 434, 96, 455, 119, 488, 119, 552, 114, 635, 78, 613, 39, 667, 17, 655, -18, 576, -19, 459, 2, 372, 60, 405, 100)
 
 [node name="NorthP" parent="Italy/North" instance=ExtResource("3_6xwkc")]
 position = Vector2(524, 51)
@@ -33,7 +45,7 @@ path1 = NodePath("../../West/West")
 path2 = NodePath("../../East/PosProvince")
 
 [node name="Center" type="Line2D" parent="Italy"]
-points = PackedVector2Array(487, 124, 485, 181, 519, 245, 575, 298, 706, 257, 694, 194, 640, 152, 619, 111, 610, 96, 560, 123, 490, 124)
+points = PackedVector2Array(485, 124, 485, 129, 485, 181, 519, 245, 575, 298, 706, 257, 688, 194, 638, 155, 618, 133, 614, 98, 555, 123, 486, 129)
 default_color = Color(1, 0.0901961, 0.0901961, 1)
 
 [node name="CenterP" parent="Italy/Center" instance=ExtResource("3_6xwkc")]
@@ -43,19 +55,42 @@ path0 = NodePath("../../North/NorthP")
 
 [node name="West" type="Line2D" parent="Italy"]
 position = Vector2(385.472, 90.3453)
-points = PackedVector2Array(-55.472, 37.6547, -133.472, -0.345337, -152.472, -68.3453, -144.472, -122.345, -82.4719, -147.345, -7.47192, -96.3453, -34.4719, -47.3453, -12.4719, -30.3453, 12.5281, 7.65466, -55.4719, 37.6547)
+points = PackedVector2Array(-51.4719, 37.6547, -133.472, -0.345337, -152.472, -68.3453, -144.472, -122.345, -82.4719, -147.345, -7.47192, -96.3453, -34.4719, -47.3453, -25.4719, -29.3453, 2.52808, 4.65466, -35.1838, 26.1114, -56.4719, 37.6547)
 default_color = Color(0.286275, 0.109804, 1, 1)
 
 [node name="West" parent="Italy/West" instance=ExtResource("3_6xwkc")]
+position = Vector2(-86.4719, -53.3453)
 id = 20
 path0 = NodePath("../../North/NorthP")
 
 [node name="East" type="Line2D" parent="Italy"]
-points = PackedVector2Array(671, -99, 662, -26, 676, 13, 717, 25, 685, 47, 708, 89, 746, 59, 763, 70, 774, 111, 797, 133, 832, 136, 868, 98, 909, 62, 924, 35, 906, -18, 854, -32, 795, -81, 793, -97, 782, -141, 739, -151, 697, -133, 673, -100)
+points = PackedVector2Array(671, -99, 662, -26, 677, 16, 717, 25, 685, 47, 712, 91, 746, 59, 773, 73, 774, 111, 805, 136, 832, 136, 868, 98, 909, 62, 924, 35, 906, -18, 854, -32, 795, -81, 793, -97, 782, -141, 739, -151, 697, -133, 673, -100)
 default_color = Color(0.0313726, 0.368627, 0.113725, 1)
 
 [node name="PosProvince" parent="Italy/East" instance=ExtResource("3_6xwkc")]
+position = Vector2(784, 0)
 id = 40
+path0 = NodePath("../../Swis2/PosProvince")
+
+[node name="Swis" type="Line2D" parent="Italy"]
+position = Vector2(352.449, -49.51)
+points = PackedVector2Array(-9.44855, 9.50999, 34.5515, 37.51, 86.5515, 25.51, 139.551, -27.49, 95.5515, -67.49, -19.4485, -91.49, -82.4485, -108.49, -91.4485, -61.49, -65.4485, -14.49, -46.4485, -16.49, -8.44855, 10.51)
+default_color = Color(1, 0.129412, 1, 1)
+
+[node name="PosProvince" parent="Italy/Swis" instance=ExtResource("3_6xwkc")]
+position = Vector2(12.5515, -38.49)
+id = 50
+path0 = NodePath("../../West/West")
+path1 = NodePath("../../Swis2/PosProvince")
+
+[node name="Swis2" type="Line2D" parent="Italy"]
+position = Vector2(505, -72)
+points = PackedVector2Array(-11, 12, -18, 31, 152, 20, 164, -43, 186, -71, 215, -89, 165, -113, 128, -108, 92, -86, 79, -78, 34, -79, -14, -92, -32, -93, -44, -77, -52, -63, -52, -53, -35, -37, -21, -25, -5, -10, -14, 17)
+default_color = Color(0.0941176, 1, 1, 1)
+
+[node name="PosProvince" parent="Italy/Swis2" instance=ExtResource("3_6xwkc")]
+position = Vector2(74, -41)
+id = 60
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -64,4 +99,8 @@ navigation_polygon = SubResource("NavigationPolygon_v8dvj")
 metadata/_edit_lock_ = true
 
 [node name="Army" parent="." instance=ExtResource("2_2lid3")]
-position = Vector2(592, 209)
+position = Vector2(553, 214)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(202, 285)
+texture = ExtResource("3_dkw6f")

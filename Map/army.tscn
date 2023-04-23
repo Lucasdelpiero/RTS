@@ -3,10 +3,18 @@
 [ext_resource type="Script" path="res://Map/army.gd" id="1_836ho"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_xkwou"]
 
-[node name="Army" type="CharacterBody2D"]
+[node name="Army" type="CharacterBody2D" groups=["Army"]]
 script = ExtResource("1_836ho")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xkwou")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Node"]
+z_index = 6
+z_as_relative = false
+points = PackedVector2Array(19, -8)
+width = 4.0

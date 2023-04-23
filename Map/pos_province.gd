@@ -49,4 +49,4 @@ func get_connections():
 #			var con = [node.id, node.global_position]
 			var con = node.id
 			connections.push_back(con)
-	print("connections: " + str(connections))
+#	print("connections: " + str(connections))
