@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_xkwou"]
 
 [node name="Army" type="CharacterBody2D" groups=["Army"]]
+z_index = 100
+z_as_relative = false
 script = ExtResource("1_836ho")
 
 [node name="Icon" type="Sprite2D" parent="."]

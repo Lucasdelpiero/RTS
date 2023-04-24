@@ -7,28 +7,34 @@ const JUMP_VELOCITY = -400.0
 @onready var line = $Node/Line2D
 enum  { IDLE, MOVING, FIGHTING }
 var state = IDLE
-@export_range( 10, 100, 1) var SPEED = 5000
+@export_range( 10, 10000, 1) var SPEED = 500
+var test = true
+var starting_point : Vector2
 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 func _input(event):
    # Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
+#	if event is InputEventMouseButton:
+	if Input.is_action_just_pressed("Click_Left"):
 #		print("Mouse Click/Unclick at: ", event.position)
 		if own_map != null:
 			var from = own_map.get_closest_point(self.global_position)
 			var to = own_map.get_closest_point(event.position)
 			path = own_map.get_point_path(from, to)
-			print(path)
+#			print(path)
 			draw_path()
-			if path.size() > 1:
+			if starting_point == path[0]:
+				path.remove_at(0)
+			if path.size() > 0:
 				state = MOVING
 			else:
 				state = IDLE
 #		path = own_map.get_point_path()
 
 func _physics_process(delta):
+#	draw_path()
 	match state:
 		IDLE:
 			pass
@@ -44,35 +50,40 @@ func get_to_closer_point(map):
 	self.global_position = map.get_point_position(closer_id)
 	world = get_tree().get_nodes_in_group("world")[0]
 	own_map = map
-	print(typeof(map))
-	print(typeof(own_map))
+	starting_point = global_position
 
+# Draws the path that the army is following
 func draw_path():
-	line.clear_points()
-	for point in path.size() :
-		line.add_point(path[point])
+	# The positions in the path has to be added in the pathing array to avoid bugs
+	var pathing : PackedVector2Array
+	pathing.append(global_position) # Where the line start
+	for i in path.size():
+		pathing.append(path[i]) # Path
+	line.points = pathing
+
 
 func move(delta):
-#	print(path)
-	var origin_point : Vector2
-	if path.size() > 0 :
-		if origin_point == path[0]:
-			print("REMOVE ORIGINAL")
-			path.remove_at(0)
-		origin_point = path[0]
-		if self.global_position.distance_to(path[0]) < 10:
+	draw_path()
+	if path.size() > 0:
+		global_position = global_position.move_toward(path[0], delta * SPEED)
+#		print("path " +str(path))
+		var closest_point = path[0]
+		var distance_to_point = global_position.distance_to(closest_point)
+#		print("closest point " +str(closest_point))
+#		print("starting point " +str(starting_point))
+		
+		if (starting_point == closest_point) :
+#			path.remove_at(0)
+			pass
+		
+		# A bug here has to be fixed
+		if distance_to_point <= 10:
+			starting_point = path[0]
+#			print("CLOSE")
+#			print(path)
 			global_position = path[0]
+			draw_path()
 			path.remove_at(0)
-		if path.size() > 0:
-			var angle = global_position.angle_to_point(path[0])
-#			print("angle " +str(angle))
-			var direction = (Vector2(cos(angle), sin(angle))).normalized()
-#			print("direction " + str(direction))
-			velocity = direction * SPEED * delta
-			move_and_slide()
-#			print("self position " +str(global_position))
-#			print("path " +str(path[0]))
-			print("velocity " +str(velocity))
-#			print("origin " +str(origin_point))
-#			print("path[0] " +str(path[0]))
-	pass
+#			print("delete")
+			print(path)
+			pass
