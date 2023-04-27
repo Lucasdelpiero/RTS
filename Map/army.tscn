@@ -7,6 +7,7 @@
 z_index = 100
 z_as_relative = false
 script = ExtResource("1_836ho")
+SPEED = 30
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -20,3 +21,8 @@ z_index = 6
 z_as_relative = false
 points = PackedVector2Array(19, -8)
 width = 4.0
+
+[node name="closest" type="Sprite2D" parent="Node"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_xkwou")
