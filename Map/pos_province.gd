@@ -1,3 +1,4 @@
+@tool
 extends Marker2D
 
 @export var id : int 
@@ -16,6 +17,7 @@ var paths : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	self.name = provName
 #	get_connections()
 	# Posible paths from this point
 #	paths = [get_node(path0), get_node(path1) , path2, path3, path4, path5]

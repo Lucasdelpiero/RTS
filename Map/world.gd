@@ -9,7 +9,6 @@ var map # navmap
 func _ready():
 	temp_get_nav_map()
 	army.get_to_closer_point(map)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
