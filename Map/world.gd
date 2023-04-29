@@ -7,7 +7,7 @@ var map # navmap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	temp_get_nav_map()
+	get_nav_map()
 	army.get_to_closer_point(map)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,24 +21,24 @@ func _input(event):
 #		print("Mouse Motion at: ", event.position)
 	pass
 
-
-func temp_get_nav_map():
+## Generate a navigation map using the provinces and their connections
+func get_nav_map():
 	map = AStar2D.new()
-	var points = get_tree().get_nodes_in_group("nav_point")
+	var provinces = get_tree().get_nodes_in_group("provinces")
 	
 	# Add points
-	for node in points:
-		node.get_connections()
-		map.add_point(node.id, node.global_position, node.weight)
+	for province in provinces:
+		province.get_connections()
+		map.add_point(province.ID, province.city.global_position, province.weight)
 	
 	# Add connections
-	for node in points:
-		var connections = node.connections
+	for province in provinces:
+		var connections = province.connections
 		for con in connections:
-			if !map.are_points_connected(node.id, con):
-				map.connect_points(node.id, con)
-#	print(map.get_point_count())
-#	print(map.get_point_connections(1))
+			if !map.are_points_connected(province.ID, con):
+				map.connect_points(province.ID, con)
+		pass
+	pass
 
 func get_nav_path(from : int, to : int ):
 	map.get_point_path(from, to)

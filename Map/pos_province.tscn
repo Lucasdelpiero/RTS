@@ -1,6 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://hb4l2h7cpx1y"]
-
-[ext_resource type="Script" path="res://Map/pos_province.gd" id="1_t3fn0"]
+[gd_scene format=3 uid="uid://hb4l2h7cpx1y"]
 
 [node name="PosProvince" type="Marker2D" groups=["nav_point"]]
-script = ExtResource("1_t3fn0")

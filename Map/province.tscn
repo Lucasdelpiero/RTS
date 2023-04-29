@@ -3,16 +3,20 @@
 [ext_resource type="Script" path="res://Map/Province.gd" id="1_0h13g"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Map/pos_province.tscn" id="2_tp8f2"]
 
-[node name="Province" type="Polygon2D"]
+[node name="Province" type="Polygon2D" groups=["provinces"]]
 script = ExtResource("1_0h13g")
 Width = 4.0
+ID = null
 
 [node name="PosProvince" parent="." instance=ExtResource("2_tp8f2")]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="Border" type="Line2D" parent="."]
 unique_name_in_owner = true
 width = 4.0
 default_color = Color(0, 0, 0, 1)
+antialiased = true
 metadata/_edit_lock_ = true
 
 [editable path="PosProvince"]
