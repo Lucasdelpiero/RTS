@@ -18,6 +18,11 @@ var connections : Array
 @export var path3 : NodePath
 @export var path4 : NodePath
 @export var path5 : NodePath
+@export var path6 : NodePath
+@export var path7 : NodePath
+@export var path8 : NodePath
+@export var path9 : NodePath
+@export var path10 : NodePath
 
 var paths : Array 
 
@@ -25,7 +30,7 @@ func _draw():
 	var polygon = get_polygon()
 	border.points = polygon
 	if polygon.size() > 1 :
-		border.add_point(polygon[0])
+		border.add_point(polygon[0]) # Closes the line from the end point to the start point
 	border.width = Width
 	border.default_color = OutLine
 
