@@ -14,9 +14,21 @@ metadata/_edit_lock_ = true
 
 [node name="Border" type="Line2D" parent="."]
 unique_name_in_owner = true
+use_parent_material = true
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 antialiased = true
 metadata/_edit_lock_ = true
+
+[node name="MouseDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseDetector"]
+visible = false
+z_index = 50
+z_as_relative = false
+
+[connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]
 
 [editable path="PosProvince"]

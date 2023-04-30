@@ -22,11 +22,11 @@ signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 func _input(event):
-   # Mouse in viewport coordinates.
-#	if event is InputEventMouseButton:
+	# Once clicked, the it will get the pathing towards the last province that was hovered
+	# If not province is being hovered it will go towards the closest province
 	if Input.is_action_just_pressed("Click_Left"):
-#		print("Mouse Click/Unclick at: ", event.position)
-		get_pathing(event.position)
+#		get_pathing(get_global_mouse_position())
+		get_pathing(Globals.mouse_in_province)
 
 
 func _physics_process(delta):
@@ -100,7 +100,13 @@ func move(delta):
 func get_pathing(destination):
 	if own_map != null:
 		var from = own_map.get_closest_point(self.global_position)
-		var to = own_map.get_closest_point(destination)
+#		var to = own_map.get_closest_point(destination)
+#		var to = own_map.get_point_position(destination)
+		# The destination is the place the army wants to go, that being the las province hovered
+		# If there is not a province being hovered, it will be used the closest point to the mouse
+		var to = destination
+		if (destination == null) :
+			to = own_map.get_closest_point(get_global_mouse_position())
 		path = own_map.get_point_path(from, to)
 		draw_path()
 		

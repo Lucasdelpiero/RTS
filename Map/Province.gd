@@ -6,6 +6,8 @@ extends Polygon2D
 @export_range(1, 20, 0.1) var Width = 2.0 : set = set_width
 @onready var border = %Border
 @onready var city = %PosProvince
+@onready var mouseDetector = %MouseDetector
+@onready var collision = $MouseDetector/CollisionPolygon2D
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
@@ -24,7 +26,21 @@ var connections : Array
 @export var path9 : NodePath
 @export var path10 : NodePath
 
-var paths : Array 
+var paths : Array
+
+func _ready():
+	await get_tree().create_timer(1).timeout
+#	mouseDetectorCollition.shape.points = []
+	var poly = get_polygon()
+#	print(poly)
+#	collision.set_polygon([])
+	collision.set_polygon(poly)
+#	print(polygon)
+#	mouseDetectorCollition.points = polygon
+#	for point in polygon:
+#		mouseDetectorCollition.point
+#	mouseDetectorCollition.shape.points = polygon
+	pass
 
 func _draw():
 	var polygon = get_polygon()
@@ -60,3 +76,15 @@ func get_connections():
 			var con = node.ID
 			connections.push_back(con)
 #	print("connections: " + str(connections))
+
+
+func _on_mouse_detector_mouse_entered():
+	Globals.mouse_in_province = ID
+	set_material(load("res://Map/Glow.tres"))
+	pass # Replace with function body.
+
+
+func _on_mouse_detector_mouse_exited():
+	Globals.mouse_in_province = null
+	set_material(null)
+	pass # Replace with function body.
