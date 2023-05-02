@@ -5,7 +5,9 @@ var yInput
 
 @export_range(10, 1000, 1) var speed = 750
 @export_range(1, 100, 1) var aceleration = 25
+@export_range(1, 100, 1) var desaceleration = 10
 var velocity = Vector2(0.0, 0.0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,13 +21,13 @@ func _process(delta):
 	velocity.x += xInput * aceleration * delta
 	velocity.x = clamp(velocity.x, -speed * delta, speed * delta)
 	if xInput == 0 :
-		velocity.x = lerp(velocity.x, 0.0, aceleration / 3  * delta)
+		velocity.x = lerp(velocity.x, 0.0, desaceleration  * delta)
 	
 
 	velocity.y += yInput * aceleration * delta
 	velocity.y = clamp(velocity.y, -speed * delta, +speed * delta)
 	if yInput == 0:
-		velocity.y = lerp(velocity.y, 0.0, aceleration / 3 * delta)
+		velocity.y = lerp(velocity.y, 0.0, desaceleration * delta)
 	global_position += velocity 
 
 	pass

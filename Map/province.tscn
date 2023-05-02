@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Map/pos_province.tscn" id="2_tp8f2"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
+z_index = 20
+z_as_relative = false
 script = ExtResource("1_0h13g")
-Width = 4.0
-ID = null
+width = 4.0
 
 [node name="PosProvince" parent="." instance=ExtResource("2_tp8f2")]
 unique_name_in_owner = true

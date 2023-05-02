@@ -1,0 +1,16 @@
+extends Node
+
+@export_range(1, 500, 1) var NATION_TAG  = 1
+@export_color_no_alpha var nationOutline = Color(0, 0, 0)
+@export_color_no_alpha var nationColor = Color(0, 0, 0)
+@export_range(10, 1000, 0.1) var gold = 100
+@export var isPlayer = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

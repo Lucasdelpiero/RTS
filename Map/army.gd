@@ -5,8 +5,10 @@ var own_map : AStar2D
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
 @onready var line = $Node/Line2D
+@onready var icon = $Icon
 enum  { IDLE, MOVING, FIGHTING }
 var state = MOVING
+@export_range(0, 500, 1) var ownership = 0
 @export_range( 10, 10000, 1) var SPEED = 500
 var test = true
 var starting_point : Vector2 # Were the army starts traveling from one point to other
@@ -18,15 +20,28 @@ var next_point : Vector2 # Next point that activates once the closest point is r
 var first_point : Vector2 # First point in the path
 var second_point : Vector2 # Second point in the path
 
+## CONTROL
+var hovered = false
+var selected = false
+
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 func _input(event):
+	# Selection of the army selected
+	if Input.is_action_just_pressed("Click_Left"):
+		if ownership == world.playerNation:
+			if hovered:
+				selected = true
+			else: # This will have to be changed once multiples armies are selected
+				selected = false
+			pass
 	# Once clicked, the it will get the pathing towards the last province that was hovered
 	# If not province is being hovered it will go towards the closest province
-	if Input.is_action_just_pressed("Click_Left"):
+	if Input.is_action_just_pressed("Click_Right"):
 #		get_pathing(get_global_mouse_position())
-		get_pathing(Globals.mouse_in_province)
+		if selected : 
+			get_pathing(Globals.mouse_in_province)
 
 
 func _physics_process(delta):
@@ -62,46 +77,30 @@ func move(delta):
 	draw_path()
 	if path.size() > 0:
 		global_position = global_position.move_toward(path[0], delta * SPEED)
-#		print("path " +str(path))
 		var closest_point = path[0]
 		var distance_to_point = global_position.distance_to(closest_point)
 		var destination = path[path.size() - 1]
 		$Node/closest.global_position = closest_point
+		## TP to next point
 		if Input.is_action_just_pressed("Click_Right"):
-			global_position = closest_point
-			starting_point = closest_point
-		if Input.is_action_just_released("Click_Left"):
 			pass
-#			print(distance_to_point)
-#		$Node/distance.set_point_position(0, global_position)
-#		$Node/distance.set_point_position(1, )
-#		print("closest point " +str(closest_point))
-#		print("starting point " +str(starting_point))
-		
-		if (starting_point == closest_point) and (destination != starting_point):
-#			path.remove_at(0)
+#			global_position = closest_point
+#			starting_point = closest_point
+		if Input.is_action_just_released("Click_Left"):
 			pass
 		
 		# A bug here has to be fixed
 		if distance_to_point <= 10:
 			starting_point = path[0]
-#			print("CLOSE")
-#			print(path)
 			global_position = path[0]
 			draw_path()
 			path.remove_at(0)
 			if path.size() > 0:
 				next_point = path[0]
-			
-#			print("delete")
-#			print(path)
-			pass
 
 func get_pathing(destination):
 	if own_map != null:
 		var from = own_map.get_closest_point(self.global_position)
-#		var to = own_map.get_closest_point(destination)
-#		var to = own_map.get_point_position(destination)
 		# The destination is the place the army wants to go, that being the las province hovered
 		# If there is not a province being hovered, it will be used the closest point to the mouse
 		var to = destination
@@ -122,3 +121,16 @@ func get_pathing(destination):
 				path.remove_at(0)
 	pass
 
+
+
+func _on_area_2d_mouse_entered():
+	hovered = true
+	icon.set_material(load("res://Map/Glow.tres"))
+#	print("Hovered")
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	hovered = false
+	icon.set_material(null)
+	pass # Replace with function body.
