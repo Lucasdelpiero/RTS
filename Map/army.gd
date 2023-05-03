@@ -23,6 +23,8 @@ var second_point : Vector2 # Second point in the path
 ## CONTROL
 var hovered = false
 var selected = false
+var mouseOverSelf = false : set = send_mouse_over
+signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the node
 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -122,15 +124,37 @@ func get_pathing(destination):
 	pass
 
 
+func send_mouse_over(value):
+	mouseOverSelf = value
+	var data_temp = {
+		"mouseOverSelf" = value , 
+		"node" = self,
+	}
+	emit_signal("sg_mouseOverSelf", data_temp)
+#	print(mouseOverSelf)
 
+# If the mouse is over or leave the node sends a signal on the change of the boolean
 func _on_area_2d_mouse_entered():
-	hovered = true
-	icon.set_material(load("res://Map/Glow.tres"))
+	mouseOverSelf = true # activates signal sg_mouseOverSelf
+#	hovered = true
+#	icon.set_material(load("res://Map/Glow.tres"))
 #	print("Hovered")
 	pass # Replace with function body.
 
-
 func _on_area_2d_mouse_exited():
-	hovered = false
-	icon.set_material(null)
+	mouseOverSelf = false # activates signal sg_mouseOverSelf
+#	hovered = false
+#	icon.set_material(null)
 	pass # Replace with function body.
+
+func set_hovered(value):
+	hovered = value
+	var shader = null
+	if value == true:
+		shader = load("res://Map/Glow.tres")
+	icon.set_material(shader)
+	pass
+
+func set_selected(value):
+	selected = value
+	pass

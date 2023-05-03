@@ -36,6 +36,12 @@ var paths : Array
 # The scene root first children
 var world = null
 
+# Control
+var hovered = false
+var selected = false
+var mouseOverSelf = false : set = send_mouse_over
+signal sg_mouseOverSelf(mouseOverSelf)
+
 func _ready():
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
@@ -92,13 +98,41 @@ func update_to_nation_color():
 			self.color = nation.nationColor
 	pass
 
+func send_mouse_over(value):
+	mouseOverSelf = value
+	var data_temp = {
+		"mouseOverSelf" = value , 
+		"node" = self,
+	}
+	emit_signal("sg_mouseOverSelf", data_temp)
+	pass
+
 func _on_mouse_detector_mouse_entered():
+	mouseOverSelf = true
+#	hovered = true
 	Globals.mouse_in_province = ID
-	set_material(load("res://Map/Glow.tres"))
+#	set_material(load("res://Map/Glow.tres"))
 	pass # Replace with function body.
 
 
 func _on_mouse_detector_mouse_exited():
+	mouseOverSelf = false
+#	hovered = false
 	Globals.mouse_in_province = null
-	set_material(null)
+#	set_material(null)
 	pass # Replace with function body.
+
+func set_hovered(value):
+	hovered = value
+	var shader = null
+	print(hovered)
+	if hovered:
+		shader = load("res://Map/Glow.tres")
+	
+	set_material(shader)
+
+
+
+
+
+

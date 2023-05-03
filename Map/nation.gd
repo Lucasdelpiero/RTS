@@ -4,6 +4,7 @@ extends Node
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
 @export_color_no_alpha var nationColor = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold = 100
+@export_range(0, 500000, 1) var manpower = 10000
 @export var isPlayer = false
 
 # Called when the node enters the scene tree for the first time.

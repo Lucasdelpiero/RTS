@@ -5,7 +5,11 @@ var map # navmap
 @onready var navigation = $NavigationRegion2D
 @onready var army = %Army
 @onready var nationsGroup = $NationsGroup
+@onready var UI = %CampaingUI
+@onready var mouse = $Mouse
+
 var playerNation = null
+var playerNode = null
 var nations := []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,15 +20,21 @@ func _ready():
 	for nation in nations:
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
+			playerNode = nation
 	
 	for army in get_tree().get_nodes_in_group("armies"):
 		army.world = self
 		army.get_to_closer_point(map)
+		army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+#		connect("sg_mouseOverSelf", mouse, "update")
 	
 	var provinces = get_tree().get_nodes_in_group("provinces")
 	for province in provinces:
 		province.world = self
 		province.update_to_nation_color()
+		province.sg_mouseOverSelf.connect(mouse.update_province_selection)
+	
+	send_data_to_ui()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -60,3 +70,12 @@ func get_nav_map():
 func get_nav_path(from : int, to : int ):
 	map.get_point_path(from, to)
 	pass
+
+func send_data_to_ui():
+	var data = {
+		"gold" : playerNode.gold ,
+		"manpower" : playerNode.manpower ,
+	}
+	UI.update_data(data)
+	pass
+

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://didsq2xr3ehri"]
+
+[ext_resource type="Script" path="res://Map/mouse.gd" id="1_07bqd"]
+
+[node name="Mouse" type="Node2D"]
+script = ExtResource("1_07bqd")

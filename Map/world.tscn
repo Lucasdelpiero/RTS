@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvm45rxpdusoh"]
+[gd_scene load_steps=13 format=3 uid="uid://bvm45rxpdusoh"]
 
 [ext_resource type="Script" path="res://Map/world.gd" id="1_qiij3"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Map/EuropeMap.png" id="1_v5ckb"]
 [ext_resource type="PackedScene" uid="uid://bsuv2fxb0uq4f" path="res://Map/army.tscn" id="2_2lid3"]
+[ext_resource type="PackedScene" uid="uid://c73juj4femhdw" path="res://Map/campaign_ui.tscn" id="2_8hjxc"]
 [ext_resource type="PackedScene" uid="uid://cfcfhmytywga" path="res://Map/nation.tscn" id="2_ipllx"]
+[ext_resource type="PackedScene" uid="uid://didsq2xr3ehri" path="res://Map/mouse.tscn" id="2_se4b2"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Map/pos_province.tscn" id="3_6xwkc"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="3_dkw6f"]
 [ext_resource type="PackedScene" uid="uid://dec3vxw320ceh" path="res://Map/province.tscn" id="5_rmlct"]
@@ -20,11 +22,17 @@ position = Vector2(67, 153)
 script = ExtResource("1_qiij3")
 metadata/_edit_lock_ = true
 
+[node name="Mouse" parent="." instance=ExtResource("2_se4b2")]
+
+[node name="CampaingUI" parent="." instance=ExtResource("2_8hjxc")]
+unique_name_in_owner = true
+
 [node name="NationsGroup" type="Node" parent="."]
 
 [node name="Rome" parent="NationsGroup" instance=ExtResource("2_ipllx")]
 nationOutline = Color(0.266667, 0.054902, 0.0705882, 1)
 nationColor = Color(0.521569, 0.117647, 0.117647, 1)
+gold = 371
 isPlayer = true
 
 [node name="Army" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
@@ -44,6 +52,7 @@ nationColor = Color(0.439216, 0.435294, 0.388235, 1)
 
 [node name="Army" parent="NationsGroup/Etruria" instance=ExtResource("2_2lid3")]
 position = Vector2(604, 358)
+ownership = 2
 
 [node name="EuropeMap" type="Sprite2D" parent="."]
 visible = false
@@ -285,6 +294,7 @@ position = Vector2(660, 343)
 script = ExtResource("8_w7mv1")
 desaceleration = 15
 
+[editable path="CampaingUI"]
 [editable path="Cool texturing/West"]
 [editable path="Italy/Rome"]
 [editable path="Italy/Rome/PosProvince"]
