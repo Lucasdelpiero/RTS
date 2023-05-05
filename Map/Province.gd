@@ -10,7 +10,7 @@ extends Polygon2D
 @onready var collision = $MouseDetector/CollisionPolygon2D
 
 @export_category("Ownership")
-@export_range(0, 500, 1) var ownership = 0
+@export var ownership := ""
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
@@ -93,7 +93,7 @@ func get_connections():
 
 func update_to_nation_color():
 	for nation in world.nations:
-		if nation.NATION_TAG == self.ownership:
+		if nation.NATION_TAG == str(self.ownership):
 			self.outLine = nation.nationOutline
 			self.color = nation.nationColor
 	pass

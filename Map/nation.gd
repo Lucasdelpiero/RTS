@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-@export_range(1, 500, 1) var NATION_TAG  = 1
+@export var NATION_TAG  = ""
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
 @export_color_no_alpha var nationColor = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold = 100

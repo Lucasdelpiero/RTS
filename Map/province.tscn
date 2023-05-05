@@ -8,6 +8,7 @@ z_index = 20
 z_as_relative = false
 script = ExtResource("1_0h13g")
 width = 4.0
+ownership = 0
 
 [node name="PosProvince" parent="." instance=ExtResource("2_tp8f2")]
 unique_name_in_owner = true

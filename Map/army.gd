@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -400.0
 
 enum  { IDLE, MOVING, FIGHTING }
 var state = MOVING
-@export_range(0, 500, 1) var ownership = 0
+@export var ownership := ""
 @export_range( 10, 10000, 1) var SPEED = 500
 var army_color = Color(0.0, 0.0, 0.0)
 var test = true
@@ -35,7 +35,7 @@ signal get_pathfinding(army ,current_position)
 func _input(_event):
 	# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
-		if ownership == world.playerNation:
+		if str(ownership) == world.playerNation:
 			if hovered:
 				selected = true
 			else: # This will have to be changed once multiples armies are selected
