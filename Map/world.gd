@@ -3,7 +3,6 @@ extends Node2D
 var map # navmap
 
 @onready var navigation = $NavigationRegion2D
-@onready var army = %Army
 @onready var nationsGroup = $NationsGroup
 @onready var UI = %CampaingUI
 @onready var mouse = $Mouse
@@ -37,10 +36,10 @@ func _ready():
 	send_data_to_ui()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _input(event):
+func _input(_event):
    # Mouse in viewport coordinates.
 #	if event is InputEventMouseButton:
 #		print("Mouse Click/Unclick at: ", event.position)

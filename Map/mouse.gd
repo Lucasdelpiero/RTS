@@ -36,7 +36,6 @@ func update_province_selection(data):
 		if data.mouseOverSelf == false :
 			data.node.set_hovered(false)
 			provinceWithMouseOver.set_hovered(false)
-			print("aaaaalf")
 	# If the province has the mouse over it, the province will get stored
 		else:
 			provinceWithMouseOver = data.node

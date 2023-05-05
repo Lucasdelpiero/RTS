@@ -6,10 +6,12 @@ var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
 @onready var line = $Node/Line2D
 @onready var icon = $Icon
+
 enum  { IDLE, MOVING, FIGHTING }
 var state = MOVING
 @export_range(0, 500, 1) var ownership = 0
 @export_range( 10, 10000, 1) var SPEED = 500
+var army_color = Color(0.0, 0.0, 0.0)
 var test = true
 var starting_point : Vector2 # Were the army starts traveling from one point to other
 
@@ -22,14 +24,15 @@ var second_point : Vector2 # Second point in the path
 
 ## CONTROL
 var hovered = false
-var selected = false
+var selected = false : set = set_selected
 var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the node
 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
-func _input(event):
+
+func _input(_event):
 	# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
 		if ownership == world.playerNation:
@@ -81,7 +84,7 @@ func move(delta):
 		global_position = global_position.move_toward(path[0], delta * SPEED)
 		var closest_point = path[0]
 		var distance_to_point = global_position.distance_to(closest_point)
-		var destination = path[path.size() - 1]
+		var _destination = path[path.size() - 1]
 		$Node/closest.global_position = closest_point
 		## TP to next point
 		if Input.is_action_just_pressed("Click_Right"):
@@ -150,11 +153,20 @@ func _on_area_2d_mouse_exited():
 func set_hovered(value):
 	hovered = value
 	var shader = null
-	if value == true:
-		shader = load("res://Map/Glow.tres")
-	icon.set_material(shader)
+	if !selected:
+		if hovered:
+			shader = load("res://Map/Glow.tres")
+		else:
+			shader = null
+		icon.set_material(shader)
 	pass
 
 func set_selected(value):
 	selected = value
-	pass
+	var shader = null
+	if selected:
+		shader = load("res://Map/selected.tres")
+		icon.set_material(shader)
+		icon.material.set_shader_parameter("inside_color", army_color)
+	icon.set_material(shader)
+

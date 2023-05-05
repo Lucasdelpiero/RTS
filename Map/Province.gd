@@ -57,22 +57,22 @@ func _ready():
 	pass
 
 func _draw():
-	var polygon = get_polygon()
-	border.points = polygon
+	var poly = get_polygon()
+	border.points = poly
 	if polygon.size() > 1 :
 		border.add_point(polygon[0]) # Closes the line from the end point to the start point
 	border.width = width
 	border.default_color = outLine
 
-func set_color_border(color):
-	outLine = color
+func set_color_border(col):
+	outLine = col
 	queue_redraw()
 
 func set_width(new_width):
 	width = new_width
 	queue_redraw()
 
-func set_city_name(value):
+func set_city_name(_value):
 	pass
 
 func get_connections():
@@ -125,7 +125,6 @@ func _on_mouse_detector_mouse_exited():
 func set_hovered(value):
 	hovered = value
 	var shader = null
-	print(hovered)
 	if hovered:
 		shader = load("res://Map/Glow.tres")
 	

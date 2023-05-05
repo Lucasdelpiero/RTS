@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://i505ivrfguvb"]
+
+[ext_resource type="Shader" path="res://Map/selected.gdshader" id="1_8tw63"]
+
+[resource]
+shader = ExtResource("1_8tw63")
+shader_parameter/outline_width = 4.0
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+shader_parameter/inside_color = Color(1, 1, 1, 1)
