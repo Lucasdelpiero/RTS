@@ -44,7 +44,8 @@ func update_province_selection(data):
 	# For a province to be considered hovered, there should not be any army currently being hovered
 	# and also has to have the mouse over it
 	# It needs to be separated from the indentation in "data!= null" so it can updated once the army is unhovered
-	if hovered.size() == 0 and provinceWithMouseOver.mouseOverSelf: 
-		provinceWithMouseOver.set_hovered(true)
-	else:
-		provinceWithMouseOver.set_hovered(false)
+	if provinceWithMouseOver != null:
+		if hovered.size() == 0 and provinceWithMouseOver.mouseOverSelf: 
+			provinceWithMouseOver.set_hovered(true)
+		else:
+			provinceWithMouseOver.set_hovered(false)
