@@ -6,6 +6,8 @@ var selected := []
 
 var provinceWithMouseOver = null 
 
+func _process(delta):
+	pass
 
 ## Gets in a list the 
 func update_army_campaing_selection(data):

@@ -139,16 +139,10 @@ func send_mouse_over(value):
 # If the mouse is over or leave the node sends a signal on the change of the boolean
 func _on_area_2d_mouse_entered():
 	mouseOverSelf = true # activates signal sg_mouseOverSelf
-#	hovered = true
-#	icon.set_material(load("res://Map/Glow.tres"))
-#	print("Hovered")
-	pass # Replace with function body.
-
+#
 func _on_area_2d_mouse_exited():
 	mouseOverSelf = false # activates signal sg_mouseOverSelf
-#	hovered = false
-#	icon.set_material(null)
-	pass # Replace with function body.
+
 
 func set_hovered(value):
 	hovered = value
@@ -169,4 +163,6 @@ func set_selected(value):
 		icon.set_material(shader)
 		icon.material.set_shader_parameter("inside_color", army_color)
 	icon.set_material(shader)
+
+
 

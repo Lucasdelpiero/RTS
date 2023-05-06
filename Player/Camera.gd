@@ -11,12 +11,20 @@ var yInput
 @export_range(0.1, 5.0, 0.1) var zoom_max = 2.0
 var velocity = Vector2(0.0, 0.0)
 var target_zoom := Vector2(1.0, 1.0)
+var drag_start := Vector2(0.0, 0.0)
+var drag_end := Vector2(0.0, 0.0)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func _input(event):
+	if Input.is_action_just_pressed("Middle_Mouse"):
+		drag_start = get_global_mouse_position()
+	if Input.is_action_pressed("Middle_Mouse"):
+		drag_end = get_global_mouse_position()
+		global_position += drag_start - drag_end
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

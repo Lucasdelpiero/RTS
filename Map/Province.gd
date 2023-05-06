@@ -18,17 +18,17 @@ extends Polygon2D
 var connections : Array
 
 @export_group("Connections")
-@export var path0 : NodePath
-@export var path1 : NodePath
-@export var path2 : NodePath
-@export var path3 : NodePath
-@export var path4 : NodePath
-@export var path5 : NodePath
-@export var path6 : NodePath
-@export var path7 : NodePath
-@export var path8 : NodePath
-@export var path9 : NodePath
-@export var path10 : NodePath
+@export var path0 : Province
+@export var path1 : Province
+@export var path2 : Province
+@export var path3 : Province
+@export var path4 : Province
+@export var path5 : Province
+@export var path6 : Province
+@export var path7 : Province
+@export var path8 : Province
+@export var path9 : Province
+@export var path10 : Province
 
 # Array of paths avialiable as connections
 var paths : Array
@@ -80,8 +80,8 @@ func get_connections():
 	# Done in this way because if "get_node" is used in an empty path it result in debugget errors
 	var p = [path0, path1, path2, path3, path4, path5]
 	for node in p:
-		if !node.is_empty():
-			paths.push_back(get_node(node)) # Changed to node.city from city
+		if node != null:
+			paths.push_back(node)
 	
 	# The connections to other points are added in an Array2D = [ "ID", "position" ]
 	for node in paths:
@@ -109,18 +109,11 @@ func send_mouse_over(value):
 
 func _on_mouse_detector_mouse_entered():
 	mouseOverSelf = true
-#	hovered = true
 	Globals.mouse_in_province = ID
-#	set_material(load("res://Map/Glow.tres"))
-	pass # Replace with function body.
-
 
 func _on_mouse_detector_mouse_exited():
 	mouseOverSelf = false
-#	hovered = false
 	Globals.mouse_in_province = null
-#	set_material(null)
-	pass # Replace with function body.
 
 func set_hovered(value):
 	hovered = value
@@ -129,7 +122,6 @@ func set_hovered(value):
 		shader = load("res://Map/Glow.tres")
 	
 	set_material(shader)
-
 
 
 
