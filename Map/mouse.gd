@@ -10,8 +10,10 @@ var provinceWithMouseOver = null
 var start_rectangle := Vector2(0.0, 0.0)
 var end_rectangle := Vector2(0.0, 0.0)
 @onready var rectangleLine = %rectangleLine
+@onready var renctangleMarker = %rectangleMarker
 @onready var col = $Node/Area2D/CollisionShape2D
 @onready var area = $Node/Area2D
+@export_range(1, 500, 1) var rectangleDrawDistance = 10
 
 func _process(delta):
 	draw_rectangle()
@@ -60,34 +62,46 @@ func update_province_selection(data):
 		else:
 			provinceWithMouseOver.set_hovered(false)
 
+# The selection rectangle is drawn and the collisions are used to select troops
 func draw_rectangle():
 	if Input.is_action_just_pressed("Click_Left"):
 		start_rectangle = get_global_mouse_position()
 
 	if Input.is_action_pressed("Click_Left"):
 		end_rectangle = get_global_mouse_position()
-	if start_rectangle.distance_to(end_rectangle) > 50:
-		rectangleLine.set_point_position(0, start_rectangle)
-		rectangleLine.set_point_position(1, Vector2(end_rectangle.x, start_rectangle.y))
-		rectangleLine.set_point_position(2, end_rectangle)
-		rectangleLine.set_point_position(3, Vector2(start_rectangle.x, end_rectangle.y))
-		rectangleLine.set_point_position(4, start_rectangle)
-		global_position = start_rectangle
-		col.shape.size = Vector2(50, 50)
+	
+	# When the mouse is dragged enought, the rectangle starts getting drawn
+	if start_rectangle.distance_to(end_rectangle) > rectangleDrawDistance:
 		var distance = start_rectangle.distance_to(end_rectangle) 
 		var angle = start_rectangle.angle_to_point(end_rectangle)
-		var x_size = distance * cos(angle) 
-		var y_size = distance * -sin(angle) 
+		var cam_angle = Globals.camera_angle
+		# The calculation takes in consideration the angle of the rectangle and the cam angle
+		var width = distance * cos(cam_angle) * cos(angle) + distance * sin(cam_angle) * sin(angle)
+		var height = distance * cos(cam_angle) * sin(angle) - distance * sin(cam_angle) * cos(angle)
+		# Activate the collisionShape
 		area.global_position = start_rectangle
 		col.disabled = false
-		col.shape.size.x = abs(x_size)
-		col.shape.size.y = abs(y_size)
-#		col.rotation = Globals.camera_angle
-#		var rect = Rect2(start_rectangle, Vector2(x_size, y_size))
-#		print(rect)
-		col.position = Vector2(col.shape.size.x * sign(x_size) / 2, col.shape.size.y * -sign(y_size) / 2)
+		# Size has to be a positive number, so is used the absolute value
+		col.shape.size.x = abs(width)
+		col.shape.size.y = abs(height)
+		# After the rectangle get the correct dimensions the area2D is used also as a marker2d 
+		# by rotating it and having the collision2D top left position in its (0.0, 0.0) position
+		area.rotation = cam_angle
+		# Position the collision of the rectangle selection so the top-left position is in the (0.0, 0.0) position
+		col.position = Vector2(col.shape.size.x * sign(width) / 2, col.shape.size.y * sign(height) / 2)
+		
+		# Draw the lines for the rectangle selection
+		rectangleLine.set_point_position(0, Vector2.ZERO)
+		rectangleLine.set_point_position(1, Vector2(width, 0.0))
+		rectangleLine.set_point_position(2, Vector2(width, height))
+		rectangleLine.set_point_position(3, Vector2(0.0, height))
+		rectangleLine.set_point_position(4, Vector2.ZERO)
+		# The marker is used for easier drawing
+		renctangleMarker.position = start_rectangle
+		renctangleMarker.rotation = cam_angle
 
 	if Input.is_action_just_released("Click_Left"):
+		## Clear the lines drawn for the rectangle selection
 		start_rectangle = Vector2.ZERO
 		end_rectangle = Vector2.ZERO
 		col.disabled = true
