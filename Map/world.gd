@@ -20,6 +20,7 @@ func _ready():
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
 			playerNode = nation
+			Globals.playerNation = nation.NATION_TAG
 	
 	for army in get_tree().get_nodes_in_group("armies"):
 		army.world = self
@@ -36,7 +37,7 @@ func _ready():
 	send_data_to_ui()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	pass
 
 func _input(_event):

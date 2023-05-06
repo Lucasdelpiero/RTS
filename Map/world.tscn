@@ -291,8 +291,8 @@ polygon = PackedVector2Array(-194.665, -128.455, -170.665, -112.455, -139.665, -
 position = Vector2(660, 343)
 ignore_rotation = false
 script = ExtResource("8_w7mv1")
-speed = 1000
-aceleration = 50
+speed = 3000
+aceleration = 200
 desaceleration = 15
 zoom_min = 0.2
 

@@ -3,8 +3,8 @@ extends Camera2D
 var xInput
 var yInput
 
-@export_range(10, 1000, 1) var speed = 750
-@export_range(1, 100, 1) var aceleration = 25
+@export_range(10, 5000, 1) var speed = 750
+@export_range(1, 1000, 1) var aceleration = 25
 @export_range(1, 100, 1) var desaceleration = 10
 @export_range(0.1, 10.0, 0.1) var zoom_speed = 5.0
 @export_range(0.1, 5.0, 0.1) var zoom_min = 0.1
@@ -28,18 +28,17 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Camera axis input
 	xInput = int(Input.is_action_pressed("Right")) - int(Input.is_action_pressed("Left"))
 	yInput = int(Input.is_action_pressed("Down")) - int(Input.is_action_pressed("Up"))
-	velocity.x += xInput * aceleration * delta / zoom.x
+	# Use the input and the angle to give the apropiate velocity
+	velocity.x += (xInput * aceleration * delta / zoom.x) * cos(rotation)  + (yInput * aceleration * delta / zoom.x) * -sin(rotation)
 	velocity.x = clamp(velocity.x, -speed * delta / zoom.x, speed * delta / zoom.x)
-	if xInput == 0 :
-		velocity.x = lerp(velocity.x, 0.0, desaceleration  * delta )
+	velocity.x = lerp(velocity.x, 0.0, desaceleration  * delta )
 	
-
-	velocity.y += yInput * aceleration * delta / zoom.x
+	velocity.y += (yInput * aceleration * delta / zoom.x) * cos(rotation) + (xInput * aceleration * delta / zoom.x) * sin(rotation)
 	velocity.y = clamp(velocity.y, -speed * delta / zoom.x, +speed * delta/ zoom.x)
-	if yInput == 0:
-		velocity.y = lerp(velocity.y, 0.0, desaceleration * delta)
+	velocity.y = lerp(velocity.y, 0.0, desaceleration * delta)
 	global_position += velocity 
 	
 	# Zoom in-out
@@ -48,5 +47,9 @@ func _process(delta):
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)
 	target_zoom.y = clamp(target_zoom.y, zoom_min, zoom_max)
 	set_zoom(lerp(zoom, target_zoom, delta * zoom_speed)) # animation
+	
+	var rotate_camera = int(Input.is_action_pressed("rotate_right")) - int(Input.is_action_pressed("rotate_left"))
+	rotation_degrees += rotate_camera 
+	Globals.camera_angle = rotation
 	
 	pass

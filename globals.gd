@@ -1,6 +1,8 @@
 extends Node
 
 var mouse_in_province = 1
+var camera_angle := 0.0
+var playerNation = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
