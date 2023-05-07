@@ -33,3 +33,37 @@ offset_top = 13.0
 offset_right = 191.0
 offset_bottom = 36.0
 text = "Manpower:"
+
+[node name="Province" type="Panel" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 431.0
+offset_right = 387.0
+offset_bottom = 578.0
+
+[node name="IncomeLabel" type="Label" parent="Container/Province"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 199.0
+offset_top = 32.0
+offset_right = 257.0
+offset_bottom = 58.0
+text = "Income"
+
+[node name="PopulationLabel" type="Label" parent="Container/Province"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 27.0
+offset_top = 31.0
+offset_right = 112.0
+offset_bottom = 57.0
+text = "Population"
+
+[node name="NameLabel" type="Label" parent="Container/Province"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_right = 170.0
+offset_bottom = 26.0
+text = "Name"

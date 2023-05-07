@@ -10,9 +10,13 @@ var map # navmap
 var playerNation = null
 var playerNode = null
 var nations := []
+var provinceSelected = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_nav_map()
+	mouse.world = self
+	mouse.ui = UI
+
 #	army.get_to_closer_point(map)
 	
 	nations = nationsGroup.get_children()

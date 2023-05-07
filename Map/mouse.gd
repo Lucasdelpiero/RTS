@@ -2,9 +2,13 @@ extends Node2D
 
 # for army
 var hovered := []
-var selected := []
+var selected_armies := []
 
+var lastProvinceWithMouseOver = null
 var provinceWithMouseOver = null 
+var provinceSelected = null
+var world = null
+var ui = null
 
 # To draw the rectangle selection
 var start_rectangle := Vector2(0.0, 0.0)
@@ -14,10 +18,24 @@ var end_rectangle := Vector2(0.0, 0.0)
 @onready var col = $Node/Area2D/CollisionShape2D
 @onready var area = $Node/Area2D
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
-
-func _process(delta):
+func _process(_delta):
+	area.global_position = get_global_mouse_position()
+#	print(area.get_overlapping_areas())
 	draw_rectangle()
-	pass
+	if Input.is_action_just_pressed("Click_Left"):
+		if provinceWithMouseOver == null or hovered.size() > 0:
+			ui.update_province_data(null) # set ui to not visible
+			
+		if provinceWithMouseOver != null:
+			if provinceSelected != null:
+				provinceSelected.set_selected(false)
+			
+			# The province will be selected only when there are not armies selected
+			if hovered.size() == 0:
+				provinceWithMouseOver.set_selected(true)
+				provinceWithMouseOver.send_data_to_ui(ui)
+				provinceSelected = provinceWithMouseOver
+				world.provinceSelected = provinceSelected
 
 ## Gets in a list the 
 func update_army_campaing_selection(data):
@@ -36,21 +54,24 @@ func update_army_campaing_selection(data):
 
 	if hovered.size() > 0:
 		hovered[0].set_hovered(true)
-#	for node in hovered:
-#		node.set_hovered(true)
 	
 	update_province_selection(null) # Used to update the provinces to being unhovered
 
 func update_province_selection(data):
 	# Updating the function with data == null just updates without adding info
 	# If the province doesnt have the mouse over it, it will stop being hovered
+#	print("before: %s" % [provinceWithMouseOver])
 	if data != null:
 		if data.mouseOverSelf == false :
 			data.node.set_hovered(false)
-			provinceWithMouseOver.set_hovered(false)
+			if provinceWithMouseOver != null:
+				provinceWithMouseOver.set_hovered(false)
+				provinceWithMouseOver = null
 	# If the province has the mouse over it, the province will get stored
 		else:
+			await get_tree().create_timer(0.01).timeout
 			provinceWithMouseOver = data.node
+#	print("after: %s" % [provinceWithMouseOver])
 	
 	### PRIORITY FOR ENTITIES TO BEING HOVERED
 	# For a province to be considered hovered, there should not be any army currently being hovered
@@ -113,6 +134,7 @@ func draw_rectangle():
 
 ## Use the selection box to select armies
 func _on_area_2d_area_entered(area):
+	pass
 	if Globals.playerNation == area.owner.ownership:
 		area.owner.selected = true
 

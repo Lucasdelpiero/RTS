@@ -1,5 +1,5 @@
 @tool
-class_name Province # New icon to be made
+class_name Province # New icon o be made
 extends Polygon2D
 
 @export_color_no_alpha var outLine = Color(0, 0, 0) : set = set_color_border
@@ -15,9 +15,11 @@ extends Polygon2D
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
 @export_range(0.1, 10, 0.1) var weight = 1.0
-var connections : Array
+@export_range(0.1, 100, 0.1) var income = 10.0
+@export_range(100, 100000, 1) var population = 1000
 
 @export_group("Connections")
+var connections : Array
 @export var path0 : Province
 @export var path1 : Province
 @export var path2 : Province
@@ -41,6 +43,7 @@ var hovered = false
 var selected = false
 var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf)
+signal sg_send_data_to_ui(data)
 
 func _ready():
 	await get_tree().create_timer(1).timeout
@@ -63,6 +66,14 @@ func _draw():
 		border.add_point(polygon[0]) # Closes the line from the end point to the start point
 	border.width = width
 	border.default_color = outLine
+
+func _input(_event):
+	pass
+#	if Input.is_action_just_pressed("Click_Left"):
+#		if hovered:
+#			selected = true
+#		else:
+#			selected = false
 
 func set_color_border(col):
 	outLine = col
@@ -108,10 +119,12 @@ func send_mouse_over(value):
 	pass
 
 func _on_mouse_detector_mouse_entered():
+#	print("entered")
 	mouseOverSelf = true
 	Globals.mouse_in_province = ID
 
 func _on_mouse_detector_mouse_exited():
+#	print("exited")
 	mouseOverSelf = false
 	Globals.mouse_in_province = null
 
@@ -123,7 +136,17 @@ func set_hovered(value):
 	
 	set_material(shader)
 
+func set_selected(value):
+	selected = true
 
+func send_data_to_ui(ui : CanvasLayer):
+	var data = ProvinceData.new()
+	data.income = income
+	data.population = population
+	data.name = self.name
+	sg_send_data_to_ui.connect(ui.update_province_data)
+	emit_signal("sg_send_data_to_ui", data)
+	sg_send_data_to_ui.disconnect(ui.update_province_data)
 
 
 

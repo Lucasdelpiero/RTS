@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxn3yceilxo0j"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_uyp36"]
+[ext_resource type="PackedScene" uid="uid://bvm45rxpdusoh" path="res://Map/world.tscn" id="2_sb100"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uyp36")
+
+[node name="World" parent="." instance=ExtResource("2_sb100")]
+
+[editable path="World"]
+[editable path="World/CampaingUI"]
+[editable path="World/Cool texturing/West"]
+[editable path="World/Italy/Rome"]
+[editable path="World/Italy/Rome/PosProvince"]
+[editable path="World/Italy/Etruria"]
+[editable path="World/Italy/Etruria/PosProvince"]
+[editable path="World/Italy/Neapolis"]
+[editable path="World/Italy/Neapolis/PosProvince"]
+[editable path="World/Italy/Sicily"]
+[editable path="World/Italy/Sicily/PosProvince"]
+[editable path="World/Province"]
+[editable path="World/Province/PosProvince"]
+[editable path="World/Province2"]
+[editable path="World/Province2/PosProvince"]

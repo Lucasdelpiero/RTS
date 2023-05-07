@@ -79,6 +79,7 @@ rotate_left={
 
 [layer_names]
 
+2d_physics/layer_1="Province"
 2d_physics/layer_2="Army"
 2d_physics/layer_10="Mouse"
 
