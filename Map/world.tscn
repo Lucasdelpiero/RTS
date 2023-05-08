@@ -38,11 +38,13 @@ isPlayer = true
 
 [node name="Army" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
 unique_name_in_owner = true
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(703, 481)
 ownership = "ROME"
 
 [node name="Army2" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
 unique_name_in_owner = true
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(887, 505)
 ownership = "ROME"
 
@@ -52,6 +54,7 @@ nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
 nationColor = Color(0.439216, 0.435294, 0.388235, 1)
 
 [node name="Army" parent="NationsGroup/Etruria" instance=ExtResource("2_2lid3")]
+modulate = Color(0.439216, 0.435294, 0.388235, 1)
 position = Vector2(604, 358)
 ownership = "ETRURIA"
 

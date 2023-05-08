@@ -1,4 +1,4 @@
-#@tool
+@tool
 class_name Province # New icon o be made
 extends Polygon2D
 

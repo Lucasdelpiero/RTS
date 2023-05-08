@@ -11,6 +11,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var armies = get_children()
+
 	for a in armies:
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally

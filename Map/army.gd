@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 
 var world
@@ -11,7 +12,7 @@ enum  { IDLE, MOVING, FIGHTING }
 var state = MOVING
 @export var ownership := ""
 @export_range( 10, 10000, 1) var SPEED = 500
-var army_color = Color(0.0, 0.0, 0.0)
+@onready var army_color := Color(0.0, 0.0, 0.0, 1.0) : set = set_color
 var test = true
 var starting_point : Vector2 # Were the army starts traveling from one point to other
 
@@ -164,5 +165,9 @@ func set_selected(value):
 		icon.material.set_shader_parameter("inside_color", army_color)
 	icon.set_material(shader)
 
+func set_color(color : Color):
+	army_color = color
+	self.modulate = army_color
+	
 
 
