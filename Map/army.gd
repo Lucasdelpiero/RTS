@@ -71,7 +71,7 @@ func get_to_closer_point(map):
 # Draws the path that the army is following
 func draw_path():
 	# The positions in the path has to be added in the pathing array to avoid bugs
-	var pathing : PackedVector2Array
+	var pathing : PackedVector2Array = []
 	pathing.append(global_position) # Where the line start
 	for i in path.size():
 		pathing.append(path[i]) # Path

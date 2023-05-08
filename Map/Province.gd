@@ -1,4 +1,4 @@
-@tool
+#@tool
 class_name Province # New icon o be made
 extends Polygon2D
 
@@ -49,14 +49,9 @@ func _ready():
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly = get_polygon()
-#	print(poly)
-#	collision.set_polygon([])
+
 	collision.set_polygon(poly)
-#	print(polygon)
-#	mouseDetectorCollition.points = polygon
-#	for point in polygon:
-#		mouseDetectorCollition.point
-#	mouseDetectorCollition.shape.points = polygon
+
 	pass
 
 func _draw():
@@ -136,7 +131,7 @@ func set_hovered(value):
 	
 	set_material(shader)
 
-func set_selected(value):
+func set_selected(_value):
 	selected = true
 
 func send_data_to_ui(ui : CanvasLayer):

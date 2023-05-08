@@ -40,17 +40,6 @@ func _ready():
 	
 	send_data_to_ui()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _input(_event):
-   # Mouse in viewport coordinates.
-#	if event is InputEventMouseButton:
-#		print("Mouse Click/Unclick at: ", event.position)
-#	elif event is InputEventMouseMotion:
-#		print("Mouse Motion at: ", event.position)
-	pass
 
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map():

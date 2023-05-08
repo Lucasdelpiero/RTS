@@ -16,10 +16,10 @@ var end_rectangle := Vector2(0.0, 0.0)
 @onready var rectangleLine = %rectangleLine
 @onready var renctangleMarker = %rectangleMarker
 @onready var col = $Node/Area2D/CollisionShape2D
-@onready var area = $Node/Area2D
+@onready var areaNode = $Node/Area2D
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
 func _process(_delta):
-	area.global_position = get_global_mouse_position()
+	areaNode.global_position = get_global_mouse_position()
 #	print(area.get_overlapping_areas())
 	draw_rectangle()
 	if Input.is_action_just_pressed("Click_Left"):
@@ -100,14 +100,14 @@ func draw_rectangle():
 		var width = distance * cos(cam_angle) * cos(angle) + distance * sin(cam_angle) * sin(angle)
 		var height = distance * cos(cam_angle) * sin(angle) - distance * sin(cam_angle) * cos(angle)
 		# Activate the collisionShape
-		area.global_position = start_rectangle
+		areaNode.global_position = start_rectangle
 		col.disabled = false
 		# Size has to be a positive number, so is used the absolute value
 		col.shape.size.x = abs(width)
 		col.shape.size.y = abs(height)
 		# After the rectangle get the correct dimensions the area2D is used also as a marker2d 
 		# by rotating it and having the collision2D top left position in its (0.0, 0.0) position
-		area.rotation = cam_angle
+		areaNode.rotation = cam_angle
 		# Position the collision of the rectangle selection so the top-left position is in the (0.0, 0.0) position
 		col.position = Vector2(col.shape.size.x * sign(width) / 2, col.shape.size.y * sign(height) / 2)
 		

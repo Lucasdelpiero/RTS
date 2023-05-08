@@ -19,7 +19,7 @@ var drag_end := Vector2(0.0, 0.0)
 func _ready():
 	pass # Replace with function body.
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("Middle_Mouse"):
 		drag_start = get_global_mouse_position()
 	if Input.is_action_pressed("Middle_Mouse"):
