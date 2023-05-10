@@ -1,16 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvm45rxpdusoh"]
+[gd_scene load_steps=13 format=3 uid="uid://b58owm8rxmdin"]
 
-[ext_resource type="Script" path="res://Map/world.gd" id="1_qiij3"]
-[ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Map/EuropeMap.png" id="1_v5ckb"]
-[ext_resource type="PackedScene" uid="uid://bsuv2fxb0uq4f" path="res://Map/army.tscn" id="2_2lid3"]
-[ext_resource type="PackedScene" uid="uid://c73juj4femhdw" path="res://Map/campaign_ui.tscn" id="2_8hjxc"]
-[ext_resource type="PackedScene" uid="uid://cfcfhmytywga" path="res://Map/nation.tscn" id="2_ipllx"]
-[ext_resource type="PackedScene" uid="uid://didsq2xr3ehri" path="res://Map/mouse.tscn" id="2_se4b2"]
-[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Map/pos_province.tscn" id="3_6xwkc"]
+[ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_qiij3"]
+[ext_resource type="PackedScene" path="res://Scripts/Campaign/army.tscn" id="2_2lid3"]
+[ext_resource type="PackedScene" path="res://Scripts/Campaign/campaign_ui.tscn" id="2_8hjxc"]
+[ext_resource type="PackedScene" path="res://Scripts/Campaign/nation.tscn" id="2_ipllx"]
+[ext_resource type="PackedScene" path="res://Scenes/mouse.tscn" id="2_se4b2"]
+[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scripts/Campaign/pos_province.tscn" id="3_6xwkc"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="3_dkw6f"]
-[ext_resource type="PackedScene" uid="uid://cc4mw88j3vriw" path="res://Map/province.tscn" id="5_rmlct"]
-[ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Map/Carto Light.png" id="7_rvym3"]
-[ext_resource type="Script" path="res://Player/Camera.gd" id="8_w7mv1"]
+[ext_resource type="PackedScene" path="res://Scripts/Campaign/province.tscn" id="5_rmlct"]
+[ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="6_vlm72"]
+[ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="7_eyk4d"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="11_iahog"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -62,14 +62,14 @@ ownership = "ETRURIA"
 visible = false
 position = Vector2(984, -589)
 scale = Vector2(3.27034, 3.05596)
-texture = ExtResource("1_v5ckb")
+texture = ExtResource("6_vlm72")
 metadata/_edit_lock_ = true
 
 [node name="CartoLight" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.509804)
 position = Vector2(1735, 81)
 scale = Vector2(1.20755, 1.20755)
-texture = ExtResource("7_rvym3")
+texture = ExtResource("7_eyk4d")
 metadata/_edit_lock_ = true
 
 [node name="Cool texturing" type="Polygon2D" parent="."]
@@ -263,7 +263,7 @@ metadata/_edit_lock_ = true
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(660, 343)
 ignore_rotation = false
-script = ExtResource("8_w7mv1")
+script = ExtResource("11_iahog")
 speed = 3000
 aceleration = 200
 desaceleration = 15

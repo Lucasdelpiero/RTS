@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
+[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
+
+[node name="Box" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_qinoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 11)
+texture = ExtResource("2_v0q3s")
+
+[node name="Weapons" type="Node" parent="."]
+
+[node name="SelectionComponent" type="Node2D" parent="."]

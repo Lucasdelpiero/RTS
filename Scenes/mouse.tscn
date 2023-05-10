@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://didsq2xr3ehri"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Map/mouse.gd" id="1_07bqd"]
+[ext_resource type="Script" path="res://Scripts/mouse.gd" id="1_07bqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rarq8"]
 

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dw42e4qm5a4xh"]
+
+[node name="BattleMap" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Grass" type="Polygon2D" parent="."]
+color = Color(0.345098, 0.568627, 0.32549, 1)
+polygon = PackedVector2Array(-48337, -27122, 59037, -26999, 59951, 26510, -50129, 26382)
+metadata/_edit_lock_ = true

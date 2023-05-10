@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbji4uhav74fm"
-path="res://.godot/imported/EuropeMap.png-d204115614e47785db8e7ad56211137e.ctex"
+uid="uid://7csruyrolv3k"
+path="res://.godot/imported/Carto Light.png-81d922c942d34a15954f136f88577a4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/EuropeMap.png"
-dest_files=["res://.godot/imported/EuropeMap.png-d204115614e47785db8e7ad56211137e.ctex"]
+source_file="res://Assets/Carto Light.png"
+dest_files=["res://.godot/imported/Carto Light.png-81d922c942d34a15954f136f88577a4c.ctex"]
 
 [params]
 

@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7csruyrolv3k"
-path="res://.godot/imported/Carto Light.png-1470c7d55d871cefe29d9d1f778a624d.ctex"
+uid="uid://gsdup63vf75s"
+path="res://.godot/imported/box.png-667196aff8d390867a5f7994ac888cee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Map/Carto Light.png"
-dest_files=["res://.godot/imported/Carto Light.png-1470c7d55d871cefe29d9d1f778a624d.ctex"]
+source_file="res://Assets/box.png"
+dest_files=["res://.godot/imported/box.png-667196aff8d390867a5f7994ac888cee.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.01
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
