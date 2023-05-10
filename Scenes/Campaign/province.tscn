@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/province.gd" id="1_lhs2u"]
-[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scripts/Campaign/pos_province.tscn" id="2_h2bx7"]
+[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scenes/Campaign/pos_province.tscn" id="2_h2bx7"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
 z_index = 20

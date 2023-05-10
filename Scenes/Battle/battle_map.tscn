@@ -1,9 +1,27 @@
-[gd_scene format=3 uid="uid://dw42e4qm5a4xh"]
+[gd_scene load_steps=4 format=3 uid="uid://dw42e4qm5a4xh"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Battle/box.tscn" id="1_8qehy"]
+[ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="2_a41j7"]
+[ext_resource type="PackedScene" path="res://Scenes/mouse.tscn" id="2_mnpce"]
 
 [node name="BattleMap" type="Node2D"]
 metadata/_edit_lock_ = true
+
+[node name="Camera" parent="." instance=ExtResource("2_a41j7")]
+
+[node name="Mouse" parent="." instance=ExtResource("2_mnpce")]
+position = Vector2(660, 343)
 
 [node name="Grass" type="Polygon2D" parent="."]
 color = Color(0.345098, 0.568627, 0.32549, 1)
 polygon = PackedVector2Array(-48337, -27122, 59037, -26999, 59951, 26510, -50129, 26382)
 metadata/_edit_lock_ = true
+
+[node name="Box" parent="." instance=ExtResource("1_8qehy")]
+position = Vector2(196, 498)
+
+[node name="Box2" parent="." instance=ExtResource("1_8qehy")]
+position = Vector2(528, 483)
+
+[node name="Box3" parent="." instance=ExtResource("1_8qehy")]
+position = Vector2(860, 498)

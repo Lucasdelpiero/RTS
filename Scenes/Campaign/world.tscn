@@ -1,16 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b58owm8rxmdin"]
+[gd_scene load_steps=13 format=3 uid="uid://cx3g78dhja7wn"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_qiij3"]
-[ext_resource type="PackedScene" path="res://Scripts/Campaign/army.tscn" id="2_2lid3"]
-[ext_resource type="PackedScene" path="res://Scripts/Campaign/campaign_ui.tscn" id="2_8hjxc"]
-[ext_resource type="PackedScene" path="res://Scripts/Campaign/nation.tscn" id="2_ipllx"]
+[ext_resource type="PackedScene" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
+[ext_resource type="PackedScene" path="res://Scenes/Campaign/campaign_ui.tscn" id="2_8hjxc"]
+[ext_resource type="PackedScene" path="res://Scenes/Campaign/nation.tscn" id="2_ipllx"]
 [ext_resource type="PackedScene" path="res://Scenes/mouse.tscn" id="2_se4b2"]
-[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scripts/Campaign/pos_province.tscn" id="3_6xwkc"]
+[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scenes/Campaign/pos_province.tscn" id="3_6xwkc"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="3_dkw6f"]
-[ext_resource type="PackedScene" path="res://Scripts/Campaign/province.tscn" id="5_rmlct"]
+[ext_resource type="PackedScene" path="res://Scenes/Campaign/province.tscn" id="5_rmlct"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="6_vlm72"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="7_eyk4d"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="11_iahog"]
+[ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="11_y8fvc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -260,14 +260,7 @@ position = Vector2(-8, -2)
 navigation_polygon = SubResource("NavigationPolygon_v8dvj")
 metadata/_edit_lock_ = true
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(660, 343)
-ignore_rotation = false
-script = ExtResource("11_iahog")
-speed = 3000
-aceleration = 200
-desaceleration = 15
-zoom_min = 0.2
+[node name="Camera" parent="." instance=ExtResource("11_y8fvc")]
 
 [editable path="CampaingUI"]
 [editable path="Cool texturing/West"]
