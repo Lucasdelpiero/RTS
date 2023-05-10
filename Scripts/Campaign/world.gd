@@ -39,7 +39,11 @@ func _ready():
 		province.sg_mouseOverSelf.connect(mouse.update_province_selection)
 	
 	send_data_to_ui()
-	
+
+func _process(delta):
+	if Input.is_action_just_pressed("Click_Left"):
+		mouse.set_province_selected()
+
 
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map():

@@ -10,6 +10,7 @@ var yInput
 @export_range(0.1, 5.0, 0.1) var zoom_min = 0.1
 @export_range(0.1, 5.0, 0.1) var zoom_max = 2.0
 var velocity = Vector2(0.0, 0.0)
+@export_range(0.1, 5.0, 0.1) var starting_zoom = 1.0
 var target_zoom := Vector2(1.0, 1.0)
 var drag_start := Vector2(0.0, 0.0)
 var drag_end := Vector2(0.0, 0.0)
@@ -17,6 +18,8 @@ var drag_end := Vector2(0.0, 0.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	target_zoom = Vector2(starting_zoom, starting_zoom)
+	zoom = target_zoom
 	pass # Replace with function body.
 
 func _input(_event):

@@ -1,5 +1,6 @@
 @tool
 extends CharacterBody2D
+class_name ArmyCampaing
 
 var world
 var own_map : AStar2D

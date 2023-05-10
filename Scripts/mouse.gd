@@ -20,24 +20,28 @@ var end_rectangle := Vector2(0.0, 0.0)
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
 func _process(_delta):
 	areaNode.global_position = get_global_mouse_position()
-#	print(area.get_overlapping_areas())
 	draw_rectangle()
-	if Input.is_action_just_pressed("Click_Left"):
-		if provinceWithMouseOver == null or hovered.size() > 0:
-			ui.update_province_data(null) # set ui to not visible
-			
-		if provinceWithMouseOver != null:
-			if provinceSelected != null:
-				provinceSelected.set_selected(false)
-			
-			# The province will be selected only when there are not armies selected
-			if hovered.size() == 0:
-				provinceWithMouseOver.set_selected(true)
-				provinceWithMouseOver.send_data_to_ui(ui)
-				provinceSelected = provinceWithMouseOver
-				world.provinceSelected = provinceSelected
 
-## Gets in a list the 
+
+
+# Used in campaing map to select a province
+func set_province_selected():
+	if provinceWithMouseOver == null or hovered.size() > 0:
+		ui.update_province_data(null) # set ui to not visible
+
+	if provinceWithMouseOver != null:
+		if provinceSelected != null:
+			provinceSelected.set_selected(false)
+
+		# The province will be selected only when there are not armies selected
+		if hovered.size() == 0:
+			provinceWithMouseOver.set_selected(true)
+			provinceWithMouseOver.send_data_to_ui(ui)
+			provinceSelected = provinceWithMouseOver
+			world.provinceSelected = provinceSelected
+	pass
+
+## Gets in a list the army hovered
 func update_army_campaing_selection(data):
 	# If the army has the mouse over it, it will be added to a list
 	if (data.mouseOverSelf):
@@ -56,7 +60,7 @@ func update_army_campaing_selection(data):
 		hovered[0].set_hovered(true)
 	
 	update_province_selection(null) # Used to update the provinces to being unhovered
-
+# Updates the province being hovered
 func update_province_selection(data):
 	# Updating the function with data == null just updates without adding info
 	# If the province doesnt have the mouse over it, it will stop being hovered
@@ -87,7 +91,6 @@ func update_province_selection(data):
 func draw_rectangle():
 	if Input.is_action_just_pressed("Click_Left"):
 		start_rectangle = get_global_mouse_position()
-
 	if Input.is_action_pressed("Click_Left"):
 		end_rectangle = get_global_mouse_position()
 	
@@ -120,7 +123,6 @@ func draw_rectangle():
 		# The marker is used for easier drawing
 		renctangleMarker.position = start_rectangle
 		renctangleMarker.rotation = cam_angle
-
 	if Input.is_action_just_released("Click_Left"):
 		## Clear the lines drawn for the rectangle selection
 		start_rectangle = Vector2.ZERO
@@ -131,14 +133,33 @@ func draw_rectangle():
 		for line in 5:
 			rectangleLine.set_point_position(line, Vector2.ZERO)
 
-
 ## Use the selection box to select armies
 func _on_area_2d_area_entered(area):
-	pass
-	if Globals.playerNation == area.owner.ownership:
-		area.owner.selected = true
+	# To select armies in the campaing map
+	if area.owner is ArmyCampaing:
+		if Globals.playerNation == area.owner.ownership:
+			area.owner.selected = true
+	
+	# To select units in the battle map
+	# should be used for the selection
+	if area.owner is Unit:
+		world.set_units_hovered(area.owner, true) # add to list of units hovered
+#		print("%s has the mouse inside" % [area.owner.name])
+#		print("alfonso")
+		pass
+
 
 func _on_area_2d_area_exited(area):
+	# When the selection area leaves the army, it will be deselected if it leaves while the mouse is being
+	# clicked ( while its changing shape )
 	if Input.is_action_pressed("Click_Left"):
-		area.owner.selected = false
+		if area.owner is ArmyCampaing:
+			area.owner.selected = false
+	# This should be used for the selection
+	if area.owner is Unit:
+		world.set_units_hovered(area.owner, false) # remove from list of units hovered
+#		print("%s has the mouse outside" % [area.owner.name])
+	pass # Replace with function body.
+
+
 
