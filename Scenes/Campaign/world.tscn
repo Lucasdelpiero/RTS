@@ -24,6 +24,8 @@ metadata/_edit_lock_ = true
 
 [node name="Mouse" parent="." instance=ExtResource("2_se4b2")]
 
+[node name="Camera" parent="." instance=ExtResource("11_y8fvc")]
+
 [node name="CampaingUI" parent="." instance=ExtResource("2_8hjxc")]
 unique_name_in_owner = true
 
@@ -259,8 +261,6 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-8, -2)
 navigation_polygon = SubResource("NavigationPolygon_v8dvj")
 metadata/_edit_lock_ = true
-
-[node name="Camera" parent="." instance=ExtResource("11_y8fvc")]
 
 [editable path="Mouse"]
 [editable path="CampaingUI"]

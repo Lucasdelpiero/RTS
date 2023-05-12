@@ -14,6 +14,7 @@ var velocity = Vector2(0.0, 0.0)
 var target_zoom := Vector2(1.0, 1.0)
 var drag_start := Vector2(0.0, 0.0)
 var drag_end := Vector2(0.0, 0.0)
+@export_range(0.05, 0.3, 0.05) var zoom_difference = 0.1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,7 +47,7 @@ func _process(delta):
 	
 	# Zoom in-out
 	var zoom_input = int(Input.is_action_just_released("Zoom_In")) - int(Input.is_action_just_released("Zoom_Out"))
-	target_zoom += Vector2( zoom_input * 0.1, zoom_input * 0.1)
+	target_zoom += Vector2( zoom_input * zoom_difference, zoom_input * zoom_difference)
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)
 	target_zoom.y = clamp(target_zoom.y, zoom_min, zoom_max)
 	set_zoom(lerp(zoom, target_zoom, delta * zoom_speed)) # animation
