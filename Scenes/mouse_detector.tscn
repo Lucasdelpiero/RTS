@@ -1,7 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://biq4lgibkxe6v"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhf6k"]
-size = Vector2(213, 145)
+[gd_scene format=3 uid="uid://biq4lgibkxe6v"]
 
 [node name="MouseDetector" type="Area2D"]
 collision_layer = 4
@@ -9,4 +6,3 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -5.5)
-shape = SubResource("RectangleShape2D_dhf6k")

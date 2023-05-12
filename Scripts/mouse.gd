@@ -18,6 +18,14 @@ var end_rectangle := Vector2(0.0, 0.0)
 @onready var col = $Node/Area2D/CollisionShape2D
 @onready var areaNode = $Node/Area2D
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
+
+func _ready():
+	col.disabled = true
+
+func _input(_event):
+
+	pass
+
 func _process(_delta):
 	areaNode.global_position = get_global_mouse_position()
 	draw_rectangle()
@@ -143,7 +151,7 @@ func _on_area_2d_area_entered(area):
 	# To select units in the battle map
 	# should be used for the selection
 	if area.owner is Unit:
-		world.set_units_hovered(area.owner, true) # add to list of units hovered
+		world.set_units_selected(area.owner, true) # add to list of units hovered
 #		print("%s has the mouse inside" % [area.owner.name])
 #		print("alfonso")
 		pass
@@ -156,9 +164,10 @@ func _on_area_2d_area_exited(area):
 		if area.owner is ArmyCampaing:
 			area.owner.selected = false
 	# This should be used for the selection
-	if area.owner is Unit:
-		world.set_units_hovered(area.owner, false) # remove from list of units hovered
+		if area.owner is Unit:
+			world.set_units_selected(area.owner, false) # remove from list of units hovered
 #		print("%s has the mouse outside" % [area.owner.name])
+		pass
 	pass # Replace with function body.
 
 

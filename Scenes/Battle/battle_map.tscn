@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw42e4qm5a4xh"]
+[gd_scene load_steps=6 format=3 uid="uid://dw42e4qm5a4xh"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="1_8qehy"]
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="2_a41j7"]
 [ext_resource type="PackedScene" uid="uid://d2poikkw0k6mo" path="res://Scenes/mouse.tscn" id="2_mnpce"]
+[ext_resource type="Script" path="res://Scripts/Battle/army_group_control.gd" id="4_e2hns"]
 
 [node name="BattleMap" type="Node2D"]
 script = ExtResource("1_3dkh7")
@@ -24,13 +25,21 @@ color = Color(0.345098, 0.568627, 0.32549, 1)
 polygon = PackedVector2Array(-48337, -27122, 59037, -26999, 59951, 26510, -50129, 26382)
 metadata/_edit_lock_ = true
 
-[node name="PlayerControl" type="Node" parent="."]
+[node name="PlayerArmy" type="Node" parent="."]
+script = ExtResource("4_e2hns")
+army_color = Color(0.68516, 0, 0.0329236, 1)
 
-[node name="Eluno" parent="PlayerControl" instance=ExtResource("1_8qehy")]
-position = Vector2(196, 498)
+[node name="Eluno" parent="PlayerArmy" instance=ExtResource("1_8qehy")]
+modulate = Color(0.68516, 0, 0.0329236, 1)
+position = Vector2(221, 498)
+army_color = Color(0.68516, 0, 0.0329236, 1)
 
-[node name="Francia" parent="PlayerControl" instance=ExtResource("1_8qehy")]
-position = Vector2(528, 483)
+[node name="Francia" parent="PlayerArmy" instance=ExtResource("1_8qehy")]
+modulate = Color(0.68516, 0, 0.0329236, 1)
+position = Vector2(553, 483)
+army_color = Color(0.68516, 0, 0.0329236, 1)
 
-[node name="Lavencida" parent="PlayerControl" instance=ExtResource("1_8qehy")]
-position = Vector2(860, 498)
+[node name="Lavencida" parent="PlayerArmy" instance=ExtResource("1_8qehy")]
+modulate = Color(0.68516, 0, 0.0329236, 1)
+position = Vector2(885, 498)
+army_color = Color(0.68516, 0, 0.0329236, 1)

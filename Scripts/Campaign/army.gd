@@ -155,7 +155,6 @@ func set_hovered(value):
 		else:
 			shader = null
 		icon.set_material(shader)
-	pass
 
 func set_selected(value):
 	selected = value
