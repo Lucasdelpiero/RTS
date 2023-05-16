@@ -1,18 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=6 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
+[ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
 
-[node name="Box" type="CharacterBody2D" groups=["units"]]
+[node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
+position = Vector2(540, 0)
 collision_layer = 4
 collision_mask = 4
 input_pickable = true
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
+moveComponent = NodePath("MoveComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 11)
@@ -30,6 +33,9 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_oi2r0")
+
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("4_mf8m8")]
+unit = NodePath("..")
 
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]

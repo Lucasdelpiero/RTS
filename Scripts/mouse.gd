@@ -19,12 +19,16 @@ var end_rectangle := Vector2(0.0, 0.0)
 @onready var areaNode = $Node/Area2D
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
 
+# To move units
+var start_formation := Vector2(0.0, 0.0)
+var end_formation := Vector2(0.0, 0.0)
+
 func _ready():
 	col.disabled = true
 
 func _input(_event):
-
 	pass
+
 
 func _process(_delta):
 	areaNode.global_position = get_global_mouse_position()

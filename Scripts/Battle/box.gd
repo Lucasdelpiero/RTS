@@ -12,6 +12,7 @@ var world = null
 @onready var sprite = $Sprite2D
 @export_range(1, 8, 1) var ownership = 1
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
+@export var moveComponent : Node = null
 
 
 func _physics_process(_delta):
@@ -59,3 +60,9 @@ func _on_mouse_detector_mouse_entered():
 func _on_mouse_detector_mouse_exited():
 	hovered = false
 	pass # Replace with function body.
+
+func move_to(destination):
+	if moveComponent == null:
+		return
+	moveComponent.destination = destination
+	pass

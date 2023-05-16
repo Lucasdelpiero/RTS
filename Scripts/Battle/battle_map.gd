@@ -1,15 +1,21 @@
 extends Node2D
+class_name BattleMap
 
 var player_units := []
 var units_hovered := []
-var units_selected := []
+var units_selected := [] 
 @onready var mouse = %Mouse
 @onready var camera = %Camera
 @onready var playerArmy = $PlayerArmy
+@onready var navigationTileMap = $NavigationTileMap
+@onready var playerUnitsManagement = $PlayerUnitsManagement
+var nav_map = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	nav_map = navigationTileMap.get_navigation_map(0)
+#	print(nav_map)
 	mouse.world = self
 	for unit in get_tree().get_nodes_in_group("units"):
 		unit.mouse = mouse
@@ -70,4 +76,8 @@ func set_units_selected(unit : Unit, selected : bool):
 #	print("units selected: %s" % [units_selected])
 	for units in units_selected:
 		units.selected = true
+	playerUnitsManagement.units = units_selected.duplicate()
+	pass
+
+func move_player_units():
 	pass
