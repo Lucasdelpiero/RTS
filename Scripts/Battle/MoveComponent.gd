@@ -24,6 +24,9 @@ func _physics_process(delta):
 		return
 	var angle = (unit.global_position).angle_to_point(destination)
 	unit.velocity = Vector2(cos(angle), sin(angle)) * speed
+	if unit.global_position.distance_to(destination) <= speed * delta:
+		unit.global_position = destination
+		unit.velocity = Vector2.ZERO
 	unit.move_and_slide()
 
 func move_to():
