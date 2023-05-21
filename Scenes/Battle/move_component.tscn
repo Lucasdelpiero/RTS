@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Battle/MoveComponent.gd" id="1_g8rsp"]
 
-[node name="MoveComponent" type="Node"]
+[node name="MoveComponent" type="Node" groups=["uses_navigation"]]
 script = ExtResource("1_g8rsp")
+
+[node name="Line2D" type="Line2D" parent="."]

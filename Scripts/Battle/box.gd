@@ -18,19 +18,6 @@ var world = null
 func _physics_process(_delta):
 	pass
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
 
 func set_hovered(value):
 	hovered = value
@@ -61,8 +48,9 @@ func _on_mouse_detector_mouse_exited():
 	hovered = false
 	pass # Replace with function body.
 
-func move_to(destination):
+func move_to(destination, face_direction ):
 	if moveComponent == null:
 		return
-	moveComponent.destination = destination
+	moveComponent.move_to(destination, face_direction)
+#	moveComponent.destination = destination
 	pass

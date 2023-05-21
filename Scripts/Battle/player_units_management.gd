@@ -82,7 +82,7 @@ func draw_units(move):
 		sprite.global_position = new_pos
 		sprite.rotation = angle
 		if move:
-			organized[i].move_to(new_pos)
+			organized[i].move_to(new_pos, angle)
 #			units[i].move_to(new_pos)
 #		unit[0].global_position = unit[1].global_position + Vector2(200.0, 200.0)
 #	print(sprites_to_draw)

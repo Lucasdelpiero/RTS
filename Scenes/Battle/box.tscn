@@ -36,8 +36,9 @@ visible = false
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_oi2r0")
 
-[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("4_mf8m8")]
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit", "sprite") instance=ExtResource("4_mf8m8")]
 unit = NodePath("..")
+sprite = NodePath("../Sprite2D")
 
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]
