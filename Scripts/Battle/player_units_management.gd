@@ -91,7 +91,8 @@ func move_without_draggin(center):
 	var organized = organize_units(units, angle_formation)
 	
 	for i in organized.size():
-		var new_pos = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i )
+		var offset = Vector2(cos(angle_formation), sin(angle_formation)) * unit_width  * (organized.size() - 1) / 2
+		var new_pos = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i ) - offset
 		organized[i].move_to(new_pos, angle_formation)
 		pass
 	pass
