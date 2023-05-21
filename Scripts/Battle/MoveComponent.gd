@@ -43,7 +43,7 @@ func _physics_process(delta):
 			next_point = path[0]
 	
 	unit.move_and_slide()
-	update_face_angle()
+	update_facing_angle()
 
 func move_to(to, final_face_direction):
 	if unit == null or nav_map == null:
@@ -56,7 +56,7 @@ func move_to(to, final_face_direction):
 	face_direction = final_face_direction # angle of the unit once reaches its destination
 	pass
 
-func update_face_angle():
+func update_facing_angle():
 	# Once the destination is reached it will face the desired angle
 	if path.size() <= 1:
 		unit.rotation = lerp_angle(unit.rotation, face_direction, 0.05)

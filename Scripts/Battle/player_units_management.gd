@@ -34,16 +34,9 @@ func _input(event):
 					sprite.set_modulate(col)
 					world.add_child(sprite)
 					sprites_to_draw.push_back(sprite)
-#				draw_units()
 				created_sprites = true
 			draw_units(false)
-#		print("sf: %s" %[start_drag])
-#		print("ef: %s" %[end_drag])
-#		var angle = start_drag.angle_to_point(end_drag)
-#		print("angle: %s" % [angle])
-#		print("cos: %s " % [cos(angle)])
-#		print("sin: %s" %[sin(angle)])
-#		print(units)
+
 	if Input.is_action_just_released("Click_Right"):
 		destination = world.get_global_mouse_position()
 		for sprite in sprites_to_draw:
@@ -51,6 +44,8 @@ func _input(event):
 		draw_units(true)
 		sprites_to_draw = []
 		created_sprites = false
+		if start_drag.distance_to(end_drag) <= drag_distance_draw:
+			move_without_draggin(destination)
 #		move_to()
 		pass
 
@@ -68,7 +63,7 @@ func move_to():
 		
 
 func draw_units(move):
-	var organized = organize_units(units)
+	var organized = organize_units(units, start_drag.angle_to_point(end_drag))
 	var unit_width = 214
 	var amount = sprites_to_draw.size() 
 	var margin = 1
@@ -83,13 +78,41 @@ func draw_units(move):
 		sprite.rotation = angle
 		if move:
 			organized[i].move_to(new_pos, angle)
-#			units[i].move_to(new_pos)
-#		unit[0].global_position = unit[1].global_position + Vector2(200.0, 200.0)
-#	print(sprites_to_draw)
 	pass
 
-func organize_units(units):
-	var angle_drag = start_drag.angle_to_point(end_drag) # Line following the new positioning of the units
+func move_without_draggin(center):
+	var unit_width = 214
+	var amount = units.size()
+	var margin = 10
+	var mouse = world.get_global_mouse_position()
+	var average_position = get_average_position()
+	var face_angle = average_position.angle_to_point(center)
+	var angle_formation = get_face_to_formation_angle(face_angle)
+	var organized = organize_units(units, angle_formation)
+	
+	for i in organized.size():
+		var new_pos = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i )
+		organized[i].move_to(new_pos, angle_formation)
+		pass
+	pass
+
+func get_average_position() -> Vector2:
+	if units.size() == 0:
+		return Vector2.ZERO
+	var average_position = Vector2.ZERO
+	for i in units.size():
+		average_position += units[i].global_position
+	average_position /= units.size()
+	return average_position 
+	
+
+# Returns the formation angle from a direction.
+# If an angle goes upwards, it returns the angle pointing to the right
+# As when it faces forwards, the formation angle goes to the right
+func get_face_to_formation_angle(value):
+	return value + PI / 2
+
+func organize_units(units, angle_formation = 0.0):
 	var comparation = [] # Array used to sort the new order for the units in the array
 	var average_position = Vector2.ZERO # Average position of army
 	
@@ -112,8 +135,8 @@ func organize_units(units):
 		# Value to compare who has to go in the most left flank and right flank
 		# In the x_value the gets the distance in the x axis and is weighted using the angle of the mouse dragging, this weight having more importance as the 
 		# new formation angle goes more along the x axis. The same for the y axis
-		var x_value =   cos(to_unit_angle)  * distance * cos(angle_drag) 
-		var y_value =   sin(to_unit_angle)  * distance *  sin(angle_drag)
+		var x_value =   cos(to_unit_angle)  * distance * cos(angle_formation) 
+		var y_value =   sin(to_unit_angle)  * distance *  sin(angle_formation)
 		var value = x_value + y_value
 		
 		# Add the reference to the unit and the value to compare
