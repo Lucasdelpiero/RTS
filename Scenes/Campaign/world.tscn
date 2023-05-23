@@ -1,16 +1,97 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx3g78dhja7wn"]
+[gd_scene load_steps=30 format=3 uid="uid://duxcasvw1nxhd"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_qiij3"]
-[ext_resource type="PackedScene" uid="uid://krygda2f367s" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
+[ext_resource type="PackedScene" uid="uid://cgty6xbdxpk02" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
 [ext_resource type="PackedScene" path="res://Scenes/Campaign/campaign_ui.tscn" id="2_8hjxc"]
+[ext_resource type="Script" path="res://Scripts/Campaign/army_data.gd" id="2_f7bv5"]
 [ext_resource type="PackedScene" path="res://Scenes/Campaign/nation.tscn" id="2_ipllx"]
 [ext_resource type="PackedScene" uid="uid://d2poikkw0k6mo" path="res://Scenes/mouse.tscn" id="2_se4b2"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Scenes/Campaign/pos_province.tscn" id="3_6xwkc"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="3_dkw6f"]
+[ext_resource type="Script" path="res://Scripts/Campaign/unit_data.gd" id="3_i16yq"]
 [ext_resource type="PackedScene" uid="uid://d0iywlrmvwi0r" path="res://Scenes/Campaign/province.tscn" id="5_rmlct"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="6_vlm72"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="7_eyk4d"]
+[ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="9_bfm7u"]
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="11_y8fvc"]
+
+[sub_resource type="Resource" id="Resource_w7fh4"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_yyens"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_nsug6"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_mqxsc"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_oe7hh"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_ujc4f"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_5qbxg"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_7roju"]
+script = ExtResource("2_f7bv5")
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_w7fh4"), SubResource("Resource_yyens"), SubResource("Resource_nsug6"), SubResource("Resource_mqxsc"), SubResource("Resource_oe7hh"), SubResource("Resource_ujc4f"), SubResource("Resource_5qbxg")])
+
+[sub_resource type="Resource" id="Resource_ywxk4"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_t0gkl"]
+script = ExtResource("2_f7bv5")
+army_units = Array[Object]([SubResource("Resource_ywxk4")])
+
+[sub_resource type="Resource" id="Resource_nlqd8"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_yrm4x"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_5x1fm"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_h3yvh"]
+script = ExtResource("2_f7bv5")
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_nlqd8"), SubResource("Resource_yrm4x"), SubResource("Resource_5x1fm")])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -38,27 +119,30 @@ nationColor = Color(0.521569, 0.117647, 0.117647, 1)
 gold = 371
 isPlayer = true
 
-[node name="Army" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
+[node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
 unique_name_in_owner = true
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(703, 481)
 ownership = "ROME"
+army_data = SubResource("Resource_7roju")
 
-[node name="Army2" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
+[node name="Legio II" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
 unique_name_in_owner = true
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(887, 505)
 ownership = "ROME"
+army_data = SubResource("Resource_t0gkl")
 
 [node name="Etruria" parent="NationsGroup" instance=ExtResource("2_ipllx")]
 NATION_TAG = "ETRURIA"
 nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
 nationColor = Color(0.439216, 0.435294, 0.388235, 1)
 
-[node name="Army" parent="NationsGroup/Etruria" instance=ExtResource("2_2lid3")]
+[node name="Etrurian King" parent="NationsGroup/Etruria" instance=ExtResource("2_2lid3")]
 modulate = Color(0.439216, 0.435294, 0.388235, 1)
 position = Vector2(604, 358)
 ownership = "ETRURIA"
+army_data = SubResource("Resource_h3yvh")
 
 [node name="EuropeMap" type="Sprite2D" parent="."]
 visible = false

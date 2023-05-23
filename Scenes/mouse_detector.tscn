@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://biq4lgibkxe6v"]
 
 [node name="MouseDetector" type="Area2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -5.5)

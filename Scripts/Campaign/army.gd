@@ -33,6 +33,16 @@ signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
+@export var army_data : ArmyData = ArmyData.new()
+
+func _ready():
+	var army = army_data.army_units
+	print("The army %s has the next %s units:" % [self.name, army.size()])
+	for unit in army:
+		print("---",unit.scene._bundled.names[0])
+		pass
+#	print(army.size())
+	pass
 
 func _input(_event):
 	# Selection of the army selected
@@ -139,12 +149,11 @@ func send_mouse_over(value):
 #	print(mouseOverSelf)
 
 # If the mouse is over or leave the node sends a signal on the change of the boolean
-func _on_area_2d_mouse_entered():
+func _on_mouse_detector_mouse_entered():
 	mouseOverSelf = true # activates signal sg_mouseOverSelf
-#
-func _on_area_2d_mouse_exited():
-	mouseOverSelf = false # activates signal sg_mouseOverSelf
 
+func _on_mouse_detector_mouse_exited():
+	mouseOverSelf = false # activates signal sg_mouseOverSelf
 
 func set_hovered(value):
 	hovered = value
@@ -171,3 +180,10 @@ func set_color(color : Color):
 	
 
 
+func _on_army_detector_area_entered(area):
+#	print(area.owner.ownership)
+	if area.owner.name != self.name:
+		print(self.name, " encountered the enemy: ", area.owner.name)
+		print(area.owner.ownership)
+		print("====================")
+	pass # Replace with function body.
