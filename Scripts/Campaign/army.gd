@@ -33,9 +33,13 @@ signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
-@export var army_data : ArmyData = ArmyData.new()
+@export var army_data : ArmyData = ArmyData.new() 
 
 func _ready():
+	if army_data.army_units.size() == 0:
+		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
+		print("aaaalf")
+	
 	var army = army_data.army_units
 	print("The army %s has the next %s units:" % [self.name, army.size()])
 	for unit in army:

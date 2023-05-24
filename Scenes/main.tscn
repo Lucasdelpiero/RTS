@@ -8,9 +8,6 @@ script = ExtResource("1_uyp36")
 
 [node name="World" parent="." instance=ExtResource("2_sb100")]
 
-[node name="Just to keep track of" parent="World" index="0"]
-army_units = Array[Resource("res://Scripts/Campaign/unit_data.gd")]([])
-
 [node name="Legio I" parent="World/NationsGroup/Rome" index="0"]
 army_data = null
 

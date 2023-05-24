@@ -42,10 +42,8 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
-spawnMarker = NodePath("Marker2D")
+spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.68516, 0, 0.0329236, 1)
-
-[node name="Marker2D" type="Marker2D" parent="PlayerArmy"]
 
 [node name="Eluno" parent="PlayerArmy" instance=ExtResource("1_8qehy")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
@@ -64,11 +62,19 @@ army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
-spawnMarker = NodePath("SpawnPoint")
-army_color = Color(0.517647, 0.6, 0.6, 1)
+spawnMarker = NodePath("../SpawnEnemy")
+army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
-[node name="SpawnPoint" type="Marker2D" parent="EnemyArmy"]
+[node name="Box" parent="EnemyArmy" instance=ExtResource("1_8qehy")]
+modulate = Color(0.466667, 0.611765, 0.615686, 1)
+position = Vector2(646, -1307)
+army_color = Color(0.466667, 0.611765, 0.615686, 1)
+
+[node name="SpawnEnemy" type="Marker2D" parent="."]
 position = Vector2(1026, -3250)
+
+[node name="SpawnPlayer" type="Marker2D" parent="."]
+position = Vector2(973, 950)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
