@@ -37,8 +37,9 @@ func _input(_event):
 			set_units_selected(unit , false) # Has to be called here and not in the unit to avoid an infinite calling
 		# Select the units with the mouse over them
 		for unit in units_hovered:
-			unit.selected = true
-			set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
+			if unit.ownership == 1: # 1 is the player
+				unit.selected = true
+				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

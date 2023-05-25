@@ -39,7 +39,7 @@ scene = ExtResource("9_bfm7u")
 experience = 0
 health = 100.0
 
-[sub_resource type="Resource" id="Resource_ex6jg"]
+[sub_resource type="Resource" id="Resource_r4wql"]
 script = ExtResource("3_i16yq")
 scene = ExtResource("9_bfm7u")
 experience = 0
@@ -47,7 +47,7 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_qdpgj"), SubResource("Resource_iv3wp"), SubResource("Resource_j5fli"), SubResource("Resource_d2n7f"), SubResource("Resource_ex6jg")])
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_qdpgj"), SubResource("Resource_iv3wp"), SubResource("Resource_j5fli"), SubResource("Resource_d2n7f"), SubResource("Resource_r4wql")])
 
 [sub_resource type="Resource" id="Resource_e80wk"]
 script = ExtResource("3_i16yq")
@@ -65,7 +65,7 @@ scene = ExtResource("9_bfm7u")
 experience = 0
 health = 100.0
 
-[sub_resource type="Resource" id="Resource_tekvv"]
+[sub_resource type="Resource" id="Resource_yt3i8"]
 script = ExtResource("3_i16yq")
 scene = ExtResource("9_bfm7u")
 experience = 0
@@ -73,7 +73,7 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_8lrrd"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_1y45n"), SubResource("Resource_tekvv")])
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_1y45n"), SubResource("Resource_yt3i8")])
 
 [sub_resource type="Resource" id="Resource_nhhue"]
 script = ExtResource("3_i16yq")
@@ -97,7 +97,7 @@ scene = ExtResource("9_bfm7u")
 experience = 0
 health = 100.0
 
-[sub_resource type="Resource" id="Resource_3rhdl"]
+[sub_resource type="Resource" id="Resource_xrkf7"]
 script = ExtResource("3_i16yq")
 scene = ExtResource("9_bfm7u")
 experience = 0
@@ -105,7 +105,7 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_ce5sf"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_jnxoc"), SubResource("Resource_ymxau"), SubResource("Resource_3rhdl")])
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_jnxoc"), SubResource("Resource_ymxau"), SubResource("Resource_xrkf7")])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -154,6 +154,7 @@ ownership = "ROME"
 army_data = SubResource("Resource_8lrrd")
 
 [node name="Army" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
 army_data = SubResource("Resource_msa4a")
 
 [node name="Etruria" parent="NationsGroup" instance=ExtResource("2_ipllx")]

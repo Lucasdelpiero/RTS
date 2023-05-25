@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgty6xbdxpk02"]
+[gd_scene load_steps=12 format=3 uid="uid://cgty6xbdxpk02"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/army.gd" id="1_836ho"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_xkwou"]
+[ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="2_05nj6"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_777mv"]
+[ext_resource type="Script" path="res://Scripts/Campaign/unit_data.gd" id="3_nngyj"]
+[ext_resource type="Script" path="res://Scripts/Campaign/army_data.gd" id="4_4ujxf"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="4_mc6e8"]
+
+[sub_resource type="Resource" id="Resource_2lbus"]
+script = ExtResource("3_nngyj")
+scene = ExtResource("2_05nj6")
+experience = 0
+health = 100.0
+
+[sub_resource type="Resource" id="Resource_26kak"]
+script = ExtResource("4_4ujxf")
+army_units = Array[ExtResource("3_nngyj")]([SubResource("Resource_2lbus")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76jts"]
 size = Vector2(44, 30)
@@ -16,6 +29,7 @@ z_index = 100
 z_as_relative = false
 script = ExtResource("1_836ho")
 SPEED = 30
+army_data = SubResource("Resource_26kak")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(1, 3)

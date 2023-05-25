@@ -155,7 +155,8 @@ func _on_area_2d_area_entered(area):
 	# To select units in the battle map
 	# should be used for the selection
 	if area.owner is Unit:
-		world.set_units_selected(area.owner, true) # add to list of units hovered
+		if area.owner.ownership == 1:
+			world.set_units_selected(area.owner, true) # add to list of units hovered
 #		print("%s has the mouse inside" % [area.owner.name])
 #		print("alfonso")
 		pass
@@ -169,7 +170,8 @@ func _on_area_2d_area_exited(area):
 			area.owner.selected = false
 	# This should be used for the selection
 		if area.owner is Unit:
-			world.set_units_selected(area.owner, false) # remove from list of units hovered
+			if area.owner.ownership == 1: # 1 is the player
+				world.set_units_selected(area.owner, false) # remove from list of units hovered
 #		print("%s has the mouse outside" % [area.owner.name])
 		pass
 	pass # Replace with function body.
