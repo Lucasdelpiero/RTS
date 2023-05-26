@@ -170,7 +170,7 @@ func _on_area_2d_area_exited(area):
 			area.owner.selected = false
 	# This should be used for the selection
 		if area.owner is Unit:
-			if area.owner.ownership == 1: # 1 is the player
+			if area.owner.ownership == Globals.playerNation: # 1 is the player
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
 #		print("%s has the mouse outside" % [area.owner.name])
 		pass
