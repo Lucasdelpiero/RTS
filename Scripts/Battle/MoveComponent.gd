@@ -20,11 +20,6 @@ func _ready():
 	destination = unit.global_position
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _physics_process(delta):
 	if unit == null:
 		return

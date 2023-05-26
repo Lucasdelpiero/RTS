@@ -1,16 +1,20 @@
 extends Node2D
 
+@export var main : Main
 var map # navmap
 
 @onready var navigation = $NavigationRegion2D
 @onready var nationsGroup = $NationsGroup
 @onready var UI = %CampaingUI
 @onready var mouse = $Mouse
+@onready var battleMenu = %BattleMenu # temporarelly instanced always
+var armies_in_battle : Array = []
 
 var playerNation = null
 var playerNode = null
 var nations := []
 var provinceSelected = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_nav_map()
@@ -30,6 +34,7 @@ func _ready():
 		army.world = self
 		army.get_to_closer_point(map)
 		army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+		army.sg_enemy_encountered.connect(self.enemy_encountered)
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	var provinces = get_tree().get_nodes_in_group("provinces")
@@ -37,10 +42,9 @@ func _ready():
 		province.world = self
 		province.update_to_nation_color()
 		province.sg_mouseOverSelf.connect(mouse.update_province_selection)
-	
 	send_data_to_ui()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
 
@@ -76,3 +80,34 @@ func send_data_to_ui():
 	UI.update_data(data)
 	pass
 
+func enemy_encountered(aarmy, enemy):
+	if not armies_in_battle.has(aarmy):
+		armies_in_battle.push_back(aarmy)
+	if not armies_in_battle.has(enemy):
+		armies_in_battle.push_back(enemy)
+#	print("%s will fight %s" % [army, enemy])
+#	main.update_armies_for_battle(units_in_battle)
+	for army in armies_in_battle:
+		if army.ownership == Globals.playerNation:
+			if !Globals.playerArmy.has(army):
+				Globals.playerArmy.push_back(army)
+		else:
+			if !Globals.enemyArmy.has(army):
+				Globals.enemyArmy.push_back(army)
+	battleMenu.visible = true
+	battleMenu.update()
+#	print(Globals.playerArmy)
+#	print(Globals.enemyArmy)
+#	print(units_in_battle)
+	pass
+
+func start_battle():
+	# Send the info of the armies to the global script
+	for army in Globals.playerArmy:
+		Globals.playerArmyData.push_back(army.army_data)
+	for army in Globals.enemyArmy:
+		Globals.enemyArmyData.push_back(army.army_data)
+	main.start_battle()
+
+func _on_btn_start_battle_pressed():
+	start_battle()

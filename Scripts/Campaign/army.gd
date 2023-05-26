@@ -29,6 +29,7 @@ var hovered = false
 var selected = false : set = set_selected
 var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the node
+signal sg_enemy_encountered(army, enemy)
 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -39,11 +40,11 @@ func _ready():
 	if army_data.army_units.size() == 0:
 		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
 		print("aaaalf")
-	
+	army_data.ownership = ownership
 	var army = army_data.army_units
-	print("The army %s has the next %s units:" % [self.name, army.size()])
+#	print("The army %s has the next %s units:" % [self.name, army.size()])
 	for unit in army:
-		print("---",unit.scene._bundled.names[0])
+#		print("---",unit.scene._bundled.names[0])
 		pass
 #	print(army.size())
 	pass
@@ -186,8 +187,10 @@ func set_color(color : Color):
 
 func _on_army_detector_area_entered(area):
 #	print(area.owner.ownership)
-	if area.owner.name != self.name:
-		print(self.name, " encountered the enemy: ", area.owner.name)
-		print(area.owner.ownership)
-		print("====================")
+	if area.owner.ownership != self.ownership:
+		emit_signal("sg_enemy_encountered", self, area.owner)
+#		print(self.name, " encountered the enemy: ", area.owner.name)
+#		print(area.owner.ownership)
+#		print("====================")
+		pass
 	pass # Replace with function body.

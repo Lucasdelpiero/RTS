@@ -8,18 +8,27 @@ var army := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	army = get_children()
-	for unit in army:
-		unit.army_color = army_color
-		unit.modulate = army_color
-	pass # Replace with function body.
+	start_units()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
+func start_units():
+	set_starting_position()
+	set_color(army_color)
+
+func set_starting_position():
+	var spacing = Vector2(cos(spawnMarker.rotation) * 220, 0.0)
+	army = get_children()
+	for i in army.size():
+		army[i].global_position = spawnMarker.global_position + spacing * i
+		army[i].set_destination("pan") # Used just to update the destination to the current position
+
 func set_color(value):
+	army = get_children()
 	army_color = value
 	for unit in army:
 		unit.army_color = army_color

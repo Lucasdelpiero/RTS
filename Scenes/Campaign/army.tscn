@@ -45,6 +45,7 @@ points = PackedVector2Array(0, 0)
 width = 4.0
 
 [node name="closest" type="Sprite2D" parent="Node"]
+visible = false
 modulate = Color(1, 0, 0, 1)
 z_index = 50
 z_as_relative = false

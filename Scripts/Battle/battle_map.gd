@@ -7,15 +7,19 @@ var units_selected := []
 @onready var mouse = %Mouse
 @onready var camera = %Camera
 @onready var playerArmy = $PlayerArmy
+@onready var enemyArmy = $EnemyArmy
 @onready var navigationTileMap = $NavigationTileMap
 @onready var playerUnitsManagement = $PlayerUnitsManagement
 var nav_map = null
 
+@onready var spawnPlayer = %SpawnPlayer
+@onready var spawnEnemy = %SpawnEnemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	nav_map = navigationTileMap.get_navigation_map(0)
 #	print(nav_map)
+	spawn_units()
 	mouse.world = self
 	for unit in get_tree().get_nodes_in_group("units"):
 		unit.mouse = mouse
@@ -37,7 +41,7 @@ func _input(_event):
 			set_units_selected(unit , false) # Has to be called here and not in the unit to avoid an infinite calling
 		# Select the units with the mouse over them
 		for unit in units_hovered:
-			if unit.ownership == 1: # 1 is the player
+			if unit.ownership == Globals.playerNation: 
 				unit.selected = true
 				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
 
@@ -85,4 +89,24 @@ func set_units_selected(unit : Unit, selected : bool):
 	pass
 
 func move_player_units():
+	pass
+
+func spawn_units():
+	# Instantiate and add to the tree the units in the armies
+	for army in Globals.playerArmyData:
+		for unit in army.army_units:
+			var scene = unit.scene.instantiate()
+			playerArmy.add_child(scene)
+			scene.ownership = army.ownership
+			
+	for army in Globals.enemyArmyData:
+		for unit in army.army_units:
+			var scene = unit.scene.instantiate()
+			enemyArmy.add_child(scene)
+			scene.ownership = army.ownership
+	# Initialize units
+	playerArmy.start_units()
+	enemyArmy.start_units()
+		
+	
 	pass

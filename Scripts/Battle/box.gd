@@ -10,9 +10,10 @@ var hovered = false : set = set_hovered
 var selected = false : set = set_selected
 var world = null
 @onready var sprite = $Sprite2D
-@export_range(1, 8, 1) var ownership = 1
+@export var ownership = "ROME"
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
 @export var moveComponent : Node = null
+var destination := Vector2.ZERO : set  = set_destination
 
 
 func _physics_process(_delta):
@@ -48,9 +49,17 @@ func _on_mouse_detector_mouse_exited():
 	hovered = false
 	pass # Replace with function body.
 
-func move_to(destination, face_direction ):
+func move_to(aDestination, face_direction ):
 	if moveComponent == null:
 		return
-	moveComponent.move_to(destination, face_direction)
+	moveComponent.move_to(aDestination, face_direction)
 #	moveComponent.destination = destination
 	pass
+
+# Used when the unit spawn in the battle to update the destination to the current position
+func set_destination(_value):
+	if moveComponent == null:
+		return
+	moveComponent.destination = self.global_position
+	moveComponent.next_point = self.global_position
+	

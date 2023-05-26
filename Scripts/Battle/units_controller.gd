@@ -13,11 +13,7 @@ func _ready():
 		nav = navigation_tilemap.get_navigation_map(0)
 	pass # Replace with function body.
 
-
-func _physics_process(delta):
-	pass
-
-func move_to(units : Array, to : Vector2):
+func move_to(_units : Array, _to : Vector2):
 	if nav == null:
 		return
 	

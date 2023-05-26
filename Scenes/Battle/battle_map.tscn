@@ -68,13 +68,16 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 [node name="Box" parent="EnemyArmy" instance=ExtResource("1_8qehy")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
 position = Vector2(646, -1307)
-ownership = 2
+ownership = "Etruria"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]
-position = Vector2(1026, -3250)
+unique_name_in_owner = true
+position = Vector2(739, -1203)
+rotation = 3.14159
 
 [node name="SpawnPlayer" type="Marker2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(973, 950)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

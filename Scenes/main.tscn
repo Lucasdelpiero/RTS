@@ -6,16 +6,11 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uyp36")
 
-[node name="World" parent="." instance=ExtResource("2_sb100")]
+[node name="World" parent="." node_paths=PackedStringArray("main") instance=ExtResource("2_sb100")]
+main = NodePath("..")
 
-[node name="Legio I" parent="World/NationsGroup/Rome" index="0"]
-army_data = null
-
-[node name="Legio II" parent="World/NationsGroup/Rome" index="1"]
-army_data = null
-
-[node name="Etrurian King" parent="World/NationsGroup/Etruria" index="0"]
-army_data = null
+[node name="Upper Apulia" parent="World/Italy" index="7"]
+outLine = Color(0.34902, 0.34902, 0.490196, 1)
 
 [editable path="World"]
 [editable path="World/Mouse"]
@@ -29,3 +24,4 @@ army_data = null
 [editable path="World/Italy/Neapolis/PosProvince"]
 [editable path="World/Italy/Sicily"]
 [editable path="World/Italy/Sicily/PosProvince"]
+[editable path="World/BattleMenu"]

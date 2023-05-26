@@ -4,6 +4,7 @@ class_name ArmyData
 
 # The array will have at least An unit at the start
 @export var army_units : Array[UnitData] = [UnitData.new()] : set = set_array
+var ownership = ""
 
 func set_array(value):
 	var current_size = army_units.size()

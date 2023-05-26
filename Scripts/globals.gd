@@ -2,7 +2,11 @@ extends Node
 
 var mouse_in_province = 1
 var camera_angle := 0.0
-var playerNation = null
+var playerNation = "ROME"
+var playerArmy = [] # Array of armies of the player
+var playerArmyData : Array[ArmyData] = [] # Array of armies data each containing units
+var enemyArmy = []
+var enemyArmyData : Array[ArmyData] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
