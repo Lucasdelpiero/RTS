@@ -2,7 +2,7 @@
 extends CharacterBody2D
 class_name ArmyCampaing
 
-var world
+var world = null
 var own_map : AStar2D
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
@@ -37,10 +37,16 @@ signal get_pathfinding(army ,current_position)
 @export var army_data : ArmyData = ArmyData.new() 
 
 func _ready():
+	# This needs to be changed
+	world = get_tree().get_nodes_in_group("world")[0] 
+	# This needs to be changed
+	
+	
 	if army_data.army_units.size() == 0:
 		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
 		print("aaaalf")
 	army_data.ownership = ownership
+	army_data.position = global_position
 	var army = army_data.army_units
 #	print("The army %s has the next %s units:" % [self.name, army.size()])
 	for unit in army:
@@ -119,6 +125,8 @@ func move(delta):
 			path.remove_at(0)
 			if path.size() > 0:
 				next_point = path[0]
+		# Update the position in the resource every time it moves
+		army_data.position = global_position
 
 func get_pathing(destination):
 	if own_map != null:
@@ -194,3 +202,12 @@ func _on_army_detector_area_entered(area):
 #		print("====================")
 		pass
 	pass # Replace with function body.
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+	}
+	pass

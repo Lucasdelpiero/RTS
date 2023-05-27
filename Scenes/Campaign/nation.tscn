@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://m8lgfsfxrltw"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/nation.gd" id="1_kw4eg"]
 
-[node name="Nation" type="Node" groups=["nations"]]
+[node name="Nation" type="Node" groups=["nations", "persistent"]]
 script = ExtResource("1_kw4eg")

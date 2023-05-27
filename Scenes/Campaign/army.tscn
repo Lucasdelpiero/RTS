@@ -24,7 +24,7 @@ size = Vector2(44, 30)
 [sub_resource type="CircleShape2D" id="CircleShape2D_coned"]
 radius = 63.1269
 
-[node name="Army" type="CharacterBody2D" groups=["armies"]]
+[node name="Army" type="CharacterBody2D" groups=["armies", "persistent"]]
 z_index = 100
 z_as_relative = false
 script = ExtResource("1_836ho")

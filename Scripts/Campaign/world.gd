@@ -10,10 +10,11 @@ var map # navmap
 @onready var battleMenu = %BattleMenu # temporarelly instanced always
 var armies_in_battle : Array = []
 
-var playerNation = null
+var playerNation = "ROME"
 var playerNode = null
 var nations := []
 var provinceSelected = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

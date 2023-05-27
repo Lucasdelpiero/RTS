@@ -1,5 +1,6 @@
 @tool
 extends Node
+class_name Nation
 
 @export var NATION_TAG  = ""
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
