@@ -9,6 +9,8 @@ script = ExtResource("1_uyp36")
 [node name="World" parent="." node_paths=PackedStringArray("main") instance=ExtResource("2_sb100")]
 main = NodePath("..")
 
+[node name="Mouse" parent="World" index="0" groups=["mouse"]]
+
 [node name="Upper Apulia" parent="World/Italy" index="7"]
 outLine = Color(0.34902, 0.34902, 0.490196, 1)
 

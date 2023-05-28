@@ -1,6 +1,7 @@
 extends Resource
 class_name SaveGame
-
+# This is meant to be saved as a resource, but the armies and nations arrays 
+# Cant be saved because they are not exported, but exporting them cause a crash
 const SAVE_GAME_BASE_PATH := "res://save" #"user://save"
 
 var armies : Array = []

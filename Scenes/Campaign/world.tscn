@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://duxcasvw1nxhd"]
+[gd_scene load_steps=40 format=3 uid="uid://duxcasvw1nxhd"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_qiij3"]
 [ext_resource type="PackedScene" uid="uid://cgty6xbdxpk02" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
@@ -86,9 +86,15 @@ scene = ExtResource("9_bfm7u")
 experience = 0
 health = 100.0
 
+[sub_resource type="Resource" id="Resource_1hbg0"]
+script = ExtResource("3_i16yq")
+scene = ExtResource("9_bfm7u")
+experience = 0
+health = 100.0
+
 [sub_resource type="Resource" id="Resource_dmdnx"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_e80wk")])
+army_units = Array[ExtResource("3_i16yq")]([SubResource("Resource_e80wk"), SubResource("Resource_1hbg0")])
 
 [sub_resource type="Resource" id="Resource_1y45n"]
 script = ExtResource("3_i16yq")

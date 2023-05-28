@@ -46,7 +46,8 @@ func move_to(to, final_face_direction):
 	
 	destination = to
 	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
-	next_point = path[0]
+	if path.size() > 0:
+		next_point = path[0]
 	
 	face_direction = final_face_direction # angle of the unit once reaches its destination
 	pass

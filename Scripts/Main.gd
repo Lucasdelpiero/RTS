@@ -30,10 +30,23 @@ func save_game():
 		"nations": nations_to_save,
 	}
 	_save.write_savegame(data)
-	_save.load_savegame()
-#	print(armies_to_save)
-#	print(nations_to_save)
-	pass
+	var data_to_load = _save.load_savegame()
+	load_game(data_to_load)
+
+
+func load_game(data : Dictionary):
+	# Give the data to every nation and they will use the data to
+	# update their data and create the armies and give them data to load
+	# like a cascade
+	var nations = get_tree().get_nodes_in_group("nations")
+	for el in data.nations:
+		for nation in nations:
+			if el.NATION_TAG == nation.NATION_TAG:
+				nation.load_data(el)
+				nation.set_colors()
+				pass
+	var world = get_tree().get_nodes_in_group("world")[0]
+	world.initialize_world()
 
 func _create_or_load_save() -> void:
 #	if SaveGame.save_exists():

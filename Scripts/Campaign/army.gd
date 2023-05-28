@@ -43,8 +43,8 @@ func _ready():
 	
 	
 	if army_data.army_units.size() == 0:
-		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
-		print("aaaalf")
+#		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
+		print("Army Data is zero")
 	army_data.ownership = ownership
 	army_data.position = global_position
 	var army = army_data.army_units
@@ -203,11 +203,47 @@ func _on_army_detector_area_entered(area):
 		pass
 	pass # Replace with function body.
 
+# Saves all the army data and sent it to the nation to be copiled into an array 
+# of al the armies in the nation
 func save():
+	var units = []
+	for unit in army_data.army_units:
+		var unit_data = {
+			"scene_path" : unit.scene.get_path(),
+		}
+		units.push_back(unit_data)
+	
 	var save_dict = {
+		"rid" : self.get_rid().get_id(),
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
-		"pos_x" : global_position.x,
-		"pos_y" : global_position.y,
+		"global_position" : {
+				"x" : global_position.x,
+				"y" : global_position.y,
+			},
+		"ownership" : ownership,
+		"speed" : SPEED,
+		"army_data" : {
+			"army_units" = units,
+		},
+		
 	}
-	pass
+	return save_dict
+
+# Process the data given once the game is loaded
+func load_data(data : Dictionary):
+	ownership = data.ownership
+	SPEED = data.speed
+	global_position.x = data.global_position.x
+	global_position.y = data.global_position.y
+	
+	army_data = ArmyData.new() # It has to create a new one because it wont update if its not new
+	army_data.ownership = ownership
+	var units : Array[UnitData] = []
+	for unit in data.army_data.army_units:
+		var unit_data = UnitData.new()
+		unit_data.scene = load(unit.scene_path) 
+		units.push_back(unit_data)
+		
+	army_data.army_units = units
+
