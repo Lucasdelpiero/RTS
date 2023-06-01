@@ -116,7 +116,7 @@ func finish_battle():
 	var enemy_army = enemyArmy.get_children().filter(func(el): return !el.routed )
 	
 	var data = {
-		"battle_map" : self,
+		"battleMap" : self,
 		"playerArmy" : [player_army],
 		"enemyArmy" : [enemy_army],
 	}

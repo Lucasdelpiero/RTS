@@ -8,5 +8,6 @@ func _ready():
 	pass # Replace with function body.
 
 func update():
-	playerArmy.text = Globals.playerNation
-	enemyArmy.text = Globals.enemyArmy[0].ownership
+#	playerArmy.text = Globals.playerNation
+#	enemyArmy.text = Globals.enemyArmy[0].ownership
+	pass

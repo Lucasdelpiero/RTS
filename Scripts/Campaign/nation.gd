@@ -48,8 +48,8 @@ func save():
 
 func load_data(data : Dictionary):
 	# Have to clear this garbage
-	var world = get_tree().get_nodes_in_group("world")[0] 
-	var mouse = get_tree().get_nodes_in_group("mouse")[0]
+#	var world = get_tree().get_nodes_in_group("world")[0] 
+#	var mouse = get_tree().get_nodes_in_group("mouse")[0]
 	#####################################
 	gold = data.gold
 	manpower = data.manpower

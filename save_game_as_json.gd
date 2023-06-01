@@ -8,10 +8,11 @@ var armies : Array = []
 var nations : Array = []
 
 #var _file := File.new()
-var _file := FileAccess.open("res://save.json", FileAccess.WRITE)
+#var _file := FileAccess.open("res://save.json", FileAccess.WRITE)
 
 func write_savegame(data_to_save) -> void:
 #	var error := _file.open(SAVE_GAME_PATH, File.WRITE)
+	var _file := FileAccess.open("res://save.json", FileAccess.WRITE)
 	var error := _file.open(SAVE_GAME_PATH, FileAccess.WRITE)
 	if error == null:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
@@ -49,6 +50,5 @@ func load_savegame() : # -> void:
 	# Get the data from the JSON object
 	var data = json.get_data()
 	save_game.close()
-	
 	return data
 

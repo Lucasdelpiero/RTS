@@ -15,7 +15,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-9239, 3565, -8695, -82
 
 [node name="BattleMap" type="Node2D"]
 script = ExtResource("1_3dkh7")
-metadata/_edit_lock_ = true
 
 [node name="UnitsController" parent="." node_paths=PackedStringArray("navigation_tilemap") instance=ExtResource("2_cu7ak")]
 navigation_tilemap = NodePath("../NavigationTileMap")
