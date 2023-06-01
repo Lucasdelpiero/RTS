@@ -9,14 +9,25 @@ const JUMP_VELOCITY = -400.0
 var hovered = false : set = set_hovered
 var selected = false : set = set_selected
 var world = null
+var routed = false
 @onready var sprite = $Sprite2D
 @export var ownership = "ROME"
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
 @export var moveComponent : Node = null
 var destination := Vector2.ZERO : set  = set_destination
 
+func _input(_event):
+	if Input.is_action_just_pressed("delete"):
+		if hovered:
+			routed = true
+			hovered = false
+			selected = false
+			global_position = Vector2(-10000, -10000)
+			visible = false
+			
 
 func _physics_process(_delta):
+
 	pass
 
 

@@ -4,6 +4,7 @@ class_name BattleMap
 var player_units := []
 var units_hovered := []
 var units_selected := [] 
+var main = null # Main scene controlling scene transitions and data
 @onready var mouse = %Mouse
 @onready var camera = %Camera
 @onready var playerArmy = $PlayerArmy
@@ -14,6 +15,8 @@ var nav_map = null
 
 @onready var spawnPlayer = %SpawnPlayer
 @onready var spawnEnemy = %SpawnEnemy
+
+signal sg_finished_battle(data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -107,6 +110,20 @@ func spawn_units():
 	# Initialize units
 	playerArmy.start_units()
 	enemyArmy.start_units()
-		
+
+func finish_battle():
+	var player_army = playerArmy.get_children().filter(func(el): return !el.routed )
+	var enemy_army = enemyArmy.get_children().filter(func(el): return !el.routed )
 	
+	var data = {
+		"battle_map" : self,
+		"playerArmy" : [player_army],
+		"enemyArmy" : [enemy_army],
+	}
+	emit_signal("sg_finished_battle", data)
 	pass
+
+
+func _on_finish_battle_button_pressed():
+	finish_battle()
+	pass # Replace with function body.

@@ -70,6 +70,7 @@ func _input(_event):
 #		get_pathing(get_global_mouse_position())
 		if selected : 
 			get_pathing(Globals.mouse_in_province)
+	
 
 
 func _physics_process(delta):
@@ -191,6 +192,7 @@ func set_color(color : Color):
 	army_color = color
 	self.modulate = army_color
 	
+
 
 
 func _on_army_detector_area_entered(area):

@@ -27,45 +27,10 @@ func write_savegame(data_to_save) -> void:
 	var data = {
 		"nations" : nations
 	}
-	
 	var json_string := JSON.stringify(data)
 	_file.store_string(json_string)
 	_file.close()
-	
-	
-#	for el in data_to_save.armies :
-#		var army = el as ArmyCampaing
-#		var army_data = el.army_data as ArmyData
-#		var units = []
-#		for element in army_data.army_units:
-#			var unit = element as UnitData
-#			var unit_data = {
-#				"scene_path" : unit.scene.get_path()
-#			}
-#			units.push_back(unit_data)
-#
-#		var army_dict = {
-#			"filename" :  army.get_scene_file_path(),
-#			"name" : army.name,
-#			"global_position" : {
-#				"x" : army.global_position.x,
-#				"y" : army.global_position.y,
-#			},
-#			"ownership" : army.ownership,
-#			"speed" : army.SPEED,
-#			"army_data" : {
-#				"army_units" : units,
-#			}
-#
-#		}
-#		armies.push_back(army_dict)
-#
-#	var data := {
-#		"armies" : armies.duplicate()
-#	}
-#	var json_string := JSON.stringify(data)
-#	_file.store_string(json_string)
-#	_file.close()
+
 
 
 func load_savegame() : # -> void:
@@ -73,35 +38,17 @@ func load_savegame() : # -> void:
 		return
 	
 	var save_game = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
-	var json_string = save_game.get_as_text()
-#	print(json_string)
+	var json_string = save_game.get_as_text(true)
+#	var json_string = save_game.get_line()
 	var json = JSON.new()
 	# Check if there is any error while parsing the JSON string, skip in case of failure
 	var parse_result = json.parse(json_string)
 	if not parse_result == OK:
+#		print(parse_result)
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 	# Get the data from the JSON object
 	var data = json.get_data()
-#	print(data)
+	save_game.close()
 	
 	return data
-	
-#	for nation in data.nations:
-#		print(nation)
-#	for el in data.armies :
-#		var army = load(el.filename).instantiate()
-#		var army_data = ArmyData.new()
-#		army.army_data = army_data
-#		army.name = el.name
-#		army.ownership = el.ownership
-#
-#		var units = el.army_data.army_units.duplicate()
-#		for element in units:
-#			var unit = UnitData.new()
-#			unit.scene = load(element.scene_path)
-#			army_data.army_units.push_back(unit)
-#		var unit = load(army.scene_file_path).instantiate()
-#		world.add_child(army)
-
-		
 
