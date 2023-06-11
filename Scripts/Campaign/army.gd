@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 @onready var line = $Node/Line2D
 @onready var icon = $Icon
 
+@export var army_name = ""
 enum  { IDLE, MOVING, FIGHTING }
 var state = MOVING
 @export var ownership := ""
@@ -30,6 +31,7 @@ var selected = false : set = set_selected
 var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the node
 signal sg_enemy_encountered(army, enemy)
+signal sg_was_selected(value)
 
 signal get_pathfinding(army ,current_position)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -41,6 +43,8 @@ func _ready():
 	world = get_tree().get_nodes_in_group("world")[0] 
 	# This needs to be changed
 	
+	if world != null:
+		sg_was_selected.connect(world.new_unit_selected)
 	
 	if army_data.army_units.size() == 0:
 #		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
@@ -180,6 +184,11 @@ func set_hovered(value):
 		icon.set_material(shader)
 
 func set_selected(value):
+	# If the value is setted to the same it had before, it will return early,
+	# avoiding calling multiple times the setter
+	if value == selected:
+		return
+	
 	selected = value
 	var shader = null
 	if selected:
@@ -187,12 +196,11 @@ func set_selected(value):
 		icon.set_material(shader)
 		icon.material.set_shader_parameter("inside_color", army_color)
 	icon.set_material(shader)
+	emit_signal("sg_was_selected", self)
 
 func set_color(color : Color):
 	army_color = color
 	self.modulate = army_color
-	
-
 
 
 func _on_army_detector_area_entered(area):
@@ -219,6 +227,7 @@ func save():
 		"rid" : self.get_rid().get_id(),
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
+		"army_name" : army_name,
 		"global_position" : {
 				"x" : global_position.x,
 				"y" : global_position.y,
@@ -235,6 +244,7 @@ func save():
 # Process the data given once the game is loaded
 func load_data(data : Dictionary):
 	ownership = data.ownership
+	army_name = data.army_name
 	SPEED = data.speed
 	global_position.x = data.global_position.x
 	global_position.y = data.global_position.y

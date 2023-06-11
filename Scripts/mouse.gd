@@ -63,7 +63,6 @@ func update_army_campaing_selection(data):
 		var temp = hovered.duplicate()
 		for i in hovered.size():
 			if hovered[i] == data.node:
-#				print("a borrarte ameo")
 				temp.remove_at(i)
 				data.node.set_hovered(false)
 		hovered = temp.duplicate()

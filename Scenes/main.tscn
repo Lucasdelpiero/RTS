@@ -11,6 +11,18 @@ main = NodePath("..")
 
 [node name="Mouse" parent="World" index="0" groups=["mouse"]]
 
+[node name="Legio I" parent="World/NationsGroup/Rome" index="0"]
+army_name = "Legio I"
+
+[node name="Legio II" parent="World/NationsGroup/Rome" index="1"]
+army_name = "Legio II"
+
+[node name="Legio III" parent="World/NationsGroup/Rome" index="2"]
+army_name = "Legio III"
+
+[node name="Etrurian King" parent="World/NationsGroup/Etruria" index="0"]
+army_name = "Etrurian King"
+
 [node name="Upper Apulia" parent="World/Italy" index="7"]
 outLine = Color(0.34902, 0.34902, 0.490196, 1)
 

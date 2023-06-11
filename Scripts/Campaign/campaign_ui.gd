@@ -9,7 +9,9 @@ var gold = 0
 @onready var incomeLabel = %IncomeLabel
 @onready var nameLabel = %NameLabel
 
+@onready var armiesContainer = %ArmiesContainer
 
+var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,7 +42,15 @@ func set_province_visibility(value):
 	province.visible = value
 #	province.visible = false
 
-
-
+func update_selected_armies(army : ArmyCampaing):
+	var isThere = selectedArmies.has(army)
+	var newArr = selectedArmies.duplicate()
+	if (army.selected == true) and (not isThere) :
+		newArr.push_back(army)
+	if (army.selected == false) and (isThere):
+		newArr.erase(army)
+	selectedArmies = newArr.duplicate()
+	armiesContainer.updateArmiesData(selectedArmies)
+	
 
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_qiij3"]
 [ext_resource type="PackedScene" uid="uid://cgty6xbdxpk02" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
-[ext_resource type="PackedScene" path="res://Scenes/Campaign/campaign_ui.tscn" id="2_8hjxc"]
+[ext_resource type="PackedScene" uid="uid://dxkv2jg5vi4xx" path="res://Scenes/Campaign/campaign_ui.tscn" id="2_8hjxc"]
 [ext_resource type="Script" path="res://Scripts/Campaign/army_data.gd" id="2_f7bv5"]
 [ext_resource type="PackedScene" uid="uid://m8lgfsfxrltw" path="res://Scenes/Campaign/nation.tscn" id="2_ipllx"]
 [ext_resource type="PackedScene" uid="uid://d2poikkw0k6mo" path="res://Scenes/mouse.tscn" id="2_se4b2"]
@@ -176,6 +176,7 @@ isPlayer = true
 unique_name_in_owner = true
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(703, 481)
+army_name = null
 ownership = "ROME"
 army_data = SubResource("Resource_vvqwv")
 
@@ -183,12 +184,14 @@ army_data = SubResource("Resource_vvqwv")
 unique_name_in_owner = true
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(887, 505)
+army_name = null
 ownership = "ROME"
 army_data = SubResource("Resource_dmdnx")
 
 [node name="Legio III" parent="NationsGroup/Rome" instance=ExtResource("2_2lid3")]
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(826, 551)
+army_name = null
 ownership = "ROME"
 army_data = SubResource("Resource_8lrrd")
 
@@ -200,6 +203,7 @@ nationColor = Color(0.439216, 0.435294, 0.388235, 1)
 [node name="Etrurian King" parent="NationsGroup/Etruria" instance=ExtResource("2_2lid3")]
 modulate = Color(0.439216, 0.435294, 0.388235, 1)
 position = Vector2(604, 358)
+army_name = null
 ownership = "ETRURIA"
 army_data = SubResource("Resource_ce5sf")
 

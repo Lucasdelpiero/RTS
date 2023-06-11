@@ -118,3 +118,6 @@ func start_battle():
 
 func _on_btn_start_battle_pressed():
 	start_battle()
+
+func new_unit_selected(value):
+	UI.update_selected_armies(value)
