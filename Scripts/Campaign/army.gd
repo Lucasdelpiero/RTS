@@ -59,8 +59,8 @@ func _ready():
 #	print(army.size())
 	pass
 
-func _input(_event):
-	# Selection of the army selected
+func _unhandled_input(event):
+		# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
 		if str(ownership) == world.playerNation:
 			if hovered:
@@ -74,7 +74,7 @@ func _input(_event):
 #		get_pathing(get_global_mouse_position())
 		if selected : 
 			get_pathing(Globals.mouse_in_province)
-	
+
 
 
 func _physics_process(delta):
@@ -114,13 +114,6 @@ func move(delta):
 		var distance_to_point = global_position.distance_to(closest_point)
 		var _destination = path[path.size() - 1]
 		$Node/closest.global_position = closest_point
-		## TP to next point
-		if Input.is_action_just_pressed("Click_Right"):
-			pass
-#			global_position = closest_point
-#			starting_point = closest_point
-		if Input.is_action_just_released("Click_Left"):
-			pass
 		
 		# A bug here has to be fixed
 		if distance_to_point <= 10:

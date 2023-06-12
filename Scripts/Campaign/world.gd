@@ -24,7 +24,7 @@ func initialize_world():
 	get_nav_map()
 	mouse.world = self
 	mouse.ui = UI
-
+	main = get_tree().get_nodes_in_group("main")[0]
 #	army.get_to_closer_point(map)
 	
 	nations = nationsGroup.get_children()
@@ -51,10 +51,9 @@ func initialize_world():
 			province.sg_mouseOverSelf.connect(mouse.update_province_selection)
 	send_data_to_ui()
 
-func _process(_delta):
+func _unhandled_input(event):
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
-
 
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map():

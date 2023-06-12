@@ -42,6 +42,7 @@ func set_province_visibility(value):
 	province.visible = value
 #	province.visible = false
 
+# Get the armies selected and send the data to update the UI
 func update_selected_armies(army : ArmyCampaing):
 	var isThere = selectedArmies.has(army)
 	var newArr = selectedArmies.duplicate()
@@ -53,4 +54,6 @@ func update_selected_armies(army : ArmyCampaing):
 	armiesContainer.updateArmiesData(selectedArmies)
 	
 
-
+func _on_button_pressed():
+#	print("btn pressed")
+	pass # Replace with function body.
