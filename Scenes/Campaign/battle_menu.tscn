@@ -32,16 +32,29 @@ text = "Start Battle"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 31.0
-offset_top = 30.0
-offset_right = 71.0
-offset_bottom = 53.0
+offset_top = 35.0
+offset_right = 80.0
+offset_bottom = 61.0
 text = "player"
 
 [node name="EnemyArmy" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 344.0
-offset_top = 26.0
-offset_right = 384.0
-offset_bottom = 49.0
+offset_left = 334.0
+offset_top = 31.0
+offset_right = 387.0
+offset_bottom = 57.0
 text = "enemy"
+
+[node name="BtnClose" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99
+anchor_bottom = 1.0
+offset_left = 387.0
+offset_top = 2.0
+offset_right = 0.179962
+offset_bottom = -173.0
+text = " X "
+
+[connection signal="pressed" from="BtnClose" to="." method="_on_btn_close_pressed"]

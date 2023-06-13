@@ -11,3 +11,8 @@ func update():
 #	playerArmy.text = Globals.playerNation
 #	enemyArmy.text = Globals.enemyArmy[0].ownership
 	pass
+
+
+func _on_btn_close_pressed():
+	self.visible = false
+	pass # Replace with function body.

@@ -30,5 +30,10 @@ z_as_relative = false
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 width = 2.0
 
+[node name="HoveredTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
 [connection signal="area_entered" from="Node/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Node/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="HoveredTimer" to="." method="_on_hovered_timer_timeout"]

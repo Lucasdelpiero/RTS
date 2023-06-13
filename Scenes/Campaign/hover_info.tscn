@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://diie2mwkoogwd"]
+
+[ext_resource type="Script" path="res://Scripts/Campaign/hover_info.gd" id="1_hu50u"]
+
+[node name="HoverInfo" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -796.0
+offset_bottom = -444.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hu50u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Army Name"
+
+[node name="Number" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Amount of troops"

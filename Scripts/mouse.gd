@@ -17,6 +17,7 @@ var end_rectangle := Vector2(0.0, 0.0)
 @onready var renctangleMarker = %rectangleMarker
 @onready var col = $Node/Area2D/CollisionShape2D
 @onready var areaNode = $Node/Area2D
+@onready var hoveredTimer = %HoveredTimer
 @export_range(1, 500, 1) var rectangleDrawDistance = 10
 
 # To move units
@@ -58,8 +59,10 @@ func update_army_campaing_selection(data):
 	# If the army has the mouse over it, it will be added to a list
 	if (data.mouseOverSelf):
 		hovered.push_back( data.node )
+		hoveredTimer.start()  # Start timer to show data of the armies hovered
 	# If doesnt have the mouse anymore it will be deleted from the list
 	else:
+		hoveredTimer.stop() # Stop timer to show data of the armies hovered
 		var temp = hovered.duplicate()
 		for i in hovered.size():
 			if hovered[i] == data.node:
@@ -175,5 +178,8 @@ func _on_area_2d_area_exited(area):
 		pass
 	pass # Replace with function body.
 
-
-
+# Once the mouse is hovering an army for enough time, the data will show up
+func _on_hovered_timer_timeout():
+	print("print the hovered")
+	print(hovered)
+	pass # Replace with function body.
