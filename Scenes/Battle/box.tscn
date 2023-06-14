@@ -1,22 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=14 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
 [ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
+[ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
+[ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
+[ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
+size = Vector2(214, 12.6457)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pbqt"]
+size = Vector2(214.009, 13.9965)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdb2"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88m4m"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
+size = Vector2(213.998, 18.993)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
 position = Vector2(-305, 0)
 collision_layer = 4
 collision_mask = 4
-input_pickable = true
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
 moveComponent = NodePath("MoveComponent")
-metadata/_edit_lock_ = true
+metadata/_edit_horizontal_guides_ = [-73.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 12)
@@ -40,7 +57,62 @@ shape = SubResource("RectangleShape2D_oi2r0")
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("4_mf8m8")]
 unit = NodePath("..")
 
+[node name="HurtBoxComponent" type="Marker2D" parent="."]
+script = ExtResource("5_a1p3s")
+
+[node name="Front" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]
+position = Vector2(-2.12225, -70.5061)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jbuut")
+
+[node name="Back" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
+position = Vector2(-1.88348, 63.0034)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6pbqt")
+
+[node name="Left" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
+position = Vector2(-99.0941, -3.82722)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_hwdb2")
+
+[node name="Right" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
+position = Vector2(94.9937, -4.16589)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_88m4m")
+
+[node name="HitBoxComponent" type="Marker2D" parent="."]
+script = ExtResource("6_b1v3d")
+
+[node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
+position = Vector2(-2, -87)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent/Hitbox"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tow0k")
+
+[node name="Timer" type="Timer" parent="HitBoxComponent"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]
+[connection signal="area_entered" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="HitBoxComponent/Timer" to="HitBoxComponent" method="_on_timer_timeout"]
 
 [editable path="MouseDetector"]
+[editable path="HurtBoxComponent/Front"]
+[editable path="HurtBoxComponent/Back"]
+[editable path="HurtBoxComponent/Left"]
+[editable path="HurtBoxComponent/Right"]

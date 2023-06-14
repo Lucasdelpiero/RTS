@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw42e4qm5a4xh"]
+[gd_scene load_steps=10 format=3 uid="uid://dw42e4qm5a4xh"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="2_a41j7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://crla1uo06vuto" path="res://Scenes/Battle/player_units_management.tscn" id="3_eq3d1"]
 [ext_resource type="Script" path="res://Scripts/Battle/army_group_control.gd" id="4_e2hns"]
 [ext_resource type="PackedScene" uid="uid://1sk0tjbdbofh" path="res://Scenes/Battle/navigation_tile_map.tscn" id="6_cde6g"]
+[ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="7_s632k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyvkp"]
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
@@ -43,14 +44,40 @@ script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
+[node name="Rome1" parent="PlayerArmy" instance=ExtResource("7_s632k")]
+modulate = Color(0.68516, 0, 0.0329236, 1)
+position = Vector2(116, 456)
+army_color = Color(0.68516, 0, 0.0329236, 1)
+
+[node name="Rome2" parent="PlayerArmy" instance=ExtResource("7_s632k")]
+modulate = Color(0.68516, 0, 0.0329236, 1)
+position = Vector2(344, 456)
+army_color = Color(0.68516, 0, 0.0329236, 1)
+
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnEnemy")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
+[node name="Etruria1" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+modulate = Color(0.466667, 0.611765, 0.615686, 1)
+position = Vector2(130, 56.9999)
+rotation = 3.14159
+scale = Vector2(1, 1)
+ownership = "ETRURIA"
+army_color = Color(0.466667, 0.611765, 0.615686, 1)
+
+[node name="Etruria2" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+modulate = Color(0.466667, 0.611765, 0.615686, 1)
+position = Vector2(344, 61)
+rotation = 3.14159
+scale = Vector2(1, 1)
+ownership = "ETRURIA"
+army_color = Color(0.466667, 0.611765, 0.615686, 1)
+
 [node name="SpawnEnemy" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(739, -1203)
+position = Vector2(971, 213)
 rotation = 3.14159
 
 [node name="SpawnPlayer" type="Marker2D" parent="."]
