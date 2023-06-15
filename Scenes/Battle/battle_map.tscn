@@ -63,7 +63,6 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
 position = Vector2(130, 56.9999)
 rotation = 3.14159
-scale = Vector2(1, 1)
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
@@ -71,7 +70,6 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
 position = Vector2(344, 61)
 rotation = 3.14159
-scale = Vector2(1, 1)
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 

@@ -3,6 +3,7 @@ extends Node
 @export var unit : Unit = null
 var current_position = Vector2.ZERO
 var destination : Vector2 = Vector2.ZERO
+var chasing := false
 var next_point : Vector2 = Vector2.ZERO
 var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
@@ -24,7 +25,7 @@ func _physics_process(delta):
 	if unit == null:
 		return
 	line.points = path
-
+	
 	var angle = (unit.global_position).angle_to_point(next_point)
 	unit.velocity = Vector2(cos(angle), sin(angle)) * speed
 	if unit.global_position.distance_to(next_point) <= speed * delta:
@@ -40,6 +41,13 @@ func _physics_process(delta):
 	unit.move_and_slide()
 	update_facing_angle()
 
+func chase(target : Unit):
+	move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
+	await get_tree().create_timer(0.5).timeout
+	if chasing:
+		chase(target)
+
+
 func move_to(to, final_face_direction):
 	if unit == null or nav_map == null:
 		return
@@ -50,7 +58,6 @@ func move_to(to, final_face_direction):
 		next_point = path[0]
 	
 	face_direction = final_face_direction # angle of the unit once reaches its destination
-	pass
 
 func update_facing_angle():
 	# Once the destination is reached it will face the desired angle

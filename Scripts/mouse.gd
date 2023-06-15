@@ -35,8 +35,6 @@ func _process(_delta):
 	areaNode.global_position = get_global_mouse_position()
 	draw_rectangle()
 
-
-
 # Used in campaing map to select a province
 func set_province_selected():
 	if provinceWithMouseOver == null or hovered.size() > 0:
@@ -180,6 +178,6 @@ func _on_area_2d_area_exited(area):
 
 # Once the mouse is hovering an army for enough time, the data will show up
 func _on_hovered_timer_timeout():
-	print("print the hovered")
-	print(hovered)
+#	print("print the hovered")
+#	print(hovered)
 	pass # Replace with function body.

@@ -15,6 +15,7 @@ var routed = false
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
 @export var moveComponent : Node = null
 var destination := Vector2.ZERO : set  = set_destination
+var unit_to_chase : Unit = null
 
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
@@ -64,7 +65,6 @@ func move_to(aDestination, face_direction ):
 	if moveComponent == null:
 		return
 	moveComponent.move_to(aDestination, face_direction)
-#	moveComponent.destination = destination
 	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
@@ -73,4 +73,9 @@ func set_destination(_value):
 		return
 	moveComponent.destination = self.global_position
 	moveComponent.next_point = self.global_position
-	
+
+func set_chase(value : Unit):
+	if moveComponent == null:
+		return
+	moveComponent.chase(value)
+	moveComponent.chasing = true

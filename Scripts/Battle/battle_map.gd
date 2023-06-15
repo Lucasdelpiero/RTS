@@ -20,8 +20,6 @@ signal sg_finished_battle(data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	nav_map = navigationTileMap.get_navigation_map(0)
-#	print(nav_map)
 	spawn_units()
 	mouse.world = self
 	for unit in get_tree().get_nodes_in_group("units"):
@@ -35,8 +33,7 @@ func _ready():
 #	mouse.ui = UI
 	pass # Replace with function body.
 
-
-func _input(_event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Click_Left"):
 		# De-selects all units
 		for unit in units_selected:
@@ -47,6 +44,7 @@ func _input(_event):
 			if unit.ownership == Globals.playerNation: 
 				unit.selected = true
 				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
+				
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -69,6 +67,7 @@ func set_units_hovered(unit : Unit, hovered : bool):
 #		print("removed")
 	
 	units_hovered = temp_copy.duplicate()
+	playerUnitsManagement.hovered_units = units_hovered.duplicate()
 #	print("units hovered: %s" % [units_hovered])
 	
 	pass

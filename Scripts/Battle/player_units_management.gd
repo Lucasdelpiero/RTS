@@ -1,6 +1,7 @@
 extends Node
 
 var units := []
+var hovered_units := []
 var start_drag := Vector2.ZERO
 var end_drag := Vector2.ZERO
 var drag_distance_draw = 50
@@ -16,12 +17,29 @@ var destination
 func _ready():
 	pass # Replace with function body.
 
-func _input(_event):
+func _unhandled_input(event):
 	if world == null:
 		return
+		
+	# Manage drawing the sprites and movement for the units dra
+	dragging_draw_and_move()
+
 	
+
+func move_to():
+	for unit in units:
+		unit.move_to(world.get_global_mouse_position())
+#		var sprite = Sprite2D.new()
+#		sprite.set_texture(unit.sprite.get_texture())   
+#		sprite.global_position = world.get_global_mouse_position()
+#		world.add_child(sprite)
+		
+
+func dragging_draw_and_move():
 	if Input.is_action_just_pressed("Click_Right"):
 		start_drag = world.get_global_mouse_position()
+	
+	# Create the sprites if the threashold is reached
 	if Input.is_action_pressed("Click_Right"):
 		end_drag = world.get_global_mouse_position()
 		if start_drag.distance_to(end_drag) >= drag_distance_draw:
@@ -36,7 +54,8 @@ func _input(_event):
 					sprites_to_draw.push_back(sprite)
 				created_sprites = true
 			draw_units(false)
-
+	
+	# Delete the sprites
 	if Input.is_action_just_released("Click_Right"):
 		destination = world.get_global_mouse_position()
 		for sprite in sprites_to_draw:
@@ -44,20 +63,17 @@ func _input(_event):
 		draw_units(true)
 		sprites_to_draw = []
 		created_sprites = false
-		if start_drag.distance_to(end_drag) <= drag_distance_draw:
-			move_without_draggin(destination)
-#		move_to()
-		pass
-
-func move_to():
-	for unit in units:
-		unit.move_to(world.get_global_mouse_position())
-#		var sprite = Sprite2D.new()
-#		sprite.set_texture(unit.sprite.get_texture())   
-#		sprite.global_position = world.get_global_mouse_position()
-#		world.add_child(sprite)
 		
+		if start_drag.distance_to(end_drag) <= drag_distance_draw:
+			if hovered_units.size() > 0:
+				for unit in units:
+					var target = hovered_units[0]
+					unit.set_chase(target)
+#					print("targeteado")
+			else:
+				move_without_draggin(destination)
 
+# Draw and move units in the formation dragged across the screen
 func draw_units(move):
 	var organized = organize_units(units, start_drag.angle_to_point(end_drag))
 	var unit_width = 214

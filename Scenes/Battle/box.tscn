@@ -27,7 +27,6 @@ size = Vector2(20, 120)
 size = Vector2(213.998, 18.993)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
-position = Vector2(-305, 0)
 collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
@@ -64,28 +63,24 @@ script = ExtResource("5_a1p3s")
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]
 position = Vector2(-2.12225, -70.5061)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jbuut")
 
 [node name="Back" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
 position = Vector2(-1.88348, 63.0034)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6pbqt")
 
 [node name="Left" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
 position = Vector2(-99.0941, -3.82722)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hwdb2")
 
 [node name="Right" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
 position = Vector2(94.9937, -4.16589)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_88m4m")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
@@ -98,7 +93,6 @@ collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent/Hitbox"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tow0k")
 
 [node name="Timer" type="Timer" parent="HitBoxComponent"]
