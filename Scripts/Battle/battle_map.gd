@@ -68,6 +68,8 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	
 	units_hovered = temp_copy.duplicate()
 	playerUnitsManagement.hovered_units = units_hovered.duplicate()
+	
+	# Get the closer 
 #	print("units hovered: %s" % [units_hovered])
 	
 	pass

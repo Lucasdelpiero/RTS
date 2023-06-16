@@ -26,8 +26,6 @@ func _physics_process(delta):
 		return
 	line.points = path
 	
-	var angle = (unit.global_position).angle_to_point(next_point)
-	unit.velocity = Vector2(cos(angle), sin(angle)) * speed
 	if unit.global_position.distance_to(next_point) <= speed * delta:
 		unit.global_position = next_point
 		unit.velocity = Vector2.ZERO
@@ -38,6 +36,8 @@ func _physics_process(delta):
 		if path.size() > 0 :
 			next_point = path[0]
 	
+	var angle = (unit.global_position).angle_to_point(next_point)
+	unit.velocity = Vector2(cos(angle), sin(angle)) * speed
 	unit.move_and_slide()
 	update_facing_angle()
 
@@ -54,9 +54,9 @@ func move_to(to, final_face_direction):
 	
 	destination = to
 	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
+	
 	if path.size() > 0:
 		next_point = path[0]
-	
 	face_direction = final_face_direction # angle of the unit once reaches its destination
 
 func update_facing_angle():

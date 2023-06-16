@@ -2,7 +2,6 @@
 extends CharacterBody2D
 class_name Unit
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var mouse = null
@@ -12,6 +11,12 @@ var world = null
 var routed = false
 @onready var sprite = $Sprite2D
 @export var ownership = "ROME"
+enum State  {
+	NORMAL,
+	MELEE,
+	FLEEING,
+}
+var state = State.NORMAL
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
 @export var moveComponent : Node = null
 var destination := Vector2.ZERO : set  = set_destination
@@ -51,8 +56,6 @@ func set_selected(value):
 		sprite.material.set_shader_parameter("inside_color", army_color)
 	sprite.set_material(shader)
 
-
-
 func _on_mouse_detector_mouse_entered():
 	hovered = true
 	pass # Replace with function body.
@@ -65,6 +68,7 @@ func move_to(aDestination, face_direction ):
 	if moveComponent == null:
 		return
 	moveComponent.move_to(aDestination, face_direction)
+	moveComponent.chasing = false
 	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
@@ -79,3 +83,8 @@ func set_chase(value : Unit):
 		return
 	moveComponent.chase(value)
 	moveComponent.chasing = true
+
+func melee(data):
+	state = State.MELEE
+#	print("got into melee")
+	pass

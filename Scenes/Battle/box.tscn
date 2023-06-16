@@ -57,6 +57,7 @@ shape = SubResource("RectangleShape2D_oi2r0")
 unit = NodePath("..")
 
 [node name="HurtBoxComponent" type="Marker2D" parent="."]
+visible = false
 script = ExtResource("5_a1p3s")
 
 [node name="Front" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
@@ -84,6 +85,7 @@ position = Vector2(94.9937, -4.16589)
 shape = SubResource("RectangleShape2D_88m4m")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
+visible = false
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
@@ -98,6 +100,9 @@ shape = SubResource("RectangleShape2D_tow0k")
 [node name="Timer" type="Timer" parent="HitBoxComponent"]
 wait_time = 0.5
 one_shot = true
+
+[node name="ShowDirection" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-24, -96, 0, -112, 24, -96)
 
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]

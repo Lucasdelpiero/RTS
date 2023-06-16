@@ -3,8 +3,15 @@ extends Marker2D
 @onready var hitbox = $Hitbox
 @onready var timer = $Timer
 var unitsCollidingWith : Dictionary = {}
+signal melee_reached(data)
+
+func _ready():
+	melee_reached.connect(owner.melee)
+	pass
 
 func melee_detected():
+	var data = "a"
+	emit_signal("melee_reached", data)
 	pass
 
 # Detect areas and store them each together with the object they come from in a dictionary
@@ -25,7 +32,20 @@ func _on_area_2d_area_entered(area):
 		# If the key with the object exitst then just add the area it is colliding with
 			if not unitsCollidingWith[a.owner.name].has(a):
 				unitsCollidingWith[a.owner.name].push_back(a)
-#	print(unitsCollidingWith)
+	
+	# Get the closest collision area
+	var closest = null
+	for unit in unitsCollidingWith:
+		var closest_distance = 99999999 # Large number just to be replaced with anything
+		var unit_areas = unitsCollidingWith[unit]
+		for ar in unit_areas:
+			var distance_to_area = global_position.distance_to(ar.global_position)
+			if distance_to_area < closest_distance:
+				closest = ar
+				closest_distance = distance_to_area 
+	melee_detected()
+#	print("closest: %s from %s" % [closest.name, closest.owner.name] )
+
 
 func _on_area_2d_area_exited(area):
 	pass # Replace with function body.
