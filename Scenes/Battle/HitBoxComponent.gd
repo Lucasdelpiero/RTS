@@ -2,7 +2,9 @@ extends Marker2D
 
 @onready var hitbox = $Hitbox
 @onready var timer = $Timer
+@onready var raycast = $RayCast2D
 var unitsCollidingWith : Dictionary = {}
+var targetFlank : Area2D = null
 signal melee_reached(data)
 
 func _ready():
@@ -10,7 +12,16 @@ func _ready():
 	pass
 
 func melee_detected():
-	var data = "a"
+	if targetFlank == null:
+		return
+	
+#	raycast.set_target_position(targetFlank.global_position - hitbox.global_position)
+	
+	var collisionPoint = raycast.get_collision_point()
+	var data = {
+		"targetFlank" : targetFlank,
+		"collisionPoint" : collisionPoint, 
+	}
 	emit_signal("melee_reached", data)
 	pass
 
@@ -23,6 +34,7 @@ func _on_area_2d_area_entered(area):
 	# Clears dictionary where saved collided units and areas are stored
 	unitsCollidingWith.clear()
 	var areas = hitbox.get_overlapping_areas()
+#	print(areas)
 	
 	for a in areas:
 		# Create the key with the object name and create an array with the first area
@@ -43,6 +55,7 @@ func _on_area_2d_area_entered(area):
 			if distance_to_area < closest_distance:
 				closest = ar
 				closest_distance = distance_to_area 
+		targetFlank = closest
 	melee_detected()
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 

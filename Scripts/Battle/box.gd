@@ -86,5 +86,9 @@ func set_chase(value : Unit):
 
 func melee(data):
 	state = State.MELEE
+#	moveComponent.move_to_face_melee(data)
+	var new_data = $HurtBoxComponent.get_children()
+	moveComponent.move_to_face_melee_new(new_data)
+#	print(data)
 #	print("got into melee")
 	pass

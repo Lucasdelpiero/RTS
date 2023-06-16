@@ -12,21 +12,23 @@
 size = Vector2(214, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
-size = Vector2(214, 12.6457)
+size = Vector2(179, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pbqt"]
-size = Vector2(214.009, 13.9965)
+size = Vector2(179, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdb2"]
-size = Vector2(20, 120)
+size = Vector2(14.5, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88m4m"]
-size = Vector2(20, 120)
+size = Vector2(20, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
 size = Vector2(213.998, 18.993)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
+z_index = 10
+z_as_relative = false
 collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
@@ -57,35 +59,52 @@ shape = SubResource("RectangleShape2D_oi2r0")
 unit = NodePath("..")
 
 [node name="HurtBoxComponent" type="Marker2D" parent="."]
-visible = false
 script = ExtResource("5_a1p3s")
 
 [node name="Front" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+position = Vector2(0, -71)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]
-position = Vector2(-2.12225, -70.5061)
+position = Vector2(-4.5, 1)
 shape = SubResource("RectangleShape2D_jbuut")
 
+[node name="MeleePoint" parent="HurtBoxComponent/Front" index="1"]
+position = Vector2(0, -88)
+rotation = 3.14159
+
 [node name="Back" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+position = Vector2(-1, 65)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
-position = Vector2(-1.88348, 63.0034)
+position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_6pbqt")
 
+[node name="MeleePoint" parent="HurtBoxComponent/Back" index="1"]
+position = Vector2(0, 88)
+
 [node name="Left" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+position = Vector2(-104, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
-position = Vector2(-99.0941, -3.82722)
+position = Vector2(2.25, -2.5)
 shape = SubResource("RectangleShape2D_hwdb2")
 
+[node name="MeleePoint" parent="HurtBoxComponent/Left" index="1"]
+position = Vector2(-94, -2)
+rotation = 1.5708
+
 [node name="Right" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+position = Vector2(103, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
-position = Vector2(94.9937, -4.16589)
+position = Vector2(-8, -2.5)
 shape = SubResource("RectangleShape2D_88m4m")
 
+[node name="MeleePoint" parent="HurtBoxComponent/Right" index="1"]
+position = Vector2(94, 0)
+rotation = 4.71239
+
 [node name="HitBoxComponent" type="Marker2D" parent="."]
-visible = false
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
@@ -100,6 +119,13 @@ shape = SubResource("RectangleShape2D_tow0k")
 [node name="Timer" type="Timer" parent="HitBoxComponent"]
 wait_time = 0.5
 one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="HitBoxComponent"]
+position = Vector2(-2, -85)
+target_position = Vector2(0, -14)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="ShowDirection" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-24, -96, 0, -112, 24, -96)

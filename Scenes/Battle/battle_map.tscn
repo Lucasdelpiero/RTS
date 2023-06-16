@@ -68,7 +68,7 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(344, 61)
+position = Vector2(808, 31)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
