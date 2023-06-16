@@ -25,7 +25,7 @@ func _physics_process(delta):
 	if unit == null:
 		return
 	line.points = path
-	
+
 	if unit.global_position.distance_to(next_point) <= speed * delta:
 		unit.global_position = next_point
 		unit.velocity = Vector2.ZERO
@@ -37,8 +37,13 @@ func _physics_process(delta):
 			next_point = path[0]
 	
 	var angle = (unit.global_position).angle_to_point(next_point)
-	unit.velocity = Vector2(cos(angle), sin(angle)) * speed
+	if path.size() > 0:
+		unit.velocity = Vector2(cos(angle), sin(angle)) * speed
+	else:
+		unit.velocity = Vector2.ZERO
 	unit.move_and_slide()
+#	if owner.name == "Rome1":
+#		print(unit.velocity)
 	update_facing_angle()
 
 func chase(target : Unit):
