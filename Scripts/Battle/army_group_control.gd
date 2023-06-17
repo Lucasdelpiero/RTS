@@ -2,7 +2,7 @@
 extends Node
 class_name SpawnPoint
 
-@export var spawnMarker : Marker2D 
+@export var spawnMarker : Marker2D = null
 @export_color_no_alpha var army_color = Color(0.5, 0.5, 0.5) : set = set_color
 var army := []
 
@@ -21,6 +21,8 @@ func start_units():
 	set_color(army_color)
 
 func set_starting_position():
+	if spawnMarker == null:
+		return
 	var spacing = Vector2(cos(spawnMarker.rotation) * 220, 0.0)
 	army = get_children()
 	for i in army.size():

@@ -43,9 +43,6 @@ func _ready():
 	world = get_tree().get_nodes_in_group("world")[0] 
 	# This needs to be changed
 	
-	if world != null:
-		sg_was_selected.connect(world.new_unit_selected)
-	
 	if army_data.army_units.size() == 0:
 #		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
 		print("Army Data is zero")

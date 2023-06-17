@@ -41,6 +41,8 @@ func initialize_world():
 			army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
 		if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
 			army.sg_enemy_encountered.connect(self.enemy_encountered)
+		if not army.sg_was_selected.is_connected(new_unit_selected):
+			army.sg_was_selected.connect(new_unit_selected)
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	var provinces = get_tree().get_nodes_in_group("provinces")
