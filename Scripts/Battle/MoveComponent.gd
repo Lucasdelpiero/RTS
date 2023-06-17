@@ -26,6 +26,9 @@ func _physics_process(delta):
 		return
 	line.points = path
 	
+	if unit.state == unit.State.MELEE:
+		unit.global_position = lerp(unit.global_position, destination, 0.2)
+	
 	if unit.global_position.distance_to(next_point) <= speed * delta:
 		unit.global_position = next_point
 		unit.velocity = Vector2.ZERO
@@ -43,7 +46,9 @@ func _physics_process(delta):
 		unit.velocity = Vector2.ZERO
 	unit.move_and_slide()
 #	if owner.name == "Rome1":
+#		print(path)
 #		print(unit.velocity)
+
 	update_facing_angle()
 
 func chase(target : Unit):
@@ -57,21 +62,38 @@ func move_to(to, final_face_direction):
 	if unit == null or nav_map == null:
 		return
 	
+	if unit.state == unit.State.MELEE:
+		stop_movement()
+#		print("volvetee")
+		return
+	
 	destination = to
 	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
+	
 	
 	if path.size() > 0:
 		next_point = path[0]
 	face_direction = final_face_direction # angle of the unit once reaches its destination
+	# Rotate if the angle is large
+	if path.size() > 0 : 
+		if path[path.size() - 1].distance_to(unit.global_position) > 128:
+			var a = Vector2(cos(face_direction), sin(face_direction))
+			var b = Vector2(cos(unit.rotation), sin(unit.rotation))
+			if a.dot(b) < 0 and not chasing:
+				return
+				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
 
 func update_facing_angle():
+#	print(path.size())
+	var rot_speed = 0.05
 	# Once the destination is reached it will face the desired angle
 	if path.size() <= 1:
-		unit.rotation = lerp_angle(unit.rotation, face_direction, 0.05)
+		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed)
 		return
 	# While moving it will face to the movement direction
 	var angle = unit.global_position.angle_to_point(next_point) + PI / 2
-	unit.rotation = lerp_angle(unit.rotation,angle, 0.05)
+	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
+
 
 func move_to_face_melee(data):
 	if owner.ownership != "ROME":
@@ -108,16 +130,42 @@ func move_to_face_melee(data):
 	pass
 
 func move_to_face_melee_new(areas):
+	if unit.ownership != "ROME":
+		return
+	if unit.state == unit.State.MELEE:
+		return
+	# Get closer area
 	var closest = areas[0]
-	var closest_distance = unit.global_position.distance_to(closest.global_position)
+#	print("areas : " +str(areas))
 	for area in areas:
-		var distance = unit.global_position.distance_to(closest.global_position)
+		var closest_distance = unit.global_position.distance_to(closest.global_position)
+		var distance = unit.global_position.distance_to(area.global_position)
+#		print("%s from: %s distance: %s /closest distance: %s" % [area.name,area.owner , distance, closest_distance])
+#		print("unit_pos: %s / area_pos: %s" % [unit.global_position, area.global_position])
 		if distance < closest_distance:
 			closest = area
-	print(closest)
+	var targetSide = closest.meleePoint.global_position
+	var targetAngle = closest.meleePoint.rotation
+	face_direction = targetAngle
+#	print(closest)
+#	print(targetAngle)
+	stop_movement()
+	destination = targetSide
+	var line = Line2D.new()
+	add_child(line)
+	line.add_point(unit.global_position)
+	line.add_point(closest.global_position)
+#	move_to(targetSide, targetAngle)
+	
+	
+#	print("closest: " +str(closest))
 	
 #	print(data)
 	pass
+
+func stop_movement():
+	path.clear()
+	unit.velocity = Vector2.ZERO
 
 func set_nav_map(value : TileMap):
 	nav_map = value.get_navigation_map(0)

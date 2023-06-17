@@ -4,7 +4,7 @@ extends Marker2D
 @onready var timer = $Timer
 @onready var raycast = $RayCast2D
 var unitsCollidingWith : Dictionary = {}
-var targetFlank : Area2D = null
+var targetArea : Area2D = null
 signal melee_reached(data)
 
 func _ready():
@@ -12,14 +12,15 @@ func _ready():
 	pass
 
 func melee_detected():
-	if targetFlank == null:
+	if targetArea == null:
 		return
 	
 #	raycast.set_target_position(targetFlank.global_position - hitbox.global_position)
-	
+	var areas = targetArea.get_hurtbox_group()
 	var collisionPoint = raycast.get_collision_point()
 	var data = {
-		"targetFlank" : targetFlank,
+		"areas" : areas,
+		"targetArea" : targetArea,
 		"collisionPoint" : collisionPoint, 
 	}
 	emit_signal("melee_reached", data)
@@ -55,12 +56,13 @@ func _on_area_2d_area_entered(area):
 			if distance_to_area < closest_distance:
 				closest = ar
 				closest_distance = distance_to_area 
-		targetFlank = closest
+		targetArea = closest
 	melee_detected()
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
 func _on_area_2d_area_exited(area):
+#	print("se fue")
 	pass # Replace with function body.
 
 

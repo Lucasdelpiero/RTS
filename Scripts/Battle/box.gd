@@ -10,6 +10,7 @@ var selected = false : set = set_selected
 var world = null
 var routed = false
 @onready var sprite = $Sprite2D
+@onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
 enum State  {
 	NORMAL,
@@ -85,10 +86,11 @@ func set_chase(value : Unit):
 	moveComponent.chasing = true
 
 func melee(data):
-	state = State.MELEE
 #	moveComponent.move_to_face_melee(data)
-	var new_data = $HurtBoxComponent.get_children()
+#	var new_data = data["targetArea"].owner.hurtBoxComponent.get_children()
+	var new_data = data["areas"]
 	moveComponent.move_to_face_melee_new(new_data)
+	state = State.MELEE
 #	print(data)
 #	print("got into melee")
 	pass
