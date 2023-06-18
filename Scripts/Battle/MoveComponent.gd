@@ -24,7 +24,8 @@ func _ready():
 func _physics_process(delta):
 	if unit == null:
 		return
-	line.points = path
+	
+	draw_path()
 	
 	if unit.state == unit.State.MELEE:
 		unit.global_position = lerp(unit.global_position, destination, 0.2)
@@ -64,12 +65,14 @@ func move_to(to, final_face_direction):
 	
 	if unit.state == unit.State.MELEE:
 		stop_movement()
-#		print("volvetee")
 		return
 	
 	destination = to
-	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
-	
+	#######################
+	# Once i create obstacles i will get this pathing
+#	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
+	####################
+	path = [unit.global_position, to] 
 	
 	if path.size() > 0:
 		next_point = path[0]
@@ -87,12 +90,26 @@ func update_facing_angle():
 #	print(path.size())
 	var rot_speed = 0.05
 	# Once the destination is reached it will face the desired angle
-	if path.size() <= 1:
+	if path.size() < 1:
 		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed)
 		return
 	# While moving it will face to the movement direction
 	var angle = unit.global_position.angle_to_point(next_point) + PI / 2
+	angle = unit.global_position.angle_to_point(unit.global_position + unit.velocity) + PI / 2
 	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
+
+func draw_path():
+	var has_to_draw = ( unit.selected and unit.ownership == Globals.playerNation )
+	line.visible = has_to_draw
+	if not has_to_draw:
+		return
+	
+	var arr = [unit.global_position]
+	for point in path:
+		arr.push_back(point)
+		line.points.push_back(point)
+	line.points = arr.duplicate()
+
 
 func move_to_face_melee(areas):
 	if unit.ownership != "ROME":
