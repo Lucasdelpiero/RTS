@@ -4,7 +4,7 @@ var units := []
 var hovered_units := []
 var start_drag := Vector2.ZERO
 var end_drag := Vector2.ZERO
-var drag_distance_draw = 50
+var drag_distance_draw = 300
 var created_sprites = false
 var sprites_to_draw : Array = []
 var alpha_color = 0.5
@@ -23,7 +23,6 @@ func _unhandled_input(_event):
 		
 	# Manage drawing the sprites and movement for the units dra
 	dragging_draw_and_move()
-
 	
 
 func move_to():

@@ -72,7 +72,8 @@ func move_to(to, final_face_direction):
 	# Once i create obstacles i will get this pathing
 #	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
 	####################
-	path = [unit.global_position, to] 
+#	path = [unit.global_position, to] 
+	path = get_pathing(to)
 	
 	if path.size() > 0:
 		next_point = path[0]
@@ -144,6 +145,13 @@ func move_to_face_melee(areas):
 	
 #	print(data)
 	pass
+
+func get_pathing(to):
+	var arr = path.duplicate()
+	if Input.is_action_pressed("Shift"):
+		arr.push_back(to)
+		return arr
+	return [unit.global_position, to]
 
 func stop_movement():
 	path.clear()
