@@ -4,6 +4,7 @@ extends Node
 var current_position = Vector2.ZERO
 var destination : Vector2 = Vector2.ZERO
 var chasing := false
+var chase_in_queue = false # The chasing was ordered after queueing a path that has to be completed before going after the enemy
 var next_point : Vector2 = Vector2.ZERO
 var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
@@ -52,8 +53,19 @@ func _physics_process(delta):
 
 	update_facing_angle()
 
+# The unit will chase the target by updating the path every time the enemy moves in a set time
 func chase(target : Unit):
-	move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
+	if chase_in_queue:
+		if path.size() < 1: # Withouth this the last_point_in_path can crash
+			return
+		var last_point_in_path = path[path.size() - 1]
+		if last_point_in_path != target.global_position:
+			var arr = path.duplicate()
+			arr.push_back(target.global_position)
+			path = arr.duplicate()
+	if not chase_in_queue:
+		move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
+	
 	await get_tree().create_timer(0.5).timeout
 	if chasing:
 		chase(target)
@@ -117,6 +129,7 @@ func move_to_face_melee(areas):
 		return
 	if unit.state == unit.State.MELEE:
 		return
+	chase_in_queue = false
 	# Get closer area
 	var closest = areas[0]
 #	print("areas : " +str(areas))

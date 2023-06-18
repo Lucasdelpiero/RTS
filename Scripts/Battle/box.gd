@@ -84,6 +84,10 @@ func set_chase(value : Unit):
 		return
 	moveComponent.chase(value)
 	moveComponent.chasing = true
+	if Input.is_action_pressed("Shift"):
+		moveComponent.chase_in_queue = true
+	else:
+		moveComponent.chase_in_queue = false
 
 func melee(data):
 	var new_data = data["areas"]
