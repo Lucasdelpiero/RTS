@@ -61,7 +61,7 @@ func _on_area_2d_area_entered(area):
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 #	print("se fue")
 	pass # Replace with function body.
 

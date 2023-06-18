@@ -56,7 +56,7 @@ func _ready():
 #	print(army.size())
 	pass
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 		# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
 		if str(ownership) == world.playerNation:

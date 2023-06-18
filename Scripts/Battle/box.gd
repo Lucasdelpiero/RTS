@@ -86,10 +86,8 @@ func set_chase(value : Unit):
 	moveComponent.chasing = true
 
 func melee(data):
-#	moveComponent.move_to_face_melee(data)
-#	var new_data = data["targetArea"].owner.hurtBoxComponent.get_children()
 	var new_data = data["areas"]
-	moveComponent.move_to_face_melee_new(new_data)
+	moveComponent.move_to_face_melee(new_data)
 	state = State.MELEE
 #	print(data)
 #	print("got into melee")

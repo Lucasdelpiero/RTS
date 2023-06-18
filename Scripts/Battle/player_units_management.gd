@@ -17,7 +17,7 @@ var destination
 func _ready():
 	pass # Replace with function body.
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if world == null:
 		return
 		

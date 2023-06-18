@@ -81,7 +81,7 @@ func move_to(to, final_face_direction):
 			var b = Vector2(cos(unit.rotation), sin(unit.rotation))
 			if a.dot(b) < 0 and not chasing:
 				return
-				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
+#				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
 
 func update_facing_angle():
 #	print(path.size())
@@ -94,42 +94,7 @@ func update_facing_angle():
 	var angle = unit.global_position.angle_to_point(next_point) + PI / 2
 	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
 
-
-func move_to_face_melee(data):
-	if owner.ownership != "ROME":
-		return
-	chasing = false
-	var target = data["targetFlank"]
-	var target_children = target.get_children()
-	var target_pos = target.global_position
-#	if target.name != "Back":
-#		"nono"
-#		return
-	for i in target_children:
-#		print(i)
-		if i.is_in_group("meleePoint"):
-#			print("is in group")
-			target_pos = i.global_position
-			var final_angle = i.rotation
-			move_to(target_pos, final_angle)
-			path.clear()
-			unit.global_position = target_pos
-#	print(target_pos)
-#	print(target.global_position)
-	var collisionPoint = data["collisionPoint"]
-	var final_angle = target.rotation + PI
-	var angle = target.rotation
-	var margin = 128 + 12
-	var new_pos = target.global_position + Vector2(cos(angle), sin(angle)) * margin
-#	move_to(new_pos, final_angle)
-#	new_pos = target_pos
-#	move_to(new_pos, final_angle)
-#	path.clear()
-#	unit.global_position = new_pos
-#	print(target)
-	pass
-
-func move_to_face_melee_new(areas):
+func move_to_face_melee(areas):
 	if unit.ownership != "ROME":
 		return
 	if unit.state == unit.State.MELEE:
@@ -151,10 +116,10 @@ func move_to_face_melee_new(areas):
 #	print(targetAngle)
 	stop_movement()
 	destination = targetSide
-	var line = Line2D.new()
-	add_child(line)
-	line.add_point(unit.global_position)
-	line.add_point(closest.global_position)
+#	var line = Line2D.new()
+#	add_child(line)
+#	line.add_point(unit.global_position)
+#	line.add_point(closest.global_position)
 #	move_to(targetSide, targetAngle)
 	
 	
