@@ -3,7 +3,7 @@ class_name BattleMap
 
 var player_units := []
 var units_hovered := []
-var units_selected := [] 
+var units_selected := []
 var main = null # Main scene controlling scene transitions and data
 @onready var mouse = %Mouse
 @onready var camera = %Camera
@@ -41,7 +41,7 @@ func _unhandled_input(_event):
 			set_units_selected(unit , false) # Has to be called here and not in the unit to avoid an infinite calling
 		# Select the units with the mouse over them
 		for unit in units_hovered:
-			if unit.ownership == Globals.playerNation: 
+			if unit.ownership == Globals.playerNation:
 				unit.selected = true
 				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
 				
@@ -58,7 +58,7 @@ func set_units_hovered(unit : Unit, hovered : bool):
 #		print("added")
 	# If not hovered, remove
 	if not hovered:
-		var unit_position = units_hovered.find(unit) 
+		var unit_position = units_hovered.find(unit)
 #		print("unit position: %s" % [unit_position])
 		if unit_position == -1: # If its not found it will return withouht modifing the array
 			return
@@ -74,23 +74,59 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	
 	pass
 
+#func set_units_selected(unit : Unit, selected : bool):
+#	var temp_copy = units_selected.duplicate()
+#	var unit_position = units_selected.find(unit) 
+#	# Add the unit if its not already in the array
+#	if selected and unit_position == -1:
+#		temp_copy.push_back(unit)
+#	# Remove the unit if its not already in the array
+#	if not selected and unit_position != -1:
+#		print("unselecting")
+#		unit.selected = false
+#		temp_copy.remove_at(unit_position)
+#	units_selected = temp_copy.duplicate()
+##	print("units selected: %s" % [units_selected])
+#	if Input.is_action_pressed("Control") and not temp_copy.has(unit):
+#		temp_copy.push_back(unit)
+#		unit.selected = true
+#		units_selected = temp_copy.duplicate()
+#		playerUnitsManagement.units = units_selected.duplicate()
+#		return
+#	for units in units_selected:
+#		units.selected = true
+#	playerUnitsManagement.units = units_selected.duplicate()
+#	pass
+
 func set_units_selected(unit : Unit, selected : bool):
 	var temp_copy = units_selected.duplicate()
-	var unit_position = units_selected.find(unit) 
-	# Add the unit if its not already in the array
-	if selected and unit_position == -1:
+	var unit_position = units_selected.find(unit)
+	# Add unit if its not in the array
+	if not units_selected.has(unit):
 		temp_copy.push_back(unit)
-	# Remove the unit if its not already in the array
-	if not selected and unit_position != -1:
-		unit.selected = false
-		temp_copy.remove_at(unit_position)
-	
+	# Remove unit if not pressing the control key
+	if units_selected.has(unit):
+		if not Input.is_action_pressed("Control"):
+			temp_copy.remove_at(unit_position)
 	units_selected = temp_copy.duplicate()
-#	print("units selected: %s" % [units_selected])
+	
 	for units in units_selected:
 		units.selected = true
+	
 	playerUnitsManagement.units = units_selected.duplicate()
+	
+#	print("units selected: %s" % [units_selected])
+#	if Input.is_action_pressed("Control") and not temp_copy.has(unit):
+#		temp_copy.push_back(unit)
+#		unit.selected = true
+#		units_selected = temp_copy.duplicate()
+#		playerUnitsManagement.units = units_selected.duplicate()
+#		return
+#	for units in units_selected:
+#		units.selected = true
+#	playerUnitsManagement.units = units_selected.duplicate()
 	pass
+
 
 func move_player_units():
 	pass

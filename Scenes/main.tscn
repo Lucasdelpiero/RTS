@@ -10,6 +10,20 @@ script = ExtResource("1_uyp36")
 
 [node name="Mouse" parent="World" index="0" groups=["mouse"]]
 
+[node name="Province" parent="World/CampaingUI/Container" index="2"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.773
+anchor_right = 0.319
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0959473
+offset_right = 0.511993
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Legio I" parent="World/NationsGroup/Rome" index="0"]
 army_name = "Legio I"
 

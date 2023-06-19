@@ -24,7 +24,7 @@ size = Vector2(14.5, 149)
 size = Vector2(20, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
-size = Vector2(152, 4.24825)
+size = Vector2(106, 4.24825)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
 z_index = 10
@@ -107,7 +107,6 @@ position = Vector2(94, 0)
 rotation = 4.71239
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
-visible = false
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
