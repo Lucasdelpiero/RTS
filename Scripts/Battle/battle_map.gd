@@ -109,23 +109,10 @@ func set_units_selected(unit : Unit, selected : bool):
 		if not Input.is_action_pressed("Control"):
 			temp_copy.remove_at(unit_position)
 	units_selected = temp_copy.duplicate()
-	
+	# Set every unit in the list to be selected
 	for units in units_selected:
 		units.selected = true
-	
 	playerUnitsManagement.units = units_selected.duplicate()
-	
-#	print("units selected: %s" % [units_selected])
-#	if Input.is_action_pressed("Control") and not temp_copy.has(unit):
-#		temp_copy.push_back(unit)
-#		unit.selected = true
-#		units_selected = temp_copy.duplicate()
-#		playerUnitsManagement.units = units_selected.duplicate()
-#		return
-#	for units in units_selected:
-#		units.selected = true
-#	playerUnitsManagement.units = units_selected.duplicate()
-	pass
 
 
 func move_player_units():
