@@ -54,18 +54,14 @@ func get_enemy_groups():
 						groups[groupToAddUnits].push_back(unit)
 #				if unit.name == "Rome7":
 #					print("compared with: %s" %[otherUnit.name])
-			
+		# Creates a new array that will contain the new groups
 		if hasToCreateNewGroup:
-			print("%s has to create a group" % [unit] )
+#			print("%s has to create a group" % [unit] )
 			groups.push_back([unit])
 			groupToAddUnits += 1
-#				print(groups)
-				
-#			pass
-	for group in groups.size():
-		print("%s: %s" %[group, groups[group]] )
-#	print(groups)
-	print("=============================")
+
+#	for group in groups.size():
+#		print("%s: %s" %[group, groups[group]] )
 #	print(groups)
 #	print("=============================")
 	pass
