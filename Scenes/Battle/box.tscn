@@ -110,7 +110,7 @@ rotation = 4.71239
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
-position = Vector2(-2, -87)
+position = Vector2(-2, -74)
 collision_layer = 0
 collision_mask = 16
 monitorable = false

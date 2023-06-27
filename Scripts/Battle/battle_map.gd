@@ -74,30 +74,6 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	
 	pass
 
-#func set_units_selected(unit : Unit, selected : bool):
-#	var temp_copy = units_selected.duplicate()
-#	var unit_position = units_selected.find(unit) 
-#	# Add the unit if its not already in the array
-#	if selected and unit_position == -1:
-#		temp_copy.push_back(unit)
-#	# Remove the unit if its not already in the array
-#	if not selected and unit_position != -1:
-#		print("unselecting")
-#		unit.selected = false
-#		temp_copy.remove_at(unit_position)
-#	units_selected = temp_copy.duplicate()
-##	print("units selected: %s" % [units_selected])
-#	if Input.is_action_pressed("Control") and not temp_copy.has(unit):
-#		temp_copy.push_back(unit)
-#		unit.selected = true
-#		units_selected = temp_copy.duplicate()
-#		playerUnitsManagement.units = units_selected.duplicate()
-#		return
-#	for units in units_selected:
-#		units.selected = true
-#	playerUnitsManagement.units = units_selected.duplicate()
-#	pass
-
 func set_units_selected(unit : Unit, selected : bool):
 	var temp_copy = units_selected.duplicate()
 	var unit_position = units_selected.find(unit)

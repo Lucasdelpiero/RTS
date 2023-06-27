@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqiahwgp4fud4"]
+
+[ext_resource type="Script" path="res://Scripts/Battle/enemy_battle_ia.gd" id="1_61vt2"]
+
+[node name="EnemyBattleIA" type="Node"]
+script = ExtResource("1_61vt2")
+
+[node name="ArmyMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="InfantryMarker" type="Marker2D" parent="ArmyMarker"]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
