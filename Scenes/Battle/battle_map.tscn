@@ -48,51 +48,53 @@ metadata/_edit_lock_ = true
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.68516, 0, 0.0329236, 1)
+setInPosition = false
 
 [node name="Rome1" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(518, 1095)
+position = Vector2(1501, 1319)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome2" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(746, 1095)
+position = Vector2(670, 1122)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome3" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(993, 1103)
+position = Vector2(917, 1130)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome4" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1221, 1103)
+position = Vector2(1145, 1130)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome5" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1456, 1107)
+position = Vector2(2614, 1044)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome6" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1684, 1107)
+position = Vector2(2326, 1026)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome7" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1888, 1107)
+position = Vector2(2058, 1062)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome8" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(2116, 1107)
+position = Vector2(1811, 1057)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnEnemy")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
+setInPosition = null
 
 [node name="Etruria1" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
@@ -143,7 +145,7 @@ rotation = 3.14159
 
 [node name="SpawnPlayer" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1114, 1182)
+position = Vector2(1038, 1209)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

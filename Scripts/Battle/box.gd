@@ -34,7 +34,8 @@ func _input(_event):
 			
 
 func _physics_process(_delta):
-
+	$Label.text = name
+	
 	pass
 
 

@@ -36,6 +36,14 @@ script = ExtResource("1_qinoe")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 47.0
+offset_top = -158.0
+offset_right = 134.0
+offset_bottom = -88.0
+theme_override_font_sizes/font_size = 48
+text = "Box"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 12)
 texture = ExtResource("2_v0q3s")

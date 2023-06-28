@@ -4,6 +4,7 @@ class_name SpawnPoint
 
 @export var spawnMarker : Marker2D = null
 @export_color_no_alpha var army_color = Color(0.5, 0.5, 0.5) : set = set_color
+@export var setInPosition : bool = true
 var army := []
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,8 @@ func _process(_delta):
 	pass
 
 func start_units():
-	set_starting_position()
+	if setInPosition:
+		set_starting_position()
 	set_color(army_color)
 
 func set_starting_position():
