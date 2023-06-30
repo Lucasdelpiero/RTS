@@ -94,7 +94,6 @@ army_color = Color(0.68516, 0, 0.0329236, 1)
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnEnemy")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
-setInPosition = null
 
 [node name="Etruria1" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)

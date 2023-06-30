@@ -23,13 +23,17 @@ func start_units():
 	set_color(army_color)
 
 func set_starting_position():
+	await get_tree().create_timer(0).timeout # It needs to wait until the tree has loaded for the "move_to" function to work well
 	if spawnMarker == null:
 		return
 	var spacing = Vector2(cos(spawnMarker.rotation) * 220, 0.0)
 	army = get_children()
 	for i in army.size():
-		army[i].global_position = spawnMarker.global_position + spacing * i
-		army[i].set_destination("pan") # Used just to update the destination to the current position
+		var unit = army[i] as Unit
+		var newPos = spawnMarker.global_position + spacing * i
+		unit.global_position = newPos
+		unit.set_destination("pan") # Used just to update the destination to the current position
+		unit.set_face_direction(spawnMarker.rotation)
 
 func set_color(value):
 	army = get_children()

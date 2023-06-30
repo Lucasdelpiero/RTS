@@ -69,14 +69,12 @@ func get_enemy_groups():
 	for i in groups.size():
 		var uniteGroup = false # If it has to unite the group with the one before 
 		var groupsDeleted = []
-		var groupToCompareWith = 0
 		var addNewArray = true  # if the original group doesnt find someone close it will be added to the finalGroup as it is ## CHANGE NAME
 		if i > 0:
 			var originGroup = groups[i].duplicate()
 			# Comparation groups
 			for o in finalGroups.size():
 				if not groupsDeleted.has(i):  # Condition is here as when find one unit in the group close enough, the group is added and the "i" is beign ignored, it would add the group every time a unit is close in the group without being this line here
-					var comparationGroup = finalGroups[o].duplicate()
 					var unite = should_unite_group(originGroup, finalGroups[o], distanceToBeInGroup)
 					if unite:
 #						if Input.is_action_pressed("Debug"):
@@ -102,13 +100,13 @@ func get_enemy_groups():
 
 		pass
 #	print(finalGroups)
-	if Input.is_action_pressed("Debug"):
-		for group in groups.size():
-			print("%s: %s" %[group, groups[group].map(func(e): return e.name ) ] )
-		print("---------------------------")
-		for group in finalGroups.size():
-			print("%s: %s" %[group, finalGroups[group].map(func(e): return e.name ) ] )
-		print("============================")
+#	if Input.is_action_pressed("Debug"):
+#		for group in groups.size():
+#			print("%s: %s" %[group, groups[group].map(func(e): return e.name ) ] )
+#		print("---------------------------")
+#		for group in finalGroups.size():
+#			print("%s: %s" %[group, finalGroups[group].map(func(e): return e.name ) ] )
+#		print("============================")
 	
 	return finalGroups
 

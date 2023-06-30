@@ -17,7 +17,6 @@ var face_direction : float = 0.0
 func _ready():
 	if unit == null:
 		return
-	
 	next_point = unit.global_position
 	destination = unit.global_position
 	pass # Replace with function body.
@@ -73,12 +72,11 @@ func chase(target : Unit):
 
 func move_to(to, final_face_direction):
 	if unit == null or nav_map == null:
+		push_error("%s doesnt have a nav_map or unit" % [owner.name])
 		return
-	
 	if unit.state == unit.State.MELEE:
 		stop_movement()
 		return
-	
 	destination = to
 	#######################
 	# Once i create obstacles i will get this pathing

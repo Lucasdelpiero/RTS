@@ -27,9 +27,7 @@ func _ready():
 		unit.world = self
 	player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
-#		print(el)
 		el.navigation_tilemap = navigationTileMap
-#		print(el.navigation_tilemap)
 #	mouse.ui = UI
 	pass # Replace with function body.
 

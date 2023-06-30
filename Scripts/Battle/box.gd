@@ -80,6 +80,13 @@ func set_destination(_value):
 	moveComponent.destination = self.global_position
 	moveComponent.next_point = self.global_position
 
+func set_face_direction(value : float = 0):
+	rotation = value
+	if moveComponent == null:
+		push_error("there is not moveComponent")
+		return
+	moveComponent.face_direction = value
+
 func set_chase(value : Unit):
 	if moveComponent == null:
 		return
