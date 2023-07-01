@@ -138,11 +138,10 @@ func move_to_face_melee(areas):
 #		print("unit_pos: %s / area_pos: %s" % [unit.global_position, area.global_position])
 		if distance < closest_distance:
 			closest = area
-	var targetSide = closest.meleePoint.global_position
-	var targetAngle = closest.meleePoint.rotation
-	face_direction = targetAngle
-#	print(closest)
-#	print(targetAngle)
+	var targetSide = closest.meleePoint.global_position # Place were the unit is going to move
+	var targetAngle = closest.meleePoint.rotation # Rotation of the place were is going to go
+	var targetOwner = closest.owner # Has to add the rotation of the unit to the angle of the hurtbox to get the corret rotation
+	face_direction = targetAngle + targetOwner.rotation
 	stop_movement()
 	destination = targetSide
 #	var line = Line2D.new()

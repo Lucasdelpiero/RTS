@@ -65,7 +65,7 @@ func dragging_draw_and_move():
 
 # Draw and move units in the formation dragged across the screen
 func draw_units(move):
-	var organized = organize_units(units, start_drag.angle_to_point(end_drag))
+	var organized = get_organized_units(units, start_drag.angle_to_point(end_drag))
 	var unit_width = 214
 	var amount = sprites_to_draw.size() 
 	var margin = 1
@@ -90,7 +90,7 @@ func move_without_draggin(center):
 	var average_position = get_average_position(units)
 	var face_angle = average_position.angle_to_point(center)
 	var angle_formation = get_face_to_formation_angle(face_angle)
-	var organized = organize_units(units, angle_formation)
+	var organized = get_organized_units(units, angle_formation)
 	
 	if organized == null:
 		return

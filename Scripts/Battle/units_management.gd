@@ -1,5 +1,6 @@
 extends Node
 class_name UnitsManagement
+@onready var margin_between_units = 214 # Margin used to distance units from each other once ordered to move
 
 func get_face_to_formation_angle(value):
 	return value + PI / 2
@@ -13,7 +14,7 @@ func get_average_position(array : Array) -> Vector2:
 	average_position /= array.size()
 	return average_position 
 
-func organize_units(aUnits, angle_formation = 0.0):
+func get_organized_units(aUnits, angle_formation = 0.0):
 	var comparation = [] # Array used to sort the new order for the units in the array
 	var average_position = Vector2.ZERO # Average position of army
 	

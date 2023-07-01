@@ -36,11 +36,19 @@ script = ExtResource("1_qinoe")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
-[node name="Label" type="Label" parent="."]
-offset_left = 47.0
-offset_top = -158.0
-offset_right = 134.0
-offset_bottom = -88.0
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(80, -168)
+
+[node name="Node" type="Node" parent="Marker2D"]
+
+[node name="NameLabel" type="Label" parent="Marker2D/Node"]
+unique_name_in_owner = true
+z_index = 1000
+z_as_relative = false
+offset_left = 80.0
+offset_top = -168.0
+offset_right = 167.0
+offset_bottom = -98.0
 theme_override_font_sizes/font_size = 48
 text = "Box"
 

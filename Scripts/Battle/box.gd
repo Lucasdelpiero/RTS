@@ -12,6 +12,8 @@ var routed = false
 @onready var sprite = $Sprite2D
 @onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
+@onready var nameLabel = %NameLabel
+
 enum State  {
 	NORMAL,
 	MELEE,
@@ -34,9 +36,8 @@ func _input(_event):
 			
 
 func _physics_process(_delta):
-	$Label.text = name
-	
-	pass
+	nameLabel.text = name
+	nameLabel._set_position($Marker2D.global_position) 
 
 
 func set_hovered(value):
