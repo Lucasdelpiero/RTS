@@ -13,7 +13,8 @@ var nations : Array = []
 func write_savegame(data_to_save) -> void:
 #	var error := _file.open(SAVE_GAME_PATH, File.WRITE)
 	var _file := FileAccess.open("res://save.json", FileAccess.WRITE)
-	var error := _file.open(SAVE_GAME_PATH, FileAccess.WRITE)
+	var error := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
+#	var error := _file.open(SAVE_GAME_PATH, FileAccess.WRITE) # this maybe is a bug??
 	if error == null:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
 		return

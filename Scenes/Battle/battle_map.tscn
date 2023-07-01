@@ -48,7 +48,6 @@ metadata/_edit_lock_ = true
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.68516, 0, 0.0329236, 1)
-setInPosition = false
 
 [node name="Rome1" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
@@ -97,48 +96,48 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria1" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(130, 56.9999)
+position = Vector2(984, -579)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(808, 31)
+position = Vector2(1662, -605)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria3" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(412, 48)
+position = Vector2(1266, -588)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria4" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(570, -196)
+position = Vector2(1424, -832)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria5" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1006, -308)
+position = Vector2(1860, -944)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="Etruria6" parent="EnemyArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1428, 118)
+position = Vector2(2282, -518)
 ownership = "ETRURIA"
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(971, 213)
+position = Vector2(1570, -410)
 rotation = 3.14159
 
 [node name="SpawnPlayer" type="Marker2D" parent="."]
