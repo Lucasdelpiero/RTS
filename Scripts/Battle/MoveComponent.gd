@@ -15,6 +15,7 @@ var face_direction : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	face_direction = unit.rotation
 	if unit == null:
 		return
 	next_point = unit.global_position

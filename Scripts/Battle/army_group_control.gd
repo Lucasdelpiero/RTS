@@ -28,9 +28,10 @@ func set_starting_position():
 		return
 	var spacing = Vector2(cos(spawnMarker.rotation) * 220, 0.0)
 	army = get_children()
+	var offset = Vector2(cos(spawnMarker.rotation ), 0.0) * 220 * (max(1, army.size() - 1)) / 2
 	for i in army.size():
 		var unit = army[i] as Unit
-		var newPos = spawnMarker.global_position + spacing * i
+		var newPos = spawnMarker.global_position + spacing * i - offset
 		unit.global_position = newPos
 		unit.set_destination("pan") # Used just to update the destination to the current position
 		unit.set_face_direction(spawnMarker.rotation)

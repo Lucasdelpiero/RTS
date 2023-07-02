@@ -124,6 +124,7 @@ position = Vector2(94, 0)
 rotation = 4.71239
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
+visible = false
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
@@ -139,13 +140,6 @@ shape = SubResource("RectangleShape2D_tow0k")
 [node name="Timer" type="Timer" parent="HitBoxComponent"]
 wait_time = 0.5
 one_shot = true
-
-[node name="RayCast2D" type="RayCast2D" parent="HitBoxComponent"]
-position = Vector2(-2, -85)
-target_position = Vector2(0, -14)
-collision_mask = 16
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="ShowDirection" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-24, -96, 0, -112, 24, -96)

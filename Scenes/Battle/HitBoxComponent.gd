@@ -2,7 +2,6 @@ extends Marker2D
 
 @onready var hitbox = $Hitbox
 @onready var timer = $Timer
-@onready var raycast = $RayCast2D
 var unitsCollidingWith : Dictionary = {}
 var targetArea : Area2D = null
 signal melee_reached(data)
@@ -15,13 +14,10 @@ func melee_detected():
 	if targetArea == null:
 		return
 	
-#	raycast.set_target_position(targetFlank.global_position - hitbox.global_position)
 	var areas = targetArea.get_hurtbox_group()
-	var collisionPoint = raycast.get_collision_point()
 	var data = {
 		"areas" : areas,
 		"targetArea" : targetArea,
-		"collisionPoint" : collisionPoint, 
 	}
 	emit_signal("melee_reached", data)
 	pass
