@@ -24,7 +24,7 @@ size = Vector2(14.5, 149)
 size = Vector2(20, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
-size = Vector2(106, 4.24825)
+size = Vector2(78, 4.24825)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
 z_index = 10
@@ -80,6 +80,7 @@ visible = false
 script = ExtResource("5_a1p3s")
 
 [node name="Front" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
+unique_name_in_owner = true
 position = Vector2(0, -71)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]

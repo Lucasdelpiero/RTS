@@ -128,16 +128,43 @@ func move_to_face_melee(areas):
 	if unit.state == unit.State.MELEE:
 		return
 	chase_in_queue = false
-	# Get closer area
-	var closest = areas[0]
-#	print("areas : " +str(areas))
+	var closest = areas[0] # default value
+	
+	# From the enemy face direction we calculate the angle difference to the angle from the enemy to the player,
+	# we use this angle difference to choose the flank we will go into melee
+	var angle_to_flank = 55 # Angle in radians from the center to the limit to one of the flanks
+	var enemy_face_direction = Vector2(cos(closest.owner.rotation - PI /2), -sin(closest.owner.rotation + PI / 2)) 
+	var angle_from_enemy_to_other = closest.owner.global_position.angle_to_point(unit.global_position)
+	var v2 = Vector2(cos(angle_from_enemy_to_other), sin(angle_from_enemy_to_other))
+	var angle_difference = enemy_face_direction.angle_to(v2)
+	angle_difference = rad_to_deg(angle_difference)
+	angle_difference = abs(angle_difference)
+	var side = true # boolean is easier to use than multiple conditions
+	var flank = ""
+	# Choose flank acording to the angle difference
+	if angle_difference < angle_to_flank:
+		flank = "Front"
+		side = false
+	if angle_difference > 180 - angle_to_flank and angle_difference < 180 + angle_to_flank:
+		flank = "Back"
+		side = false
+	if side:
+		var left : Vector2
+		var right : Vector2
+		for area in areas:
+			if area.name == "Left":
+				left = area.global_position
+			if area.name == "Right":
+				right = area.global_position
+		if left.distance_to(unit.global_position) < right.distance_to(unit.global_position):
+			flank = "Left"
+		else:
+			flank = "Right"
+	# Choose the closest if they are in a chosen flank
 	for area in areas:
-		var closest_distance = unit.global_position.distance_to(closest.global_position)
-		var distance = unit.global_position.distance_to(area.global_position)
-#		print("%s from: %s distance: %s /closest distance: %s" % [area.name,area.owner , distance, closest_distance])
-#		print("unit_pos: %s / area_pos: %s" % [unit.global_position, area.global_position])
-		if distance < closest_distance:
+		if area.name == flank:
 			closest = area
+	###
 	var targetSide = closest.meleePoint.global_position # Place were the unit is going to move
 	var targetAngle = closest.meleePoint.rotation # Rotation of the place were is going to go
 	var targetOwner = closest.owner # Has to add the rotation of the unit to the angle of the hurtbox to get the corret rotation
