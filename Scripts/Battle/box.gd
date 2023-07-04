@@ -52,6 +52,8 @@ func set_hovered(value):
 func set_selected(value):
 	selected = value
 #	world.set_units_selected(self, value)
+#	print("The unit %s is %s" % [name, "selected" if value else "not selected"])
+#	print("========================")
 	var shader = null
 	if selected:
 		shader = load("res://Shaders/selected.tres")

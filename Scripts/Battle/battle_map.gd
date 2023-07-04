@@ -80,12 +80,13 @@ func set_units_selected(unit : Unit, selected : bool):
 		temp_copy.push_back(unit)
 	# Remove unit if not pressing the control key
 	if units_selected.has(unit):
-		if not Input.is_action_pressed("Control"):
+		if not Input.is_action_pressed("Control") and not selected:
+			unit.selected = false
 			temp_copy.remove_at(unit_position)
 	units_selected = temp_copy.duplicate()
 	# Set every unit in the list to be selected
 	for units in units_selected:
-		units.selected = true
+		units.selected = true # This makes calling the selection 2 times but its needed for the square selectoin
 	playerUnitsManagement.units = units_selected.duplicate()
 
 
