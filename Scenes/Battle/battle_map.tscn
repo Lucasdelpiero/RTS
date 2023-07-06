@@ -53,7 +53,7 @@ army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome1" parent="PlayerArmy" instance=ExtResource("7_s632k")]
 modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1513, 1331)
+position = Vector2(1513, 1297)
 army_color = Color(0.68516, 0, 0.0329236, 1)
 
 [node name="Rome2" parent="PlayerArmy" instance=ExtResource("7_s632k")]
