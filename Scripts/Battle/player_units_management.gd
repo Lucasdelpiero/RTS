@@ -20,7 +20,14 @@ func _ready():
 func _unhandled_input(_event):
 	if world == null:
 		return
-		
+	
+	if units.size() > 0:
+		if Input.is_action_pressed("Secondary_Weapon"):
+			for unit in units as Array[Unit]:
+				unit.alternative_weapon(true)
+		if Input.is_action_just_released("Secondary_Weapon"):
+			for unit in units as Array[Unit]:
+				unit.alternative_weapon(false)
 	# Manage drawing the sprites and movement for the units dra
 	dragging_draw_and_move()
 	

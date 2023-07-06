@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=16 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
+[ext_resource type="Script" path="res://Scripts/Battle/Weapons.gd" id="3_j5ws4"]
+[ext_resource type="PackedScene" uid="uid://dwk7n3tmjh6ag" path="res://Scenes/Battle/weapon.tscn" id="4_h2e3s"]
 [ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
@@ -58,6 +60,13 @@ texture = ExtResource("2_v0q3s")
 metadata/_edit_lock_ = true
 
 [node name="Weapons" type="Node" parent="."]
+script = ExtResource("3_j5ws4")
+
+[node name="Sword" parent="Weapons" instance=ExtResource("4_h2e3s")]
+type = "Sword"
+
+[node name="Bow" parent="Weapons" instance=ExtResource("4_h2e3s")]
+type = "Bow"
 
 [node name="SelectionComponent" type="Node2D" parent="."]
 

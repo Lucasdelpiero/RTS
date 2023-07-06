@@ -13,6 +13,7 @@ var routed = false
 @onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
 @onready var nameLabel = %NameLabel
+@onready var weapons = $Weapons
 
 enum State  {
 	NORMAL,
@@ -107,3 +108,6 @@ func melee(data):
 #	print(data)
 #	print("got into melee")
 	pass
+
+func alternative_weapon(use_secondary):
+	weapons.alternative_weapon(use_secondary)

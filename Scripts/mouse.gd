@@ -157,8 +157,6 @@ func _on_area_2d_area_entered(area):
 	if area.owner is Unit:
 		if area.owner.ownership == Globals.playerNation:
 			world.set_units_selected(area.owner, true) # add to list of units hovered
-#		print("%s has the mouse inside" % [area.owner.name])
-#		print("alfonso")
 		pass
 
 
@@ -172,9 +170,6 @@ func _on_area_2d_area_exited(area):
 		if area.owner is Unit:
 			if area.owner.ownership == Globals.playerNation: # 1 is the player
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
-#		print("%s has the mouse outside" % [area.owner.name])
-		pass
-	pass # Replace with function body.
 
 # Once the mouse is hovering an army for enough time, the data will show up
 func _on_hovered_timer_timeout():

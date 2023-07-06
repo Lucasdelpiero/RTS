@@ -42,7 +42,7 @@ func _unhandled_input(_event):
 			if unit.ownership == Globals.playerNation:
 				unit.selected = true
 				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
-				
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
