@@ -67,6 +67,17 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	units_hovered = temp_copy.duplicate()
 	playerUnitsManagement.hovered_units = units_hovered.duplicate()
 	
+	# Check for enemy in hovering
+	var hover_enemy = false
+	for i in units_hovered as Array[Unit]:
+		if i.ownership != Globals.playerNation:
+			hover_enemy = true
+		
+	if hover_enemy:
+		print("AN ENEMYYYYY")
+	else:
+		print("Its safe")
+	
 	# Get the closer 
 #	print("units hovered: %s" % [units_hovered])
 	

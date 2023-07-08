@@ -2,17 +2,11 @@ extends Node
 
 var selected_weapon : Weapon = null : set = set_selected_weapon
 var alternati_weapon : Weapon = null # what the mouse shows and what will be selected once is set to attack with the weapon shown
-var primary_weapon : Weapon = null
-var secondary_weapon : Weapon = null
+@export var primary_weapon : Weapon = null
+@export var secondary_weapon : Weapon = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var weapons = get_children()
-	for i in weapons.size():
-		if i == 0:
-			primary_weapon = weapons[i]
-		if i == 1:
-			secondary_weapon = weapons[i]
 	if primary_weapon != null:
 		selected_weapon = primary_weapon
 	if selected_weapon == null:
@@ -36,6 +30,6 @@ func set_selected_weapon(value : Weapon):
 	if selected_weapon != value:
 		selected_weapon = value
 		if owner.selected:
-#			print("%s is now using a %s" % [owner.name, selected_weapon.type])
+			print("%s is now using a %s" % [owner.name, selected_weapon.weapon])
 			pass
 	

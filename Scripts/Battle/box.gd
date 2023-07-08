@@ -14,6 +14,7 @@ var routed = false
 @export var ownership = "ROME"
 @onready var nameLabel = %NameLabel
 @onready var weapons = $Weapons
+@export var weaponsData : WeaponsData = WeaponsData.new()
 
 enum State  {
 	NORMAL,
@@ -25,6 +26,7 @@ var state = State.NORMAL
 @export var moveComponent : Node = null
 var destination := Vector2.ZERO : set  = set_destination
 var unit_to_chase : Unit = null
+
 
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
@@ -107,7 +109,8 @@ func melee(data):
 	state = State.MELEE
 #	print(data)
 #	print("got into melee")
-	pass
+#	pass
 
 func alternative_weapon(use_secondary):
+#	weaponsData.alternative_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
