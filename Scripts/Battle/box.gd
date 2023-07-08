@@ -27,7 +27,14 @@ var state = State.NORMAL
 var destination := Vector2.ZERO : set  = set_destination
 var unit_to_chase : Unit = null
 
-
+func _ready():
+	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
+	var old = weaponsData.primary_weapon.base_attack
+	if ownership == Globals.playerNation:
+		weaponsData.primary_weapon.base_attack = 10
+		print("%s had an attack of %s and changed to %s"  % [name, old, weaponsData.primary_weapon.base_attack])
+	else:
+		print("%s will keep the same attack value of %s" % [name, weaponsData.primary_weapon.base_attack])
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
 		if hovered:

@@ -14,6 +14,10 @@ var type = "Melee"
 var melee_weapons = ["Dagger", "Sword", "Spear"]
 var range_weapons = ["Bow", "Slingshot"]
 
+
+func nice():
+	base_attack = randi() % 20
+
 func set_weapon_and_type(value):
 	weapon = value
 	if melee_weapons.has(value):

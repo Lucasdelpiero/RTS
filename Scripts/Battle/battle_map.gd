@@ -73,10 +73,10 @@ func set_units_hovered(unit : Unit, hovered : bool):
 		if i.ownership != Globals.playerNation:
 			hover_enemy = true
 		
-	if hover_enemy:
-		print("AN ENEMYYYYY")
-	else:
-		print("Its safe")
+#	if hover_enemy:
+#		print("AN ENEMYYYYY")
+#	else:
+#		print("Its safe")
 	
 	# Get the closer 
 #	print("units hovered: %s" % [units_hovered])

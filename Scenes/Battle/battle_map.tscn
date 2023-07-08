@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw42e4qm5a4xh"]
+[gd_scene load_steps=25 format=3 uid="uid://dw42e4qm5a4xh"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="2_a41j7"]
@@ -8,8 +8,74 @@
 [ext_resource type="PackedScene" uid="uid://cqiahwgp4fud4" path="res://Scenes/Battle/enemy_battle_ia.tscn" id="4_8vivy"]
 [ext_resource type="Script" path="res://Scripts/Battle/army_group_control.gd" id="4_e2hns"]
 [ext_resource type="PackedScene" uid="uid://1sk0tjbdbofh" path="res://Scenes/Battle/navigation_tile_map.tscn" id="6_cde6g"]
-[ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="7_s632k"]
+[ext_resource type="PackedScene" uid="uid://he2gu1akkwqk" path="res://Scenes/Battle/Units/hastati.tscn" id="8_5lvcp"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="9_cjm0x"]
+[ext_resource type="Script" path="res://Scripts/Battle/weapon_data.gd" id="10_tuffa"]
+[ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="11_7t20r"]
+
+[sub_resource type="Resource" id="Resource_2vxhk"]
+resource_local_to_scene = true
+script = ExtResource("10_tuffa")
+weapon = "Sword"
+base_attack = 1
+charge = 1
+parry_chance = 0.0
+base_max_range = 1000
+base_shooting_speed = 1.0
+
+[sub_resource type="Resource" id="Resource_5ixtc"]
+script = ExtResource("10_tuffa")
+weapon = "Bow"
+base_attack = 1
+charge = 1
+parry_chance = 0.0
+base_max_range = 1000
+base_shooting_speed = 1.0
+
+[sub_resource type="Resource" id="Resource_6c542"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_u1yxi"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_fxp0q"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_aeoet"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_lu4af"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_pogke"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_lrab1"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_a8w75"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
+
+[sub_resource type="Resource" id="Resource_sfmnk"]
+script = ExtResource("11_7t20r")
+primary_weapon = SubResource("Resource_2vxhk")
+secondary_weapon = SubResource("Resource_5ixtc")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyvkp"]
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
@@ -49,94 +115,69 @@ metadata/_edit_lock_ = true
 [node name="PlayerArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnPlayer")
-army_color = Color(0.68516, 0, 0.0329236, 1)
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
-[node name="Rome1" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1513, 1297)
-army_color = Color(0.68516, 0, 0.0329236, 1)
+[node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
+modulate = Color(0.686275, 0, 0.0313726, 1)
+position = Vector2(861, 1265)
+weaponsData = SubResource("Resource_6c542")
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
-[node name="Rome2" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(670, 1122)
-army_color = Color(0.68516, 0, 0.0329236, 1)
+[node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
+modulate = Color(0.686275, 0, 0.0313726, 1)
+position = Vector2(1144, 1285)
+weaponsData = SubResource("Resource_u1yxi")
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
-[node name="Rome3" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(917, 1130)
-army_color = Color(0.68516, 0, 0.0329236, 1)
+[node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
+modulate = Color(0.686275, 0, 0.0313726, 1)
+position = Vector2(1379, 1285)
+weaponsData = SubResource("Resource_fxp0q")
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
-[node name="Rome4" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1145, 1130)
-army_color = Color(0.68516, 0, 0.0329236, 1)
+[node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
+modulate = Color(0.686275, 0, 0.0313726, 1)
+position = Vector2(1707, 1299)
+weaponsData = SubResource("Resource_aeoet")
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
-[node name="Rome5" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(2680, 1038)
-rotation = 1.0472
-army_color = Color(0.68516, 0, 0.0329236, 1)
-
-[node name="Rome6" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(2326, 1026)
-army_color = Color(0.68516, 0, 0.0329236, 1)
-
-[node name="Rome7" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(2058, 1062)
-army_color = Color(0.68516, 0, 0.0329236, 1)
-
-[node name="Rome8" parent="PlayerArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.68516, 0, 0.0329236, 1)
-position = Vector2(1811, 1057)
-army_color = Color(0.68516, 0, 0.0329236, 1)
+[node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
+modulate = Color(0.686275, 0, 0.0313726, 1)
+position = Vector2(2070, 1263)
+weaponsData = SubResource("Resource_lu4af")
+army_color = Color(0.686275, 0, 0.0313726, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnEnemy")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
-[node name="Etruria1" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+[node name="Etruria" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(984, -579)
-rotation = 3.14159
+position = Vector2(338, 145)
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_pogke")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
-[node name="Etruria2" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+[node name="Etruria2" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1725, -294)
-rotation = 3.66519
+position = Vector2(687, 116)
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_lrab1")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
-[node name="Etruria3" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+[node name="Etruria3" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1266, -588)
-rotation = 3.14159
+position = Vector2(936, 123)
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_a8w75")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
-[node name="Etruria4" parent="EnemyArmy" instance=ExtResource("7_s632k")]
+[node name="Etruria4" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1424, -832)
-rotation = 3.14159
+position = Vector2(1178, 116)
 ownership = "ETRURIA"
-army_color = Color(0.466667, 0.611765, 0.615686, 1)
-
-[node name="Etruria5" parent="EnemyArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(1860, -944)
-rotation = 3.14159
-ownership = "ETRURIA"
-army_color = Color(0.466667, 0.611765, 0.615686, 1)
-
-[node name="Etruria6" parent="EnemyArmy" instance=ExtResource("7_s632k")]
-modulate = Color(0.466667, 0.611765, 0.615686, 1)
-position = Vector2(2282, -518)
-rotation = 0.785397
-ownership = "ETRURIA"
+weaponsData = SubResource("Resource_sfmnk")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]

@@ -6,16 +6,6 @@ var alternati_weapon : WeaponData = null # what the mouse shows and what will be
 @export var secondary_weapon : WeaponData = null
 var selected_weapon : WeaponData = primary_weapon : set = set_selected_weapon
 
-
-func _ready():
-	print("weapons")
-	if primary_weapon != null:
-		selected_weapon = primary_weapon
-	if selected_weapon == null:
-		push_error("Unit doesnt have a weapon to use")
-	
-
-
 func alternative_weapon(use_secondary : bool = false):
 	print("pw: %s" % [primary_weapon.weapon])
 	if secondary_weapon != null:

@@ -1,9 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=16 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
-[ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="2_q48ub"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
-[ext_resource type="Script" path="res://Scripts/Battle/weapon_data.gd" id="3_2p8w0"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
 [ext_resource type="Script" path="res://Scripts/Battle/Weapons.gd" id="3_j5ws4"]
 [ext_resource type="PackedScene" uid="uid://dwk7n3tmjh6ag" path="res://Scenes/Battle/weapon.tscn" id="4_h2e3s"]
@@ -11,29 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
-
-[sub_resource type="Resource" id="Resource_x8wec"]
-script = ExtResource("3_2p8w0")
-weapon = "Sword"
-base_attack = 1
-charge = 1
-parry_chance = 0.0
-base_max_range = 1000
-base_shooting_speed = 1.0
-
-[sub_resource type="Resource" id="Resource_s2e5s"]
-script = ExtResource("3_2p8w0")
-weapon = "Bow"
-base_attack = 1
-charge = 1
-parry_chance = 0.0
-base_max_range = 1000
-base_shooting_speed = 1.0
-
-[sub_resource type="Resource" id="Resource_d84mr"]
-script = ExtResource("2_q48ub")
-primary_weapon = SubResource("Resource_x8wec")
-secondary_weapon = SubResource("Resource_s2e5s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
@@ -60,7 +35,6 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_d84mr")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 

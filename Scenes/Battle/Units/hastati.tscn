@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://he2gu1akkwqk"]
+
+[ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="1_xxfcp"]
+[ext_resource type="Script" path="res://Scripts/Battle/weapon_data.gd" id="2_x15b1"]
+[ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_5f8p8"]
+
+[sub_resource type="Resource" id="Resource_ce05i"]
+resource_local_to_scene = true
+script = ExtResource("2_x15b1")
+weapon = "Sword"
+base_attack = 1
+charge = 1
+parry_chance = 0.0
+base_max_range = 1000
+base_shooting_speed = 1.0
+
+[sub_resource type="Resource" id="Resource_nr86m"]
+script = ExtResource("2_x15b1")
+weapon = "Bow"
+base_attack = 1
+charge = 1
+parry_chance = 0.0
+base_max_range = 1000
+base_shooting_speed = 1.0
+
+[sub_resource type="Resource" id="Resource_svgcg"]
+script = ExtResource("3_5f8p8")
+primary_weapon = SubResource("Resource_ce05i")
+secondary_weapon = SubResource("Resource_nr86m")
+
+[node name="Hastati" instance=ExtResource("1_xxfcp")]
+weaponsData = SubResource("Resource_svgcg")
+
+[node name="NameLabel" parent="Marker2D/Node" index="0"]
+offset_right = 246.0
+text = "Hastati"
+
+[editable path="MouseDetector"]
+[editable path="HurtBoxComponent/Front"]
+[editable path="HurtBoxComponent/Back"]
+[editable path="HurtBoxComponent/Left"]
+[editable path="HurtBoxComponent/Right"]
