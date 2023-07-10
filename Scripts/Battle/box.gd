@@ -29,12 +29,14 @@ var unit_to_chase : Unit = null
 
 func _ready():
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
-	var old = weaponsData.primary_weapon.base_attack
-	if ownership == Globals.playerNation:
-		weaponsData.primary_weapon.base_attack = 10
-		print("%s had an attack of %s and changed to %s"  % [name, old, weaponsData.primary_weapon.base_attack])
-	else:
-		print("%s will keep the same attack value of %s" % [name, weaponsData.primary_weapon.base_attack])
+#	var old = weaponsData.primary_weapon.base_attack
+#	if ownership == Globals.playerNation:
+#		pass
+#		weaponsData.primary_weapon.base_attack = 10
+#		print("%s had an attack of %s and changed to %s"  % [name, old, weaponsData.primary_weapon.base_attack])
+#	else:
+#		print("%s will keep the same attack value of %s" % [name, weaponsData.primary_weapon.base_attack])
+#		pass
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
 		if hovered:
@@ -48,7 +50,6 @@ func _input(_event):
 func _physics_process(_delta):
 	nameLabel.text = name
 	nameLabel._set_position($Marker2D.global_position) 
-
 
 func set_hovered(value):
 	hovered = value
@@ -73,11 +74,9 @@ func set_selected(value):
 
 func _on_mouse_detector_mouse_entered():
 	hovered = true
-	pass # Replace with function body.
 
 func _on_mouse_detector_mouse_exited():
 	hovered = false
-	pass # Replace with function body.
 
 func move_to(aDestination, face_direction ):
 	if moveComponent == null:
@@ -105,6 +104,7 @@ func set_chase(value : Unit):
 		return
 	moveComponent.chase(value)
 	moveComponent.chasing = true
+	weaponsData.attack() # set te weapon to the alternative
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -119,5 +119,5 @@ func melee(data):
 #	pass
 
 func alternative_weapon(use_secondary):
-#	weaponsData.alternative_weapon(use_secondary)
-	weapons.alternative_weapon(use_secondary)
+	weaponsData.change_weapon(use_secondary)
+#	weapons.alternative_weapon(use_secondary)

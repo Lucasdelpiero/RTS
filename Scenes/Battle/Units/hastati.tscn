@@ -1,35 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://he2gu1akkwqk"]
+[gd_scene load_steps=8 format=3 uid="uid://he2gu1akkwqk"]
 
 [ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="1_xxfcp"]
-[ext_resource type="Script" path="res://Scripts/Battle/weapon_data.gd" id="2_x15b1"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_5f8p8"]
+[ext_resource type="Script" path="res://Scripts/Battle/range_weapon.gd" id="4_1b24q"]
+[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="4_qer06"]
 
-[sub_resource type="Resource" id="Resource_ce05i"]
-resource_local_to_scene = true
-script = ExtResource("2_x15b1")
+[sub_resource type="Resource" id="Resource_2v5g5"]
+script = ExtResource("4_qer06")
 weapon = "Sword"
-base_attack = 1
-charge = 1
-parry_chance = 0.0
-base_max_range = 1000
-base_shooting_speed = 1.0
+base_attack = 70
+base_charge = 5
+anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_nr86m"]
-script = ExtResource("2_x15b1")
-weapon = "Bow"
-base_attack = 1
-charge = 1
-parry_chance = 0.0
-base_max_range = 1000
+[sub_resource type="Resource" id="Resource_mw041"]
+script = ExtResource("4_1b24q")
+weapon = "Javelin"
+base_attack = 100
+base_max_range = 1556
 base_shooting_speed = 1.0
+base_ammunition = 30
+fire_shot = false
+pierce_armor = true
 
-[sub_resource type="Resource" id="Resource_svgcg"]
+[sub_resource type="Resource" id="Resource_gw8m6"]
 script = ExtResource("3_5f8p8")
-primary_weapon = SubResource("Resource_ce05i")
-secondary_weapon = SubResource("Resource_nr86m")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_2v5g5")
+separator = "                  "
+secondary_type = "Range"
+secondary_weapon = SubResource("Resource_mw041")
 
 [node name="Hastati" instance=ExtResource("1_xxfcp")]
-weaponsData = SubResource("Resource_svgcg")
+weaponsData = SubResource("Resource_gw8m6")
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
 offset_right = 246.0
