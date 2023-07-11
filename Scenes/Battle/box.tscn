@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=26 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapon_data.gd" id="2_3qqiy"]
@@ -7,19 +7,29 @@
 [ext_resource type="Script" path="res://Scripts/Battle/Weapons.gd" id="3_j5ws4"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_v18h5"]
 [ext_resource type="PackedScene" uid="uid://dwk7n3tmjh6ag" path="res://Scenes/Battle/weapon.tscn" id="4_h2e3s"]
+[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="4_lljsf"]
 [ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
-[sub_resource type="Resource" id="Resource_s1xsh"]
+[sub_resource type="Resource" id="Resource_dpj8a"]
 script = ExtResource("2_3qqiy")
 
-[sub_resource type="Resource" id="Resource_enlae"]
+[sub_resource type="Resource" id="Resource_08dtx"]
+script = ExtResource("4_lljsf")
+weapon = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_4pdra"]
 script = ExtResource("3_v18h5")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_s1xsh")
+primary_weapon = SubResource("Resource_dpj8a")
+separator = "                  "
 secondary_type = "Melee"
+secondary_weapon = SubResource("Resource_08dtx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
@@ -27,14 +37,26 @@ size = Vector2(214, 146)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
 size = Vector2(179, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw6ii"]
+size = Vector2(179, 76.9999)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pbqt"]
 size = Vector2(179, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xso6r"]
+size = Vector2(188, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdb2"]
 size = Vector2(14.5, 149)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfmv0"]
+size = Vector2(118, 74.0004)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88m4m"]
 size = Vector2(20, 149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c0sl"]
+size = Vector2(117, 84.9998)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
 size = Vector2(78, 4.24825)
@@ -46,7 +68,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_enlae")
+weaponsData = SubResource("Resource_4pdra")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -100,7 +122,6 @@ unit = NodePath("..")
 
 [node name="HurtBoxComponent" type="Marker2D" parent="."]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("5_a1p3s")
 
 [node name="Front" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
@@ -115,6 +136,10 @@ shape = SubResource("RectangleShape2D_jbuut")
 position = Vector2(0, -88)
 rotation = 3.14159
 
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Front/MeleePoint/CheckSpace" index="0"]
+position = Vector2(2.49996, -8.50006)
+shape = SubResource("RectangleShape2D_uw6ii")
+
 [node name="Back" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 position = Vector2(-1, 65)
 
@@ -124,6 +149,9 @@ shape = SubResource("RectangleShape2D_6pbqt")
 
 [node name="MeleePoint" parent="HurtBoxComponent/Back" index="1"]
 position = Vector2(0, 88)
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Back/MeleePoint/CheckSpace" index="0"]
+shape = SubResource("RectangleShape2D_xso6r")
 
 [node name="Left" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 position = Vector2(-104, 0)
@@ -136,6 +164,9 @@ shape = SubResource("RectangleShape2D_hwdb2")
 position = Vector2(-94, -2)
 rotation = 1.5708
 
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Left/MeleePoint/CheckSpace" index="0"]
+shape = SubResource("RectangleShape2D_sfmv0")
+
 [node name="Right" parent="HurtBoxComponent" instance=ExtResource("6_xs25t")]
 position = Vector2(103, 0)
 
@@ -146,6 +177,10 @@ shape = SubResource("RectangleShape2D_88m4m")
 [node name="MeleePoint" parent="HurtBoxComponent/Right" index="1"]
 position = Vector2(94, 0)
 rotation = 4.71239
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Right/MeleePoint/CheckSpace" index="0"]
+position = Vector2(-1.49999, -4.50003)
+shape = SubResource("RectangleShape2D_8c0sl")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
 visible = false

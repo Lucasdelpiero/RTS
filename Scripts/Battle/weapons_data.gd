@@ -10,26 +10,18 @@ var alternative_weapon : WeaponData = primary_weapon # what the mouse shows and 
 var selected_weapon : WeaponData = primary_weapon : set = set_selected_weapon
 
 func change_weapon(use_secondary : bool = false):
-#	print("pw: %s" % [primary_weapon.weapon])
-	if secondary_weapon != null:
-#		print("sc: %s" % [secondary_weapon.weapon])
-		pass
 	if use_secondary and secondary_weapon != null:
 		alternative_weapon = secondary_weapon
 	else:
 		alternative_weapon = primary_weapon
-#	print("==========")
 
 func attack():
 	selected_weapon = alternative_weapon
-#	print(selected_weapon.nice())
 	pass
 
 func set_selected_weapon(value : WeaponData):
 	if selected_weapon != value:
 		selected_weapon = value
-#		print("changed")
-#		print(owner)
 
 func set_and_create_weapon(value, weapon):
 	if value == "": # When type set to default it deletes the secondary weapon resource

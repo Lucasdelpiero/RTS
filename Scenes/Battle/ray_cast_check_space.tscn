@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3xtdg6pwn35t"]
+
+[node name="RayCastCheckSpace" type="RayCast2D"]
+position = Vector2(0, -81)
+target_position = Vector2(0, -77)
+collision_mask = 16

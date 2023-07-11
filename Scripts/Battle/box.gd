@@ -15,6 +15,10 @@ var routed = false
 @onready var nameLabel = %NameLabel
 @onready var weapons = $Weapons
 @export var weaponsData : WeaponsData = WeaponsData.new()
+@export_range(1, 500, 1) var troops_number : int = 200
+@export_range(0, 10, 1) var veterany : int = 1
+@export_range(0, 50, 1) var armor : int = 1 
+@export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
 
 enum State  {
 	NORMAL,
@@ -28,15 +32,10 @@ var destination := Vector2.ZERO : set  = set_destination
 var unit_to_chase : Unit = null
 
 func _ready():
+#	print("%s: has a shield of value: %s" % [name, shield])
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
-#	var old = weaponsData.primary_weapon.base_attack
-#	if ownership == Globals.playerNation:
-#		pass
-#		weaponsData.primary_weapon.base_attack = 10
-#		print("%s had an attack of %s and changed to %s"  % [name, old, weaponsData.primary_weapon.base_attack])
-#	else:
-#		print("%s will keep the same attack value of %s" % [name, weaponsData.primary_weapon.base_attack])
-#		pass
+	
+
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
 		if hovered:
@@ -121,3 +120,5 @@ func melee(data):
 func alternative_weapon(use_secondary):
 	weaponsData.change_weapon(use_secondary)
 #	weapons.alternative_weapon(use_secondary)
+
+
