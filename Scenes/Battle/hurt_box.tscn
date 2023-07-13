@@ -14,7 +14,7 @@ script = ExtResource("1_eine6")
 
 [node name="CheckSpace" type="Area2D" parent="MeleePoint"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleePoint/CheckSpace"]

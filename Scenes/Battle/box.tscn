@@ -13,23 +13,23 @@
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
-[sub_resource type="Resource" id="Resource_dpj8a"]
+[sub_resource type="Resource" id="Resource_5fjxk"]
 script = ExtResource("2_3qqiy")
 
-[sub_resource type="Resource" id="Resource_08dtx"]
+[sub_resource type="Resource" id="Resource_e2v3v"]
 script = ExtResource("4_lljsf")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_4pdra"]
+[sub_resource type="Resource" id="Resource_v0357"]
 script = ExtResource("3_v18h5")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_dpj8a")
+primary_weapon = SubResource("Resource_5fjxk")
 separator = "                  "
 secondary_type = "Melee"
-secondary_weapon = SubResource("Resource_08dtx")
+secondary_weapon = SubResource("Resource_e2v3v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
@@ -68,7 +68,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_4pdra")
+weaponsData = SubResource("Resource_v0357")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -107,12 +107,12 @@ weapon = "Bow"
 
 [node name="SelectionComponent" type="Node2D" parent="."]
 
-[node name="MouseDetector" parent="." instance=ExtResource("3_2sey5")]
+[node name="UnitDetector" parent="." instance=ExtResource("3_2sey5")]
 collision_layer = 4
 collision_mask = 512
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" parent="MouseDetector" index="0"]
+[node name="CollisionShape2D" parent="UnitDetector" index="0"]
 visible = false
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_oi2r0")
@@ -203,13 +203,13 @@ one_shot = true
 [node name="ShowDirection" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-24, -96, 0, -112, 24, -96)
 
-[connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
-[connection signal="mouse_exited" from="MouseDetector" to="." method="_on_mouse_detector_mouse_exited"]
+[connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]
+[connection signal="mouse_exited" from="UnitDetector" to="." method="_on_unit_detector_mouse_exited"]
 [connection signal="area_entered" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="HitBoxComponent/Timer" to="HitBoxComponent" method="_on_timer_timeout"]
 
-[editable path="MouseDetector"]
+[editable path="UnitDetector"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]

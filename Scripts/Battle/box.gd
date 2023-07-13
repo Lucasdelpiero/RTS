@@ -71,10 +71,10 @@ func set_selected(value):
 		sprite.material.set_shader_parameter("inside_color", army_color)
 	sprite.set_material(shader)
 
-func _on_mouse_detector_mouse_entered():
+func _on_unit_detector_mouse_entered():
 	hovered = true
 
-func _on_mouse_detector_mouse_exited():
+func _on_unit_detector_mouse_exited():
 	hovered = false
 
 func move_to(aDestination, face_direction ):
