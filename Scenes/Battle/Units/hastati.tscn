@@ -1,38 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://he2gu1akkwqk"]
+[gd_scene load_steps=7 format=3 uid="uid://he2gu1akkwqk"]
 
 [ext_resource type="PackedScene" uid="uid://bxbvlrtsleap1" path="res://Scenes/Battle/box.tscn" id="1_xxfcp"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_5f8p8"]
-[ext_resource type="Script" path="res://Scripts/Battle/range_weapon.gd" id="4_1b24q"]
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="4_qer06"]
 [ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Scenes/Battle/ray_cast_check_space.tscn" id="5_471i8"]
 
-[sub_resource type="Resource" id="Resource_16nlx"]
+[sub_resource type="Resource" id="Resource_f1yud"]
 script = ExtResource("4_qer06")
-weapon = "Sword"
+weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_wbrlc"]
-script = ExtResource("4_1b24q")
-weapon = "Bow"
-base_attack = 1
-base_max_range = 1000
-base_shooting_speed = 1.0
-base_ammunition = 30
-fire_shot = false
-pierce_armor = false
-
-[sub_resource type="Resource" id="Resource_1vsil"]
+[sub_resource type="Resource" id="Resource_gd46n"]
 script = ExtResource("3_5f8p8")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_16nlx")
+primary_weapon = SubResource("Resource_f1yud")
 separator = "                  "
-secondary_type = "Range"
-secondary_weapon = SubResource("Resource_wbrlc")
+secondary_type = ""
 
 [node name="Hastati" instance=ExtResource("1_xxfcp")]
-weaponsData = SubResource("Resource_1vsil")
+weaponsData = SubResource("Resource_gd46n")
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 

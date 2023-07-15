@@ -71,12 +71,12 @@ func set_selected(value):
 #	world.set_units_selected(self, value)
 #	print("The unit %s is %s" % [name, "selected" if value else "not selected"])
 #	print("========================")
-	var data = weaponsData.duplicate(true)
-	var datadata = weaponsData.primary_weapon as MeleeWeapon
-	print(datadata)
-#	print(weaponsData.primary_weapon.type)
-	print(weaponsData.selected_weapon)
-	print(weaponsData.secondary_weapon)
+#	var data = weaponsData.duplicate(true)
+#	var datadata = weaponsData.primary_weapon as MeleeWeapon
+	print(weaponsData.primary_weapon.get_type())
+	print(weaponsData.primary_weapon)
+#	print(weaponsData.get_type())
+#	print(weaponsData.secondary_weapon)
 	print("===========")
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null

@@ -2,13 +2,16 @@
 extends Resource
 class_name WeaponsData
 @export_enum("Melee", "Range") var primary_type : String = "Melee" : set = set_primary_type
-@export var primary_weapon : WeaponData = WeaponData.new()
+@export var primary_weapon : WeaponData = MeleeWeapon.new()
 @export_placeholder("Separator") var separator = "                  " # Trick
 @export_enum("Melee", "Range") var secondary_type : String = "" : set = set_secondary_type
 @export var secondary_weapon : WeaponData  
 var alternative_weapon : WeaponData = primary_weapon # what the mouse shows and what will be selected once is set to attack with the weapon shown
 var selected_weapon : WeaponData = primary_weapon : set = set_selected_weapon
 #var selected_weapon = primary_weapon
+
+func get_type():
+	return selected_weapon.get_type()
 
 func start():
 	selected_weapon = primary_weapon
