@@ -14,11 +14,13 @@ var routed = false
 @export var ownership = "ROME"
 @onready var nameLabel = %NameLabel
 @onready var weapons = $Weapons
+@onready var rangeOfAttack = $RangeOfAttack
 @export var weaponsData : WeaponsData = WeaponsData.new()
 @export_range(1, 500, 1) var troops_number : int = 200
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1 
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
+var enemies_in_range : Array[Unit] = []
 
 enum State  {
 	NORMAL,
@@ -26,7 +28,7 @@ enum State  {
 	FLEEING,
 }
 var state = State.NORMAL
-@export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0)
+@export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0) : set = set_color
 @export var moveComponent : Node = null
 var destination := Vector2.ZERO : set  = set_destination
 var unit_to_chase : Unit = null
@@ -34,7 +36,7 @@ var unit_to_chase : Unit = null
 func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
-	
+	weaponsData.start()
 
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
@@ -50,6 +52,11 @@ func _physics_process(_delta):
 	nameLabel.text = name
 	nameLabel._set_position($Marker2D.global_position) 
 
+func set_color(value):
+	army_color = value
+	$Sprite2D.modulate = army_color
+	$ShowDirection.modulate = army_color
+
 func set_hovered(value):
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
@@ -64,11 +71,20 @@ func set_selected(value):
 #	world.set_units_selected(self, value)
 #	print("The unit %s is %s" % [name, "selected" if value else "not selected"])
 #	print("========================")
+	var data = weaponsData.duplicate(true)
+	var datadata = weaponsData.primary_weapon as MeleeWeapon
+	print(datadata)
+#	print(weaponsData.primary_weapon.type)
+	print(weaponsData.selected_weapon)
+	print(weaponsData.secondary_weapon)
+	print("===========")
+	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null
 	if selected:
 		shader = load("res://Shaders/selected.tres")
 		sprite.set_material(shader)
 		sprite.material.set_shader_parameter("inside_color", army_color)
+	
 	sprite.set_material(shader)
 
 func _on_unit_detector_mouse_entered():
@@ -122,3 +138,20 @@ func alternative_weapon(use_secondary):
 #	weapons.alternative_weapon(use_secondary)
 
 
+func _on_range_of_attack_area_entered(area):
+	var unit = area.owner as Unit
+	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
+		enemies_in_range.push_back(unit)
+		print(enemies_in_range)
+	pass # Replace with function body.
+
+
+func _on_range_of_attack_area_exited(area):
+	var unit = area.owner as Unit
+	var index = enemies_in_range.find(unit)
+	if index >= 0:
+		var newArr = enemies_in_range.duplicate()
+		newArr.remove_at(index)
+		enemies_in_range = newArr.duplicate()
+		print(enemies_in_range)
+	pass # Replace with function body.

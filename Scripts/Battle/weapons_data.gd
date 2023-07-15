@@ -8,6 +8,10 @@ class_name WeaponsData
 @export var secondary_weapon : WeaponData  
 var alternative_weapon : WeaponData = primary_weapon # what the mouse shows and what will be selected once is set to attack with the weapon shown
 var selected_weapon : WeaponData = primary_weapon : set = set_selected_weapon
+#var selected_weapon = primary_weapon
+
+func start():
+	selected_weapon = primary_weapon
 
 func change_weapon(use_secondary : bool = false):
 	if use_secondary and secondary_weapon != null:
@@ -19,7 +23,7 @@ func attack():
 	selected_weapon = alternative_weapon
 	pass
 
-func set_selected_weapon(value : WeaponData):
+func set_selected_weapon(value):
 	if selected_weapon != value:
 		selected_weapon = value
 
@@ -27,9 +31,9 @@ func set_and_create_weapon(value, weapon):
 	if value == "": # When type set to default it deletes the secondary weapon resource
 		set(weapon, null)
 	if value == "Melee":
-		set(weapon, MeleeWeapon.new())
+		set(weapon, MeleeWeapon.new() as MeleeWeapon)
 	if value == "Range":
-		set(weapon, RangeWeapon.new())
+		set(weapon, RangeWeapon.new() as RangeWeapon)
 
 func set_primary_type(value):
 	if primary_type != value:

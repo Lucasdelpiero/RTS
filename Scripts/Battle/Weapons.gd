@@ -31,5 +31,5 @@ func set_selected_weapon(value : Weapon):
 		selected_weapon = value
 #		if owner.selected:
 #			print("%s is now using a %s" % [owner.name, selected_weapon.weapon])
-#			pass
+#			passw
 	

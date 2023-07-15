@@ -9,3 +9,9 @@ var type = "Range"
 @export_range(1, 1000, 1) var base_ammunition : int = 30
 @export var fire_shot : bool = false
 @export var pierce_armor : bool = false
+
+func get_type():
+	return "Range"
+
+func get_damage():
+	return 100

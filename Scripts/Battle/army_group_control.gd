@@ -42,4 +42,4 @@ func set_color(value):
 	army_color = value
 	for unit in army:
 		unit.army_color = army_color
-		unit.modulate = army_color
+#		unit.modulate = army_color

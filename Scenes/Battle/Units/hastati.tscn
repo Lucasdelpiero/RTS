@@ -6,42 +6,39 @@
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="4_qer06"]
 [ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Scenes/Battle/ray_cast_check_space.tscn" id="5_471i8"]
 
-[sub_resource type="Resource" id="Resource_nqbpy"]
+[sub_resource type="Resource" id="Resource_16nlx"]
 script = ExtResource("4_qer06")
 weapon = "Sword"
-base_attack = 100
+base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_6k1rh"]
+[sub_resource type="Resource" id="Resource_wbrlc"]
 script = ExtResource("4_1b24q")
-weapon = "Javelin"
-base_attack = null
-base_max_range = 1556
+weapon = "Bow"
+base_attack = 1
+base_max_range = 1000
 base_shooting_speed = 1.0
 base_ammunition = 30
 fire_shot = false
-pierce_armor = true
+pierce_armor = false
 
-[sub_resource type="Resource" id="Resource_4aaec"]
+[sub_resource type="Resource" id="Resource_1vsil"]
 script = ExtResource("3_5f8p8")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_nqbpy")
+primary_weapon = SubResource("Resource_16nlx")
 separator = "                  "
 secondary_type = "Range"
-secondary_weapon = SubResource("Resource_6k1rh")
+secondary_weapon = SubResource("Resource_wbrlc")
 
 [node name="Hastati" instance=ExtResource("1_xxfcp")]
-weaponsData = SubResource("Resource_4aaec")
+weaponsData = SubResource("Resource_1vsil")
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
 offset_right = 246.0
 text = "Hastati"
-
-[node name="HurtBoxComponent" parent="." index="6"]
-visible = true
 
 [node name="RayCastCheckSpace" parent="HurtBoxComponent/Front" index="2" instance=ExtResource("5_471i8")]
 position = Vector2(0, -10)
@@ -64,7 +61,7 @@ target_position = Vector2(85, -77)
 [node name="HitBoxComponent" parent="." index="7"]
 visible = true
 
-[editable path="MouseDetector"]
+[editable path="UnitDetector"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]
