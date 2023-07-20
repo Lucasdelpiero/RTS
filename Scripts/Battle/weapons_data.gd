@@ -1,4 +1,10 @@
 @tool
+########
+# WHEN THE RESOURCE IS COPIED IT CANT BE OVERRIED
+#HAS TO STORE THE ORIGINAL IN ONE PLACE AND USE THE COPY TO BE COPIED IN EVERY INSTANCE
+
+
+######
 extends Resource
 class_name WeaponsData
 @export_enum("Melee", "Range") var primary_type : String = "Melee" : set = set_primary_type

@@ -2,6 +2,15 @@
 extends CharacterBody2D
 class_name Unit
 
+########
+# WHEN THE RESOURCE IS COPIED IT CANT BE OVERRIED
+#HAS TO STORE THE ORIGINAL IN ONE PLACE AND USE THE COPY TO BE COPIED IN EVERY INSTANCE
+
+
+#
+
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var mouse = null
@@ -37,6 +46,7 @@ func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
+#	print(weapons.selected_weapon.get_type())
 
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
@@ -73,11 +83,11 @@ func set_selected(value):
 #	print("========================")
 #	var data = weaponsData.duplicate(true)
 #	var datadata = weaponsData.primary_weapon as MeleeWeapon
-	print(weaponsData.primary_weapon.get_type())
-	print(weaponsData.primary_weapon)
+#	print(weaponsData.primary_weapon.get_type())
+#	print(weaponsData.primary_weapon)
 #	print(weaponsData.get_type())
 #	print(weaponsData.secondary_weapon)
-	print("===========")
+#	print("===========")
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null
 	if selected:
@@ -119,7 +129,8 @@ func set_chase(value : Unit):
 		return
 	moveComponent.chase(value)
 	moveComponent.chasing = true
-	weaponsData.attack() # set te weapon to the alternative
+#	weaponsData.attack() # set te weapon to the alternative
+	weapons.attack()
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -134,15 +145,15 @@ func melee(data):
 #	pass
 
 func alternative_weapon(use_secondary):
-	weaponsData.change_weapon(use_secondary)
-#	weapons.alternative_weapon(use_secondary)
+#	weaponsData.change_weapon(use_secondary)
+	weapons.alternative_weapon(use_secondary)
 
 
 func _on_range_of_attack_area_entered(area):
 	var unit = area.owner as Unit
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
 		enemies_in_range.push_back(unit)
-		print(enemies_in_range)
+#		print(enemies_in_range)
 	pass # Replace with function body.
 
 
@@ -153,5 +164,5 @@ func _on_range_of_attack_area_exited(area):
 		var newArr = enemies_in_range.duplicate()
 		newArr.remove_at(index)
 		enemies_in_range = newArr.duplicate()
-		print(enemies_in_range)
+#		print(enemies_in_range)
 	pass # Replace with function body.

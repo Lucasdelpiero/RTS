@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvuy2uf0bf0af"]
+
+[ext_resource type="Script" path="res://Scenes/Battle/melee_weapon.gd" id="1_j3x77"]
+
+[node name="MeleeWeapon" type="Node"]
+script = ExtResource("1_j3x77")

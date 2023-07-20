@@ -35,6 +35,6 @@ func p():
 	var oc = ""
 	if occupant != null:
 		oc = occupant.name
-	if owner.name == "Hastati":
-		print("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
+#	if owner.name == "Hastati":
+#		print("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
 

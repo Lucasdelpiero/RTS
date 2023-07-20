@@ -1,14 +1,31 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxbvlrtsleap1"]
+[gd_scene load_steps=26 format=3 uid="uid://bxbvlrtsleap1"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
+[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_4pbms"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
 [ext_resource type="Script" path="res://Scripts/Battle/Weapons.gd" id="3_j5ws4"]
-[ext_resource type="PackedScene" uid="uid://dwk7n3tmjh6ag" path="res://Scenes/Battle/weapon.tscn" id="4_h2e3s"]
+[ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_sufd2"]
 [ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
+[ext_resource type="PackedScene" uid="uid://cvuy2uf0bf0af" path="res://Scenes/Battle/melee_weapon.tscn" id="6_aeg2d"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
+[ext_resource type="PackedScene" path="res://Scenes/Battle/range_weapon.tscn" id="7_8emkc"]
+
+[sub_resource type="Resource" id="Resource_b78d2"]
+script = ExtResource("2_4pbms")
+weapon = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_25yqd"]
+script = ExtResource("3_sufd2")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_b78d2")
+separator = "                  "
+secondary_type = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
 size = Vector2(214, 146)
@@ -50,6 +67,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
+weaponsData = SubResource("Resource_25yqd")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -74,17 +92,12 @@ position = Vector2(0, 12)
 texture = ExtResource("2_v0q3s")
 metadata/_edit_lock_ = true
 
-[node name="Weapons" type="Node" parent="." node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
+[node name="Weapons" type="Node" parent="."]
 script = ExtResource("3_j5ws4")
-primary_weapon = NodePath("Sword")
-secondary_weapon = NodePath("Bow")
 
-[node name="Sword" parent="Weapons" instance=ExtResource("4_h2e3s")]
-weapon = "Sword"
-parry_chance = 5.0
+[node name="MeleeWeapon" parent="Weapons" instance=ExtResource("6_aeg2d")]
 
-[node name="Bow" parent="Weapons" instance=ExtResource("4_h2e3s")]
-weapon = "Bow"
+[node name="RangeWeapon" parent="Weapons" instance=ExtResource("7_8emkc")]
 
 [node name="SelectionComponent" type="Node2D" parent="."]
 
