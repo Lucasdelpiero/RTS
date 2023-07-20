@@ -5,7 +5,7 @@ var player_units := []
 var units_hovered := []
 var units_selected := []
 var main = null # Main scene controlling scene transitions and data
-@onready var mouse = %Mouse
+@onready var mouse = %Mouse as Mouse
 @onready var camera = %Camera
 @onready var playerArmy = $PlayerArmy
 @onready var enemyArmy = $EnemyArmy
@@ -72,7 +72,8 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	for i in units_hovered as Array[Unit]:
 		if i.ownership != Globals.playerNation:
 			hover_enemy = true
-		
+	mouse.set_weapon_types(get_weapon_types())
+	mouse.set_hovered_enemy(hover_enemy)
 #	if hover_enemy:
 #		print("AN ENEMYYYYY")
 #	else:
@@ -100,6 +101,15 @@ func set_units_selected(unit : Unit, selected : bool):
 		units.selected = true # This makes calling the selection 2 times but its needed for the square selectoin
 	playerUnitsManagement.units = units_selected.duplicate()
 
+func get_weapon_types():
+	var weapon_types_in_selection = []
+	for unit in units_selected as Array[Unit]:
+		var weapons = unit.weapons as WeaponManager
+		var type = weapons.mouse_over_weapon.get_type()
+		if not weapon_types_in_selection.has(type):
+			weapon_types_in_selection.push_back(type)
+#	print(weapon_types_in_selection)
+	return weapon_types_in_selection
 
 func move_player_units():
 	pass

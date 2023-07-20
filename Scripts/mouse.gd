@@ -1,8 +1,12 @@
 extends Node2D
+class_name Mouse
 
 # for army
 var hovered := []
 var selected_armies := []
+var hovered_enemy : bool = false : set = set_hovered_enemy
+var weapon_types : = [] # cursor types for the type of weapon the army will atack with
+var weapon_displayed = "" # weapon currently being displayed
 
 var lastProvinceWithMouseOver = null
 var provinceWithMouseOver = null 
@@ -24,8 +28,13 @@ var end_rectangle := Vector2(0.0, 0.0)
 var start_formation := Vector2(0.0, 0.0)
 var end_formation := Vector2(0.0, 0.0)
 
+var mouse_normal = load("res://Assets/mouse_normal_24.png")
+var mouse_melee = load("res://Assets/mouse_melee_2.png")
+var mouse_range = load("res://Assets/mouse_range.png")
+
 func _ready():
 	col.disabled = true
+	Input.set_custom_mouse_cursor(mouse_melee)
 
 func _input(_event):
 	pass
@@ -145,6 +154,31 @@ func draw_rectangle():
 		for line in 5:
 			rectangleLine.set_point_position(line, Vector2.ZERO)
 
+func set_hovered_enemy(value):
+	hovered_enemy = value
+	set_mouse_cursor()
+
+func set_weapon_types(value): # value given by the battle map
+	weapon_types = value.duplicate()
+
+# Centralizes the state change of the mouse
+func set_mouse_cursor():
+#	Input.set_custom_mouse_cursor(mouse_normal)
+	if hovered_enemy:
+		if weapon_types.size() > 1:
+			Input.set_custom_mouse_cursor(mouse_melee)
+			if weapon_displayed == "":
+				$AlternateCursor.start(0.2)
+				weapon_displayed = "Melee"
+		elif weapon_types.has("Melee"):
+			Input.set_custom_mouse_cursor(mouse_melee)
+		elif weapon_types.has("Range"):
+			Input.set_custom_mouse_cursor(mouse_range)
+	else:
+		Input.set_custom_mouse_cursor(mouse_normal)
+		weapon_displayed = ""
+	
+
 ## Use the selection box to select armies
 func _on_area_2d_area_entered(area):
 	# To select armies in the campaing map
@@ -175,4 +209,17 @@ func _on_area_2d_area_exited(area):
 func _on_hovered_timer_timeout():
 #	print("print the hovered")
 #	print(hovered)
+	pass # Replace with function body.
+
+func _on_alternate_cursor_timeout():
+	print("time")
+	if weapon_displayed == "Range":
+		Input.set_custom_mouse_cursor(mouse_melee)
+		weapon_displayed = "Melee"
+	elif weapon_displayed == "Melee":
+		Input.set_custom_mouse_cursor(mouse_range)
+		weapon_displayed = "Range"
+	if weapon_displayed != "":
+		$AlternateCursor.start(0.4)
+	print(weapon_displayed)
 	pass # Replace with function body.

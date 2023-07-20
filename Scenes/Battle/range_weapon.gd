@@ -11,3 +11,6 @@ extends Weapon
 func _ready():
 	type = "Range"
 	weapon = weapon_type
+
+func get_type():
+	return type

@@ -63,7 +63,7 @@ func _on_area_2d_area_exited(_area):
 
 
 func _on_timer_timeout():
-	print("attack")
+#	print("attack")
 	melee_detected()
 	timer.start()
 	pass # Replace with function body.

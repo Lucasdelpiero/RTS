@@ -12,3 +12,6 @@ func _ready():
 func get_attack():
 	#Space for modifiers
 	return base_attack
+
+func get_type():
+	return type
