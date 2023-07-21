@@ -34,7 +34,7 @@ var mouse_range = load("res://Assets/mouse_range.png")
 
 func _ready():
 	col.disabled = true
-	Input.set_custom_mouse_cursor(mouse_melee)
+#	Input.set_custom_mouse_cursor(mouse_melee)
 
 func _input(_event):
 	pass
@@ -154,12 +154,13 @@ func draw_rectangle():
 		for line in 5:
 			rectangleLine.set_point_position(line, Vector2.ZERO)
 
-func set_hovered_enemy(value):
+func set_hovered_enemy(value): # value given from battle map
 	hovered_enemy = value
 	set_mouse_cursor()
 
 func set_weapon_types(value): # value given by the battle map
 	weapon_types = value.duplicate()
+	set_mouse_cursor()
 
 # Centralizes the state change of the mouse
 func set_mouse_cursor():
@@ -212,7 +213,6 @@ func _on_hovered_timer_timeout():
 	pass # Replace with function body.
 
 func _on_alternate_cursor_timeout():
-	print("time")
 	if weapon_displayed == "Range":
 		Input.set_custom_mouse_cursor(mouse_melee)
 		weapon_displayed = "Melee"
@@ -221,5 +221,3 @@ func _on_alternate_cursor_timeout():
 		weapon_displayed = "Range"
 	if weapon_displayed != "":
 		$AlternateCursor.start(0.4)
-	print(weapon_displayed)
-	pass # Replace with function body.

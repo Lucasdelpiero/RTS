@@ -11,17 +11,17 @@
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
-[sub_resource type="Resource" id="Resource_ns18l"]
+[sub_resource type="Resource" id="Resource_8bk8a"]
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_t7d1u"]
+[sub_resource type="Resource" id="Resource_5j6il"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_ns18l")
+primary_weapon = SubResource("Resource_8bk8a")
 separator = "                  "
 secondary_type = ""
 
@@ -65,7 +65,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_t7d1u")
+weaponsData = SubResource("Resource_5j6il")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -90,7 +90,7 @@ position = Vector2(0, 12)
 texture = ExtResource("2_v0q3s")
 metadata/_edit_lock_ = true
 
-[node name="Weapons" type="Node" parent="."]
+[node name="Weapons" type="Node2D" parent="."]
 script = ExtResource("3_j5ws4")
 
 [node name="SelectionComponent" type="Node2D" parent="."]

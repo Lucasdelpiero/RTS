@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name WeaponManager
 
 var in_use_weapon : Weapon = null : set = set_in_use_weapon
@@ -42,7 +42,6 @@ func alternative_weapon(use_secondary : bool = false):
 #		print("back to normal")
 
 
-
 func set_in_use_weapon(value : Weapon):
 	if in_use_weapon != value:
 		in_use_weapon = value
@@ -56,4 +55,5 @@ func attack(use_secondary : bool = false):
 		in_use_weapon = mouse_over_weapon
 	else:
 		in_use_weapon = primary_weapon
+#	print(in_use_weapon.weapon)
 #	in_use_weapon = mouse_over_weapon

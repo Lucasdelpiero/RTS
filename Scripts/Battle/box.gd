@@ -34,6 +34,7 @@ var enemies_in_range : Array[Unit] = []
 enum State  {
 	NORMAL,
 	MELEE,
+	FIRING,
 	FLEEING,
 }
 var state = State.NORMAL

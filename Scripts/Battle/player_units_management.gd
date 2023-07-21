@@ -30,7 +30,8 @@ func _unhandled_input(_event):
 				unit.alternative_weapon(false)
 	# Manage drawing the sprites and movement for the units dra
 	dragging_draw_and_move()
-	
+
+
 
 func dragging_draw_and_move():
 	if Input.is_action_just_pressed("Click_Right"):
