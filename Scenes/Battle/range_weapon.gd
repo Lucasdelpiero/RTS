@@ -12,8 +12,10 @@ extends Weapon
 @onready var degree_margin = 60
 var polygon_count = 60.0
 
-@onready var collisionPolygon = $AreaRange/CollisionPolygon2D
+@onready var areaRange = $AreaRange as Area2D
+@onready var collisionPolygon = $AreaRange/CollisionPolygon2D 
 var enemies_in_weapon_range : Array[Unit] = []
+signal reached_new_enemy(enemies)
 
 func _ready():
 	type = "Range"
@@ -23,6 +25,7 @@ func _ready():
 		degree_margin = 360
 	if owner.name == "Hastati":
 		set_polygon_range()
+	set_polygon_range()
 
 func _physics_process(_delta):
 	pass
@@ -30,6 +33,10 @@ func _physics_process(_delta):
 
 func get_type():
 	return type
+
+func connect_signals(node_to_conect : WeaponsManager):
+#	reached_new_enemy.connect()
+	pass
 
 func set_polygon_range():
 	var polygon : PackedVector2Array = []
@@ -46,6 +53,7 @@ func set_polygon_range():
 		polygon.push_back(Vector2.ZERO)
 	collisionPolygon.set_polygon(polygon)
 	$Polygon2D.set_polygon(polygon)
+	$Line2D.points = polygon
 	pass
 
 func _on_area_range_area_entered(area):
@@ -53,6 +61,8 @@ func _on_area_range_area_entered(area):
 	if unit.ownership != owner.ownership:
 		if not enemies_in_weapon_range.has(unit):
 			enemies_in_weapon_range.push_back(unit)
+			emit_signal("reached_new_enemy", enemies_in_weapon_range)
+#			reached_new_enemy.emit(enemies_in_weapon_range)
 #			print("there is an enemy here")
 #			print(enemies_in_weapon_range)
 
@@ -66,3 +76,9 @@ func _on_area_range_area_exited(area):
 			enemies_in_weapon_range = arr.duplicate()
 #			print("deleted enemy")
 #			print(enemies_in_weapon_range)
+
+func check_if_target_is_in_area(value):
+	var areas = areaRange.get_overlapping_areas() 
+	var units = areas.map(func(el) : return el.owner) as Array[Unit]
+	return units.has(value)
+

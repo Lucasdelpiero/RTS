@@ -22,12 +22,12 @@ var routed = false
 @onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
 @onready var nameLabel = %NameLabel
-@onready var weapons = $Weapons
+@onready var weapons = $Weapons as WeaponsManager
 @onready var rangeOfAttack = $RangeOfAttack
 @export var weaponsData : WeaponsData = WeaponsData.new()
 @export_range(1, 500, 1) var troops_number : int = 200
 @export_range(0, 10, 1) var veterany : int = 1
-@export_range(0, 50, 1) var armor : int = 1 
+@export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
 var enemies_in_range : Array[Unit] = []
 
@@ -39,14 +39,15 @@ enum State  {
 }
 var state = State.NORMAL
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0) : set = set_color
-@export var moveComponent : Node = null
+@export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
-var unit_to_chase : Unit = null
+var target_unit : Unit = null
 
 func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
+	weapons.send_units_in_range.connect(check_if_target_is_in_range)
 #	print(weapons.selected_weapon.get_type())
 
 func _input(_event):
@@ -61,7 +62,7 @@ func _input(_event):
 
 func _physics_process(_delta):
 	nameLabel.text = name
-	nameLabel._set_position($Marker2D.global_position) 
+	nameLabel._set_position($Marker2D.global_position)
 
 func set_color(value):
 	army_color = value
@@ -97,6 +98,7 @@ func set_selected(value):
 		sprite.material.set_shader_parameter("inside_color", army_color)
 	
 	sprite.set_material(shader)
+	weapons.set_weapons_visibility(value)
 
 func _on_unit_detector_mouse_entered():
 	hovered = true
@@ -125,6 +127,21 @@ func set_face_direction(value : float = 0):
 		return
 	moveComponent.face_direction = value
 
+func attack_target(value : Unit):
+	weapons.attack()
+	var weapon_type = weapons.get_mouse_over_weapon_type()
+#	weapons.alternative_weapon()
+#	print(weapon_type)
+#	print(weapons.in_use_weapon)
+	if weapon_type == "Melee":
+		set_chase(value)
+	if weapon_type == "Range":
+		if weapons.get_if_target_in_weapon_range(value):
+			range_attack(value)
+		else:
+			set_chase(value)
+	pass
+
 func set_chase(value : Unit):
 	if moveComponent == null:
 		return
@@ -132,6 +149,7 @@ func set_chase(value : Unit):
 	moveComponent.chasing = true
 #	weaponsData.attack() # set te weapon to the alternative
 	weapons.attack()
+	target_unit = value
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -145,12 +163,19 @@ func melee(data):
 #	print("got into melee")
 #	pass
 
+func range_attack(target : Unit):
+	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
+	state = State.FIRING
+	moveComponent.face_unit(target)
+	moveComponent.stop_movement()
+	pass
+
 func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
 
-func _on_range_of_attack_area_entered(area):
+func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
 		enemies_in_range.push_back(unit)
@@ -167,3 +192,10 @@ func _on_range_of_attack_area_exited(area):
 		enemies_in_range = newArr.duplicate()
 #		print(enemies_in_range)
 	pass # Replace with function body.
+
+func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -> unit
+	for i in arr:
+		if i == target_unit:
+			range_attack(target_unit)
+#			print("Enemy is hereeeeeee")
+	pass

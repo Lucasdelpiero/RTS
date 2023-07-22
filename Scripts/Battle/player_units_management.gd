@@ -66,7 +66,8 @@ func dragging_draw_and_move():
 			if hovered_units.size() > 0:
 				for unit in units:
 					var target = hovered_units[0]
-					unit.set_chase(target)
+					unit.attack_target(target)
+#					unit.set_chase(target)
 #					print("targeteado")
 			else:
 				move_without_draggin(destination)

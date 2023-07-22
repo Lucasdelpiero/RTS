@@ -109,7 +109,7 @@ func set_units_selected(unit : Unit, selected : bool):
 func get_weapon_types():
 	var weapon_types_in_selection = []
 	for unit in units_selected as Array[Unit]:
-		var weapons = unit.weapons as WeaponManager
+		var weapons = unit.weapons as WeaponsManager
 		var type = weapons.mouse_over_weapon.get_type()
 		if not weapon_types_in_selection.has(type):
 			weapon_types_in_selection.push_back(type)

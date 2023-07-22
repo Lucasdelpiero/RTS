@@ -1,4 +1,5 @@
 extends Node
+class_name  MoveComponent
 
 @export var unit : Unit = null
 var current_position = Vector2.ZERO
@@ -98,6 +99,10 @@ func move_to(to, final_face_direction):
 				return
 #				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
 
+func face_unit(value : Unit):
+	stop_movement()
+	face_direction = unit.global_position.angle_to_point(value.global_position) + ( PI / 2)
+
 func update_facing_angle():
 #	print(path.size())
 	var rot_speed = 0.05
@@ -105,6 +110,8 @@ func update_facing_angle():
 	if path.size() < 1:
 		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed)
 		return
+#	print(path)
+#	print("what")
 	# While moving it will face to the movement direction
 	var angle = unit.global_position.angle_to_point(next_point) + PI / 2
 	angle = unit.global_position.angle_to_point(unit.global_position + unit.velocity) + PI / 2
@@ -194,6 +201,7 @@ func get_pathing(to):
 func stop_movement():
 	path.clear()
 	unit.velocity = Vector2.ZERO
+	chasing = false # maybe this cause a bug when following a unit that is running
 
 func set_nav_map(value : TileMap):
 	nav_map = value.get_navigation_map(0)
