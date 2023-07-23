@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://wwro2duj0ujs"]
+
+[ext_resource type="PackedScene" uid="uid://he2gu1akkwqk" path="res://Scenes/Battle/Units/hastati.tscn" id="1_rktj2"]
+[ext_resource type="Script" path="res://Scripts/Campaign/unit_data.gd" id="2_qow0w"]
+
+[resource]
+script = ExtResource("2_qow0w")
+scene = ExtResource("1_rktj2")
+experience = 0
+health = 100.0

@@ -11,17 +11,17 @@
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
-[sub_resource type="Resource" id="Resource_lym6s"]
+[sub_resource type="Resource" id="Resource_8m46p"]
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_ownr3"]
+[sub_resource type="Resource" id="Resource_fqqey"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_lym6s")
+primary_weapon = SubResource("Resource_8m46p")
 separator = "                  "
 secondary_type = ""
 
@@ -65,7 +65,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_ownr3")
+weaponsData = SubResource("Resource_fqqey")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 

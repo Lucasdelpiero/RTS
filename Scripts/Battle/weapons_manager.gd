@@ -5,14 +5,21 @@ var in_use_weapon : Weapon = null : set = set_in_use_weapon
 var mouse_over_weapon : Weapon = null   # The weapon that will be chose during an attack, pressing ALT changes it to the secondary weapon
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
+var DefaultWeapon : PackedScene = load("res://Scenes/Battle/melee_weapon.tscn")
 signal send_units_in_range(value)
 signal in_use_weapon_ready_to_attack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	if get_children().size() == 0: # Give at least a default weapon
+		var def_weapon = DefaultWeapon.instantiate()
+		add_child(def_weapon)
+	
 	var weapons = get_children() as Array[Weapon]
+	
 	set_weapons_visibility(false)
-#	print(weapons)
+	
 	if weapons.size() > 0:
 		primary_weapon = weapons[0]
 		secondary_weapon = weapons[0] # done in this way so the mouse over changes to the secondary weapon
