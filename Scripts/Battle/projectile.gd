@@ -1,10 +1,12 @@
+@tool
 extends CharacterBody2D
 
-var speed = 3000.0
+var speed = 1500.0
 var target : Vector2 = Vector2.ZERO
 var lifetime : float = 100.0
 var attack : float = 1.0
 @onready var timer : Timer = $Timer 
+@onready var particles : GPUParticles2D = $GPUParticles2D
 
 func create_projectile(data : Dictionary):
 	global_position = data.global_position
@@ -17,9 +19,15 @@ func create_projectile(data : Dictionary):
 	# if its an arrow do this below :
 	$Sprite2D.scale = Vector2(1.0, 0.1)
 	var tween = get_tree().create_tween()
-	tween.tween_property($Sprite2D, "scale", Vector2(1.0, 2.0), lifetime / 4).set_trans(Tween.TRANS_QUAD)
-#	tween.interpolate_value(0.1, 2.0, 0.1, lifetime,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT)
-	tween.play()
+#	tween.tween_property($Sprite2D, "scale", Vector2(1.0, 2.0), lifetime / 2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT_IN)
+	tween.tween_property($Sprite2D, "scale", Vector2(1.0, 2.0), lifetime / 2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property($Sprite2D, "scale", Vector2(1.0, 0.1), lifetime / 2 ).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	particles.lifetime = lifetime
+	particles.process_material.initial_velocity_min = speed
+#	particles.initial_velocity_min = speed
+#	$CPUParticles2D2.lifetime = lifetime
+#	$CPUParticles2D2.initial_velocity_min = 0
+#	$CPUParticles2D2.initial_velocity_min = speed
 
 func _physics_process(delta):
 	velocity = Vector2(cos(rotation), sin(rotation)) * speed
