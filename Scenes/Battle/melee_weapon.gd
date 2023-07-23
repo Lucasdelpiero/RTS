@@ -9,6 +9,9 @@ func _ready():
 	type = "Melee"
 	weapon = weapon_type
 
+func damage(target : Unit):
+	pass
+
 func get_attack():
 	#Space for modifiers
 	return base_attack

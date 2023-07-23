@@ -26,6 +26,11 @@ color = Color(0.360784, 0.305882, 0.74902, 0.211765)
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 8
 z_as_relative = false
+default_color = Color(0.921569, 0.00784314, 0.00784314, 0.470588)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="area_entered" from="AreaRange" to="." method="_on_area_range_area_entered"]
 [connection signal="area_exited" from="AreaRange" to="." method="_on_area_range_area_exited"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

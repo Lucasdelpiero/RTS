@@ -32,12 +32,14 @@ var routed = false
 var enemies_in_range : Array[Unit] = []
 
 enum State  {
-	NORMAL,
-	MELEE,
-	FIRING,
-	FLEEING,
+	IDLE = 0,
+	MOVING = 1,
+	CHASING = 2,
+	MELEE = 3,
+	FIRING = 4,
+	FLEEING = 5,
 }
-var state = State.NORMAL
+var state = State.IDLE
 @export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0) : set = set_color
 @export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
@@ -48,6 +50,7 @@ func _ready():
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
 	weapons.send_units_in_range.connect(check_if_target_is_in_range)
+	weapons.in_use_weapon_ready_to_attack.connect(attack_again)
 #	print(weapons.selected_weapon.get_type())
 
 func _input(_event):
@@ -109,8 +112,14 @@ func _on_unit_detector_mouse_exited():
 func move_to(aDestination, face_direction ):
 	if moveComponent == null:
 		return
+	state = State.MOVING
 	moveComponent.move_to(aDestination, face_direction)
 	moveComponent.chasing = false
+
+func reached_destination():
+	if target_unit == null:
+#		state = State.IDLE # set conditions
+		pass
 	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
@@ -128,11 +137,9 @@ func set_face_direction(value : float = 0):
 	moveComponent.face_direction = value
 
 func attack_target(value : Unit):
-	weapons.attack()
+	target_unit = value
+	weapons.go_to_attack()
 	var weapon_type = weapons.get_mouse_over_weapon_type()
-#	weapons.alternative_weapon()
-#	print(weapon_type)
-#	print(weapons.in_use_weapon)
 	if weapon_type == "Melee":
 		set_chase(value)
 	if weapon_type == "Range":
@@ -140,7 +147,18 @@ func attack_target(value : Unit):
 			range_attack(value)
 		else:
 			set_chase(value)
-	pass
+
+func attack_again():
+#	print("pan")
+#	print(target_unit)
+	if target_unit != null and state == State.FIRING:
+		var weapon_type = weapons.get_in_use_weapon_type()
+		if weapon_type == "Range":
+			if weapons.get_if_target_in_weapon_range(target_unit):
+				range_attack(target_unit)
+			else:
+				set_chase(target_unit)
+
 
 func set_chase(value : Unit):
 	if moveComponent == null:
@@ -148,8 +166,9 @@ func set_chase(value : Unit):
 	moveComponent.chase(value)
 	moveComponent.chasing = true
 #	weaponsData.attack() # set te weapon to the alternative
-	weapons.attack()
+	weapons.go_to_attack()
 	target_unit = value
+	state = State.CHASING
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -168,6 +187,7 @@ func range_attack(target : Unit):
 	state = State.FIRING
 	moveComponent.face_unit(target)
 	moveComponent.stop_movement()
+	weapons.attack(target)
 	pass
 
 func alternative_weapon(use_secondary):
@@ -195,7 +215,7 @@ func _on_range_of_attack_area_exited(area):
 
 func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -> unit
 	for i in arr:
-		if i == target_unit:
+		if i == target_unit and state == State.CHASING: # add fire at will later
 			range_attack(target_unit)
 #			print("Enemy is hereeeeeee")
 	pass

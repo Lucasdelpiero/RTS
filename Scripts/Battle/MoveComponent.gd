@@ -51,7 +51,8 @@ func _physics_process(delta):
 #	if owner.name == "Rome1":
 #		print(path)
 #		print(unit.velocity)
-
+	if path.size() == 0:
+		unit.reached_destination()
 	update_facing_angle()
 
 # The unit will chase the target by updating the path every time the enemy moves in a set time

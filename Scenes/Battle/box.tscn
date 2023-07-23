@@ -1,27 +1,27 @@
-[gd_scene load_steps=24 format=3 uid="uid://d07w8cqafnxa6"]
+[gd_scene load_steps=24 format=3 uid="uid://c2hk7mes1jtit"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_4pbms"]
-[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/box.png" id="2_v0q3s"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="3_2sey5"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="3_sufd2"]
+[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="4_embx1"]
 [ext_resource type="PackedScene" uid="uid://cimuah1c46rgv" path="res://Scenes/Battle/move_component.tscn" id="4_mf8m8"]
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_manager.gd" id="5_mga16"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 
-[sub_resource type="Resource" id="Resource_mjwr5"]
+[sub_resource type="Resource" id="Resource_lym6s"]
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_ejq80"]
+[sub_resource type="Resource" id="Resource_ownr3"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_mjwr5")
+primary_weapon = SubResource("Resource_lym6s")
 separator = "                  "
 secondary_type = ""
 
@@ -65,7 +65,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_ejq80")
+weaponsData = SubResource("Resource_ownr3")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -87,7 +87,7 @@ text = "Box"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 12)
-texture = ExtResource("2_v0q3s")
+texture = ExtResource("4_embx1")
 metadata/_edit_lock_ = true
 
 [node name="Weapons" type="Node2D" parent="."]

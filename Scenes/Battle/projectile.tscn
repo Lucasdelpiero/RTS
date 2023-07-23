@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bam43k53lgv77"]
+
+[ext_resource type="Script" path="res://Scripts/Battle/projectile.gd" id="1_higqx"]
+[ext_resource type="Texture2D" uid="uid://df2827q46nqnl" path="res://Assets/units/arrows.png" id="2_4kpaw"]
+
+[node name="Projectile" type="CharacterBody2D"]
+z_index = 9
+z_as_relative = false
+script = ExtResource("1_higqx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_4kpaw")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

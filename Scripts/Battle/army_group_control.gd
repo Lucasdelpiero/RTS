@@ -35,7 +35,7 @@ func set_starting_position():
 		unit.global_position = newPos
 		unit.set_destination("pan") # Used just to update the destination to the current position
 		unit.set_face_direction(spawnMarker.rotation)
-		unit.state = unit.State.NORMAL # In case units overlaps while spawning and are set to melee stance
+		unit.state = unit.State.IDLE # In case units overlaps while spawning and are set to melee stance
 
 func set_color(value):
 	army = get_children()

@@ -6,6 +6,7 @@ var mouse_over_weapon : Weapon = null   # The weapon that will be chose during a
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
 signal send_units_in_range(value)
+signal in_use_weapon_ready_to_attack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 	for weapon in weapons:
 		if weapon.get_type() == "Range":
 			weapon.reached_new_enemy.connect(new_enemy_reached)
+			weapon.connect_signals_to_manager(self)
 	
 	if in_use_weapon == null:
 		push_error("Unit doesnt have a weapon to use")
@@ -51,17 +53,33 @@ func set_in_use_weapon(value : Weapon):
 #			print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 #	print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 
-func attack(use_secondary : bool = false):
+func go_to_attack(use_secondary : bool = false):
 	use_secondary = Input.is_action_pressed("Secondary_Weapon")
 	if use_secondary:
 		in_use_weapon = mouse_over_weapon
 	else:
 		in_use_weapon = primary_weapon
 
+func attack(target : Unit):
+	var type = in_use_weapon.get_type()
+	if type == "Range":
+		in_use_weapon.shoot(target)
+	if type == "Melee":
+		in_use_weapon.damage(target)
+	pass
+
+func weapon_can_attack_again(weapon):
+	if weapon == in_use_weapon: # only the weapon in use can ask to attack again
+		in_use_weapon_ready_to_attack.emit()
+	pass
+
+
 func get_mouse_over_weapon_type():
 #	print(in_use_weapon)
 	return mouse_over_weapon.get_type()
-	pass
+
+func get_in_use_weapon_type():
+	return in_use_weapon.get_type()
 
 func new_enemy_reached(value : Array): # signal emitted from the range weapon
 	if in_use_weapon.get_type() == "Range":
