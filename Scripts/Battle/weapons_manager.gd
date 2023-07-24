@@ -18,7 +18,6 @@ func _ready():
 	
 	var weapons = get_children() as Array[Weapon]
 	
-	set_weapons_visibility(false)
 	
 	if weapons.size() > 0:
 		primary_weapon = weapons[0]
@@ -28,7 +27,7 @@ func _ready():
 		
 		if weapons.size() > 1:
 			secondary_weapon = weapons [1]
-#			mouse_over_weapon = secondary_weapon
+#			mouse_over_weapon = secondary_weapon ### maybe delete this?
 	
 	for weapon in weapons:
 		if weapon.get_type() == "Range":
@@ -37,6 +36,7 @@ func _ready():
 	
 	if in_use_weapon == null:
 		push_error("Unit doesnt have a weapon to use")
+	set_weapons_visibility(false)
 
 var reseted_weapon = false
 func alternative_weapon(use_secondary : bool = false):
@@ -46,6 +46,7 @@ func alternative_weapon(use_secondary : bool = false):
 		mouse_over_weapon = secondary_weapon
 	else:
 		mouse_over_weapon = primary_weapon
+	set_weapons_visibility(true, use_secondary)
 #	print("%s is wanting to use %s" % [owner.name, mouse_over_weapon.weapon])
 	await get_tree().create_timer(1).timeout
 	if not owner.selected and not reseted_weapon:
@@ -97,7 +98,10 @@ func get_if_target_in_weapon_range(value : Unit):
 	if in_use_weapon.get_type() == "Range":
 		return in_use_weapon.check_if_target_is_in_area(value)
 
-func set_weapons_visibility(value):
+func set_weapons_visibility(value, use_secondary : bool = false):
 	var weapons = get_children() as Array[Weapon]
 	for weapon in weapons:
-		weapon.visible = value
+		if weapon == primary_weapon:
+			weapon.visible = value and !use_secondary
+		if weapon == secondary_weapon:
+			weapon.visible = value and use_secondary

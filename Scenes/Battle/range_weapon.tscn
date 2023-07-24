@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Battle/range_weapon.gd" id="1_duvyj"]
 
 [node name="RangeWeapon" type="Node2D"]
+visible = false
 script = ExtResource("1_duvyj")
 
 [node name="AreaRange" type="Area2D" parent="."]
