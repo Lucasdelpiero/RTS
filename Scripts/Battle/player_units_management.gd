@@ -63,23 +63,18 @@ func dragging_draw_and_move():
 		created_sprites = false
 		
 		if start_drag.distance_to(end_drag) <= drag_distance_draw:
-			if hovered_units.size() > 0:
-				for unit in units:
-					var target = hovered_units[0]
-					unit.attack_target(target)
-#					unit.set_chase(target)
-#					print("targeteado")
-			else:
-				move_without_draggin(destination)
+			move_without_draggin(destination)
 
 # Draw and move units in the formation dragged across the screen
 func draw_units(move):
 	var organized = get_organized_units(units, start_drag.angle_to_point(end_drag))
 	var unit_width = 214
 	var amount = sprites_to_draw.size() 
+	var min_margin = 20
 	var margin = 1
 	if amount > 1:
 		margin = max(1, start_drag.distance_to(end_drag) -  unit_width * (amount) ) / amount 
+		margin = max(min_margin, margin)
 	for i in sprites_to_draw.size():
 		var angle = start_drag.angle_to_point(end_drag)
 		var sprite = sprites_to_draw[i]
@@ -92,9 +87,16 @@ func draw_units(move):
 	pass
 
 func move_without_draggin(center):
+	var enemies_hovered = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
+	if enemies_hovered.size() > 0:
+		var target = hovered_units[0]
+		for unit in units as Array[Unit]:
+			unit.set_chase(target)
+		return
+	
 	var unit_width = 214
 	var _amount = units.size()
-	var _margin = 10
+	var _margin = 20
 	var mouse = world.get_global_mouse_position()
 	var average_position = get_average_position(units)
 	var face_angle = average_position.angle_to_point(center)

@@ -1,4 +1,5 @@
 extends Area2D
+class_name HurtBox
 
 @onready var meleePoint = $MeleePoint
 @onready var checkSpace = $MeleePoint/CheckSpace
@@ -14,8 +15,9 @@ func get_hurtbox_group():
 
 func _on_check_space_area_entered(area):
 #	print("Found area")
-	occupied = true
-	occupant = area.owner
+	if not occupied:
+		occupied = true
+		occupant = area.owner
 	p()
 	pass # Replace with function body.
 

@@ -11,6 +11,8 @@ var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
 var nav_map = null
 @export_range(1,500, 1) var speed = 200
+var pushVector := Vector2.ZERO
+var anchored := true # if an unit reached an empty position is true, else it will be false unit is true
 @onready var line = $Line2D
 var face_direction : float = 0.0
 
@@ -32,8 +34,9 @@ func _physics_process(delta):
 	if unit.state == unit.State.MELEE:
 		unit.global_position = lerp(unit.global_position, destination, 0.2)
 	
-	if unit.global_position.distance_to(next_point) <= speed * delta:
-		unit.global_position = next_point
+	if unit.global_position.distance_to(next_point) <= speed * delta and path.size() > 0 :
+		if not unit.unitDetector.is_colliding():
+			unit.global_position = next_point
 		unit.velocity = Vector2.ZERO
 		
 		if path.size() > 0:
@@ -43,10 +46,27 @@ func _physics_process(delta):
 			next_point = path[0]
 	
 	var angle = (unit.global_position).angle_to_point(next_point)
+	var new_speed := Vector2.ZERO
 	if path.size() > 0:
 		unit.velocity = Vector2(cos(angle), sin(angle)) * speed
+		new_speed = Vector2(cos(angle), sin(angle)) * speed
 	else:
 		unit.velocity = Vector2.ZERO
+		new_speed = Vector2.ZERO
+	
+	if unit.unitDetector.is_colliding():
+		pushVector = unit.unitDetector.get_push_vector()
+	if path.size() == 0:
+		if not unit.unitDetector.is_colliding():
+			anchored = true
+	var push = pushVector * (speed / 2)  * int(!anchored)  # should know if the other unit is also anchored
+	var new = new_speed + push
+	unit.velocity = new_speed + push
+	if unit.name == "Hastati":
+#		print(push)
+#		print("new_seed: ", new_speed + push)
+#		print("new: ", new)
+		pass
 	unit.move_and_slide()
 #	if owner.name == "Rome1":
 #		print(path)
@@ -81,6 +101,7 @@ func move_to(to, final_face_direction):
 		stop_movement()
 		return
 	destination = to
+	
 	#######################
 	# Once i create obstacles i will get this pathing
 #	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
@@ -96,6 +117,7 @@ func move_to(to, final_face_direction):
 		if path[path.size() - 1].distance_to(unit.global_position) > 128:
 			var a = Vector2(cos(face_direction), sin(face_direction))
 			var b = Vector2(cos(unit.rotation), sin(unit.rotation))
+			anchored = false # the anchor has to be set inside here so it anchor itself correctly because of the distance
 			if a.dot(b) < 0 and not chasing:
 				return
 #				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
@@ -132,8 +154,8 @@ func draw_path():
 
 
 func move_to_face_melee(areas):
-	if unit.ownership != "ROME":
-		return
+#	if unit.ownership != "ROME":
+#		return
 	if unit.state == unit.State.MELEE:
 		return
 	chase_in_queue = false
@@ -170,10 +192,36 @@ func move_to_face_melee(areas):
 		else:
 			flank = "Right"
 	# Choose the closest if they are in a chosen flank
-	for area in areas:
+#	print("=====================")
+	for area in areas as Array[HurtBox]:
 		if area.name == flank:
-			closest = area
+			if area.occupied and area.occupant == unit:
+				closest = area
+#				print("its free for me")
+			else:
+				closest = area ## temporal
+#				closest = null
+#				print("its fucking occupied")
 	###
+	if closest == null :
+#		print("you are fucked dud")
+#		print(angle_difference)
+		var second_closest : HurtBox = null
+		var max_distance = 10000
+		for area in areas as Array[HurtBox]:
+			print(area.name)
+			var distance = unit.global_position.distance_to(area.global_position)
+			if distance < max_distance and area.occupant == unit:
+#				print("new area selected")
+				second_closest = area
+				max_distance = distance
+		closest = second_closest
+		
+#		return
+	if closest == null:
+#		print("now u are fucked")
+		return
+	
 	var targetSide = closest.meleePoint.global_position # Place were the unit is going to move
 	var targetAngle = closest.meleePoint.rotation # Rotation of the place were is going to go
 	var targetOwner = closest.owner # Has to add the rotation of the unit to the angle of the hurtbox to get the corret rotation
@@ -203,6 +251,8 @@ func stop_movement():
 	path.clear()
 	unit.velocity = Vector2.ZERO
 	chasing = false # maybe this cause a bug when following a unit that is running
+	unit.reached_destination()
+#	anchored = true
 
 func set_nav_map(value : TileMap):
 	nav_map = value.get_navigation_map(0)

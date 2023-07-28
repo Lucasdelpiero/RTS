@@ -24,6 +24,7 @@ var routed = false
 @onready var nameLabel = %NameLabel
 @onready var weapons = $Weapons as WeaponsManager
 @onready var rangeOfAttack = $RangeOfAttack
+@onready var unitDetector = %UnitDetector
 @export var weaponsData : WeaponsData = WeaponsData.new()
 @export_range(1, 500, 1) var troops_number : int = 200
 @export_range(0, 10, 1) var veterany : int = 1
@@ -83,16 +84,6 @@ func set_hovered(value):
 
 func set_selected(value):
 	selected = value
-#	world.set_units_selected(self, value)
-#	print("The unit %s is %s" % [name, "selected" if value else "not selected"])
-#	print("========================")
-#	var data = weaponsData.duplicate(true)
-#	var datadata = weaponsData.primary_weapon as MeleeWeapon
-#	print(weaponsData.primary_weapon.get_type())
-#	print(weaponsData.primary_weapon)
-#	print(weaponsData.get_type())
-#	print(weaponsData.secondary_weapon)
-#	print("===========")
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null
 	if selected:
@@ -118,7 +109,7 @@ func move_to(aDestination, face_direction ):
 
 func reached_destination():
 	if target_unit == null:
-#		state = State.IDLE # set conditions
+		state = State.IDLE # set conditions
 		pass
 	pass
 
@@ -219,3 +210,23 @@ func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -
 			range_attack(target_unit)
 #			print("Enemy is hereeeeeee")
 	pass
+
+
+func _on_unit_detector_area_entered(area):
+	var unit = area.owner as Unit
+	if unit == null: # fix crash
+		return
+#	if unit.ownership != self.ownership:
+	var angle : float = unit.global_position.angle_to_point(self.global_position)
+	moveComponent.pushVector = Vector2(cos(angle), sin(angle))
+#	print("an enemy is colliding: ")
+#		pass
+	pass # Replace with function body.
+
+func _on_unit_detector_area_exited(area):
+	var unit = area.owner as Unit
+#	if unit.ownership != self.ownership:
+	moveComponent.pushVector = Vector2.ZERO
+#	print("an enemy is leaving")
+#		pass
+	pass # Replace with function body.

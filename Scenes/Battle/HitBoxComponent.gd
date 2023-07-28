@@ -22,6 +22,7 @@ func melee_detected():
 	emit_signal("melee_reached", data)
 	pass
 
+# Detect ALL enemy units is colliding with and choses the one closest
 # Detect areas and store them each together with the object they come from in a dictionary
 func _on_area_2d_area_entered(area):
 	## Ignore areas of same team units
@@ -32,7 +33,7 @@ func _on_area_2d_area_entered(area):
 	unitsCollidingWith.clear()
 	var areas = hitbox.get_overlapping_areas()
 #	print(areas)
-	
+
 	for a in areas:
 		# Create the key with the object name and create an array with the first area
 		if not unitsCollidingWith.has(a.owner.name):
@@ -41,7 +42,7 @@ func _on_area_2d_area_entered(area):
 		# If the key with the object exitst then just add the area it is colliding with
 			if not unitsCollidingWith[a.owner.name].has(a):
 				unitsCollidingWith[a.owner.name].push_back(a)
-	
+
 	# Get the closest collision area
 	var closest = null
 	for unit in unitsCollidingWith:

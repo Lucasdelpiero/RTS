@@ -6,22 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://d2muwlo87x7i8" path="res://Scenes/Battle/range_weapon.tscn" id="4_1okoe"]
 [ext_resource type="PackedScene" uid="uid://cvuy2uf0bf0af" path="res://Scenes/Battle/melee_weapon.tscn" id="5_ph45o"]
 
-[sub_resource type="Resource" id="Resource_8sogu"]
+[sub_resource type="Resource" id="Resource_wqilx"]
 script = ExtResource("2_rrglf")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_vnnny"]
+[sub_resource type="Resource" id="Resource_t2b0h"]
 script = ExtResource("3_k2m8e")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_8sogu")
+primary_weapon = SubResource("Resource_wqilx")
 separator = "                  "
 secondary_type = ""
 
 [node name="Bowman" instance=ExtResource("1_yujsf")]
-weaponsData = SubResource("Resource_vnnny")
+weaponsData = SubResource("Resource_t2b0h")
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
 offset_right = 284.0
