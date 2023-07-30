@@ -56,9 +56,7 @@ func _physics_process(delta):
 	
 	if unit.unitDetector.is_colliding():
 		pushVector = unit.unitDetector.get_push_vector()
-	if path.size() == 0:
-		if not unit.unitDetector.is_colliding():
-			anchored = true
+	update_is_anchored() # used here so if the pathsize is 0 it will be true
 	var push = pushVector * (speed / 2)  * int(!anchored)  # should know if the other unit is also anchored
 	var new = new_speed + push
 	unit.velocity = new_speed + push
@@ -113,11 +111,11 @@ func move_to(to, final_face_direction):
 		next_point = path[0]
 	face_direction = final_face_direction # angle of the unit once reaches its destination
 	# Rotate if the angle is large
+	update_is_anchored() # used here to not anchor the unit if the distance is greater than 128 pixels
 	if path.size() > 0 : 
 		if path[path.size() - 1].distance_to(unit.global_position) > 128:
 			var a = Vector2(cos(face_direction), sin(face_direction))
 			var b = Vector2(cos(unit.rotation), sin(unit.rotation))
-			anchored = false # the anchor has to be set inside here so it anchor itself correctly because of the distance
 			if a.dot(b) < 0 and not chasing:
 				return
 #				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
@@ -139,6 +137,20 @@ func update_facing_angle():
 	var angle = unit.global_position.angle_to_point(next_point) + PI / 2
 	angle = unit.global_position.angle_to_point(unit.global_position + unit.velocity) + PI / 2
 	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
+
+# The anchor variable is used to set when the unit can be pushed or not by another unit when they intersect their collision areas
+func update_is_anchored(value = null):
+	if path.size() == 0:
+			if not unit.unitDetector.is_colliding():
+				anchored = true
+	
+	if path.size() > 0 : 
+		anchored = false
+#		if path[path.size() - 1].distance_to(unit.global_position) > 128:
+#			anchored = false # should this be here?
+	
+	if value != null: # used to override the anchor value just in case
+		anchored = value
 
 func draw_path():
 	var has_to_draw = ( unit.selected and unit.ownership == Globals.playerNation )
@@ -252,7 +264,6 @@ func stop_movement():
 	unit.velocity = Vector2.ZERO
 	chasing = false # maybe this cause a bug when following a unit that is running
 	unit.reached_destination()
-#	anchored = true
 
 func set_nav_map(value : TileMap):
 	nav_map = value.get_navigation_map(0)

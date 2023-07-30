@@ -8,8 +8,9 @@ func get_push_vector():
 	var push_vector = Vector2.ZERO
 	var areas = get_overlapping_areas()
 	if is_colliding():
-		var area = areas[0]
-		push_vector = area.global_position.direction_to(global_position)
+		for area in areas:
+			var push = area.global_position.direction_to(global_position)
+			push_vector += push
 		push_vector = push_vector.normalized()
 	return push_vector
 	

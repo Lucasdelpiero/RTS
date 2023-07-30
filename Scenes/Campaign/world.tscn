@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="11_y8fvc"]
 [ext_resource type="PackedScene" uid="uid://dsrejdj4e02gv" path="res://Scenes/Campaign/battle_menu.tscn" id="15_wjfr6"]
 
-[sub_resource type="Resource" id="Resource_giuju"]
+[sub_resource type="Resource" id="Resource_dgrki"]
 script = ExtResource("10_f8mr6")
 scene = ExtResource("9_tgq5y")
 experience = 0
@@ -26,9 +26,9 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), SubResource("Resource_giuju")])
+army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), SubResource("Resource_dgrki")])
 
-[sub_resource type="Resource" id="Resource_jq2bs"]
+[sub_resource type="Resource" id="Resource_cdo76"]
 script = ExtResource("10_f8mr6")
 scene = ExtResource("9_tgq5y")
 experience = 0
@@ -36,9 +36,9 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_dmdnx"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), SubResource("Resource_jq2bs")])
+army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), SubResource("Resource_cdo76")])
 
-[sub_resource type="Resource" id="Resource_mik7h"]
+[sub_resource type="Resource" id="Resource_cvj0y"]
 script = ExtResource("10_f8mr6")
 scene = ExtResource("9_tgq5y")
 experience = 0
@@ -46,9 +46,9 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_8lrrd"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), SubResource("Resource_mik7h")])
+army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), SubResource("Resource_cvj0y")])
 
-[sub_resource type="Resource" id="Resource_kr8o2"]
+[sub_resource type="Resource" id="Resource_8vw1n"]
 script = ExtResource("10_f8mr6")
 scene = ExtResource("9_tgq5y")
 experience = 0
@@ -56,7 +56,7 @@ health = 100.0
 
 [sub_resource type="Resource" id="Resource_ce5sf"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), SubResource("Resource_kr8o2")])
+army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), SubResource("Resource_8vw1n")])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
