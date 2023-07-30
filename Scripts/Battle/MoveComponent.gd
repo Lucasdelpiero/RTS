@@ -54,12 +54,16 @@ func _physics_process(delta):
 		unit.velocity = Vector2.ZERO
 		new_speed = Vector2.ZERO
 	
+	var pushStrength := Vector2.ZERO
 	if unit.unitDetector.is_colliding():
-		pushVector = unit.unitDetector.get_push_vector()
+#		pushVector = unit.unitDetector.get_push_vector()
+		pushStrength = unit.unitDetector.get_push_strength()
 	update_is_anchored() # used here so if the pathsize is 0 it will be true
-	var push = pushVector * (speed / 2)  * int(!anchored)  # should know if the other unit is also anchored
-	var new = new_speed + push
-	unit.velocity = new_speed + push
+#	var push = pushVector * (speed / 2)  * int(!anchored)  # should know if the other unit is also anchored
+	pushStrength *=  int(!anchored)  # should know if the other unit is also anchored
+#	var new = new_speed + push
+	var new = new_speed + pushStrength
+	unit.velocity = new
 	if unit.name == "Hastati":
 #		print(push)
 #		print("new_seed: ", new_speed + push)
@@ -148,6 +152,9 @@ func update_is_anchored(value = null):
 		anchored = false
 #		if path[path.size() - 1].distance_to(unit.global_position) > 128:
 #			anchored = false # should this be here?
+	
+	if unit.state == unit.State.FIRING or unit.state == unit.State.MELEE:
+		anchored = true
 	
 	if value != null: # used to override the anchor value just in case
 		anchored = value

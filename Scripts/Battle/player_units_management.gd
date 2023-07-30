@@ -91,7 +91,8 @@ func move_without_draggin(center):
 	if enemies_hovered.size() > 0:
 		var target = hovered_units[0]
 		for unit in units as Array[Unit]:
-			unit.set_chase(target)
+			unit.attack_target(target)
+#			unit.set_chase(target)
 		return
 	
 	var unit_width = 214
