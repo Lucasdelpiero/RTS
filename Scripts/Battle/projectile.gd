@@ -7,12 +7,14 @@ var lifetime : float = 100.0
 var attack : float = 1.0
 @onready var timer : Timer = $Timer 
 @onready var particles : GPUParticles2D = $GPUParticles2D
+signal dealedDamage(data)
 
 func create_projectile(data : Dictionary):
 	global_position = data.global_position
 	target = data.target
 	rotation = data.rotation
 	set_rotation(data.rotation)
+	$Area2D.rotation = data.rotation
 	lifetime = (global_position.distance_to(target) / speed  )
 	timer.start(lifetime)
 	attack = data.attack
@@ -35,4 +37,14 @@ func _physics_process(delta):
 
 func _on_timer_timeout():
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area):
+	var unit = area.owner as Unit
+	dealedDamage.connect(unit.recieved_attack)
+	var data = AttackData.new()
+	data.attack = attack
+	dealedDamage.emit(data)
+	dealedDamage.disconnect(unit.recieved_attack)
 	pass # Replace with function body.

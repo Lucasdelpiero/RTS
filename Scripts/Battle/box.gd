@@ -65,6 +65,7 @@ func _input(_event):
 			
 
 func _physics_process(_delta):
+#	$Label.text = str(target_unit)
 	nameLabel.text = name
 	nameLabel._set_position($Marker2D.global_position)
 
@@ -128,6 +129,9 @@ func set_face_direction(value : float = 0):
 	moveComponent.face_direction = value
 
 func attack_target(value : Unit):
+	if value == null:
+		printerr(" attack_target HERE IS THE FUCKING PROBLEM")
+		return
 	target_unit = value
 	weapons.go_to_attack()
 	var weapon_type = weapons.get_mouse_over_weapon_type()
@@ -140,8 +144,6 @@ func attack_target(value : Unit):
 			set_chase(value)
 
 func attack_again():
-#	print("pan")
-#	print(target_unit)
 	if target_unit != null and state == State.FIRING:
 		var weapon_type = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
@@ -149,6 +151,9 @@ func attack_again():
 				range_attack(target_unit)
 			else:
 				set_chase(target_unit)
+	if target_unit != null and state == State.MELEE:
+		attack_target(target_unit)
+		pass
 
 
 func set_chase(value : Unit):
@@ -158,6 +163,9 @@ func set_chase(value : Unit):
 	moveComponent.chasing = true
 #	weaponsData.attack() # set te weapon to the alternative
 	weapons.go_to_attack()
+	if value == null:
+		print("set_chase THE ERROR IS HERE")
+		return
 	target_unit = value
 	state = State.CHASING
 	if Input.is_action_pressed("Shift"):
@@ -169,6 +177,12 @@ func melee(data):
 	var new_data = data["areas"]
 	moveComponent.move_to_face_melee(new_data)
 	state = State.MELEE
+	target_unit = data.target
+	if target_unit == null:
+		printerr("melee HERE IS THE PROBLEM")
+		return
+	weapons.attack(target_unit)
+#	var attack = weapons.attack(target_unit)
 #	print(data)
 #	print("got into melee")
 #	pass
@@ -185,6 +199,9 @@ func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
+func recieved_attack(data : AttackData):
+	print("i recieved damage")
+	pass
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit

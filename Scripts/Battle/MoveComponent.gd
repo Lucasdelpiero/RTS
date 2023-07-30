@@ -4,6 +4,7 @@ class_name  MoveComponent
 @export var unit : Unit = null
 var current_position = Vector2.ZERO
 var destination : Vector2 = Vector2.ZERO
+var want_to_chase := false
 var chasing := false
 var chase_in_queue = false # The chasing was ordered after queueing a path that has to be completed before going after the enemy
 var next_point : Vector2 = Vector2.ZERO

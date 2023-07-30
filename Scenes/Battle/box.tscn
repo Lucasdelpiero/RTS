@@ -206,6 +206,14 @@ debug_color = Color(1, 1, 1, 0.0784314)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
+[node name="Label" type="Label" parent="."]
+offset_left = -175.0
+offset_top = -191.0
+offset_right = -127.0
+offset_bottom = -165.0
+scale = Vector2(3, 3)
+text = "<null>"
+
 [connection signal="area_entered" from="UnitDetector" to="." method="_on_unit_detector_area_entered"]
 [connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
 [connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]

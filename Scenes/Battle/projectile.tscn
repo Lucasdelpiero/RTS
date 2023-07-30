@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bam43k53lgv77"]
+[gd_scene load_steps=12 format=3 uid="uid://bam43k53lgv77"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/projectile.gd" id="1_higqx"]
 [ext_resource type="Texture2D" uid="uid://ds5712r20wjxw" path="res://Assets/units/arrows_2.png" id="2_277jd"]
 [ext_resource type="Texture2D" uid="uid://b12kh5ac5180y" path="res://Assets/units/arrow.png" id="3_kuevu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo1fo"]
+size = Vector2(256, 128)
 
 [sub_resource type="Curve" id="Curve_wc8df"]
 max_value = 20.0
@@ -53,19 +56,21 @@ turbulence_influence_max = 0.06
 [node name="Projectile" type="CharacterBody2D"]
 z_index = 11
 z_as_relative = false
-position = Vector2(52850, 0)
+position = Vector2(954250, 0)
 velocity = Vector2(1500, 0)
 script = ExtResource("1_higqx")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fo1fo")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-rotation = 1.5708
 texture = ExtResource("2_277jd")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -105,4 +110,5 @@ texture = ExtResource("3_kuevu")
 explosiveness = 0.71
 randomness = 0.19
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

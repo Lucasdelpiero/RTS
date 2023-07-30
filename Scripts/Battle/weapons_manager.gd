@@ -33,7 +33,9 @@ func _ready():
 		if weapon.get_type() == "Range":
 			weapon.reached_new_enemy.connect(new_enemy_reached)
 			weapon.connect_signals_to_manager(self)
-	
+		if weapon.get_type() == "Melee":
+			weapon.readyToAttack.connect(weapon_can_attack_again)
+		
 	if in_use_weapon == null:
 		push_error("Unit doesnt have a weapon to use")
 	set_weapons_visibility(false)
@@ -73,7 +75,7 @@ func attack(target : Unit):
 	if type == "Range":
 		in_use_weapon.shoot(target)
 	if type == "Melee":
-		in_use_weapon.damage(target)
+		in_use_weapon.attack(target)
 	pass
 
 func weapon_can_attack_again(weapon):

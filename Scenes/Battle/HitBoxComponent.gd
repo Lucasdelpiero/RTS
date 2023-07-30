@@ -18,6 +18,7 @@ func melee_detected():
 	var data = {
 		"areas" : areas,
 		"targetArea" : targetArea,
+		"target" : areas[0].owner,
 	}
 	emit_signal("melee_reached", data)
 	pass
@@ -31,7 +32,7 @@ func _on_area_2d_area_entered(area):
 	
 	# Clears dictionary where saved collided units and areas are stored
 	unitsCollidingWith.clear()
-	var areas = hitbox.get_overlapping_areas()
+	var areas = hitbox.get_overlapping_areas().filter(func(el) : return el.owner.ownership != owner.ownership)
 #	print(areas)
 
 	for a in areas:
@@ -54,7 +55,9 @@ func _on_area_2d_area_entered(area):
 				closest = ar
 				closest_distance = distance_to_area 
 		targetArea = closest
-	melee_detected()
+#		print(owner.name, ": ",targetArea.owner)
+	if closest != null:
+		melee_detected()
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
