@@ -2,7 +2,7 @@ extends Node2D
 class_name BattleMap
 
 var player_units := []
-var units_hovered := []
+var units_hovered := [] 
 var units_selected := []
 var main = null # Main scene controlling scene transitions and data
 @onready var mouse = %Mouse as Mouse
@@ -11,20 +11,24 @@ var main = null # Main scene controlling scene transitions and data
 @onready var enemyArmy = $EnemyArmy
 @onready var navigationTileMap = $NavigationTileMap
 @onready var playerUnitsManagement = $PlayerUnitsManagement
+@onready var battleUI : BattleUI = $BattleUI
 var nav_map = null
 
 @onready var spawnPlayer = %SpawnPlayer
 @onready var spawnEnemy = %SpawnEnemy
 
 signal sg_finished_battle(data)
+signal sg_clean_overlay_unit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_units()
 	mouse.world = self
-	for unit in get_tree().get_nodes_in_group("units"):
+	sg_clean_overlay_unit.connect(battleUI.hide_overlay)
+	for unit in get_tree().get_nodes_in_group("units") as Array[Unit]:
 		unit.mouse = mouse
 		unit.world = self
+		unit.show_overlay_unit.connect(send_data_to_overlay)
 	player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
 		el.navigation_tilemap = navigationTileMap
@@ -79,6 +83,8 @@ func set_units_hovered(unit : Unit, hovered : bool):
 			hover_enemy = true
 	mouse.set_weapon_types(get_weapon_types())
 	mouse.set_hovered_enemy(hover_enemy)
+	if units_hovered.size() == 0:
+		sg_clean_overlay_unit.emit()
 #	if hover_enemy:
 #		print("AN ENEMYYYYY")
 #	else:
@@ -148,6 +154,9 @@ func finish_battle():
 	emit_signal("sg_finished_battle", data)
 	pass
 
+func send_data_to_overlay(data : OverlayUnitData):
+	battleUI.update_overlay(data)
+	pass
 
 func _on_finish_battle_button_pressed():
 	finish_battle()

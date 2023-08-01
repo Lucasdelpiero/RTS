@@ -25,8 +25,11 @@ var routed = false
 @onready var weapons = $Weapons as WeaponsManager
 @onready var rangeOfAttack = $RangeOfAttack
 @onready var unitDetector = %UnitDetector
+#@onready var overlay : OverlayUnit = %Overlay
+@onready var marker : Marker2D = $Marker2D
 @export var weaponsData : WeaponsData = WeaponsData.new()
-@export_range(1, 500, 1) var troops_number : int = 200
+@export_range(1, 500, 1) var troops_number_max : int = 200
+var troops_number : int = 0
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
@@ -46,12 +49,18 @@ var state = State.IDLE
 var destination := Vector2.ZERO : set  = set_destination
 var target_unit : Unit = null
 
+signal show_overlay_unit(data)
+
 func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
 	weaponsData = weaponsData.duplicate(true) as WeaponsData # Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
 	weapons.send_units_in_range.connect(check_if_target_is_in_range)
 	weapons.in_use_weapon_ready_to_attack.connect(attack_again)
+	if troops_number == 0: # if not defined a number of alive troops on creation it will have the max amount
+		troops_number = troops_number_max
+	update_overlay()
+
 #	print(weapons.selected_weapon.get_type())
 
 func _input(_event):
@@ -67,7 +76,10 @@ func _input(_event):
 func _physics_process(_delta):
 #	$Label.text = str(target_unit)
 	nameLabel.text = name
-	nameLabel._set_position($Marker2D.global_position)
+#	var pos = marker.position
+#	print(pos)
+#	nameLabel._set_position(marker.global_position)
+#	overlay.set_position(marker.global_position)
 
 func set_color(value):
 	army_color = value
@@ -97,6 +109,7 @@ func set_selected(value):
 
 func _on_unit_detector_mouse_entered():
 	hovered = true
+	update_overlay()
 
 func _on_unit_detector_mouse_exited():
 	hovered = false
@@ -201,6 +214,17 @@ func alternative_weapon(use_secondary):
 
 func recieved_attack(data : AttackData):
 	print("i recieved damage")
+	print(data)
+	pass
+
+func update_overlay():
+	await get_tree().create_timer(1.0).timeout
+	if not hovered:
+		return
+	var overlay_unit = OverlayUnit.new() as OverlayUnit
+	var data = overlay_unit.get_data_from_unit(self as Unit)
+	show_overlay_unit.emit(data)
+#	overlay.update_data(data)
 	pass
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
