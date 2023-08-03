@@ -56,7 +56,7 @@ turbulence_influence_max = 0.06
 [node name="Projectile" type="CharacterBody2D"]
 z_index = 11
 z_as_relative = false
-position = Vector2(1.4736e+06, 0)
+position = Vector2(1.54018e+06, 0)
 velocity = Vector2(1500, 0)
 script = ExtResource("1_higqx")
 

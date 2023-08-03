@@ -28,13 +28,13 @@ void fragment() {
 	mina = min(a, mina);
 	
 	COLOR = mix(col, outline_color, maxa - mina);
-	if (col.r > 0.01){
+	if (col.r > 0.1){
 //		COLOR.r = 0.52;
 //		COLOR.g = 0.12;
 //		COLOR.b = 0.12;
-		COLOR.r = inside_color.r;
-		COLOR.g = inside_color.g;
-		COLOR.b = inside_color.b;
+		COLOR.r = inside_color.r; // used in the old sprite
+		COLOR.g = inside_color.g; // used in the old sprite
+		COLOR.b = inside_color.b; // used in the old sprite
 	}
 //	COLOR.r = 50.0;
 //	COLOR.r = 255.0;

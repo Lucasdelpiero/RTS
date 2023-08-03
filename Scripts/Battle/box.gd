@@ -19,8 +19,11 @@ var selected = false : set = set_selected
 var world = null
 var routed = false
 @onready var sprite = $Sprite2D
+@onready var spriteBase : Sprite2D = %SpriteBase
+@onready var spriteType : Sprite2D = %SpriteType
 @onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
+@export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
 @onready var nameLabel = %NameLabel
 @onready var weapons = $Weapons as WeaponsManager
 @onready var rangeOfAttack = $RangeOfAttack
@@ -84,6 +87,7 @@ func _physics_process(_delta):
 func set_color(value):
 	army_color = value
 	$Sprite2D.modulate = army_color
+	%SpriteBase.modulate = army_color
 	$ShowDirection.modulate = army_color
 
 func set_hovered(value):
@@ -93,7 +97,8 @@ func set_hovered(value):
 		var shader = null
 		if hovered:
 			shader = load("res://Shaders/Glow.tres")
-		sprite.set_material(shader)
+#		sprite.set_material(shader)
+		spriteBase.set_material(shader)
 
 func set_selected(value):
 	selected = value
@@ -101,10 +106,14 @@ func set_selected(value):
 	var shader = null
 	if selected:
 		shader = load("res://Shaders/selected.tres")
-		sprite.set_material(shader)
-		sprite.material.set_shader_parameter("inside_color", army_color)
+#		sprite.set_material(shader)
+#		sprite.material.set_shader_parameter("inside_color", army_color)
+		spriteBase.set_material(shader)
+		spriteBase.material.set_shader_parameter("inside_color", army_color)
 	
-	sprite.set_material(shader)
+
+#	sprite.set_material(shader)
+	spriteBase.set_material(shader)
 	weapons.set_weapons_visibility(value)
 
 func _on_unit_detector_mouse_entered():
@@ -226,6 +235,8 @@ func update_overlay():
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
 	pass
+func get_type():
+	return type
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit

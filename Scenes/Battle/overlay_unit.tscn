@@ -5,7 +5,6 @@
 
 [node name="OverlayUnit" type="PanelContainer"]
 custom_minimum_size = Vector2(280, 140)
-anchors_preset = -1
 offset_right = 280.0
 offset_bottom = 140.0
 mouse_filter = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c2hk7mes1jtit"]
+[gd_scene load_steps=29 format=3 uid="uid://c2hk7mes1jtit"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/box.gd" id="1_qinoe"]
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_4pbms"]
@@ -11,20 +11,22 @@
 [ext_resource type="Script" path="res://Scripts/Battle/HurtBoxComponent.gd" id="5_a1p3s"]
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_manager.gd" id="5_mga16"]
 [ext_resource type="Script" path="res://Scenes/Battle/HitBoxComponent.gd" id="6_b1v3d"]
+[ext_resource type="Texture2D" uid="uid://b4nxhf5mv7esw" path="res://Assets/units/box_base.png" id="6_i5n1g"]
 [ext_resource type="PackedScene" uid="uid://cyj42b0nioee2" path="res://Scenes/Battle/hurt_box.tscn" id="6_xs25t"]
 [ext_resource type="Script" path="res://Scripts/Battle/unit_detector.gd" id="7_cbfkp"]
+[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_o0sho"]
 
-[sub_resource type="Resource" id="Resource_d7ptt"]
+[sub_resource type="Resource" id="Resource_iq66y"]
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_oul52"]
+[sub_resource type="Resource" id="Resource_wymqj"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_d7ptt")
+primary_weapon = SubResource("Resource_iq66y")
 separator = "                  "
 secondary_type = ""
 
@@ -68,7 +70,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_oul52")
+weaponsData = SubResource("Resource_wymqj")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -91,7 +93,17 @@ text = "Box"
 
 [node name="Position" parent="Marker2D" instance=ExtResource("5_4voh2")]
 
+[node name="SpriteBase" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 11)
+texture = ExtResource("6_i5n1g")
+
+[node name="SpriteType" type="Sprite2D" parent="SpriteBase"]
+unique_name_in_owner = true
+texture = ExtResource("7_o0sho")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 12)
 texture = ExtResource("4_embx1")
 metadata/_edit_lock_ = true
@@ -179,6 +191,7 @@ position = Vector2(-1.49999, -4.50003)
 shape = SubResource("RectangleShape2D_8c0sl")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
+visible = false
 script = ExtResource("6_b1v3d")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
@@ -212,6 +225,7 @@ debug_color = Color(1, 1, 1, 0.0784314)
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -175.0
 offset_top = -191.0
 offset_right = -127.0
