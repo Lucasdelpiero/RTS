@@ -18,135 +18,135 @@
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="11_7t20r"]
 [ext_resource type="PackedScene" uid="uid://bop3toux627kh" path="res://Scenes/Battle/Units/bowman.tscn" id="11_kyhj3"]
 
-[sub_resource type="Resource" id="Resource_vycq4"]
+[sub_resource type="Resource" id="Resource_miaal"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_pk3cr"]
+[sub_resource type="Resource" id="Resource_mf7rp"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_vycq4")
+primary_weapon = SubResource("Resource_miaal")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_skp7r"]
+[sub_resource type="Resource" id="Resource_qmy7l"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_ugqn3"]
+[sub_resource type="Resource" id="Resource_ny5xq"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_skp7r")
+primary_weapon = SubResource("Resource_qmy7l")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_7uh3a"]
+[sub_resource type="Resource" id="Resource_7yr7j"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_iddan"]
+[sub_resource type="Resource" id="Resource_mra4o"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_7uh3a")
+primary_weapon = SubResource("Resource_7yr7j")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_kk2y8"]
+[sub_resource type="Resource" id="Resource_psm52"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_4g6lf"]
+[sub_resource type="Resource" id="Resource_nga38"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_kk2y8")
+primary_weapon = SubResource("Resource_psm52")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_lofyg"]
+[sub_resource type="Resource" id="Resource_k7qvj"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_u3f24"]
+[sub_resource type="Resource" id="Resource_wria2"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_lofyg")
+primary_weapon = SubResource("Resource_k7qvj")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_x8hwx"]
+[sub_resource type="Resource" id="Resource_r0yok"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_bccrm"]
+[sub_resource type="Resource" id="Resource_82om2"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_x8hwx")
+primary_weapon = SubResource("Resource_r0yok")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_dm4sx"]
+[sub_resource type="Resource" id="Resource_dwtxn"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_3lxts"]
+[sub_resource type="Resource" id="Resource_o4ttl"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_dm4sx")
+primary_weapon = SubResource("Resource_dwtxn")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_p14jk"]
+[sub_resource type="Resource" id="Resource_tpj1u"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_e44y3"]
+[sub_resource type="Resource" id="Resource_bqi74"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_p14jk")
+primary_weapon = SubResource("Resource_tpj1u")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_is6vx"]
+[sub_resource type="Resource" id="Resource_6b7rj"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_wycac"]
+[sub_resource type="Resource" id="Resource_r0l8d"]
 script = ExtResource("10_tuffa")
 
-[sub_resource type="Resource" id="Resource_j18n5"]
+[sub_resource type="Resource" id="Resource_8p1wm"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_is6vx")
+primary_weapon = SubResource("Resource_6b7rj")
 separator = null
 secondary_type = "Melee"
-secondary_weapon = SubResource("Resource_wycac")
+secondary_weapon = SubResource("Resource_r0l8d")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyvkp"]
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
@@ -162,7 +162,6 @@ script = ExtResource("3_7m77a")
 
 [node name="OverlayUnit" parent="BattleUI" instance=ExtResource("4_vae5l")]
 visible = false
-anchors_preset = 0
 offset_left = 536.0
 offset_top = 28.0
 offset_right = -336.0
@@ -211,50 +210,42 @@ army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(861, 1265)
-type = null
-weaponsData = SubResource("Resource_pk3cr")
+weaponsData = SubResource("Resource_mf7rp")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1144, 1285)
-type = null
-weaponsData = SubResource("Resource_ugqn3")
+weaponsData = SubResource("Resource_ny5xq")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1379, 1285)
-type = null
-weaponsData = SubResource("Resource_iddan")
+weaponsData = SubResource("Resource_mra4o")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1707, 1299)
-type = null
-weaponsData = SubResource("Resource_4g6lf")
+weaponsData = SubResource("Resource_nga38")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(2070, 1263)
-type = null
-weaponsData = SubResource("Resource_u3f24")
+weaponsData = SubResource("Resource_wria2")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1139, 1678)
-type = null
-weaponsData = SubResource("Resource_bccrm")
+weaponsData = SubResource("Resource_82om2")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman2" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1622, 1678)
-type = null
-weaponsData = SubResource("Resource_3lxts")
+weaponsData = SubResource("Resource_o4ttl")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman3" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1977, 1678)
-type = null
-weaponsData = SubResource("Resource_e44y3")
+weaponsData = SubResource("Resource_bqi74")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
@@ -266,8 +257,7 @@ army_color = Color(0.466667, 0.611765, 0.615686, 1)
 modulate = Color(0.466667, 0.611765, 0.615686, 1)
 position = Vector2(338, 145)
 ownership = "ETRURIA"
-type = null
-weaponsData = SubResource("Resource_j18n5")
+weaponsData = SubResource("Resource_8p1wm")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]

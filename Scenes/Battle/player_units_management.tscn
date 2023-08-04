@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://crla1uo06vuto"]
+[gd_scene load_steps=5 format=3 uid="uid://crla1uo06vuto"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/player_units_management.gd" id="1_7j668"]
+[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="2_tyjbm"]
+[ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="3_pumns"]
+[ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_b4tro"]
 
 [node name="PlayerUnitsManagement" type="Node"]
 script = ExtResource("1_7j668")
+texture_types = Array[Texture2D]([ExtResource("2_tyjbm"), ExtResource("3_pumns"), ExtResource("4_b4tro")])
