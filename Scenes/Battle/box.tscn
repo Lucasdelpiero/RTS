@@ -16,17 +16,17 @@
 [ext_resource type="Script" path="res://Scripts/Battle/unit_detector.gd" id="7_cbfkp"]
 [ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_o0sho"]
 
-[sub_resource type="Resource" id="Resource_jgqcu"]
+[sub_resource type="Resource" id="Resource_3smgc"]
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_4ev35"]
+[sub_resource type="Resource" id="Resource_mbonw"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_jgqcu")
+primary_weapon = SubResource("Resource_3smgc")
 separator = "                  "
 secondary_type = ""
 
@@ -70,7 +70,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_4ev35")
+weaponsData = SubResource("Resource_mbonw")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 

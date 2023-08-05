@@ -19,15 +19,15 @@ func write_savegame(data_to_save) -> void:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
 		return
 	
-	var nations = []
+	var nations_to_save = []
 	
 	for nation in data_to_save.nations:
-		nations.push_back(nation.save())
+		nations_to_save.push_back(nation.save())
 	
 #	print(nations)
 	
 	var data = {
-		"nations" : nations
+		"nations" : nations_to_save
 	}
 	var json_string := JSON.stringify(data)
 	_file.store_string(json_string)

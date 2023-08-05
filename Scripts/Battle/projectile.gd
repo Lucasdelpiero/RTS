@@ -31,7 +31,7 @@ func create_projectile(data : Dictionary):
 #	$CPUParticles2D2.initial_velocity_min = 0
 #	$CPUParticles2D2.initial_velocity_min = speed
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2(cos(rotation), sin(rotation)) * speed
 	move_and_slide()
 

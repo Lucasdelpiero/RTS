@@ -11,7 +11,7 @@ var weapon_displayed = "" # weapon currently being displayed
 var lastProvinceWithMouseOver = null
 var provinceWithMouseOver = null 
 var provinceSelected = null
-var world = null
+static var world = null
 var ui = null
 
 # To draw the rectangle selection
@@ -33,6 +33,7 @@ var mouse_melee = load("res://Assets/mouse_melee_2.png")
 var mouse_range = load("res://Assets/mouse_range.png")
 
 func _ready():
+	Unit.mouse = self
 	col.disabled = true
 #	Input.set_custom_mouse_cursor(mouse_melee)
 
