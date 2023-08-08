@@ -276,7 +276,7 @@ func _on_unit_detector_area_entered(area):
 	pass # Replace with function body.
 
 func _on_unit_detector_area_exited(area):
-	var unit = area.owner as Unit
+	var _unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
 #	print("an enemy is leaving")

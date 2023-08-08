@@ -4,15 +4,6 @@ class_name OverlayUnit
 @onready var troopsCount : Label = %TroopsCount
 @onready var unitName : Label = %UnitName
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func update_data(data : OverlayUnitData):
 	troopsCount.text = "%s/%s" % [data.troops_number, data.tropps_max_number]
 	unitName.text = data.unit_name

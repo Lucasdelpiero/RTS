@@ -77,17 +77,16 @@ func dragging_draw_and_move():
 	# Delete the sprites
 	if Input.is_action_just_released("Click_Right"):
 		destination = world.get_global_mouse_position()
-		for sprite in sprites_types:
-			sprite[0].call_deferred("queue_free")
-			sprite[1].call_deferred("queue_free")
-#			sprite[0].queue_free()
-#			sprite[1].queue_free()
-		sprites_types = []
-		for sprite in sprites_to_draw:
-			sprite.queue_free()
-		draw_units(true)
-		sprites_to_draw = []
-		created_sprites = false
+		if start_drag.distance_to(end_drag) >= drag_distance_draw or created_sprites:
+			for sprite in sprites_types:
+				sprite[0].call_deferred("queue_free")
+				sprite[1].call_deferred("queue_free")
+			sprites_types = []
+			for sprite in sprites_to_draw:
+				sprite.queue_free()
+			draw_units(true)
+			sprites_to_draw = []
+			created_sprites = false
 		
 		if start_drag.distance_to(end_drag) <= drag_distance_draw:
 			move_without_draggin(destination)
@@ -110,32 +109,28 @@ func draw_units(move):
 	if amount > 1:
 		margin = max(1, start_drag.distance_to(end_drag) -  unit_width * (amount) ) / amount 
 		margin = max(min_margin, margin)
-	
-	for i in organized_units.size():
-		var angle = start_drag.angle_to_point(end_drag)
-		var type = organized[i].get_type()
-		var sprite_type_res = "res://Assets/units/box_default_type.png"
-		if type == 1:
-			sprite_type_res = "res://Assets/units/box_type_sword.png"
-		if type == 2:
-			sprite_type_res = "res://Assets/units/box_type_bow.png"
-			
-		var distance = unit_width + margin
-		var new_pos = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
-		if move:
-			organized[i].move_to(new_pos, angle)
 		
-		if sprites_types.size() == 0 or i >= sprites_types.size():
-			continue
-		var spriteBase = sprites_types[i][0]
-		var spriteType = sprites_types[i][1]
-		spriteBase.global_position = new_pos
-		spriteType.global_position = new_pos
-		spriteBase.rotation = angle
-		spriteType.rotation = angle
+	for i in organized_units.size():
+			var angle = start_drag.angle_to_point(end_drag)
+			var distance = unit_width + margin
+			var new_pos = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
+			if move:
+				organized[i].move_to(new_pos, angle)
+			
+			if sprites_types.size() == 0 or i >= sprites_types.size():
+				continue
+			var spriteBase = sprites_types[i][0]
+			var spriteType = sprites_types[i][1]
+			spriteBase.global_position = new_pos
+			spriteType.global_position = new_pos
+			spriteBase.rotation = angle
+			spriteType.rotation = angle
 		
 
 func move_without_draggin(center):
+	if center == null:
+		printerr("Player manager doesnt have a center")
+		return
 	var enemies_hovered = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
 	if enemies_hovered.size() > 0:
 		var target = hovered_units[0]
@@ -155,7 +150,6 @@ func move_without_draggin(center):
 	
 	if organized == null:
 		return
-	
 	for i in organized.size():
 		var offset = Vector2(cos(angle_formation), sin(angle_formation)) * unit_width  * (organized.size() - 1) / 2
 		var new_pos = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i ) - offset
