@@ -15,8 +15,8 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var hovered = false : set = set_hovered
 var selected = false : set = set_selected
-#static var mouse = null
-#static var world = null
+static var mouse = null
+static var world = null
 var routed = false
 @onready var sprite = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
@@ -92,7 +92,7 @@ func set_color(value):
 
 func set_hovered(value):
 	hovered = value
-#	world.set_units_hovered(self, value) # Add the unit to the hovered array
+	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	if not selected:
 		var shader = null
 		if hovered:

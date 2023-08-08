@@ -15,9 +15,8 @@ func set_array(value):
 #	print(army_units.size())
 	if new_size > current_size:
 		army_units[new_size - 1] = UnitData.new()
-	var army = army_units
-	for u in army:
-		print(u.scene.resource_path)
+	for u in army_units:
+		print(u.scene.resource_name)
 
 func add(value):
 	var new_arr = army_units

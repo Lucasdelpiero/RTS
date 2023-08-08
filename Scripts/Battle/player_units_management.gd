@@ -9,6 +9,7 @@ var drag_distance_draw = 300
 var created_sprites = false
 var sprites_to_draw : Array = []
 @onready var sprites_types : Array = []
+@export var texture_types : Array[Texture2D] = []
 var alpha_color = 0.5
 @export var world : BattleMap = null
 var group_1 : Array = []
@@ -127,17 +128,6 @@ func draw_units(move):
 		spriteBase.rotation = angle
 		spriteType.rotation = angle
 		
-		
-#	for i in sprites_to_draw.size():
-#		var angle = start_drag.angle_to_point(end_drag)
-#		var sprite = sprites_to_draw[i]
-#		var distance = unit_width + margin
-#		var new_pos = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
-#		sprite.global_position = new_pos
-#		sprite.rotation = angle
-#		if move:
-#			organized[i].move_to(new_pos, angle)
-	pass
 
 func move_without_draggin(center):
 	var enemies_hovered = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
@@ -173,15 +163,9 @@ func set_organized_units(value):
 	if org_type.hash() != value_type.hash():
 		organized_units = value.duplicate()
 		update_draw_type()
-#		print("the order changed")
-#	if organized_units.hash() != value.hash():
-#		organized_units = value.duplicate()
-#		print("the order changed")
-		pass
 
 func set_new_value(value : Array):
 	organized_units = value.duplicate()
-
 
 func update_draw_type():
 	for i in sprites_types.size():
@@ -189,11 +173,11 @@ func update_draw_type():
 		if i >= organized_units.size() or organized_units.size() == 0:
 			return
 		var type = organized_units[i].get_type()
-		var sprite_type_res = "res://Assets/units/box_default_type.png"
-		if type == 1:
-			sprite_type_res = "res://Assets/units/box_type_sword.png"
-		if type == 2:
-			sprite_type_res = "res://Assets/units/box_type_bow.png"
-		sprites_types[i][1].set_texture(load(sprite_type_res))
+		var default = "res://Assets/units/box_default_type.png"
+		if type < texture_types.size():
+			sprites_types[i][1].set_texture(texture_types[type])
+		else:
+			sprites_types[i][1].set_texture(load(default))
+		
 
 

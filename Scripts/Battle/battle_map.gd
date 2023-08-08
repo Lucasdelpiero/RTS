@@ -22,8 +22,8 @@ signal sg_clean_overlay_unit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	Mouse.world = self
-#	Unit.world = self
+	Mouse.world = self
+	Unit.world = self
 	spawn_units()
 #	mouse.world = self
 	sg_clean_overlay_unit.connect(battleUI.hide_overlay)

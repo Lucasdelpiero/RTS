@@ -18,345 +18,135 @@
 [ext_resource type="Script" path="res://Scripts/Battle/weapons_data.gd" id="11_7t20r"]
 [ext_resource type="PackedScene" uid="uid://bop3toux627kh" path="res://Scenes/Battle/Units/bowman.tscn" id="11_kyhj3"]
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_51esr"]
-=======
-[sub_resource type="Resource" id="Resource_vycq4"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_vycq4"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_78rtv"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_3tect"]
+[sub_resource type="Resource" id="Resource_x7e62"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_51esr")
+primary_weapon = SubResource("Resource_78rtv")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_ua106"]
-=======
-[sub_resource type="Resource" id="Resource_pk3cr"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_vycq4")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_skp7r"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_pk3cr"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_vycq4")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_skp7r"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_rsx0s"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_j4g6y"]
+[sub_resource type="Resource" id="Resource_ay0q4"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_ua106")
+primary_weapon = SubResource("Resource_rsx0s")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_o20e6"]
-=======
-[sub_resource type="Resource" id="Resource_ugqn3"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_skp7r")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_7uh3a"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_ugqn3"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_skp7r")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_7uh3a"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_wbdo1"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_s6cil"]
+[sub_resource type="Resource" id="Resource_drjkt"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_o20e6")
+primary_weapon = SubResource("Resource_wbdo1")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_xg0yq"]
-=======
-[sub_resource type="Resource" id="Resource_iddan"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_7uh3a")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_kk2y8"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_iddan"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_7uh3a")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_kk2y8"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_be44e"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_ren7j"]
+[sub_resource type="Resource" id="Resource_2yynk"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_xg0yq")
+primary_weapon = SubResource("Resource_be44e")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_h4jui"]
-=======
-[sub_resource type="Resource" id="Resource_4g6lf"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_kk2y8")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_lofyg"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_4g6lf"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_kk2y8")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_lofyg"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_xnjjf"]
 script = ExtResource("9_e4se1")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_neils"]
+[sub_resource type="Resource" id="Resource_b8imn"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_h4jui")
+primary_weapon = SubResource("Resource_xnjjf")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_0u05d"]
-=======
-[sub_resource type="Resource" id="Resource_u3f24"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_lofyg")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_x8hwx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_u3f24"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_lofyg")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_x8hwx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_3fj1h"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_jomsd"]
+[sub_resource type="Resource" id="Resource_5hj7y"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_0u05d")
+primary_weapon = SubResource("Resource_3fj1h")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_rb5pj"]
-=======
-[sub_resource type="Resource" id="Resource_bccrm"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_x8hwx")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_dm4sx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_bccrm"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_x8hwx")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_dm4sx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_kk206"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_uuthr"]
+[sub_resource type="Resource" id="Resource_bahtq"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_rb5pj")
+primary_weapon = SubResource("Resource_kk206")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_7dqj4"]
-=======
-[sub_resource type="Resource" id="Resource_3lxts"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_dm4sx")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_p14jk"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_3lxts"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_dm4sx")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_p14jk"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_minw7"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_nonbn"]
+[sub_resource type="Resource" id="Resource_s83mr"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_7dqj4")
+primary_weapon = SubResource("Resource_minw7")
 separator = "                  "
 secondary_type = ""
 
-[sub_resource type="Resource" id="Resource_kq5mo"]
-=======
-[sub_resource type="Resource" id="Resource_e44y3"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_p14jk")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_is6vx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_e44y3"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_p14jk")
-separator = "                  "
-secondary_type = ""
-
-[sub_resource type="Resource" id="Resource_is6vx"]
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+[sub_resource type="Resource" id="Resource_yxhna"]
 script = ExtResource("9_e4se1")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[sub_resource type="Resource" id="Resource_qp05a"]
+[sub_resource type="Resource" id="Resource_pyjlm"]
 script = ExtResource("10_tuffa")
 
-[sub_resource type="Resource" id="Resource_fw15v"]
+[sub_resource type="Resource" id="Resource_yv63p"]
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_kq5mo")
+primary_weapon = SubResource("Resource_yxhna")
 separator = null
 secondary_type = "Melee"
-secondary_weapon = SubResource("Resource_qp05a")
-=======
-[sub_resource type="Resource" id="Resource_wycac"]
-script = ExtResource("10_tuffa")
-
-[sub_resource type="Resource" id="Resource_j18n5"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_is6vx")
-separator = null
-secondary_type = "Melee"
-secondary_weapon = SubResource("Resource_wycac")
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-[sub_resource type="Resource" id="Resource_wycac"]
-script = ExtResource("10_tuffa")
-
-[sub_resource type="Resource" id="Resource_j18n5"]
-script = ExtResource("11_7t20r")
-primary_type = "Melee"
-primary_weapon = SubResource("Resource_is6vx")
-separator = null
-secondary_type = "Melee"
-secondary_weapon = SubResource("Resource_wycac")
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+secondary_weapon = SubResource("Resource_pyjlm")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyvkp"]
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
@@ -372,7 +162,6 @@ script = ExtResource("3_7m77a")
 
 [node name="OverlayUnit" parent="BattleUI" instance=ExtResource("4_vae5l")]
 visible = false
-anchors_preset = 0
 offset_left = 536.0
 offset_top = 28.0
 offset_right = -336.0
@@ -420,94 +209,43 @@ spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-<<<<<<< HEAD
 position = Vector2(814, 1202)
-weaponsData = SubResource("Resource_3tect")
+weaponsData = SubResource("Resource_x7e62")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1034, 1202)
-weaponsData = SubResource("Resource_j4g6y")
+weaponsData = SubResource("Resource_ay0q4")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1254, 1202)
-weaponsData = SubResource("Resource_s6cil")
+weaponsData = SubResource("Resource_drjkt")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1474, 1202)
-weaponsData = SubResource("Resource_ren7j")
+weaponsData = SubResource("Resource_2yynk")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1694, 1202)
-weaponsData = SubResource("Resource_neils")
+weaponsData = SubResource("Resource_b8imn")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1914, 1202)
-weaponsData = SubResource("Resource_jomsd")
+weaponsData = SubResource("Resource_5hj7y")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman2" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(2134, 1202)
-weaponsData = SubResource("Resource_uuthr")
+weaponsData = SubResource("Resource_bahtq")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman3" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(2354, 1202)
-weaponsData = SubResource("Resource_nonbn")
-=======
-position = Vector2(861, 1265)
-type = null
-weaponsData = SubResource("Resource_pk3cr")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1144, 1285)
-type = null
-weaponsData = SubResource("Resource_ugqn3")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1379, 1285)
-type = null
-weaponsData = SubResource("Resource_iddan")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1707, 1299)
-type = null
-weaponsData = SubResource("Resource_4g6lf")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(2070, 1263)
-type = null
-weaponsData = SubResource("Resource_u3f24")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Bowman" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(1139, 1678)
-type = null
-weaponsData = SubResource("Resource_bccrm")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Bowman2" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(1622, 1678)
-type = null
-weaponsData = SubResource("Resource_3lxts")
-army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
-
-[node name="Bowman3" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(1977, 1678)
-type = null
-weaponsData = SubResource("Resource_e44y3")
-<<<<<<< HEAD
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+weaponsData = SubResource("Resource_s83mr")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
@@ -520,17 +258,7 @@ modulate = Color(0.466667, 0.611765, 0.615686, 1)
 position = Vector2(1694, -411)
 rotation = 3.14159
 ownership = "ETRURIA"
-<<<<<<< HEAD
-<<<<<<< HEAD
-weaponsData = SubResource("Resource_fw15v")
-=======
-type = null
-weaponsData = SubResource("Resource_j18n5")
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
-=======
-type = null
-weaponsData = SubResource("Resource_j18n5")
->>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+weaponsData = SubResource("Resource_yv63p")
 army_color = Color(0.466667, 0.611765, 0.615686, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]
