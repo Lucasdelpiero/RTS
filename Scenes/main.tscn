@@ -1,14 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnxbs3gp2vjkc"]
+[gd_scene load_steps=3 format=3 uid="uid://cnxbs3gp2vjkc"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_uyp36"]
 [ext_resource type="PackedScene" uid="uid://duxcasvw1nxhd" path="res://Scenes/Campaign/world.tscn" id="2_sb100"]
-[ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="3_y2j6n"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_uyp36")
 
 [node name="World" parent="." node_paths=PackedStringArray("main") instance=ExtResource("2_sb100")]
-script = ExtResource("3_y2j6n")
 main = NodePath("..")
 
 [node name="Mouse" parent="World" index="0" groups=["mouse"]]

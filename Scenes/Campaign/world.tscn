@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://duxcasvw1nxhd"]
+[gd_scene load_steps=26 format=3 uid="uid://duxcasvw1nxhd"]
 
+[ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_6d068"]
 [ext_resource type="PackedScene" uid="uid://cafk6kge3wfwe" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
 [ext_resource type="PackedScene" uid="uid://dxkv2jg5vi4xx" path="res://Scenes/Campaign/campaign_ui.tscn" id="2_8hjxc"]
 [ext_resource type="Script" path="res://Scripts/Campaign/army_data.gd" id="2_f7bv5"]
@@ -58,6 +59,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 217
 
 [node name="World" type="Node2D" groups=["world"]]
 position = Vector2(67, 153)
+script = ExtResource("1_6d068")
 metadata/_edit_lock_ = true
 
 [node name="Mouse" parent="." instance=ExtResource("2_se4b2")]

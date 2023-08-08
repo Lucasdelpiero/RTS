@@ -6,7 +6,6 @@ var enemyArmy : Array = []
 var playerNation = ""
 
 var World = preload("res://Scenes/Campaign/world.tscn")
-
 #var _save := SaveGameAsJSON.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -38,8 +37,8 @@ func return_from_battle(data : Dictionary):
 	data.battleMap.queue_free()
 	var world = World.instantiate()
 	world.main = self
-	Globals.reset_armies()
 	add_child(world)
+	Globals.reset_armies()
 	load_game()
 	
 	
