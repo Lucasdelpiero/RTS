@@ -11,7 +11,7 @@ var next_point : Vector2 = Vector2.ZERO
 var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
 var nav_map = null
-@export_range(1,500, 1) var speed = 200
+@export_range(1,800, 1) var speed = 200
 var pushVector := Vector2.ZERO
 var anchored := true # if an unit reached an empty position is true, else it will be false unit is true
 @onready var line = $Line2D
