@@ -49,13 +49,14 @@ orbit_velocity_max = 0.0
 scale_curve = SubResource("CurveXYZTexture_83pj3")
 turbulence_noise_strength = 0.0
 turbulence_noise_scale = 0.0
+turbulence_noise_speed = Vector3(0, 0, 0)
 turbulence_influence_min = 0.0
 turbulence_influence_max = 0.06
 
 [node name="Projectile" type="CharacterBody2D"]
 z_index = 11
 z_as_relative = false
-position = Vector2(1.57228e+06, 0)
+position = Vector2(1.54018e+06, 0)
 velocity = Vector2(1500, 0)
 script = ExtResource("1_higqx")
 

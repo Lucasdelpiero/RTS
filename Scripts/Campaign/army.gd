@@ -42,11 +42,7 @@ func _ready():
 	# This needs to be changed
 	world = get_tree().get_nodes_in_group("world")[0] 
 	# This needs to be changed
-#	await get_tree().create_timer(1.0).timeout
-#	print(army_data.get_army("a"))
-#	for unit in army_data.army_units:
-#		print("aa")
-#		print(unit.scene.resource_name)
+	
 	if army_data.army_units.size() == 0:
 #		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
 		print("Army Data is zero")
@@ -55,7 +51,7 @@ func _ready():
 	var army = army_data.army_units
 #	print("The army %s has the next %s units:" % [self.name, army.size()])
 	for unit in army:
-#		print(unit.scene.resource_path)
+#		print("---",unit.scene._bundled.names[0])
 		pass
 #	print(army.size())
 	pass

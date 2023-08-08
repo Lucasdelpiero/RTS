@@ -13,10 +13,10 @@ class_name Unit
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+@onready var mouse = null
 var hovered = false : set = set_hovered
 var selected = false : set = set_selected
-static var mouse = null
-static var world = null
+var world = null
 var routed = false
 @onready var sprite = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
@@ -221,11 +221,9 @@ func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(_data : AttackData):
+func recieved_attack(data : AttackData):
 	print("i recieved damage")
-	print(name)
-	print("========")
-#	print(data)
+	print(data)
 	pass
 
 func update_overlay():
@@ -278,7 +276,7 @@ func _on_unit_detector_area_entered(area):
 	pass # Replace with function body.
 
 func _on_unit_detector_area_exited(area):
-	var _unit = area.owner as Unit
+	var unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
 #	print("an enemy is leaving")

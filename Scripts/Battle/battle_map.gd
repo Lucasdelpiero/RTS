@@ -22,15 +22,12 @@ signal sg_clean_overlay_unit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Mouse.world = self
-	Unit.world = self
 	spawn_units()
-#	mouse.world = self
+	mouse.world = self
 	sg_clean_overlay_unit.connect(battleUI.hide_overlay)
 	for unit in get_tree().get_nodes_in_group("units") as Array[Unit]:
-#		unit.test()
-#		unit.mouse = mouse
-#		unit.world = self
+		unit.mouse = mouse
+		unit.world = self
 		unit.show_overlay_unit.connect(send_data_to_overlay)
 	player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
@@ -133,17 +130,14 @@ func spawn_units():
 	for army in Globals.playerArmyData:
 		for unit in army.army_units:
 			var scene = unit.scene.instantiate()
-#			print(unit.scene.resource_path)
 			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
-			scene.global_position = Vector2(0, -1000) # This is a hotfix to prevent one unit attacking each other at the first frame
 			
 	for army in Globals.enemyArmyData:
 		for unit in army.army_units:
 			var scene = unit.scene.instantiate()
 			enemyArmy.add_child(scene)
 			scene.ownership = army.ownership
-			scene.global_position = Vector2(0, +1000) # This is a hotfix to prevent one unit attacking each other at the first frame
 	# Initialize units
 	playerArmy.start_units()
 	enemyArmy.start_units()

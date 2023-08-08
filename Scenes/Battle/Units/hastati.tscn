@@ -8,22 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Scenes/Battle/ray_cast_check_space.tscn" id="5_471i8"]
 [ext_resource type="PackedScene" uid="uid://d2muwlo87x7i8" path="res://Scenes/Battle/range_weapon.tscn" id="5_gq5mn"]
 
-[sub_resource type="Resource" id="Resource_d1roc"]
+[sub_resource type="Resource" id="Resource_i5j30"]
 script = ExtResource("4_qer06")
 weapon = "Spear"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_p8uho"]
+[sub_resource type="Resource" id="Resource_pxsyq"]
 script = ExtResource("3_5f8p8")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_d1roc")
+primary_weapon = SubResource("Resource_i5j30")
 separator = "                  "
 secondary_type = ""
 
 [node name="Hastati" instance=ExtResource("1_xxfcp")]
-weaponsData = SubResource("Resource_p8uho")
+weaponsData = SubResource("Resource_pxsyq")
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 
@@ -34,12 +34,7 @@ text = "Hastati"
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("4_qwbkn")
 
-[node name="Weapons" parent="." index="3" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
-primary_weapon = NodePath("MeleeWeapon")
-secondary_weapon = NodePath("RangeWeapon")
-
 [node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("4_oyqhv")]
-visible = false
 
 [node name="RangeWeapon" parent="Weapons" index="1" instance=ExtResource("5_gq5mn")]
 weapon_type = "Javelin"

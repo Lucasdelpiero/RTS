@@ -1,4 +1,3 @@
-@tool
 extends Weapon
 
 @export_enum("Sword", "Spear", "Pike", "Dagger") var weapon_type : String = "Sword"

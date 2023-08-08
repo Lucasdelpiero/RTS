@@ -1,4 +1,3 @@
-@tool
 extends Weapon
 
 @export_enum("Bow", "Javelin","Slingshot") var weapon_type : String = "Bow"
@@ -48,7 +47,7 @@ func shoot(target : Unit):
 		"attack" : get_attack(),
 	}
 	projectile.create_projectile(data)
-	var _time_to_reload = base_reloading_speed * reload_time
+	var time_to_reload = base_reloading_speed * reload_time
 	reloadTimer.start()
 	pass
 
@@ -61,12 +60,12 @@ func get_attack():
 
 func set_polygon_range():
 	var polygon : PackedVector2Array = []
-	var total_range = base_max_range
+	var range = base_max_range
 	if not partian_shooting: # if it a rounds range doesnt need to have a line going to the center of the unit
 		polygon.push_back(Vector2.ZERO)
 	for i in range(polygon_count ):
 		var angle = ((polygon_count - i)  / polygon_count) * PI * 2
-		var poly : Vector2 = Vector2(cos(angle) * total_range, sin(angle) * total_range)
+		var poly : Vector2 = Vector2(cos(angle) * range, sin(angle) * range)
 		var face_angle = deg_to_rad(270)
 		if (angle > face_angle - deg_to_rad(degree_margin)) and (angle < face_angle + deg_to_rad(degree_margin)):
 			polygon.push_back(poly)

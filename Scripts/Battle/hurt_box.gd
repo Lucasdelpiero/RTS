@@ -29,9 +29,9 @@ func _on_check_space_area_exited(_area):
 	pass # Replace with function body.
 
 func p():
-	var _oc = ""
+	var oc = ""
 	if occupant != null:
-		_oc = occupant.name
+		oc = occupant.name
 #	if owner.name == "Hastati":
 #		print("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
 

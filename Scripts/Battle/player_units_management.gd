@@ -113,7 +113,13 @@ func draw_units(move):
 	
 	for i in organized_units.size():
 		var angle = start_drag.angle_to_point(end_drag)
-		var _type = organized[i].get_type()
+		var type = organized[i].get_type()
+		var sprite_type_res = "res://Assets/units/box_default_type.png"
+		if type == 1:
+			sprite_type_res = "res://Assets/units/box_type_sword.png"
+		if type == 2:
+			sprite_type_res = "res://Assets/units/box_type_bow.png"
+			
 		var distance = unit_width + margin
 		var new_pos = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
 		if move:

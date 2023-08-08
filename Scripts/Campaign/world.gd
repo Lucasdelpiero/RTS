@@ -53,7 +53,7 @@ func initialize_world():
 			province.sg_mouseOverSelf.connect(mouse.update_province_selection)
 	send_data_to_ui()
 
-func _unhandled_input(_event):
+func _unhandled_input(event):
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
 
@@ -102,11 +102,6 @@ func enemy_encountered(aarmy, enemy):
 		else:
 			if !Globals.enemyArmy.has(army):
 				Globals.enemyArmy.push_back(army)
-	for army in Globals.playerArmy:
-		for unit in army.army_data.army_units:
-			print(unit.scene)
-			print("===========")
-		
 	battleMenu.visible = true
 	battleMenu.update()
 #	print(Globals.playerArmy)
