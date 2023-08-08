@@ -59,7 +59,7 @@ func _ready():
 func _unhandled_input(_event):
 		# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
-		if str(ownership) == world.playerNation:
+		if str(ownership) == Globals.playerNation:
 			if hovered:
 				selected = true
 			else: # This will have to be changed once multiples armies are selected

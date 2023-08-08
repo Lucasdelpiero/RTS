@@ -132,12 +132,14 @@ func spawn_units():
 			var scene = unit.scene.instantiate()
 			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
+			scene.global_position = Vector2(0, 1000)
 			
 	for army in Globals.enemyArmyData:
 		for unit in army.army_units:
 			var scene = unit.scene.instantiate()
 			enemyArmy.add_child(scene)
 			scene.ownership = army.ownership
+			scene.global_position = Vector2(0, -1000)
 	# Initialize units
 	playerArmy.start_units()
 	enemyArmy.start_units()

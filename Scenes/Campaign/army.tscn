@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://cafk6kge3wfwe"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/army.gd" id="1_836ho"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_xkwou"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="2_777mv"]
-[ext_resource type="PackedScene" uid="uid://d07w8cqafnxa6" path="res://Scenes/Battle/box.tscn" id="2_acdww"]
+[ext_resource type="PackedScene" uid="uid://c2hk7mes1jtit" path="res://Scenes/Battle/box.tscn" id="2_acdww"]
 [ext_resource type="Script" path="res://Scripts/Campaign/unit_data.gd" id="3_seok1"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Scenes/mouse_detector.tscn" id="4_mc6e8"]
 [ext_resource type="Script" path="res://Scripts/Campaign/army_data.gd" id="4_pwofr"]
-
 
 [sub_resource type="Resource" id="Resource_aqnks"]
 script = ExtResource("3_seok1")
