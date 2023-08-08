@@ -8,12 +8,11 @@ var ownership = ""
 var position : Vector2 = Vector2.ZERO
 
 func set_array(value):
-#	print("aaalf")
 	var current_size = army_units.size()
 	var new_size = value.size()
 	army_units = value.duplicate()
-#	print(army_units.size())
-	if new_size > current_size:
+	# added units will at least be a default unit and not an empty array
+	if new_size > current_size and army_units[new_size - 1] == null:
 		army_units[new_size - 1] = UnitData.new()
 
 func add(value):
