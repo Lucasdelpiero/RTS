@@ -40,7 +40,9 @@ signal get_pathfinding(army ,current_position)
 
 func _ready():
 	# This needs to be changed
-	world = get_tree().get_nodes_in_group("world")[0] 
+	var worlds = get_tree().get_nodes_in_group("world")
+	if worlds.size() > 0:
+		world = get_tree().get_nodes_in_group("world")[0] 
 	# This needs to be changed
 #	await get_tree().create_timer(1.0).timeout
 #	print(army_data.get_army("a"))
@@ -63,7 +65,7 @@ func _ready():
 func _unhandled_input(_event):
 		# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
-		if str(ownership) == world.playerNation:
+		if str(ownership) == Globals.playerNation:
 			if hovered:
 				selected = true
 			else: # This will have to be changed once multiples armies are selected

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://duxcasvw1nxhd"]
+[gd_scene load_steps=21 format=3 uid="uid://duxcasvw1nxhd"]
 
 [ext_resource type="Script" path="res://Scripts/Campaign/world.gd" id="1_3aw78"]
 [ext_resource type="PackedScene" path="res://Scenes/Campaign/army.tscn" id="2_2lid3"]
@@ -13,32 +13,24 @@
 [ext_resource type="Resource" uid="uid://wwro2duj0ujs" path="res://Scripts/Campaign/hastati.tres" id="7_2cv31"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="7_eyk4d"]
 [ext_resource type="Resource" uid="uid://bxvueu3dk4rgg" path="res://Scripts/Campaign/bowman.tres" id="8_6h72l"]
-[ext_resource type="PackedScene" uid="uid://c2hk7mes1jtit" path="res://Scenes/Battle/box.tscn" id="9_tgq5y"]
-[ext_resource type="Script" path="res://Scripts/Campaign/unit_data.gd" id="10_f8mr6"]
 [ext_resource type="PackedScene" uid="uid://p3ivlgsflma5" path="res://Scenes/camera.tscn" id="11_y8fvc"]
 [ext_resource type="PackedScene" uid="uid://dsrejdj4e02gv" path="res://Scenes/Campaign/battle_menu.tscn" id="15_wjfr6"]
 
-[sub_resource type="Resource" id="Resource_xbj6y"]
-script = ExtResource("10_f8mr6")
-scene = ExtResource("9_tgq5y")
-experience = 0
-health = 100.0
-
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), SubResource("Resource_xbj6y")])
+army_units = Array[Resource("res://Scripts/Campaign/unit_data.gd")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), ExtResource("8_6h72l"), ExtResource("8_6h72l")])
 
 [sub_resource type="Resource" id="Resource_dmdnx"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31")])
+army_units = Array[Resource("res://Scripts/Campaign/unit_data.gd")]([ExtResource("7_2cv31"), ExtResource("7_2cv31")])
 
 [sub_resource type="Resource" id="Resource_8lrrd"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31")])
+army_units = Array[Resource("res://Scripts/Campaign/unit_data.gd")]([ExtResource("7_2cv31"), ExtResource("7_2cv31")])
 
 [sub_resource type="Resource" id="Resource_ce5sf"]
 script = ExtResource("2_f7bv5")
-army_units = Array[ExtResource("10_f8mr6")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31")])
+army_units = Array[Resource("res://Scripts/Campaign/unit_data.gd")]([ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31"), ExtResource("7_2cv31")])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)

@@ -22,7 +22,7 @@ func _ready():
 
 func initialize_world():
 	get_nav_map()
-	mouse.world = self
+#	mouse.world = self
 	mouse.ui = UI
 	main = get_tree().get_nodes_in_group("main")[0]
 #	army.get_to_closer_point(map)
@@ -34,15 +34,16 @@ func initialize_world():
 			playerNode = nation
 			Globals.playerNation = nation.NATION_TAG
 	
-	for army in get_tree().get_nodes_in_group("armies"):
-		army.world = self
-		army.get_to_closer_point(map)
-		if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
-			army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
-		if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
-			army.sg_enemy_encountered.connect(self.enemy_encountered)
-		if not army.sg_was_selected.is_connected(new_unit_selected):
-			army.sg_was_selected.connect(new_unit_selected)
+#	for army in get_tree().get_nodes_in_group("armies"):
+#		army.world = self
+#		army.get_to_closer_point(map)
+#		if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
+#			army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+#		if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
+#			army.sg_enemy_encountered.connect(self.enemy_encountered)
+#		if not army.sg_was_selected.is_connected(new_unit_selected):
+#			army.sg_was_selected.connect(new_unit_selected)
+		
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	var provinces = get_tree().get_nodes_in_group("provinces")

@@ -16,17 +16,39 @@
 [ext_resource type="Script" path="res://Scripts/Battle/unit_detector.gd" id="7_cbfkp"]
 [ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_o0sho"]
 
-[sub_resource type="Resource" id="Resource_3smgc"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+[sub_resource type="Resource" id="Resource_p3p2o"]
+=======
+[sub_resource type="Resource" id="Resource_iq66y"]
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+=======
+[sub_resource type="Resource" id="Resource_iq66y"]
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
 script = ExtResource("2_4pbms")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
-[sub_resource type="Resource" id="Resource_mbonw"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+[sub_resource type="Resource" id="Resource_6ygyl"]
 script = ExtResource("3_sufd2")
 primary_type = "Melee"
-primary_weapon = SubResource("Resource_3smgc")
+primary_weapon = SubResource("Resource_p3p2o")
+=======
+[sub_resource type="Resource" id="Resource_wymqj"]
+script = ExtResource("3_sufd2")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_iq66y")
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+=======
+[sub_resource type="Resource" id="Resource_wymqj"]
+script = ExtResource("3_sufd2")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_iq66y")
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
 separator = "                  "
 secondary_type = ""
 
@@ -70,7 +92,15 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qinoe")
-weaponsData = SubResource("Resource_mbonw")
+<<<<<<< HEAD
+<<<<<<< HEAD
+weaponsData = SubResource("Resource_6ygyl")
+=======
+weaponsData = SubResource("Resource_wymqj")
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
+=======
+weaponsData = SubResource("Resource_wymqj")
+>>>>>>> parent of 6813844 (textures used for drawing unit new position saved into an array instead of beign hardcoded)
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
@@ -108,8 +138,10 @@ position = Vector2(0, 12)
 texture = ExtResource("4_embx1")
 metadata/_edit_lock_ = true
 
-[node name="Weapons" type="Node2D" parent="."]
+[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
 script = ExtResource("5_mga16")
+primary_weapon = NodePath("MeleeWeapon")
+secondary_weapon = NodePath("MeleeWeapon")
 
 [node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("3_2sey5")]
 unique_name_in_owner = true
