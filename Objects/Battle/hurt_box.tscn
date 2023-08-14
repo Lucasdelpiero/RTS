@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Objects/Battle/hurt_box.gd" id="1_eine6"]
+
+[node name="HurtBox" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_eine6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="MeleePoint" type="Marker2D" parent="." groups=["meleePoint"]]
+
+[node name="CheckSpace" type="Area2D" parent="MeleePoint"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MeleePoint/CheckSpace"]
+
+[connection signal="area_entered" from="MeleePoint/CheckSpace" to="." method="_on_check_space_area_entered"]
+[connection signal="area_exited" from="MeleePoint/CheckSpace" to="." method="_on_check_space_area_exited"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="TileSet" uid="uid://r3e405soopei" path="res://Objects/Battle/tile_set.tres" id="1_hmyfw"]
+
+
+[node name="NavigationTileMap" type="TileMap"]
+tile_set = ExtResource("1_hmyfw")
+format = 2

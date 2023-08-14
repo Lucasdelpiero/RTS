@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddrekuo7o6i3t"]
-
-[ext_resource type="Script" path="res://Scripts/Battle/units_controller.gd" id="1_ccb8i"]
-
-[node name="UnitsController" type="Node"]
-script = ExtResource("1_ccb8i")

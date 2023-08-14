@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bex23ey2n601u"]
+
+[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="1_bmoks"]
+[ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_p1lqm"]
+
+[node name="Cavalry" instance=ExtResource("1_bmoks")]
+type = 3
+
+[node name="NameLabel" parent="Marker2D/Node" index="0"]
+text = "Cavalry"
+
+[node name="SpriteType" parent="SpriteBase" index="0"]
+texture = ExtResource("4_p1lqm")
+
+[node name="MoveComponent" parent="." index="5"]
+speed = 500
+
+[editable path="UnitDetector"]
+[editable path="HurtBoxComponent/Front"]
+[editable path="HurtBoxComponent/Back"]
+[editable path="HurtBoxComponent/Left"]
+[editable path="HurtBoxComponent/Right"]

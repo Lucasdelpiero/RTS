@@ -1,0 +1,250 @@
+[gd_scene load_steps=29 format=3]
+
+[ext_resource type="Script" path="res://Objects/Battle/box.gd" id="1_iuc28"]
+[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_mg8d0"]
+[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="3_n56pg"]
+[ext_resource type="Script" path="res://Objects/Battle/marker2d.gd" id="4_i7g2o"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/position_node.tscn" id="5_srehe"]
+[ext_resource type="Texture2D" uid="uid://b4nxhf5mv7esw" path="res://Assets/units/box_base.png" id="6_5p2hk"]
+[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_axmuo"]
+[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="8_gw3av"]
+[ext_resource type="Script" path="res://Objects/Battle/weapons_manager.gd" id="9_6hpsd"]
+[ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/mouse_detector.tscn" id="10_gy8no"]
+[ext_resource type="Script" path="res://Objects/Battle/unit_detector.gd" id="11_5xl8i"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/move_component.tscn" id="12_fn0mq"]
+[ext_resource type="Script" path="res://Objects/Battle/HurtBoxComponent.gd" id="13_gg4mt"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/hurt_box.tscn" id="14_rm334"]
+[ext_resource type="Script" path="res://Objects/Battle/HitBoxComponent.gd" id="15_5b0f0"]
+
+[sub_resource type="Resource" id="Resource_e18qt"]
+script = ExtResource("2_mg8d0")
+weapon = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_ollnb"]
+script = ExtResource("3_n56pg")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_e18qt")
+separator = "                  "
+secondary_type = ""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
+size = Vector2(214, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
+size = Vector2(179, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw6ii"]
+size = Vector2(179, 76.9999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pbqt"]
+size = Vector2(179, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xso6r"]
+size = Vector2(188, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdb2"]
+size = Vector2(14.5, 149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfmv0"]
+size = Vector2(118, 74.0004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88m4m"]
+size = Vector2(20, 149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c0sl"]
+size = Vector2(117, 84.9998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tow0k"]
+size = Vector2(78, 4.24825)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwm1q"]
+radius = 1000.0
+
+[node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
+z_index = 10
+z_as_relative = false
+collision_layer = 4
+collision_mask = 4
+slide_on_ceiling = false
+script = ExtResource("1_iuc28")
+weaponsData = SubResource("Resource_ollnb")
+moveComponent = NodePath("MoveComponent")
+metadata/_edit_horizontal_guides_ = [-73.0]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(98, -189)
+script = ExtResource("4_i7g2o")
+
+[node name="Node" type="Node" parent="Marker2D"]
+
+[node name="NameLabel" type="Label" parent="Marker2D/Node"]
+unique_name_in_owner = true
+z_index = 1000
+z_as_relative = false
+offset_left = 98.0
+offset_top = -189.0
+offset_right = 185.0
+offset_bottom = -119.0
+theme_override_font_sizes/font_size = 48
+text = "Box"
+
+[node name="Position" parent="Marker2D" instance=ExtResource("5_srehe")]
+
+[node name="SpriteBase" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 11)
+texture = ExtResource("6_5p2hk")
+
+[node name="SpriteType" type="Sprite2D" parent="SpriteBase"]
+unique_name_in_owner = true
+texture = ExtResource("7_axmuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 12)
+texture = ExtResource("8_gw3av")
+metadata/_edit_lock_ = true
+
+[node name="Weapons" type="Node2D" parent="."]
+script = ExtResource("9_6hpsd")
+
+[node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("10_gy8no")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 516
+script = ExtResource("11_5xl8i")
+unit = NodePath("..")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="UnitDetector" index="0"]
+visible = false
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_oi2r0")
+
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("12_fn0mq")]
+unit = NodePath("..")
+
+[node name="HurtBoxComponent" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("13_gg4mt")
+
+[node name="Front" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+unique_name_in_owner = true
+position = Vector2(0, -71)
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]
+position = Vector2(-4.5, 1)
+shape = SubResource("RectangleShape2D_jbuut")
+
+[node name="MeleePoint" parent="HurtBoxComponent/Front" index="1"]
+position = Vector2(0, -88)
+rotation = 3.14159
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Front/MeleePoint/CheckSpace" index="0"]
+position = Vector2(2.49996, -8.50006)
+shape = SubResource("RectangleShape2D_uw6ii")
+
+[node name="Back" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+position = Vector2(-1, 65)
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_6pbqt")
+
+[node name="MeleePoint" parent="HurtBoxComponent/Back" index="1"]
+position = Vector2(0, 88)
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Back/MeleePoint/CheckSpace" index="0"]
+shape = SubResource("RectangleShape2D_xso6r")
+
+[node name="Left" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+position = Vector2(-104, 0)
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
+position = Vector2(2.25, -2.5)
+shape = SubResource("RectangleShape2D_hwdb2")
+
+[node name="MeleePoint" parent="HurtBoxComponent/Left" index="1"]
+position = Vector2(-94, -2)
+rotation = 1.5708
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Left/MeleePoint/CheckSpace" index="0"]
+shape = SubResource("RectangleShape2D_sfmv0")
+
+[node name="Right" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+position = Vector2(103, 0)
+
+[node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
+position = Vector2(-8, -2.5)
+shape = SubResource("RectangleShape2D_88m4m")
+
+[node name="MeleePoint" parent="HurtBoxComponent/Right" index="1"]
+position = Vector2(94, 0)
+rotation = 4.71239
+
+[node name="CollisionShape2D2" parent="HurtBoxComponent/Right/MeleePoint/CheckSpace" index="0"]
+position = Vector2(-1.49999, -4.50003)
+shape = SubResource("RectangleShape2D_8c0sl")
+
+[node name="HitBoxComponent" type="Marker2D" parent="."]
+visible = false
+script = ExtResource("15_5b0f0")
+
+[node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
+position = Vector2(-2, -74)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent/Hitbox"]
+visible = false
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_tow0k")
+
+[node name="Timer" type="Timer" parent="HitBoxComponent"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShowDirection" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-24, -96, 0, -112, 24, -96)
+
+[node name="RangeOfAttack" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeOfAttack"]
+shape = SubResource("CircleShape2D_cwm1q")
+debug_color = Color(1, 1, 1, 0.0784314)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -175.0
+offset_top = -191.0
+offset_right = -127.0
+offset_bottom = -165.0
+scale = Vector2(3, 3)
+text = "<null>"
+
+[connection signal="area_entered" from="UnitDetector" to="." method="_on_unit_detector_area_entered"]
+[connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
+[connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]
+[connection signal="mouse_exited" from="UnitDetector" to="." method="_on_unit_detector_mouse_exited"]
+[connection signal="area_entered" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="HitBoxComponent/Timer" to="HitBoxComponent" method="_on_timer_timeout"]
+[connection signal="area_entered" from="RangeOfAttack" to="." method="_on_range_of_attack_area_entered"]
+[connection signal="area_exited" from="RangeOfAttack" to="." method="_on_range_of_attack_area_exited"]
+
+[editable path="UnitDetector"]
+[editable path="HurtBoxComponent/Front"]
+[editable path="HurtBoxComponent/Back"]
+[editable path="HurtBoxComponent/Left"]
+[editable path="HurtBoxComponent/Right"]
