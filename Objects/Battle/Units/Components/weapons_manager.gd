@@ -5,7 +5,7 @@ var in_use_weapon : Weapon = null : set = set_in_use_weapon
 var mouse_over_weapon : Weapon = null   # The weapon that will be chose during an attack, pressing ALT changes it to the secondary weapon
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
-var DefaultWeapon : PackedScene = load("res://Objects/Battle/melee_weapon.tscn")
+var DefaultWeapon : PackedScene = load("res://Objects/Battle/Units/Components/melee_weapon.tscn")
 signal send_units_in_range(value)
 signal in_use_weapon_ready_to_attack
 

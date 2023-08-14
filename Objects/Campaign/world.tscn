@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbbfhljbshass"]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" path="res://Objects/mouse.tscn" id="2_5u4og"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" path="res://Objects/Campaign/hastati.tres" id="7_msm0q"]
 [ext_resource type="Resource" path="res://Objects/Campaign/bowman.tres" id="8_v3wbt"]
 [ext_resource type="Script" path="res://Objects/Campaign/army_data.gd" id="9_5dn3s"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="10_mp7pk"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="10_mp7pk"]
 [ext_resource type="Script" path="res://Objects/Campaign/unit_data.gd" id="11_f18ba"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="13_jsewn"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/pos_province.tscn" id="15_4h2o0"]
 [ext_resource type="PackedScene" path="res://Objects/Campaign/province.tscn" id="16_y4d8b"]
 [ext_resource type="PackedScene" path="res://Objects/Campaign/battle_menu.tscn" id="17_0w4y1"]
+
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")

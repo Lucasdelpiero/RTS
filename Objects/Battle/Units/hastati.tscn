@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://cdrwwoq0li4fn"]
 
-[ext_resource type="PackedScene" uid="uid://c2hk7mes1jtit" path="res://Objects/Battle/box.tscn" id="1_kfvfj"]
-[ext_resource type="Resource" uid="uid://bfxkhpgembvd" path="res://Objects/Battle/Units/hastati_weapons.tres" id="2_5jbtb"]
+[ext_resource type="PackedScene" uid="uid://bk85cc4lykfqb" path="res://Objects/Battle/Units/box.tscn" id="1_qerye"]
+[ext_resource type="Resource" path="res://Objects/Battle/Units/hastati_weapons.tres" id="2_5jbtb"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="3_tsyhh"]
-[ext_resource type="PackedScene" uid="uid://cvuy2uf0bf0af" path="res://Objects/Battle/melee_weapon.tscn" id="4_wwipc"]
-[ext_resource type="PackedScene" uid="uid://d2muwlo87x7i8" path="res://Objects/Battle/range_weapon.tscn" id="5_8xeb2"]
-[ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Objects/Battle/ray_cast_check_space.tscn" id="6_hnfu1"]
+[ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="4_u32l7"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_bj77f"]
+[ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Objects/Battle/Units/Components/ray_cast_check_space.tscn" id="6_fanu0"]
 
-[node name="Hastati" instance=ExtResource("1_kfvfj")]
+[node name="Hastati" instance=ExtResource("1_qerye")]
 weaponsData = ExtResource("2_5jbtb")
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
@@ -19,27 +19,24 @@ text = "Hastati"
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("3_tsyhh")
 
-[node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("4_wwipc")]
+[node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("4_u32l7")]
 
-[node name="RangeWeapon" parent="Weapons" index="1" instance=ExtResource("5_8xeb2")]
-weapon_type = "Javelin"
-base_max_range = 1200
-base_ammunition = 3
+[node name="RangeWeapon" parent="Weapons" index="1" instance=ExtResource("5_bj77f")]
 
-[node name="RayCastCheckSpace" parent="HurtBoxComponent/Front" index="2" instance=ExtResource("6_hnfu1")]
+[node name="RayCastCheckSpace" parent="HurtBoxComponent/Front" index="2" instance=ExtResource("6_fanu0")]
 position = Vector2(0, -10)
 target_position = Vector2(-96, -77)
 
-[node name="RayCastCheckSpace2" parent="HurtBoxComponent/Front" index="3" instance=ExtResource("6_hnfu1")]
+[node name="RayCastCheckSpace2" parent="HurtBoxComponent/Front" index="3" instance=ExtResource("6_fanu0")]
 position = Vector2(0, -10)
 target_position = Vector2(85, -77)
 
-[node name="RayCastCheckSpace3" parent="HurtBoxComponent/Back" index="2" instance=ExtResource("6_hnfu1")]
+[node name="RayCastCheckSpace3" parent="HurtBoxComponent/Back" index="2" instance=ExtResource("6_fanu0")]
 position = Vector2(-1, 0)
 rotation = 3.12973
 target_position = Vector2(-96, -77)
 
-[node name="RayCastCheckSpace4" parent="HurtBoxComponent/Back" index="3" instance=ExtResource("6_hnfu1")]
+[node name="RayCastCheckSpace4" parent="HurtBoxComponent/Back" index="3" instance=ExtResource("6_fanu0")]
 position = Vector2(-1, 0)
 rotation = 3.12973
 target_position = Vector2(85, -77)

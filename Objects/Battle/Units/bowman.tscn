@@ -1,27 +1,27 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://c772uoiyt6oiu"]
 
-[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="1_yujsf"]
-[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_rrglf"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="3_k2m8e"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/range_weapon.tscn" id="4_1okoe"]
+[ext_resource type="PackedScene" uid="uid://bk85cc4lykfqb" path="res://Objects/Battle/Units/box.tscn" id="1_y5kd7"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_tc0iq"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_g6nr5"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_r6yrx"]
-[ext_resource type="PackedScene" uid="uid://dlj3tm21x4o64" path="res://Objects/Battle/melee_weapon.tscn" id="5_ph45o"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_h41ep"]
+[ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="6_fuk8l"]
 
 [sub_resource type="Resource" id="Resource_o64k3"]
-script = ExtResource("2_rrglf")
+script = ExtResource("2_tc0iq")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
 [sub_resource type="Resource" id="Resource_rd0pm"]
-script = ExtResource("3_k2m8e")
+script = ExtResource("3_g6nr5")
 primary_type = "Melee"
 primary_weapon = SubResource("Resource_o64k3")
 separator = "                  "
 secondary_type = ""
 
-[node name="Bowman" instance=ExtResource("1_yujsf")]
+[node name="Bowman" instance=ExtResource("1_y5kd7")]
 type = 2
 weaponsData = SubResource("Resource_rd0pm")
 
@@ -32,11 +32,10 @@ text = "Bowman"
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("4_r6yrx")
 
-[node name="RangeWeapon" parent="Weapons" index="0" instance=ExtResource("4_1okoe")]
+[node name="RangeWeapon" parent="Weapons" index="0" instance=ExtResource("5_h41ep")]
 base_max_range = 2000
 
-[node name="MeleeWeapon" parent="Weapons" index="1" instance=ExtResource("5_ph45o")]
-weapon_type = "Dagger"
+[node name="MeleeWeapon" parent="Weapons" index="1" instance=ExtResource("6_fuk8l")]
 
 [editable path="UnitDetector"]
 [editable path="HurtBoxComponent/Front"]

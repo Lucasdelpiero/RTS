@@ -1,7 +1,7 @@
 extends Weapon
 
 @export_enum("Bow", "Javelin","Slingshot") var weapon_type : String = "Bow"
-@export var Projectile : PackedScene = preload("res://Objects/Battle/projectile.tscn")
+@export var Projectile : PackedScene = preload("res://Objects/Battle/Units/Components/projectile.tscn")
 @export_range(1, 1000, 1) var base_attack : int = 1
 @export_range(1, 10000, 1) var base_max_range : int = 1000
 @export_range(0.0, 2.0, 0.01) var base_reloading_speed : float = 1.0

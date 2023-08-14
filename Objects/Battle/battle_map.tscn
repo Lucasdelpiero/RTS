@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bl5uee1151ip1"]
+[gd_scene load_steps=47 format=3 uid="uid://dc71eptqb6y7h"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://cowxiuqx35gta" path="res://Objects/Battle/battle_ui.tscn" id="2_41tas"]
@@ -12,16 +12,16 @@
 [ext_resource type="PackedScene" path="res://Objects/Battle/overlay_unit.tscn" id="4_vae5l"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/navigation_tile_map.tscn" id="6_cde6g"]
 [ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_j74vg"]
-[ext_resource type="PackedScene" uid="uid://he2gu1akkwqk" path="res://Objects/Battle/Units/hastati.tscn" id="8_5lvcp"]
+[ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="8_5lvcp"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="8_6sysr"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="9_cjm0x"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="9_da6rt"]
-[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="9_e4se1"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="9_e4se1"]
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="10_lovp7"]
-[ext_resource type="Script" path="res://Objects/Battle/weapon_data.gd" id="10_tuffa"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="11_7t20r"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/bowman.tscn" id="11_kyhj3"]
-[ext_resource type="PackedScene" uid="uid://bex23ey2n601u" path="res://Objects/Battle/Units/cavalry.tscn" id="19_k68q6"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapon_data.gd" id="10_tuffa"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="11_7t20r"]
+[ext_resource type="PackedScene" uid="uid://c772uoiyt6oiu" path="res://Objects/Battle/Units/bowman.tscn" id="11_kyhj3"]
+[ext_resource type="PackedScene" uid="uid://ba3haq528ht28" path="res://Objects/Battle/Units/cavalry.tscn" id="19_k68q6"]
 
 [sub_resource type="Resource" id="Resource_6fv2l"]
 script = ExtResource("9_e4se1")

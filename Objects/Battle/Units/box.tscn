@@ -1,30 +1,30 @@
-[gd_scene load_steps=29 format=3]
+[gd_scene load_steps=29 format=3 uid="uid://bk85cc4lykfqb"]
 
-[ext_resource type="Script" path="res://Objects/Battle/box.gd" id="1_iuc28"]
-[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_mg8d0"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="3_n56pg"]
-[ext_resource type="Script" path="res://Objects/Battle/marker2d.gd" id="4_i7g2o"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/position_node.tscn" id="5_srehe"]
-[ext_resource type="Texture2D" uid="uid://b4nxhf5mv7esw" path="res://Assets/units/box_base.png" id="6_5p2hk"]
-[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_axmuo"]
-[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="8_gw3av"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_manager.gd" id="9_6hpsd"]
-[ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/mouse_detector.tscn" id="10_gy8no"]
-[ext_resource type="Script" path="res://Objects/Battle/unit_detector.gd" id="11_5xl8i"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/move_component.tscn" id="12_fn0mq"]
-[ext_resource type="Script" path="res://Objects/Battle/HurtBoxComponent.gd" id="13_gg4mt"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/hurt_box.tscn" id="14_rm334"]
-[ext_resource type="Script" path="res://Objects/Battle/HitBoxComponent.gd" id="15_5b0f0"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_4eif3"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_p5nde"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/marker2d.gd" id="4_ydajr"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/position_node.tscn" id="5_ylt6l"]
+[ext_resource type="Texture2D" uid="uid://b4nxhf5mv7esw" path="res://Assets/units/box_base.png" id="6_gmdlq"]
+[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_4xwyj"]
+[ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="8_jl3a2"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_manager.gd" id="9_g067s"]
+[ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/mouse_detector.tscn" id="10_46ddk"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/unit_detector.gd" id="11_jaaag"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/move_component.tscn" id="12_astyu"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/HurtBoxComponent.gd" id="13_238ts"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/hurt_box.tscn" id="14_d14jk"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/HitBoxComponent.gd" id="15_u43wy"]
 
 [sub_resource type="Resource" id="Resource_e18qt"]
-script = ExtResource("2_mg8d0")
+script = ExtResource("2_4eif3")
 weapon = "Sword"
 base_attack = 1
 base_charge = 1
 anti_cabalry_bonus = 0.0
 
 [sub_resource type="Resource" id="Resource_ollnb"]
-script = ExtResource("3_n56pg")
+script = ExtResource("3_p5nde")
 primary_type = "Melee"
 primary_weapon = SubResource("Resource_e18qt")
 separator = "                  "
@@ -69,14 +69,14 @@ z_as_relative = false
 collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
-script = ExtResource("1_iuc28")
+script = ExtResource("1_qofug")
 weaponsData = SubResource("Resource_ollnb")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(98, -189)
-script = ExtResource("4_i7g2o")
+script = ExtResource("4_ydajr")
 
 [node name="Node" type="Node" parent="Marker2D"]
 
@@ -91,31 +91,31 @@ offset_bottom = -119.0
 theme_override_font_sizes/font_size = 48
 text = "Box"
 
-[node name="Position" parent="Marker2D" instance=ExtResource("5_srehe")]
+[node name="Position" parent="Marker2D" instance=ExtResource("5_ylt6l")]
 
 [node name="SpriteBase" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 11)
-texture = ExtResource("6_5p2hk")
+texture = ExtResource("6_gmdlq")
 
 [node name="SpriteType" type="Sprite2D" parent="SpriteBase"]
 unique_name_in_owner = true
-texture = ExtResource("7_axmuo")
+texture = ExtResource("7_4xwyj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 12)
-texture = ExtResource("8_gw3av")
+texture = ExtResource("8_jl3a2")
 metadata/_edit_lock_ = true
 
 [node name="Weapons" type="Node2D" parent="."]
-script = ExtResource("9_6hpsd")
+script = ExtResource("9_g067s")
 
-[node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("10_gy8no")]
+[node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("10_46ddk")]
 unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 516
-script = ExtResource("11_5xl8i")
+script = ExtResource("11_jaaag")
 unit = NodePath("..")
 metadata/_edit_lock_ = true
 
@@ -124,15 +124,15 @@ visible = false
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_oi2r0")
 
-[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("12_fn0mq")]
+[node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("12_astyu")]
 unit = NodePath("..")
 
 [node name="HurtBoxComponent" type="Marker2D" parent="."]
 unique_name_in_owner = true
 visible = false
-script = ExtResource("13_gg4mt")
+script = ExtResource("13_238ts")
 
-[node name="Front" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+[node name="Front" parent="HurtBoxComponent" instance=ExtResource("14_d14jk")]
 unique_name_in_owner = true
 position = Vector2(0, -71)
 
@@ -148,7 +148,7 @@ rotation = 3.14159
 position = Vector2(2.49996, -8.50006)
 shape = SubResource("RectangleShape2D_uw6ii")
 
-[node name="Back" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+[node name="Back" parent="HurtBoxComponent" instance=ExtResource("14_d14jk")]
 position = Vector2(-1, 65)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
@@ -161,7 +161,7 @@ position = Vector2(0, 88)
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Back/MeleePoint/CheckSpace" index="0"]
 shape = SubResource("RectangleShape2D_xso6r")
 
-[node name="Left" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+[node name="Left" parent="HurtBoxComponent" instance=ExtResource("14_d14jk")]
 position = Vector2(-104, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
@@ -175,7 +175,7 @@ rotation = 1.5708
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Left/MeleePoint/CheckSpace" index="0"]
 shape = SubResource("RectangleShape2D_sfmv0")
 
-[node name="Right" parent="HurtBoxComponent" instance=ExtResource("14_rm334")]
+[node name="Right" parent="HurtBoxComponent" instance=ExtResource("14_d14jk")]
 position = Vector2(103, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
@@ -192,7 +192,7 @@ shape = SubResource("RectangleShape2D_8c0sl")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
 visible = false
-script = ExtResource("15_5b0f0")
+script = ExtResource("15_u43wy")
 
 [node name="Hitbox" type="Area2D" parent="HitBoxComponent"]
 position = Vector2(-2, -74)

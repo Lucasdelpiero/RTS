@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3 uid="uid://cq100a2ig0u3d"]
+[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="1_gvfa8"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="2_3op5r"]
-[ext_resource type="Script" path="res://Scripts/Battle/range_weapon.gd" id="3_cdlfh"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="1_gvfa8"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="2_k8dlv"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/range_weapon_res.gd" id="3_cdlfh"]
 
 [sub_resource type="Resource" id="Resource_8pp8u"]
 script = ExtResource("1_gvfa8")
@@ -22,7 +22,7 @@ fire_shot = false
 pierce_armor = false
 
 [resource]
-script = ExtResource("2_3op5r")
+script = ExtResource("2_k8dlv")
 primary_type = "Melee"
 primary_weapon = SubResource("Resource_8pp8u")
 separator = "                  "

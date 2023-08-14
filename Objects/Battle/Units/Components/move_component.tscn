@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Objects/Battle/MoveComponent.gd" id="1_g8rsp"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/MoveComponent.gd" id="1_g8rsp"]
+
 
 [node name="MoveComponent" type="Node" groups=["uses_navigation"]]
 script = ExtResource("1_g8rsp")

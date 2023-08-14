@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bex23ey2n601u"]
+[gd_scene load_steps=4 format=3 uid="uid://ba3haq528ht28"]
 
-[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="1_bmoks"]
+[ext_resource type="PackedScene" uid="uid://bk85cc4lykfqb" path="res://Objects/Battle/Units/box.tscn" id="1_bmoks"]
+[ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="3_wkjjb"]
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_p1lqm"]
 
 [node name="Cavalry" instance=ExtResource("1_bmoks")]
@@ -11,6 +12,11 @@ text = "Cavalry"
 
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("4_p1lqm")
+
+[node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("3_wkjjb")]
+weapon_type = "Spear"
+
+[node name="MeleeWeapon2" parent="Weapons" index="1" instance=ExtResource("3_wkjjb")]
 
 [node name="MoveComponent" parent="." index="5"]
 speed = 500
