@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c772uoiyt6oiu"]
 
-[ext_resource type="PackedScene" uid="uid://bk85cc4lykfqb" path="res://Objects/Battle/Units/box.tscn" id="1_y5kd7"]
+[ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_y5kd7"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_tc0iq"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_g6nr5"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_r6yrx"]
@@ -37,7 +37,6 @@ base_max_range = 2000
 
 [node name="MeleeWeapon" parent="Weapons" index="1" instance=ExtResource("6_fuk8l")]
 
-[editable path="UnitDetector"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]

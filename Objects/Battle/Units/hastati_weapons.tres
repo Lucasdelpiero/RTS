@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3]
+[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3 uid="uid://d2kauew43mhfs"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="1_gvfa8"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="2_k8dlv"]

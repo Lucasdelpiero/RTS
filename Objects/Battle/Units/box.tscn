@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bk85cc4lykfqb"]
+[gd_scene load_steps=29 format=3 uid="uid://6b22yls05sfo"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_4eif3"]
@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_4xwyj"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="8_jl3a2"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_manager.gd" id="9_g067s"]
-[ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/mouse_detector.tscn" id="10_46ddk"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/unit_detector.gd" id="11_jaaag"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/move_component.tscn" id="12_astyu"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HurtBoxComponent.gd" id="13_238ts"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/hurt_box.tscn" id="14_d14jk"]
+[ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/General/mouse_detector.tscn" id="14_sf011"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HitBoxComponent.gd" id="15_u43wy"]
 
 [sub_resource type="Resource" id="Resource_e18qt"]
@@ -29,9 +29,6 @@ primary_type = "Melee"
 primary_weapon = SubResource("Resource_e18qt")
 separator = "                  "
 secondary_type = ""
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi2r0"]
-size = Vector2(214, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
 size = Vector2(179, 14)
@@ -62,6 +59,9 @@ size = Vector2(78, 4.24825)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwm1q"]
 radius = 1000.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo40t"]
+size = Vector2(215, 147)
 
 [node name="Box" type="CharacterBody2D" node_paths=PackedStringArray("moveComponent") groups=["units"]]
 z_index = 10
@@ -110,19 +110,6 @@ metadata/_edit_lock_ = true
 
 [node name="Weapons" type="Node2D" parent="."]
 script = ExtResource("9_g067s")
-
-[node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("10_46ddk")]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 516
-script = ExtResource("11_jaaag")
-unit = NodePath("..")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" parent="UnitDetector" index="0"]
-visible = false
-position = Vector2(-1, -5)
-shape = SubResource("RectangleShape2D_oi2r0")
 
 [node name="MoveComponent" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("12_astyu")]
 unit = NodePath("..")
@@ -233,18 +220,28 @@ offset_bottom = -165.0
 scale = Vector2(3, 3)
 text = "<null>"
 
-[connection signal="area_entered" from="UnitDetector" to="." method="_on_unit_detector_area_entered"]
-[connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
-[connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]
-[connection signal="mouse_exited" from="UnitDetector" to="." method="_on_unit_detector_mouse_exited"]
+[node name="UnitDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("14_sf011")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 512
+script = ExtResource("11_jaaag")
+unit = NodePath("..")
+
+[node name="CollisionShape2D" parent="UnitDetector" index="0"]
+visible = false
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_mo40t")
+
 [connection signal="area_entered" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="HitBoxComponent/Hitbox" to="HitBoxComponent" method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="HitBoxComponent/Timer" to="HitBoxComponent" method="_on_timer_timeout"]
 [connection signal="area_entered" from="RangeOfAttack" to="." method="_on_range_of_attack_area_entered"]
 [connection signal="area_exited" from="RangeOfAttack" to="." method="_on_range_of_attack_area_exited"]
+[connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]
+[connection signal="mouse_exited" from="UnitDetector" to="." method="_on_unit_detector_mouse_exited"]
 
-[editable path="UnitDetector"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]
 [editable path="HurtBoxComponent/Right"]
+[editable path="UnitDetector"]

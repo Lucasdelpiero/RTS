@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="2_sco0y"]
-
 
 [node name="EnemyBattleIA" type="Node"]
 script = ExtResource("1_61vt2")
