@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bex23ey2n601u"]
+[gd_scene load_steps=3 format=3 uid="uid://ct5fg7maixe5h"]
 
-[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="1_bmoks"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="1_ae2qs"]
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_p1lqm"]
 
-[node name="Cavalry" instance=ExtResource("1_bmoks")]
+[node name="Cavalry" instance=ExtResource("1_ae2qs")]
 type = 3
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]

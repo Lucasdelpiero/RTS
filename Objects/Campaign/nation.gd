@@ -14,8 +14,10 @@ func _ready():
 	set_colors()
 
 func set_colors():
-	var armies = get_children()
-	for a in armies:
+	var armies = get_children() as Array[ArmyCampaing]
+	for a in armies as Array[ArmyCampaing]:
+#		print(a.army_color)
+#		a.set_color(nationColor)
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally
 

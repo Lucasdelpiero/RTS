@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Objects/Battle/overlay_unit.gd" id="1_msp2c"]
-[ext_resource type="PackedScene" uid="uid://bcmqucjtpgd1p" path="res://Objects/Battle/label_overlay_unit.tscn" id="2_0e27m"]
+[ext_resource type="PackedScene" uid="uid://bcmqucjtpgd1p" path="res://Objects/Battle/Units/Components/label_overlay_unit.tscn" id="2_0e27m"]
 
 [node name="OverlayUnit" type="PanelContainer"]
 custom_minimum_size = Vector2(280, 140)

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3 uid="uid://cq100a2ig0u3d"]
+[gd_resource type="Resource" script_class="WeaponsData" load_steps=6 format=3 uid="uid://da66p886xw05l"]
 
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="1_gvfa8"]
-[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="2_3op5r"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="2_3op5r"]
 [ext_resource type="Script" path="res://Scripts/Battle/range_weapon.gd" id="3_cdlfh"]
 
 [sub_resource type="Resource" id="Resource_8pp8u"]

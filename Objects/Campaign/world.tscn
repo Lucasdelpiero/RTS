@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbbfhljbshass"]
+[gd_scene load_steps=26 format=3 uid="uid://cxqr8kx171kpx"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" path="res://Objects/mouse.tscn" id="2_5u4og"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" path="res://Objects/Campaign/hastati.tres" id="7_msm0q"]
 [ext_resource type="Resource" path="res://Objects/Campaign/bowman.tres" id="8_v3wbt"]
 [ext_resource type="Script" path="res://Objects/Campaign/army_data.gd" id="9_5dn3s"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="10_mp7pk"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="10_26nih"]
 [ext_resource type="Script" path="res://Objects/Campaign/unit_data.gd" id="11_f18ba"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="13_jsewn"]
@@ -24,7 +24,7 @@ army_units = Array[ExtResource("11_f18ba")]([ExtResource("7_msm0q"), ExtResource
 
 [sub_resource type="Resource" id="Resource_hior6"]
 script = ExtResource("11_f18ba")
-scene = ExtResource("10_mp7pk")
+scene = ExtResource("10_26nih")
 experience = 0
 health = 100.0
 
@@ -34,7 +34,7 @@ army_units = Array[ExtResource("11_f18ba")]([ExtResource("7_msm0q"), SubResource
 
 [sub_resource type="Resource" id="Resource_171ml"]
 script = ExtResource("11_f18ba")
-scene = ExtResource("10_mp7pk")
+scene = ExtResource("10_26nih")
 experience = 0
 health = 100.0
 
@@ -44,7 +44,7 @@ army_units = Array[ExtResource("11_f18ba")]([ExtResource("7_msm0q"), SubResource
 
 [sub_resource type="Resource" id="Resource_3curf"]
 script = ExtResource("11_f18ba")
-scene = ExtResource("10_mp7pk")
+scene = ExtResource("10_26nih")
 experience = 0
 health = 100.0
 
@@ -74,46 +74,44 @@ unique_name_in_owner = true
 [node name="Rome" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
 NATION_TAG = "ROME"
 nationOutline = Color(0.266667, 0.054902, 0.0705882, 1)
-nationColor = Color(0.521569, 0.117647, 0.117647, 1)
+nationColor = Color(0.517647, 0.12549, 0.141176, 1)
 gold = 371
 isPlayer = true
 
 [node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
 unique_name_in_owner = true
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
+modulate = Color(0.517647, 0.12549, 0.141176, 1)
 position = Vector2(703, 481)
 army_name = null
-army_data = SubResource("Resource_vvqwv")
 ownership = "ROME"
-army_color = Color(0.521569, 0.117647, 0.117647, 1)
+army_data = SubResource("Resource_vvqwv")
 
 [node name="Legio II" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
 unique_name_in_owner = true
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
+modulate = Color(0.517647, 0.12549, 0.141176, 1)
 position = Vector2(887, 505)
 army_name = null
-army_data = SubResource("Resource_dmdnx")
 ownership = "ROME"
+army_data = SubResource("Resource_dmdnx")
 
 [node name="Legio III" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
+modulate = Color(0.517647, 0.12549, 0.141176, 1)
 position = Vector2(826, 551)
 army_name = null
-army_data = SubResource("Resource_8lrrd")
 ownership = "ROME"
+army_data = SubResource("Resource_8lrrd")
 
 [node name="Etruria" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
 NATION_TAG = "ETRURIA"
 nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
-nationColor = Color(0.439216, 0.435294, 0.388235, 1)
+nationColor = Color(0.431373, 0.439216, 0.388235, 1)
 
 [node name="Etrurian King" parent="NationsGroup/Etruria" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.439216, 0.435294, 0.388235, 1)
+modulate = Color(0.431373, 0.439216, 0.388235, 1)
 position = Vector2(604, 358)
 army_name = null
-army_data = SubResource("Resource_ce5sf")
 ownership = "ETRURIA"
-army_color = Color(0.439216, 0.435294, 0.388235, 1)
+army_data = SubResource("Resource_ce5sf")
 
 [node name="EuropeMap" type="Sprite2D" parent="."]
 visible = false
