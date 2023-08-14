@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Objects/Campaign/army.gd" id="1_836ho"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_xkwou"]
 [ext_resource type="Texture2D" uid="uid://gsdup63vf75s" path="res://Assets/units/box.png" id="2_777mv"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="2_acdww"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="2_acdww"]
 [ext_resource type="Script" path="res://Objects/Campaign/unit_data.gd" id="3_seok1"]
 [ext_resource type="PackedScene" uid="uid://biq4lgibkxe6v" path="res://Objects/mouse_detector.tscn" id="4_mc6e8"]
 [ext_resource type="Script" path="res://Objects/Campaign/army_data.gd" id="4_pwofr"]

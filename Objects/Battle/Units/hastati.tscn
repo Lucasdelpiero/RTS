@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3]
 
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="1_kfvfj"]
-[ext_resource type="Resource" path="res://Objects/Battle/Units/hastati_weapons.tres" id="2_5jbtb"]
+[ext_resource type="PackedScene" uid="uid://c2hk7mes1jtit" path="res://Objects/Battle/box.tscn" id="1_kfvfj"]
+[ext_resource type="Resource" uid="uid://bfxkhpgembvd" path="res://Objects/Battle/Units/hastati_weapons.tres" id="2_5jbtb"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="3_tsyhh"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/melee_weapon.tscn" id="4_wwipc"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_8xeb2"]
+[ext_resource type="PackedScene" uid="uid://cvuy2uf0bf0af" path="res://Objects/Battle/melee_weapon.tscn" id="4_wwipc"]
+[ext_resource type="PackedScene" uid="uid://d2muwlo87x7i8" path="res://Objects/Battle/range_weapon.tscn" id="5_8xeb2"]
 [ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Objects/Battle/ray_cast_check_space.tscn" id="6_hnfu1"]
 
 [node name="Hastati" instance=ExtResource("1_kfvfj")]

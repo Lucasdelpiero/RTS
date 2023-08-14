@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapon.gd" id="1_h71cw"]
+[ext_resource type="Script" path="res://Objects/Battle/weapon.gd" id="1_h71cw"]
 
 [node name="Weapon" type="Node"]
 script = ExtResource("1_h71cw")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3]
 
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/box.tscn" id="1_yujsf"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/box.tscn" id="1_yujsf"]
 [ext_resource type="Script" path="res://Scripts/Battle/melee_weapon.gd" id="2_rrglf"]
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_k2m8e"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="4_1okoe"]
+[ext_resource type="Script" path="res://Objects/Battle/weapons_data.gd" id="3_k2m8e"]
+[ext_resource type="PackedScene" path="res://Objects/Battle/range_weapon.tscn" id="4_1okoe"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_r6yrx"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/melee_weapon.tscn" id="5_ph45o"]
+[ext_resource type="PackedScene" uid="uid://dlj3tm21x4o64" path="res://Objects/Battle/melee_weapon.tscn" id="5_ph45o"]
 
 [sub_resource type="Resource" id="Resource_o64k3"]
 script = ExtResource("2_rrglf")

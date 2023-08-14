@@ -27,7 +27,7 @@ func start_battle():
 	save_game()
 	var world = get_tree().get_nodes_in_group("world")[0] as Node2D
 	world.queue_free()
-	var battleWorld = load("res://Objects/Battle/Units/box.tscn").instantiate() as BattleMap
+	var battleWorld = load("res://Objects/Battle/battle_map.tscn").instantiate() as BattleMap
 	add_child(battleWorld)
 	battleWorld.main = self
 	battleWorld.sg_finished_battle.connect(return_from_battle)
