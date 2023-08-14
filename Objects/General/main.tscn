@@ -39,69 +39,8 @@ army_name = "Legio III"
 [node name="Etrurian King" parent="World/NationsGroup/Etruria" index="0"]
 army_name = "Etrurian King"
 
-[node name="Rome" parent="World/Italy" index="0"]
-weight = 1.0
-
-[node name="Etruria" parent="World/Italy" index="1"]
-weight = 1.0
-
-[node name="Umbria" parent="World/Italy" index="2"]
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Samnites" parent="World/Italy" index="3"]
-weight = 1.0
-
-[node name="Piceni" parent="World/Italy" index="4"]
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Neapolis" parent="World/Italy" index="5"]
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Frentani" parent="World/Italy" index="6"]
-weight = 1.0
-income = 10.0
-population = 1000
-
 [node name="Upper Apulia" parent="World/Italy" index="7"]
 outLine = Color(0.34902, 0.34902, 0.490196, 1)
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Lower Apulia" parent="World/Italy" index="8"]
-ownership = ""
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Heraclea" parent="World/Italy" index="9"]
-ownership = ""
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Calabria" parent="World/Italy" index="10"]
-ownership = ""
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Sicily" parent="World/Italy" index="11"]
-ownership = ""
-weight = 1.0
-income = 10.0
-population = 1000
-
-[node name="Province" parent="World/Italy" index="12"]
-weight = 1.0
-income = 10.0
-population = 1000
 
 [editable path="World"]
 [editable path="World/Mouse"]
