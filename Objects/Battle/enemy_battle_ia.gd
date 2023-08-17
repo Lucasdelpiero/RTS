@@ -4,10 +4,12 @@ extends UnitsManagement
 var units = []
 @onready var armyMarker = %ArmyMarker
 @onready var infantryMarker = %InfantryMarker
+@onready var rangeMarker = %RangeMarker
 @export var playerGroup : Node = null
 var player_units := []
 var distance_to_be_in_group = 500
 var playerGroups : Array[Array] = []
+@export var general : General 
 
 enum GeneralStates {
 	WAITING,
@@ -20,6 +22,9 @@ var generalState = GeneralStates.WAITING
 
 
 func _ready():
+	if general == null:
+		general = General.new()
+	print(general.charisma)
 	if armyGroup == null:
 		return
 	units = armyGroup.get_children()
@@ -29,7 +34,14 @@ func _ready():
 	get_enemy_groups()
 
 func update_ia():
-	generalState = GeneralStates.FIGHTING
+	var groups = get_enemy_groups()
+	print(groups.size())
+#	generalState = GeneralStates.FIGHTING
+	pass
+
+
+func get_data_to_think_next_action():
+	
 	pass
 
 func get_enemy_groups():
@@ -142,10 +154,12 @@ func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : flo
 		var newPos = armyMarker.global_position + targetPosition + formation_pos - offset
 		unit.move_to(newPos, face_direction)
 
+func advance(aUnits: Array):
+	pass
 
 func _on_timer_timeout():
 	update_ia()
 	get_enemy_groups()
 	# Check bug if it the timer goes fast
-	move_units(units, armyMarker.global_position , 0.0, PI)
+#	move_units(units, armyMarker.global_position , 0.0, PI)
 	pass # Replace with function body.
