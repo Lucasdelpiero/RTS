@@ -35,14 +35,11 @@ func _ready():
 
 func update_ia():
 	var groups = get_enemy_groups()
-#	print(groups.size())
 	var closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
 	var focus = general.get_focused_group(groups)
-#	print(focus)
-	var debug : Debug = Globals.debug
-	debug.update_label("size", focus.size())
-	debug.update_label("closest", "closest: %s" %[closest])
+	Globals.debug_update_label("size", focus.size())
+	Globals.debug_update_label("closest", "closest: %s" %[closest])
 	match(action):
 		"move" :
 #			move_units(units, armyMarker.global_position , 0.0, PI)

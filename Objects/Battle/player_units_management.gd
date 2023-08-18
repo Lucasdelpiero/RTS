@@ -87,7 +87,6 @@ func dragging_draw_and_move():
 			draw_units(true)
 			sprites_to_draw = []
 			created_sprites = false
-		
 		if start_drag.distance_to(end_drag) <= drag_distance_draw:
 			move_without_draggin(destination)
 

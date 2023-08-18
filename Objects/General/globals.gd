@@ -23,3 +23,9 @@ func reset_armies():
 	playerArmyData = []
 	enemyArmy = []
 	enemyArmyData = []
+
+func debug_update_label(variable_name : String , value):
+	if debug == null:
+		return
+	debug.update_label(variable_name, value)
+	pass
