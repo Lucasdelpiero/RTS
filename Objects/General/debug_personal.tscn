@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://drxlf76g7y02i"]
+
+[ext_resource type="Script" path="res://Objects/General/debug_personal.gd" id="1_vqp83"]
+
+[node name="DebugPersonal" type="Node2D"]
+script = ExtResource("1_vqp83")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="MarkerBase" type="Marker2D" parent="Node"]
+unique_name_in_owner = true
+
+[node name="MarginMarker" type="Marker2D" parent="Node/MarkerBase"]
+position = Vector2(-64, -105)
+
+[node name="PanelContainer" type="PanelContainer" parent="Node/MarkerBase/MarginMarker"]
+offset_right = 64.0
+offset_bottom = 26.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Node/MarkerBase/MarginMarker/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node/MarkerBase/MarginMarker/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

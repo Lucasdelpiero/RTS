@@ -24,4 +24,3 @@ func update_label(variable_name : String , value):
 		new_label.text = str(value)
 		return
 	label[0].text = str(value)
-	pass

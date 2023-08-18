@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://6b22yls05sfo"]
+[gd_scene load_steps=28 format=3 uid="uid://6b22yls05sfo"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_4eif3"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_p5nde"]
+[ext_resource type="PackedScene" uid="uid://drxlf76g7y02i" path="res://Objects/General/debug_personal.tscn" id="4_iawob"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/marker2d.gd" id="4_ydajr"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/position_node.tscn" id="5_ylt6l"]
 [ext_resource type="Texture2D" uid="uid://b4nxhf5mv7esw" path="res://Assets/units/box_base.png" id="6_gmdlq"]
@@ -69,6 +70,12 @@ script = ExtResource("1_qofug")
 weaponsData = SubResource("Resource_ollnb")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
+
+[node name="DebugPersonal" parent="." instance=ExtResource("4_iawob")]
+property_1 = "global_position"
+
+[node name="MarginMarker" parent="DebugPersonal/Node/MarkerBase" index="0"]
+position = Vector2(-156, -223)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(98, -189)
@@ -228,6 +235,7 @@ collision_mask = 0
 [connection signal="mouse_entered" from="UnitDetector" to="." method="_on_unit_detector_mouse_entered"]
 [connection signal="mouse_exited" from="UnitDetector" to="." method="_on_unit_detector_mouse_exited"]
 
+[editable path="DebugPersonal"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]
