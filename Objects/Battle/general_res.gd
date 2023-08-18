@@ -7,6 +7,7 @@ class_name General
 @export_range(1, 10, 1) var charisma : int = 5
 @export var patience : int = 100 # if there is not an favorable evolution to solve the battle, patience will lower, making rushing actions more likely
 var distance_to_main_group : int = 1000000 # Used to check if the army got closer during the time being and to be used with the patience mechanic
+var group_focused : Array = [] #Group that the general is focusing in attack
 
 enum GeneralStates {
 	WAITING,
@@ -18,4 +19,18 @@ enum GeneralStates {
 var generalState = GeneralStates.WAITING
 
 func get_next_action():
+	return "move"
 	pass
+
+func get_focused_group(groups : Array):
+	var group_size = 0
+	var new_group_focused = []
+	for group in groups:
+		if typeof(group) != 28:
+			printerr("Group is not an array")
+			return null
+		if group.size() > group_size:
+			new_group_focused = group.duplicate()
+	group_focused = new_group_focused
+	return group_focused
+	

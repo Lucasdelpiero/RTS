@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dttijt2jekxw5"]
+
+[ext_resource type="Script" path="res://Objects/General/debug_label.gd" id="1_jmi4w"]
+
+[node name="Label" type="Label"]
+script = ExtResource("1_jmi4w")

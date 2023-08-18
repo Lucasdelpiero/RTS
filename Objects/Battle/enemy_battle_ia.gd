@@ -24,7 +24,7 @@ var generalState = GeneralStates.WAITING
 func _ready():
 	if general == null:
 		general = General.new()
-	print(general.charisma)
+#	print(general.charisma)
 	if armyGroup == null:
 		return
 	units = armyGroup.get_children()
@@ -35,7 +35,19 @@ func _ready():
 
 func update_ia():
 	var groups = get_enemy_groups()
-	print(groups.size())
+#	print(groups.size())
+	var closest = get_distance_to_closest(groups, armyMarker.global_position)
+	var action = general.get_next_action()
+	var focus = general.get_focused_group(groups)
+#	print(focus)
+	var debug : Debug = Globals.debug
+	debug.update_label("size", focus.size())
+	debug.update_label("closest", "closest: %s" %[closest])
+	match(action):
+		"move" :
+#			move_units(units, armyMarker.global_position , 0.0, PI)
+#			print("alf")
+			pass
 #	generalState = GeneralStates.FIGHTING
 	pass
 
@@ -43,6 +55,19 @@ func update_ia():
 func get_data_to_think_next_action():
 	
 	pass
+
+func get_distance_to_closest(groups : Array, from: Vector2):
+	var closest = INF
+	var distance := 0.0
+	for group in groups:
+		if typeof(group) != 28:
+			printerr("Group is not an array")
+			return null
+		for unit in group as Array[Unit]:
+			distance = unit.global_position.distance_to(from)
+			if distance < closest:
+				closest = distance
+	return closest
 
 func get_enemy_groups():
 	var group_to_add_units = 0

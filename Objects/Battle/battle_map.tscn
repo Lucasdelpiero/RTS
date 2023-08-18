@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://d0qglixbf5jcg"]
+[gd_scene load_steps=50 format=3 uid="uid://d0qglixbf5jcg"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://cowxiuqx35gta" path="res://Objects/Battle/battle_ui.tscn" id="2_41tas"]
 [ext_resource type="PackedScene" path="res://Objects/General/camera.tscn" id="2_a41j7"]
 [ext_resource type="PackedScene" uid="uid://bmgcl5m2bqfuu" path="res://Objects/Battle/units_controller.tscn" id="2_cu7ak"]
+[ext_resource type="PackedScene" uid="uid://cc7nsjg04s2lx" path="res://Objects/General/debug.tscn" id="2_efedw"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_mnpce"]
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="3_7m77a"]
 [ext_resource type="PackedScene" uid="uid://v1d5ygtvkrrj" path="res://Objects/Battle/player_units_management.tscn" id="3_eq3d1"]
@@ -200,6 +201,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-9239, 3565, -8695, -82
 script = ExtResource("1_3dkh7")
 metadata/_edit_vertical_guides_ = [1584.0]
 
+[node name="Debug" parent="." instance=ExtResource("2_efedw")]
+
 [node name="BattleUI" parent="." instance=ExtResource("2_41tas")]
 script = ExtResource("3_7m77a")
 
@@ -388,5 +391,6 @@ text = "FINISH THE BATTLE"
 
 [connection signal="pressed" from="FinishBattleButton" to="." method="_on_finish_battle_button_pressed"]
 
+[editable path="Debug"]
 [editable path="BattleUI/OverlayUnit"]
 [editable path="EnemyBattleIA"]
