@@ -4,18 +4,23 @@
 
 [node name="DebugPersonal" type="Node2D"]
 script = ExtResource("1_vqp83")
+metadata/_edit_lock_ = true
 
 [node name="Node" type="Node" parent="."]
 
 [node name="MarkerBase" type="Marker2D" parent="Node"]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="MarginMarker" type="Marker2D" parent="Node/MarkerBase"]
 position = Vector2(-64, -105)
 
 [node name="PanelContainer" type="PanelContainer" parent="Node/MarkerBase/MarginMarker"]
+unique_name_in_owner = true
 offset_right = 64.0
 offset_bottom = 26.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Node/MarkerBase/MarginMarker/PanelContainer"]
 layout_mode = 2

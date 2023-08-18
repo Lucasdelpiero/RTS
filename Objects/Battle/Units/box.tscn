@@ -72,10 +72,14 @@ moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 
 [node name="DebugPersonal" parent="." instance=ExtResource("4_iawob")]
+scale = Vector2(1.41281, 1.32819)
 property_1 = "global_position"
+property_2 = "state"
+property_4 = "hovered"
+property_5 = "selected"
 
 [node name="MarginMarker" parent="DebugPersonal/Node/MarkerBase" index="0"]
-position = Vector2(-156, -223)
+position = Vector2(-210, -294)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(98, -189)

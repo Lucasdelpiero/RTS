@@ -17,7 +17,6 @@ func update_label(variable_name : String , value):
 #	print(variable_name)
 	var label = vbox.get_children().filter(func(el): return el.variable_name == variable_name)
 	if label.size() == 0:
-		print("needs new label")
 		var new_label :  = DebugLabel.instantiate() 
 		vbox.add_child(new_label)
 		new_label.variable_name = variable_name

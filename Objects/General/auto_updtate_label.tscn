@@ -6,5 +6,6 @@
 offset_right = 40.0
 offset_bottom = 23.0
 size_flags_horizontal = 3
-size_flags_vertical = 6
+theme_override_font_sizes/font_size = 36
+text = "Test"
 script = ExtResource("1_lgp73")

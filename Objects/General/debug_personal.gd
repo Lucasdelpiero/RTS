@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var vbox = %VBoxContainer
-@onready var marker = %MarkerBase
+@onready var container : PanelContainer = %PanelContainer
+@onready var vbox : VBoxContainer = %VBoxContainer
+@onready var marker : Marker2D = %MarkerBase
 var DebugLabel = preload("res://Objects/General/auto_updtate_label.tscn")
 
 @export var property_1 : String = ""
@@ -29,7 +30,7 @@ func _ready():
 	for property in properties:
 		if property == "" or node.get(property) == null :
 			continue
-		update_label(node, property)
+		update_label(node, property, property + str(": "))
 	pass
 
 func _physics_process(delta):
@@ -42,16 +43,16 @@ func _physics_process(delta):
 
 func _input(_event):
 	if Input.is_action_just_pressed("Debug"):
-		visible = !visible
+		marker.visible = !marker.visible
 
 func update_label(node_to_follow : Node , property : String, prefix : String = ""):
 #	print(variable_name)
 	var label = vbox.get_children().filter(func(el): return (el.node_to_follow == node_to_follow and el.property_to_follow == property ))
 	if label.size() == 0:
-		print("needs new personal label")
 		var new_label :  = DebugLabel.instantiate() 
 		vbox.add_child(new_label)
 		new_label.node_to_follow = node_to_follow
 		new_label.property_to_follow = property
 		new_label.prefix = prefix
+		container.position.y = -vbox.size.y
 		return

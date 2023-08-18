@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://Objects/General/debug_label.gd" id="1_jmi4w"]
 
 [node name="Label" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
 script = ExtResource("1_jmi4w")
