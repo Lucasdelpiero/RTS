@@ -259,6 +259,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnPlayer")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
+ownership = "ROME"
 
 [node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(861, 1265)
@@ -314,28 +315,25 @@ army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 script = ExtResource("4_e2hns")
 spawnMarker = NodePath("../SpawnEnemy")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
+ownership = "ETRURIA"
 
 [node name="Etruria" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(338, 145)
-ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(912, 2)
-ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria3" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1380, -315)
-ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria4" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1893, -285)
-ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
@@ -347,14 +345,17 @@ army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(748, -785)
+ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman2" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1133, -883)
+ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman3" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1427, -959)
+ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]

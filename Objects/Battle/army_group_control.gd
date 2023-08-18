@@ -5,6 +5,7 @@ class_name SpawnPoint
 @export var spawnMarker : Marker2D = null
 @export_color_no_alpha var army_color = Color(0.5, 0.5, 0.5) : set = set_color
 @export var setInPosition : bool = true
+@export var ownership : String = ""
 var army := []
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,10 @@ func set_starting_position():
 		unit.set_destination("pan") # Used just to update the destination to the current position
 		unit.set_face_direction(spawnMarker.rotation)
 		unit.state = unit.State.IDLE # In case units overlaps while spawning and are set to melee stance
+		if ownership != "":
+			unit.ownership = ownership
+		else:
+			push_error("Group doesnt have an ownerhip to be given")
 
 func set_color(value):
 	army = get_children()
