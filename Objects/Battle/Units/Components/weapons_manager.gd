@@ -40,6 +40,9 @@ func _ready():
 		push_error("Unit doesnt have a weapon to use")
 	set_weapons_visibility(false)
 
+func connect_signals():
+	pass
+
 var reseted_weapon = false
 func alternative_weapon(use_secondary : bool = false):
 #	return mouse_over_weapon
@@ -94,6 +97,7 @@ func get_in_use_weapon_type():
 func new_enemy_reached(value : Array): # signal emitted from the range weapon
 	if in_use_weapon.get_type() == "Range":
 		send_units_in_range.emit(value)
+#		print(value)
 	pass
 
 func get_if_target_in_weapon_range(value : Unit):

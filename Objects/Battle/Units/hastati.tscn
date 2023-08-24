@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://d2kauew43mhfs" path="res://Objects/Battle/Units/hastati_weapons.tres" id="2_5jbtb"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="3_tsyhh"]
 [ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="4_u32l7"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_bj77f"]
+[ext_resource type="PackedScene" uid="uid://dwru5o0lqlwmd" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_bj77f"]
 [ext_resource type="PackedScene" uid="uid://d3xtdg6pwn35t" path="res://Objects/Battle/Units/Components/ray_cast_check_space.tscn" id="6_fanu0"]
 
 [node name="Hastati" instance=ExtResource("1_qerye")]
@@ -43,6 +43,7 @@ target_position = Vector2(85, -77)
 
 [connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
 
+[editable path="DebugPersonal"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]

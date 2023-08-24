@@ -6,6 +6,7 @@ var DebugLabel = preload("res://Objects/General/debug_label.tscn")
 
 func _enter_tree():
 	Globals.debug = self
+	visible = false
 #	print("alfonso")
 	pass
 

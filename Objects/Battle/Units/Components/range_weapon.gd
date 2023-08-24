@@ -20,6 +20,7 @@ var polygon_count = 60.0
 var enemies_in_weapon_range : Array[Unit] = []
 signal reached_new_enemy(enemies)
 signal reload_time_over(node)
+@onready var reloading = false
 
 func _ready():
 	type = "Range"
@@ -34,9 +35,12 @@ func _ready():
 func connect_signals_to_manager(parent : WeaponsManager):
 #	reloadTimer.timeout.connect(parent.weapon_can_attack_again)
 	reload_time_over.connect(parent.weapon_can_attack_again)
+#	reached_new_enemy.connect(parent.new_enemy_reached)
 	pass
 
 func shoot(target : Unit):
+	if reloading:
+		return
 	var projectile = Projectile.instantiate()
 	get_tree().get_root().add_child(projectile)
 	var angle = global_position.angle_to_point(target.global_position)
@@ -49,6 +53,7 @@ func shoot(target : Unit):
 	projectile.create_projectile(data)
 	var _time_to_reload = base_reloading_speed * reload_time
 	reloadTimer.start()
+	reloading = true
 	pass
 
 func get_type():
@@ -102,8 +107,7 @@ func check_if_target_is_in_area(value):
 	var units = areas.map(func(el) : return el.owner) as Array[Unit]
 	return units.has(value)
 
-
-
 func _on_reload_timer_timeout():
+	reloading = false
 	emit_signal("reload_time_over", self)
 	pass # Replace with function body.

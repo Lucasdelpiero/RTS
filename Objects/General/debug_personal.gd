@@ -23,7 +23,9 @@ var DebugLabel = preload("res://Objects/General/auto_updtate_label.tscn")
 	property_7,
 ]
 
+
 func _ready():
+	marker.visible = false
 	var node = get_parent()
 	if node == null:
 		return
@@ -31,7 +33,6 @@ func _ready():
 		if property == "" or node.get(property) == null :
 			continue
 		update_label(node, property, property + str(": "))
-	pass
 
 func _physics_process(delta):
 	var node = get_parent()

@@ -65,8 +65,8 @@ func _ready():
 #		print(name)
 #		print(weaponsData.primary_weapon.base_attack)
 #		print("=========")
-#	weapons.send_units_in_range.connect(check_if_target_is_in_range)
-#	weapons.in_use_weapon_ready_to_attack.connect(attack_again)
+	weapons.send_units_in_range.connect(check_if_target_is_in_range)
+	weapons.in_use_weapon_ready_to_attack.connect(attack_again)
 	if troops_number == 0: # if not defined a number of alive troops on creation it will have the max amount
 		troops_number = troops_number_max
 	update_overlay()
@@ -229,8 +229,8 @@ func alternative_weapon(use_secondary):
 	weapons.alternative_weapon(use_secondary)
 
 func recieved_attack(data : AttackData):
-	print("i recieved damage")
-	print(data)
+#	print("i recieved damage")
+#	print(data)
 	pass
 
 func update_overlay():
@@ -247,9 +247,16 @@ func get_type():
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit
+#	print("enemy in range")
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
 		enemies_in_range.push_back(unit)
 #		print(enemies_in_range)
+#		print(target_unit)
+#	if enemies_in_range.has(target_unit):
+#		print(target_unit)
+#		attack_target(target_unit)
+#		state = State.FIRING
+	check_if_target_is_in_range(enemies_in_range)
 	pass # Replace with function body.
 
 
@@ -258,14 +265,16 @@ func _on_range_of_attack_area_exited(area):
 	var index = enemies_in_range.find(unit)
 	if index >= 0:
 		var newArr = enemies_in_range.duplicate()
-		newArr.remove_at(index)
+#		newArr.remove_at(index)
 		enemies_in_range = newArr.duplicate()
 #		print(enemies_in_range)
+	check_if_target_is_in_range(enemies_in_range)
+
 	pass # Replace with function body.
 
 func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -> unit
 	for i in arr:
-		if i == target_unit and state == State.CHASING: # add fire at will later
+		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
 #			print("Enemy is hereeeeeee")
 	pass
@@ -288,4 +297,22 @@ func _on_unit_detector_area_exited(area):
 	moveComponent.pushVector = Vector2.ZERO
 #	print("an enemy is leaving")
 #		pass
+	pass # Replace with function body.
+
+
+func _on_range_weapon_reached_new_enemy(enemies):
+#	print(enemies)
+	if state != State.CHASING: # or is in fire at will
+		return
+	enemies_in_range = enemies.duplicate()
+	if enemies_in_range.has(target_unit):
+		range_attack(target_unit)
+	pass # Replace with function body.
+
+
+func _on_range_weapon_reload_time_over(node):
+	if state != State.FIRING:
+		return
+	if enemies_in_range.has(target_unit):
+		range_attack(target_unit)
 	pass # Replace with function body.

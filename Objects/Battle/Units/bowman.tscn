@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_tc0iq"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_g6nr5"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_r6yrx"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_h41ep"]
+[ext_resource type="PackedScene" uid="uid://dwru5o0lqlwmd" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_h41ep"]
 [ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="6_fuk8l"]
 
 [sub_resource type="Resource" id="Resource_o64k3"]
@@ -33,11 +33,14 @@ text = "Bowman"
 texture = ExtResource("4_r6yrx")
 
 [node name="RangeWeapon" parent="Weapons" index="0" instance=ExtResource("5_h41ep")]
+visible = true
 base_max_range = 2000
 
 [node name="MeleeWeapon" parent="Weapons" index="1" instance=ExtResource("6_fuk8l")]
 
+[editable path="DebugPersonal"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]
 [editable path="HurtBoxComponent/Right"]
+[editable path="UnitDetector"]
