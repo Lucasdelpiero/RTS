@@ -19,6 +19,7 @@ var nav_map = null
 
 signal sg_finished_battle(data)
 signal sg_clean_overlay_unit
+signal create_cards(army)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,8 @@ func _ready():
 	player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
 		el.navigation_tilemap = navigationTileMap
+	create_cards.connect(battleUI.create_cards)
+	create_cards.emit(player_units)
 #	mouse.ui = UI
 	pass # Replace with function body.
 
