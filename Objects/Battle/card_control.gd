@@ -15,6 +15,12 @@ var group_10 = [] # not in gorup
 
 var groups = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10]
 
+func _input(event):
+	if event is InputEventKey:
+		var num = int(event.as_text())
+		select_group(num)
+	pass
+
 func create_cards(army):
 	for unit in army as Array[Unit]:
 		var unit_card = Unit_Card.instantiate()
@@ -54,4 +60,16 @@ func update_positions():
 		for card in group:
 			add_child(card)
 
+func select_group(num):
+	print(num)
+	if num == 0:
+		return
+	var group = "group_%s" % [num]
+	for card_group in groups:
+		for card in card_group:
+			card.set_selected(false)
+	for card in self[group]:
+		print(card)
+		card.set_selected(true)
+	pass
 

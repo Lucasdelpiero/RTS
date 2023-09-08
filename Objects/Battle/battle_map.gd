@@ -24,6 +24,7 @@ signal order_to_create_group(army)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.battle_map = self
 	spawn_units()
 	mouse.world = self
 	sg_clean_overlay_unit.connect(battleUI.hide_overlay)
@@ -60,6 +61,7 @@ func _unhandled_input(_event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	Globals.debug_update_label("World U.sel: ", "World U.sel: %s" % [units_selected.size()])
 	pass
 
 func set_units_hovered(unit : Unit, hovered : bool):
@@ -104,7 +106,7 @@ func set_units_selected(unit : Unit, selected : bool):
 	var temp_copy = units_selected.duplicate()
 	var unit_position = units_selected.find(unit)
 	# Add unit if its not in the array
-	if not units_selected.has(unit):
+	if not units_selected.has(unit) and selected: ## this was modified
 		temp_copy.push_back(unit)
 	# Remove unit if not pressing the control key
 	if units_selected.has(unit):

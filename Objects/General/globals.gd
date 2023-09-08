@@ -8,6 +8,7 @@ var playerArmyData : Array[ArmyData] = [] # Array of armies data each containing
 var enemyArmy = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
+var battle_map : BattleMap = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

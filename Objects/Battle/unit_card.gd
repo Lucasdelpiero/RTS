@@ -23,6 +23,13 @@ func set_texture_type(type):
 		texture_type.set_texture(load("res://Assets/units/box_type_cavalry.png"))
 	texture_base.modulate = Color(randf(), randf(), randf())
 
+func set_selected(value):
+	if unit_reference == null:
+		return
+	get_parent().get_parent().get_parent().get_parent().set_units_selected(unit_reference, value)
+#	unit_reference.set_selected(true)
+	pass
+
 func _on_mouse_entered():
 	pass # Replace with function body.
 
