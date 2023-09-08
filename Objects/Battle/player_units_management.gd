@@ -15,9 +15,13 @@ var alpha_color = 0.5
 var group_1 : Array = []
 var destination
 
+signal new_group_created(army)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if world == null:
+		return
+	new_group_created.connect(world.order_battle_ui_to_create_group)
 	pass # Replace with function body.
 
 func _unhandled_input(_event):
@@ -33,8 +37,14 @@ func _unhandled_input(_event):
 				unit.alternative_weapon(false)
 	# Manage drawing the sprites and movement for the units dra
 	dragging_draw_and_move()
+	
+	if Input.is_action_just_pressed("Group_Key"):
+		create_group(units)
+		pass
 
-
+func create_group(army):
+	new_group_created.emit(army)
+	pass
 
 func dragging_draw_and_move():
 	if Input.is_action_just_pressed("Click_Right"):

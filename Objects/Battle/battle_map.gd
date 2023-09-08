@@ -20,6 +20,7 @@ var nav_map = null
 signal sg_finished_battle(data)
 signal sg_clean_overlay_unit
 signal create_cards(army)
+signal order_to_create_group(army)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +34,7 @@ func _ready():
 	player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
 		el.navigation_tilemap = navigationTileMap
+	order_to_create_group.connect(battleUI.order_card_control_to_create_group)
 	create_cards.connect(battleUI.create_cards)
 	create_cards.emit(player_units)
 #	mouse.ui = UI
@@ -161,6 +163,10 @@ func finish_battle():
 
 func send_data_to_overlay(data : OverlayUnitData):
 	battleUI.update_overlay(data)
+	pass
+
+func order_battle_ui_to_create_group(army):
+	order_to_create_group.emit(army)
 	pass
 
 func _on_finish_battle_button_pressed():
