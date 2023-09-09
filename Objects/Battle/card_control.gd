@@ -54,6 +54,7 @@ func create_group(army):
 	var cards = get_children()
 	if cards.size() < 1:
 		return
+	
 	# Check to delete group if all units are in the same group
 	var has_to_delete_group = false
 	var cards_to_delete_group = []
@@ -78,26 +79,29 @@ func create_group(army):
 		update_groups()
 		update_positions()
 		return # do not create a new group
-		
-	# Create group in new available group number or add it to the group
-	for unit in army:
-		var add_to_group_number = null
+	
+	
+	# Add unit to group if someone has a group (currently add its to the first group it gets from a unit, maybe should be changed to the lower number in the units)
+	var add_to_group_number = null
+	for unit in army: # Check if someone has a group
 		for card in cards:
 			if unit == card.unit_reference:
 				if add_to_group_number == null and card.group != 10 :
 					add_to_group_number = card.group
-		for card in cards:
-			if unit == card.unit_reference:
-				if add_to_group_number != null:
+	if add_to_group_number != null: # If someone has a group it puts all into that group
+		for unit in army:
+			for card in cards:
+				if unit == card.unit_reference:
 					card.group = add_to_group_number
-					print("not create new group: %s" % [add_to_group_number])
-					break
-				
-				if add_to_group_number == null:
+	
+	# Create new group in the first available group
+	if add_to_group_number == null:
+		for unit in army:
+			for card in cards:
+				if unit == card.unit_reference:
 					for i in groups.size():
 						if groups[i].size() == 0 and card.group == 10:
 							card.group = i + 1
-							print("new group: %s" %[i + 1] )
 	
 	update_groups()
 	update_positions()
