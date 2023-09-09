@@ -25,6 +25,7 @@ signal order_to_create_group(army)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.battle_map = self
+	Globals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	spawn_units()
 	mouse.world = self
 	sg_clean_overlay_unit.connect(battleUI.hide_overlay)

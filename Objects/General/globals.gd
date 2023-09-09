@@ -8,7 +8,9 @@ var playerArmyData : Array[ArmyData] = [] # Array of armies data each containing
 var enemyArmy = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
-var battle_map : BattleMap = null
+var battle_map : BattleMap = null 
+
+signal sg_battlemap_set_units_selected(unit, value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +19,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	pass
+
+func battlemap_set_units_selected(unit, value):
+	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 
 func reset_armies():

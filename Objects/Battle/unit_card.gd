@@ -7,9 +7,12 @@ var unit_reference = null
 var group = 10 # 10 = not in a group
 var position_in_group = 0 # 
 
+signal sg_card_selected(value)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var min_size = Vector2(size.x, 0)
+	sg_card_selected.connect(Globals.battlemap_set_units_selected)
 #	texture_base.set_custom_minimum_size(min_size)
 #	texture_type.set_custom_minimum_size(min_size)
 	pass # Replace with function body.
@@ -26,7 +29,8 @@ func set_texture_type(type):
 func set_selected(value):
 	if unit_reference == null:
 		return
-	get_parent().get_parent().get_parent().get_parent().set_units_selected(unit_reference, value)
+	sg_card_selected.emit(unit_reference, value)
+#	get_parent().get_parent().get_parent().get_parent().set_units_selected(unit_reference, value)
 #	unit_reference.set_selected(true)
 	pass
 
