@@ -8,7 +8,7 @@ var playerArmyData : Array[ArmyData] = [] # Array of armies data each containing
 var enemyArmy = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
-var battle_map : BattleMap = null 
+var battle_map : BattleMap = null : set = set_battle_map
 
 signal sg_battlemap_set_units_selected(unit, value)
 
@@ -21,8 +21,12 @@ func _ready():
 func _process(_delta):
 	pass
 
+func set_battle_map(value):
+	battle_map = value
+	Signals.battle_map = value
+
 func battlemap_set_units_selected(unit, value):
-	sg_battlemap_set_units_selected.emit(unit, value)
+#	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 
 func reset_armies():

@@ -1,6 +1,7 @@
 extends GridContainer
 
 @onready var Unit_Card = preload("res://Objects/Battle/unit_card.tscn")
+@onready var Group_Btn = preload("res://Objects/General/group_btn.tscn")
 @onready var cards = []
 var group_1 = []
 var group_2 = []
@@ -14,6 +15,12 @@ var group_9 = []
 var group_10 = [] # not in gorup
 
 var groups = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10]
+
+signal sg_card_selected_to_battlemap(card, value)
+
+func _ready():
+	sg_card_selected_to_battlemap.connect(Signals.battlemap_set_units_selected)
+	pass
 
 func _input(event):
 	if Input.is_action_just_pressed("Number_1"):
@@ -47,6 +54,7 @@ func create_cards(army):
 		add_child(unit_card)
 		unit_card.unit_reference = unit
 		unit_card.set_texture_type(unit.get_type())
+		unit_card.sg_card_selected.connect(card_selected)
 		group_10.push_back(unit_card)
 	pass
 
@@ -120,17 +128,51 @@ func update_positions():
 	for group in groups:
 		for card in group:
 			add_child(card)
+	for btn in get_tree().get_nodes_in_group("group_btn"):
+		btn.queue_free()
+	
+	await get_tree().create_timer(0.01).timeout # Used so the btn is put in position after the card has changed the position in the container
+	for group in groups.size() - 1: # " -1 " added so it excludes the group 10 (non grouped)
+		if groups[group].size() > 0 :
+			var group_btn = Group_Btn.instantiate()
+			get_parent().add_child(group_btn)
+			group_btn.global_position = groups[group][0].global_position
+			group_btn.global_position.y -= group_btn.size.y
+			group_btn.group = (group + 1)
+			group_btn.sg_group_button_pressed.connect(select_group)
+			group_btn.text = str(group + 1)
 
 func select_group(num):
 #	print(num)
 	if num == 0:
 		return
 	var group = "group_%s" % [num]
+	if not Input.is_action_pressed("Control"):
+		deselect_all_cards()
 	for card_group in groups:
 		for card in card_group:
-			card.set_selected(false)
+#			card.set_selected(false)
+			sg_card_selected_to_battlemap.emit(card.unit_reference, false)
 	for card in self[group]:
 #		print(card)
-		card.set_selected(true)
+#		card.set_selected(true)
+		sg_card_selected_to_battlemap.emit(card.unit_reference, true)
 	pass
 
+func deselect_all_cards():
+	for group in groups:
+		for card in group:
+			if not card is UnitCard:
+				continue
+			if card.unit_reference == null:
+				continue
+			sg_card_selected_to_battlemap.emit(card.unit_reference, false)
+	pass
+
+func card_selected(unit, value): # Individual card clicked
+	if not Input.is_action_pressed("Control"):
+		deselect_all_cards()
+	
+	sg_card_selected_to_battlemap.emit(unit, value)
+#	print(card)
+	pass

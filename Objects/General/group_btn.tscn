@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn2g3xqg6c61l"]
+
+[ext_resource type="Script" path="res://Objects/General/group_btn.gd" id="1_u8mqw"]
+
+[node name="GroupBtn" type="Button" groups=["group_btn"]]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "1"
+script = ExtResource("1_u8mqw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

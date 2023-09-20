@@ -12,7 +12,7 @@ signal sg_card_selected(value)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var min_size = Vector2(size.x, 0)
-	sg_card_selected.connect(Globals.battlemap_set_units_selected)
+#	sg_card_selected.connect(Signals.battlemap_set_units_selected)
 #	texture_base.set_custom_minimum_size(min_size)
 #	texture_type.set_custom_minimum_size(min_size)
 	pass # Replace with function body.
@@ -40,3 +40,7 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	pass # Replace with function body.
+
+
+func _on_button_pressed():
+	set_selected(true)
