@@ -15,14 +15,13 @@ offset_bottom = 0.239929
 size_flags_vertical = 8
 mouse_filter = 1
 
-[node name="CardControl" type="GridContainer" parent="Control"]
+[node name="CardControl" type="HBoxContainer" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 382.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 399.0
 offset_top = 509.0
-offset_right = 733.0
-offset_bottom = 644.0
-theme_override_constants/h_separation = 1
-theme_override_constants/v_separation = 1
-columns = 8
+offset_right = -379.0
+offset_bottom = 4.00006
 script = ExtResource("2_7itvx")

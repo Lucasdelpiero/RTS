@@ -10,6 +10,7 @@
 [node name="UnitCard" type="PanelContainer"]
 offset_right = 70.0
 offset_bottom = 93.0
+size_flags_vertical = 0
 theme_override_styles/panel = ExtResource("1_xnqhi")
 script = ExtResource("1_yyd1l")
 

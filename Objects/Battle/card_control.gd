@@ -1,8 +1,9 @@
-extends GridContainer
+extends HBoxContainer
 
 @onready var Unit_Card = preload("res://Objects/Battle/unit_card.tscn")
 @onready var Group_Btn = preload("res://Objects/General/group_btn.tscn")
-@onready var cards = []
+@onready var Flow_Container_Cards = preload("res://Objects/General/flow_container_cards.tscn")
+@onready var total_cards = []
 var group_1 = []
 var group_2 = []
 var group_3 = []
@@ -49,18 +50,23 @@ func _input(event):
 	pass
 
 func create_cards(army):
+	var flow_container = Flow_Container_Cards.instantiate()
+	add_child(flow_container)
 	for unit in army as Array[Unit]:
 		var unit_card = Unit_Card.instantiate()
-		add_child(unit_card)
+#		add_child(unit_card)
+		flow_container.add_child(unit_card)
 		unit_card.unit_reference = unit
 		unit_card.set_texture_type(unit.get_type())
 		unit_card.sg_card_selected.connect(card_selected)
 		group_10.push_back(unit_card)
+		total_cards.push_back(unit_card)
 	pass
 
 func create_group(army): 
-	var cards = get_children()
-	if cards.size() < 1:
+#	var cards = get_children(true).filter(func(el) : return el is UnitCard)
+	
+	if total_cards.size() < 1:
 		return
 	
 	# Check to delete group if all units are in the same group
@@ -68,7 +74,8 @@ func create_group(army):
 	var cards_to_delete_group = []
 	var group_filter = null
 	for unit in army:
-		for card in cards:
+#		for card in cards:
+		for card in total_cards:
 			if unit == card.unit_reference:
 				# If at least one unit has a group will check to delete
 				if group_filter == null and card.group != 10:
@@ -92,20 +99,23 @@ func create_group(army):
 	# Add unit to group if someone has a group (currently add its to the first group it gets from a unit, maybe should be changed to the lower number in the units)
 	var add_to_group_number = null
 	for unit in army: # Check if someone has a group
-		for card in cards:
+#		for card in cards:
+		for card in total_cards:
 			if unit == card.unit_reference:
 				if add_to_group_number == null and card.group != 10 :
 					add_to_group_number = card.group
 	if add_to_group_number != null: # If someone has a group it puts all into that group
 		for unit in army:
-			for card in cards:
+#			for card in cards:
+			for card in total_cards:
 				if unit == card.unit_reference:
 					card.group = add_to_group_number
 	
 	# Create new group in the first available group
 	if add_to_group_number == null:
 		for unit in army:
-			for card in cards:
+#			for card in cards:
+			for card in total_cards:
 				if unit == card.unit_reference:
 					for i in groups.size():
 						if groups[i].size() == 0 and card.group == 10:
@@ -115,19 +125,36 @@ func create_group(army):
 	update_positions()
 
 func update_groups():
-	var cards = get_children()
+#	var cards = get_children(true).filter(func(el) : return el is UnitCard)
+
 	for group in groups:
 		group.clear()
-	for card in cards:
+#	for card in cards:
+	for card in total_cards:
 		self["group_%s" % [card.group]].push_back(card)
 
 func update_positions():
-	var cards = get_children()
+	# Cards directly under the hbox will be removed from the parent
+	var cards = get_children(true).filter(func(el) : return el is UnitCard)
 	for card in cards:
 		remove_child(card)
-	for group in groups:
+	
+	var containers_to_remove = get_children(true).filter(func(el) : return !(el is UnitCard))
+	for container in containers_to_remove:
+		for card in container.get_children():
+			container.remove_child(card)
+		container.queue_free()
+	
+	
+	for group in groups: # used to not create a container for each group
+#		print(group)
+		if group.size() < 1:
+			continue
+		var flow_container = Flow_Container_Cards.instantiate()
+		add_child(flow_container)
 		for card in group:
-			add_child(card)
+#			add_child(card)
+			flow_container.add_child(card)
 	for btn in get_tree().get_nodes_in_group("group_btn"):
 		btn.queue_free()
 	

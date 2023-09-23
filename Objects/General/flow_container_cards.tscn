@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c61wcj4rnm0y0"]
+
+[node name="FlowContainerCards" type="FlowContainer"]
+vertical = true
