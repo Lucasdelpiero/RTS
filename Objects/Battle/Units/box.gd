@@ -53,8 +53,6 @@ var destination := Vector2.ZERO : set  = set_destination
 var target_unit : Unit = null
 
 signal show_overlay_unit(data)
-signal sg_unit_hovered(value)
-signal sg_unit_selected(value)
 
 func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
@@ -107,7 +105,6 @@ func set_hovered(value):
 		if hovered:
 			shader = Globals.shader_hovered
 		spriteBase.set_material(shader)
-	sg_unit_hovered.emit(value)
 
 func set_selected(value):
 	selected = value
@@ -120,7 +117,6 @@ func set_selected(value):
 	
 	spriteBase.set_material(shader)
 	weapons.set_weapons_visibility(value)
-	sg_unit_selected.emit(value)
 
 func _on_unit_detector_mouse_entered():
 	hovered = true

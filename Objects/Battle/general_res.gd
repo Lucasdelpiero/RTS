@@ -20,6 +20,7 @@ var generalState = GeneralStates.WAITING
 
 func get_next_action():
 	return "move"
+	pass
 
 func get_focused_group(groups : Array):
 	var group_size = 0

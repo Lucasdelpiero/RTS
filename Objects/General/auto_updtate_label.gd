@@ -13,7 +13,7 @@ func update():
 		return
 	if node_to_follow.get(property_to_follow) == null:
 		return
-	var _value = node_to_follow.get(property_to_follow)
+	var value = node_to_follow.get(property_to_follow)
 	text = prefix + str(node_to_follow.get(property_to_follow))
 	
 	pass

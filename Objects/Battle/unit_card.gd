@@ -6,14 +6,12 @@ class_name UnitCard
 var unit_reference = null
 var group = 10 # 10 = not in a group
 var position_in_group = 0 # 
-var selected : bool = false
 
 signal sg_card_selected(value)
-signal sg_card_hovered(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	var min_size = Vector2(size.x, 0)
+	var min_size = Vector2(size.x, 0)
 #	sg_card_selected.connect(Signals.battlemap_set_units_selected)
 #	texture_base.set_custom_minimum_size(min_size)
 #	texture_type.set_custom_minimum_size(min_size)
@@ -36,44 +34,13 @@ func set_selected(value):
 #	unit_reference.set_selected(true)
 	pass
 
-func set_hovered(value):
-	if unit_reference == null:
-		return
-	sg_card_hovered.emit(unit_reference, value)
-	
+func _on_mouse_entered():
+	pass # Replace with function body.
 
-func is_hovered(value):
-	if selected:
-		return
-	var shader = null
-	if value:
-		shader = Globals.shader_hovered
-	set_material(shader)
 
-func is_selected(value):
-	selected = value
-	var shader = null
-	if value:
-		shader = Globals.shader_selected
-	set_material(shader)
+func _on_mouse_exited():
+	pass # Replace with function body.
+
 
 func _on_button_pressed():
-#	selected = true
 	set_selected(true)
-
-
-func _on_button_mouse_entered():
-	if unit_reference == null or selected:
-		return
-	unit_reference.set_hovered(true)
-#	sg_card_hovered.emit(unit_reference, true)
-	set_material(Globals.shader_hovered)
-	pass
-
-func _on_button_mouse_exited():
-	if unit_reference == null or selected:
-		return
-	unit_reference.set_hovered(false)
-#	sg_card_hovered.emit(unit_reference ,false)
-	set_material(null)
-	pass
