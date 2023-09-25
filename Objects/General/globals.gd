@@ -28,8 +28,8 @@ func set_battle_map(value):
 	battle_map = value
 	Signals.battle_map = value
 
-func battlemap_set_units_selected(_unit, _value):
-#	sg_battlemap_set_units_selected.emit(unit, value)
+func battlemap_set_units_selected(unit, value):
+	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 
 func reset_armies():
