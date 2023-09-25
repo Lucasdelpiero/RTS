@@ -27,6 +27,7 @@ func _ready():
 	Globals.battle_map = self
 #	Globals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	Signals.sg_battlemap_set_units_selected.connect(set_units_selected)
+	Signals.sg_battlemap_set_units_hovered.connect(set_units_hovered)
 	spawn_units()
 	mouse.world = self
 	sg_clean_overlay_unit.connect(battleUI.hide_overlay)

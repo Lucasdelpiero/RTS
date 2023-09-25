@@ -42,7 +42,7 @@ func _unhandled_input(_event):
 		create_group(units)
 		pass
 
-func _process(delta):
+func _process(_delta):
 	Globals.debug_update_label("PlayerU", "PU manager: %s" % [units.size()])
 	pass
 

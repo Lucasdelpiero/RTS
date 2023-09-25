@@ -34,7 +34,7 @@ func _ready():
 			continue
 		update_label(node, property, property + str(": "))
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var node = get_parent()
 	if node == null:
 		return
