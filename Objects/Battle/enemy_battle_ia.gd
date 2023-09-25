@@ -35,9 +35,9 @@ func _ready():
 
 func update_ia():
 	var groups = get_enemy_groups()
-	var closest = get_distance_to_closest(groups, armyMarker.global_position)
+	var _closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
-	var focus = general.get_focused_group(groups)
+	var _focus = general.get_focused_group(groups)
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
 	match(action):
@@ -176,7 +176,7 @@ func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : flo
 		var newPos = armyMarker.global_position + targetPosition + formation_pos - offset
 		unit.move_to(newPos, face_direction)
 
-func advance(aUnits: Array):
+func advance(_aUnits: Array):
 	pass
 
 func _on_timer_timeout():

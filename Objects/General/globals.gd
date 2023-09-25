@@ -10,6 +10,9 @@ var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
 var battle_map : BattleMap = null : set = set_battle_map
 
+var shader_hovered = preload("res://Shaders/hovered.tres")
+var shader_selected = preload("res://Shaders/selected.tres")
+
 signal sg_battlemap_set_units_selected(unit, value)
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +28,7 @@ func set_battle_map(value):
 	battle_map = value
 	Signals.battle_map = value
 
-func battlemap_set_units_selected(unit, value):
+func battlemap_set_units_selected(_unit, _value):
 #	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 

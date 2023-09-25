@@ -103,8 +103,7 @@ func set_hovered(value):
 	if not selected:
 		var shader = null
 		if hovered:
-			shader = load("res://Shaders/Glow.tres")
-#		sprite.set_material(shader)
+			shader = Globals.shader_hovered
 		spriteBase.set_material(shader)
 
 func set_selected(value):
@@ -112,14 +111,10 @@ func set_selected(value):
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null
 	if selected:
-		shader = load("res://Shaders/selected.tres")
-#		sprite.set_material(shader)
-#		sprite.material.set_shader_parameter("inside_color", army_color)
+		shader = Globals.shader_selected
 		spriteBase.set_material(shader)
 		spriteBase.material.set_shader_parameter("inside_color", army_color)
 	
-
-#	sprite.set_material(shader)
 	spriteBase.set_material(shader)
 	weapons.set_weapons_visibility(value)
 
@@ -228,7 +223,7 @@ func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(data : AttackData):
+func recieved_attack(_data : AttackData):
 #	print("i recieved damage")
 #	print(data)
 	pass
@@ -310,7 +305,7 @@ func _on_range_weapon_reached_new_enemy(enemies):
 	pass # Replace with function body.
 
 
-func _on_range_weapon_reload_time_over(node):
+func _on_range_weapon_reload_time_over(_node):
 	if state != State.FIRING:
 		return
 	if enemies_in_range.has(target_unit):
