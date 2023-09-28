@@ -11,6 +11,7 @@ var World = preload("res://Objects/Campaign/world.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	_save.world = self
+	Globals.main = self
 	playerNation = Globals.playerNation
 	_create_or_load_save()
 	load_game()
@@ -89,3 +90,9 @@ func _create_or_load_save() -> void:
 
 #		save.write_savegame()
 	save_game()
+
+func window_resized():
+	var to_update = get_tree().get_nodes_in_group("update_on_window_resize")
+	for node in to_update:
+		if node.has("update_on_window_resize"):
+			node.update_on_window_resize()

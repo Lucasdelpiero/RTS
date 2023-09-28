@@ -1,4 +1,6 @@
 [gd_scene format=3 uid="uid://c61wcj4rnm0y0"]
 
 [node name="FlowContainerCards" type="FlowContainer"]
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 vertical = true

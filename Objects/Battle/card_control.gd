@@ -4,6 +4,7 @@ extends HBoxContainer
 @onready var Group_Btn = preload("res://Objects/General/group_btn.tscn")
 @onready var Flow_Container_Cards = preload("res://Objects/General/flow_container_cards.tscn")
 @onready var total_cards = []
+@export var button_spawn_place : Control = null
 var group_1 = []
 var group_2 = []
 var group_3 = []
@@ -164,12 +165,18 @@ func update_positions():
 		btn.queue_free()
 	
 	await get_tree().create_timer(0.01).timeout # Used so the btn is put in position after the card has changed the position in the container
+	if button_spawn_place == null:
+		push_error("There is not a designed parent for the group buttons")
+		return
 	for group in groups.size() - 1: # " -1 " added so it excludes the group 10 (non grouped)
 		if groups[group].size() > 0 :
 			var group_btn = Group_Btn.instantiate()
-			get_parent().add_child(group_btn)
-			group_btn.global_position = groups[group][0].global_position
-			group_btn.global_position.y -= group_btn.size.y
+			button_spawn_place.add_child(group_btn)
+			group_btn.node_to_align_with = groups[group][0]
+			group_btn.vertical_offset = -group_btn.size.y
+			group_btn.reposition()
+#			group_btn.global_position = groups[group][0].global_position
+#			group_btn.global_position.y -= group_btn.size.y
 			group_btn.group = (group + 1)
 			group_btn.sg_group_button_pressed.connect(select_group)
 			group_btn.text = str(group + 1)

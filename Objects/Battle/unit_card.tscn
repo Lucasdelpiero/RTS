@@ -13,6 +13,7 @@ offset_bottom = 93.0
 size_flags_vertical = 0
 theme_override_styles/panel = ExtResource("1_xnqhi")
 script = ExtResource("1_yyd1l")
+selected_color = Color(0, 0.862745, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

@@ -23,3 +23,8 @@ func create_cards(army):
 func order_card_control_to_create_group(army):
 	create_new_group.emit(army)
 	pass
+
+
+func _on_control_resized():
+	Globals.window_resized()
+

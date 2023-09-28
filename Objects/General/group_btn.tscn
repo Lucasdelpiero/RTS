@@ -1,11 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn2g3xqg6c61l"]
+[gd_scene load_steps=7 format=3 uid="uid://cn2g3xqg6c61l"]
 
 [ext_resource type="Script" path="res://Objects/General/group_btn.gd" id="1_u8mqw"]
 
-[node name="GroupBtn" type="Button" groups=["group_btn"]]
-offset_right = 8.0
-offset_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dstw"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.4724, 0.336, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6y1e"]
+bg_color = Color(0.788235, 0.713726, 0.615686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq4vd"]
+bg_color = Color(0.419608, 0.65098, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80led"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8dnj"]
+bg_color = Color(0.705882, 0.819608, 0.639216, 1)
+
+[node name="GroupBtn" type="Button" groups=["group_btn", "update_on_window_resize"]]
+anchors_preset = -1
+offset_right = 28.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dstw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o6y1e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bq4vd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_80led")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i8dnj")
 text = "1"
 script = ExtResource("1_u8mqw")
+horizontal_offset = 2
 
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -7,6 +7,9 @@ var unit_reference = null
 var group = 10 # 10 = not in a group
 var position_in_group = 0 # 
 var selected : bool = false
+var panel = self["theme_override_styles/panel"]
+var panel_border_color_original = panel.border_color
+@export_color_no_alpha var selected_color
 
 signal sg_card_selected(value)
 signal sg_card_hovered(value)
@@ -33,13 +36,13 @@ func set_selected(value):
 		return
 	sg_card_selected.emit(unit_reference, value)
 	unit_reference.set_hovered(false) # THIS HAS TO BE HERE to change the hovered state and avoid being selected every time you click
-#	get_parent().get_parent().get_parent().get_parent().set_units_selected(unit_reference, value)
+	is_hovered(true) # Used just to have the hovered shader after you click the card, can be deleted without compromising the game
 #	unit_reference.set_selected(true)
 	pass
 
 func is_hovered(value):
-	if selected:
-		return
+#	if selected:
+#		return
 	var shader = null
 	if value:
 		shader = Globals.shader_hovered
@@ -48,16 +51,18 @@ func is_hovered(value):
 func is_selected(value):
 	selected = value
 	var shader = null
+	panel.border_color = panel_border_color_original
 	if value:
 		shader = Globals.shader_selected
-	set_material(shader)
+		panel.border_color = selected_color
+#	set_material(shader)
 
 func _on_button_pressed():
 	set_selected(true)
 
 
 func _on_button_mouse_entered():
-	if unit_reference == null or selected:
+	if unit_reference == null:
 		return
 	unit_reference.set_hovered(true)
 #	sg_card_hovered.emit(unit_reference, true)
@@ -66,7 +71,7 @@ func _on_button_mouse_entered():
 
 
 func _on_button_mouse_exited():
-	if unit_reference == null or selected:
+	if unit_reference == null:
 		return
 	unit_reference.set_hovered(false)
 #	sg_card_hovered.emit(unit_reference ,false)
