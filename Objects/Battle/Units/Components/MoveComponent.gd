@@ -78,6 +78,12 @@ func _physics_process(delta):
 		unit.reached_destination()
 	update_facing_angle()
 
+func set_destination(aDestination):
+	destination = aDestination
+
+func set_next_point(aNextPoint):
+	next_point = aNextPoint
+
 # The unit will chase the target by updating the path every time the enemy moves in a set time
 func chase(target : Unit):
 	if chase_in_queue:
@@ -124,6 +130,9 @@ func move_to(to, final_face_direction):
 			if a.dot(b) < 0 and not chasing:
 				return
 #				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
+
+func set_face_direciton(value):
+	face_direction = value
 
 func face_unit(value : Unit):
 	stop_movement()

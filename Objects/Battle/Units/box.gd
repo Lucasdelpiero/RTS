@@ -55,6 +55,9 @@ var target_unit : Unit = null
 signal show_overlay_unit(data)
 signal sg_unit_hovered(value)
 signal sg_unit_selected(value)
+signal sg_move_component_set_destination(value)
+signal sg_move_component_set_face_direction(value)
+signal sg_move_component_set_next_point(value)
 
 func _ready():
 #	print("%s: has a shield of value: %s" % [name, shield])
@@ -67,6 +70,13 @@ func _ready():
 #		print(name)
 #		print(weaponsData.primary_weapon.base_attack)
 #		print("=========")
+	if moveComponent == null:
+		return
+	if Engine.is_editor_hint(): # Used to avoid getting error while using the @tool thing
+		return
+	sg_move_component_set_destination.connect(moveComponent.set_destination)
+	sg_move_component_set_face_direction.connect(moveComponent.set_face_direciton)
+	sg_move_component_set_next_point.connect(moveComponent.set_next_point)
 	weapons.send_units_in_range.connect(check_if_target_is_in_range)
 	weapons.in_use_weapon_ready_to_attack.connect(attack_again)
 	if troops_number == 0: # if not defined a number of alive troops on creation it will have the max amount
@@ -143,18 +153,21 @@ func reached_destination():
 	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
-func set_destination(_value):
+func set_destination(value):
 	if moveComponent == null:
 		return
-	moveComponent.destination = self.global_position
-	moveComponent.next_point = self.global_position
+	sg_move_component_set_destination.emit(self.global_position)
+	sg_move_component_set_next_point.emit(self.global_position)
+#	moveComponent.destination = self.global_position
+#	moveComponent.next_point = self.global_position
 
 func set_face_direction(value : float = 0):
 	rotation = value
 	if moveComponent == null:
 		push_error("there is not moveComponent")
 		return
-	moveComponent.face_direction = value
+	sg_move_component_set_face_direction.emit(value)
+#	moveComponent.face_direction = value
 
 func attack_target(value : Unit):
 	if value == null:
