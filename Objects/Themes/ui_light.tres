@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dtrviaj4i4u60"]
+
+[ext_resource type="StyleBox" uid="uid://cegfdgcs1xwet" path="res://Objects/Themes/Component/StyleBoxFlat_light.tres" id="1_6dlec"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mu6b"]
+bg_color = Color(0.65098, 0.639216, 0.623529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.529412, 0.454902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r1rk"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.4724, 0.336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dociy"]
+bg_color = Color(0.529412, 0.478431, 0.411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45098, 0.352941, 0.25098, 1)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_1mu6b")
+Button/styles/normal = SubResource("StyleBoxFlat_5r1rk")
+Button/styles/pressed = SubResource("StyleBoxFlat_dociy")
+Panel/styles/panel = ExtResource("1_6dlec")
+PanelContainer/styles/panel = ExtResource("1_6dlec")

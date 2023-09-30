@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://c54vxytje1l11"]
+
+[ext_resource type="Script" path="res://Objects/UI/group_btn.gd" id="1_hpi5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dstw"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.4724, 0.336, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as7yd"]
+bg_color = Color(0.8, 0.72549, 0.623529, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.741176, 0.584314, 0.415686, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6duq"]
+bg_color = Color(0.65098, 0.521569, 0.356863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.427451, 0.239216, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tfot"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.4724, 0.336, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rq7j"]
+bg_color = Color(0.65, 0.588033, 0.507, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.4724, 0.336, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="GroupBtn" type="Button" groups=["group_btn", "update_on_window_resize"]]
+offset_right = 28.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dstw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_as7yd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d6duq")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7tfot")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4rq7j")
+text = "1"
+script = ExtResource("1_hpi5d")
+horizontal_offset = 2
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

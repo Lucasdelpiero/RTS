@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://hpfmbt1e8tjr"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/army_campaign_ui.gd" id="1_nxcs3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cpeh"]
+resource_local_to_scene = true
+bg_color = Color(0.521569, 0.470588, 0.419608, 1)
+border_color = Color(0.529412, 0.286275, 0.196078, 1)
 
 [node name="ArmyCampaignUI" type="VBoxContainer" groups=["army_ui"]]
 offset_right = 168.0
@@ -10,6 +14,7 @@ script = ExtResource("1_nxcs3")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0cpeh")
 
 [node name="NameLabel" type="Label" parent="PanelContainer"]
 unique_name_in_owner = true

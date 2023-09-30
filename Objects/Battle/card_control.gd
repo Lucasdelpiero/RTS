@@ -1,8 +1,8 @@
 extends HBoxContainer
 
 @onready var Unit_Card = preload("res://Objects/Battle/unit_card.tscn")
-@onready var Group_Btn = preload("res://Objects/General/group_btn.tscn")
-@onready var Flow_Container_Cards = preload("res://Objects/General/flow_container_cards.tscn")
+@onready var Group_Btn = preload("res://Objects/UI/group_btn.tscn")
+@onready var Flow_Container_Cards = preload("res://Objects/UI/flow_container_cards.tscn")
 @onready var total_cards = []
 @export var button_spawn_place : Control = null
 var group_1 = []

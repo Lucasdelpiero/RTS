@@ -127,7 +127,7 @@ func set_hovered(value):
 	hovered = value
 	var shader = null
 	if hovered:
-		shader = load("res://Shaders/Glow.tres")
+		shader = load("res://Shaders/hovered.tres")
 	
 	set_material(shader)
 

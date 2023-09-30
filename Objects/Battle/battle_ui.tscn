@@ -2,14 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="1_1i1o2"]
 [ext_resource type="Script" path="res://Objects/Battle/card_control.gd" id="2_7itvx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3gq3"]
-bg_color = Color(0.521569, 0.470588, 0.419608, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.529412, 0.286275, 0.196078, 1)
+[ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_7jvig"]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_1i1o2")
@@ -22,6 +15,7 @@ offset_right = 0.151855
 offset_bottom = 0.239929
 size_flags_vertical = 8
 mouse_filter = 1
+theme = ExtResource("2_7jvig")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -33,10 +27,9 @@ anchor_bottom = 1.0
 offset_left = -269.5
 offset_top = -142.0
 offset_right = 268.5
-offset_bottom = 6.10352e-05
+offset_bottom = 2.00006
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_q3gq3")
 
 [node name="CardControl" type="HBoxContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
 unique_name_in_owner = true
