@@ -202,6 +202,12 @@ metadata/_edit_vertical_guides_ = [1584.0]
 
 [node name="Debug" parent="." instance=ExtResource("2_efedw")]
 
+[node name="Button" type="Button" parent="Debug"]
+offset_left = 1378.0
+offset_top = 57.0
+offset_right = 1459.0
+offset_bottom = 105.0
+
 [node name="BattleUI" parent="." instance=ExtResource("2_41tas")]
 
 [node name="OverlayUnit" parent="BattleUI" instance=ExtResource("4_vae5l")]
@@ -232,6 +238,9 @@ world = NodePath("..")
 armyGroup = NodePath("../EnemyArmy")
 playerGroup = NodePath("../PlayerArmy")
 general = SubResource("Resource_jdtum")
+
+[node name="ArmyMarker" parent="EnemyBattleIA" index="0"]
+position = Vector2(881, -1543)
 
 [node name="Timer" parent="EnemyBattleIA" index="1"]
 one_shot = false

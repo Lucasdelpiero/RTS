@@ -11,6 +11,10 @@ var distance_to_be_in_group = 500
 var playerGroups : Array[Array] = []
 @export var general : General 
 
+var infantry_units = []
+var range_units = []
+var cavalry_units = []
+
 enum GeneralStates {
 	WAITING,
 	MOVING,
@@ -27,11 +31,15 @@ func _ready():
 #	print(general.charisma)
 	if armyGroup == null:
 		return
-	units = armyGroup.get_children()
+	units = armyGroup.get_children() 
 	if playerGroup == null:
 		return
 	player_units = playerGroup.get_children() 
 	get_enemy_groups()
+	group_units_by_type(units as Array[Unit])
+	await get_tree().create_timer(0.1).timeout
+#	move_units(units, armyMarker.global_position , 0.0, PI)
+	move_to_group_marker(units)
 
 func update_ia():
 	var groups = get_enemy_groups()
@@ -48,6 +56,12 @@ func update_ia():
 #	generalState = GeneralStates.FIGHTING
 	pass
 
+func group_units_by_type(aUnits):
+	if aUnits == null:
+		return
+	infantry_units = aUnits.filter(func(el) : return el.type == 1)
+	range_units = aUnits.filter(func(el) : return el.type == 2)
+	cavalry_units = aUnits.filter(func(el) : return el.type == 3)
 
 func get_data_to_think_next_action():
 	
@@ -164,8 +178,17 @@ func should_unite_group(arr1 : Array, arr2 : Array, distance):
 				return true
 	return false
 
+func move_to_group_marker(aUnits):
+	var infantry_in_arg = aUnits.filter(func(el) : return el.get_type() == 1)
+	var range_in_arg = aUnits.filter(func(el) : return el.get_type() == 2)
+	var cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
+	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
+	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
+	# Needed two groups of cavalry here
+	pass
+
 func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false):
-	armyMarker.global_position = targetPosition + Vector2(0, -500)
+#	armyMarker.global_position = targetPosition 
 	var organized_units = get_organized_units(aUnits, angle_formation)
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
@@ -173,7 +196,7 @@ func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : flo
 	for i in organized_units.size():
 		var unit = organized_units[i] as Unit
 		var formation_pos = Vector2( cos(angle_formation), sin(angle_formation) ) * margin_between_units * i # Position incremented as the position in the formation gets larger
-		var newPos = armyMarker.global_position + targetPosition + formation_pos - offset
+		var newPos =  targetPosition + formation_pos - offset
 		unit.move_to(newPos, face_direction)
 
 func advance(_aUnits: Array):
