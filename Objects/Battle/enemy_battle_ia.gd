@@ -31,13 +31,13 @@ func _ready():
 #	print(general.charisma)
 	if armyGroup == null:
 		return
-	units = armyGroup.get_children() 
 	if playerGroup == null:
 		return
 	player_units = playerGroup.get_children() 
 	get_enemy_groups()
-	group_units_by_type(units as Array[Unit])
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
+	units = armyGroup.get_children() 
+	group_units_by_type(units as Array[Unit])
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
 #	print(get_main_group(get_enemy_groups()))
@@ -207,7 +207,7 @@ func move_to_group_marker(aUnits):
 		return
 	var infantry_in_arg = aUnits.filter(func(el) : return el.get_type() == 1)
 	var range_in_arg = aUnits.filter(func(el) : return el.get_type() == 2)
-	var cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
+	var _cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
 	# Needed two groups of cavalry here

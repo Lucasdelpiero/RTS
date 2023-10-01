@@ -53,7 +53,7 @@ func initialize_world():
 			province.sg_mouseOverSelf.connect(mouse.update_province_selection)
 	send_data_to_ui()
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
 

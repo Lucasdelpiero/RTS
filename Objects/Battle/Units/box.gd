@@ -153,7 +153,7 @@ func reached_destination():
 	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
-func set_destination(value):
+func set_destination(_value):
 	if moveComponent == null:
 		return
 	sg_move_component_set_destination.emit(self.global_position)

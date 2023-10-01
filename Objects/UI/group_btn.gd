@@ -23,7 +23,3 @@ func update_on_window_resize():
 	reposition()
 
 
-
-func _on_mouse_exited():
-	focus_mode
-	pass # Replace with function body.

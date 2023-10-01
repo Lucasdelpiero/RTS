@@ -14,7 +14,7 @@ anchor_bottom = 0.995
 offset_right = 0.151855
 offset_bottom = 0.239929
 size_flags_vertical = 8
-mouse_filter = 1
+mouse_filter = 2
 theme = ExtResource("2_7jvig")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]

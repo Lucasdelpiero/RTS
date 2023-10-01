@@ -50,10 +50,10 @@ func is_hovered(value):
 
 func is_selected(value):
 	selected = value
-	var shader = null
+	var _shader = null
 	panel.border_color = panel_border_color_original
 	if value:
-		shader = Globals.shader_selected
+		_shader = Globals.shader_selected
 		panel.border_color = selected_color
 #	set_material(shader)
 

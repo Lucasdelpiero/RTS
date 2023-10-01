@@ -43,9 +43,9 @@ func _ready():
 	world = get_tree().get_nodes_in_group("world")[0] 
 	# This needs to be changed
 	
-	if army_data.army_units.size() == 0:
+#	if army_data.army_units.size() == 0:
 #		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
-		print("Army Data is zero")
+#		print("Army Data is zero")
 	army_data.ownership = ownership
 	army_data.position = global_position
 	var army = army_data.army_units
