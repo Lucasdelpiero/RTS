@@ -37,12 +37,16 @@ func _ready():
 	player_units = playerGroup.get_children() 
 	get_enemy_groups()
 	group_units_by_type(units as Array[Unit])
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
+#	print(get_main_group(get_enemy_groups()))
 
 func update_ia():
 	var groups = get_enemy_groups()
+	if groups == null:
+		push_error("enemy groups not detected")
+		return
 	var _closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
 	var _focus = general.get_focused_group(groups)
@@ -57,7 +61,8 @@ func update_ia():
 	pass
 
 func group_units_by_type(aUnits):
-	if aUnits == null:
+	if aUnits == null or typeof(aUnits) != 28:
+		push_error("invalid argument")
 		return
 	infantry_units = aUnits.filter(func(el) : return el.type == 1)
 	range_units = aUnits.filter(func(el) : return el.type == 2)
@@ -72,7 +77,7 @@ func get_distance_to_closest(groups : Array, from: Vector2):
 	var distance := 0.0
 	for group in groups:
 		if typeof(group) != 28:
-			printerr("Group is not an array")
+			push_error("Group is not an array")
 			return null
 		for unit in group as Array[Unit]:
 			distance = unit.global_position.distance_to(from)
@@ -80,9 +85,27 @@ func get_distance_to_closest(groups : Array, from: Vector2):
 				closest = distance
 	return closest
 
+func get_main_group(aGroups): # Get an array with the player "groups"
+	if typeof(aGroups) != 28:
+		push_error("get_main_group argument is not an array")
+		return null
+	var largest_number = 0
+	var largest = null
+	for group in aGroups:
+		if typeof(group) != 28:
+			push_error("Element inside array is not another array")
+			continue
+		if group.size() > largest_number:
+			largest = group.duplicate()
+	return largest
+
 func get_enemy_groups():
 	var group_to_add_units = 0
+	if player_units.size() < 1 :
+		push_error("player_units array is empty")
+		return null
 	var groups = [[player_units[0]]]
+	
 	# Creates temporal groups of units that are close to each other ( because of how it works usually creates multiple groups when it should create only 1, these will be put together below )
 	for i in player_units.size(): # Iteration of every unit
 		var unit = player_units[i] as Unit
@@ -179,6 +202,9 @@ func should_unite_group(arr1 : Array, arr2 : Array, distance):
 	return false
 
 func move_to_group_marker(aUnits):
+	if typeof(aUnits) != 28:
+		push_error("Expected array in function")
+		return
 	var infantry_in_arg = aUnits.filter(func(el) : return el.get_type() == 1)
 	var range_in_arg = aUnits.filter(func(el) : return el.get_type() == 2)
 	var cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)

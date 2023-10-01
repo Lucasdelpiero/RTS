@@ -19,7 +19,7 @@ func get_organized_units(aUnits, angle_formation = 0.0):
 	var average_position = Vector2.ZERO # Average position of army
 	
 	if aUnits.size() == 0:
-		return
+		return []
 	# Gets the average position from all units, which is used to get which units are more in the left, right, etc than the others
 	for i in aUnits.size():
 		average_position += aUnits[i].global_position
