@@ -1,4 +1,5 @@
 extends Node2D
+class_name CampaignMap
 
 @export var main : Main
 var map # navmap
@@ -15,6 +16,8 @@ var playerNode = null
 var nations := []
 var provinceSelected = null
 
+func _init():
+	Globals.campaign_map = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +28,7 @@ func initialize_world():
 	mouse.world = self
 	mouse.ui = UI
 	main = get_tree().get_nodes_in_group("main")[0]
+	
 #	army.get_to_closer_point(map)
 	
 	nations = nationsGroup.get_children()

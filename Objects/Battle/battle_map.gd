@@ -22,9 +22,11 @@ signal sg_clean_overlay_unit
 signal create_cards(army)
 signal order_to_create_group(army)
 
+func _init():
+	Globals.battle_map = self
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.battle_map = self
 #	Globals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	Signals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	Signals.sg_battlemap_set_units_hovered.connect(set_units_hovered)

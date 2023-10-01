@@ -9,6 +9,7 @@ var enemyArmy = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
 var main : Main = null
+var campaign_map : CampaignMap = null
 var battle_map : BattleMap = null : set = set_battle_map
 
 var shader_hovered = preload("res://Shaders/hovered.tres")

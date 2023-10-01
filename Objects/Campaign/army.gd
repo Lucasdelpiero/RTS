@@ -39,9 +39,10 @@ signal get_pathfinding(army ,current_position)
 @export var army_data : ArmyData = ArmyData.new() 
 
 func _ready():
-	# This needs to be changed
-	world = get_tree().get_nodes_in_group("world")[0] 
-	# This needs to be changed
+	if Engine.is_editor_hint(): # Used to avoid errors
+		return
+	
+	world = Globals.campaign_map
 	
 #	if army_data.army_units.size() == 0:
 #		army_data.army_units.push_back(load("res://Scripts/Campaign/unit_data.gd"))
