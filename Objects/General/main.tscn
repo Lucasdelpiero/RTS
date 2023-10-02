@@ -37,9 +37,6 @@ theme_override_constants/outline_size = 8
 text = " ARMIES
 "
 
-[node name="Button" parent="World/CampaingUI/Container/PanelContainer/ArmiesContainer" index="1"]
-focus_mode = 0
-
 [node name="ArmyCampaignUI" parent="World/CampaingUI/Container/PanelContainer/ArmiesContainer/VBoxContainer" index="0" instance=ExtResource("3_hnut7")]
 layout_mode = 2
 

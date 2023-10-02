@@ -16,14 +16,18 @@ script = ExtResource("1_nxcs3")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0cpeh")
 
-[node name="NameLabel" type="Label" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "ArmyName
 "
 
-[node name="TroopsNumber" type="Label" parent="PanelContainer"]
+[node name="TroopsNumber" type="Label" parent="PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "NUMBER"
 horizontal_alignment = 2

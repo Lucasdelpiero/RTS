@@ -14,3 +14,8 @@ func updateArmiesData(data : Array[ArmyCampaing]):
 		armyCampaignUI.update_data(army)
 		pass
 	pass
+
+
+func _on_resized():
+	custom_minimum_size.x = size.x
+	pass # Replace with function body.
