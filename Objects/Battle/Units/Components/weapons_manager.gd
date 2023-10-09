@@ -31,6 +31,7 @@ func _ready():
 	
 	for weapon in weapons:
 		if weapon.get_type() == "Range":
+			weapon.ran_out_of_ammo.connect(change_to_melee_weapon)
 			weapon.reached_new_enemy.connect(new_enemy_reached)
 			weapon.connect_signals_to_manager(self)
 		if weapon.get_type() == "Melee":
@@ -61,7 +62,11 @@ func alternative_weapon(use_secondary : bool = false):
 
 func set_in_use_weapon(value : Weapon):
 	if in_use_weapon != value:
-		in_use_weapon = value
+		if value.get_type() == "Range":
+			if value.has_ammo():
+				in_use_weapon = value
+		else:
+			in_use_weapon = value
 #		if owner.selected:
 #			print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 #	print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
@@ -86,6 +91,14 @@ func weapon_can_attack_again(weapon):
 		in_use_weapon_ready_to_attack.emit()
 	pass
 
+func change_to_melee_weapon(): # Used when the unit run out of ammo
+	var weapons = get_children() as Array[Weapon]
+	for weapon in weapons:
+		if weapon.type == "Melee":
+			in_use_weapon = weapon
+#			set_in_use_weapon(weapon)
+			print("now i use melee")
+	pass
 
 func get_mouse_over_weapon_type():
 #	print(in_use_weapon)

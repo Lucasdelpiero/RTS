@@ -4,6 +4,7 @@ class_name  MoveComponent
 @export var unit : Unit = null
 var current_position = Vector2.ZERO
 var destination : Vector2 = Vector2.ZERO
+var target : Unit = null
 var want_to_chase := false
 var chasing := false
 var chase_in_queue = false # The chasing was ordered after queueing a path that has to be completed before going after the enemy
@@ -15,6 +16,7 @@ var nav_map = null
 var pushVector := Vector2.ZERO
 var anchored := true # if an unit reached an empty position is true, else it will be false unit is true
 @onready var line = $Line2D
+@onready var timerChase = $TimerChase
 var face_direction : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
@@ -85,7 +87,12 @@ func set_next_point(aNextPoint):
 	next_point = aNextPoint
 
 # The unit will chase the target by updating the path every time the enemy moves in a set time
-func chase(target : Unit):
+func chase(target_to_chase : Unit = null):
+	if target_to_chase != null: # Stores the target unit
+		target = target_to_chase 
+	if target == null :
+		push_error("fuuuu")
+		return
 	if chase_in_queue:
 		if path.size() < 1: # Withouth this the last_point_in_path can crash
 			return
@@ -97,9 +104,13 @@ func chase(target : Unit):
 	if not chase_in_queue:
 		move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
 	
-	await get_tree().create_timer(0.5).timeout
-	if chasing:
-		chase(target)
+	if timerChase.is_stopped() and chasing:
+		print("timer set")
+		timerChase.start(0.5)
+#	await get_tree().create_timer(0.5).timeout
+#	if chasing:
+#		print(target.name)
+#		chase()
 
 
 func move_to(to, final_face_direction):
@@ -287,5 +298,8 @@ func set_nav_map(value : TileMap):
 	pass
 
 
-
-
+func _on_timer_chase_timeout():
+	print("timer done")
+	if chasing:
+		chase()
+	pass # Replace with function body.

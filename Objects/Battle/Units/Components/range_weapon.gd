@@ -7,6 +7,8 @@ extends Weapon
 @export_range(0.0, 2.0, 0.01) var base_reloading_speed : float = 1.0
 @export_range(0.1, 30.0, 0.1) var reload_time : float = 3.0
 @export_range(1, 1000, 1) var base_ammunition : int = 30
+var max_ammunition : int = 0
+var current_ammunition : int = 0  :  set = set_current_ammunition
 @export var fire_shot : bool = false
 @export var pierce_armor : bool = false
 @export var move_while_shooting : bool = false
@@ -20,6 +22,7 @@ var polygon_count = 60.0
 var enemies_in_weapon_range : Array[Unit] = []
 signal reached_new_enemy(enemies)
 signal reload_time_over(node)
+signal ran_out_of_ammo
 @onready var reloading = false
 
 func _ready():
@@ -31,6 +34,8 @@ func _ready():
 	if owner.name == "Hastati":
 		set_polygon_range()
 	set_polygon_range()
+	max_ammunition = base_ammunition * 1
+	current_ammunition = max_ammunition
 
 func connect_signals_to_manager(parent : WeaponsManager):
 #	reloadTimer.timeout.connect(parent.weapon_can_attack_again)
@@ -38,9 +43,20 @@ func connect_signals_to_manager(parent : WeaponsManager):
 #	reached_new_enemy.connect(parent.new_enemy_reached)
 	pass
 
+func set_current_ammunition(value):
+	print("%s changed to %s" % [current_ammunition, value])
+	current_ammunition = value
+	if value == 0:
+		ran_out_of_ammo.emit()
+	pass
+
+func has_ammo():
+	return (current_ammunition > 0)
+
 func shoot(target : Unit):
-	if reloading:
+	if reloading or current_ammunition < 1:
 		return
+	current_ammunition -= 1
 	var projectile = Projectile.instantiate()
 	get_tree().get_root().add_child(projectile)
 	var angle = global_position.angle_to_point(target.global_position)

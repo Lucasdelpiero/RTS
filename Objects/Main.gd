@@ -94,5 +94,5 @@ func _create_or_load_save() -> void:
 func window_resized():
 	var to_update = get_tree().get_nodes_in_group("update_on_window_resize")
 	for node in to_update:
-		if node.has("update_on_window_resize"):
-			node.update_on_window_resize()
+#		if node.has("update_on_window_resize"):
+		node.update_on_window_resize()

@@ -35,6 +35,7 @@ texture = ExtResource("4_r6yrx")
 [node name="RangeWeapon" parent="Weapons" index="0" instance=ExtResource("5_h41ep")]
 visible = true
 base_max_range = 2000
+base_ammunition = 4
 
 [node name="MeleeWeapon" parent="Weapons" index="1" instance=ExtResource("6_fuk8l")]
 
