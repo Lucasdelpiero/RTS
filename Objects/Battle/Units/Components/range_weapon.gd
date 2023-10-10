@@ -44,9 +44,11 @@ func connect_signals_to_manager(parent : WeaponsManager):
 	pass
 
 func set_current_ammunition(value):
-	print("%s changed to %s" % [current_ammunition, value])
+	if current_ammunition != 0:
+		print("%s changed to %s" % [current_ammunition, value])
 	current_ammunition = value
 	if value == 0:
+		set_visibility(false)
 		ran_out_of_ammo.emit()
 	pass
 
@@ -78,6 +80,12 @@ func get_type():
 func get_attack():
 	# space for modifiers
 	return base_attack
+
+func set_visibility(value):
+	visible = false
+	if has_ammo():
+		visible = value
+	pass
 
 func set_polygon_range():
 	var polygon : PackedVector2Array = []

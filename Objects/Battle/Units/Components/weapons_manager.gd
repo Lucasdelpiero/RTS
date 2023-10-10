@@ -81,7 +81,7 @@ func go_to_attack(use_secondary : bool = false):
 func attack(target : Unit):
 	var type = in_use_weapon.get_type()
 	if type == "Range":
-		in_use_weapon.shoot(target)
+		in_use_weapon.call_deferred("shoot",target) # Called this way to avoid error in debugger
 	if type == "Melee":
 		in_use_weapon.attack(target)
 	pass
@@ -121,6 +121,8 @@ func set_weapons_visibility(value, use_secondary : bool = false):
 	var weapons = get_children() as Array[Weapon]
 	for weapon in weapons:
 		if weapon == primary_weapon:
-			weapon.visible = value and !use_secondary
+			weapon.set_visibility(value and !use_secondary)
+#			weapon.visible = value and !use_secondary
 		if weapon == secondary_weapon:
-			weapon.visible = value and use_secondary
+			weapon.set_visibility(value and use_secondary)
+#			weapon.visible = value and use_secondary

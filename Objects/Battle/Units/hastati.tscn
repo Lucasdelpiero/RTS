@@ -23,9 +23,14 @@ text = "Hastati"
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("3_tsyhh")
 
+[node name="Weapons" parent="." index="4" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
+primary_weapon = NodePath("MeleeWeapon")
+secondary_weapon = NodePath("RangeWeapon")
+
 [node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("4_u32l7")]
 
 [node name="RangeWeapon" parent="Weapons" index="1" instance=ExtResource("5_bj77f")]
+base_ammunition = 2
 
 [node name="RayCastCheckSpace" parent="HurtBoxComponent/Front" index="2" instance=ExtResource("6_fanu0")]
 position = Vector2(0, -10)

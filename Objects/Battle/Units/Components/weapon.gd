@@ -22,3 +22,10 @@ func get_shooting_speed():
 
 func get_type():
 	return type
+
+func set_visibility(value):
+	visible = value
+	pass
+
+func has_ammo():
+	return false # Used so the melee range return something 
