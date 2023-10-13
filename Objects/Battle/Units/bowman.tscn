@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_y5kd7"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_tc0iq"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_g6nr5"]
-[ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="4_r6yrx"]
+[ext_resource type="Texture2D" uid="uid://dpxmospj4jobs" path="res://Assets/units/unit_bow_icon_256.png" id="4_uxxw7"]
 [ext_resource type="PackedScene" uid="uid://dwru5o0lqlwmd" path="res://Objects/Battle/Units/Components/range_weapon.tscn" id="5_h41ep"]
 [ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="6_fuk8l"]
 
@@ -30,7 +30,7 @@ offset_right = 284.0
 text = "Bowman"
 
 [node name="SpriteType" parent="SpriteBase" index="0"]
-texture = ExtResource("4_r6yrx")
+texture = ExtResource("4_uxxw7")
 
 [node name="RangeWeapon" parent="Weapons" index="0" instance=ExtResource("5_h41ep")]
 visible = true

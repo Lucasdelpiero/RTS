@@ -24,11 +24,11 @@ func _ready():
 
 func set_texture_type(type):
 	if type == 1:
-		texture_type.set_texture(load("res://Assets/units/box_type_sword.png"))
+		texture_type.set_texture(load("res://Assets/units/unit_infantry_icon_256.png"))
 	if type == 2:
-		texture_type.set_texture(load("res://Assets/units/box_type_bow.png"))
+		texture_type.set_texture(load("res://Assets/units/unit_bow_icon_256.png"))
 	if type == 3:
-		texture_type.set_texture(load("res://Assets/units/box_type_cavalry.png"))
+		texture_type.set_texture(load("res://Assets/units/unit_cavalry_icon_256.png"))
 	texture_base.modulate = Color(randf(), randf(), randf())
 
 func set_selected(value):

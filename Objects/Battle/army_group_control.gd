@@ -27,9 +27,9 @@ func set_starting_position():
 	await get_tree().create_timer(0).timeout # It needs to wait until the tree has loaded for the "move_to" function to work well
 	if spawnMarker == null:
 		return
-	var spacing = Vector2(cos(spawnMarker.rotation) * 220, 0.0)
+	var spacing = Vector2(cos(spawnMarker.rotation) * 276, 0.0)
 	army = get_children()
-	var offset = Vector2(cos(spawnMarker.rotation ), 0.0) * 220 * (max(1, army.size() - 1)) / 2
+	var offset = Vector2(cos(spawnMarker.rotation ), 0.0) * 276 * (max(1, army.size() - 1)) / 2
 	for i in army.size():
 		var unit = army[i] as Unit
 		var newPos = spawnMarker.global_position + spacing * i - offset

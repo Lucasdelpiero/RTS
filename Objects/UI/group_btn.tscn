@@ -67,5 +67,4 @@ text = "1"
 script = ExtResource("1_hpi5d")
 horizontal_offset = 2
 
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

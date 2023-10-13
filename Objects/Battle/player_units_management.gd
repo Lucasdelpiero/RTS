@@ -61,13 +61,13 @@ func dragging_draw_and_move():
 			if not created_sprites:
 				for unit in units:
 					var spriteBase = Sprite2D.new()
-					spriteBase.set_texture(load("res://Assets/units/box_base.png"))
+					spriteBase.set_texture(load("res://Assets/units/unit_base_256.png"))
 					var col = unit.army_color
 					col.a = alpha_color
 					spriteBase.set_modulate(col)
 					world.add_child(spriteBase)
 					var spriteType = Sprite2D.new()
-					spriteType.set_texture(load("res://Assets/units/box_default_type.png"))
+					spriteType.set_texture(load("res://Assets/units/unit_default_icon_256.png"))
 					spriteType.set_modulate(col)
 					world.add_child(spriteType)
 					sprites_types.push_back([spriteBase, spriteType])
@@ -111,7 +111,7 @@ func draw_units(move):
 	if organized == null:
 		return
 	organized_units = organized
-	var unit_width = 214
+	var unit_width = 256
 	var amount = organized.size() 
 	var min_margin = 20
 	var margin = 1
@@ -132,8 +132,8 @@ func draw_units(move):
 			
 			if sprites_types.size() == 0 or i >= sprites_types.size():
 				continue
-			var spriteBase = sprites_types[i][0]
-			var spriteType = sprites_types[i][1]
+			var spriteBase = sprites_types[i][0] as Sprite2D
+			var spriteType = sprites_types[i][1] as Sprite2D
 			spriteBase.global_position = new_pos
 			spriteType.global_position = new_pos
 			spriteBase.rotation = angle
@@ -152,7 +152,7 @@ func move_without_draggin(center):
 #			unit.set_chase(target)
 		return
 	
-	var unit_width = 214
+	var unit_width = 256
 	var _amount = units.size()
 	var _margin = 20
 	var mouse = world.get_global_mouse_position()
@@ -186,7 +186,7 @@ func update_draw_type():
 		if i >= organized_units.size() or organized_units.size() == 0:
 			return
 		var type = organized_units[i].get_type()
-		var default = "res://Assets/units/box_default_type.png"
+		var default = "res://Assets/units/unit_default_icon_256.png"
 		if type < texture_types.size():
 			sprites_types[i][1].set_texture(texture_types[type])
 		else:

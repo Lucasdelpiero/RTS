@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba3haq528ht28"]
 
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_bmoks"]
+[ext_resource type="Texture2D" uid="uid://u7nx3cs5hm6s" path="res://Assets/units/unit_cavalry_icon_256.png" id="2_8vyiu"]
 [ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="3_wkjjb"]
-[ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_p1lqm"]
 
 [node name="Cavalry" instance=ExtResource("1_bmoks")]
 type = 3
@@ -11,17 +11,19 @@ type = 3
 text = "Cavalry"
 
 [node name="SpriteType" parent="SpriteBase" index="0"]
-texture = ExtResource("4_p1lqm")
+texture = ExtResource("2_8vyiu")
 
 [node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("3_wkjjb")]
 weapon_type = "Spear"
 
 [node name="MeleeWeapon2" parent="Weapons" index="1" instance=ExtResource("3_wkjjb")]
 
-[node name="MoveComponent" parent="." index="4"]
+[node name="MoveComponent" parent="." index="6"]
 speed = 500
 
+[editable path="DebugPersonal"]
 [editable path="HurtBoxComponent/Front"]
 [editable path="HurtBoxComponent/Back"]
 [editable path="HurtBoxComponent/Left"]
 [editable path="HurtBoxComponent/Right"]
+[editable path="UnitDetector"]

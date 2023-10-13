@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d0qglixbf5jcg"]
+[gd_scene load_steps=45 format=3 uid="uid://d0qglixbf5jcg"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://cowxiuqx35gta" path="res://Objects/Battle/battle_ui.tscn" id="2_41tas"]
@@ -11,13 +11,9 @@
 [ext_resource type="Script" path="res://Objects/Battle/army_group_control.gd" id="4_e2hns"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/overlay_unit.tscn" id="4_vae5l"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/navigation_tile_map.tscn" id="6_cde6g"]
-[ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="7_j74vg"]
 [ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="8_5lvcp"]
-[ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="8_6sysr"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="9_cjm0x"]
-[ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="9_da6rt"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="9_e4se1"]
-[ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="10_lovp7"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapon_data.gd" id="10_tuffa"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="11_7t20r"]
 [ext_resource type="PackedScene" uid="uid://c772uoiyt6oiu" path="res://Objects/Battle/Units/bowman.tscn" id="11_kyhj3"]
@@ -231,7 +227,6 @@ mouse_filter = 2
 navigation_tilemap = NodePath("../NavigationTileMap")
 
 [node name="PlayerUnitsManagement" parent="." node_paths=PackedStringArray("world") instance=ExtResource("3_eq3d1")]
-texture_types = Array[Texture2D]([ExtResource("7_j74vg"), ExtResource("8_6sysr"), ExtResource("9_da6rt"), ExtResource("10_lovp7")])
 world = NodePath("..")
 
 [node name="EnemyBattleIA" parent="." node_paths=PackedStringArray("armyGroup", "playerGroup") instance=ExtResource("4_8vivy")]
@@ -269,52 +264,52 @@ army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 ownership = "ROME"
 
 [node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(594, 1202)
+position = Vector2(342, 1202)
 weaponsData = SubResource("Resource_32fhg")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(814, 1202)
+position = Vector2(618, 1202)
 weaponsData = SubResource("Resource_lfj8g")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1034, 1202)
+position = Vector2(894, 1202)
 weaponsData = SubResource("Resource_weiv1")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1254, 1202)
+position = Vector2(1170, 1202)
 weaponsData = SubResource("Resource_ewx0j")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1474, 1202)
+position = Vector2(1446, 1202)
 weaponsData = SubResource("Resource_3v80y")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(1694, 1202)
+position = Vector2(1722, 1202)
 weaponsData = SubResource("Resource_r21t8")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman2" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(1914, 1202)
+position = Vector2(1998, 1202)
 weaponsData = SubResource("Resource_vue58")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman3" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(2134, 1202)
+position = Vector2(2274, 1202)
 weaponsData = SubResource("Resource_7qbjt")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Cavalry" parent="PlayerArmy" instance=ExtResource("19_k68q6")]
-position = Vector2(2354, 1202)
+position = Vector2(2550, 1202)
 weaponsData = SubResource("Resource_5g4gh")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Cavalry2" parent="PlayerArmy" instance=ExtResource("19_k68q6")]
-position = Vector2(2574, 1202)
+position = Vector2(2826, 1202)
 weaponsData = SubResource("Resource_kfde0")
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
@@ -325,54 +320,54 @@ army_color = Color(0.341176, 0.447059, 0.45098, 1)
 ownership = "ETRURIA"
 
 [node name="Etruria" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1720, -1695)
+position = Vector2(1916, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1500, -1695)
+position = Vector2(1640, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria3" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1280, -1695)
+position = Vector2(1364, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria4" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1060, -1695)
+position = Vector2(1088, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria5" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(840, -1695)
+position = Vector2(812, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(620, -1695)
+position = Vector2(536, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman2" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(400, -1695)
+position = Vector2(260, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman3" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(180, -1695)
+position = Vector2(-16, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)

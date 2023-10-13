@@ -21,6 +21,7 @@ var routed = false
 @onready var sprite = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
+@onready var selectedPolygon : Polygon2D = %SelectedPolygon
 @onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
@@ -60,6 +61,7 @@ signal sg_move_component_set_face_direction(value)
 signal sg_move_component_set_next_point(value)
 
 func _ready():
+	selectedPolygon.visible = false
 #	print("%s: has a shield of value: %s" % [name, shield])
 #	weaponsData = weaponsData.duplicate(true) as WeaponsData # (Maybe not needed) Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
@@ -123,12 +125,12 @@ func set_selected(value):
 	selected = value
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 	var shader = null
-	if selected:
-		shader = Globals.shader_selected
-		spriteBase.set_material(shader)
-		spriteBase.material.set_shader_parameter("inside_color", army_color)
-	
-	spriteBase.set_material(shader)
+#	if selected:
+#		shader = Globals.shader_selected
+#		spriteBase.set_material(shader)
+#		spriteBase.material.set_shader_parameter("inside_color", army_color)
+	selectedPolygon.visible = value
+#	spriteBase.set_material(shader)
 	weapons.set_weapons_visibility(value)
 	sg_unit_selected.emit(value)
 
