@@ -18,6 +18,7 @@ func attack(target : Unit):
 	if target == null:
 		printerr("IS FUCKING NULL")
 		return
+	print("attacked")
 	last_target = target
 	dealedDamage.connect(target.recieved_attack)
 	var data = AttackData.new()

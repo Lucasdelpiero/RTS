@@ -179,7 +179,12 @@ func attack_target(value : Unit):
 	weapons.go_to_attack()
 	var weapon_type = weapons.get_mouse_over_weapon_type()
 	if weapon_type == "Melee":
-		set_chase(value)
+		if state == State.MELEE:
+			print("melee")
+#			melee(value)
+		else:
+			set_chase(value)
+#		melee(value)
 	if weapon_type == "Range":
 		if weapons.get_if_target_in_weapon_range(value):
 			range_attack(value)
@@ -187,6 +192,8 @@ func attack_target(value : Unit):
 			set_chase(value)
 
 func attack_again():
+	print_debug("attack again")
+	print(target_unit)
 	if target_unit != null and state == State.FIRING:
 		var weapon_type = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
@@ -196,10 +203,12 @@ func attack_again():
 				set_chase(target_unit)
 	if target_unit != null and state == State.MELEE:
 		attack_target(target_unit)
+		print("attack")
 		pass
 
 
 func set_chase(value : Unit):
+	print_debug("set chase")
 	if moveComponent == null:
 		return
 	moveComponent.chase(value)
@@ -216,7 +225,9 @@ func set_chase(value : Unit):
 	else:
 		moveComponent.chase_in_queue = false
 
-func melee(data):
+func melee(data : HurtboxData):
+	if data == null:
+		return
 	var new_data = data["areas"]
 	moveComponent.move_to_face_melee(new_data)
 	state = State.MELEE
@@ -242,9 +253,9 @@ func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(_data : AttackData):
-#	print("i recieved damage")
-#	print(data)
+func recieved_attack(data : AttackData):
+	print("i recieved damage")
+	print(data)
 	pass
 
 func update_overlay():

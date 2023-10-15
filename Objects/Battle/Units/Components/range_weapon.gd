@@ -44,8 +44,8 @@ func connect_signals_to_manager(parent : WeaponsManager):
 	pass
 
 func set_current_ammunition(value):
-	if current_ammunition != 0:
-		print("%s changed to %s" % [current_ammunition, value])
+#	if current_ammunition != 0:
+#		print("%s changed to %s" % [current_ammunition, value])
 	current_ammunition = value
 	if value == 0:
 		set_visibility(false)

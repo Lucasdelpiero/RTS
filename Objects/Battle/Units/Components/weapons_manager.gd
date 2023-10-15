@@ -97,7 +97,7 @@ func change_to_melee_weapon(): # Used when the unit run out of ammo
 		if weapon.type == "Melee":
 			in_use_weapon = weapon
 #			set_in_use_weapon(weapon)
-			print("now i use melee")
+#			print("now i use melee")
 	pass
 
 func get_mouse_over_weapon_type():

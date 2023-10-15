@@ -50,6 +50,9 @@ position = Vector2(-1, 0)
 rotation = 3.12973
 target_position = Vector2(85, -77)
 
+[node name="HitBoxComponent" parent="." index="8"]
+visible = true
+
 [connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
 
 [editable path="DebugPersonal"]

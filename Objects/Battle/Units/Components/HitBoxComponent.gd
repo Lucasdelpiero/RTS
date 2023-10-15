@@ -10,17 +10,22 @@ func _ready():
 	melee_reached.connect(owner.melee)
 	pass
 
-func melee_detected():
+func melee_detected(aTargetArea):
 	if targetArea == null:
 		return
 	
-	var areas = targetArea.get_hurtbox_group()
-	var data = {
-		"areas" : areas,
-		"targetArea" : targetArea,
-		"target" : areas[0].owner,
-	}
-	emit_signal("melee_reached", data)
+	var areas = aTargetArea.get_hurtbox_group()
+	var hurtbox_data = HurtboxData.new()
+	hurtbox_data.areas = areas
+	hurtbox_data.targetArea = aTargetArea
+	hurtbox_data.target = areas[0].owner
+	emit_signal("melee_reached", hurtbox_data)
+#	var data = {
+#		"areas" : areas,
+#		"targetArea" : targetArea,
+#		"target" : areas[0].owner,
+#	}
+#	emit_signal("melee_reached", data)
 	pass
 
 # Detect ALL enemy units is colliding with and choses the one closest
@@ -57,7 +62,7 @@ func _on_area_2d_area_entered(area):
 		targetArea = closest
 #		print(owner.name, ": ",targetArea.owner)
 	if closest != null:
-		melee_detected()
+		melee_detected(targetArea)
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
@@ -68,6 +73,6 @@ func _on_area_2d_area_exited(_area):
 
 func _on_timer_timeout():
 #	print("attack")
-	melee_detected()
+	melee_detected(targetArea)
 	timer.start()
 	pass # Replace with function body.

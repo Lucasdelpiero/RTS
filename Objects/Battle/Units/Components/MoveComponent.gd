@@ -249,7 +249,7 @@ func move_to_face_melee(areas):
 		var second_closest : HurtBox = null
 		var max_distance = 10000
 		for area in areas as Array[HurtBox]:
-			print(area.name)
+#			print(area.name)
 			var distance = unit.global_position.distance_to(area.global_position)
 			if distance < max_distance and area.occupant == unit:
 #				print("new area selected")
