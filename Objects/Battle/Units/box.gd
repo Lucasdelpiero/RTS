@@ -33,7 +33,11 @@ var routed = false
 @onready var marker : Marker2D = $Marker2D
 @export var weaponsData : WeaponsData = WeaponsData.new()
 @export_range(1, 500, 1) var troops_number_max : int = 200
-var troops_number : int = 0
+#var troops_number : int = 0 : set = set_troops_number
+var troops_number : int = 0 : 
+	set(value):
+		troops_number = clamp(value,0 ,troops_number_max)
+		sg_troops_number_changed.emit(value, troops_number_max)
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
@@ -59,8 +63,10 @@ signal sg_unit_selected(value)
 signal sg_move_component_set_destination(value)
 signal sg_move_component_set_face_direction(value)
 signal sg_move_component_set_next_point(value)
+signal sg_troops_number_changed(value, max)
 
 func _ready():
+	troops_number = troops_number_max
 	selectedPolygon.visible = false
 #	print("%s: has a shield of value: %s" % [name, shield])
 #	weaponsData = weaponsData.duplicate(true) as WeaponsData # (Maybe not needed) Makes every resource unique to every unit so it can be modified later
@@ -181,7 +187,7 @@ func attack_target(value : Unit):
 	if weapon_type == "Melee":
 		if state == State.MELEE:
 			print("melee")
-#			melee(value)
+			weapons.in_use_weapon.attack(value)
 		else:
 			set_chase(value)
 #		melee(value)
@@ -256,6 +262,7 @@ func alternative_weapon(use_secondary):
 func recieved_attack(data : AttackData):
 	print("i recieved damage")
 	print(data)
+	troops_number -= 10
 	pass
 
 func update_overlay():
@@ -269,6 +276,11 @@ func update_overlay():
 	pass
 func get_type():
 	return type
+
+func set_troops_number(value):
+	troops_number = value
+	sg_troops_number_changed.emit(value, troops_number_max)
+	pass
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit

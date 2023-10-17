@@ -3,6 +3,8 @@ class_name UnitCard
 
 @onready var texture_base : TextureRect = %TextureBase
 @onready var texture_type : TextureRect = %TextureType 
+@onready var hp_bar : ProgressBar = %HpBar
+@onready var ammo_bar : ProgressBar = %AmmoBar
 var unit_reference = null
 var group = 10 # 10 = not in a group
 var position_in_group = 0 # 
@@ -56,6 +58,11 @@ func is_selected(value):
 		_shader = Globals.shader_selected
 		panel.border_color = selected_color
 #	set_material(shader)
+
+func set_troops_number(value, max_value):
+	hp_bar.value = value
+	hp_bar.max_value = max_value
+	pass
 
 func _on_button_pressed():
 	set_selected(true)

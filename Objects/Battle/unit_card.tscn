@@ -91,7 +91,8 @@ size_flags_vertical = 0
 texture = ExtResource("4_aoo8g")
 expand_mode = 5
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VH"]
+[node name="HpBar" type="ProgressBar" parent="MarginContainer/VH"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -100,7 +101,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ifsbv")
 value = 80.0
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="MarginContainer/VH"]
+[node name="AmmoBar" type="ProgressBar" parent="MarginContainer/VH"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ir4xr")
