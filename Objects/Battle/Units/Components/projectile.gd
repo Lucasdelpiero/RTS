@@ -6,7 +6,9 @@ var target : Vector2 = Vector2.ZERO
 var lifetime : float = 100.0
 var attack : float = 1.0
 @onready var timer : Timer = $Timer 
+@onready var timer_to_hit = $TimerToHit
 @onready var particles : GPUParticles2D = $GPUParticles2D
+@onready var area2d : Area2D = $Area2D
 signal dealedDamage(data)
 
 func create_projectile(data : Dictionary):
@@ -26,6 +28,8 @@ func create_projectile(data : Dictionary):
 	tween.tween_property($Sprite2D, "scale", Vector2(1.0, 0.1), lifetime / 2 ).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	particles.lifetime = lifetime
 	particles.process_material.initial_velocity_min = speed
+	var time_when_can_hit = lifetime * 0.8
+	timer_to_hit.start(time_when_can_hit)
 #	particles.initial_velocity_min = speed
 #	$CPUParticles2D2.lifetime = lifetime
 #	$CPUParticles2D2.initial_velocity_min = 0
@@ -48,3 +52,8 @@ func _on_area_2d_area_entered(area):
 	dealedDamage.emit(data)
 	dealedDamage.disconnect(unit.recieved_attack)
 	pass # Replace with function body.
+
+# Used so the hitbox only is enabled to deal damage at the end of its lifetime when the projectile reach the destination
+func _on_timer_to_hit_timeout():
+	area2d.monitoring = true
+

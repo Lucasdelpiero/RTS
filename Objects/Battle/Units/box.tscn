@@ -30,25 +30,25 @@ separator = "                  "
 secondary_type = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
-size = Vector2(179, 14)
+size = Vector2(252, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw6ii"]
 size = Vector2(179, 76.9999)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pbqt"]
-size = Vector2(179, 14)
+size = Vector2(256, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xso6r"]
 size = Vector2(188, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwdb2"]
-size = Vector2(14.5, 149)
+size = Vector2(15.25, 143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfmv0"]
 size = Vector2(118, 74.0004)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88m4m"]
-size = Vector2(20, 149)
+size = Vector2(18, 142.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c0sl"]
 size = Vector2(117, 84.9998)
@@ -141,26 +141,27 @@ unique_name_in_owner = true
 position = Vector2(0, -71)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Front" index="0"]
-position = Vector2(-4.5, 1)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_jbuut")
 
 [node name="MeleePoint" parent="HurtBoxComponent/Front" index="1"]
-position = Vector2(0, -88)
+position = Vector2(0, -97)
 rotation = 3.14159
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Front/MeleePoint/CheckSpace" index="0"]
-position = Vector2(2.49996, -8.50006)
 shape = SubResource("RectangleShape2D_uw6ii")
 
 [node name="Back" parent="HurtBoxComponent" instance=ExtResource("14_d14jk")]
 position = Vector2(-1, 65)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Back" index="0"]
-position = Vector2(-3.5, 0)
+position = Vector2(3, 14.5)
 shape = SubResource("RectangleShape2D_6pbqt")
 
 [node name="MeleePoint" parent="HurtBoxComponent/Back" index="1"]
-position = Vector2(0, 88)
+position = Vector2(2, 106)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Back/MeleePoint/CheckSpace" index="0"]
 shape = SubResource("RectangleShape2D_xso6r")
@@ -169,12 +170,13 @@ shape = SubResource("RectangleShape2D_xso6r")
 position = Vector2(-104, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Left" index="0"]
-position = Vector2(2.25, -2.5)
+position = Vector2(-14.625, 1.5)
 shape = SubResource("RectangleShape2D_hwdb2")
 
 [node name="MeleePoint" parent="HurtBoxComponent/Left" index="1"]
-position = Vector2(-94, -2)
+position = Vector2(-107, 0)
 rotation = 1.5708
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Left/MeleePoint/CheckSpace" index="0"]
 shape = SubResource("RectangleShape2D_sfmv0")
@@ -183,15 +185,15 @@ shape = SubResource("RectangleShape2D_sfmv0")
 position = Vector2(103, 0)
 
 [node name="CollisionShape2D" parent="HurtBoxComponent/Right" index="0"]
-position = Vector2(-8, -2.5)
+position = Vector2(18, 1.75)
 shape = SubResource("RectangleShape2D_88m4m")
 
 [node name="MeleePoint" parent="HurtBoxComponent/Right" index="1"]
-position = Vector2(94, 0)
+position = Vector2(115, 0)
 rotation = 4.71239
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D2" parent="HurtBoxComponent/Right/MeleePoint/CheckSpace" index="0"]
-position = Vector2(-1.49999, -4.50003)
 shape = SubResource("RectangleShape2D_8c0sl")
 
 [node name="HitBoxComponent" type="Marker2D" parent="."]
