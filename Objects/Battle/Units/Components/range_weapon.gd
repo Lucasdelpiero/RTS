@@ -7,8 +7,11 @@ extends Weapon
 @export_range(0.0, 2.0, 0.01) var base_reloading_speed : float = 1.0
 @export_range(0.1, 30.0, 0.1) var reload_time : float = 3.0
 @export_range(1, 1000, 1) var base_ammunition : int = 30
-var max_ammunition : int = 0
-var current_ammunition : int = 0  :  set = set_current_ammunition
+var max_ammunition : int = 0 
+var current_ammunition : int = 0  :  
+	set(value):
+		current_ammunition = value
+		sg_ammo_amount_changed.emit(value, max_ammunition)
 @export var fire_shot : bool = false
 @export var pierce_armor : bool = false
 @export var move_while_shooting : bool = false
@@ -23,6 +26,7 @@ var enemies_in_weapon_range : Array[Unit] = []
 signal reached_new_enemy(enemies)
 signal reload_time_over(node)
 signal ran_out_of_ammo
+signal sg_ammo_amount_changed(value, total)
 @onready var reloading = false
 
 func _ready():
@@ -35,7 +39,6 @@ func _ready():
 		set_polygon_range()
 	set_polygon_range()
 	max_ammunition = base_ammunition * 1
-	current_ammunition = max_ammunition
 
 func connect_signals_to_manager(parent : WeaponsManager):
 #	reloadTimer.timeout.connect(parent.weapon_can_attack_again)
@@ -44,12 +47,11 @@ func connect_signals_to_manager(parent : WeaponsManager):
 	pass
 
 func set_current_ammunition(value):
-#	if current_ammunition != 0:
-#		print("%s changed to %s" % [current_ammunition, value])
 	current_ammunition = value
 	if value == 0:
 		set_visibility(false)
 		ran_out_of_ammo.emit()
+	sg_ammo_amount_changed.emit(value, max_ammunition)
 	pass
 
 func has_ammo():

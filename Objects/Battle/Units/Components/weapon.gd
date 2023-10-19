@@ -2,6 +2,7 @@
 extends Node2D
 class_name Weapon
 
+
 var type = null
 var weapon := ""
 

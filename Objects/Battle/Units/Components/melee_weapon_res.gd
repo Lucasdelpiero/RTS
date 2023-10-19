@@ -1,5 +1,5 @@
 extends WeaponData
-class_name MeleeWeapon
+#class_name MeleeWeapon
 
 var type = "Melee"
 @export_enum("Sword", "Spear", "Pike", "Dagger") var weapon : String = "Sword"

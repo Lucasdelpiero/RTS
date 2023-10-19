@@ -56,16 +56,19 @@ func create_cards(army):
 	var flow_container = Flow_Container_Cards.instantiate()
 	add_child(flow_container)
 	for unit in army as Array[Unit]:
-		var unit_card = Unit_Card.instantiate()
+		var unit_card = Unit_Card.instantiate() as UnitCard
 #		add_child(unit_card)
 		flow_container.add_child(unit_card)
 		unit_card.unit_reference = unit
 		unit_card.set_texture_type(unit.get_type())
 		unit_card.sg_card_selected.connect(card_selected)
 		unit_card.sg_card_hovered.connect(card_hovered)
+		unit_card.sg_requested_data_from_unit.connect(unit.send_unit_card_data)
 		unit.sg_unit_hovered.connect(unit_card.is_hovered)
 		unit.sg_unit_selected.connect(unit_card.is_selected)
 		unit.sg_troops_number_changed.connect(unit_card.set_troops_number)
+		unit.weapons.sg_send_ammo_data_unit_to_card.connect(unit_card.set_ammo)
+		
 		group_10.push_back(unit_card)
 		total_cards.push_back(unit_card)
 	pass

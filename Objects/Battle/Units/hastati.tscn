@@ -9,6 +9,7 @@
 
 [node name="Hastati" instance=ExtResource("1_qerye")]
 weaponsData = ExtResource("2_5jbtb")
+troops_number_max = 200
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 
@@ -16,12 +17,14 @@ metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 visible = false
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
-visible = false
 offset_right = 246.0
 text = "Hastati"
 
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("3_v5n0j")
+
+[node name="Sprite2D" parent="." index="4"]
+modulate = Color(0, 0, 0, 1)
 
 [node name="Weapons" parent="." index="5" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
 primary_weapon = NodePath("MeleeWeapon")
