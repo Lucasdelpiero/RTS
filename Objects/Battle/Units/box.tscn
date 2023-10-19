@@ -98,6 +98,7 @@ metadata/_edit_lock_ = true
 
 [node name="NameLabel" type="Label" parent="Marker2D/Node"]
 unique_name_in_owner = true
+visible = false
 z_index = 1000
 z_as_relative = false
 offset_left = 98.0

@@ -37,7 +37,7 @@ func set_selected(value):
 	if unit_reference == null:
 		return
 	sg_card_selected.emit(unit_reference, value)
-	unit_reference.set_hovered(false) # THIS HAS TO BE HERE to change the hovered state and avoid being selected every time you click
+#	unit_reference.set_hovered(false) # THIS HAS TO BE HERE to change the hovered state and avoid being selected every time you click
 	is_hovered(true) # Used just to have the hovered shader after you click the card, can be deleted without compromising the game
 #	unit_reference.set_selected(true)
 	pass
