@@ -6,18 +6,12 @@
 
 [node name="Cavalry" instance=ExtResource("1_bmoks")]
 type = 3
-troops_number_max = 100
-army_color = Color(1, 1, 1, 1)
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
 text = "Cavalry"
 
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("2_8vyiu")
-
-[node name="Weapons" parent="." index="5" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
-primary_weapon = NodePath("MeleeWeapon")
-secondary_weapon = NodePath("MeleeWeapon2")
 
 [node name="MeleeWeapon" parent="Weapons" index="0" instance=ExtResource("3_wkjjb")]
 weapon_type = "Spear"

@@ -5,7 +5,11 @@ class_name Unit
 ########
 # WHEN THE RESOURCE IS COPIED IT CANT BE OVERRIED
 #HAS TO STORE THE ORIGINAL IN ONE PLACE AND USE THE COPY TO BE COPIED IN EVERY INSTANCE
+
+
 #
+
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -32,7 +36,6 @@ var routed = false
 #var troops_number : int = 0 : set = set_troops_number
 var troops_number : int = 0 : 
 	set(value):
-#		print("%s/%s" % [value, troops_number_max])
 		troops_number = clamp(value,0 ,troops_number_max)
 		sg_troops_number_changed.emit(value, troops_number_max)
 @export_range(0, 10, 1) var veterany : int = 1
@@ -57,16 +60,24 @@ var target_unit : Unit = null
 signal show_overlay_unit(data)
 signal sg_unit_hovered(value)
 signal sg_unit_selected(value)
-signal sg_troops_number_changed(value, max)
 signal sg_move_component_set_destination(value)
 signal sg_move_component_set_face_direction(value)
 signal sg_move_component_set_next_point(value)
+signal sg_troops_number_changed(value, max)
 
 func _ready():
 	troops_number = troops_number_max
 	selectedPolygon.visible = false
-#	weaponsData.start()
-
+#	print("%s: has a shield of value: %s" % [name, shield])
+#	weaponsData = weaponsData.duplicate(true) as WeaponsData # (Maybe not needed) Makes every resource unique to every unit so it can be modified later
+	weaponsData.start()
+#	if name == "Hastati":
+#		weaponsData.primary_weapon.base_attack = 50
+#	await get_tree().create_timer(1.0).timeout
+#	if type == 1:
+#		print(name)
+#		print(weaponsData.primary_weapon.base_attack)
+#		print("=========")
 	if moveComponent == null:
 		return
 	if Engine.is_editor_hint(): # Used to avoid getting error while using the @tool thing
@@ -79,8 +90,8 @@ func _ready():
 	if troops_number == 0: # if not defined a number of alive troops on creation it will have the max amount
 		troops_number = troops_number_max
 	update_overlay()
-#	send_unit_card_data()
 
+#	print(weapons.selected_weapon.get_type())
 
 func _input(_event):
 	if Input.is_action_just_pressed("delete"):
@@ -101,15 +112,12 @@ func _physics_process(_delta):
 #	overlay.set_position(marker.global_position)
 
 func set_color(value):
-	if value == null or army_color == null:
-		return
 	army_color = value
 	$Sprite2D.modulate = army_color
 	%SpriteBase.modulate = army_color
 	$ShowDirection.modulate = army_color
 
 func set_hovered(value):
-	send_unit_card_data()
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	spriteBase.set_material(null)
@@ -120,7 +128,7 @@ func set_hovered(value):
 
 func set_selected(value):
 	selected = value
-#	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
+	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
 #	if selected:
 #		shader = Globals.shader_selected
@@ -265,13 +273,13 @@ func update_overlay():
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
 	pass
-
 func get_type():
 	return type
 
-func send_unit_card_data():
-	troops_number = troops_number
-	
+func set_troops_number(value):
+	troops_number = value
+	sg_troops_number_changed.emit(value, troops_number_max)
+	pass
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit

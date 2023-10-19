@@ -6,25 +6,23 @@ var mouse_over_weapon : Weapon = null   # The weapon that will be chose during a
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
 var DefaultWeapon : PackedScene = load("res://Objects/Battle/Units/Components/melee_weapon.tscn")
-#var weapons : = []
 signal send_units_in_range(value)
 signal in_use_weapon_ready_to_attack
-signal sg_send_ammo_data_unit_to_card(value, maxAmmo)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	if get_children().size() == 0: # Give at least a default weapon
 		var def_weapon = DefaultWeapon.instantiate()
 		add_child(def_weapon)
 	
 	var weapons = get_children() as Array[Weapon]
 	
+	
 	if weapons.size() > 0:
 		primary_weapon = weapons[0]
-		print("weapon asigned to %s" % [owner.name])
 		secondary_weapon = weapons[0] # done in this way so the mouse over changes to the secondary weapon
 		in_use_weapon = primary_weapon
-		in_use_weapon = weapons[0]
 		mouse_over_weapon = primary_weapon
 		
 		if weapons.size() > 1:
@@ -36,13 +34,11 @@ func _ready():
 			weapon.ran_out_of_ammo.connect(change_to_melee_weapon)
 			weapon.reached_new_enemy.connect(new_enemy_reached)
 			weapon.connect_signals_to_manager(self)
-#			weapon.sg_ammo_amount_changed.connect(get_ammo_data)
-			
 		if weapon.get_type() == "Melee":
 			weapon.readyToAttack.connect(weapon_can_attack_again)
 		
 	if in_use_weapon == null:
-		push_error("Unit %s doesnt have a weapon to use" % [owner.name])
+		push_error("Unit doesnt have a weapon to use")
 	set_weapons_visibility(false)
 
 func connect_signals():
@@ -65,13 +61,10 @@ func alternative_weapon(use_secondary : bool = false):
 #		print("back to normal")
 
 func set_in_use_weapon(value : Weapon):
-	in_use_weapon = value
 	if in_use_weapon != value:
-		print("must change")
 		if value.get_type() == "Range":
 			if value.has_ammo():
 				in_use_weapon = value
-				print("a range weapon has been changed")
 		else:
 			in_use_weapon = value
 #		if owner.selected:
@@ -107,18 +100,6 @@ func change_to_melee_weapon(): # Used when the unit run out of ammo
 #			print("now i use melee")
 	pass
 
-func get_ammo_data(aAmmo, aMaxAmmo):
-	var amount = 0
-	var total = 0
-	var weapons = get_children() as Array[Weapon]
-	for weapon in weapons as Array[Weapon]:
-		if weapon.get_type() == "Range":
-			if weapon.has_ammo():
-				amount = weapon.current_ammunition
-				total = weapon.max_ammunition
-		return [amount, total]
-	pass
-
 func get_mouse_over_weapon_type():
 #	print(in_use_weapon)
 	return mouse_over_weapon.get_type()
@@ -127,8 +108,6 @@ func get_in_use_weapon_type():
 	return in_use_weapon.get_type()
 
 func new_enemy_reached(value : Array): # signal emitted from the range weapon
-	if in_use_weapon == null:
-		return
 	if in_use_weapon.get_type() == "Range":
 		send_units_in_range.emit(value)
 #		print(value)

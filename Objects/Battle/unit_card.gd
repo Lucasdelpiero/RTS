@@ -15,13 +15,10 @@ var panel_border_color_original = panel.border_color
 
 signal sg_card_selected(value)
 signal sg_card_hovered(value)
-signal sg_requested_data_from_unit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var _min_size = Vector2(size.x, 0)
-	await  get_tree().create_timer(0.01).timeout # Required to give time to the box to load
-	sg_requested_data_from_unit.emit()
 #	sg_card_selected.connect(Signals.battlemap_set_units_selected)
 #	texture_base.set_custom_minimum_size(min_size)
 #	texture_type.set_custom_minimum_size(min_size)
@@ -63,12 +60,9 @@ func is_selected(value):
 #	set_material(shader)
 
 func set_troops_number(value, max_value):
-	hp_bar.max_value = max_value
 	hp_bar.value = value
-
-func set_ammo(value, max_value):
-	ammo_bar.max_value = max_value
-	ammo_bar.value = value
+	hp_bar.max_value = max_value
+	pass
 
 func _on_button_pressed():
 	set_selected(true)
