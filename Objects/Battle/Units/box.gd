@@ -112,22 +112,16 @@ func set_hovered(value):
 	send_unit_card_data()
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
-	if not selected:
-		var shader = null
-		if hovered:
-			shader = Globals.shader_hovered
+	spriteBase.set_material(null)
+	if hovered:
+		var shader = Globals.shader_hovered
 		spriteBase.set_material(shader)
 	sg_unit_hovered.emit(value)
 
 func set_selected(value):
 	selected = value
-<<<<<<< HEAD
 #	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
-=======
-	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
-	var shader = null
->>>>>>> parent of 35cdd9d (Now hover shader works even when unit is selected)
 #	if selected:
 #		shader = Globals.shader_selected
 #		spriteBase.set_material(shader)
