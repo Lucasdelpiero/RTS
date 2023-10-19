@@ -121,10 +121,13 @@ func set_hovered(value):
 
 func set_selected(value):
 	selected = value
+<<<<<<< HEAD
 #	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
+=======
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
-	var shader = null (Now hover shader works even when unit is selected)
+	var shader = null
+>>>>>>> parent of 35cdd9d (Now hover shader works even when unit is selected)
 #	if selected:
 #		shader = Globals.shader_selected
 #		spriteBase.set_material(shader)
