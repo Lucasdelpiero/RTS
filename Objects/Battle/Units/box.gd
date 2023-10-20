@@ -60,10 +60,11 @@ var target_unit : Unit = null
 signal show_overlay_unit(data)
 signal sg_unit_hovered(value)
 signal sg_unit_selected(value)
+signal sg_troops_number_changed(value, max)
 signal sg_move_component_set_destination(value)
 signal sg_move_component_set_face_direction(value)
 signal sg_move_component_set_next_point(value)
-signal sg_troops_number_changed(value, max)
+
 
 func _ready():
 	troops_number = troops_number_max
@@ -112,12 +113,15 @@ func _physics_process(_delta):
 #	overlay.set_position(marker.global_position)
 
 func set_color(value):
+	if value == null or army_color == null:
+		return
 	army_color = value
 	$Sprite2D.modulate = army_color
 	%SpriteBase.modulate = army_color
 	$ShowDirection.modulate = army_color
 
 func set_hovered(value):
+	send_unit_card_data()
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	spriteBase.set_material(null)
@@ -273,6 +277,10 @@ func update_overlay():
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
 	pass
+
+func send_unit_card_data():
+	troops_number = troops_number
+
 func get_type():
 	return type
 

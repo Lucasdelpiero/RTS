@@ -66,6 +66,8 @@ func create_cards(army):
 		unit.sg_unit_hovered.connect(unit_card.is_hovered)
 		unit.sg_unit_selected.connect(unit_card.is_selected)
 		unit.sg_troops_number_changed.connect(unit_card.set_troops_number)
+		unit_card.sg_requested_data_from_unit.connect(unit.send_unit_card_data)
+#		unit.weapons.sg_send_ammo_data_unit_to_card.connect(unit_card.set_ammo)
 		group_10.push_back(unit_card)
 		total_cards.push_back(unit_card)
 	pass

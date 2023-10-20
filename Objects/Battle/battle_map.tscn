@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://v1d5ygtvkrrj" path="res://Objects/Battle/player_units_management.tscn" id="3_eq3d1"]
 [ext_resource type="PackedScene" uid="uid://bmavvajsmr1uu" path="res://Objects/Battle/enemy_battle_ia.tscn" id="4_8vivy"]
 [ext_resource type="Script" path="res://Objects/Battle/army_group_control.gd" id="4_e2hns"]
-[ext_resource type="PackedScene" path="res://Objects/Battle/overlay_unit.tscn" id="4_vae5l"]
+[ext_resource type="PackedScene" uid="uid://bocqp747crhq7" path="res://Objects/Battle/overlay_unit.tscn" id="4_vae5l"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/navigation_tile_map.tscn" id="6_cde6g"]
 [ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="8_5lvcp"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="9_cjm0x"]
