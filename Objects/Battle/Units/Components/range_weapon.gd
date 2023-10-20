@@ -8,7 +8,10 @@ extends Weapon
 @export_range(0.1, 30.0, 0.1) var reload_time : float = 3.0
 @export_range(1, 1000, 1) var base_ammunition : int = 30
 var max_ammunition : int = 0
-var current_ammunition : int = 0  :  set = set_current_ammunition
+var current_ammunition : int = 0  : 
+	set(value):
+		current_ammunition = value
+		sg_ammo_amount_changed.emit(value, max_ammunition)
 @export var fire_shot : bool = false
 @export var pierce_armor : bool = false
 @export var move_while_shooting : bool = false
@@ -23,6 +26,7 @@ var enemies_in_weapon_range : Array[Unit] = []
 signal reached_new_enemy(enemies)
 signal reload_time_over(node)
 signal ran_out_of_ammo
+signal sg_ammo_amount_changed(value, total)
 @onready var reloading = false
 
 func _ready():

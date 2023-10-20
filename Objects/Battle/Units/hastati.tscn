@@ -16,7 +16,6 @@ metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 visible = false
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
-visible = false
 offset_right = 246.0
 text = "Hastati"
 

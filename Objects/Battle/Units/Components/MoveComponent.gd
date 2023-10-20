@@ -105,7 +105,7 @@ func chase(target_to_chase : Unit = null):
 		move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
 	
 	if timerChase.is_stopped() and chasing:
-		print("timer set")
+#		print("timer set")
 		timerChase.start(0.5)
 #	await get_tree().create_timer(0.5).timeout
 #	if chasing:
@@ -299,7 +299,7 @@ func set_nav_map(value : TileMap):
 
 
 func _on_timer_chase_timeout():
-	print("timer done")
+#	print("timer done")
 	if chasing:
 		chase()
 	pass # Replace with function body.

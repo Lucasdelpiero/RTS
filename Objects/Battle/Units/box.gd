@@ -121,7 +121,6 @@ func set_color(value):
 	$ShowDirection.modulate = army_color
 
 func set_hovered(value):
-	send_unit_card_data()
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	spriteBase.set_material(null)
@@ -201,8 +200,8 @@ func attack_target(value : Unit):
 			set_chase(value)
 
 func attack_again():
-	print_debug("attack again")
-	print(target_unit)
+#	print_debug("attack again")
+#	print(target_unit)
 	if target_unit != null and state == State.FIRING:
 		var weapon_type = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
@@ -217,7 +216,7 @@ func attack_again():
 
 
 func set_chase(value : Unit):
-	print_debug("set chase")
+#	print_debug("set chase")
 	if moveComponent == null:
 		return
 	moveComponent.chase(value)
@@ -263,8 +262,8 @@ func alternative_weapon(use_secondary):
 	weapons.alternative_weapon(use_secondary)
 
 func recieved_attack(data : AttackData):
-	print("i recieved damage")
-	print(data)
+#	print("i recieved damage")
+#	print(data)
 	troops_number -= 10
 	pass
 
@@ -280,6 +279,7 @@ func update_overlay():
 
 func send_unit_card_data():
 	troops_number = troops_number
+	weapons.get_ammo_data()
 
 func get_type():
 	return type
