@@ -59,6 +59,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmyDetector"]
+visible = false
 shape = SubResource("CircleShape2D_coned")
 debug_color = Color(0.321569, 0.631373, 0.45098, 0.298039)
 
