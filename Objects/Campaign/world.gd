@@ -27,6 +27,8 @@ func initialize_world():
 	get_nav_map()
 	mouse.world = self
 	mouse.ui = UI
+	if get_tree().get_nodes_in_group("main").size() == 0:
+		return
 	main = get_tree().get_nodes_in_group("main")[0]
 	
 #	army.get_to_closer_point(map)
