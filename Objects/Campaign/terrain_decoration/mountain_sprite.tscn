@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://woeoxt74h51w"]
+
+[ext_resource type="Texture2D" uid="uid://bb8xauov1p05u" path="res://Assets/Terrain/campaign_map/mountain_icon.svg" id="1_boipv"]
+
+[node name="MountainSprite" type="Sprite2D"]
+modulate = Color(0.560784, 0.4, 0.258824, 1)
+z_index = 20
+z_as_relative = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_boipv")

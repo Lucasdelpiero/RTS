@@ -6,6 +6,7 @@
 [node name="Province" type="Polygon2D" groups=["provinces"]]
 z_index = 20
 z_as_relative = false
+texture_repeat = 2
 script = ExtResource("1_lhs2u")
 width = 4.0
 
