@@ -2,6 +2,8 @@
 class_name Province # New icon o be made
 extends Polygon2D
 
+@onready var inside_color = Color(1.0, 1.0, 1.0)
+@onready var outside_color = Color(0.0, 0.0, 0.0)
 @export_color_no_alpha var outLine = Color(0, 0, 0) : set = set_color_border
 @export_range(1, 20, 0.1) var width = 2.0 : set = set_width
 @onready var border = %Border
@@ -14,6 +16,7 @@ extends Polygon2D
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
+@export_enum("plains", "mountains")  var terrain_type = "plains"
 @export_range(0.1, 10, 0.1) var weight = 1.0
 @export_range(0.1, 100, 0.1) var income = 10.0
 @export_range(100, 100000, 1) var population = 1000
@@ -46,10 +49,11 @@ signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
 
 func _ready():
+	inside_color = color
+	outside_color = outLine
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly = get_polygon()
-
 	collision.set_polygon(poly)
 	pass
 
@@ -101,6 +105,8 @@ func update_to_nation_color():
 		if nation.NATION_TAG == str(self.ownership):
 			self.outLine = nation.nationOutline
 			self.color = nation.nationColor
+			self.inside_color = nation.nationColor
+			self.outside_color = nation.nationOutline
 	pass
 
 func send_mouse_over(value):
@@ -110,6 +116,25 @@ func send_mouse_over(value):
 		"node" = self,
 	}
 	emit_signal("sg_mouseOverSelf", data_temp)
+	pass
+
+func set_map_type_shown(type):
+	if type == "political":
+		color = inside_color
+		border.default_color = outLine
+		self_modulate.a = 1.0
+		border.self_modulate.a = 1.0
+		outLine = outside_color
+		pass
+	if type == "terrain":
+#		border.self_modulate.a = 0.5
+		color = Color(1.0, 1.0, 1.0)
+		if terrain_type == "plains":
+			color = Color(0.6, 1.0, 0.45)
+		if terrain_type == "mountains":
+			color = Color(0.45, 0.25, 0.1)
+		outLine = color
+		pass
 	pass
 
 func _on_mouse_detector_mouse_entered():

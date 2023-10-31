@@ -10,11 +10,16 @@ var gold = 0
 @onready var nameLabel = %NameLabel
 
 @onready var armiesContainer = %ArmiesContainer
+@onready var mapTypesManager = %MapTypesManager
+
+signal changed_map_shown(type)
 
 var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mapTypesManager.new_map_selected.connect(change_map_shown)
 	pass # Replace with function body.
 
 
@@ -53,6 +58,10 @@ func update_selected_armies(army : ArmyCampaing):
 	selectedArmies = newArr.duplicate()
 	armiesContainer.updateArmiesData(selectedArmies)
 	
+
+func change_map_shown(type):
+	changed_map_shown.emit(type)
+	pass
 
 func _on_button_pressed():
 #	print("btn pressed")

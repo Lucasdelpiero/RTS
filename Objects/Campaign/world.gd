@@ -14,6 +14,7 @@ var armies_in_battle : Array = []
 var playerNation = "ROME"
 var playerNode = null
 var nations := []
+var provinces := []
 var provinceSelected = null
 
 func _init():
@@ -27,6 +28,7 @@ func initialize_world():
 	get_nav_map()
 	mouse.world = self
 	mouse.ui = UI
+	UI.changed_map_shown.connect(change_map_shown)
 	if get_tree().get_nodes_in_group("main").size() == 0:
 		return
 	main = get_tree().get_nodes_in_group("main")[0]
@@ -51,7 +53,7 @@ func initialize_world():
 			army.sg_was_selected.connect(new_unit_selected)
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
-	var provinces = get_tree().get_nodes_in_group("provinces")
+	provinces = get_tree().get_nodes_in_group("provinces")
 	for province in provinces:
 		province.world = self
 		province.update_to_nation_color()
@@ -62,6 +64,11 @@ func initialize_world():
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
+
+func change_map_shown(type):
+	for province in provinces:
+		province.set_map_type_shown(type)
+		pass
 
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map():
