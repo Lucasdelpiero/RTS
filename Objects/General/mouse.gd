@@ -78,6 +78,10 @@ func update_army_campaing_selection(data):
 		hovered = temp.duplicate()
 
 	if hovered.size() > 0:
+		if hovered[0] == null : # maybe this fixes the crash
+			push_error("erroooor")
+			update_province_selection(null)
+			return
 		hovered[0].set_hovered(true)
 	
 	update_province_selection(null) # Used to update the provinces to being unhovered

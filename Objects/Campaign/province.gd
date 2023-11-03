@@ -16,7 +16,7 @@ extends Polygon2D
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
-@export_enum("plains", "mountains")  var terrain_type = "plains"
+@export_enum("plains", "hills", "mountains", "desert")  var terrain_type = "plains"
 @export_range(0.1, 10, 0.1) var weight = 1.0
 @export_range(0.1, 100, 0.1) var income = 10.0
 @export_range(100, 100000, 1) var population = 1000
@@ -131,8 +131,13 @@ func set_map_type_shown(type):
 		color = Color(1.0, 1.0, 1.0)
 		if terrain_type == "plains":
 			color = Color(0.6, 1.0, 0.45)
+		if terrain_type == "hills":
+#			color = Color(0.25, 0.45, 0.45)
+			color = Color(0.15, 0.5, 0.35)
 		if terrain_type == "mountains":
 			color = Color(0.45, 0.25, 0.1)
+		if terrain_type == "desert":
+			color = Color(0.9, 0.85, 0.2)
 		outLine = color
 		pass
 	pass

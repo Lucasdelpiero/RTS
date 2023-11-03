@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name CampaignUI
 
 var gold = 0
 @onready var goldLabel = %GoldLabel

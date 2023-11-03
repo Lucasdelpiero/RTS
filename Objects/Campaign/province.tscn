@@ -7,6 +7,7 @@
 z_index = 20
 z_as_relative = false
 texture_repeat = 2
+color = Color(0.901961, 0.85098, 0.2, 1)
 script = ExtResource("1_lhs2u")
 width = 4.0
 

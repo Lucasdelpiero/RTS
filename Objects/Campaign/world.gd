@@ -6,7 +6,7 @@ var map # navmap
 
 @onready var navigation = $NavigationRegion2D
 @onready var nationsGroup = $NationsGroup
-@onready var UI = %CampaingUI
+@onready var UI : CampaignUI = %CampaingUI
 @onready var mouse = $Mouse
 @onready var battleMenu = %BattleMenu # temporarelly instanced always
 var armies_in_battle : Array = []
@@ -28,7 +28,8 @@ func initialize_world():
 	get_nav_map()
 	mouse.world = self
 	mouse.ui = UI
-	UI.changed_map_shown.connect(change_map_shown)
+	if not UI.changed_map_shown.is_connected(change_map_shown): # this is done to avoid reconecting it when the game loads and initializes for a second time
+		UI.changed_map_shown.connect(change_map_shown)
 	if get_tree().get_nodes_in_group("main").size() == 0:
 		return
 	main = get_tree().get_nodes_in_group("main")[0]

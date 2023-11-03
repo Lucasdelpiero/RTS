@@ -1,7 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cev65ft1hspbb"]
 
 [ext_resource type="Shader" path="res://Shaders/hovered.gdshader" id="1_ynlnt"]
-
 
 [resource]
 shader = ExtResource("1_ynlnt")
