@@ -10,6 +10,7 @@ extends Polygon2D
 @onready var city = %PosProvince
 @onready var mouseDetector = %MouseDetector
 @onready var collision = $MouseDetector/CollisionPolygon2D
+@export var terrain_colors : MapTerrainColors 
 
 @export_category("Ownership")
 @export var ownership := ""
@@ -127,18 +128,11 @@ func set_map_type_shown(type):
 		outLine = outside_color
 		pass
 	if type == "terrain":
-#		border.self_modulate.a = 0.5
-		color = Color(1.0, 1.0, 1.0)
-		if terrain_type == "plains":
-			color = Color(0.6, 1.0, 0.45)
-		if terrain_type == "hills":
-#			color = Color(0.25, 0.45, 0.45)
-			color = Color(0.15, 0.5, 0.35)
-		if terrain_type == "mountains":
-			color = Color(0.45, 0.25, 0.1)
-		if terrain_type == "desert":
-			color = Color(0.9, 0.85, 0.2)
-		outLine = color
+		if terrain_colors == null:
+			return
+		var new_color = terrain_colors.get_terrain_color(terrain_type)
+		color = new_color
+		outLine = new_color
 		pass
 	pass
 

@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjdrconndqyb4"]
+[gd_scene load_steps=4 format=3 uid="uid://bjdrconndqyb4"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/province.gd" id="1_lhs2u"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/pos_province.tscn" id="2_h2bx7"]
+[ext_resource type="Resource" uid="uid://tu5iy2nfajrr" path="res://Objects/Campaign/map_terrain_colors.tres" id="2_s17fm"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
 z_index = 20
 z_as_relative = false
 texture_repeat = 2
-color = Color(0.901961, 0.85098, 0.2, 1)
+color = Color(1, 0, 1, 1)
 script = ExtResource("1_lhs2u")
 width = 4.0
+terrain_colors = ExtResource("2_s17fm")
 
 [node name="PosProvince" parent="." instance=ExtResource("2_h2bx7")]
 unique_name_in_owner = true
