@@ -10,7 +10,7 @@ extends Polygon2D
 @onready var city = %PosProvince
 @onready var mouseDetector = %MouseDetector
 @onready var collision = $MouseDetector/CollisionPolygon2D
-@export var terrain_colors : MapTerrainColors 
+@export var map_colors : MapColors
 
 @export_category("Ownership")
 @export var ownership := ""
@@ -21,6 +21,8 @@ extends Polygon2D
 @export_range(0.1, 10, 0.1) var weight = 1.0
 @export_range(0.1, 100, 0.1) var income = 10.0
 @export_range(100, 100000, 1) var population = 1000
+@export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
+@export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
 
 @export_group("Connections")
 var connections : Array
@@ -120,21 +122,31 @@ func send_mouse_over(value):
 	pass
 
 func set_map_type_shown(type):
-	if type == "political":
-		color = inside_color
-		border.default_color = outLine
-		self_modulate.a = 1.0
-		border.self_modulate.a = 1.0
-		outLine = outside_color
-		pass
-	if type == "terrain":
-		if terrain_colors == null:
+	if map_colors == null:
+		return
+	match type:
+		"political":
+			color = inside_color
+			border.default_color = outLine
+			self_modulate.a = 1.0
+			border.self_modulate.a = 1.0
+			outLine = outside_color
+			
+		"terrain":
+			var new_color = map_colors.get_terrain_color(terrain_type)
+			color = new_color
+			outLine = new_color
+		"religion":
+			var new_color = map_colors.get_religion_color(religion)
+			color = new_color
+			outLine = new_color
+		"culture":
+			var new_color = map_colors.get_culture_color(culture)
+			color = new_color
+			outLine = new_color
+		_:
 			return
-		var new_color = terrain_colors.get_terrain_color(terrain_type)
-		color = new_color
-		outLine = new_color
-		pass
-	pass
+	
 
 func _on_mouse_detector_mouse_entered():
 #	print("entered")

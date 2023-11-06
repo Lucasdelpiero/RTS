@@ -114,10 +114,10 @@ text = "Total:"
 [node name="MapTypesManager" type="PanelContainer" parent="Container"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 955.0
-offset_top = 537.0
-offset_right = 1051.0
-offset_bottom = 598.0
+offset_left = 837.0
+offset_top = 555.0
+offset_right = 1129.0
+offset_bottom = 616.0
 script = ExtResource("4_d6fhq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/MapTypesManager"]
@@ -132,7 +132,17 @@ text = " Political "
 layout_mode = 2
 text = " Terrain "
 
+[node name="BtnReligionMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
+layout_mode = 2
+text = " Religion "
+
+[node name="BtnCultureMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
+layout_mode = 2
+text = " Culture"
+
 [connection signal="resized" from="Container/PanelContainer/ArmiesContainer" to="Container/PanelContainer/ArmiesContainer" method="_on_resized"]
 [connection signal="pressed" from="Container/PanelContainer/ArmiesContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnPoliticalMap" to="Container/MapTypesManager" method="_on_btn_political_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnTerrainMap" to="Container/MapTypesManager" method="_on_btn_terrain_map_button_down"]
+[connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnReligionMap" to="Container/MapTypesManager" method="_on_btn_religion_map_button_down"]
+[connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnCultureMap" to="Container/MapTypesManager" method="_on_btn_culture_map_button_down"]
