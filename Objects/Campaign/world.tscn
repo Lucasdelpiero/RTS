@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=29 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Shader" path="res://Objects/Campaign/water.gdshader" id="12_f07y5"]
 [ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="13_jsewn"]
-[ext_resource type="Texture2D" uid="uid://cslyxcfxfsqj5" path="res://Assets/Terrain/campaign_map/map_water_seamless.png" id="13_pmoxf"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="14_o0cf2"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/pos_province.tscn" id="15_4h2o0"]
 [ext_resource type="Texture2D" uid="uid://cqniv81dq38ut" path="res://Assets/greece_map.jpg" id="15_t75o3"]
@@ -44,6 +43,20 @@ shader_parameter/aspect_ratio = 1.0
 shader_parameter/time_factor = Vector2(0.5, 0.3)
 shader_parameter/offset_factor = Vector2(5, 2)
 shader_parameter/amplitude = Vector2(0.05, 0.05)
+
+[sub_resource type="Gradient" id="Gradient_lqgae"]
+offsets = PackedFloat32Array(0, 0.109541, 0.413428, 0.731449, 1)
+colors = PackedColorArray(0.0897, 0.214825, 0.39, 1, 0.1403, 0.336008, 0.61, 1, 0.2318, 0.389383, 0.61, 1, 0.2318, 0.389383, 0.61, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qpp30"]
+fractal_lacunarity = 6.0
+fractal_gain = 0.435
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3quyn"]
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_lqgae")
+noise = SubResource("FastNoiseLite_qpp30")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -149,12 +162,12 @@ texture = ExtResource("13_jsewn")
 metadata/_edit_lock_ = true
 
 [node name="WaterBackground" type="Sprite2D" parent="."]
-visible = false
+self_modulate = Color(0.00784314, 1, 1, 1)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_smi75")
 position = Vector2(1725.12, 250)
 scale = Vector2(46.4043, 26.5156)
-texture = ExtResource("13_pmoxf")
+texture = SubResource("NoiseTexture2D_3quyn")
 
 [node name="Cool texturing" type="Polygon2D" parent="."]
 texture_repeat = 1
