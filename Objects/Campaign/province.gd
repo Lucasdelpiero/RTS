@@ -64,7 +64,9 @@ func _draw():
 	var poly = get_polygon()
 	border.points = poly
 	if polygon.size() > 1 :
-		border.add_point(polygon[0]) # Closes the line from the end point to the start point
+		border.add_point(polygon[0])
+		border.add_point(polygon[1]) # Closes the line from the end point to the start point
+	
 	border.width = width
 	border.default_color = outLine
 
