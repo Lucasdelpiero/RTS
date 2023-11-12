@@ -253,6 +253,7 @@ general = SubResource("Resource_jdtum")
 
 [node name="ArmyMarker" parent="EnemyBattleIA" index="0"]
 position = Vector2(881, -1543)
+rotation = 3.14159
 
 [node name="Timer" parent="EnemyBattleIA" index="1"]
 one_shot = false

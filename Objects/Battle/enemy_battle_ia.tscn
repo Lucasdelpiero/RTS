@@ -13,6 +13,7 @@ unique_name_in_owner = true
 
 [node name="InfantryMarker" type="Marker2D" parent="ArmyMarker"]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/InfantryMarker"]
 modulate = Color(1, 1, 1, 0.45098)
@@ -22,7 +23,8 @@ texture = ExtResource("2_v2hx6")
 
 [node name="RangeMarker" type="Marker2D" parent="ArmyMarker"]
 unique_name_in_owner = true
-position = Vector2(0, -290)
+position = Vector2(0, 344)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/RangeMarker"]
 modulate = Color(1, 1, 1, 0.45098)
@@ -33,6 +35,7 @@ texture = ExtResource("3_yys6w")
 [node name="LeftFlank" type="Marker2D" parent="ArmyMarker"]
 unique_name_in_owner = true
 position = Vector2(-694, 0)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/LeftFlank"]
 modulate = Color(1, 1, 1, 0.45098)
@@ -42,7 +45,8 @@ texture = ExtResource("4_1rwry")
 
 [node name="RightFlank" type="Marker2D" parent="ArmyMarker"]
 unique_name_in_owner = true
-position = Vector2(1047, 0)
+position = Vector2(730, 8)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/RightFlank"]
 modulate = Color(1, 1, 1, 0.45098)

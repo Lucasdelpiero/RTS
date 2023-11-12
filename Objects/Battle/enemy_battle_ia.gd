@@ -212,15 +212,16 @@ func move_to_group_marker(aUnits):
 	var _cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
-	var distance_from_infantry = 256
-	var right_flank_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
-	var right_flak_pos = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
-	rightFlankMarker.global_position = right_flak_pos
+	var distance_from_infantry = 512
+	var right_flank_pos = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
+	var left_flak_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
+	rightFlankMarker.global_position = right_flank_pos
+	leftFlankMarker.global_position = left_flak_pos
 	# Needed two groups of cavalry here
 	pass
 
 func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false):
-	armyMarker.global_position = targetPosition 
+#	armyMarker.global_position = targetPosition 
 	var organized_units = get_organized_units(aUnits, angle_formation)
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
@@ -236,10 +237,10 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 	if units.size() == 0 or flank == "none":
 		return armyMarker.position # it needs to be te local position
 	if flank == "left":
-		return units_group[0].get_destination() 
+		return ( units_group[0].get_destination() -Vector2(cos(angle_formation), sin(angle_formation)) * distance )
 		pass
 	if flank == "right":
-		return (units_group[units_group.size() - 1].get_destination() + Vector2(sin(angle_formation), cos(angle_formation)) * distance )
+		return (units_group[units_group.size() - 1].get_destination() + Vector2(cos(angle_formation), sin(angle_formation)) * distance )
 		pass
 	pass
 
