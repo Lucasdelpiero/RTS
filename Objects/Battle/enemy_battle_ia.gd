@@ -5,6 +5,8 @@ var units = []
 @onready var armyMarker = %ArmyMarker
 @onready var infantryMarker = %InfantryMarker
 @onready var rangeMarker = %RangeMarker
+@onready var leftFlankMarker = %LeftFlank
+@onready var rightFlankMarker = %RightFlank
 @export var playerGroup : Node = null
 var player_units := []
 var distance_to_be_in_group = 500
@@ -210,11 +212,15 @@ func move_to_group_marker(aUnits):
 	var _cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
+	var distance_from_infantry = 256
+	var right_flank_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
+	var right_flak_pos = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
+	rightFlankMarker.global_position = right_flak_pos
 	# Needed two groups of cavalry here
 	pass
 
 func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false):
-#	armyMarker.global_position = targetPosition 
+	armyMarker.global_position = targetPosition 
 	var organized_units = get_organized_units(aUnits, angle_formation)
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
@@ -224,6 +230,18 @@ func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : flo
 		var formation_pos = Vector2( cos(angle_formation), sin(angle_formation) ) * margin_between_units * i # Position incremented as the position in the formation gets larger
 		var newPos =  targetPosition + formation_pos - offset
 		unit.move_to(newPos, face_direction)
+
+func get_flank_position(aUnits : Array = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0):
+	var units_group = aUnits as Array[Unit]
+	if units.size() == 0 or flank == "none":
+		return armyMarker.position # it needs to be te local position
+	if flank == "left":
+		return units_group[0].get_destination() 
+		pass
+	if flank == "right":
+		return (units_group[units_group.size() - 1].get_destination() + Vector2(sin(angle_formation), cos(angle_formation)) * distance )
+		pass
+	pass
 
 func advance(_aUnits: Array):
 	pass

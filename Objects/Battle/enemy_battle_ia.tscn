@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmavvajsmr1uu"]
+[gd_scene load_steps=5 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="2_v2hx6"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="3_yys6w"]
+[ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_1rwry"]
 
 [node name="EnemyBattleIA" type="Node"]
 script = ExtResource("1_61vt2")
@@ -28,6 +29,26 @@ modulate = Color(1, 1, 1, 0.45098)
 z_index = 20
 z_as_relative = false
 texture = ExtResource("3_yys6w")
+
+[node name="LeftFlank" type="Marker2D" parent="ArmyMarker"]
+unique_name_in_owner = true
+position = Vector2(-694, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/LeftFlank"]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = 20
+z_as_relative = false
+texture = ExtResource("4_1rwry")
+
+[node name="RightFlank" type="Marker2D" parent="ArmyMarker"]
+unique_name_in_owner = true
+position = Vector2(1047, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/RightFlank"]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = 20
+z_as_relative = false
+texture = ExtResource("4_1rwry")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
