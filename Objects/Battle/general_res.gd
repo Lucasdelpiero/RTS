@@ -29,6 +29,7 @@ func get_focused_group(groups : Array):
 			printerr("Group is not an array")
 			return null
 		if group.size() > group_size:
+			group_size = group.size()
 			new_group_focused = group.duplicate()
 	group_focused = new_group_focused
 	return group_focused

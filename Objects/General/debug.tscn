@@ -6,7 +6,7 @@
 script = ExtResource("1_eeyyb")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 391.0
+offset_right = 428.0
 offset_bottom = 224.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]

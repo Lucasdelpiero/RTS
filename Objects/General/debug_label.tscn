@@ -5,4 +5,5 @@
 [node name="Label" type="Label"]
 offset_right = 1.0
 offset_bottom = 23.0
+autowrap_mode = 2
 script = ExtResource("1_jmi4w")

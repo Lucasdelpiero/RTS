@@ -49,11 +49,25 @@ func update_ia():
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
-	var _closest = get_distance_to_closest(groups, armyMarker.global_position)
+	var closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
-	var _focus = general.get_focused_group(groups)
+	var focus = general.get_focused_group(groups)
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
+	if focus == null:
+		return
+	var average_pos = get_average_position(focus)
+	var angle = armyMarker.global_position.angle_to_point(average_pos) 
+	var new_pos = armyMarker.global_position + Vector2(cos(angle), -sin(angle)) * 20
+	Globals.debug_update_label("focus", "Focus: %s" %[focus.map(func(el): return el.name)])
+	if abs(armyMarker.rotation - angle) > PI / 3:
+		armyMarker.rotation = angle + PI/2
+	
+	# just to test
+	move_units(infantry_units,infantryMarker.global_position,armyMarker.rotation, armyMarker.rotation, true)
+	move_units(range_units,rangeMarker.global_position, armyMarker.rotation, armyMarker.rotation, true)
+	#
+	
 	match(action):
 		"move" :
 #			move_units(units, armyMarker.global_position , 0.0, PI)
@@ -209,16 +223,20 @@ func move_to_group_marker(aUnits):
 		return
 	var infantry_in_arg = aUnits.filter(func(el) : return el.get_type() == 1)
 	var range_in_arg = aUnits.filter(func(el) : return el.get_type() == 2)
-	var _cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
+	var cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
+	var half_cavalry = int(floor(cavalry_in_arg.size() / 2))
+	var cavalry_left_flank = cavalry_in_arg.slice(0, half_cavalry)
+	var cavalry_right_flank = cavalry_in_arg.slice(half_cavalry)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
+	
 	var distance_from_infantry = 512
 	var right_flank_pos = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
 	var left_flak_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
 	rightFlankMarker.global_position = right_flank_pos
 	leftFlankMarker.global_position = left_flak_pos
-	# Needed two groups of cavalry here
-	pass
+	move_units(cavalry_left_flank, leftFlankMarker.global_position, PI, PI, false)
+	move_units(cavalry_right_flank, rightFlankMarker.global_position , PI, PI , false)
 
 func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false):
 #	armyMarker.global_position = targetPosition 
@@ -238,11 +256,8 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 		return armyMarker.position # it needs to be te local position
 	if flank == "left":
 		return ( units_group[0].get_destination() -Vector2(cos(angle_formation), sin(angle_formation)) * distance )
-		pass
 	if flank == "right":
 		return (units_group[units_group.size() - 1].get_destination() + Vector2(cos(angle_formation), sin(angle_formation)) * distance )
-		pass
-	pass
 
 func advance(_aUnits: Array):
 	pass
