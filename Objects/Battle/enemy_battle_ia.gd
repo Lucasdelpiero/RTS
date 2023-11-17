@@ -17,6 +17,12 @@ var infantry_units = []
 var range_units = []
 var cavalry_units = []
 
+var group_front = []
+var group_archers = []
+var group_left_flank = []
+var group_right_flank = []
+var group_reserves = []
+
 enum GeneralStates {
 	WAITING,
 	MOVING,
@@ -64,8 +70,11 @@ func update_ia():
 		armyMarker.rotation = angle + PI/2
 	
 	# just to test
-	move_units(infantry_units,infantryMarker.global_position,armyMarker.rotation, armyMarker.rotation, true)
-	move_units(range_units,rangeMarker.global_position, armyMarker.rotation, armyMarker.rotation, true)
+	var angle_formation = armyMarker.rotation
+	move_units(group_front,infantryMarker.global_position, angle_formation, angle_formation, true)
+	move_units(group_archers,rangeMarker.global_position, angle_formation, angle_formation, true)
+	move_units(group_left_flank, leftFlankMarker.global_position, angle_formation, angle_formation, false, true)
+	move_units(group_right_flank, rightFlankMarker.global_position , angle_formation, angle_formation , false)
 	#
 	
 	match(action):
@@ -83,6 +92,13 @@ func group_units_by_type(aUnits):
 	infantry_units = aUnits.filter(func(el) : return el.type == 1)
 	range_units = aUnits.filter(func(el) : return el.type == 2)
 	cavalry_units = aUnits.filter(func(el) : return el.type == 3)
+	
+	# Groups used for the formation
+	group_front = infantry_units.duplicate()
+	group_archers = range_units.duplicate()
+	var half_cavalry = int(floor(cavalry_units.size() / 2))
+	group_left_flank = cavalry_units.slice(0, half_cavalry).duplicate()
+	group_right_flank = cavalry_units.slice(half_cavalry).duplicate()
 
 func get_data_to_think_next_action():
 	
@@ -235,20 +251,23 @@ func move_to_group_marker(aUnits):
 	var left_flak_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
 	rightFlankMarker.global_position = right_flank_pos
 	leftFlankMarker.global_position = left_flak_pos
-	move_units(cavalry_left_flank, leftFlankMarker.global_position, PI, PI, false)
+	move_units(cavalry_left_flank, leftFlankMarker.global_position, PI, PI, false, true)
 	move_units(cavalry_right_flank, rightFlankMarker.global_position , PI, PI , false)
 
-func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false):
+func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false, right_to_left : bool = false):
 #	armyMarker.global_position = targetPosition 
 	var organized_units = get_organized_units(aUnits, angle_formation)
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
+	# Offset used when the army has an anchor at the rightest point and needs to form to the left side
+	var offset_right_to_left = int(right_to_left) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) 
 	
 	for i in organized_units.size():
 		var unit = organized_units[i] as Unit
 		var formation_pos = Vector2( cos(angle_formation), sin(angle_formation) ) * margin_between_units * i # Position incremented as the position in the formation gets larger
-		var newPos =  targetPosition + formation_pos - offset
+		var newPos =  targetPosition + formation_pos  - offset - offset_right_to_left
 		unit.move_to(newPos, face_direction)
+
 
 func get_flank_position(aUnits : Array = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0):
 	var units_group = aUnits as Array[Unit]

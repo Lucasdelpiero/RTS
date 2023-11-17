@@ -90,6 +90,8 @@ property_5 = "selected"
 [node name="MarginMarker" parent="DebugPersonal/Node/MarkerBase" index="0"]
 position = Vector2(-210, -294)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(98, -189)
 script = ExtResource("4_ydajr")

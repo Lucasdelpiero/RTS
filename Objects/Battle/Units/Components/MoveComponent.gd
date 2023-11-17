@@ -127,6 +127,7 @@ func move_to(to, final_face_direction):
 #	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)
 	####################
 #	path = [unit.global_position, to] 
+#   path = HERE i should use a navigation agent maybe
 	path = get_pathing(to)
 	
 	if path.size() > 0:

@@ -252,7 +252,7 @@ playerGroup = NodePath("../PlayerArmy")
 general = SubResource("Resource_jdtum")
 
 [node name="ArmyMarker" parent="EnemyBattleIA" index="0"]
-position = Vector2(881, -1543)
+position = Vector2(1528, -1711)
 rotation = 3.14159
 
 [node name="Timer" parent="EnemyBattleIA" index="1"]
@@ -408,9 +408,19 @@ rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
+[node name="Cavalry4" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+ownership = "ETRURIA"
+
+[node name="Cavalry5" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+ownership = "ETRURIA"
+
+[node name="Cavalry6" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+
+[node name="Cavalry7" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+
 [node name="SpawnEnemy" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(950, -1695)
+position = Vector2(1466, -1695)
 rotation = 3.14159
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnEnemy"]
