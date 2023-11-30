@@ -1,4 +1,5 @@
 extends UnitsManagement
+class_name IA
 
 @export var armyGroup : Node = null 
 var units = []
@@ -12,6 +13,7 @@ var player_units := []
 var distance_to_be_in_group = 500
 var playerGroups : Array[Array] = []
 @export var general : General 
+@onready var groups_manager  = %GroupsManager as GroupsManager
 
 var infantry_units = []
 var range_units = []
@@ -49,9 +51,16 @@ func _ready():
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
 #	print(get_main_group(get_enemy_groups()))
+	# TEST
+	var main_group = get_main_group(get_enemy_groups())
+	groups_manager.create_group(group_front, main_group, infantryMarker)
+	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker)
+	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker)
+	groups_manager.create_group(group_archers, main_group, rangeMarker)
+
 
 func update_ia():
-	var groups = get_enemy_groups()
+	var groups = get_enemy_groups(2000)
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
@@ -106,6 +115,8 @@ func group_units_by_type(aUnits):
 	var half_cavalry = int(floor(cavalry_units.size() / 2))
 	group_left_flank = cavalry_units.slice(0, half_cavalry).duplicate()
 	group_right_flank = cavalry_units.slice(half_cavalry).duplicate()
+	
+
 
 func get_data_to_think_next_action():
 	
@@ -138,7 +149,7 @@ func get_main_group(aGroups): # Get an array with the player "groups"
 			largest = group.duplicate()
 	return largest
 
-func get_enemy_groups():
+func get_enemy_groups( arg_distance_to_be_in_group : float = 500):
 	var group_to_add_units = 0
 	if player_units.size() < 1 :
 		push_error("player_units array is empty")
@@ -153,7 +164,7 @@ func get_enemy_groups():
 		for o in groups.size(): # Iteration of every group
 			for p in groups[o].size(): # Iteration of comparation with every unit already in a group
 				var other_unit = groups[o][p] as Unit
-				if unit.global_position.distance_to(other_unit.global_position) < distance_to_be_in_group:
+				if unit.global_position.distance_to(other_unit.global_position) < arg_distance_to_be_in_group:
 					# Checks if the unit exists in any of the groups and if its in none it can be added to a group
 					group_to_add_units = o # Sets the place to add the group if its found in the current unit
 					var can_add = true

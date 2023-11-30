@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt2o6dtm3p5yd"]
+
+[ext_resource type="Script" path="res://Objects/Battle/task_group.gd" id="1_c1xw4"]
+
+[node name="TaskGroup" type="Node"]
+script = ExtResource("1_c1xw4")

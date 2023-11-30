@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmavvajsmr1uu"]
+[gd_scene load_steps=9 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Script" path="res://Objects/Battle/general_res.gd" id="2_p4dbk"]
 [ext_resource type="Texture2D" uid="uid://b1fkgt71ihd61" path="res://Assets/units/box_type_sword.png" id="2_v2hx6"]
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="3_yys6w"]
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_1rwry"]
+[ext_resource type="Script" path="res://Objects/Battle/groups_manager.gd" id="6_mxm1y"]
+[ext_resource type="Script" path="res://Objects/Battle/task_group.gd" id="7_6glrc"]
 
 [sub_resource type="Resource" id="Resource_uiwxx"]
 script = ExtResource("2_p4dbk")
@@ -66,7 +68,13 @@ z_as_relative = false
 texture = ExtResource("4_1rwry")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
 one_shot = true
+
+[node name="GroupsManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_mxm1y")
+
+[node name="TaskGroup" type="Node" parent="GroupsManager"]
+script = ExtResource("7_6glrc")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
