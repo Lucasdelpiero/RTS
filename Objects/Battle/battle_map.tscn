@@ -338,85 +338,99 @@ army_color = Color(0.341176, 0.447059, 0.45098, 1)
 ownership = "ETRURIA"
 
 [node name="Etruria" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(2330, -1695)
+position = Vector2(3398, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(2054, -1695)
+position = Vector2(3122, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria3" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1778, -1695)
+position = Vector2(2846, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria4" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1502, -1695)
+position = Vector2(2570, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria5" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
-position = Vector2(1226, -1695)
+position = Vector2(2294, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(950, -1695)
+position = Vector2(2018, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman2" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(674, -1695)
+position = Vector2(1742, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman3" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
-position = Vector2(398, -1695)
+position = Vector2(1466, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
-position = Vector2(122, -1695)
+position = Vector2(1190, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry2" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
-position = Vector2(-154, -1695)
+position = Vector2(914, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry3" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
-position = Vector2(-430, -1695)
+position = Vector2(638, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry4" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+position = Vector2(362, -1695)
+rotation = 3.14159
 ownership = "ETRURIA"
+army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry5" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+position = Vector2(86, -1695)
+rotation = 3.14159
 ownership = "ETRURIA"
+army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry6" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+position = Vector2(-190, -1695)
+rotation = 3.14159
+ownership = "ETRURIA"
+army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry7" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
+position = Vector2(-466, -1695)
+rotation = 3.14159
+ownership = "ETRURIA"
+army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]
 unique_name_in_owner = true

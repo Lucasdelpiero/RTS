@@ -60,12 +60,19 @@ func update_ia():
 	var focus = general.get_focused_group(groups)
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
+	var to_sort = groups.duplicate(true)
+	to_sort.sort_custom(func(a, b): return a.size() > b.size())
+	var groups_by_size = to_sort.duplicate(true)
+	var text_group_size : String = ""
+	for i in groups_by_size.size():
+		text_group_size += "size: %s \n" % [groups_by_size[i].size()]
+	Globals.debug_update_label("size%s", "size: %s" % [text_group_size])
 	if focus == null:
 		return
 	var average_pos = get_average_position(focus)
 	var angle = armyMarker.global_position.angle_to_point(average_pos) 
 	var new_pos = armyMarker.global_position + Vector2(cos(angle), -sin(angle)) * 20
-	Globals.debug_update_label("focus", "Focus: %s" %[focus.map(func(el): return el.name)])
+#	Globals.debug_update_label("focus", "Focus: %s" %[focus.map(func(el): return el.name)])
 	if abs(armyMarker.rotation - angle) > PI / 3:
 		armyMarker.rotation = angle + PI/2
 	
@@ -213,6 +220,7 @@ func get_enemy_groups():
 	
 	return final_groups
 
+
 func should_unite_group(arr1 : Array, arr2 : Array, distance):
 	for i in arr1.size():
 		var object = 24
@@ -232,6 +240,7 @@ func should_unite_group(arr1 : Array, arr2 : Array, distance):
 					print("%s is close to %s " % [unit, other])
 				return true
 	return false
+
 
 func move_to_group_marker(aUnits):
 	if typeof(aUnits) != 28:
