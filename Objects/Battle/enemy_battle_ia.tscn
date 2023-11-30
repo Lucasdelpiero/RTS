@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crqpe8b8m1dw6" path="res://Assets/units/box_type_bow.png" id="3_yys6w"]
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_1rwry"]
 [ext_resource type="Script" path="res://Objects/Battle/groups_manager.gd" id="6_mxm1y"]
-[ext_resource type="Script" path="res://Objects/Battle/task_group.gd" id="7_6glrc"]
+[ext_resource type="PackedScene" uid="uid://bt2o6dtm3p5yd" path="res://Objects/Battle/task_group.tscn" id="7_by1gs"]
 
 [sub_resource type="Resource" id="Resource_uiwxx"]
 script = ExtResource("2_p4dbk")
@@ -74,7 +74,6 @@ one_shot = true
 unique_name_in_owner = true
 script = ExtResource("6_mxm1y")
 
-[node name="TaskGroup" type="Node" parent="GroupsManager"]
-script = ExtResource("7_6glrc")
+[node name="TaskGroup" parent="GroupsManager" instance=ExtResource("7_by1gs")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -53,10 +53,10 @@ func _ready():
 #	print(get_main_group(get_enemy_groups(player_units, 2000)))
 	# TEST
 	var main_group = get_main_group(get_enemy_groups(player_units, 2000))
-	groups_manager.create_group(group_front, main_group, infantryMarker)
-	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker)
-	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker)
-	groups_manager.create_group(group_archers, main_group, rangeMarker)
+	groups_manager.create_group(group_front, main_group, infantryMarker, true)
+	groups_manager.create_group(group_archers, main_group, rangeMarker, true)
+	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true)
+	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false)
 
 
 func update_ia():
@@ -67,6 +67,7 @@ func update_ia():
 	var closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
 	var focus = general.get_focused_group(groups)
+	groups_manager.main_enemy_group = focus
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
 	var to_sort = groups.duplicate(true)
@@ -82,16 +83,18 @@ func update_ia():
 	var angle = armyMarker.global_position.angle_to_point(average_pos) 
 	var new_pos = armyMarker.global_position + Vector2(cos(angle), -sin(angle)) * 20
 #	Globals.debug_update_label("focus", "Focus: %s" %[focus.map(func(el): return el.name)])
+	
+	# Parent marker will look towards main player group
 	if abs(armyMarker.rotation - angle) > PI / 3:
 		armyMarker.rotation = angle + PI/2
 	
 	# just to test
-	var angle_formation = armyMarker.rotation
-	move_units(group_front,infantryMarker.global_position, angle_formation, angle_formation, true)
-	move_units(group_archers,rangeMarker.global_position, angle_formation, angle_formation, true)
-	move_units(group_left_flank, leftFlankMarker.global_position, angle_formation, angle_formation, false, true)
-	move_units(group_right_flank, rightFlankMarker.global_position , angle_formation, angle_formation , false)
-	#
+#	var angle_formation = armyMarker.rotation
+#	move_units(group_front,infantryMarker.global_position, angle_formation, angle_formation, true)
+#	move_units(group_archers,rangeMarker.global_position, angle_formation, angle_formation, true)
+#	move_units(group_left_flank, leftFlankMarker.global_position, angle_formation, angle_formation, false, true)
+#	move_units(group_right_flank, rightFlankMarker.global_position , angle_formation, angle_formation , false)
+#	
 	
 	match(action):
 		"move" :
