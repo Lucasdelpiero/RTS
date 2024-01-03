@@ -1,23 +1,21 @@
 @tool
-extends CharacterBody2D
 class_name Unit
+extends CharacterBody2D
 
 ########
 # WHEN THE RESOURCE IS COPIED IT CANT BE OVERRIED
 #HAS TO STORE THE ORIGINAL IN ONE PLACE AND USE THE COPY TO BE COPIED IN EVERY INSTANCE
-
-
 #
 
-
+#region Properties
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var mouse = null
-var hovered = false : set = set_hovered
-var selected = false : set = set_selected
+var hovered : bool = false : set = set_hovered
+var selected : bool = false : set = set_selected
 var world = null
-var routed = false
+var routed : bool = false
 @onready var sprite = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
@@ -56,7 +54,9 @@ var state = State.IDLE
 @export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
 var target_unit : Unit = null
+#endregion
 
+#region Signals
 signal show_overlay_unit(data)
 signal sg_unit_hovered(value)
 signal sg_unit_selected(value)
@@ -64,7 +64,7 @@ signal sg_troops_number_changed(value, max)
 signal sg_move_component_set_destination(value)
 signal sg_move_component_set_face_direction(value)
 signal sg_move_component_set_next_point(value)
-
+#endregion
 
 func _ready():
 	troops_number = troops_number_max
@@ -120,6 +120,8 @@ func set_color(value):
 	%SpriteBase.modulate = army_color
 	$ShowDirection.modulate = army_color
 
+#region Setters/Getters
+
 func set_hovered(value):
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
@@ -129,7 +131,7 @@ func set_hovered(value):
 		spriteBase.set_material(shader)
 	sg_unit_hovered.emit(value)
 
-func set_selected(value):
+func set_selected(value : bool):
 	selected = value
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
@@ -141,26 +143,6 @@ func set_selected(value):
 #	spriteBase.set_material(shader)
 	weapons.set_weapons_visibility(value)
 	sg_unit_selected.emit(value)
-
-func _on_unit_detector_mouse_entered():
-	hovered = true
-	update_overlay()
-
-func _on_unit_detector_mouse_exited():
-	hovered = false
-
-func move_to(aDestination, face_direction ):
-	if moveComponent == null:
-		return
-	state = State.MOVING
-	moveComponent.move_to(aDestination, face_direction)
-	moveComponent.chasing = false
-
-func reached_destination():
-	if target_unit == null:
-		state = State.IDLE # set conditions
-		pass
-	pass
 
 # Used when the unit spawn in the battle to update the destination to the current position
 func set_destination(_value):
@@ -182,13 +164,57 @@ func set_face_direction(value : float = 0):
 	sg_move_component_set_face_direction.emit(value)
 #	moveComponent.face_direction = value
 
+func set_chase(value : Unit):
+#	print_debug("set chase")
+	if moveComponent == null:
+		return
+	moveComponent.chase(value)
+	moveComponent.chasing = true
+#	weaponsData.attack() # set te weapon to the alternative
+	weapons.go_to_attack()
+	if value == null:
+		print("set_chase THE ERROR IS HERE")
+		return
+	target_unit = value
+	state = State.CHASING
+	if Input.is_action_pressed("Shift"):
+		moveComponent.chase_in_queue = true
+	else:
+		moveComponent.chase_in_queue = false
+
+func set_troops_number(value):
+	troops_number = value
+	sg_troops_number_changed.emit(value, troops_number_max)
+
+#endregion
+
+func _on_unit_detector_mouse_entered():
+	hovered = true
+	update_overlay()
+
+func _on_unit_detector_mouse_exited():
+	hovered = false
+
+func move_to(aDestination, face_direction ):
+	if moveComponent == null:
+		return
+	state = State.MOVING
+	moveComponent.move_to(aDestination, face_direction)
+	moveComponent.chasing = false
+
+func reached_destination():
+	if target_unit == null:
+		state = State.IDLE # set conditions
+		pass
+	pass
+
 func attack_target(value : Unit):
 	if value == null:
 		printerr(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
 	target_unit = value
 	weapons.go_to_attack()
-	var weapon_type = weapons.get_mouse_over_weapon_type()
+	var weapon_type  = weapons.get_mouse_over_weapon_type()
 	if weapon_type == "Melee":
 		if state == State.MELEE:
 			print("melee")
@@ -217,24 +243,6 @@ func attack_again():
 		print("attack")
 		pass
 
-
-func set_chase(value : Unit):
-#	print_debug("set chase")
-	if moveComponent == null:
-		return
-	moveComponent.chase(value)
-	moveComponent.chasing = true
-#	weaponsData.attack() # set te weapon to the alternative
-	weapons.go_to_attack()
-	if value == null:
-		print("set_chase THE ERROR IS HERE")
-		return
-	target_unit = value
-	state = State.CHASING
-	if Input.is_action_pressed("Shift"):
-		moveComponent.chase_in_queue = true
-	else:
-		moveComponent.chase_in_queue = false
 
 func melee(data : HurtboxData):
 	if data == null:
@@ -270,7 +278,7 @@ func recieved_attack(data : AttackData):
 	troops_number -= 10
 	pass
 
-func update_overlay():
+func update_overlay() -> void :
 	await get_tree().create_timer(1.0).timeout
 	if not hovered:
 		return
@@ -286,11 +294,6 @@ func send_unit_card_data():
 
 func get_type():
 	return type
-
-func set_troops_number(value):
-	troops_number = value
-	sg_troops_number_changed.emit(value, troops_number_max)
-	pass
 
 func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit
@@ -355,7 +358,6 @@ func _on_range_weapon_reached_new_enemy(enemies):
 	if enemies_in_range.has(target_unit):
 		range_attack(target_unit)
 	pass # Replace with function body.
-
 
 func _on_range_weapon_reload_time_over(_node):
 	if state != State.FIRING:

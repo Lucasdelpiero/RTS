@@ -193,6 +193,7 @@ secondary_weapon = SubResource("Resource_oc2o2")
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hkyne"]
 texture = ExtResource("20_m1dqj")

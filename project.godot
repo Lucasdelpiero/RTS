@@ -12,7 +12,7 @@ config_version=5
 
 config/name="RTS"
 run/main_scene="res://Objects/Battle/battle_map.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -27,6 +27,14 @@ gdscript/warnings/unused_variable=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "blue",
+"res://Objects/": "red",
+"res://Shaders/": "gray"
+}
 
 [input]
 
