@@ -113,14 +113,22 @@ func chase(target_to_chase : Unit = null):
 #		chase()
 
 
-func move_to(to, final_face_direction):
+func move_to(to : Vector2, final_face_direction: float):
 	if unit == null or nav_map == null:
 		push_error("%s doesnt have a nav_map or unit" % [owner.name])
 		return
 	if unit.state == unit.State.MELEE:
 		stop_movement()
 		return
-	destination = to
+	destination  = to
+	
+	# Avoid having the units have a seizure when they move small distances
+	# specially when done in an small amount of time
+	# maybe it would be better to just avoid moving the angle
+	var distance : float = (unit.global_position.distance_to(destination))
+	if distance < 10:
+		#push_warning("distance_to_small")
+		return
 	
 	#######################
 	# Once i create obstacles i will get this pathing

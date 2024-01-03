@@ -14,7 +14,7 @@ func get_average_position(array : Array) -> Vector2:
 	average_position /= array.size()
 	return average_position 
 
-func get_organized_units(aUnits, angle_formation = 0.0):
+func get_organized_units(aUnits, angle_formation = 0.0) -> Array[Unit]:
 	var comparation = [] # Array used to sort the new order for the units in the array
 	var average_position = Vector2.ZERO # Average position of army
 	
@@ -47,15 +47,21 @@ func get_organized_units(aUnits, angle_formation = 0.0):
 	comparation.sort_custom(func(a, b) : return a[1] < b[1])
 	
 	# New array organized, getting only the reference to the unit to be positioned
-	var new_arr = []
+	var new_arr : Array[Unit] = []
 	for i in comparation.size():
 		new_arr.push_back(comparation[i][0])
 	
 	return new_arr
 
-func move_units(aUnits : Array, targetPosition : Vector2 , angle_formation : float = 0.0 ,face_direction : float = 0.0, startFromCenter : bool = false, right_to_left : bool = false):
+func move_units(aUnits : Array, 
+		targetPosition : Vector2 , 
+		angle_formation : float = 0.0,
+		face_direction : float = 0.0, 
+		startFromCenter : bool = false, 
+		right_to_left : bool = false):
+	
 #	armyMarker.global_position = targetPosition 
-	var organized_units = get_organized_units(aUnits, angle_formation)
+	var organized_units : Array[Unit] = get_organized_units(aUnits, angle_formation)
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
 	# Offset used when the army has an anchor at the rightest point and needs to form to the left side

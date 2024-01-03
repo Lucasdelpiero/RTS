@@ -1,19 +1,22 @@
-extends UnitsManagement
 class_name IA
+extends UnitsManagement
+
+#region Properties
 
 @export var armyGroup : Node = null 
-var units = []
-@onready var armyMarker = %ArmyMarker
-@onready var infantryMarker = %InfantryMarker
-@onready var rangeMarker = %RangeMarker
-@onready var leftFlankMarker = %LeftFlank
-@onready var rightFlankMarker = %RightFlank
+var units := []
+@onready var armyMarker : Marker2D = %ArmyMarker
+@onready var infantryMarker : Marker2D = %InfantryMarker
+@onready var rangeMarker : Marker2D = %RangeMarker
+@onready var leftFlankMarker : Marker2D= %LeftFlank
+@onready var rightFlankMarker : Marker2D= %RightFlank
 @export var playerGroup : Node = null
 var player_units := []
 var distance_to_be_in_group = 500
 var playerGroups : Array[Array] = []
 @export var general : General 
 @onready var groups_manager  = %GroupsManager as GroupsManager
+@onready var timerAdvance = %TimerAdvance
 
 var infantry_units = []
 var range_units = []
@@ -34,6 +37,7 @@ enum GeneralStates {
 }
 var generalState = GeneralStates.WAITING
 
+#endregion
 
 func _ready():
 	if general == null:
@@ -46,7 +50,7 @@ func _ready():
 	player_units = playerGroup.get_children() 
 	get_enemy_groups(player_units, 2000)
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
-	units = armyGroup.get_children() 
+	units = armyGroup.get_children() as Array[Unit]
 	group_units_by_type(units as Array[Unit])
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
@@ -155,8 +159,38 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 	if flank == "right":
 		return (units_group[units_group.size() - 1].get_destination() + Vector2(cos(angle_formation), sin(angle_formation)) * distance )
 
-func advance(_aUnits: Array):
+func check_to_advance():
+	var a_units_to_move : Array = units
+	var a_player_units : Array = player_units
+	if a_player_units.size() == 0 or a_units_to_move.size() == 0:
+		push_error("There are no units of the player or the IA")
+		return
+	
+	# Currently moves towards the average, should be changed to be able to chose one of the groups 
+	var current_position : Vector2 = armyMarker.global_position
+	var place_to_move : Vector2 = get_average_position(a_player_units)
+	
+	advance(a_units_to_move, place_to_move, current_position, 30, true)
 	pass
+
+# The units will move towards the position at a certian distance as a time, that distance as absolute values or as percentage of distance to the target
+func advance(aUnits: Array, target_position : Vector2, current_position : Vector2, distance_to_move : float, as_percentage: bool = false) -> void:
+	for unit in aUnits:
+		if not unit is Unit:
+			push_error("An element in the array is not of Unit class")
+			return
+	
+	# there should be a variable to tell them when they reached the point
+	var angle : float = current_position.angle_to_point(target_position)
+	var delta_to_move : Vector2 = Vector2(cos(angle), sin(angle)) * distance_to_move
+	if as_percentage:
+		delta_to_move = (target_position - current_position) * (distance_to_move / 100) 
+	var place_to_move_to : Vector2 = current_position + delta_to_move 
+	
+	armyMarker.global_position = place_to_move_to
+	armyMarker.rotation = angle + PI/2
+	groups_manager.tell_move_units_to_markers() # So they move instantly
+	#move_units(aUnits, place_to_move_to, angle)
 
 func _on_timer_timeout():
 	update_ia()
@@ -164,3 +198,8 @@ func _on_timer_timeout():
 	# Check bug if it the timer goes fast
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	pass # Replace with function body.
+
+
+func _on_timer_advance_timeout():
+	timerAdvance.start(5)
+	check_to_advance()

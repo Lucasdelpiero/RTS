@@ -26,4 +26,7 @@ func set_main_enemy_group(value):
 	for child in get_children():
 		child.main_enemy_group = value.duplicate(true)
 	
-	
+func tell_move_units_to_markers():
+	for child in get_children():
+		child.move_units_to_markers()
+	pass

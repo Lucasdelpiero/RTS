@@ -1,11 +1,12 @@
-extends UnitsManagement
 class_name TaskGroup
+extends UnitsManagement
 
 var group  = []
 var enemy_group_focused  = []
 var main_enemy_group = []
 var marker_to_anchor = null # Parent marker to all markers used to get the angle to position the units
 var marker_to_follow = null
+@onready var moveTimer : Timer = $moveTimer
 
 # Used to poition while following the marker
 var startFromCenter : bool = false
@@ -15,13 +16,13 @@ enum Task {FOLLOW_MARKER, HOLD, ADVANCE, SKIRMISH, MELEE, FLEE}
 
 var task = Task.FOLLOW_MARKER
 
-
-func _on_move_timer_timeout():
+func move_units_to_markers():
 	if marker_to_follow == null or marker_to_anchor == null:
 		return
 	var average_pos = get_average_position(main_enemy_group)
 	var angle = marker_to_anchor.global_position.angle_to_point(average_pos) 
-	# i dont know what this do
+	# i dont know what this do ?
+	# change the angle only if there is a meaningfull change
 	if abs(marker_to_follow.rotation - angle) > PI / 3:
 		angle += PI/2 
 	
@@ -31,4 +32,9 @@ func _on_move_timer_timeout():
 		angle,
 		startFromCenter,
 		right_to_left)
-	pass # Replace with function body.
+	
+
+func _on_move_timer_timeout():
+	move_units_to_markers()
+	moveTimer.start(0.1)
+	pass
