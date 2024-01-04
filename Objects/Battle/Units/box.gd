@@ -217,7 +217,7 @@ func attack_target(value : Unit):
 	var weapon_type  = weapons.get_mouse_over_weapon_type()
 	if weapon_type == "Melee":
 		if state == State.MELEE:
-			print("melee")
+			#print("melee")
 			weapons.in_use_weapon.attack(value)
 		else:
 			set_chase(value)

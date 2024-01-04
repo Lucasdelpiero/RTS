@@ -202,4 +202,4 @@ func _on_timer_timeout():
 
 func _on_timer_advance_timeout():
 	timerAdvance.start(5)
-	check_to_advance()
+	#check_to_advance()

@@ -125,11 +125,14 @@ func move_to(to : Vector2, final_face_direction: float):
 	# Avoid having the units have a seizure when they move small distances
 	# specially when done in an small amount of time
 	# maybe it would be better to just avoid moving the angle
+	# This is only a problem when many orders are done in an small amount of time (ex. every 0.1 sec)
 	var distance : float = (unit.global_position.distance_to(destination))
-	if distance < 10:
-		#push_warning("distance_to_small")
-		return
-	
+	var rotation_difference  = absf(unit.rotation - final_face_direction)  < PI / 6
+	if distance < 10 and rotation_difference:
+		#push_warning("distancetosmall in distance and rotation")
+		#return
+		pass
+
 	#######################
 	# Once i create obstacles i will get this pathing
 #	path = NavigationServer2D.map_get_path(nav_map, unit.global_position, destination, true)

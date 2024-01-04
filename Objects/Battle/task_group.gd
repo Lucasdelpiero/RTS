@@ -21,10 +21,8 @@ func move_units_to_markers():
 		return
 	var average_pos = get_average_position(main_enemy_group)
 	var angle = marker_to_anchor.global_position.angle_to_point(average_pos) 
-	# i dont know what this do ?
-	# change the angle only if there is a meaningfull change
-	if abs(marker_to_follow.rotation - angle) > PI / 3:
-		angle += PI/2 
+	angle += PI/2 # Adds a quarter rotation so that the unit looks at that place
+	
 	
 	move_units(group,
 		marker_to_follow.global_position, 
@@ -36,5 +34,5 @@ func move_units_to_markers():
 
 func _on_move_timer_timeout():
 	move_units_to_markers()
-	moveTimer.start(0.1)
+	moveTimer.start(5)
 	pass

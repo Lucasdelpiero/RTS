@@ -86,6 +86,7 @@ property_2 = "state"
 property_3 = "global_position"
 property_4 = "hovered"
 property_5 = "selected"
+property_6 = "rotation"
 
 [node name="MarginMarker" parent="DebugPersonal/Node/MarkerBase" index="0"]
 position = Vector2(-210, -294)
