@@ -66,14 +66,16 @@ func update_label(node_to_follow : Node , property : String, prefix : String = "
 		return
 
 func update_local_value_label(ID, value):
-	var label = vbox.get_children().filter(func(el): return (el.ID == ID))
-	
-	if label.size() == 0:
-		print("created new label")
+	# Create label if there is none
+	var labels = vbox.get_children().filter(func(el): return (el.ID == ID))
+	if labels.size() == 0:
 		var new_label = DebugLocalLabel.instantiate() 
 		vbox.add_child(new_label)
 		new_label.ID = ID
-		new_label.text = value
+		new_label.text = str(value)
 		return
-	print("it was already created")
+	
+	# Updates the value
+	var label = labels[0] # Needed to avoid a crash
+	label.text = str(value)
 	

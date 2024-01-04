@@ -23,7 +23,6 @@ var face_direction : float = 0.0
 func _ready():
 	if unit == null:
 		return
-	Globals.personal_debug_update(owner, "alfonso", str(get_instance_id()))
 	face_direction = unit.rotation
 	next_point = unit.global_position
 	destination = unit.global_position
@@ -144,6 +143,7 @@ func move_to(to : Vector2, final_face_direction: float):
 	
 	if path.size() > 0:
 		next_point = path[0]
+	Globals.personal_debug_update(owner, "face dir", "Face_dir: %s/%s" % [face_direction, final_face_direction])
 	face_direction = final_face_direction # angle of the unit once reaches its destination
 	# Rotate if the angle is large
 	update_is_anchored() # used here to not anchor the unit if the distance is greater than 128 pixels
