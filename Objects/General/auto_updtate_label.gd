@@ -1,5 +1,6 @@
 extends Label
 
+@onready var ID = "0" # Is needed for the debugger to find easier the local variables label
 @onready var node_to_follow : Node = null 
 @onready var property_to_follow : String = ""
 @onready var prefix : String = ""

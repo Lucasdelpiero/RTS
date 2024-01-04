@@ -1,9 +1,15 @@
+class_name DebugPersonal
 extends Node2D
 
 @onready var container : PanelContainer = %PanelContainer
 @onready var vbox : VBoxContainer = %VBoxContainer
 @onready var marker : Marker2D = %MarkerBase
 var DebugLabel = preload("res://Objects/General/auto_updtate_label.tscn")
+var DebugLocalLabel = preload("res://Objects/General/debug_local_label.tscn")
+# ID is used to pass values from local variables to a global script thay will search for this debugger to send the data from any place of the object
+var ID 
+
+@onready var personal_data = debug_personal_data.new() # just to have it at hand 
 
 @export var property_1 : String = ""
 @export var property_2 : String = ""
@@ -46,6 +52,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("Debug"):
 		marker.visible = !marker.visible
 
+# Creates a label that auto_updates
 func update_label(node_to_follow : Node , property : String, prefix : String = ""):
 #	print(variable_name)
 	var label = vbox.get_children().filter(func(el): return (el.node_to_follow == node_to_follow and el.property_to_follow == property ))
@@ -57,3 +64,16 @@ func update_label(node_to_follow : Node , property : String, prefix : String = "
 		new_label.prefix = prefix
 		container.position.y = -vbox.size.y
 		return
+
+func update_local_value_label(ID, value):
+	var label = vbox.get_children().filter(func(el): return (el.ID == ID))
+	
+	if label.size() == 0:
+		print("created new label")
+		var new_label = DebugLocalLabel.instantiate() 
+		vbox.add_child(new_label)
+		new_label.ID = ID
+		new_label.text = value
+		return
+	print("it was already created")
+	

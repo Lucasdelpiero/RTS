@@ -23,6 +23,7 @@ var face_direction : float = 0.0
 func _ready():
 	if unit == null:
 		return
+	Globals.personal_debug_update(owner, "alfonso", str(get_instance_id()))
 	face_direction = unit.rotation
 	next_point = unit.global_position
 	destination = unit.global_position
@@ -126,12 +127,12 @@ func move_to(to : Vector2, final_face_direction: float):
 	# specially when done in an small amount of time
 	# maybe it would be better to just avoid moving the angle
 	# This is only a problem when many orders are done in an small amount of time (ex. every 0.1 sec)
-	var distance : float = (unit.global_position.distance_to(destination))
-	var rotation_difference  = absf(unit.rotation - final_face_direction)  < PI / 6
-	if distance < 10 and rotation_difference:
+	#var distance : float = (unit.global_position.distance_to(destination))
+	#var rotation_difference  = absf(unit.rotation - final_face_direction)  < PI / 6
+	#if distance < 10 and rotation_difference:
 		#push_warning("distancetosmall in distance and rotation")
 		#return
-		pass
+		#pass
 
 	#######################
 	# Once i create obstacles i will get this pathing
