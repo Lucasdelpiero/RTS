@@ -28,6 +28,10 @@ var group_left_flank = []
 var group_right_flank = []
 var group_reserves = []
 
+# This array stores the units that already where targeted by the IA to be atacked
+# TODO move this property and behaviout asociated to other place for a behaviour tree 
+var units_already_targeted : Array = []
+
 enum GeneralStates {
 	WAITING,
 	MOVING,
@@ -62,15 +66,15 @@ func _ready():
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true)
 	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false)
 
-
-func update_ia():
+# Makes the IA focus on the largest
+func focus_on_largest_group():
 	var groups = get_enemy_groups(player_units, 2000)
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
 	var closest = get_distance_to_closest(groups, armyMarker.global_position)
 	var action = general.get_next_action()
-	var focus = general.get_focused_group(groups)
+	var focus = general.get_largest_group(groups)
 	groups_manager.main_enemy_group = focus
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
@@ -159,6 +163,7 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 	if flank == "right":
 		return (units_group[units_group.size() - 1].get_destination() + Vector2(cos(angle_formation), sin(angle_formation)) * distance )
 
+# TODO move this code to a separated node to create a behavior tree
 func check_to_advance():
 	var a_units_to_move : Array = units
 	var a_player_units : Array = player_units
@@ -174,11 +179,14 @@ func check_to_advance():
 	pass
 
 # The units will move towards the position at a certian distance as a time, that distance as absolute values or as percentage of distance to the target
+# TODO move this code to a separated node to create a behavior tree
 func advance(aUnits: Array, target_position : Vector2, current_position : Vector2, distance_to_move : float, as_percentage: bool = false) -> void:
+	#region Safeguard
 	for unit in aUnits:
 		if not unit is Unit:
 			push_error("An element in the array is not of Unit class")
 			return
+	#endregion
 	
 	# there should be a variable to tell them when they reached the point
 	var angle : float = current_position.angle_to_point(target_position)
@@ -192,14 +200,47 @@ func advance(aUnits: Array, target_position : Vector2, current_position : Vector
 	groups_manager.tell_move_units_to_markers() # So they move instantly
 	#move_units(aUnits, place_to_move_to, angle)
 
+# Send units to attack to melee, units already targeted are stored in units_already_targeted array
+# TODO move this code to a separated node to create a behavior tree
+func send_units_to_attack(aGroup : Array, aEnemy_units : Array):
+	#region Safeguard
+	for unit in aGroup:
+		if not unit is Unit:
+			push_error("There is an object that is not a unit")
+			return
+	for unit in aEnemy_units:
+		if not unit is Unit:
+			push_error("There is an object that is not a unit")
+			return
+	#endregion
+	
+	for unit in aGroup as Array[Unit]:
+		var unit_has_targeted_enemy = false # used to store when the unit has chosen an enemy to attack
+		var enemies_by_distance = get_units_ordered_by_distance(aEnemy_units, unit.global_position)
+		for enemy in enemies_by_distance as Array[Unit]:
+			if not units_already_targeted.has(enemy) and not unit_has_targeted_enemy:
+				units_already_targeted.push_back(enemy)
+				unit.set_chase(enemy)
+				unit_has_targeted_enemy = true
+		
+
+
 func _on_timer_timeout():
-	update_ia()
-	get_enemy_groups(player_units, 2000)
+	#focus_on_largest_group()
+	#get_enemy_groups(player_units, 2000)
+	# TEST
+	if units_already_targeted.size() < 1:
+		#send_units_to_attack(units, player_units)
+		send_units_to_attack(group_left_flank, player_units)
+		send_units_to_attack(group_front, player_units)
+		send_units_to_attack(group_right_flank, player_units)
+	# TEST
 	# Check bug if it the timer goes fast
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	pass # Replace with function body.
 
 
 func _on_timer_advance_timeout():
-	timerAdvance.start(5)
+	#timerAdvance.start(5)
 	#check_to_advance()
+	pass

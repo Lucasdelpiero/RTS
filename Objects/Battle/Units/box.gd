@@ -240,7 +240,7 @@ func attack_again():
 				set_chase(target_unit)
 	if target_unit != null and state == State.MELEE:
 		attack_target(target_unit)
-		print("attack")
+		#print("attack")
 		pass
 
 

@@ -1,5 +1,8 @@
 extends Node
 class_name UnitsManagement
+
+## Utilities used by the player and the IA to control the Units
+
 @onready var margin_between_units = 280 # Margin used to distance units from each other once ordered to move
 
 func get_face_to_formation_angle(value):
@@ -202,3 +205,30 @@ func get_distance_to_closest(groups : Array, from: Vector2):
 			if distance < closest:
 				closest = distance
 	return closest
+
+func get_units_ordered_by_distance(aUnits : Array, unit_position : Vector2) -> Array :
+	#region Safeguard
+	for unit in aUnits:
+		if not unit is Unit:
+			push_error("Object inside array is not of unit class") 
+			return []
+	#endregion
+	
+	# The array below will contain 2 indexes per comparation, one being the unit compared to,
+	# and the second will be distance to it, which will be used later to organize it
+	var all_units : Array = []
+	
+	for unit in aUnits:
+		var distance : float = unit_position.distance_to(unit.global_position)
+		all_units.push_back([unit, distance])
+	
+	# Sort by ascending order of distance to the unit compared to
+	all_units.sort_custom(func(a, b): return a[1] < b[1])
+	
+	var units_ordered : Array = []
+	for pair in all_units:
+		units_ordered.push_back(pair[0])
+	
+	return units_ordered
+
+

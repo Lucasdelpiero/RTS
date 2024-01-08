@@ -33,6 +33,7 @@ func move_units_to_markers():
 	
 
 func _on_move_timer_timeout():
+	return
 	move_units_to_markers()
 	moveTimer.start(5)
 	pass

@@ -21,7 +21,8 @@ var generalState = GeneralStates.WAITING
 func get_next_action():
 	return "move"
 
-func get_focused_group(groups : Array):
+# Gets the largest group in the enemy army
+func get_largest_group(groups : Array):
 	var group_size = 0
 	var new_group_focused = []
 	for group in groups:
