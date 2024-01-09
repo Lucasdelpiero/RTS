@@ -1,6 +1,8 @@
 
 shader_type canvas_item;
 
+uniform sampler2D noise_secondary;
+
 uniform float tile_factor = 10.0;
 uniform float aspect_ratio = 0.5;
 
@@ -16,7 +18,15 @@ void fragment() {
 	wave_uv_offset.x += sin(TIME * time_factor.x + (tiled_uvs.x + tiled_uvs.y) * offset_factor.x);
 	wave_uv_offset.y += cos(TIME * time_factor.y + (tiled_uvs.x + tiled_uvs.y) * offset_factor.y);
 	
-
-	COLOR = texture(TEXTURE, tiled_uvs + wave_uv_offset * amplitude);
-
+	vec4 new_color = texture(TEXTURE, tiled_uvs + wave_uv_offset * amplitude);
+	vec4 secondary_color = texture(noise_secondary, UV);
+	
+	new_color = mix(new_color, secondary_color, 0.25);
+	
+	
+	
+	//COLOR = texture(TEXTURE, tiled_uvs + wave_uv_offset * amplitude);
+	COLOR = new_color;
+	//COLOR = texture(noise_secondary, UV);
+	
 }
