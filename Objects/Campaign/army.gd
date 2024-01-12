@@ -181,8 +181,8 @@ func get_path_province_names(provinces : Array) -> Array:
 	
 	var path_province_names : Array = [] 
 	for city in provinces:
-		# The world stores the names using the ID and the global_position.x
-		var province_name = world.get_province_name(floor(city.x))
+		# The world stores the names using the global_position as key
+		var province_name = world.get_province_name_by_position(city)
 		# Safeguard to get the name
 		if province_name == null:
 			push_warning("Province name could not be retrieved using its global position")

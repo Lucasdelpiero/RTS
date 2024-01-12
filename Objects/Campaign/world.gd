@@ -17,8 +17,10 @@ var nations := []
 var provinces := []
 var provinceSelected = null
 
-# Stores the provinces global_position and ID
-var dictionary_provinces : Dictionary = {} 
+# ID of provinces are stored using the position as key ("xPosition_yPosition")
+# using and underscore to separate the coordinates with their values floored as an int
+var dictionary_provinces_by_position : Dictionary = {} 
+# Stores the name of the provinces using the ID as a key
 var dictionary_ID_to_name : Dictionary = {}
 
 func _init():
@@ -84,10 +86,12 @@ func get_nav_map():
 	for province in provinces:
 		province.get_connections()
 		map.add_point(province.ID, province.city.global_position, province.weight)
-		dictionary_provinces[floor(province.city.global_position.x)] = province.ID
+		# stores the ID using the position as a key separating the x and y coordinates with and underscore (ex. "589_61")
+		var pos_key : String = "%s_%s" % [floor(province.city.global_position.x), floor(province.city.global_position.y)]
+		dictionary_provinces_by_position[pos_key] = province.ID
 		dictionary_ID_to_name[province.ID] = province.name
 	#print(provinces)
-	#print(dictionary_provinces)
+	#print(dictionary_provinces_by_position)
 	
 	# Add connections
 	for province in provinces:
@@ -104,16 +108,16 @@ func get_nav_path(from : int, to : int ):
 
 # Returns the province name using the x position and the ID
 # TODO change this as it maybe its not very reliable
-func get_province_name(x_position : float ) -> String:
-	var province_position = floor(x_position)
+func get_province_name_by_position(aPosition : Vector2 ) -> String:
+	var province_position : String =  "%s_%s" % [floor(aPosition.x), floor(aPosition.y)]
 	var province_name : String = "not found"
 	var province_ID : int = 0
 	
 	#print("pp: %s /ap: %s" %[province_position, x_position])
-	#print(dictionary_provinces)
+	#print(dictionary_provinces_by_position)
 	
-	if dictionary_provinces.has(province_position):
-		province_ID = dictionary_provinces[province_position]
+	if dictionary_provinces_by_position.has(province_position):
+		province_ID = dictionary_provinces_by_position[province_position]
 		
 	if dictionary_ID_to_name.has(province_ID):
 		province_name = dictionary_ID_to_name[province_ID]
