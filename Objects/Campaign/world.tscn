@@ -51,7 +51,7 @@ shader_parameter/noise_secondary = ExtResource("13_1gxr8")
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 2173, -164, 1398, 1189, 0, 953)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="World" type="Node2D" groups=["world"]]

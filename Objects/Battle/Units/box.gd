@@ -186,7 +186,6 @@ func set_troops_number(value):
 	troops_number = value
 	sg_troops_number_changed.emit(value, troops_number_max)
 
-#endregion
 
 func _on_unit_detector_mouse_entered():
 	hovered = true
@@ -240,7 +239,6 @@ func attack_again():
 				set_chase(target_unit)
 	if target_unit != null and state == State.MELEE:
 		attack_target(target_unit)
-		#print("attack")
 		pass
 
 

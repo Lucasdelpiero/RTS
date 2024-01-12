@@ -4,7 +4,7 @@ class_name ArmyCampaing
 
 #region properties
 
-var world = null
+var world : CampaignMap = null
 var own_map : AStar2D
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
@@ -69,6 +69,8 @@ func _unhandled_input(_event):
 			var new_path = get_pathing(Globals.mouse_in_province)
 			if new_path.size() > 0:
 				path = new_path
+				var path_names : Array = get_path_province_names(new_path)
+				Globals.personal_debug_update(self, "path_names", "Path: %s" % [path_names])
 				Globals.personal_debug_update(self, "path", path)
 			if state != MOVING and path.size() > 0:
 				Globals.personal_debug_update(self, "move", "now moving")
@@ -157,6 +159,10 @@ func get_pathing(destination) -> Array:
 		if starting_point == new_path[0] and (second_point == next_point):
 			new_path.remove_at(0)
 	
+	# Stops crash when "last_point" get an array out of bounds
+	if new_path.is_empty():
+		return []
+	
 	# Stops the unit from getting a path if the unit already is in the province its ordered to move to
 	var margin_until_moves : int = 1
 	var last_point : Vector2 = new_path[new_path.size() - 1]
@@ -165,6 +171,26 @@ func get_pathing(destination) -> Array:
 	
 	return new_path
 
+
+# Get the name of the province using its global position in the world from a dictionary in the world node
+# It uses the global_position of the city (point in the path), not the province global_position
+func get_path_province_names(provinces : Array) -> Array:
+	if world == null:
+		push_error("There is no world reference")
+		return []
+	
+	var path_province_names : Array = [] 
+	for city in provinces:
+		# The world stores the names using the ID and the global_position.x
+		var province_name = world.get_province_name(floor(city.x))
+		# Safeguard to get the name
+		if province_name == null:
+			push_warning("Province name could not be retrieved using its global position")
+			continue
+		
+		path_province_names.push_back(province_name)
+	
+	return path_province_names
 
 func send_mouse_over(value):
 	mouseOverSelf = value

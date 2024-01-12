@@ -2,7 +2,7 @@ extends Node2D
 class_name CampaignMap
 
 @export var main : Main
-var map # navmap
+var map : AStar2D # navmap
 
 @onready var navigation = $NavigationRegion2D
 @onready var nationsGroup = $NationsGroup
@@ -16,6 +16,10 @@ var playerNode = null
 var nations := []
 var provinces := []
 var provinceSelected = null
+
+# Stores the provinces global_position and ID
+var dictionary_provinces : Dictionary = {} 
+var dictionary_ID_to_name : Dictionary = {}
 
 func _init():
 	Globals.campaign_map = self
@@ -80,6 +84,10 @@ func get_nav_map():
 	for province in provinces:
 		province.get_connections()
 		map.add_point(province.ID, province.city.global_position, province.weight)
+		dictionary_provinces[floor(province.city.global_position.x)] = province.ID
+		dictionary_ID_to_name[province.ID] = province.name
+	#print(provinces)
+	#print(dictionary_provinces)
 	
 	# Add connections
 	for province in provinces:
@@ -92,6 +100,25 @@ func get_nav_map():
 
 func get_nav_path(from : int, to : int ):
 	map.get_point_path(from, to)
+	pass
+
+# Returns the province name using the x position and the ID
+# TODO change this as it maybe its not very reliable
+func get_province_name(x_position : float ) -> String:
+	var province_position = floor(x_position)
+	var province_name : String = "not found"
+	var province_ID : int = 0
+	
+	#print("pp: %s /ap: %s" %[province_position, x_position])
+	#print(dictionary_provinces)
+	
+	if dictionary_provinces.has(province_position):
+		province_ID = dictionary_provinces[province_position]
+		
+	if dictionary_ID_to_name.has(province_ID):
+		province_name = dictionary_ID_to_name[province_ID]
+	
+	return province_name
 	pass
 
 func send_data_to_ui():
