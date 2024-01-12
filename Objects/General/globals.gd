@@ -52,6 +52,7 @@ func debug_update_label(variable_name : String , value):
 func personal_debug_update(owner_node ,ID , value ):
 	var personal_debugger = owner_node.find_child(PERSONAL_DEBUGGER) as DebugPersonal
 	if personal_debugger == null:
+		push_warning("%s doesnt have a personal debugger" % [owner_node.name])
 		return
 		
 	personal_debugger.update_local_value_label(ID, value)

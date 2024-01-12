@@ -46,11 +46,15 @@ text = "Manpower:"
 
 [node name="Province" type="Panel" parent="Container"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 19.0
-offset_top = 431.0
-offset_right = 387.0
-offset_bottom = 578.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -168.0
+offset_right = 389.0
+offset_bottom = -21.0
+grow_vertical = 0
 
 [node name="IncomeLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
@@ -113,11 +117,18 @@ text = "Total:"
 
 [node name="MapTypesManager" type="PanelContainer" parent="Container"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 837.0
-offset_top = 555.0
-offset_right = 1129.0
-offset_bottom = 616.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -93.0
+offset_right = -23.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("4_d6fhq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/MapTypesManager"]

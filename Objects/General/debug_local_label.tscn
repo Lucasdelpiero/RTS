@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Objects/General/debug_local_label.gd" id="1_hctq6"]
 
 [node name="DebugLocalLabel" type="Label"]
+z_index = 4096
+z_as_relative = false
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 20

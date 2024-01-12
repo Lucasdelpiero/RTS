@@ -17,6 +17,7 @@ position = Vector2(-64, -105)
 
 [node name="PanelContainer" type="PanelContainer" parent="Node/MarkerBase/MarginMarker"]
 unique_name_in_owner = true
+z_index = 2000
 offset_right = 64.0
 offset_bottom = 26.0
 mouse_filter = 2

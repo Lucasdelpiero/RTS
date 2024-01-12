@@ -19,6 +19,8 @@ var ID
 @export var property_6 : String = ""
 @export var property_7 : String = ""
 
+@export_range(0, 48, 1) var font_size : int = 0 # value 0 is used to just use the default value
+
 @onready var properties = [
 	property_1,
 	property_2,
@@ -57,11 +59,13 @@ func update_label(node_to_follow : Node , property : String, prefix : String = "
 #	print(variable_name)
 	var label = vbox.get_children().filter(func(el): return (el.node_to_follow == node_to_follow and el.property_to_follow == property ))
 	if label.size() == 0:
-		var new_label :  = DebugLabel.instantiate() 
+		var new_label :  = DebugLabel.instantiate()
 		vbox.add_child(new_label)
 		new_label.node_to_follow = node_to_follow
 		new_label.property_to_follow = property
 		new_label.prefix = prefix
+		if font_size != 0: # 0 means "use the default font size"
+			new_label["theme_override_font_sizes/font_size"] = font_size
 		container.position.y = -vbox.size.y
 		return
 
@@ -73,6 +77,8 @@ func update_local_value_label(ID, value):
 		vbox.add_child(new_label)
 		new_label.ID = ID
 		new_label.text = str(value)
+		if font_size != 0: # 0 means "use the default font size"
+			new_label["theme_override_font_sizes/font_size"] = font_size
 		return
 	
 	# Updates the value
