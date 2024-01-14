@@ -24,10 +24,6 @@ Signals="*res://Objects/General/signals.gd"
 
 gdscript/warnings/unused_variable=0
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
-
 [file_customization]
 
 folder_colors={
