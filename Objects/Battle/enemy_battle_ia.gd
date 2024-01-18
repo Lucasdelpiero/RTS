@@ -228,6 +228,7 @@ func send_units_to_attack(aGroup : Array, aEnemy_units : Array):
 func _on_timer_timeout():
 	#focus_on_largest_group()
 	#get_enemy_groups(player_units, 2000)
+	return
 	# TEST
 	if units_already_targeted.size() < 1:
 		#send_units_to_attack(units, player_units)
