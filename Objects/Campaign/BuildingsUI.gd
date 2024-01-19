@@ -27,9 +27,9 @@ var buildings : Array[Building] :
 		for building in value:
 			var button = ButtonBuilding.instantiate() as BuildingButton
 			buildings_container.add_child(button)
+
 			button.province_data = province_data
-			
-	
-			pass
+			button.texture_normal = building.icon_normal
+			button.texture_hover = building.icon_hover
 		
 		buildings = value

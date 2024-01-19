@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=79 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -134,10 +134,38 @@ resource_local_to_scene = true
 script = ExtResource("19_fqfku")
 buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_ergru")])
 
+[sub_resource type="Resource" id="Resource_i4pch"]
+script = ExtResource("20_uupt8")
+level = 1
+cost = 100
+time_to_build = 5
+levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_mjs6j"]
+script = ExtResource("20_uupt8")
+level = 1
+cost = 100
+time_to_build = 5
+levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_4sikm"]
+script = ExtResource("20_uupt8")
+level = 1
+cost = 100
+time_to_build = 5
+levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0mjgk"]
+script = ExtResource("20_uupt8")
+level = 1
+cost = 100
+time_to_build = 5
+levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
 [sub_resource type="Resource" id="Resource_dti3w"]
 resource_local_to_scene = true
 script = ExtResource("19_fqfku")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_ergru")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_ergru"), SubResource("Resource_i4pch"), SubResource("Resource_mjs6j"), SubResource("Resource_4sikm"), SubResource("Resource_0mjgk")])
 
 [sub_resource type="Resource" id="Resource_nu1xq"]
 resource_local_to_scene = true
@@ -159,10 +187,17 @@ resource_local_to_scene = true
 script = ExtResource("19_fqfku")
 buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_ergru")])
 
+[sub_resource type="Resource" id="Resource_nmpes"]
+script = ExtResource("19_3gp7d")
+level = 1
+cost = 100
+time_to_build = 5
+levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
 [sub_resource type="Resource" id="Resource_7xbmt"]
 resource_local_to_scene = true
 script = ExtResource("19_fqfku")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_ergru")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), SubResource("Resource_nmpes")])
 
 [sub_resource type="Resource" id="Resource_1k0kk"]
 resource_local_to_scene = true
