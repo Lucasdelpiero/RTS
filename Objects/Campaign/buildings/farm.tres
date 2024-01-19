@@ -18,7 +18,7 @@ levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
 [sub_resource type="Resource" id="Resource_cwmti"]
 script = ExtResource("1_72457")
-level = 1
+level = 3
 cost = 400
 time_to_build = 5
 levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])

@@ -3,6 +3,7 @@ extends Control
 #TODO move this node and code to the UI folder
 
 @onready var buildings_container = %BuildingsContainer
+@onready var overview_container = %OverviewContainer
 @onready var ButtonBuilding  = preload("res://Objects/Campaign/button_building.tscn")
 
 var province_data : ProvinceData = ProvinceData.new() :
@@ -15,7 +16,7 @@ var buildings : Array[Building] :
 		#print(value)
 		var children = buildings_container.get_children()
 		if value.is_empty():
-			push_error("there are no buildings in the data provided")
+			push_error("There are no buildings in the data provided")
 			return
 		
 		buildings = []

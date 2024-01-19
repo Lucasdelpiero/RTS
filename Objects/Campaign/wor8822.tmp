@@ -1,0 +1,372 @@
+[gd_scene load_steps=68 format=3 uid="uid://c6ellbjmw3vay"]
+
+[ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
+[ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
+[ext_resource type="PackedScene" uid="uid://cflnvw8xegsy5" path="res://Objects/General/camera.tscn" id="3_h1dnb"]
+[ext_resource type="PackedScene" uid="uid://cynwt6kdn6rk7" path="res://Objects/Campaign/campaign_ui.tscn" id="4_h0nd8"]
+[ext_resource type="PackedScene" path="res://Objects/Campaign/nation.tscn" id="5_j8h1j"]
+[ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/army.tscn" id="6_rnqqn"]
+[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/hastati.tres" id="7_msm0q"]
+[ext_resource type="Resource" path="res://Objects/Campaign/bowman.tres" id="8_v3wbt"]
+[ext_resource type="Script" path="res://Objects/Campaign/army_data.gd" id="9_5dn3s"]
+[ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
+[ext_resource type="Shader" path="res://Objects/Campaign/water.gdshader" id="12_f07y5"]
+[ext_resource type="Texture2D" uid="uid://bjojgo41sopy" path="res://Objects/Campaign/water_noise_texture.tres" id="13_1gxr8"]
+[ext_resource type="Texture2D" uid="uid://7csruyrolv3k" path="res://Assets/Carto Light.png" id="13_jsewn"]
+[ext_resource type="Texture2D" uid="uid://xcwekktds02l" path="res://Objects/Campaign/water_texture.tres" id="13_m423k"]
+[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="14_o0cf2"]
+[ext_resource type="Script" path="res://Objects/Campaign/WaterBackground.gd" id="14_ycv5f"]
+[ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/pos_province.tscn" id="15_4h2o0"]
+[ext_resource type="Texture2D" uid="uid://cqniv81dq38ut" path="res://Assets/greece_map.jpg" id="15_t75o3"]
+[ext_resource type="PackedScene" uid="uid://woeoxt74h51w" path="res://Objects/Campaign/terrain_decoration/mountain_sprite.tscn" id="16_2ii1p"]
+[ext_resource type="PackedScene" uid="uid://doro7yhp67ejg" path="res://Objects/Campaign/terrain_decoration/mountains_sprite.tscn" id="16_xm6lb"]
+[ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/province.tscn" id="16_y4d8b"]
+[ext_resource type="PackedScene" path="res://Objects/Campaign/battle_menu.tscn" id="17_0w4y1"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="19_fqfku"]
+
+[sub_resource type="Resource" id="Resource_vvqwv"]
+script = ExtResource("9_5dn3s")
+army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt")])
+
+[sub_resource type="Resource" id="Resource_q8c0w"]
+script = ExtResource("9_5dn3s")
+army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+
+[sub_resource type="Resource" id="Resource_kdomc"]
+script = ExtResource("9_5dn3s")
+army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+
+[sub_resource type="Resource" id="Resource_v5grm"]
+script = ExtResource("9_5dn3s")
+army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smi75"]
+shader = ExtResource("12_f07y5")
+shader_parameter/tile_factor = 60.0
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/time_factor = Vector2(0.6, 0.8)
+shader_parameter/offset_factor = Vector2(5, 2)
+shader_parameter/amplitude = Vector2(0.05, 0.05)
+shader_parameter/noise_secondary = ExtResource("13_1gxr8")
+
+[sub_resource type="Resource" id="Resource_ithon"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_jdyev"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_8eod6"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_5agkc"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_e2k0d"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_a0rrh"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_1lbf7"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s2ba5"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_7gb58"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_t6tyw"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_pomde"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ky01n"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_idvsy"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_qruqs"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_fjq51"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_70v67"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_x8qd3"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_cm107"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ev51q"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_t14qw"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0ao2d"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_p6i8i"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_hh34e"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_uclwc"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ickj2"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_nur4h"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_xkwed"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_yi0x0"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_o5gcg"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0e7e0"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_c35pp"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_vi6rm"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_a0sdj"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_sng07"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_5whpl"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_0a1uj"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_2frn4"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="Resource" id="Resource_05g83"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
+vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 2173, -164, 1398, 1189, 0, 953)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="World" type="Node2D" groups=["world"]]
+position = Vector2(67, 153)
+script = ExtResource("1_xpr24")
+metadata/_edit_lock_ = true
+
+[node name="Mouse" parent="." instance=ExtResource("2_5u4og")]
+
+[node name="Camera" parent="." instance=ExtResource("3_h1dnb")]
+
+[node name="CampaingUI" parent="." instance=ExtResource("4_h0nd8")]
+unique_name_in_owner = true
+
+[node name="Container" parent="CampaingUI" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Province" parent="CampaingUI/Container" index="1"]
+visible = false
+
+[node name="NationsGroup" type="Node" parent="."]
+
+[node name="Rome" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
+NATION_TAG = "ROME"
+nationOutline = Color(0.266667, 0.054902, 0.0705882, 1)
+nationColor = Color(0.521569, 0.117647, 0.117647, 1)
+gold = 371
+isPlayer = true
+
+[node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
+unique_name_in_owner = true
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
+position = Vector2(703, 481)
+army_name = "Legio I"
+ownership = "ROME"
+army_data = SubResource("Resource_vvqwv")
+
+[node name="Legio II" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
+unique_name_in_owner = true
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
+position = Vector2(887, 505)
+army_name = "Legio II"
+ownership = "ROME"
+army_data = SubResource("Resource_q8c0w")
+
+[node name="Legio III" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
+position = Vector2(826, 551)
+army_name = "Legio III"
+ownership = "ROME"
+army_data = SubResource("Resource_kdomc")
+
+[node name="Legio III2" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
+position = Vector2(1272, 733)
+army_name = "Legio IV"
+ownership = "ROME"
+army_data = SubResource("Resource_kdomc")
+
+[node name="Etruria" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
+NATION_TAG = "ETRURIA"
+nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
+nationColor = Color(0.439216, 0.435294, 0.388235, 1)
+
+[node name="Etrurian King" parent="NationsGroup/Etruria" instance=ExtResource("6_rnqqn")]
+modulate = Color(0.439216, 0.435294, 0.388235, 1)
+position = Vector2(604, 358)
+army_name = "Etruria"
+ownership = "ETRURIA"
+army_data = SubResource("Resource_v5grm")
+
+[node name="Carthage" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
+NATION_TAG = "CARTHAGE"
+nationOutline = Color(0.726563, 0.445313, 0.675781, 1)
+nationColor = Color(0.858824, 0.858824, 0.858824, 1)
+
+[node name="Sparta" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
+NATION_TAG = "SPARTA"
+nationOutline = Color(0.128906, 0.0273438, 0.0273438, 1)
+nationColor = Color(0.277344, 0.0546875, 0.0546875, 1)
+
+[node name="Macedon" parent="NationsGroup" instance=ExtResource("5_j8h1j")]
+NATION_TAG = "MACEDON"
+nationOutline = Color(0.215686, 0.0470588, 0.239216, 1)
+nationColor = Color(0.317647, 0.0941176, 0.34902, 1)
+
+[node name="EuropeMap" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(984, -589)
+scale = Vector2(3.27034, 3.05596)
+texture = ExtResource("12_b8id6")
+metadata/_edit_lock_ = true
+
+[node name="CartoLight" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+position = Vector2(1735, 81)
+scale = Vector2(1.20755, 1.20755)
+texture = ExtResource("13_jsewn")
+metadata/_edit_lock_ = true
+
+[node name="WaterBackground" type="Sprite2D" parent="."]
+self_modulate = Color(0.00784314, 1, 1, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_smi75")
+position = Vector2(1725.12, 250)
+scale = Vector2(46.4043, 26.5156)
+texture = ExtResource("13_m423k")
+script = ExtResource("14_ycv5f")
+noise_texture = ExtResource("13_1gxr8")
+velocity = Vector2(5, 2)
+
+[node name="Cool texturing" type="Polygon2D" parent="."]
+texture_repeat = 1
+position = Vector2(-47, 522)
+color = Color(0.472, 0.34, 1, 1)
+texture = ExtResource("14_o0cf2")
+texture_offset = Vector2(31, 189)
+texture_scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(94, -167, 164, -115, 140, -72, 177, -19, 120, 15, 45, -19, 25, -80, 35, -142)
+vertex_colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[node name="West2" type="Line2D" parent="Cool texturing"]
+position = Vector2(174.472, -22.6547)
+points = PackedVector2Array(-51.4719, 37.6547, -133.472, -0.345337, -152.472, -68.3453, -144.472, -122.345, -82.4719, -147.345, -7.47192, -96.3453, -34.4719, -47.3453, -21.472, -26.3453, 2.52808, 4.65466, -35.1838, 26.1114, -56.4719, 37.6547)
+default_color = Color(0.286275, 0.109804, 1, 1)
+
+[node name="West" parent="Cool texturing" instance=ExtResource("

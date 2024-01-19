@@ -23,7 +23,7 @@ extends Polygon2D
 @export_range(100, 100000, 1) var population = 1000
 @export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
 @export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
-@export var buildings_manager : BuildingsManager = BuildingsManager.new()
+@export var buildings_manager : BuildingsManager
 
 @export_group("Connections")
 var connections : Array
@@ -52,18 +52,6 @@ var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
 
-func _init():
-	#return
-	if buildings_manager == null:
-		buildings_manager = BuildingsManager.new()
-		push_error("building_manager had to be created") # just to test
-	var province_data := ProvinceData.new()
-	province_data.name = name
-	province_data.income = income
-	province_data.culture = culture
-	province_data.religion = religion
-	province_data.terrain_type = terrain_type
-	province_data.population = population
 
 func _ready():
 	inside_color = color
@@ -72,6 +60,19 @@ func _ready():
 #	mouseDetectorCollition.shape.points = []
 	var poly = get_polygon()
 	collision.set_polygon(poly)
+	
+	
+	if buildings_manager == null and not Engine.is_editor_hint():
+		#buildings_manager = BuildingsManager.new()
+		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
+		push_error("building_manager had to be created") # just to test
+	var province_data := ProvinceData.new()
+	province_data.name = name
+	province_data.income = income
+	province_data.culture = culture
+	province_data.religion = religion
+	province_data.terrain_type = terrain_type
+	province_data.population = population
 	pass
 
 func _draw():
