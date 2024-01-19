@@ -23,6 +23,17 @@ func _ready():
 	zoom = target_zoom
 	pass # Replace with function body.
 
+func _unhandled_input(event):
+	# Zooming in and out is done only if the event wasnt consumed by the GUI
+	if event is InputEventMouseButton:
+		var zoom_input = 0
+		if event.is_action("Zoom_In"):
+			zoom_input = 1
+		if event.is_action("Zoom_Out"):
+			zoom_input = -1
+		target_zoom += Vector2( zoom_input * zoom_difference, zoom_input * zoom_difference) # The value setted here is updated in the procces just normally
+	pass
+
 func _input(_event):
 	if Input.is_action_just_pressed("Middle_Mouse"):
 		drag_start = get_global_mouse_position()
@@ -46,8 +57,6 @@ func _process(delta):
 	global_position += velocity 
 	
 	# Zoom in-out
-	var zoom_input = int(Input.is_action_just_released("Zoom_In")) - int(Input.is_action_just_released("Zoom_Out"))
-	target_zoom += Vector2( zoom_input * zoom_difference, zoom_input * zoom_difference)
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)
 	target_zoom.y = clamp(target_zoom.y, zoom_min, zoom_max)
 	set_zoom(lerp(zoom, target_zoom, delta * zoom_speed)) # animation

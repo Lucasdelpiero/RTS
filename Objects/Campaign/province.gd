@@ -194,6 +194,9 @@ func send_data_to_ui(ui : CanvasLayer):
 	data.buildings = buildings_manager.buildings # TODO improve this coupling
 	data.reference = self
 	
+	data.culture = culture
+	data.religion = religion
+	
 	sg_send_data_to_ui.connect(ui.update_province_data)
 	emit_signal("sg_send_data_to_ui", data)
 	sg_send_data_to_ui.disconnect(ui.update_province_data)

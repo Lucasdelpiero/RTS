@@ -45,7 +45,7 @@ func update_province_data(data : ProvinceData):
 #	nameLabel.text = "alf"
 	nameLabel.text = "%s" %[data.name]
 	
-	buildingsUI.buildings = data.buildings
+	buildingsUI.province_data = data # sends all data including the buildings 
 	pass
 
 func set_province_visibility(value):
