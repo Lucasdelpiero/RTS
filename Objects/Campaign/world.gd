@@ -80,10 +80,10 @@ func change_map_shown(type):
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map():
 	map = AStar2D.new()
-	var provinces = get_tree().get_nodes_in_group("provinces")
+	var provinces_temp = get_tree().get_nodes_in_group("provinces")
 	
 	# Add points
-	for province in provinces:
+	for province in provinces_temp:
 		province.get_connections()
 		map.add_point(province.ID, province.city.global_position, province.weight)
 		# stores the ID using the position as a key separating the x and y coordinates with and underscore (ex. "589_61")
@@ -94,7 +94,7 @@ func get_nav_map():
 	#print(dictionary_provinces_by_position)
 	
 	# Add connections
-	for province in provinces:
+	for province in provinces_temp:
 		var connections = province.connections
 		for con in connections:
 			if !map.are_points_connected(province.ID, con):
