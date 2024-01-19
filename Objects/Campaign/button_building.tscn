@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmn2o2xccxjc7"]
+
+[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_bjuop"]
+[ext_resource type="Script" path="res://Objects/Campaign/button_building.gd" id="2_r4rd4"]
+
+[node name="ButtonBuilding" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("1_bjuop")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_r4rd4")

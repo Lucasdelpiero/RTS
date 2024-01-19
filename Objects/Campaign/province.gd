@@ -23,6 +23,7 @@ extends Polygon2D
 @export_range(100, 100000, 1) var population = 1000
 @export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
 @export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
+@export var buildings_manager : BuildingsManager = BuildingsManager.new()
 
 @export_group("Connections")
 var connections : Array
@@ -50,6 +51,19 @@ var selected = false
 var mouseOverSelf = false : set = send_mouse_over
 signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
+
+func _init():
+	#return
+	if buildings_manager == null:
+		buildings_manager = BuildingsManager.new()
+		push_error("building_manager had to be created") # just to test
+	var province_data := ProvinceData.new()
+	province_data.name = name
+	province_data.income = income
+	province_data.culture = culture
+	province_data.religion = religion
+	province_data.terrain_type = terrain_type
+	province_data.population = population
 
 func _ready():
 	inside_color = color
@@ -117,7 +131,7 @@ func update_to_nation_color():
 func send_mouse_over(value):
 	mouseOverSelf = value
 	var data_temp = {
-		"mouseOverSelf" = value , 
+		"mouseOverSelf" = value ,
 		"node" = self,
 	}
 	emit_signal("sg_mouseOverSelf", data_temp)
@@ -176,6 +190,10 @@ func send_data_to_ui(ui : CanvasLayer):
 	data.income = income
 	data.population = population
 	data.name = self.name
+	
+	data.buildings = buildings_manager.buildings # TODO improve this coupling
+	data.reference = self
+	
 	sg_send_data_to_ui.connect(ui.update_province_data)
 	emit_signal("sg_send_data_to_ui", data)
 	sg_send_data_to_ui.disconnect(ui.update_province_data)

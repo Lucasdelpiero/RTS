@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=68 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://doro7yhp67ejg" path="res://Objects/Campaign/terrain_decoration/mountains_sprite.tscn" id="16_xm6lb"]
 [ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/province.tscn" id="16_y4d8b"]
 [ext_resource type="PackedScene" path="res://Objects/Campaign/battle_menu.tscn" id="17_0w4y1"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="19_fqfku"]
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
@@ -43,10 +44,162 @@ army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource
 shader = ExtResource("12_f07y5")
 shader_parameter/tile_factor = 60.0
 shader_parameter/aspect_ratio = 1.0
-shader_parameter/time_factor = Vector2(0.5, 0.3)
+shader_parameter/time_factor = Vector2(0.6, 0.8)
 shader_parameter/offset_factor = Vector2(5, 2)
 shader_parameter/amplitude = Vector2(0.05, 0.05)
 shader_parameter/noise_secondary = ExtResource("13_1gxr8")
+
+[sub_resource type="Resource" id="Resource_ithon"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_jdyev"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_8eod6"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_5agkc"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_e2k0d"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_a0rrh"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_1lbf7"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_s2ba5"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_7gb58"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_t6tyw"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_pomde"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_ky01n"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_idvsy"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_qruqs"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_fjq51"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_70v67"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_x8qd3"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_cm107"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_ev51q"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_t14qw"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_0ao2d"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_p6i8i"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_hh34e"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_uclwc"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_ickj2"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_nur4h"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_xkwed"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_yi0x0"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_o5gcg"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_0e7e0"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_c35pp"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_vi6rm"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_a0sdj"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_sng07"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_5whpl"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_0a1uj"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_2frn4"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
+
+[sub_resource type="Resource" id="Resource_05g83"]
+resource_local_to_scene = true
+script = ExtResource("19_fqfku")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
@@ -161,7 +314,7 @@ scale = Vector2(46.4043, 26.5156)
 texture = ExtResource("13_m423k")
 script = ExtResource("14_ycv5f")
 noise_texture = ExtResource("13_1gxr8")
-velocity = Vector2(30, 10)
+velocity = Vector2(5, 2)
 
 [node name="Cool texturing" type="Polygon2D" parent="."]
 texture_repeat = 1
@@ -195,6 +348,7 @@ ID = 1
 terrain_type = "hills"
 income = 43.0
 population = 65000
+buildings_manager = SubResource("Resource_ithon")
 path0 = NodePath("../Etruria")
 
 [node name="PosProvince" parent="Italy/Rome" index="0"]
@@ -216,6 +370,7 @@ ownership = "ETRURIA"
 ID = 2
 income = 14.0
 population = 12000
+buildings_manager = SubResource("Resource_jdyev")
 path0 = NodePath("../Genua")
 
 [node name="PosProvince" parent="Italy/Etruria" index="0"]
@@ -237,6 +392,7 @@ outLine = Color(0.24, 0.42, 0.35, 1)
 ownership = "ROME"
 ID = 3
 terrain_type = "mountains"
+buildings_manager = SubResource("Resource_8eod6")
 path0 = NodePath("../Etruria")
 path1 = NodePath("../Rome")
 path2 = NodePath("../Piceni")
@@ -252,6 +408,7 @@ ID = 5
 terrain_type = "hills"
 income = 11.0
 population = 6800
+buildings_manager = SubResource("Resource_5agkc")
 path0 = NodePath("../Rome")
 path1 = NodePath("../Piceni")
 
@@ -262,6 +419,7 @@ polygon = PackedVector2Array(-9.40265, -22.5429, -3.40265, -15.5429, 0.597351, -
 outLine = Color(0.19, 0.29, 0.52, 1)
 ownership = "ROME"
 ID = 4
+buildings_manager = SubResource("Resource_e2k0d")
 path0 = NodePath("../Etruria")
 
 [node name="Neapolis" parent="Italy" node_paths=PackedStringArray("path0", "path1") instance=ExtResource("16_y4d8b")]
@@ -271,6 +429,7 @@ polygon = PackedVector2Array(-22.204, -14.0627, -25.204, -19.0627, -27.204, -24.
 outLine = Color(0.83, 0.56, 0.27, 1)
 ownership = "ROME"
 ID = 7
+buildings_manager = SubResource("Resource_a0rrh")
 path0 = NodePath("../Rome")
 path1 = NodePath("../Upper Apulia")
 
@@ -291,6 +450,7 @@ polygon = PackedVector2Array(-30, 13.2666, -32, 13.2666, -36, 15.2666, -36, 11.2
 outLine = Color(0.03, 0.47, 0.52, 1)
 ownership = "ROME"
 ID = 6
+buildings_manager = SubResource("Resource_1lbf7")
 path0 = NodePath("../Rome")
 path1 = NodePath("../Samnites")
 path2 = NodePath("../Neapolis")
@@ -303,6 +463,7 @@ polygon = PackedVector2Array(-39, -16.5, -39, -24.5, -34, -24.5, -30, -22.5, -28
 outLine = Color(0.35, 0.35, 0.49, 1)
 ownership = "ROME"
 ID = 8
+buildings_manager = SubResource("Resource_s2ba5")
 
 [node name="Lower Apulia" parent="Italy" node_paths=PackedStringArray("path0") instance=ExtResource("16_y4d8b")]
 position = Vector2(295.921, 12.6928)
@@ -311,6 +472,7 @@ polygon = PackedVector2Array(-27.8425, -23.881, -19.8425, -19.881, -13.8425, -17
 outLine = Color(0.85, 0.85, 0.79, 1)
 ID = 9
 culture = "greek"
+buildings_manager = SubResource("Resource_7gb58")
 path0 = NodePath("../Upper Apulia")
 
 [node name="Heraclea" parent="Italy" node_paths=PackedStringArray("path0", "path1", "path2", "path3") instance=ExtResource("16_y4d8b")]
@@ -319,6 +481,7 @@ color = Color(0.611765, 0.317647, 0.556863, 1)
 polygon = PackedVector2Array(32.922, 15.6471, 29.922, 19.6471, 25.922, 23.6471, 20.922, 23.6471, 16.922, 23.6471, 13.922, 26.6471, 12.922, 31.6471, 11.922, 33.6471, 9.922, 36.6471, 6.922, 37.6471, -2.078, 39.6471, -4.078, 39.6471, -8.078, 39.6471, -7.078, 34.6471, -9.078, 33.6471, -13.078, 31.6471, -15.078, 33.6471, -19.078, 35.6471, -22.078, 37.6471, -24.078, 35.6471, -26.078, 32.6471, -26.078, 31.6471, -24.078, 29.6471, -21.078, 26.6471, -20.078, 22.6471, -19.078, 18.6471, -18.078, 14.6471, -19.078, 10.6471, -21.078, 7.64709, -24.078, 3.64709, -27.078, 0.647095, -30.078, -2.35291, -31.078, -5.35291, -33.078, -9.35291, -33.078, -11.3529, -35.078, -16.3529, -37.078, -19.3529, -39.078, -21.3529, -38.078, -27.3529, -34.078, -30.3529, -31.078, -32.3529, -30.078, -33.3529, -30.078, -37.3529, -30.078, -42.3529, -31.078, -44.3529, -25.078, -45.3529, -20.078, -46.3529, -16.078, -46.3529, -14.078, -46.3529, -11.078, -44.3529, -11.078, -40.3529, -9.078, -36.3529, -9.078, -32.3529, -2.078, -32.3529, 1.922, -27.3529, 3.922, -23.3529, 5.922, -20.3529, 7.922, -18.3529, 10.922, -17.3529, 13.922, -17.3529, 17.922, -17.3529, 20.922, -18.3529, 23.922, -18.3529, 26.922, -18.3529, 27.922, -14.3529, 28.922, -11.3529, 28.922, -5.35291, 29.922, -1.35291, 30.922, 1.64709, 32.922, 2.64709, 34.922, 4.64709, 37.922, 4.64709, 37.922, 8.64709, 35.922, 11.6471)
 outLine = Color(0.36, 0.18, 0.32, 1)
 ID = 10
+buildings_manager = SubResource("Resource_t6tyw")
 path0 = NodePath("../Lower Apulia")
 path1 = NodePath("../Upper Apulia")
 path2 = NodePath("../Neapolis")
@@ -331,6 +494,7 @@ polygon = PackedVector2Array(-60.5224, -51.1656, -61.5224, -55.1656, -62.5224, -
 outLine = Color(0.72, 0.36, 0.15, 1)
 ID = 11
 culture = "greek"
+buildings_manager = SubResource("Resource_pomde")
 path0 = NodePath("../Sicily")
 
 [node name="Sicily" parent="Italy" instance=ExtResource("16_y4d8b")]
@@ -341,6 +505,7 @@ polygon = PackedVector2Array(28.7136, 66.6059, 22.7136, 66.6059, 14.7136, 65.605
 outLine = Color(0.37, 0.37, 0.37, 1)
 ID = 12
 culture = "greek"
+buildings_manager = SubResource("Resource_ky01n")
 
 [node name="Border" parent="Italy/Sicily" index="1"]
 points = PackedVector2Array(28.7136, 66.6059, 22.7136, 66.6059, 14.7136, 65.6059, 10.7136, 62.6059, 7.71362, 60.6059, 5.71362, 57.6059, 5.71362, 51.6059, 4.71362, 47.6059, 3.71362, 43.6059, 2.71362, 41.6059, -1.28638, 38.6059, -4.28638, 38.6059, -9.28638, 38.6059, -16.2864, 38.6059, -19.2864, 38.6059, -24.2864, 38.6059, -29.2864, 38.6059, -31.2864, 37.6059, -34.2864, 34.6059, -37.2864, 32.6059, -39.2864, 27.6059, -41.2864, 24.6059, -43.2864, 23.6059, -45.2864, 21.6059, -49.2864, 19.6059, -51.2864, 18.6059, -55.2864, 17.6059, -58.2864, 17.6059, -64.2864, 16.6059, -68.2864, 14.6059, -70.2864, 11.6059, -71.2864, 8.6059, -72.2864, 5.6059, -73.2864, 3.6059, -75.2864, 1.6059, -77.2864, 0.605896, -79.2864, -0.394104, -81.2864, -0.394104, -84.2864, -0.394104, -88.2864, -0.394104, -91.2864, -0.394104, -93.2864, -2.3941, -94.2864, -3.3941, -97.2864, -5.3941, -98.2864, -5.3941, -102.286, -6.3941, -105.286, -6.3941, -108.286, -6.3941, -110.286, -7.3941, -116.286, -9.3941, -118.286, -10.3941, -120.286, -12.3941, -121.286, -16.3941, -121.286, -18.3941, -121.286, -22.3941, -120.286, -25.3941, -120.286, -26.3941, -119.286, -32.3941, -119.286, -33.3941, -119.286, -37.3941, -118.286, -38.3941, -117.286, -39.3941, -114.286, -40.3941, -113.286, -42.3941, -112.286, -42.3941, -111.286, -44.3941, -110.286, -46.3941, -109.286, -48.3941, -107.286, -50.3941, -105.286, -51.3941, -103.286, -52.3941, -102.286, -52.3941, -101.286, -51.3941, -100.286, -50.3941, -99.2864, -48.3941, -97.2864, -46.3941, -96.2864, -45.3941, -94.2864, -44.3941, -92.2864, -42.3941, -91.2864, -42.3941, -89.2864, -42.3941, -85.2864, -41.3941, -82.2864, -41.3941, -81.2864, -42.3941, -80.2864, -44.3941, -78.2864, -46.3941, -77.2864, -48.3941, -76.2864, -50.3941, -75.2864, -52.3941, -72.2864, -53.3941, -70.2864, -53.3941, -66.2864, -52.3941, -64.2864, -50.3941, -59.2864, -47.3941, -55.2864, -46.3941, -51.2864, -45.3941, -46.2864, -43.3941, -45.2864, -39.3941, -44.2864, -35.3941, -42.2864, -33.3941, -40.2864, -30.3941, -38.2864, -28.3941, -33.2864, -25.3941, -29.2864, -24.3941, -24.2864, -24.3941, -19.2864, -25.3941, -13.2864, -27.3941, -5.28638, -29.3941, 2.71362, -30.3941, 8.71362, -30.3941, 14.7136, -31.3941, 20.7136, -32.3941, 23.7136, -34.3941, 27.7136, -35.3941, 30.7136, -35.3941, 32.7136, -36.3941, 35.7136, -37.3941, 38.7136, -37.3941, 41.7136, -36.3941, 44.7136, -34.3941, 47.7136, -34.3941, 50.7136, -33.3941, 55.7136, -34.3941, 58.7136, -35.3941, 62.7136, -38.3941, 65.7136, -40.3941, 68.7136, -42.3941, 71.7136, -43.3941, 75.7136, -44.3941, 78.7136, -44.3941, 82.7136, -44.3941, 86.7136, -44.3941, 89.7136, -44.3941, 90.7136, -43.3941, 90.7136, -42.3941, 89.7136, -41.3941, 87.7136, -40.3941, 86.7136, -39.3941, 84.7136, -37.3941, 82.7136, -35.3941, 81.7136, -33.3941, 80.7136, -32.3941, 78.7136, -28.3941, 76.7136, -26.3941, 74.7136, -23.3941, 73.7136, -22.3941, 72.7136, -20.3941, 71.7136, -19.3941, 70.7136, -16.3941, 68.7136, -14.3941, 67.7136, -11.3941, 65.7136, -8.3941, 63.7136, -7.3941, 61.7136, -4.3941, 60.7136, -1.3941, 59.7136, 1.6059, 57.7136, 4.6059, 56.7136, 5.6059, 54.7136, 7.6059, 54.7136, 10.6059, 52.7136, 12.6059, 52.7136, 14.6059, 52.7136, 17.6059, 54.7136, 20.6059, 54.7136, 22.6059, 57.7136, 25.6059, 58.7136, 27.6059, 60.7136, 28.6059, 61.7136, 30.6059, 60.7136, 34.6059, 58.7136, 36.6059, 57.7136, 38.6059, 57.7136, 42.6059, 59.7136, 43.6059, 62.7136, 45.6059, 63.7136, 49.6059, 63.7136, 52.6059, 61.7136, 55.6059, 59.7136, 58.6059, 56.7136, 60.6059, 54.7136, 61.6059, 54.7136, 64.6059, 53.7136, 66.6059, 51.7136, 67.6059, 50.7136, 70.6059, 49.7136, 71.6059, 47.7136, 72.6059, 44.7136, 72.6059, 43.7136, 71.6059, 41.7136, 69.6059, 40.7136, 67.6059, 37.7136, 66.6059, 34.7136, 66.6059, 28.7136, 66.6059, 22.7136, 66.6059)
@@ -358,6 +523,7 @@ ownership = "ETRURIA"
 ID = 13
 religion = "celtic"
 culture = "celt"
+buildings_manager = SubResource("Resource_idvsy")
 path0 = NodePath("../Etruria")
 path1 = NodePath("../Piceni")
 
@@ -370,6 +536,7 @@ ID = 14
 terrain_type = "mountains"
 religion = "celtic"
 culture = "celt"
+buildings_manager = SubResource("Resource_qruqs")
 path0 = NodePath("../Etruria")
 path1 = NodePath("../Province")
 
@@ -382,6 +549,7 @@ ID = 15
 terrain_type = "mountains"
 religion = "celtic"
 culture = "celt"
+buildings_manager = SubResource("Resource_fjq51")
 path0 = NodePath("../Genua")
 path1 = NodePath("../Aquilea")
 path2 = NodePath("../Province")
@@ -394,6 +562,7 @@ outLine = Color(0.407843, 0.631373, 0.631373, 1)
 ID = 16
 religion = "celtic"
 culture = "celt"
+buildings_manager = SubResource("Resource_70v67")
 path0 = NodePath("../Province")
 
 [node name="Corsica" parent="Italy" instance=ExtResource("16_y4d8b")]
@@ -403,6 +572,7 @@ polygon = PackedVector2Array(23.967, -12.4523, 23.967, -2.45227, 23.967, 2.54773
 outLine = Color(0.470588, 0.470588, 0.470588, 1)
 ID = 20
 terrain_type = "mountains"
+buildings_manager = SubResource("Resource_x8qd3")
 
 [node name="Sardinia" parent="Italy" instance=ExtResource("16_y4d8b")]
 position = Vector2(-153.003, 76.4886)
@@ -410,6 +580,7 @@ color = Color(0.368627, 0.360784, 0.968627, 1)
 outLine = Color(0.176471, 0.168627, 0.701961, 1)
 ID = 21
 terrain_type = "mountains"
+buildings_manager = SubResource("Resource_cm107")
 
 [node name="GreeceMap" type="Sprite2D" parent="."]
 visible = false
@@ -432,6 +603,7 @@ ownership = "SPARTA"
 ID = 100
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_ev51q")
 path0 = NodePath("../Messenia")
 path1 = NodePath("../Corinth")
 
@@ -453,6 +625,7 @@ outLine = Color(0.337255, 0.14902, 0.580392, 1)
 ownership = "SPARTA"
 ID = 102
 culture = "greek"
+buildings_manager = SubResource("Resource_t14qw")
 
 [node name="Corinth" parent="Greece" node_paths=PackedStringArray("path0") instance=ExtResource("16_y4d8b")]
 position = Vector2(19.8644, 127.526)
@@ -462,6 +635,7 @@ outLine = Color(0.760784, 0.760784, 0.494118, 1)
 ID = 101
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_0ao2d")
 path0 = NodePath("../Achaea")
 
 [node name="Arcadia" parent="Greece" node_paths=PackedStringArray("path0", "path1", "path2", "path3", "path4") instance=ExtResource("16_y4d8b")]
@@ -472,6 +646,7 @@ outLine = Color(0.388235, 0.811765, 0.466667, 1)
 ID = 104
 terrain_type = "mountains"
 culture = "greek"
+buildings_manager = SubResource("Resource_p6i8i")
 path0 = NodePath("../Sparta")
 path1 = NodePath("../Messenia")
 path2 = NodePath("../Province")
@@ -486,6 +661,7 @@ outLine = Color(0.278431, 0.701961, 0.65098, 1)
 ID = 103
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_hh34e")
 path0 = NodePath("../Achaea")
 path1 = NodePath("../Messenia")
 
@@ -496,6 +672,7 @@ polygon = PackedVector2Array(-11, 2.80957, -13, -1.19043, -16, -1.19043, -17, -1
 outLine = Color(0.505882, 0.831373, 0.831373, 1)
 ID = 106
 culture = "greek"
+buildings_manager = SubResource("Resource_uclwc")
 path0 = NodePath("../Corinth")
 path1 = NodePath("../Boethia")
 
@@ -508,6 +685,7 @@ ownership = "MACEDON"
 ID = 107
 terrain_type = "mountains"
 culture = "greek"
+buildings_manager = SubResource("Resource_ickj2")
 
 [node name="Thessaly" parent="Greece" node_paths=PackedStringArray("path0", "path1", "path2", "path3") instance=ExtResource("16_y4d8b")]
 position = Vector2(-11.0914, 18.386)
@@ -518,6 +696,7 @@ ownership = "MACEDON"
 ID = 109
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_nur4h")
 path0 = NodePath("../Pella")
 path1 = NodePath("../Epirus")
 path2 = NodePath("../Aetholia")
@@ -531,6 +710,7 @@ outLine = Color(0.337255, 0.0588235, 0.380392, 1)
 ownership = "MACEDON"
 ID = 112
 culture = "greek"
+buildings_manager = SubResource("Resource_xkwed")
 path0 = NodePath("../Epirus")
 path1 = NodePath("../Thesalonique")
 
@@ -542,6 +722,7 @@ outLine = Color(0.643137, 0.435294, 0.678431, 1)
 ownership = "MACEDON"
 ID = 113
 culture = "greek"
+buildings_manager = SubResource("Resource_yi0x0")
 
 [node name="Province2" parent="Greece" node_paths=PackedStringArray("path0", "path1") instance=ExtResource("16_y4d8b")]
 position = Vector2(186.67, -93.173)
@@ -551,6 +732,7 @@ outLine = Color(0.509804, 0.670588, 0.415686, 1)
 ownership = "MACEDON"
 ID = 114
 culture = "celt"
+buildings_manager = SubResource("Resource_o5gcg")
 path0 = NodePath("../Trace")
 path1 = NodePath("../Thesalonique")
 
@@ -562,6 +744,7 @@ outLine = Color(0.811765, 0.415686, 0.356863, 1)
 ID = 105
 terrain_type = "mountains"
 culture = "greek"
+buildings_manager = SubResource("Resource_0e7e0")
 path0 = NodePath("../Aetholia")
 
 [node name="Aetholia" parent="Greece" node_paths=PackedStringArray("path0", "path1") instance=ExtResource("16_y4d8b")]
@@ -572,6 +755,7 @@ outLine = Color(0, 0.0745098, 0.168627, 1)
 ID = 108
 terrain_type = "mountains"
 culture = "greek"
+buildings_manager = SubResource("Resource_c35pp")
 path0 = NodePath("../Boethia")
 path1 = NodePath("../Epirus")
 
@@ -583,6 +767,7 @@ outLine = Color(1, 0.501961, 0.188235, 1)
 ID = 111
 terrain_type = "mountains"
 culture = "greek"
+buildings_manager = SubResource("Resource_vi6rm")
 
 [node name="Euboea" parent="Greece" node_paths=PackedStringArray("path0", "path1", "path2") instance=ExtResource("16_y4d8b")]
 position = Vector2(68.4014, 84.1873)
@@ -592,6 +777,7 @@ outLine = Color(0.356863, 0.372549, 0.431373, 1)
 ID = 110
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_a0sdj")
 path0 = NodePath("../Athens")
 path1 = NodePath("../Boethia")
 path2 = NodePath("../Thessaly")
@@ -603,6 +789,7 @@ polygon = PackedVector2Array(14.5088, -9.42737, 24.5088, -1.42737, 35.5088, 0.57
 outLine = Color(0.329412, 0.0117647, 0.611765, 1)
 ID = 115
 culture = "celt"
+buildings_manager = SubResource("Resource_sng07")
 
 [node name="Crete" parent="Greece" instance=ExtResource("16_y4d8b")]
 position = Vector2(124.157, 314.507)
@@ -612,6 +799,7 @@ outLine = Color(0.470588, 0.831373, 0.439216, 1)
 ID = 150
 terrain_type = "hills"
 culture = "greek"
+buildings_manager = SubResource("Resource_5whpl")
 
 [node name="NorthAfrica" type="Node2D" parent="."]
 position = Vector2(486.298, 747.926)
@@ -626,6 +814,7 @@ ID = 500
 terrain_type = "desert"
 religion = "punic"
 culture = "phoenician"
+buildings_manager = SubResource("Resource_0a1uj")
 path0 = NodePath("../Nice")
 
 [node name="Nice" parent="NorthAfrica" instance=ExtResource("16_y4d8b")]
@@ -638,6 +827,7 @@ ID = 501
 terrain_type = "desert"
 religion = "punic"
 culture = "phoenician"
+buildings_manager = SubResource("Resource_2frn4")
 
 [node name="Test" parent="NorthAfrica" instance=ExtResource("16_y4d8b")]
 position = Vector2(33.6959, 180.309)
@@ -648,6 +838,7 @@ ID = 502
 terrain_type = "desert"
 religion = "punic"
 culture = "phoenician"
+buildings_manager = SubResource("Resource_05g83")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
