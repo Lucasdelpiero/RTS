@@ -5,6 +5,8 @@ var gold = 0
 @onready var goldLabel = %GoldLabel
 @onready var manpowerLabel = %ManpowerLabel
 
+@onready var buildingsUI = %BuildingsUI
+
 @onready var province = %Province
 @onready var populationLabel = %PopulationLabel
 @onready var incomeLabel = %IncomeLabel
@@ -42,6 +44,8 @@ func update_province_data(data : ProvinceData):
 	incomeLabel.text = "Income: %s" % [data.income]
 #	nameLabel.text = "alf"
 	nameLabel.text = "%s" %[data.name]
+	
+	buildingsUI.buildings = data.buildings
 	pass
 
 func set_province_visibility(value):

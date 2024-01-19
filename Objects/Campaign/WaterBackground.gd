@@ -14,8 +14,4 @@ func _physics_process(delta):
 	noise_texture.noise.offset.y += velocity.y * delta / scale.y
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#noise_texture.noise.offset.x += velocity.x * delta
-	#noise_texture.noise.offset.y += velocity.y * delta
-	pass
+

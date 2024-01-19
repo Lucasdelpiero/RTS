@@ -7,7 +7,7 @@ extends Control
 
 var buildings : Array[Building] :
 	set(value):
-		print(value)
+		#print(value)
 		var children = buildings_container.get_children()
 		if value.is_empty():
 			push_error("there are no buildings in the data provided")
@@ -19,8 +19,8 @@ var buildings : Array[Building] :
 			to_delete.queue_free()
 		
 		for building in value:
-			var button = ButtonBuilding.new()
-			add_child(button)
+			var button = ButtonBuilding.instantiate()
+			buildings_container.add_child(button)
 	
 			pass
 		
