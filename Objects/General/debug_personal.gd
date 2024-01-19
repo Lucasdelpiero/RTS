@@ -69,13 +69,13 @@ func update_label(node_to_follow : Node , property : String, prefix : String = "
 		container.position.y = -vbox.size.y
 		return
 
-func update_local_value_label(ID, value):
+func update_local_value_label(aID, value):
 	# Create label if there is none
-	var labels = vbox.get_children().filter(func(el): return (el.ID == ID))
+	var labels = vbox.get_children().filter(func(el): return (el.ID == aID))
 	if labels.size() == 0:
 		var new_label = DebugLocalLabel.instantiate() 
 		vbox.add_child(new_label)
-		new_label.ID = ID
+		new_label.ID = aID
 		new_label.text = str(value)
 		if font_size != 0: # 0 means "use the default font size"
 			new_label["theme_override_font_sizes/font_size"] = font_size
