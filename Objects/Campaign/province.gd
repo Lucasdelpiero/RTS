@@ -192,7 +192,7 @@ func send_data_to_ui(ui : CanvasLayer):
 	data.name = self.name
 	
 	data.buildings = buildings_manager.buildings # TODO improve this coupling
-	data.reference = self
+	data.province = self
 	
 	data.culture = culture
 	data.religion = religion

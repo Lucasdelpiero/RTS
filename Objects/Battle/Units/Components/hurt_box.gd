@@ -28,7 +28,7 @@ func _on_check_space_area_exited(_area):
 		p()
 	pass # Replace with function body.
 
-func recieved_attack(data : AttackData):
+func recieved_attack(_data : AttackData):
 	pass
 
 func p():

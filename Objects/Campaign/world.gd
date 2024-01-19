@@ -123,7 +123,6 @@ func get_province_name_by_position(aPosition : Vector2 ) -> String:
 		province_name = dictionary_ID_to_name[province_ID]
 	
 	return province_name
-	pass
 
 func send_data_to_ui():
 	var data = {

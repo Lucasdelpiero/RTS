@@ -220,16 +220,16 @@ func move_to_face_melee(areas):
 	var enemy_face_direction = Vector2(cos(closest.owner.rotation - PI /2), -sin(closest.owner.rotation + PI / 2)) 
 	var angle_from_enemy_to_other = closest.owner.global_position.angle_to_point(unit.global_position)
 	var v2 = Vector2(cos(angle_from_enemy_to_other), sin(angle_from_enemy_to_other))
-	var angle_difference = enemy_face_direction.angle_to(v2)
-	angle_difference = rad_to_deg(angle_difference)
-	angle_difference = abs(angle_difference)
+	var angle_diff = enemy_face_direction.angle_to(v2)  
+	angle_diff = rad_to_deg(angle_diff)
+	angle_diff = abs(angle_diff)
 	var side = true # boolean is easier to use than multiple conditions
 	var flank = ""
 	# Choose flank acording to the angle difference
-	if angle_difference < angle_to_flank:
+	if angle_diff < angle_to_flank:
 		flank = "Front"
 		side = false
-	if angle_difference > 180 - angle_to_flank and angle_difference < 180 + angle_to_flank:
+	if angle_diff > 180 - angle_to_flank and angle_diff < 180 + angle_to_flank:
 		flank = "Back"
 		side = false
 	if side:

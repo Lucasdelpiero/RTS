@@ -270,7 +270,7 @@ func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(data : AttackData):
+func recieved_attack(_data : AttackData):
 #	print("i recieved damage")
 #	print(data)
 	troops_number -= 10

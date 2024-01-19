@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmn2o2xccxjc7"]
+[gd_scene load_steps=4 format=3 uid="uid://bmn2o2xccxjc7"]
 
-[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_bjuop"]
+[ext_resource type="Texture2D" uid="uid://frbjurrhvkmw" path="res://Assets/ui/buildings/building_icon_government.png" id="1_mccp0"]
+[ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="2_d0f2u"]
 [ext_resource type="Script" path="res://Objects/Campaign/button_building.gd" id="2_rbxmc"]
 
 [node name="ButtonBuilding" type="TextureButton"]
 custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
 size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("1_bjuop")
+texture_normal = ExtResource("1_mccp0")
+texture_pressed = ExtResource("2_d0f2u")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_rbxmc")

@@ -120,40 +120,41 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="Container/Province/BuildingsUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.06
-anchor_top = -2.047
-anchor_right = -0.06
-anchor_bottom = -2.047
-offset_left = 24.14
-offset_top = -161.979
-offset_right = 338.14
-offset_bottom = 0.0210037
+anchor_left = -0.0548652
+anchor_top = -1.93977
+anchor_right = -0.0548652
+anchor_bottom = -1.93977
+offset_left = 17.502
+offset_top = -257.59
+offset_right = 425.502
+offset_bottom = -4.58989
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/Province/BuildingsUI/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI/PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/Province/BuildingsUI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_s16aa")
+stretch_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/Province/BuildingsUI/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Container/Province/BuildingsUI/PanelContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 2
-
-[node name="TextureRect" type="TextureRect" parent="Container/Province/BuildingsUI/PanelContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("5_s16aa")
-stretch_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Container/Province/BuildingsUI/PanelContainer/ScrollContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Province/BuildingsUI/PanelContainer/HBoxContainer/ScrollContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = -10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/Province/BuildingsUI/PanelContainer/ScrollContainer/GridContainer/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/Province/BuildingsUI/PanelContainer/HBoxContainer/ScrollContainer/MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3

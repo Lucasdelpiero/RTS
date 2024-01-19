@@ -2,7 +2,7 @@ class_name ProvinceData
 extends Resource
 
 
-var reference : Province = null
+var province : Province = null
 var name : String = "Unnamed"
 var income : float = 0.0
 var population : int = 1
