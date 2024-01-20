@@ -1,49 +1,42 @@
-[gd_resource type="Resource" script_class="BuildingFarm" load_steps=9 format=3 uid="uid://bc8rn3dsnhesl"]
+[gd_resource type="Resource" script_class="BuildingFarms" load_steps=10 format=3 uid="uid://bc8rn3dsnhesl"]
 
 [ext_resource type="Texture2D" uid="uid://247h8ipoedy8" path="res://Assets/ui/buildings/building_icon_farm_hover.png" id="1_6tnk0"]
 [ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="2_2w0k8"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/farm.gd" id="3_b6lwo"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_7hm47"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_farm.gd" id="4_5ektp"]
 
-[sub_resource type="Resource" id="Resource_0j2wc"]
-script = ExtResource("3_b6lwo")
+[sub_resource type="Resource" id="Resource_7cwax"]
+script = ExtResource("3_7hm47")
 level = 1
 cost = 100
 time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
-[sub_resource type="Resource" id="Resource_gafc4"]
-script = ExtResource("3_b6lwo")
+[sub_resource type="Resource" id="Resource_j2mox"]
+script = ExtResource("3_7hm47")
 level = 2
-cost = 300
+cost = 250
 time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
-[sub_resource type="Resource" id="Resource_cwmti"]
-script = ExtResource("3_b6lwo")
+[sub_resource type="Resource" id="Resource_80b18"]
+script = ExtResource("3_7hm47")
 level = 3
-cost = 400
-time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
-
-[sub_resource type="Resource" id="Resource_pnbdg"]
-script = ExtResource("3_b6lwo")
-level = 4
 cost = 500
 time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
-[sub_resource type="Resource" id="Resource_16xih"]
-script = ExtResource("3_b6lwo")
+[sub_resource type="Resource" id="Resource_xhy1a"]
+script = ExtResource("3_7hm47")
+level = 4
+cost = 1200
+time_to_build = 5
+
+[sub_resource type="Resource" id="Resource_aj410"]
+script = ExtResource("3_7hm47")
 level = 5
 cost = 2000
 time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
 [resource]
-script = ExtResource("3_b6lwo")
-level = 1
-cost = 100
-time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_0j2wc"), SubResource("Resource_gafc4"), SubResource("Resource_cwmti"), SubResource("Resource_pnbdg"), SubResource("Resource_16xih")])
+script = ExtResource("4_5ektp")
+levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_7cwax"), SubResource("Resource_j2mox"), SubResource("Resource_80b18"), SubResource("Resource_xhy1a"), SubResource("Resource_aj410")])
 icon_normal = ExtResource("2_2w0k8")
 icon_hover = ExtResource("1_6tnk0")

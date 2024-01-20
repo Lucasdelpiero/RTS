@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_r6qed"]
-[ext_resource type="Script" path="res://Objects/Campaign/BuildingsUI.gd" id="3_0vqlq"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings_UI.gd" id="3_e7y3r"]
 [ext_resource type="PackedScene" uid="uid://bmn2o2xccxjc7" path="res://Objects/Campaign/button_building.tscn" id="4_3i5kl"]
 [ext_resource type="Script" path="res://Objects/Campaign/map_types_manager.gd" id="4_d6fhq"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="4_pss78"]
@@ -93,7 +93,7 @@ offset_left = 22.0
 offset_top = 88.0
 offset_right = 341.0
 offset_bottom = 131.0
-script = ExtResource("3_0vqlq")
+script = ExtResource("3_e7y3r")
 
 [node name="BuildingsContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true
