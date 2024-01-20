@@ -24,6 +24,7 @@ extends Polygon2D
 @export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
 @export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
 @export var buildings_manager : BuildingsManager
+#var buildings_manager = null
 
 @export_group("Connections")
 var connections : Array

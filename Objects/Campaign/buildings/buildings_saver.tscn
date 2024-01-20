@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf3sobbna605c"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_saver.gd" id="1_xsh8n"]
-[ext_resource type="Resource" uid="uid://dmyl1kg71vlxy" path="res://Objects/Campaign/buildings/farm.tres" id="2_rw48d"]
+[ext_resource type="Resource" uid="uid://bc8rn3dsnhesl" path="res://Objects/Campaign/buildings/building_farm.tres" id="2_v0icq"]
 
 [node name="BuildingsSaver" type="Node"]
 script = ExtResource("1_xsh8n")
-building = ExtResource("2_rw48d")
+building = ExtResource("2_v0icq")

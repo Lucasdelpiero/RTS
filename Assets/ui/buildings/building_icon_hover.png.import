@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgkuvtdxlxnlw"
-path="res://.godot/imported/building_icon_hovered.png-a2e4367e8abc304dde3ef5d27b668b90.ctex"
+path="res://.godot/imported/building_icon_hover.png-4686b5d40bd1a12ce3532fa2f50667eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/buildings/building_icon_hovered.png"
-dest_files=["res://.godot/imported/building_icon_hovered.png-a2e4367e8abc304dde3ef5d27b668b90.ctex"]
+source_file="res://Assets/ui/buildings/building_icon_hover.png"
+dest_files=["res://.godot/imported/building_icon_hover.png-4686b5d40bd1a12ce3532fa2f50667eb.ctex"]
 
 [params]
 

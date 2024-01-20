@@ -1,17 +1,9 @@
-[gd_resource type="Resource" script_class="BuildingsManager" load_steps=5 format=3 uid="uid://danxlrxr3d84l"]
+[gd_resource type="Resource" script_class="BuildingsManager" load_steps=4 format=3 uid="uid://danxlrxr3d84l"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/government.gd" id="1_qqqtt"]
-[ext_resource type="Resource" uid="uid://dmyl1kg71vlxy" path="res://Objects/Campaign/buildings/farm.tres" id="2_ab301"]
+[ext_resource type="Resource" uid="uid://ckuslvdw4jnu4" path="res://Objects/Campaign/buildings/building_government.tres" id="1_lriku"]
+[ext_resource type="Resource" uid="uid://bc8rn3dsnhesl" path="res://Objects/Campaign/buildings/building_farm.tres" id="2_ud1nv"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="3_ti3yg"]
 
-[sub_resource type="Resource" id="Resource_xlnwb"]
-script = ExtResource("1_qqqtt")
-level = 1
-cost = 100
-time_to_build = 5
-levels = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
-
 [resource]
-resource_local_to_scene = true
 script = ExtResource("3_ti3yg")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([SubResource("Resource_xlnwb"), ExtResource("2_ab301")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("1_lriku"), ExtResource("2_ud1nv")])
