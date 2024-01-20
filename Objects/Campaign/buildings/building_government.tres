@@ -1,42 +1,31 @@
-[gd_resource type="Resource" script_class="BuildingGovernment" load_steps=10 format=3 uid="uid://ckuslvdw4jnu4"]
+[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://4ec0d48qoin4"]
 
 [ext_resource type="Texture2D" uid="uid://bl8l1kgli8nod" path="res://Assets/ui/buildings/building_icon_government_hover.png" id="1_sysoq"]
 [ext_resource type="Texture2D" uid="uid://frbjurrhvkmw" path="res://Assets/ui/buildings/building_icon_government.png" id="2_xpftv"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_government.gd" id="3_mymde"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_thl1t"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_bviel"]
 
-[sub_resource type="Resource" id="Resource_fulho"]
+[sub_resource type="Resource" id="Resource_8xh07"]
 script = ExtResource("3_thl1t")
 level = 1
-cost = 250
+cost = 100
 time_to_build = 5
 
-[sub_resource type="Resource" id="Resource_pbemn"]
+[sub_resource type="Resource" id="Resource_e82p4"]
 script = ExtResource("3_thl1t")
 level = 2
 cost = 500
 time_to_build = 5
 
-[sub_resource type="Resource" id="Resource_q765l"]
+[sub_resource type="Resource" id="Resource_3a4xk"]
 script = ExtResource("3_thl1t")
 level = 3
-cost = 1500
-time_to_build = 5
-
-[sub_resource type="Resource" id="Resource_lc486"]
-script = ExtResource("3_thl1t")
-level = 4
-cost = 5000
-time_to_build = 5
-
-[sub_resource type="Resource" id="Resource_c1rdq"]
-script = ExtResource("3_thl1t")
-level = 5
-cost = 1000
+cost = 1200
 time_to_build = 5
 
 [resource]
-script = ExtResource("3_mymde")
-levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_fulho"), SubResource("Resource_pbemn"), SubResource("Resource_q765l"), SubResource("Resource_lc486"), SubResource("Resource_c1rdq")])
+script = ExtResource("4_bviel")
+building_name = "building_government"
+levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
 icon_normal = ExtResource("2_xpftv")
 icon_hover = ExtResource("1_sysoq")

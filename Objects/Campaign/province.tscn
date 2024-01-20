@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjdrconndqyb4"]
+[gd_scene load_steps=6 format=3 uid="uid://bjdrconndqyb4"]
 
 [ext_resource type="Texture2D" uid="uid://cmid40lk2vvcp" path="res://Objects/Campaign/province_noise.tres" id="1_7hxuk"]
 [ext_resource type="Script" path="res://Objects/Campaign/province.gd" id="1_lhs2u"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/pos_province.tscn" id="2_h2bx7"]
 [ext_resource type="Resource" uid="uid://dhnhandtoa6w6" path="res://Objects/Campaign/map_colors.tres" id="2_xfuls"]
-[ext_resource type="Resource" uid="uid://ckuslvdw4jnu4" path="res://Objects/Campaign/buildings/building_government.tres" id="4_nut8e"]
-[ext_resource type="Resource" uid="uid://bc8rn3dsnhesl" path="res://Objects/Campaign/buildings/building_farm.tres" id="5_br6ul"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="6_6f7dn"]
-
-[sub_resource type="Resource" id="Resource_cqlw7"]
-resource_local_to_scene = true
-script = ExtResource("6_6f7dn")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("4_nut8e"), ExtResource("5_br6ul")])
+[ext_resource type="Resource" uid="uid://danxlrxr3d84l" path="res://Objects/Campaign/buildings/buildings_start.tres" id="4_kq3l2"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
 z_index = 20
@@ -22,7 +15,7 @@ texture = ExtResource("1_7hxuk")
 script = ExtResource("1_lhs2u")
 width = 4.0
 map_colors = ExtResource("2_xfuls")
-buildings_manager = SubResource("Resource_cqlw7")
+buildings_manager = ExtResource("4_kq3l2")
 
 [node name="PosProvince" parent="." instance=ExtResource("2_h2bx7")]
 unique_name_in_owner = true

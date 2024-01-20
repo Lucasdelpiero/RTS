@@ -5,11 +5,14 @@ extends Control
 @onready var buildings_container = %BuildingsContainer
 @onready var overview_container = %OverviewContainer
 @onready var ButtonBuilding  = preload("res://Objects/Campaign/button_building.tscn")
+@export var buildings_manager = BuildingsManager.new() # checks what can or can not be build
+
 
 var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
 		province_data = value
 		buildings = value.buildings
+		buildings_manager.province_data = value
 
 var buildings : Array[Building] :
 	set(value):
@@ -33,3 +36,4 @@ var buildings : Array[Building] :
 			button.texture_hover = building.icon_hover
 		
 		buildings = value
+
