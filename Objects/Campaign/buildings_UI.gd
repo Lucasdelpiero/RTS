@@ -27,11 +27,19 @@ var buildings : Array[Building] :
 		for to_delete in children:
 			to_delete.queue_free()
 		
-		for building in value:
+		for building in value as Array[Building]:
 			var button = ButtonBuilding.instantiate() as BuildingButton
 			buildings_container.add_child(button)
-
-			button.province_data = province_data
+			
+			var alf : Building = building
+			
+			print(value.size())
+			print(value)
+			print(alf.ICON_DEFAULT)
+			#print(province_data.name)
+			#if building.icon_normal == null:
+				#print("alfonso")
+			button.province_data  = province_data as ProvinceData
 			button.texture_normal = building.icon_normal
 			button.texture_hover = building.icon_hover
 		

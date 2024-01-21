@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Building" load_steps=7 format=3 uid="uid://co71laj0f6jun"]
+
+[ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="1_y56nn"]
+[ext_resource type="Texture2D" uid="uid://bl8l1kgli8nod" path="res://Assets/ui/buildings/building_icon_government_hover.png" id="2_7oruh"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_7dk65"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="3_m1vmv"]
+
+[sub_resource type="Resource" id="Resource_pis7k"]
+script = ExtResource("3_7dk65")
+level = 1
+cost = 100
+time_to_build = 5
+
+[sub_resource type="Resource" id="Resource_7mm8o"]
+script = ExtResource("3_7dk65")
+level = 1
+cost = 100
+time_to_build = 5
+
+[resource]
+script = ExtResource("3_m1vmv")
+building_type = "BUILDING_GOVERNMENT"
+levels = Array[ExtResource("3_7dk65")]([SubResource("Resource_pis7k"), SubResource("Resource_7mm8o")])
+icon_normal = ExtResource("2_7oruh")
+icon_hover = ExtResource("1_y56nn")
