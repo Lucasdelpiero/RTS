@@ -8,8 +8,7 @@ class_name Building
 @export_enum(
 	DEFAULT,
 	BUILDING_FARM,
-	BUILDING_GOVERNMENT,
-	#BUILDING_TEMPLE
+	BUILDING_GOVERNMENT
 ) var building_type : String = DEFAULT
 
 
@@ -24,16 +23,14 @@ var current_level = 1
 @export var icon_hover : Texture2D = ICON_DEFAULT
 
 #region CONSTANTS for buildings
-const DEFAULT : String = "DEFAULT"
-const BUILDING_GOVERNMENT : String = "BUILDING_GOVERNMENT"
-const BUILDING_FARM : String = "BUILDING_FARM"
-#const BUILDING_TEMPLE : String = "BUILDING_TEMPLE"
+const DEFAULT = "DEFAULT"
+const BUILDING_GOVERNMENT = "BUILDING_GOVERNMENT"
+const BUILDING_FARM = "BUILDING_FARM"
 
-var BUILDING_CONSTANTS : Array[String] = [
+var BUILDING_CONSTANTS : Array = [
 	DEFAULT,
 	BUILDING_GOVERNMENT,
-	BUILDING_FARM,
-	#BUILDING_TEMPLE
+	BUILDING_FARM
 ]
 #endregion
 

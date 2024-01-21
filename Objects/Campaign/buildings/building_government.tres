@@ -25,7 +25,9 @@ time_to_build = 5
 
 [resource]
 script = ExtResource("4_bviel")
+building_ID = "building_government"
 building_type = "BUILDING_GOVERNMENT"
+test = 2
 levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
 icon_normal = ExtResource("2_xpftv")
 icon_hover = ExtResource("1_sysoq")
