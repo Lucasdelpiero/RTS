@@ -7,6 +7,11 @@ var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
 		province_data = value
 		buildings = value.buildings
+		for building in buildings:
+			Globals.debug_update_label(
+				"%s_%s" % [province_data.name, building.building_type],
+				building.building_type
+			)
 
 
 var building_types : Array[Building] = [

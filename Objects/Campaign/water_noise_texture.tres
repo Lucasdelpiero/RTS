@@ -3,7 +3,7 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ybe52"]
 noise_type = 2
 frequency = 0.1
-offset = Vector3(4270.24, 2499.1, 0)
+offset = Vector3(4275.34, 2502.28, 0)
 
 [resource]
 seamless = true
