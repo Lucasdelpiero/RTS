@@ -1,10 +1,16 @@
 extends Resource
 class_name Building
 
+# Used to identify a building, uses strings stored in constants, as they are 
+# more confortable to use than enums, specially if adding buildings in between 2 values
+# as their value will be always the same string and not an "int" that changes value and needs workarounds
+# also the constants are easily shareable to other resources as an array
+@export_enum(
+	DEFAULT,
+	BUILDING_FARM,
+	BUILDING_GOVERNMENT
+) var building_type : String = DEFAULT
 
-@export var building_name : String = "" : # used to identify the building, ex: "building_farm"
-	set(value): # needs to have the value setted like this or it doesnt update the resource name
-		resource_name = value
 
 var province_data : ProvinceData = ProvinceData.new()
 
@@ -16,6 +22,17 @@ var current_level = 1
 @export var icon_normal : Texture2D = ICON_DEFAULT
 @export var icon_hover : Texture2D = ICON_DEFAULT
 
+#region CONSTANTS for buildings
+const DEFAULT = "DEFAULT"
+const BUILDING_GOVERNMENT = "BUILDING_GOVERNMENT"
+const BUILDING_FARM = "BUILDING_FARM"
+
+var BUILDING_CONSTANTS : Array = [
+	DEFAULT,
+	BUILDING_GOVERNMENT,
+	BUILDING_FARM
+]
+#endregion
 
 
 
