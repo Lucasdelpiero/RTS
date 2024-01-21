@@ -8,9 +8,22 @@ class_name Building
 @export_enum(
 	DEFAULT,
 	BUILDING_FARM,
-	BUILDING_GOVERNMENT
+	BUILDING_GOVERNMENT,
+	BUILDING_TEMPLE
 ) var building_type : String = DEFAULT
 
+#region CONSTANTS for buildings
+const DEFAULT = "DEFAULT"
+const BUILDING_GOVERNMENT = "BUILDING_GOVERNMENT"
+const BUILDING_FARM = "BUILDING_FARM"
+const BUILDING_TEMPLE = "BUILDING_TEMPLE"
+
+var BUILDING_CONSTANTS : Array = [
+	BUILDING_GOVERNMENT,
+	BUILDING_FARM,
+	BUILDING_TEMPLE
+]
+#endregion
 
 var province_data : ProvinceData = ProvinceData.new()
 
@@ -22,17 +35,7 @@ var current_level = 1
 @export var icon_normal : Texture2D = ICON_DEFAULT
 @export var icon_hover : Texture2D = ICON_DEFAULT
 
-#region CONSTANTS for buildings
-const DEFAULT = "DEFAULT"
-const BUILDING_GOVERNMENT = "BUILDING_GOVERNMENT"
-const BUILDING_FARM = "BUILDING_FARM"
 
-var BUILDING_CONSTANTS : Array = [
-	DEFAULT,
-	BUILDING_GOVERNMENT,
-	BUILDING_FARM
-]
-#endregion
 
 
 
