@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingsManager" load_steps=5 format=3 uid="uid://bxvwm4c6x2uue"]
+
+[ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="1_f1j76"]
+[ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="2_6mj56"]
+[ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="3_1c2i6"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="4_q6a85"]
+
+[resource]
+script = ExtResource("4_q6a85")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_6mj56"), ExtResource("1_f1j76")])
+building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_6mj56"), ExtResource("1_f1j76"), ExtResource("3_1c2i6")])

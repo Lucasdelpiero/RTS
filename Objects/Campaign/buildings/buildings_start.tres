@@ -5,5 +5,7 @@
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="3_ti3yg"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("3_ti3yg")
 buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("1_lriku"), ExtResource("2_ud1nv")])
+building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
