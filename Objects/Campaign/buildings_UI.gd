@@ -90,6 +90,8 @@ func _on_add_building_pressed():
 		button.province_data = province_data
 		button.texture_normal = building.icon_normal
 		button.texture_hover = building.icon_hover
+		button.building_reference = building.duplicate(true)
+		button.construction_started.connect(start_construction)
 	
 	to_be_built_container.visible = true
 	pass # Replace with function body.
@@ -97,3 +99,17 @@ func _on_add_building_pressed():
 
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
+
+func start_construction(aBuilding : Building):
+	var new_buildings = buildings.duplicate(true)
+	new_buildings.push_back(aBuilding.duplicate(true))
+	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)
+	
+	
+	# TEST , is just to update the UI
+	var UI : CampaignUI = Globals.campaign_UI
+	if UI == null:
+		push_error("Campaign UI has no reference")
+		return
+	province_data.province.send_data_to_ui(UI)
+	pass

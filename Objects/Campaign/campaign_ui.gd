@@ -23,6 +23,7 @@ var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mapTypesManager.new_map_selected.connect(change_map_shown)
+	Globals.campaign_UI = self
 	pass # Replace with function body.
 
 

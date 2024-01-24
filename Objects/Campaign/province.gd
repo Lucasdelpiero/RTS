@@ -187,7 +187,7 @@ func set_hovered(value):
 func set_selected(_value):
 	selected = true
 
-func send_data_to_ui(ui : CanvasLayer):
+func send_data_to_ui(ui : CampaignUI):
 	var data = ProvinceData.new()
 	data.income = income
 	data.population = population
