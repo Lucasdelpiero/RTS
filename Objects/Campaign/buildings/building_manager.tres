@@ -7,5 +7,5 @@
 
 [resource]
 script = ExtResource("4_q6a85")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_6mj56"), ExtResource("1_f1j76")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_6mj56"), ExtResource("1_f1j76"), ExtResource("3_1c2i6")])

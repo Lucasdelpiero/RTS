@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=12 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://ku2ja2ipe6a5" path="res://Assets/ui/buildings/building_icon.png" id="5_0c0te"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="5_s16aa"]
 [ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="6_ww1pg"]
-[ext_resource type="Texture2D" uid="uid://1ypb3er1qppp" path="res://Assets/mouse_normal_24.png" id="9_mspy8"]
-[ext_resource type="Texture2D" uid="uid://di5p3flkeexxd" path="res://Assets/mouse_blue_24.png" id="10_5yqvj"]
 
 [node name="CampaingUI" type="CanvasLayer"]
 script = ExtResource("1_m73j6")
@@ -100,7 +98,7 @@ offset_right = 341.0
 offset_bottom = 131.0
 script = ExtResource("3_e7y3r")
 buildings_manager = ExtResource("4_kfbbl")
-np_buildings_available_container = NodePath("ToBeBuiltContainer/ScrollContainer/HBoxContainer")
+buildings_available_container = NodePath("ToBeBuiltContainer/ScrollContainer/HBoxContainer")
 
 [node name="BuildingsContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true
@@ -179,6 +177,7 @@ fit_content = true
 
 [node name="ToBeBuiltContainer" type="PanelContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 anchor_left = -0.056
 anchor_top = -1.908
@@ -188,30 +187,12 @@ offset_left = 11.864
 offset_top = 51.044
 offset_right = 298.864
 offset_bottom = 131.044
-mouse_force_pass_scroll_events = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer"]
 layout_mode = 2
-mouse_filter = 0
-mouse_force_pass_scroll_events = false
 vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BackButton" type="TextureButton" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("9_mspy8")
-texture_hover = ExtResource("10_5yqvj")
-
-[node name="ButtonBuilding" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
-layout_mode = 2
-
-[node name="ButtonBuilding2" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
-layout_mode = 2
-
-[node name="ButtonBuilding3" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Container"]
@@ -283,7 +264,6 @@ layout_mode = 2
 text = " Culture"
 
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
-[connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
 [connection signal="resized" from="Container/PanelContainer/ArmiesContainer" to="Container/PanelContainer/ArmiesContainer" method="_on_resized"]
 [connection signal="pressed" from="Container/PanelContainer/ArmiesContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnPoliticalMap" to="Container/MapTypesManager" method="_on_btn_political_map_button_down"]

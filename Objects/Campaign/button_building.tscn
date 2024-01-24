@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmn2o2xccxjc7"]
+[gd_scene load_steps=3 format=3 uid="uid://bmn2o2xccxjc7"]
 
+[ext_resource type="Texture2D" uid="uid://ku2ja2ipe6a5" path="res://Assets/ui/buildings/building_icon.png" id="1_tlyx2"]
 [ext_resource type="Script" path="res://Objects/Campaign/button_building.gd" id="2_rbxmc"]
 
 [node name="ButtonBuilding" type="TextureButton"]
@@ -7,6 +8,7 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
 size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("1_tlyx2")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_rbxmc")
