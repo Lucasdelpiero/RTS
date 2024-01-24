@@ -56,7 +56,7 @@ func set_province_selected():
 		# The province will be selected only when there are not armies selected
 		if hovered.size() == 0:
 			provinceWithMouseOver.set_selected(true)
-			provinceWithMouseOver.send_data_to_ui(ui)
+			provinceWithMouseOver.send_data_to_ui()
 			provinceSelected = provinceWithMouseOver
 			world.provinceSelected = provinceSelected
 	pass

@@ -50,6 +50,7 @@ var world = null
 var hovered = false
 var selected = false
 var mouseOverSelf = false : set = send_mouse_over
+@onready var campaign_UI : CampaignUI = Globals.campaign_UI
 signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
 
@@ -187,7 +188,11 @@ func set_hovered(value):
 func set_selected(_value):
 	selected = true
 
-func send_data_to_ui(ui : CampaignUI):
+func send_data_to_ui():
+	if campaign_UI == null:
+		push_error("There is not reference to campaign UI in province")
+		return
+	
 	var data = ProvinceData.new()
 	data.income = income
 	data.population = population
@@ -199,9 +204,9 @@ func send_data_to_ui(ui : CampaignUI):
 	data.culture = culture
 	data.religion = religion
 	
-	sg_send_data_to_ui.connect(ui.update_province_data)
+	sg_send_data_to_ui.connect(campaign_UI.update_province_data)
 	emit_signal("sg_send_data_to_ui", data)
-	sg_send_data_to_ui.disconnect(ui.update_province_data)
+	sg_send_data_to_ui.disconnect(campaign_UI.update_province_data)
 
 
 

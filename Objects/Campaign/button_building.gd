@@ -1,7 +1,9 @@
 class_name BuildingButton
 extends TextureButton
 
-signal construction_started(value)
+# Connected from the buildings_UI script on the buildings available to be built
+# Tells the building UI when the construction starts, which triggers an update in the province UI
+signal sg_construction_started(value) 
 
 var building_reference : Building
 
@@ -21,5 +23,5 @@ func _on_pressed():
 		push_error("There is not reference to building in the button")
 		return
 	
-	construction_started.emit(building_reference)
+	sg_construction_started.emit(building_reference)
 	pass # Replace with function body.
