@@ -14,10 +14,9 @@ var province_data : ProvinceData = ProvinceData.new() :
 			#)
 		get_buildings_not_made(buildings)
 
-
 @export var building_types : Array[Building]  # Buildings that can be uilt
 
-func get_buildings_not_made(buildings : Array[Building]) -> Array[Building] :
+func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	 #Create a new resource to get the constants stored in a variable
 	var new_building : Building = Building.new()
 	var all_buildings_constants : Array = new_building.BUILDING_CONSTANTS
@@ -27,7 +26,7 @@ func get_buildings_not_made(buildings : Array[Building]) -> Array[Building] :
 	
 	# Add already built buildings in an array to know which ones are built in the province
 	var already_built_constants : Array = []
-	for building in buildings:
+	for building in aBuildings:
 		#if all_buildings_constants.has(building.building_type):
 			#already_built_constants.push_back(building.building_type)
 		if building.building_type in all_buildings_constants:
@@ -55,9 +54,3 @@ func get_buildings_not_made(buildings : Array[Building]) -> Array[Building] :
 	
 	return to_be_built
 
-# BUG loading these resources causes a crash 
-#const farm = building.new()
-var BUILDING_RESOURCES = [
-	#preload("res://Objects/Campaign/buildings/building_farm.tres"),
-	#preload("res://Objects/Campaign/buildings/building_government.tres") as Building,
-]

@@ -1,5 +1,8 @@
 extends Control
 
+# Used to send a signal to the province to ask them to update the UI using the send_data_to_ui function
+signal sg_update_UI_requested
+
 #TODO move this node and code to the UI folder
 
 @onready var buildings_container = %BuildingsContainer
@@ -17,28 +20,6 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 		buildings = value.buildings
 		buildings_manager.province_data = value
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
-		
-		
-		return 
-		if to_be_built.is_empty():
-			print("already built :)")
-		var new_buildings : Array[Building] = buildings.duplicate(true)
-		for building in to_be_built:
-			var button = ButtonBuilding.instantiate()
-			buildings_container.add_child(button)
-			
-			var new_building : Building
-			new_building = building.duplicate(true) as Building
-			
-			
-			new_buildings.push_back(new_building)
-			
-			button.province_data = province_data
-			button.texture_normal = building.icon_normal
-			button.texture_hover = building.icon_hover
-		# TEST
-		#value.province.buildings_manager.buildings = new_buildings
-		to_be_built_container.visible = false
 
 var buildings : Array[Building] :
 	set(value):
@@ -66,7 +47,6 @@ var buildings : Array[Building] :
 		buildings = value
 		to_be_built_container.visible = false
 
-# TEST to create buildings
 
 
 func _on_add_building_pressed():
@@ -100,10 +80,18 @@ func _on_add_building_pressed():
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
 
-func start_construction(aBuilding : Building):
+func start_construction(aBuilding : Building) -> void:
 	var new_buildings = buildings.duplicate(true)
 	new_buildings.push_back(aBuilding.duplicate(true))
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)
 	
-	province_data.province.send_data_to_ui()
+	# Done in this way to lower coupling
+	var province_to_update_UI : Province = province_data.province
+	if province_to_update_UI == null:
+		push_error("There is no reference to province in province data resource")
+		return
+	sg_update_UI_requested.connect(province_to_update_UI.send_data_to_ui)
+	sg_update_UI_requested.emit()
+	sg_update_UI_requested.disconnect(province_to_update_UI.send_data_to_ui)
+	
 
