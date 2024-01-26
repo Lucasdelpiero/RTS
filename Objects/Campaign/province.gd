@@ -19,7 +19,7 @@ extends Polygon2D
 @export_range(0, 10000, 1) var ID = 0
 @export_enum("plains", "hills", "mountains", "desert")  var terrain_type = "plains"
 @export_range(0.1, 10, 0.1) var weight = 1.0
-@export_range(0.1, 100, 0.1) var income = 10.0
+@export_range(0.1, 100, 0.1) var base_income = 10.0 
 @export_range(100, 100000, 1) var population = 1000
 @export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
 @export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
@@ -50,7 +50,7 @@ var world = null
 var hovered = false
 var selected = false
 var mouseOverSelf = false : set = send_mouse_over
-@onready var campaign_UI : CampaignUI = Globals.campaign_UI
+@onready var campaign_UI : CampaignUI 
 signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
 
@@ -63,18 +63,15 @@ func _ready():
 	var poly = get_polygon()
 	collision.set_polygon(poly)
 	
+	if Engine.is_editor_hint():
+		return
 	
-	if buildings_manager == null and not Engine.is_editor_hint():
+	campaign_UI = Globals.campaign_UI
+	
+	if buildings_manager == null :
 		#buildings_manager = BuildingsManager.new()
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 		push_error("building_manager had to be created") # just to test
-	var province_data := ProvinceData.new()
-	province_data.name = name
-	province_data.income = income
-	province_data.culture = culture
-	province_data.religion = religion
-	province_data.terrain_type = terrain_type
-	province_data.population = population
 	pass
 
 func _draw():
@@ -194,20 +191,25 @@ func send_data_to_ui():
 		return
 	
 	var data = ProvinceData.new()
-	data.income = income
-	data.population = population
-	data.name = self.name
-	
-	data.buildings = buildings_manager.buildings # TODO improve this coupling
-	data.province = self
-	
-	data.culture = culture
-	data.religion = religion
+	data.set_data_from_object(self) 
 	
 	sg_send_data_to_ui.connect(campaign_UI.update_province_data)
 	emit_signal("sg_send_data_to_ui", data)
 	sg_send_data_to_ui.disconnect(campaign_UI.update_province_data)
 
+func get_new_province_data():
+	
+	pass
+
+# This is not made in a getter funcion because when trying to change the value,
+# when accesing the value this one gets changed
+## Gets the income of the province after the modifiers are aplied
+func get_province_income() -> float:
+	var total_income : float = 0.0
+	# Below is where the calculation with the bonuses should be done 
+	total_income += base_income 
+	
+	return total_income
 
 
 

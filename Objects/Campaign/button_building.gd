@@ -19,6 +19,11 @@ var province_data : ProvinceData = ProvinceData.new() :
 
 
 func _on_pressed():
+	# NOTE I think that these safeguards are not even needed
+	if sg_construction_started.get_connections().size() < 1:
+		#print("Its not connected to anything")
+		return
+		
 	if building_reference == null:
 		push_error("There is not reference to building in the button")
 		return

@@ -42,7 +42,7 @@ func update_province_data(data : ProvinceData):
 		return
 	set_province_visibility(true)
 	populationLabel.text = "Population: %s" % [data.population]
-	incomeLabel.text = "Income: %s" % [data.income]
+	incomeLabel.text = "Income: %s" % [data.base_income]
 #	nameLabel.text = "alf"
 	nameLabel.text = "%s" %[data.name]
 	

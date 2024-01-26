@@ -81,6 +81,10 @@ func _on_back_button_pressed():
 	to_be_built_container.visible = false
 
 func start_construction(aBuilding : Building) -> void:
+	if aBuilding == null:
+		push_error("There is not building to be built")
+		return
+	
 	var new_buildings = buildings.duplicate(true)
 	new_buildings.push_back(aBuilding.duplicate(true))
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)
