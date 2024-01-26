@@ -186,6 +186,11 @@ func set_selected(_value):
 	selected = true
 
 func send_data_to_ui():
+	# NOTE: The campaign_UI is set again inside the funcion to avoid a bug where,
+	# if the mouse was over the province at the time of starting the world node
+	# it said that the campaign_UI was null, so this fixes it
+	campaign_UI = Globals.campaign_UI # <- fixes a bug
+	
 	if campaign_UI == null:
 		push_error("There is not reference to campaign UI in province")
 		return

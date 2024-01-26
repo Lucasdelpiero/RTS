@@ -19,11 +19,13 @@ signal changed_map_shown(type)
 
 var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
+func _init():
+	Globals.campaign_UI = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mapTypesManager.new_map_selected.connect(change_map_shown)
-	Globals.campaign_UI = self
+	#Globals.campaign_UI = self
 	pass # Replace with function body.
 
 
