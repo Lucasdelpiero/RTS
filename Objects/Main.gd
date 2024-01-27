@@ -13,14 +13,15 @@ func _ready():
 #	_save.world = self
 	Globals.main = self
 	playerNation = Globals.playerNation
-	_create_or_load_save()
-	load_game()
-
-	save_game()
-	save_game()
-	save_game()
-	save_game()
-	save_game()
+	
+	# TEST
+	#_create_or_load_save()
+	#load_game()
+	#save_game()
+	#save_game()
+	#save_game()
+	#save_game()
+	#save_game()
 
 	pass # Replace with function body.
 

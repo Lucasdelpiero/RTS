@@ -61,11 +61,23 @@ func initialize_world():
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	provinces = get_tree().get_nodes_in_group("provinces")
-	for province in provinces:
+	var nations_tags = nations.map(func(el): return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
+	for province in provinces as Array[Province]:
 		province.world = self
 		province.update_to_nation_color()
-		if not province.sg_mouseOverSelf.is_connected(mouse.update_province_selection):
+		# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
+		if not province.sg_mouseOverSelf.is_connected(mouse.update_province_selection): 
 			province.sg_mouseOverSelf.connect(mouse.update_province_selection)
+		
+		# Connect province with the nation owner to give them resources
+		if nations_tags.has(province.ownership):
+			var nation_pos = nations_tags.find(province.ownership) # can be used as condition for not finding it
+			var nation = nations[nation_pos]
+			# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
+			if not province.sg_resources_generated.is_connected(nation.resource_incoming):
+				province.sg_resources_generated.connect(nation.resource_incoming)
+
+		
 	send_data_to_ui()
 
 func _unhandled_input(_event):
@@ -166,3 +178,12 @@ func _on_btn_start_battle_pressed():
 
 func new_unit_selected(value):
 	UI.update_selected_armies(value)
+
+# TEST
+func _on_timer_generate_resources_timeout():
+	for province in provinces as Array[Province]:
+		province.generate_resources()
+	for nation in nations as Array[Nation]:
+		nation.process_resources_recieved()
+		pass
+	pass # Replace with function body.

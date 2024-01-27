@@ -9,6 +9,8 @@ class_name Nation
 @export_range(0, 500000, 1) var manpower = 10000
 @export var isPlayer = false
 
+var resources_generated : Array = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_colors()
@@ -18,6 +20,17 @@ func set_colors():
 	for a in armies:
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally
+
+func resource_incoming(data):
+	resources_generated.push_back(data)
+
+func process_resources_recieved():
+	var total = resources_generated.reduce(func(a,b): return a + b)
+	gold += total
+	print("nation: %s  money: %s" % [NATION_TAG, gold])
+	pass
+
+
 
 # The nations stores all their data and their armies data and returns it to be used in the savegame
 func save():
@@ -58,4 +71,5 @@ func load_data(data : Dictionary):
 		var scene = load(army.filename).instantiate() 
 		add_child(scene)
 		scene.load_data(army)
+
 

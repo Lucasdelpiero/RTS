@@ -290,7 +290,10 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="World" type="Node2D" groups=["world"]]
 position = Vector2(67, 153)
 script = ExtResource("1_xpr24")
-metadata/_edit_lock_ = true
+
+[node name="TimerGenerateResources" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="Mouse" parent="." instance=ExtResource("2_5u4og")]
 
@@ -1064,6 +1067,7 @@ offset_bottom = 335.0
 
 [node name="Debug" parent="." instance=ExtResource("23_ae5rc")]
 
+[connection signal="timeout" from="TimerGenerateResources" to="." method="_on_timer_generate_resources_timeout"]
 [connection signal="pressed" from="BattleMenu/Btn_StartBattle" to="." method="_on_btn_start_battle_pressed"]
 
 [editable path="Mouse"]

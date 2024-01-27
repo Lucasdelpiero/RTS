@@ -53,6 +53,7 @@ var mouseOverSelf = false : set = send_mouse_over
 @onready var campaign_UI : CampaignUI 
 signal sg_mouseOverSelf(mouseOverSelf)
 signal sg_send_data_to_ui(data)
+signal sg_resources_generated(data) # sent to the nation, needs to be rewired when the ownership changes
 
 
 func _ready():
@@ -202,9 +203,10 @@ func send_data_to_ui():
 	emit_signal("sg_send_data_to_ui", data)
 	sg_send_data_to_ui.disconnect(campaign_UI.update_province_data)
 
-func get_new_province_data():
-	
-	pass
+
+func generate_resources():
+	var resources = get_province_income()
+	sg_resources_generated.emit(resources)
 
 # This is not made in a getter funcion because when trying to change the value,
 # when accesing the value this one gets changed
