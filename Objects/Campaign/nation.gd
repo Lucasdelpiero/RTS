@@ -27,7 +27,10 @@ func resource_incoming(data):
 func process_resources_recieved():
 	var total = resources_generated.reduce(func(a,b): return a + b)
 	gold += total
-	print("nation: %s  money: %s" % [NATION_TAG, gold])
+	
+	# Reset the resources for the next frame
+	resources_generated.clear()
+	print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
 	pass
 
 
