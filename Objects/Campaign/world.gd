@@ -48,6 +48,7 @@ func initialize_world():
 			playerNation = nation.NATION_TAG
 			playerNode = nation
 			Globals.playerNation = nation.NATION_TAG
+			nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
 	
 	for army in get_tree().get_nodes_in_group("armies"):
 		army.world = self

@@ -2,6 +2,8 @@
 extends Node
 class_name Nation
 
+signal sg_update_resources_ui(data)
+
 @export var NATION_TAG  = ""
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
 @export_color_no_alpha var nationColor = Color(0, 0, 0)
@@ -27,10 +29,16 @@ func resource_incoming(data):
 func process_resources_recieved():
 	var total = resources_generated.reduce(func(a,b): return a + b)
 	gold += total
-	
+
 	# Reset the resources for the next frame
 	resources_generated.clear()
-	print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
+	#print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
+	
+	var data : Dictionary = {
+		"gold" = gold,
+		"manpower" = manpower
+	}
+	sg_update_resources_ui.emit(data)
 	pass
 
 

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
 [ext_resource type="PackedScene" uid="uid://cflnvw8xegsy5" path="res://Objects/General/camera.tscn" id="3_h1dnb"]
 [ext_resource type="PackedScene" uid="uid://cynwt6kdn6rk7" path="res://Objects/Campaign/campaign_ui.tscn" id="4_h0nd8"]
-[ext_resource type="PackedScene" path="res://Objects/Campaign/nation.tscn" id="5_j8h1j"]
+[ext_resource type="PackedScene" uid="uid://dwmaniuju8qd7" path="res://Objects/Campaign/nation.tscn" id="5_j8h1j"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/army.tscn" id="6_rnqqn"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/hastati.tres" id="7_msm0q"]
 [ext_resource type="Resource" path="res://Objects/Campaign/bowman.tres" id="8_v3wbt"]
