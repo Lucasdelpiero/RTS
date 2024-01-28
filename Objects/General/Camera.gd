@@ -43,17 +43,28 @@ func _input(_event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Get a constant time so the camera physics are not tied to the game speed
+	var ENGINE_SPEED : float = Engine.time_scale
+	var CONSTANT_TIME : float = delta / ENGINE_SPEED 
+	
 	# Camera axis input
 	xInput = int(Input.is_action_pressed("Right")) - int(Input.is_action_pressed("Left"))
 	yInput = int(Input.is_action_pressed("Down")) - int(Input.is_action_pressed("Up"))
 	# Use the input and the angle to give the apropiate velocity
-	velocity.x += (xInput * aceleration * delta / zoom.x) * cos(rotation)  + (yInput * aceleration * delta / zoom.x) * -sin(rotation)
-	velocity.x = clamp(velocity.x, -speed * delta / zoom.x, speed * delta / zoom.x)
-	velocity.x = lerp(velocity.x, 0.0, desaceleration  * delta )
+	#velocity.x += (xInput * aceleration * delta / zoom.x) * cos(rotation)  + (yInput * aceleration * delta / zoom.x) * -sin(rotation)
+	velocity.x += (xInput * aceleration * CONSTANT_TIME / zoom.x) * cos(rotation)  + (yInput * aceleration * CONSTANT_TIME / zoom.x) * -sin(rotation)
+	velocity.x = clamp(velocity.x, -speed  / zoom.x, speed  / zoom.x)
 	
-	velocity.y += (yInput * aceleration * delta / zoom.x) * cos(rotation) + (xInput * aceleration * delta / zoom.x) * sin(rotation)
-	velocity.y = clamp(velocity.y, -speed * delta / zoom.x, +speed * delta/ zoom.x)
-	velocity.y = lerp(velocity.y, 0.0, desaceleration * delta)
+	if xInput == 0:
+		velocity.x = lerp(velocity.x, 0.0, desaceleration * CONSTANT_TIME )
+	
+	#velocity.y += (yInput * aceleration * delta / zoom.x) * cos(rotation) + (xInput * aceleration * delta / zoom.x) * sin(rotation)
+	velocity.y += (yInput * aceleration * CONSTANT_TIME / zoom.x) * cos(rotation) + (xInput * aceleration * CONSTANT_TIME / zoom.x) * sin(rotation)
+	velocity.y = clamp(velocity.y, -speed  / zoom.x, +speed / zoom.x)
+	if yInput == 0:
+		velocity.y = lerp(velocity.y, 0.0, desaceleration * CONSTANT_TIME)
+	
+	
 	global_position += velocity 
 	
 	# Zoom in-out

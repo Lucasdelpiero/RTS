@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://br1hpckyt33d4"]
+
+[ext_resource type="Script" path="res://Objects/UI/SpeedButtonContainer.gd" id="1_nw54p"]
+[ext_resource type="Texture2D" uid="uid://c4aulh8ahlgtm" path="res://Assets/ui/speed_icons/time_speeds_icons_0_32.png" id="2_qq6x5"]
+[ext_resource type="Texture2D" uid="uid://i2hhdp35mcb1" path="res://Assets/ui/speed_icons/time_speeds_icons_1_32.png" id="3_1plsg"]
+[ext_resource type="Texture2D" uid="uid://cb45rjgb1k6pe" path="res://Assets/ui/speed_icons/time_speeds_icons_2_32.png" id="4_fyljp"]
+[ext_resource type="Texture2D" uid="uid://c6dc62mkrhjp4" path="res://Assets/ui/speed_icons/time_speeds_icons_3_32.png" id="5_os4td"]
+
+[node name="SpeedButtonContainer" type="HBoxContainer"]
+process_mode = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_nw54p")
+
+[node name="BtnTimeStop" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("2_qq6x5")
+
+[node name="BtnTimeNormal" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("3_1plsg")
+
+[node name="BtnTimeFast" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("4_fyljp")
+
+[node name="BtnTimeFaster" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("5_os4td")
+
+[connection signal="pressed" from="BtnTimeStop" to="." method="_on_btn_time_stop_pressed"]
+[connection signal="pressed" from="BtnTimeNormal" to="." method="_on_btn_time_normal_pressed"]
+[connection signal="pressed" from="BtnTimeFast" to="." method="_on_btn_time_fast_pressed"]
+[connection signal="pressed" from="BtnTimeFaster" to="." method="_on_btn_time_faster_pressed"]

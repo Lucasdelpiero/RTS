@@ -18,6 +18,7 @@ size = Vector2(44, 30)
 radius = 63.1269
 
 [node name="Army" type="CharacterBody2D" groups=["armies", "persistent"]]
+process_mode = 1
 z_index = 100
 z_as_relative = false
 script = ExtResource("1_836ho")

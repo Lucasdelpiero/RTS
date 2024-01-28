@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://danxlrxr3d84l" path="res://Objects/Campaign/buildings/buildings_start.tres" id="4_kq3l2"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
+process_mode = 3
 z_index = 20
 z_as_relative = false
 texture_repeat = 2

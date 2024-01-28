@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c6ellbjmw3vay" path="res://Objects/Campaign/world.tscn" id="2_sb100"]
 
 [node name="Main" type="Node2D" groups=["main"]]
+process_mode = 3
 script = ExtResource("1_uyp36")
 
 [node name="World" parent="." instance=ExtResource("2_sb100")]
+process_mode = 3

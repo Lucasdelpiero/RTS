@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=15 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="6_ww1pg"]
 [ext_resource type="Texture2D" uid="uid://1ypb3er1qppp" path="res://Assets/mouse_normal_24.png" id="9_mspy8"]
 [ext_resource type="Texture2D" uid="uid://di5p3flkeexxd" path="res://Assets/mouse_blue_24.png" id="10_5yqvj"]
+[ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
 
 [node name="CampaingUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_m73j6")
 
 [node name="Container" type="Control" parent="."]
@@ -281,6 +283,18 @@ text = " Religion "
 [node name="BtnCultureMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
 text = " Culture"
+
+[node name="TimePanel" type="PanelContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -279.0
+offset_bottom = 44.0
+grow_horizontal = 0
+
+[node name="SpeedButtonContainer" parent="Container/TimePanel" instance=ExtResource("14_x8ggf")]
+layout_mode = 2
 
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
