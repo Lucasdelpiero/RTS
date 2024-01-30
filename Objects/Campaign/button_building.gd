@@ -1,5 +1,5 @@
 class_name BuildingButton
-extends TextureButton
+extends Button
 
 # Connected from the buildings_UI script on the buildings available to be built
 # Tells the building UI when the construction starts, which triggers an update in the province UI

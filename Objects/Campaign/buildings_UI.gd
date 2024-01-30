@@ -14,6 +14,7 @@ signal sg_update_UI_requested
 @export var np_buildings_available_container : NodePath # Show buttons of available buildings
 @onready var buildings_available_container = get_node(np_buildings_available_container)
 
+# Icons for the buildings stored in the UI manager to avoid wasting memory on a texture for each building
 @export_group("Buildings icons")
 @export var icon_default : Texture2D 
 @export var icon_building_government : Texture2D
@@ -30,7 +31,6 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 
 var buildings : Array[Building] :
 	set(value):
-		#print(value)
 		var children = buildings_container.get_children()
 		if value.is_empty():
 			push_error("There are no buildings in the data provided")
@@ -46,10 +46,8 @@ var buildings : Array[Building] :
 			var button = ButtonBuilding.instantiate() as BuildingButton
 			buildings_container.add_child(button)
 			
-			
 			button.province_data = province_data
-			button.texture_normal = building.icon_normal
-			button.texture_hover = building.icon_hover
+			button.icon = get_icon_for_building(building.building_type)
 		
 		buildings = value
 		to_be_built_container.visible = false
@@ -74,12 +72,8 @@ func _on_add_building_pressed():
 		var button = ButtonBuilding.instantiate() as BuildingButton
 		buildings_available_container.add_child(button)
 		
-		var type = building.building_type
-		var icon_building  = get_icon_for_building(type)
 		button.province_data = province_data
-		button.texture_normal = icon_building
-		#button.texture_normal = building.icon_normal
-		#button.texture_hover = building.icon_hover
+		button.icon = get_icon_for_building(building.building_type)
 		button.building_reference = building.duplicate(true)
 		button.sg_construction_started.connect(start_construction)
 	
@@ -90,8 +84,9 @@ func _on_add_building_pressed():
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
 
+# Uses the string in "building_type" in the resource to return the corresponding icon
+# each new building type needs to get added here with a corresponding icon stored in a variable
 func get_icon_for_building(type : String) -> Texture2D:
-	print(type)
 	match type:
 		"BUILDING_FARM": return icon_building_farm
 		"BUILDING_GOVERNMENT": return icon_building_government

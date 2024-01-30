@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=16 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
@@ -14,8 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://frbjurrhvkmw" path="res://Assets/ui/buildings/building_icon_government.png" id="6_ov8gu"]
 [ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="6_ww1pg"]
 [ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="7_83dcm"]
-[ext_resource type="Texture2D" uid="uid://1ypb3er1qppp" path="res://Assets/mouse_normal_24.png" id="9_mspy8"]
-[ext_resource type="Texture2D" uid="uid://di5p3flkeexxd" path="res://Assets/mouse_blue_24.png" id="10_5yqvj"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
 
 [node name="CampaingUI" type="CanvasLayer"]
@@ -124,10 +122,10 @@ offset_top = 64.0
 offset_right = 72.0
 offset_bottom = 128.0
 
-[node name="AddBuilding" type="TextureButton" parent="Container/Province/BuildingsUI/BuildingsContainer"]
+[node name="AddBuilding" type="Button" parent="Container/Province/BuildingsUI/BuildingsContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_0c0te")
-texture_hover = ExtResource("6_ww1pg")
+focus_mode = 0
+icon = ExtResource("5_0c0te")
 
 [node name="ButtonBuilding" parent="Container/Province/BuildingsUI/BuildingsContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
@@ -209,10 +207,9 @@ vertical_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BackButton" type="TextureButton" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("9_mspy8")
-texture_hover = ExtResource("10_5yqvj")
+icon = ExtResource("6_ww1pg")
 
 [node name="ButtonBuilding" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
