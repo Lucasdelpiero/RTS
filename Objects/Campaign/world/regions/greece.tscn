@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgehpwaqij6we"]
 
-[ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/province.tscn" id="1_pqysy"]
+[ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/world/province.tscn" id="1_pqysy"]
 
 [node name="Greece" type="Node2D"]
 position = Vector2(1200, 482)

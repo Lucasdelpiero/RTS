@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmn2o2xccxjc7"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/button_building.gd" id="2_rbxmc"]
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/button_building.gd" id="2_rbxmc"]
 
 [node name="ButtonBuilding" type="Button"]
 custom_minimum_size = Vector2(64, 64)
