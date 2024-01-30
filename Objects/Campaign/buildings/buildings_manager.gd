@@ -16,6 +16,7 @@ var province_data : ProvinceData = ProvinceData.new() :
 
 @export var building_types : Array[Building]  # Buildings that can be uilt
 
+
 func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	 #Create a new resource to get the constants stored in a variable
 	var new_building : Building = Building.new()

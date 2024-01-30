@@ -14,6 +14,13 @@ signal sg_update_UI_requested
 @export var np_buildings_available_container : NodePath # Show buttons of available buildings
 @onready var buildings_available_container = get_node(np_buildings_available_container)
 
+@export_group("Buildings icons")
+@export var icon_default : Texture2D 
+@export var icon_building_government : Texture2D
+@export var icon_building_farm : Texture2D
+@export var icon_building_temple : Texture2D
+
+
 var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked on a province
 	set(value):
 		province_data = value
@@ -67,9 +74,12 @@ func _on_add_building_pressed():
 		var button = ButtonBuilding.instantiate() as BuildingButton
 		buildings_available_container.add_child(button)
 		
+		var type = building.building_type
+		var icon_building  = get_icon_for_building(type)
 		button.province_data = province_data
-		button.texture_normal = building.icon_normal
-		button.texture_hover = building.icon_hover
+		button.texture_normal = icon_building
+		#button.texture_normal = building.icon_normal
+		#button.texture_hover = building.icon_hover
 		button.building_reference = building.duplicate(true)
 		button.sg_construction_started.connect(start_construction)
 	
@@ -79,6 +89,14 @@ func _on_add_building_pressed():
 
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
+
+func get_icon_for_building(type : String) -> Texture2D:
+	print(type)
+	match type:
+		"BUILDING_FARM": return icon_building_farm
+		"BUILDING_GOVERNMENT": return icon_building_government
+		"BUILDING_TEMPLE": return icon_building_temple
+		_: return icon_default
 
 func start_construction(aBuilding : Building) -> void:
 	if aBuilding == null:

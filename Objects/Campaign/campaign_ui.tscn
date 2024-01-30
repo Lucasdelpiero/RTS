@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=18 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
@@ -9,8 +9,11 @@
 [ext_resource type="Resource" uid="uid://bxvwm4c6x2uue" path="res://Objects/Campaign/buildings/building_manager.tres" id="4_kfbbl"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="4_pss78"]
 [ext_resource type="Texture2D" uid="uid://ku2ja2ipe6a5" path="res://Assets/ui/buildings/building_icon.png" id="5_0c0te"]
+[ext_resource type="Texture2D" uid="uid://bl8l1kgli8nod" path="res://Assets/ui/buildings/building_icon_government_hover.png" id="5_1n137"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="5_s16aa"]
+[ext_resource type="Texture2D" uid="uid://frbjurrhvkmw" path="res://Assets/ui/buildings/building_icon_government.png" id="6_ov8gu"]
 [ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="6_ww1pg"]
+[ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="7_83dcm"]
 [ext_resource type="Texture2D" uid="uid://1ypb3er1qppp" path="res://Assets/mouse_normal_24.png" id="9_mspy8"]
 [ext_resource type="Texture2D" uid="uid://di5p3flkeexxd" path="res://Assets/mouse_blue_24.png" id="10_5yqvj"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
@@ -103,6 +106,10 @@ offset_bottom = 131.0
 script = ExtResource("3_e7y3r")
 buildings_manager = ExtResource("4_kfbbl")
 np_buildings_available_container = NodePath("ToBeBuiltContainer/ScrollContainer/HBoxContainer")
+icon_default = ExtResource("6_ww1pg")
+icon_building_government = ExtResource("6_ov8gu")
+icon_building_farm = ExtResource("7_83dcm")
+icon_building_temple = ExtResource("5_1n137")
 
 [node name="BuildingsContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true
