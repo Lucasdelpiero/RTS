@@ -14,16 +14,19 @@ extends Polygon2D
 
 @export_category("Ownership")
 @export var ownership := ""
+var nation_owner : Nation  = null # used to get bonuses for resources
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID = 0
 @export_enum("plains", "hills", "mountains", "desert")  var terrain_type = "plains"
 @export_range(0.1, 10, 0.1) var weight = 1.0
-@export_range(0.1, 100, 0.1) var base_income = 10.0 
 @export_range(100, 100000, 1) var population = 1000
+@export_range(0.1, 100, 0.1) var base_income = 10.0 
 @export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
 @export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
 @export var buildings_manager : BuildingsManager
+var nation_bonuses : Array[Bonus] = []
+@export var province_bonuses : Array[Bonus] = []
 #var buildings_manager = null
 
 @export_group("Connections")
@@ -205,18 +208,38 @@ func send_data_to_ui():
 
 
 func generate_resources():
+	# Avoid generating resources for provinces without a nation
+	if nation_owner == null:
+		return
+		
 	var resources = get_province_income()
 	sg_resources_generated.emit(resources)
 
 # This is not made in a getter funcion because when trying to change the value,
 # when accesing the value this one gets changed
 ## Gets the income of the province after the modifiers are aplied
-func get_province_income() -> float:
-	var total_income : float = 0.0
-	# Below is where the calculation with the bonuses should be done 
-	total_income += base_income 
+func get_province_income() -> Production:
+	var base_production : Production = Production.new()
+	var bonuses : Array[Bonus] = get_province_bonuses(buildings_manager, nation_owner)
 	
-	return total_income
+	#base_production.base_income = base_income
+	#base_production.base_soldiers_growth = base 
+	
+	return base_production
 
+# Gets the bonuses from the buildings and the nation into a single array
+func get_province_bonuses(buildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
+	if nation == null:
+		push_error("There is not a nation owner of this province")
+		return []
+	
+	# TEST
+	if name != "Rome":
+		return []
+	
+	var bonuses : Array[Bonus] = []
+	var local_province_bonuses : Array[Bonus] = buildings_manager.get_buildings_bonuses()
+	
+	return []
 
 

@@ -19,3 +19,4 @@ time_to_build = 5
 script = ExtResource("3_ls77v")
 building_type = "BUILDING_TEMPLE"
 levels = Array[ExtResource("3_4becn")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
+bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])

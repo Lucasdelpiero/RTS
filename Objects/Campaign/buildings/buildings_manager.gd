@@ -23,7 +23,7 @@ func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	var all_buildings_constants : Array = new_building.BUILDING_CONSTANTS
 	
 	
-	Globals.debug_update_label("constants", "constants: %s" %[all_buildings_constants])
+	#Globals.debug_update_label("constants", "constants: %s" %[all_buildings_constants])
 	
 	# Add already built buildings in an array to know which ones are built in the province
 	var already_built_constants : Array = []
@@ -33,7 +33,7 @@ func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 		if building.building_type in all_buildings_constants:
 			already_built_constants.push_back(building.building_type)
 	
-	Globals.debug_update_label("built", "built: %s" %[already_built_constants])
+	#Globals.debug_update_label("built", "built: %s" %[already_built_constants])
 	
 	# Get buildings that hasnt been built in the city
 	var buildings_types_available_to_build : Array = []
@@ -42,7 +42,7 @@ func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 			buildings_types_available_to_build.push_back(constant)
 	
 	
-	Globals.debug_update_label("available", "available: %s" % [buildings_types_available_to_build])
+	#Globals.debug_update_label("available", "available: %s" % [buildings_types_available_to_build])
 	
 	# Put the buildings that can be built in an array as a resource
 	var to_be_built : Array[Building] = []
@@ -50,8 +50,34 @@ func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 		if building.building_type in buildings_types_available_to_build:
 			to_be_built.push_back(building)
 	
-	Globals.debug_update_label("to_be_built", "to be built: %s" % [to_be_built])
+	#Globals.debug_update_label("to_be_built", "to be built: %s" % [to_be_built])
 	
 	
 	return to_be_built
 
+# Get the bonuses from all buildgins and merge them into an array where all bonuses of the same type are merged into a unique bonus
+func get_buildings_bonuses() -> Array[Bonus]:
+	
+	var bonuses : Array[Bonus] = []
+
+	# Check in each building
+	for building in buildings:
+		# Check each bonus in the buildings
+		for bonus in building.bonuses:
+			# Check if a bonus of the same type is saved in the array
+			var bonus_pos = bonuses.map(func(el) : return el.type).filter(func(el) : return el != "default").find(bonus.type) 
+			
+			# If doesnt exists in the bonuses array, add it
+			# A new resource has to be created, otherwise the value of the bonus is not reseted for the next calculation
+			var new_bonus = Bonus.new()
+			new_bonus.type = bonus.type
+			new_bonus.multiplier_bonus = bonus.multiplier_bonus
+			
+			if bonus_pos == -1:
+				bonuses.push_back(new_bonus)
+				continue # avoids going below 
+			
+			# If it already exits, increase its value by merging them
+			bonuses[bonus_pos].multiplier_bonus += bonus.multiplier_bonus
+
+	return bonuses

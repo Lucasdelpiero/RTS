@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://4ec0d48qoin4"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://4ec0d48qoin4"]
 
+[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_058d8"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_thl1t"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_bviel"]
+
+[sub_resource type="Resource" id="Resource_0l6iu"]
+script = ExtResource("1_058d8")
+type = "bonus_income"
+multiplier_bonus = 0.1
+
+[sub_resource type="Resource" id="Resource_hs75h"]
+script = ExtResource("1_058d8")
+type = "bonus_income"
+multiplier_bonus = 0.1
+
+[sub_resource type="Resource" id="Resource_xbk5j"]
+script = ExtResource("1_058d8")
+type = "bonus_income"
+multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_8xh07"]
 script = ExtResource("3_thl1t")
@@ -25,3 +41,4 @@ time_to_build = 5
 script = ExtResource("4_bviel")
 building_type = "BUILDING_GOVERNMENT"
 levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
+bonuses = Array[ExtResource("1_058d8")]([SubResource("Resource_0l6iu"), SubResource("Resource_hs75h"), SubResource("Resource_xbk5j")])

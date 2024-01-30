@@ -75,7 +75,8 @@ func initialize_world():
 		# Connect province with the nation owner to give them resources
 		if nations_tags.has(province.ownership):
 			var nation_pos = nations_tags.find(province.ownership) # can be used as condition for not finding it
-			var nation = nations[nation_pos]
+			var nation = nations[nation_pos] 
+			province.nation_owner = nation as Nation # Add reference to the province to send resources bonus data
 			# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
 			if not province.sg_resources_generated.is_connected(nation.resource_incoming):
 				province.sg_resources_generated.connect(nation.resource_incoming)
