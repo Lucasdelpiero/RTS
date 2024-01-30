@@ -7,6 +7,6 @@ position = Vector2(660, 343)
 ignore_rotation = false
 script = ExtResource("1_2inml")
 speed = 3000
-aceleration = 200
+aceleration = 150
 desaceleration = 15
 zoom_min = 0.2

@@ -298,8 +298,7 @@ autostart = true
 [node name="Mouse" parent="." instance=ExtResource("2_5u4og")]
 
 [node name="Camera" parent="." instance=ExtResource("3_h1dnb")]
-speed = 20
-aceleration = 100
+aceleration = 150
 
 [node name="CampaingUI" parent="." instance=ExtResource("4_h0nd8")]
 unique_name_in_owner = true
