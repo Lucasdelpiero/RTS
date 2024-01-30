@@ -70,7 +70,7 @@ func _process(delta):
 	# Zoom in-out
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)
 	target_zoom.y = clamp(target_zoom.y, zoom_min, zoom_max)
-	set_zoom(lerp(zoom, target_zoom, delta * zoom_speed)) # animation
+	set_zoom(lerp(zoom, target_zoom, CONSTANT_TIME * zoom_speed)) # animation
 	
 	var rotate_camera = int(Input.is_action_pressed("rotate_right")) - int(Input.is_action_pressed("rotate_left"))
 	rotation_degrees += rotate_camera 
