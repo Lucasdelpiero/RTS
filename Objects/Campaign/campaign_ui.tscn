@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui.gd" id="1_m73j6"]
-[ext_resource type="Script" path="res://Objects/Campaign/ArmiesContainer.gd" id="2_hbtxh"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/ArmiesContainer.gd" id="2_hbtxh"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_r6qed"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings_UI.gd" id="3_e7y3r"]
 [ext_resource type="PackedScene" uid="uid://bmn2o2xccxjc7" path="res://Objects/Campaign/button_building.tscn" id="4_3i5kl"]

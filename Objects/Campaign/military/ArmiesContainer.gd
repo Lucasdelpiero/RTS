@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 @onready var vbox = $VBoxContainer
-var ArmyCampaignUI = load("res://Objects/Campaign/army_campaign_ui.tscn")
+var ArmyCampaignUI = load("res://Objects/Campaign/military/army_campaign_ui.tscn")
 
 func updateArmiesData(data : Array[ArmyCampaing]):
 	var children = vbox.get_children()

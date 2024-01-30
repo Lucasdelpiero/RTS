@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cflnvw8xegsy5" path="res://Objects/General/camera.tscn" id="3_h1dnb"]
 [ext_resource type="PackedScene" uid="uid://cynwt6kdn6rk7" path="res://Objects/Campaign/campaign_ui.tscn" id="4_h0nd8"]
 [ext_resource type="PackedScene" uid="uid://dwmaniuju8qd7" path="res://Objects/Campaign/nation.tscn" id="5_j8h1j"]
-[ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/army.tscn" id="6_rnqqn"]
-[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/hastati.tres" id="7_msm0q"]
-[ext_resource type="Resource" path="res://Objects/Campaign/bowman.tres" id="8_v3wbt"]
-[ext_resource type="Script" path="res://Objects/Campaign/army_data.gd" id="9_5dn3s"]
+[ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="6_rnqqn"]
+[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/hastati.tres" id="7_msm0q"]
+[ext_resource type="Resource" path="res://Objects/Campaign/military/bowman.tres" id="8_v3wbt"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/army_data.gd" id="9_5dn3s"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Shader" path="res://Objects/Campaign/water.gdshader" id="12_f07y5"]
 [ext_resource type="Texture2D" uid="uid://bjojgo41sopy" path="res://Objects/Campaign/water_noise_texture.tres" id="13_1gxr8"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://woeoxt74h51w" path="res://Objects/Campaign/terrain_decoration/mountain_sprite.tscn" id="16_2ii1p"]
 [ext_resource type="PackedScene" uid="uid://doro7yhp67ejg" path="res://Objects/Campaign/terrain_decoration/mountains_sprite.tscn" id="16_xm6lb"]
 [ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/province.tscn" id="16_y4d8b"]
-[ext_resource type="PackedScene" path="res://Objects/Campaign/battle_menu.tscn" id="17_0w4y1"]
+[ext_resource type="PackedScene" path="res://Objects/Campaign/military/battle_menu.tscn" id="17_0w4y1"]
 [ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="19_jlb3w"]
 [ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="20_5w16y"]
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="21_kmvxn"]
@@ -298,7 +298,6 @@ autostart = true
 [node name="Mouse" parent="." instance=ExtResource("2_5u4og")]
 
 [node name="Camera" parent="." instance=ExtResource("3_h1dnb")]
-aceleration = 150
 
 [node name="CampaingUI" parent="." instance=ExtResource("4_h0nd8")]
 unique_name_in_owner = true

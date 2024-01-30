@@ -1,7 +1,5 @@
-[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://cfr1ud767efnn"]
+[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://cfr1ud767efnn"]
 
-[ext_resource type="Texture2D" uid="uid://247h8ipoedy8" path="res://Assets/ui/buildings/building_icon_farm_hover.png" id="1_6tnk0"]
-[ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="2_2w0k8"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_7hm47"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_2bf05"]
 
@@ -39,5 +37,3 @@ time_to_build = 5
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
-icon_normal = ExtResource("2_2w0k8")
-icon_hover = ExtResource("1_6tnk0")
