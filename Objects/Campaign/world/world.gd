@@ -43,12 +43,14 @@ func initialize_world():
 #	army.get_to_closer_point(map)
 	
 	nations = nationsGroup.get_children()
-	for nation in nations:
+	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
 			playerNode = nation
 			Globals.playerNation = nation.NATION_TAG
-			nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
+			 # Used to not reconnect when reloading the world
+			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
+				nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
 	
 	for army in get_tree().get_nodes_in_group("armies"):
 		army.world = self

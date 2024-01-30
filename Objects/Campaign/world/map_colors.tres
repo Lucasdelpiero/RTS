@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MapColors" load_steps=2 format=3 uid="uid://dhnhandtoa6w6"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/map_colors.gd" id="1_nt3u2"]
+[ext_resource type="Script" path="res://Objects/Campaign/world/map_colors.gd" id="1_nt3u2"]
 
 [resource]
 script = ExtResource("1_nt3u2")

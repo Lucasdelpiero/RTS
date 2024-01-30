@@ -5,7 +5,7 @@ var playerArmy : Array = []
 var enemyArmy : Array = []
 var playerNation = ""
 
-var World = preload("res://Objects/Campaign/world.tscn")
+var World = preload("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
 
 # Called when the node enters the scene tree for the first time.

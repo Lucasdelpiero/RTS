@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_r6qed"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings_UI.gd" id="3_e7y3r"]
 [ext_resource type="PackedScene" uid="uid://bmn2o2xccxjc7" path="res://Objects/Campaign/button_building.tscn" id="4_3i5kl"]
-[ext_resource type="Script" path="res://Objects/Campaign/map_types_manager.gd" id="4_d6fhq"]
+[ext_resource type="Script" path="res://Objects/Campaign/world/map_types_manager.gd" id="4_d6fhq"]
 [ext_resource type="Resource" uid="uid://bxvwm4c6x2uue" path="res://Objects/Campaign/buildings/building_manager.tres" id="4_kfbbl"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="4_pss78"]
 [ext_resource type="Texture2D" uid="uid://ku2ja2ipe6a5" path="res://Assets/ui/buildings/building_icon.png" id="5_0c0te"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://c6ellbjmw3vay"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/world.gd" id="1_xpr24"]
+[ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
 [ext_resource type="PackedScene" uid="uid://cflnvw8xegsy5" path="res://Objects/General/camera.tscn" id="3_h1dnb"]
 [ext_resource type="PackedScene" uid="uid://cynwt6kdn6rk7" path="res://Objects/Campaign/campaign_ui.tscn" id="4_h0nd8"]
