@@ -7,7 +7,7 @@ signal sg_update_UI_requested
 
 @onready var buildings_container = %BuildingsContainer
 @onready var overview_container = %OverviewContainer
-@onready var ButtonBuilding  = preload("res://Objects/Campaign/button_building.tscn")
+@onready var ButtonBuilding  = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
 @export var buildings_manager : BuildingsManager # checks what can or can not be build
 
 @onready var to_be_built_container = %ToBeBuiltContainer # used to show or not the buildings container

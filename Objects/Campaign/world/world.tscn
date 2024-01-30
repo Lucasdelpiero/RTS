@@ -30,19 +30,19 @@
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
-army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt")])
+army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt")])
 
 [sub_resource type="Resource" id="Resource_q8c0w"]
 script = ExtResource("9_5dn3s")
-army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
 
 [sub_resource type="Resource" id="Resource_kdomc"]
 script = ExtResource("9_5dn3s")
-army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q")])
 
 [sub_resource type="Resource" id="Resource_v5grm"]
 script = ExtResource("9_5dn3s")
-army_units = Array[Resource("res://Objects/Campaign/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q")])
+army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smi75"]
 shader = ExtResource("12_f07y5")
