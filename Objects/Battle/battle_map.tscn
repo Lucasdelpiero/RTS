@@ -263,9 +263,12 @@ autostart = true
 [node name="Camera" parent="." instance=ExtResource("2_a41j7")]
 unique_name_in_owner = true
 zoom = Vector2(0.3, 0.3)
+aceleration = 300
+desaceleration = 30
 zoom_min = 0.1
-starting_zoom = 0.3
-zoom_difference = 0.05
+zoom_max = 0.4
+starting_zoom = 0.2
+zoom_difference = 0.03
 
 [node name="Mouse" parent="." instance=ExtResource("2_mnpce")]
 unique_name_in_owner = true

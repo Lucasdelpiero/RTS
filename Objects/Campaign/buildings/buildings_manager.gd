@@ -63,7 +63,8 @@ func get_buildings_bonuses() -> Array[Bonus]:
 	# Check in each building
 	for building in buildings:
 		# Check each bonus in the buildings
-		for bonus in building.bonuses:
+		var building_level_bonuses  : Array[Bonus] = building.levels[building.current_level - 1].bonuses
+		for bonus in building_level_bonuses:
 			# Check if a bonus of the same type is saved in the array
 			var bonus_pos = bonuses.map(func(el) : return el.type).filter(func(el) : return el != "default").find(bonus.type) 
 			
@@ -79,5 +80,5 @@ func get_buildings_bonuses() -> Array[Bonus]:
 			
 			# If it already exits, increase its value by merging them
 			bonuses[bonus_pos].multiplier_bonus += bonus.multiplier_bonus
-
+			
 	return bonuses

@@ -1,40 +1,51 @@
-[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://cfr1ud767efnn"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://cfr1ud767efnn"]
 
+[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_rut7e"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_7hm47"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_2bf05"]
+
+[sub_resource type="Resource" id="Resource_gkg4t"]
+script = ExtResource("1_rut7e")
+type = "bonus_income"
+multiplier_bonus = 9.0
 
 [sub_resource type="Resource" id="Resource_bnhxp"]
 script = ExtResource("3_7hm47")
 level = 1
 cost = 100
 time_to_build = 5
+bonuses = Array[ExtResource("1_rut7e")]([SubResource("Resource_gkg4t")])
 
 [sub_resource type="Resource" id="Resource_2x3o1"]
 script = ExtResource("3_7hm47")
 level = 2
 cost = 250
 time_to_build = 5
+bonuses = Array[ExtResource("1_rut7e")]([])
 
 [sub_resource type="Resource" id="Resource_1u6p7"]
 script = ExtResource("3_7hm47")
 level = 3
 cost = 500
 time_to_build = 5
+bonuses = Array[ExtResource("1_rut7e")]([])
 
 [sub_resource type="Resource" id="Resource_soppo"]
 script = ExtResource("3_7hm47")
 level = 4
 cost = 1000
 time_to_build = 5
+bonuses = Array[ExtResource("1_rut7e")]([])
 
 [sub_resource type="Resource" id="Resource_6tary"]
 script = ExtResource("3_7hm47")
 level = 5
 cost = 2500
 time_to_build = 5
+bonuses = Array[ExtResource("1_rut7e")]([])
 
 [resource]
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
+current_level = 1
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])

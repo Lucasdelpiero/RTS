@@ -27,9 +27,8 @@ var BUILDING_CONSTANTS : Array = [
 
 var province_data : ProvinceData = ProvinceData.new()
 
-var current_level = 1
+@export var current_level : int = 1
 @export var levels : Array[BuildingData] = []
-@export var bonuses : Array[Bonus] = []
 
 
 

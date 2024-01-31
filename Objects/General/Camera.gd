@@ -14,7 +14,7 @@ var velocity = Vector2(0.0, 0.0)
 var target_zoom := Vector2(1.0, 1.0)
 var drag_start := Vector2(0.0, 0.0)
 var drag_end := Vector2(0.0, 0.0)
-@export_range(0.05, 0.3, 0.05) var zoom_difference = 0.1
+@export_range(0.01, 0.3, 0.01) var zoom_difference = 0.05
 
 
 # Called when the node enters the scene tree for the first time.

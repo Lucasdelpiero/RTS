@@ -209,6 +209,7 @@ size_flags_horizontal = 3
 
 [node name="BackButton" type="Button" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("6_ww1pg")
 
 [node name="ButtonBuilding" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]

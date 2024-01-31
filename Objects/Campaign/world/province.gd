@@ -212,23 +212,29 @@ func generate_resources():
 	if nation_owner == null:
 		return
 		
-	var resources = get_province_income()
-	sg_resources_generated.emit(resources)
+	var resources_produced = get_province_income()
+	sg_resources_generated.emit(resources_produced)
 
 # This is not made in a getter funcion because when trying to change the value,
 # when accesing the value this one gets changed
 ## Gets the income of the province after the modifiers are aplied
 func get_province_income() -> Production:
-	var base_production : Production = Production.new()
+	var production : Production = Production.new()
 	var bonuses : Array[Bonus] = get_province_bonuses(buildings_manager, nation_owner)
 	
-	#base_production.base_income = base_income
-	#base_production.base_soldiers_growth = base 
+	for bonus in bonuses:
+		match bonus.type:
+			"bonus_income": 
+				production.taxes = base_income * (1.0 + bonus.multiplier_bonus)
+			"bonus_manpower":
+				production.manpower_growth = max(10, population / 100) * (1 + bonus.multiplier_bonus)
 	
-	return base_production
+	#base_production.base_manpower_growth = 
+	
+	return production
 
 # Gets the bonuses from the buildings and the nation into a single array
-func get_province_bonuses(buildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
+func get_province_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
 	if nation == null:
 		push_error("There is not a nation owner of this province")
 		return []
@@ -237,9 +243,8 @@ func get_province_bonuses(buildings_manager : BuildingsManager, nation : Nation)
 	if name != "Rome":
 		return []
 	
-	var bonuses : Array[Bonus] = []
-	var local_province_bonuses : Array[Bonus] = buildings_manager.get_buildings_bonuses()
+	var local_province_bonuses : Array[Bonus] = aBuildings_manager.get_buildings_bonuses()
 	
-	return []
+	return local_province_bonuses
 
 

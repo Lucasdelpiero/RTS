@@ -29,28 +29,19 @@ func resource_incoming(data : Production):
 
 func process_resources_recieved():
 	
-	var total = resources_generated.map(func(el): return el.base_income).reduce(func(a,b): return a + b)
-	if total == null:
+	var total_gold_generated = resources_generated.map(func(el): return el.taxes).reduce(func(a,b): return a + b)
+	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return
 	
-	gold += total
+	gold += total_gold_generated
 	
-	#markup to a function to calc the earnings
-	var national_bonus : float = 0.1
-	var provincial_bonus : float = 0.2
-	var total_bonus : float = national_bonus + provincial_bonus
+	var total_manpower_generated = resources_generated.map(func(el): return el.manpower_growth).reduce(func(a,b): return a + b)
+	if total_manpower_generated == null:
+		push_error("Error in calculating resources")
+		return
 	
-	var total_generated = total * (1.0 + total_bonus)
-	
-	Globals.debug_update_label("generated", "generated: %s = %s * (1.0 + %s + %s)" % 
-	[
-		total_generated,
-		total,
-		national_bonus, 
-		provincial_bonus
-	]
-	)
+	manpower += total_manpower_generated
 	
 	# Reset the resources for the next frame
 	resources_generated.clear()
