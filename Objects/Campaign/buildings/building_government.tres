@@ -26,7 +26,7 @@ cost = 100
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
 bonuses = Array[ExtResource("1_058d8")]([SubResource("Resource_r70ct"), SubResource("Resource_5jmbf"), SubResource("Resource_u7gy1")])
-description = "The [color=AQUAMARINE][i][hint=Resources are pretty cool]resources[/hint][/i][/color] gives you stuff
+description = "The [url=50][color=AQUAMARINE][i][hint=Resources are pretty cool]resources[/hint][/i][/color][/url] gives you stuff
 
 "
 

@@ -1,5 +1,5 @@
 class_name OverviewContainer
-extends PanelContainer
+extends Control
 
 @onready var labelCost : Label = %LabelCost
 @onready var labelBuildTime : Label = %LabelBuildTime
@@ -23,5 +23,11 @@ func hide_building_overview() -> void:
 	hide()
 
 
-func _on_description_text_meta_hover_ended(meta: Variant) -> void:
+func _on_description_text_meta_clicked(meta: Variant) -> void:
+	print(meta)
+	pass # Replace with function body.
+
+
+func _on_close_button_pressed() -> void:
+	hide()
 	pass # Replace with function body.

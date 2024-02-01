@@ -6,7 +6,7 @@ signal sg_update_UI_requested
 #TODO move this node and code to the UI folder
 
 @onready var buildings_container = %BuildingsContainer
-@onready var overview_container = %OverviewContainer
+@onready var overview_container : Control = %OverviewContainer
 @onready var ButtonBuilding  = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
 @export var buildings_manager : BuildingsManager # checks what can or can not be build
 

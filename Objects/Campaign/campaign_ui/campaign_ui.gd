@@ -2,8 +2,8 @@ extends CanvasLayer
 class_name CampaignUI
 
 var gold = 0
-@onready var goldLabel = %GoldLabel
-@onready var manpowerLabel = %ManpowerLabel
+@onready var goldLabel : RichTextLabel = %GoldLabel
+@onready var manpowerLabel : RichTextLabel = %ManpowerLabel
 
 @onready var buildingsUI = %BuildingsUI
 
@@ -34,8 +34,20 @@ func _process(_delta):
 	pass
 
 func update_data(data):
-	goldLabel.text = "Gold: %d" % [data.gold]
-	manpowerLabel.text = "Manpower: %d" % [data.manpower]
+	#goldLabel.text = "Gold: %d" % [data.gold]
+	goldLabel.clear()
+	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
+	goldLabel.push_color(Color.GOLD) # 2
+	goldLabel.add_text("Gold" )
+	goldLabel.pop() # 2
+	goldLabel.add_text(": %d" % [data.gold])
+	goldLabel.pop() # 1
+	
+	manpowerLabel.clear()
+	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1
+	manpowerLabel.add_text("Manpower: %d" % [data.manpower])
+	manpowerLabel.pop() # 1
+	#manpowerLabel.text = "Manpower: %d" % [data.manpower]
 	pass
 
 func update_province_data(data : ProvinceData):
@@ -74,5 +86,4 @@ func change_map_shown(type):
 func _on_button_pressed():
 #	print("btn pressed")
 	pass # Replace with function body.
-
 
