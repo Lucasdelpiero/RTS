@@ -29,14 +29,14 @@ func resource_incoming(data : Production):
 
 func process_resources_recieved():
 	
-	var total_gold_generated = resources_generated.map(func(el): return el.taxes).reduce(func(a,b): return a + b)
+	var total_gold_generated = resources_generated.map(func(el): return el.gold).reduce(func(a,b): return a + b)
 	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return
 	
 	gold += total_gold_generated
 	
-	var total_manpower_generated = resources_generated.map(func(el): return el.manpower_growth).reduce(func(a,b): return a + b)
+	var total_manpower_generated = resources_generated.map(func(el): return el.manpower).reduce(func(a,b): return a + b)
 	if total_manpower_generated == null:
 		push_error("Error in calculating resources")
 		return

@@ -30,7 +30,12 @@ var province_data : ProvinceData = ProvinceData.new()
 @export var current_level : int = 1
 @export var levels : Array[BuildingData] = []
 
-
+# Used to get the current level easier and with the type data
+func get_building() -> BuildingData:
+	if (current_level - 1) > levels.size():
+		push_error("The current level is higher than the disponible level")
+		return
+	return levels[current_level - 1]
 
 
 

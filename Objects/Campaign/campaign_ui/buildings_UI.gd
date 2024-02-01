@@ -29,12 +29,13 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 		buildings_manager.province_data = value
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
 
-var buildings : Array[Building] :
+var buildings : Array[Building] : # updated when province data changes <- updated when clicked on a province
 	set(value):
 		var children = buildings_container.get_children()
 		if value.is_empty():
 			push_error("There are no buildings in the data provided")
 			return
+		overview_container.hide()
 		
 		buildings = []
 		
@@ -46,8 +47,10 @@ var buildings : Array[Building] :
 			var button = ButtonBuilding.instantiate() as BuildingButton
 			buildings_container.add_child(button)
 			
+			button.building_reference = building
 			button.province_data = province_data
 			button.icon = get_icon_for_building(building.building_type)
+			button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
 		
 		buildings = value
 		to_be_built_container.visible = false
@@ -110,5 +113,6 @@ func start_construction(aBuilding : Building) -> void:
 	sg_update_UI_requested.connect(province_to_update_UI.send_data_to_ui)
 	sg_update_UI_requested.emit()
 	sg_update_UI_requested.disconnect(province_to_update_UI.send_data_to_ui)
-	
 
+func show_overview() -> void:
+	pass

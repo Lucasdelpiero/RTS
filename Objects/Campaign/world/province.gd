@@ -220,14 +220,21 @@ func generate_resources():
 ## Gets the income of the province after the modifiers are aplied
 func get_province_income() -> Production:
 	var production : Production = Production.new()
+	if name != "Rome":
+		return production
+	var total_production : Production = buildings_manager.get_buildings_flat_production()
 	var bonuses : Array[Bonus] = get_province_bonuses(buildings_manager, nation_owner)
+	
+	# Add base provincial production to the calculus
+	total_production.gold += floori(base_income)
+	total_production.manpower += floori(population / 100.0)
 	
 	for bonus in bonuses:
 		match bonus.type:
 			"bonus_income": 
-				production.taxes = base_income * (1.0 + bonus.multiplier_bonus)
+				production.gold = ceili(total_production.gold * (1.0 + bonus.multiplier_bonus))
 			"bonus_manpower":
-				production.manpower_growth = max(10, population / 100) * (1 + bonus.multiplier_bonus)
+				production.manpower = max(10, total_production.manpower) * (1 + bonus.multiplier_bonus)
 	
 	#base_production.base_manpower_growth = 
 	

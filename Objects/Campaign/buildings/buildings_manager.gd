@@ -55,6 +55,20 @@ func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	
 	return to_be_built
 
+# Get the production of all buildings at flat rates
+func get_buildings_flat_production() -> Production :
+	var total_production : Production = Production.new()
+	for building in buildings:
+		var building_data : BuildingData = building.get_building()
+		for production in building_data.flat_production:
+			match production.type_produced:
+				"gold": total_production.gold += production.amount
+				"manpower": total_production.manpower += production.amount
+	
+	
+	
+	return total_production
+
 # Get the bonuses from all buildgins and merge them into an array where all bonuses of the same type are merged into a unique bonus
 func get_buildings_bonuses() -> Array[Bonus]:
 	

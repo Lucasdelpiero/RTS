@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="4_pss78"]
 [ext_resource type="Texture2D" uid="uid://ku2ja2ipe6a5" path="res://Assets/ui/buildings/building_icon.png" id="5_0c0te"]
 [ext_resource type="Texture2D" uid="uid://bl8l1kgli8nod" path="res://Assets/ui/buildings/building_icon_government_hover.png" id="5_1n137"]
-[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="5_s16aa"]
 [ext_resource type="Texture2D" uid="uid://frbjurrhvkmw" path="res://Assets/ui/buildings/building_icon_government.png" id="6_ov8gu"]
 [ext_resource type="Texture2D" uid="uid://bgkuvtdxlxnlw" path="res://Assets/ui/buildings/building_icon_hover.png" id="6_ww1pg"]
 [ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="7_83dcm"]
+[ext_resource type="PackedScene" uid="uid://cxxkxansqr52n" path="res://Objects/Campaign/campaign_ui/overview_container.tscn" id="11_q7mbf"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
 
 [node name="CampaingUI" type="CanvasLayer"]
@@ -136,53 +136,18 @@ layout_mode = 2
 [node name="ButtonBuilding3" parent="Container/Province/BuildingsUI/BuildingsContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
 
-[node name="OverviewContainer" type="PanelContainer" parent="Container/Province/BuildingsUI"]
+[node name="OverviewContainer" parent="Container/Province/BuildingsUI" instance=ExtResource("11_q7mbf")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0548652
-anchor_top = -1.93977
-anchor_right = -0.0548652
-anchor_bottom = -1.93977
-offset_left = 17.502
-offset_top = -257.59
-offset_right = 425.502
-offset_bottom = -4.58989
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI/OverviewContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="Container/Province/BuildingsUI/OverviewContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_s16aa")
-stretch_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/Province/BuildingsUI/OverviewContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 0
-mouse_force_pass_scroll_events = false
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Container/Province/BuildingsUI/OverviewContainer/HBoxContainer/ScrollContainer"]
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = -10
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/Province/BuildingsUI/OverviewContainer/HBoxContainer/ScrollContainer/MarginContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "ffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsaf
-ffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsaf
-ffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsafffdsfafsafsafaffaasdffdsaffasfdsaf"
-fit_content = true
+anchor_left = -0.056
+anchor_top = -2.047
+anchor_right = -0.056
+anchor_bottom = -2.047
+offset_left = -0.136
+offset_top = -252.979
+offset_right = 407.864
+offset_bottom = 0.0211105
 
 [node name="ToBeBuiltContainer" type="PanelContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true

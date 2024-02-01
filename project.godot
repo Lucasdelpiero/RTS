@@ -23,6 +23,7 @@ Signals="*res://Objects/General/signals.gd"
 [debug]
 
 gdscript/warnings/unused_variable=0
+gdscript/warnings/unreachable_code=0
 
 [file_customization]
 

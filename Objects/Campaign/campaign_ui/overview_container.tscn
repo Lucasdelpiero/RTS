@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxxkxansqr52n"]
+
+[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_ekf3w"]
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/overview_container.gd" id="1_qqife"]
+
+[node name="OverviewContainer" type="PanelContainer"]
+offset_right = 408.0
+offset_bottom = 253.0
+script = ExtResource("1_qqife")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DescriptionImage" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_ekf3w")
+stretch_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+
+[node name="DescriptionText" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelCost" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="LabelBuildTime" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
