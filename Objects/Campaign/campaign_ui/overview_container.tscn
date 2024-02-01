@@ -71,6 +71,7 @@ layout_mode = 2
 offset_left = 373.0
 offset_top = -32.0
 offset_right = 405.0
+focus_mode = 0
 text = "X"
 icon_alignment = 1
 

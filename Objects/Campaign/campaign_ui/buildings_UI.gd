@@ -56,7 +56,7 @@ var buildings : Array[Building] : # updated when province data changes <- update
 		to_be_built_container.visible = false
 
 
-
+# Creates the buttons for the avialable buildings to be built
 func _on_add_building_pressed():
 	if buildings_available_container == null:
 		push_error("There is no nodepath where to add the buttons")
@@ -79,6 +79,8 @@ func _on_add_building_pressed():
 		button.icon = get_icon_for_building(building.building_type)
 		button.building_reference = building.duplicate(true)
 		button.sg_construction_started.connect(start_construction)
+		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
+		button.is_built = false # used just to check when to emit the signal of the overview
 	
 	to_be_built_container.visible = true
 	pass # Replace with function body.
@@ -86,6 +88,7 @@ func _on_add_building_pressed():
 
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
+	overview_container.hide()
 
 # Uses the string in "building_type" in the resource to return the corresponding icon
 # each new building type needs to get added here with a corresponding icon stored in a variable

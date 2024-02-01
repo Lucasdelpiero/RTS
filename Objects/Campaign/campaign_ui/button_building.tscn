@@ -10,4 +10,5 @@ size_flags_stretch_ratio = 0.0
 focus_mode = 0
 script = ExtResource("2_rbxmc")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
