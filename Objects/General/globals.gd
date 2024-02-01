@@ -21,6 +21,7 @@ signal sg_battlemap_set_units_selected(unit, value)
 
 var PERSONAL_DEBUGGER : String = "DebugPersonal" # just to avoid mistakes
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

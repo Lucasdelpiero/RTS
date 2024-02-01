@@ -8,7 +8,8 @@ extends PanelContainer
 @onready var description_image : TextureRect = %DescriptionImage
 
 func _ready() -> void:
-	hide()
+	#hide()
+	pass
 
 func show_building_overview(data : BuildingData, texture : Texture2D) -> void:
 	labelCost.text = "Cost: %s" % [data.cost]
@@ -20,3 +21,7 @@ func show_building_overview(data : BuildingData, texture : Texture2D) -> void:
 
 func hide_building_overview() -> void:
 	hide()
+
+
+func _on_description_text_meta_hover_ended(meta: Variant) -> void:
+	pass # Replace with function body.

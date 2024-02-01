@@ -39,14 +39,12 @@ theme_override_constants/margin_right = 2
 
 [node name="DescriptionText" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 3
 bbcode_enabled = true
-text = "A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.A simple farm for a few of those farmers that farm the farming.
+text = "This is a [hint={Resources are pretty cool}]{Resource}[/hint]
 "
 fit_content = true
-autowrap_mode = 2
+hint_underlined = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -60,3 +58,5 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+
+[connection signal="meta_hover_ended" from="VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer/DescriptionText" to="." method="_on_description_text_meta_hover_ended"]
