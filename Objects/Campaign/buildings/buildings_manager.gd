@@ -60,6 +60,10 @@ func get_buildings_flat_production() -> Production :
 	var total_production : Production = Production.new()
 	for building in buildings:
 		var building_data : BuildingData = building.get_building()
+		if building_data == null:
+			push_error("Error: building_data is null (empty production sent)")
+			return total_production
+		
 		for production in building_data.flat_production:
 			match production.type_produced:
 				"gold": total_production.gold += production.amount
@@ -77,7 +81,11 @@ func get_buildings_bonuses() -> Array[Bonus]:
 	# Check in each building
 	for building in buildings:
 		# Check each bonus in the buildings
-		var building_level_bonuses  : Array[Bonus] = building.levels[building.current_level - 1].bonuses
+		var current_building : BuildingData = building.get_building() # variable create just to have the chance of an early return
+		if current_building == null:
+			push_error("Building data returned null")
+			continue # skip the things below
+		var building_level_bonuses  : Array[Bonus] = current_building.bonuses
 		for bonus in building_level_bonuses:
 			# Check if a bonus of the same type is saved in the array
 			var bonus_pos = bonuses.map(func(el) : return el.type).filter(func(el) : return el != "default").find(bonus.type) 

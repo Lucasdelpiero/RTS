@@ -110,6 +110,10 @@ func draw_path():
 
 func move(delta):
 	draw_path()
+	
+	if get_tree().is_paused():
+		return
+	
 	if path.size() > 0:
 		global_position = global_position.move_toward(path[0], delta * SPEED)
 		var closest_point = path[0]

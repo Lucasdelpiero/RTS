@@ -32,7 +32,8 @@ func _on_pressed():
 		return
 	
 	var building_data : BuildingData = building_reference.get_building()
-	sg_send_data_to_overview.emit(building_data, icon)
+	if building_data != null:
+		sg_send_data_to_overview.emit(building_data, icon)
 	sg_construction_started.emit(building_reference)
 	
 	pass # Replace with function body.
@@ -42,5 +43,7 @@ func _on_mouse_entered() -> void:
 	if is_built:
 		return
 	var building_data : BuildingData = building_reference.get_building()
+	if building_data == null: # 
+		return
 	sg_send_data_to_overview.emit(building_data, icon)
 	pass # Replace with function body.

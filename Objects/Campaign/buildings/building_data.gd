@@ -8,4 +8,4 @@ extends Resource
 @export var flat_production : Array[FlatProduction] = []
 @export var bonuses : Array[Bonus] = []
 
-@export_multiline var description : String = ""
+var description : String = "" # Empty value that is assigned at from the building data

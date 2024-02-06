@@ -16,7 +16,6 @@ cost = 200
 time_to_build = 10
 flat_production = Array[ExtResource("1_m8tff")]([SubResource("Resource_b0vxh")])
 bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
-description = "NOW PRAY TO MARS OR YOU WILL SUFFERRRR!!!"
 
 [sub_resource type="Resource" id="Resource_vuvud"]
 script = ExtResource("3_4becn")
@@ -25,10 +24,10 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("1_m8tff")]([])
 bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
-description = ""
 
 [resource]
 script = ExtResource("3_ls77v")
 building_type = "BUILDING_TEMPLE"
 current_level = 1
 levels = Array[ExtResource("3_4becn")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
+description = "PRAY THE SUN"

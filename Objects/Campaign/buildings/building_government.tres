@@ -26,9 +26,6 @@ cost = 100
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
 bonuses = Array[ExtResource("1_058d8")]([SubResource("Resource_r70ct"), SubResource("Resource_5jmbf"), SubResource("Resource_u7gy1")])
-description = "The [url=50][color=AQUAMARINE][i][hint=Resources are pretty cool]resources[/hint][/i][/color][/url] gives you stuff
-
-"
 
 [sub_resource type="Resource" id="Resource_e82p4"]
 script = ExtResource("3_thl1t")
@@ -37,7 +34,6 @@ cost = 500
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
 bonuses = Array[ExtResource("1_058d8")]([])
-description = ""
 
 [sub_resource type="Resource" id="Resource_3a4xk"]
 script = ExtResource("3_thl1t")
@@ -46,10 +42,10 @@ cost = 1200
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
 bonuses = Array[ExtResource("1_058d8")]([])
-description = ""
 
 [resource]
 script = ExtResource("4_bviel")
 building_type = "BUILDING_GOVERNMENT"
 current_level = 1
 levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
+description = "A government building, that is really cool"

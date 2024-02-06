@@ -292,6 +292,7 @@ position = Vector2(67, 153)
 script = ExtResource("1_xpr24")
 
 [node name="TimerGenerateResources" type="Timer" parent="."]
+process_mode = 1
 wait_time = 2.0
 autostart = true
 

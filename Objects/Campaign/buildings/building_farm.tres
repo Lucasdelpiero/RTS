@@ -22,7 +22,6 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_r120b")])
 bonuses = Array[ExtResource("1_rut7e")]([SubResource("Resource_gkg4t")])
-description = "A simple farm for a few of those farmers that farm the farming."
 
 [sub_resource type="Resource" id="Resource_2x3o1"]
 script = ExtResource("3_7hm47")
@@ -31,7 +30,6 @@ cost = 250
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([])
 bonuses = Array[ExtResource("1_rut7e")]([])
-description = ""
 
 [sub_resource type="Resource" id="Resource_1u6p7"]
 script = ExtResource("3_7hm47")
@@ -40,7 +38,6 @@ cost = 500
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([])
 bonuses = Array[ExtResource("1_rut7e")]([])
-description = ""
 
 [sub_resource type="Resource" id="Resource_soppo"]
 script = ExtResource("3_7hm47")
@@ -49,7 +46,6 @@ cost = 1000
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([])
 bonuses = Array[ExtResource("1_rut7e")]([])
-description = ""
 
 [sub_resource type="Resource" id="Resource_6tary"]
 script = ExtResource("3_7hm47")
@@ -58,10 +54,10 @@ cost = 2500
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([])
 bonuses = Array[ExtResource("1_rut7e")]([])
-description = ""
 
 [resource]
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
 current_level = 1
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
+description = "The farm than farms doing the farming."

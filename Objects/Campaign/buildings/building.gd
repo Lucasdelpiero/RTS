@@ -30,12 +30,16 @@ var province_data : ProvinceData = ProvinceData.new()
 @export var current_level : int = 1
 @export var levels : Array[BuildingData] = []
 
+@export_multiline var description : String = ""
+
 # Used to get the current level easier and with the type data
 func get_building() -> BuildingData:
 	if (current_level - 1) > levels.size():
 		push_error("The current level is higher than the disponible level")
-		return
-	return levels[current_level - 1]
+		return null
+	var building_data : BuildingData = levels[current_level - 1].duplicate(true) as BuildingData
+	building_data.description = description # easier than assign it at creation time at each level
+	return building_data
 
 
 
