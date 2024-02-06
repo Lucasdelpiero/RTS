@@ -16,6 +16,7 @@ var gold = 0
 @onready var mapTypesManager = %MapTypesManager
 
 signal changed_map_shown(type)
+signal sg_gold_amount_changed # tells the building buttons that the gold amount of the player changed
 
 var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
@@ -35,6 +36,7 @@ func _process(_delta):
 
 func update_data(data):
 	#goldLabel.text = "Gold: %d" % [data.gold]
+	Globals.player_gold = data.gold
 	goldLabel.clear()
 	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
 	goldLabel.push_color(Color.GOLD) # 2
@@ -42,6 +44,9 @@ func update_data(data):
 	goldLabel.pop() # 2
 	goldLabel.add_text(": %d" % [data.gold])
 	goldLabel.pop() # 1
+	sg_gold_amount_changed.emit()
+	
+	
 	
 	manpowerLabel.clear()
 	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1

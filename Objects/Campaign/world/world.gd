@@ -41,7 +41,7 @@ func initialize_world():
 	main = get_tree().get_nodes_in_group("main")[0]
 	
 #	army.get_to_closer_point(map)
-	
+
 	nations = nationsGroup.get_children()
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
@@ -139,6 +139,12 @@ func get_province_name_by_position(aPosition : Vector2 ) -> String:
 		province_name = dictionary_ID_to_name[province_ID]
 	
 	return province_name
+
+func get_nation_by_tag(_tag : String = "") -> Nation:
+	for nation in nations as Array[Nation]:
+		if nation.isPlayer:
+			return nation
+	return null
 
 func send_data_to_ui():
 	var data = {

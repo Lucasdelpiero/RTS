@@ -8,7 +8,7 @@ signal sg_send_data_to_overview(value : BuildingData, image : Texture2D)
 
 @onready var is_built : bool = true # used just to check when to emit the signal of the overview
 
-var building_reference : Building
+var building_reference : Building = null
 
 var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
@@ -19,6 +19,24 @@ var province_data : ProvinceData = ProvinceData.new() :
 		#])
 		province_data = value
 
+func _ready():
+	await get_tree().create_timer(0.01).timeout # Gives time to the UI to update the gold of the player
+	update()
+
+# Checks if the requiriments for the building are met
+# Currently only checks for the money cost
+func can_be_built() -> bool:
+	if building_reference == null:
+		return false
+	if building_reference.get_building().cost > Globals.player_gold:
+		return false
+	
+	return true
+
+func update() -> void:
+	if not is_built:
+		disabled = !can_be_built()
+	pass
 
 
 func _on_pressed():
@@ -34,7 +52,10 @@ func _on_pressed():
 	var building_data : BuildingData = building_reference.get_building()
 	if building_data != null:
 		sg_send_data_to_overview.emit(building_data, icon)
-	sg_construction_started.emit(building_reference)
+	# If not built, it will send a signal to the building_UI to create a new building
+	if not is_built:
+		sg_construction_started.emit(building_reference)
+	
 	
 	pass # Replace with function body.
 

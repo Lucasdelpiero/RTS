@@ -3,8 +3,11 @@ extends Node
 var mouse_in_province = 1
 var camera_angle := 0.0
 var playerNation = "ROME"
+var player_nation_node : Nation = null
 var playerArmy = [] # Array of armies of the player
 var playerArmyData : Array[ArmyData] = []  # Array of armies data each containing units
+var player_gold : int = 0 # used by UI in buttons to easily check the amount of money the player has
+var player_manpower : int = 0
 var enemyArmy = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null

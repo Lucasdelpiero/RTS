@@ -7,7 +7,14 @@ signal sg_update_resources_ui(data)
 @export var NATION_TAG  = ""
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
 @export_color_no_alpha var nationColor = Color(0, 0, 0)
-@export_range(10, 1000, 0.1) var gold : float = 100
+@export_range(10, 1000, 0.1) var gold : float = 100 : 
+	set(value):
+		gold = value
+		var data : Dictionary = {
+		"gold" = gold,
+		"manpower" = manpower
+		}
+		sg_update_resources_ui.emit(data)
 @export_range(0, 500000, 1) var manpower : int = 10000
 @export var isPlayer = false
 @export var nation_banuses : Array[Bonus] = []

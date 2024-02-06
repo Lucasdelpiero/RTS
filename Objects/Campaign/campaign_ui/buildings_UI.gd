@@ -28,29 +28,15 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 		buildings = value.buildings
 		buildings_manager.province_data = value
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
+		overview_container.hide()
 
 var buildings : Array[Building] : # updated when province data changes <- updated when clicked on a province
 	set(value):
-		var children = buildings_container.get_children()
 		if value.is_empty():
 			push_error("There are no buildings in the data provided")
 			return
-		overview_container.hide()
 		
-		buildings = []
-		
-		for to_delete in children:
-			if to_delete is BuildingButton:
-				to_delete.queue_free()
-		
-		for building in value:
-			var button = ButtonBuilding.instantiate() as BuildingButton
-			buildings_container.add_child(button)
-			
-			button.building_reference = building
-			button.province_data = province_data
-			button.icon = get_icon_for_building(building.building_type)
-			button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
+		create_building_buttons(value)
 		
 		buildings = value
 		to_be_built_container.visible = false
@@ -81,6 +67,9 @@ func _on_add_building_pressed():
 		button.sg_construction_started.connect(start_construction)
 		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
 		button.is_built = false # used just to check when to emit the signal of the overview
+		var campaign_ui : CampaignUI = Globals.campaign_UI
+		if campaign_ui != null:
+			campaign_ui.sg_gold_amount_changed.connect(button.update)
 	
 	to_be_built_container.visible = true
 	pass # Replace with function body.
@@ -89,6 +78,25 @@ func _on_add_building_pressed():
 func _on_back_button_pressed():
 	to_be_built_container.visible = false
 	overview_container.hide()
+
+# Creates the buttens used in the UI to build and and to look for already built buildings
+func create_building_buttons(aBuildings : Array[Building]) -> void:
+	var children = buildings_container.get_children()
+	for to_delete in children:
+		if to_delete is BuildingButton:
+			to_delete.queue_free()
+	
+	var campaign_ui : CampaignUI = Globals.campaign_UI
+	for building in aBuildings:
+		var button = ButtonBuilding.instantiate() as BuildingButton
+		buildings_container.add_child(button)
+		
+		button.building_reference = building
+		button.province_data = province_data
+		button.icon = get_icon_for_building(building.building_type)
+		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
+	
+	pass
 
 # Uses the string in "building_type" in the resource to return the corresponding icon
 # each new building type needs to get added here with a corresponding icon stored in a variable
@@ -99,6 +107,7 @@ func get_icon_for_building(type : String) -> Texture2D:
 		"BUILDING_TEMPLE": return icon_building_temple
 		_: return icon_default
 
+# Recieves signal from the button_building to start a new building
 func start_construction(aBuilding : Building) -> void:
 	if aBuilding == null:
 		push_error("There is not building to be built")
@@ -116,6 +125,18 @@ func start_construction(aBuilding : Building) -> void:
 	sg_update_UI_requested.connect(province_to_update_UI.send_data_to_ui)
 	sg_update_UI_requested.emit()
 	sg_update_UI_requested.disconnect(province_to_update_UI.send_data_to_ui)
+	#region check for player nation
+	var campaign_map : CampaignMap = Globals.campaign_map
+	if campaign_map == null:
+		push_error("Cant find campaign map, didnt deduct money from construction")
+		return
+	var player_nation : Nation = campaign_map.get_nation_by_tag()
+	if player_nation == null:
+		push_error("Cant find player nation, didnt deduct money from construction")
+		return
+	#endregion
+	player_nation.gold -= aBuilding.get_building().cost
+	
 
 func show_overview() -> void:
 	pass
