@@ -7,6 +7,7 @@ signal sg_update_UI_requested
 
 @onready var buildings_container = %BuildingsContainer
 @onready var overview_container : Control = %OverviewContainer
+@onready var add_building_button : Button = %AddBuilding 
 @onready var ButtonBuilding  = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
 @export var buildings_manager : BuildingsManager # checks what can or can not be build
 
@@ -29,6 +30,9 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 		buildings_manager.province_data = value
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
 		overview_container.hide()
+		# Disable new buildings button if the player doesnt own the province
+		var is_the_owner_of_province : bool = (province_data.province.ownership == Globals.playerNation)
+		add_building_button.visible = is_the_owner_of_province
 
 var buildings : Array[Building] : # updated when province data changes <- updated when clicked on a province
 	set(value):
@@ -81,6 +85,7 @@ func _on_back_button_pressed():
 
 # Creates the buttens used in the UI to build and and to look for already built buildings
 func create_building_buttons(aBuildings : Array[Building]) -> void:
+	
 	var children = buildings_container.get_children()
 	for to_delete in children:
 		if to_delete is BuildingButton:

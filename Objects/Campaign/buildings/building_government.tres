@@ -46,6 +46,6 @@ bonuses = Array[ExtResource("1_058d8")]([])
 [resource]
 script = ExtResource("4_bviel")
 building_type = "BUILDING_GOVERNMENT"
-current_level = 1
+current_level = 0
 levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
 description = "A government building, that is really cool"

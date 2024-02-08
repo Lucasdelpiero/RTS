@@ -40,18 +40,14 @@ func update() -> void:
 
 
 func _on_pressed():
-	# NOTE I think that these safeguards are not even needed
-	#if sg_construction_started.get_connections().size() < 1:
-		#print("Its not connected to anything")
-		#return
-		
 	if building_reference == null:
 		push_error("There is not reference to building in the button")
 		return
 	
-	var building_data : BuildingData = building_reference.get_building()
-	if building_data != null:
-		sg_send_data_to_overview.emit(building_data, icon)
+	if is_built:
+		# HERE WOULD BE THE UPGRADES
+		pass
+		
 	# If not built, it will send a signal to the building_UI to create a new building
 	if not is_built:
 		sg_construction_started.emit(building_reference)
@@ -61,10 +57,18 @@ func _on_pressed():
 
 
 func _on_mouse_entered() -> void:
+	# Sends the data to the ovewview with +1 level
 	if is_built:
+		# TEST
+		var next_level : int = building_reference.current_level + 1
+		var building_data_next_level : BuildingData = building_reference.get_building(true, next_level)
+		sg_send_data_to_overview.emit(building_data_next_level, icon)
+		#print("done")
+		# TEST
+		return 
+	
+	var building_data_current_level : BuildingData = building_reference.get_building()
+	if building_data_current_level == null: # 
 		return
-	var building_data : BuildingData = building_reference.get_building()
-	if building_data == null: # 
-		return
-	sg_send_data_to_overview.emit(building_data, icon)
+	sg_send_data_to_overview.emit(building_data_current_level, icon)
 	pass # Replace with function body.
