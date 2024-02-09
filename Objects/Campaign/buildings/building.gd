@@ -41,7 +41,7 @@ func get_building(look_at_specific_level : bool = false , level_to_look : int = 
 	
 	if (level_to_look ) > levels.size() - 1:
 		push_error("Max level reached for the building")
-		var building_data_max_level : BuildingData = levels[current_level - 1].duplicate(true) as BuildingData
+		var building_data_max_level : BuildingData = levels[levels.size() - 1].duplicate(true) as BuildingData
 		building_data_max_level.cost = 0
 		building_data_max_level.time_to_build = 0
 		building_data_max_level.description = description
@@ -54,10 +54,14 @@ func get_building(look_at_specific_level : bool = false , level_to_look : int = 
 		building_data_level.description = description
 		return building_data_level
 	
-	var building_data : BuildingData = levels[current_level - 1].duplicate(true) as BuildingData
+	#var building_data : BuildingData = levels[current_level - 1].duplicate(true) as BuildingData
+	var building_data : BuildingData = levels[current_level].duplicate(true) as BuildingData
 	building_data.description = description # easier than assign it at creation time at each level
 	return building_data
 
+func get_building_next_level() -> BuildingData:
+	var next_level : int = current_level + 1
+	return get_building(true, next_level)
 
 
 

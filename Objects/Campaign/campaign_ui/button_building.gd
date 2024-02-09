@@ -3,7 +3,8 @@ extends Button
 
 # Connected from the buildings_UI script on the buildings available to be built
 # Tells the building UI when the construction starts, which triggers an update in the province UI
-signal sg_construction_started(value) 
+signal sg_construction_started(value : Building)
+signal sg_building_upgrade(value : Building) 
 signal sg_send_data_to_overview(value : BuildingData, image : Texture2D)
 
 @onready var is_built : bool = true # used just to check when to emit the signal of the overview
@@ -28,10 +29,19 @@ func _ready():
 func can_be_built() -> bool:
 	if building_reference == null:
 		return false
+	
+	# If it is already built it will check for an upgrade
+	if is_built:
+		var building_cost : int = building_reference.get_building_next_level().cost
+		return building_cost <= Globals.player_gold
+	
+	 # Checking if the building can be built at the first level
 	if building_reference.get_building().cost > Globals.player_gold:
 		return false
 	
 	return true
+
+
 
 func update() -> void:
 	if not is_built:
@@ -44,16 +54,13 @@ func _on_pressed():
 		push_error("There is not reference to building in the button")
 		return
 	
-	if is_built:
-		# HERE WOULD BE THE UPGRADES
-		pass
+	# Upgrades the existing building
+	if is_built and can_be_built():
+		sg_building_upgrade.emit(building_reference)
 		
 	# If not built, it will send a signal to the building_UI to create a new building
 	if not is_built:
 		sg_construction_started.emit(building_reference)
-	
-	
-	pass # Replace with function body.
 
 
 func _on_mouse_entered() -> void:

@@ -100,8 +100,10 @@ func create_building_buttons(aBuildings : Array[Building]) -> void:
 		button.province_data = province_data
 		button.icon = get_icon_for_building(building.building_type)
 		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
+		button.sg_building_upgrade.connect(upgrade_building)
 	
 	pass
+
 
 # Uses the string in "building_type" in the resource to return the corresponding icon
 # each new building type needs to get added here with a corresponding icon stored in a variable
@@ -111,6 +113,7 @@ func get_icon_for_building(type : String) -> Texture2D:
 		"BUILDING_GOVERNMENT": return icon_building_government
 		"BUILDING_TEMPLE": return icon_building_temple
 		_: return icon_default
+
 
 # Recieves signal from the button_building to start a new building
 func start_construction(aBuilding : Building) -> void:
@@ -141,7 +144,38 @@ func start_construction(aBuilding : Building) -> void:
 		return
 	#endregion
 	player_nation.gold -= aBuilding.get_building().cost
+
+
+# Recueves signal from button_building to upgrade a building
+func upgrade_building(aBuilding : Building) -> void:
+	#region early returns
+	if aBuilding == null:
+		push_error("There is not building to be built")
+		return
 	
+	var max_level : int = aBuilding.levels.size() - 1
+	if aBuilding.current_level == max_level:
+		push_error("upgrade not made, building at max level already")
+		return
+	#endregion
+	
+
+		#region check for player nation
+	var campaign_map : CampaignMap = Globals.campaign_map
+	if campaign_map == null:
+		push_error("Cant find campaign map, didnt deduct money from construction")
+		return
+	var player_nation : Nation = campaign_map.get_nation_by_tag()
+	if player_nation == null:
+		push_error("Cant find player nation, didnt deduct money from construction")
+		return
+	#endregion
+	
+	var cost : int = aBuilding.get_building_next_level().cost
+	player_nation.gold -= cost
+	aBuilding.current_level += 1
+	buildings = buildings # doing this, updates the UI easily
+
 
 func show_overview() -> void:
 	pass

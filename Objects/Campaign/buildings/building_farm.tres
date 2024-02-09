@@ -58,6 +58,6 @@ bonuses = Array[ExtResource("1_rut7e")]([])
 [resource]
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
-current_level = 1
+current_level = 0
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
 description = "The farm than farms doing the farming."
