@@ -153,9 +153,10 @@ func upgrade_building(aBuilding : Building) -> void:
 		push_error("There is not building to be built")
 		return
 	
+	# Wonrt be upgraded if at max level
 	var max_level : int = aBuilding.levels.size() - 1
 	if aBuilding.current_level == max_level:
-		push_error("upgrade not made, building at max level already")
+		#push_error("upgrade not made, building at max level already")
 		return
 	#endregion
 	

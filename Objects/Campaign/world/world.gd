@@ -147,10 +147,13 @@ func get_nation_by_tag(_tag : String = "") -> Nation:
 	return null
 
 func send_data_to_ui():
-	var data = {
-		"gold" : playerNode.gold ,
-		"manpower" : playerNode.manpower ,
-	}
+	if playerNode == null:
+		push_error("Player node is null")
+		return
+	
+	var data : TotalProductionData = TotalProductionData.new()
+	data.gold = playerNode.gold
+	data.manpower = playerNode.manpower
 	UI.update_data(data)
 	pass
 

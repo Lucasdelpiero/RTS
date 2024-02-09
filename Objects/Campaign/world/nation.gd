@@ -2,7 +2,7 @@
 extends Node
 class_name Nation
 
-signal sg_update_resources_ui(data)
+signal sg_update_resources_ui(data : TotalProductionData)
 
 @export var NATION_TAG  = ""
 @export_color_no_alpha var nationOutline = Color(0, 0, 0)
@@ -10,17 +10,19 @@ signal sg_update_resources_ui(data)
 @export_range(10, 1000, 0.1) var gold : float = 100 : 
 	set(value):
 		gold = value
-		var data : Dictionary = {
-		"gold" = gold,
-		"manpower" = manpower
-		}
-		sg_update_resources_ui.emit(data)
+		var data : TotalProductionData = total_production_last_time
+		if data == null:
+			total_production_last_time = TotalProductionData.new()
+			data = total_production_last_time
+		data.gold = int(gold)
+		sg_update_resources_ui.emit(data) # needed to update when money is spent
 @export_range(0, 500000, 1) var manpower : int = 10000
 @export var isPlayer = false
 @export var nation_banuses : Array[Bonus] = []
 
 var resources_generated : Array[Production] = []
 
+var total_production_last_time : TotalProductionData = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_colors()
@@ -52,13 +54,16 @@ func process_resources_recieved():
 	# Reset the resources for the next frame
 	resources_generated.clear()
 	#print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
-	
-	var data : Dictionary = {
-		"gold" = gold,
-		"manpower" = manpower
-	}
+
+	var data : TotalProductionData = TotalProductionData.new()
+	data.gold = int(gold)
+	data.manpower = manpower
+	data.gold_generated = total_gold_generated
+	data.manpower_generated = total_manpower_generated
 	sg_update_resources_ui.emit(data)
-	pass
+	
+	total_production_last_time = data
+
 
 
 

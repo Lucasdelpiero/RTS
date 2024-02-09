@@ -21,7 +21,6 @@ func show_building_overview(data : BuildingData, texture : Texture2D) -> void:
 	labelBuildTime.text = "Build time: %s" % [data.time_to_build]
 	description_text.text = data.description
 	
-	# 
 	if data.cost == 0 and data.time_to_build == 0:
 		labelCost.text = "Max level reached"
 		labelBuildTime.text = ""

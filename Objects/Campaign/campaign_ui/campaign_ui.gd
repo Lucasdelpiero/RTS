@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name CampaignUI
 
-var gold = 0
+var gold : int = 0
 @onready var goldLabel : RichTextLabel = %GoldLabel
 @onready var manpowerLabel : RichTextLabel = %ManpowerLabel
 
@@ -34,25 +34,34 @@ func _ready():
 func _process(_delta):
 	pass
 
-func update_data(data):
+func update_data(data : TotalProductionData):
 	#goldLabel.text = "Gold: %d" % [data.gold]
+	var gold_compact : String = get_compact_num(data.gold)
+	var gold_generated_compact : String = get_compact_num(data.gold_generated)
 	Globals.player_gold = data.gold
 	goldLabel.clear()
 	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
 	goldLabel.push_color(Color.GOLD) # 2
 	goldLabel.add_text("Gold" )
 	goldLabel.pop() # 2
-	goldLabel.add_text(": %d" % [data.gold])
+	goldLabel.add_text(": %s" % [gold_compact])
+	goldLabel.pop() # 1
+	goldLabel.push_color(Color.GREEN) # 1
+	goldLabel.add_text(" (+%s) " % [gold_generated_compact]) # 2
 	goldLabel.pop() # 1
 	sg_gold_amount_changed.emit()
 	
 	
-	
+	var manpower_compact : String = get_compact_num(data.manpower)
+	var manpower_generated_compact : String = get_compact_num(data.manpower_generated)
 	manpowerLabel.clear()
 	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1
-	manpowerLabel.add_text("Manpower: %d" % [data.manpower])
+	manpowerLabel.add_text("Manpower: %s" % [manpower_compact])
 	manpowerLabel.pop() # 1
-	#manpowerLabel.text = "Manpower: %d" % [data.manpower]
+	manpowerLabel.push_color(Color.GREEN) # 1
+	manpowerLabel.add_text(" (+%s)" % manpower_generated_compact) # 2
+	manpowerLabel.pop() # 1
+
 	pass
 
 func update_province_data(data : ProvinceData):
@@ -67,6 +76,18 @@ func update_province_data(data : ProvinceData):
 	
 	buildingsUI.province_data = data # sends all data including the buildings 
 	pass
+
+# 100000 -> 100K  / 10000000 -> 10M
+func get_compact_num(number : int) -> String :
+	# Converted to float and int just to avoid waring over precision lost
+	var compact_num = str(number)
+	if number >= 10_000:
+		compact_num = "%sK" % [floori(float(number) / 1_000)]
+	
+	if number >= 1_000_000:
+		compact_num = "%sM" % [floori(float(number) / 1_000_000)]
+	
+	return compact_num
 
 func set_province_visibility(value):
 	province.visible = value

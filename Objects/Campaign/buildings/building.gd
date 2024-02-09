@@ -39,8 +39,8 @@ func get_building(look_at_specific_level : bool = false , level_to_look : int = 
 		push_error("The current level is higher than the disponible level")
 		return null
 	
+	# In case it tried to upgrade a level more than the max level, returns the max level
 	if (level_to_look ) > levels.size() - 1:
-		push_error("Max level reached for the building")
 		var building_data_max_level : BuildingData = levels[levels.size() - 1].duplicate(true) as BuildingData
 		building_data_max_level.cost = 0
 		building_data_max_level.time_to_build = 0
