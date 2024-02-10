@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/ArmiesContainer.gd" id="2_hbtxh"]
-[ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_r6qed"]
+[ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="2_ikmmu"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/buildings_UI.gd" id="3_e7y3r"]
 [ext_resource type="PackedScene" uid="uid://bmn2o2xccxjc7" path="res://Objects/Campaign/campaign_ui/button_building.tscn" id="4_3i5kl"]
 [ext_resource type="Script" path="res://Objects/Campaign/world/map_types_manager.gd" id="4_d6fhq"]
@@ -30,7 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("2_r6qed")
+theme = ExtResource("2_ikmmu")
 
 [node name="Panel" type="Panel" parent="Container"]
 layout_mode = 0
@@ -108,7 +108,7 @@ offset_right = 341.0
 offset_bottom = 131.0
 script = ExtResource("3_e7y3r")
 buildings_manager = ExtResource("4_kfbbl")
-np_buildings_available_container = NodePath("ToBeBuiltContainer/ScrollContainer/HBoxContainer")
+np_buildings_available_container = NodePath("ToBeBuiltContainer/MarginContainer/HBoxContainer")
 icon_default = ExtResource("6_ww1pg")
 icon_building_government = ExtResource("6_ov8gu")
 icon_building_farm = ExtResource("7_83dcm")
@@ -122,10 +122,11 @@ anchor_left = -0.0376176
 anchor_top = -1.83721
 anchor_right = -0.0376176
 anchor_bottom = -1.83721
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 72.0
-offset_bottom = 128.0
+offset_left = 4.00002
+offset_top = 53.0
+offset_right = 280.0
+offset_bottom = 125.0
+metadata/_edit_group_ = true
 
 [node name="AddBuilding" type="Button" parent="Container/Province/BuildingsUI/BuildingsContainer"]
 unique_name_in_owner = true
@@ -162,34 +163,37 @@ anchor_left = -0.056
 anchor_top = -1.908
 anchor_right = -0.056
 anchor_bottom = -1.908
-offset_left = 11.864
-offset_top = 51.044
-offset_right = 298.864
-offset_bottom = 131.044
+offset_left = 3.864
+offset_top = 50.044
+offset_right = 357.864
+offset_bottom = 134.044
 mouse_force_pass_scroll_events = false
+metadata/_edit_group_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer"]
 layout_mode = 2
-mouse_filter = 0
-mouse_force_pass_scroll_events = false
-vertical_scroll_mode = 0
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 
-[node name="BackButton" type="Button" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("6_ww1pg")
 
-[node name="ButtonBuilding" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
+[node name="ButtonBuilding" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
 
-[node name="ButtonBuilding2" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
+[node name="ButtonBuilding2" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
 
-[node name="ButtonBuilding3" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
+[node name="ButtonBuilding3" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Container"]
@@ -273,7 +277,7 @@ grow_horizontal = 0
 layout_mode = 2
 
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
-[connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/ScrollContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
 [connection signal="resized" from="Container/PanelContainer/ArmiesContainer" to="Container/PanelContainer/ArmiesContainer" method="_on_resized"]
 [connection signal="pressed" from="Container/PanelContainer/ArmiesContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnPoliticalMap" to="Container/MapTypesManager" method="_on_btn_political_map_button_down"]
