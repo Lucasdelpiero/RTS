@@ -15,6 +15,12 @@ var gold : int = 0
 @onready var armiesContainer = %ArmiesContainer
 @onready var mapTypesManager = %MapTypesManager
 
+const COLOR_GREEN : Color = Color.GREEN_YELLOW
+const COLOR_RED : Color = Color.FIREBRICK
+const COLOR_GREY : Color = Color.LIGHT_SLATE_GRAY
+
+const COLOR_GOLD : Color = Color.GOLD
+
 signal changed_map_shown(type)
 signal sg_gold_amount_changed # tells the building buttons that the gold amount of the player changed
 
@@ -41,12 +47,12 @@ func update_data(data : TotalProductionData):
 	Globals.player_gold = data.gold
 	goldLabel.clear()
 	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
-	goldLabel.push_color(Color.GOLD) # 2
+	goldLabel.push_color(COLOR_GOLD) # 2
 	goldLabel.add_text("Gold" )
 	goldLabel.pop() # 2
 	goldLabel.add_text(": %s" % [gold_compact])
 	goldLabel.pop() # 1
-	goldLabel.push_color(Color.GREEN) # 1
+	goldLabel.push_color( get_color_by_sign(data.gold_generated) ) # 1
 	goldLabel.add_text(" (+%s) " % [gold_generated_compact]) # 2
 	goldLabel.pop() # 1
 	sg_gold_amount_changed.emit()
@@ -58,7 +64,7 @@ func update_data(data : TotalProductionData):
 	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1
 	manpowerLabel.add_text("Manpower: %s" % [manpower_compact])
 	manpowerLabel.pop() # 1
-	manpowerLabel.push_color(Color.GREEN) # 1
+	manpowerLabel.push_color( get_color_by_sign(data.gold_generated) ) # 1
 	manpowerLabel.add_text(" (+%s)" % manpower_generated_compact) # 2
 	manpowerLabel.pop() # 1
 
@@ -92,6 +98,16 @@ func get_compact_num(number : int) -> String :
 func set_province_visibility(value):
 	province.visible = value
 #	province.visible = false
+
+func get_color_by_sign(num : int) -> Color :
+	if num > 0:
+		return COLOR_GREEN
+	elif num < 0:
+		return COLOR_RED
+	else:
+		return COLOR_GREY
+
+	
 
 # Get the armies selected and send the data to update the UI
 func update_selected_armies(army : ArmyCampaing):
