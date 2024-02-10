@@ -1,13 +1,14 @@
 [gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://cmid40lk2vvcp"]
 
 [sub_resource type="Gradient" id="Gradient_46unq"]
-offsets = PackedFloat32Array(0.00512821, 0.313869, 0.717949, 1)
-colors = PackedColorArray(0.52, 0.450147, 0.3848, 1, 0.701961, 0.607843, 0.517647, 1, 0.701961, 0.607843, 0.517647, 1, 0.8, 0.789333, 0.64, 1)
+offsets = PackedFloat32Array(0, 0.313869, 1)
+colors = PackedColorArray(0.6, 0.6, 0.6, 1, 0.75, 0.75, 0.75, 1, 0.75, 0.75, 0.75, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ry246"]
-frequency = 0.0088
-fractal_octaves = 4
-fractal_gain = 0.455
+noise_type = 0
+frequency = 0.1689
+fractal_type = 2
+fractal_lacunarity = 20.0
 
 [resource]
 width = 128

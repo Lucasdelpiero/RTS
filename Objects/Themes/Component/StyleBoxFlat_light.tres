@@ -2,12 +2,12 @@
 
 [resource]
 resource_local_to_scene = true
-bg_color = Color(0.701961, 0.607843, 0.517647, 1)
+bg_color = Color(0.521569, 0.470588, 0.419608, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.521569, 0.45098, 0.384314, 1)
+border_color = Color(0.529412, 0.286275, 0.196078, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
