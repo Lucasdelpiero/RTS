@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dg107ll84c5qe"]
+
+[ext_resource type="StyleBox" uid="uid://cegfdgcs1xwet" path="res://Objects/Themes/Component/StyleBoxFlat_light.tres" id="1_y14tj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n3tw"]
+resource_local_to_scene = true
+bg_color = Color(0.8, 0.694118, 0.592157, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.521569, 0.45098, 0.384314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofi2p"]
+resource_local_to_scene = true
+bg_color = Color(0.701961, 0.607843, 0.517647, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.521569, 0.45098, 0.384314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql2yv"]
+resource_local_to_scene = true
+bg_color = Color(0.6, 0.517647, 0.443137, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.521569, 0.45098, 0.384314, 1)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_8n3tw")
+Button/styles/normal = SubResource("StyleBoxFlat_ofi2p")
+Button/styles/pressed = SubResource("StyleBoxFlat_ql2yv")
+Panel/styles/panel = ExtResource("1_y14tj")
+PanelContainer/styles/panel = ExtResource("1_y14tj")
