@@ -100,6 +100,7 @@ func create_building_buttons(aBuildings : Array[Building]) -> void:
 		button.province_data = province_data
 		button.icon = get_icon_for_building(building.building_type)
 		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
+		button.sg_send_building_reference_to_overview.connect(overview_container.show_building_overview_2)
 		button.sg_building_upgrade.connect(upgrade_building)
 	
 	pass
@@ -122,6 +123,7 @@ func start_construction(aBuilding : Building) -> void:
 		return
 	
 	var new_buildings = buildings.duplicate(true)
+	aBuilding.is_built = true
 	new_buildings.push_back(aBuilding.duplicate(true))
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)
 	

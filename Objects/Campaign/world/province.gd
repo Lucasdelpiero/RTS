@@ -227,7 +227,7 @@ func get_province_income() -> Production:
 	total_production.manpower += floori(population / 100.0)
 	
 	for bonus in bonuses:
-		match bonus.type:
+		match bonus.type_produced:
 			"bonus_income": 
 				total_production.gold = ceili(total_production.gold * (1.0 + bonus.multiplier_bonus))
 			"bonus_manpower":

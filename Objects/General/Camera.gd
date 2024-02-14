@@ -65,8 +65,6 @@ func _process(delta):
 	velocity.y = lerp(velocity.y, velocity.y * 0.5, desaceleration * CONSTANT_TIME)
 	
 	
-	Globals.debug_update_label("velocity_x", "velocity_x: %s" % [velocity.x])
-	
 	global_position += velocity 
 	
 	# Zoom in-out

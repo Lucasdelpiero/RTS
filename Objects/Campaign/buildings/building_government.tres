@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_8xh07"]
 script = ExtResource("3_thl1t")
-level = 1
+building_name = "Village hall"
 cost = 100
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
@@ -13,7 +13,7 @@ bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
 
 [sub_resource type="Resource" id="Resource_e82p4"]
 script = ExtResource("3_thl1t")
-level = 2
+building_name = "Town hall"
 cost = 500
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
@@ -21,7 +21,7 @@ bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
 
 [sub_resource type="Resource" id="Resource_3a4xk"]
 script = ExtResource("3_thl1t")
-level = 3
+building_name = "City hall"
 cost = 1200
 time_to_build = 5
 flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
@@ -30,6 +30,8 @@ bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
 [resource]
 script = ExtResource("4_bviel")
 building_type = "BUILDING_GOVERNMENT"
+building_name = "Government hall"
+is_built = true
 current_level = 0
 levels = Array[ExtResource("3_thl1t")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
 description = "A government building, that is really cool"

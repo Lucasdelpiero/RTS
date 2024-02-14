@@ -6,6 +6,7 @@ extends Button
 signal sg_construction_started(value : Building)
 signal sg_building_upgrade(value : Building) 
 signal sg_send_data_to_overview(value : BuildingData, image : Texture2D)
+signal sg_send_building_reference_to_overview(value : Building, image : Texture2D)
 
 @onready var is_built : bool = true # used just to check when to emit the signal of the overview
 
@@ -26,6 +27,7 @@ func _ready():
 
 # Checks if the requiriments for the building are met
 # Currently only checks for the money cost
+# remake this shit
 func can_be_built() -> bool:
 	if building_reference == null:
 		return false
@@ -70,12 +72,15 @@ func _on_mouse_entered() -> void:
 		var next_level : int = building_reference.current_level + 1
 		var building_data_next_level : BuildingData = building_reference.get_building(true, next_level)
 		sg_send_data_to_overview.emit(building_data_next_level, icon)
+		sg_send_building_reference_to_overview.emit(building_reference, icon)
 		#print("done")
 		# TEST
 		return 
 	
 	var building_data_current_level : BuildingData = building_reference.get_building()
 	if building_data_current_level == null: # 
+		print("no data to send")
 		return
 	sg_send_data_to_overview.emit(building_data_current_level, icon)
+	sg_send_building_reference_to_overview.emit(building_reference, icon)
 	pass # Replace with function body.

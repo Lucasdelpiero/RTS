@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Building" load_steps=14 format=3 uid="uid://cfr1ud767efnn"]
+[gd_resource type="Resource" script_class="Building" load_steps=16 format=3 uid="uid://cfr1ud767efnn"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="2_eqnnr"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_7hm47"]
+[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="3_rmxb5"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_2bf05"]
 
 [sub_resource type="Resource" id="Resource_r120b"]
@@ -11,11 +12,11 @@ amount = 15000
 
 [sub_resource type="Resource" id="Resource_bnhxp"]
 script = ExtResource("3_7hm47")
-level = 1
+building_name = ""
 cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_r120b")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+bonuses = Array[ExtResource("3_rmxb5")]([])
 
 [sub_resource type="Resource" id="Resource_ektcr"]
 script = ExtResource("2_eqnnr")
@@ -24,11 +25,16 @@ amount = 30000
 
 [sub_resource type="Resource" id="Resource_2x3o1"]
 script = ExtResource("3_7hm47")
-level = 2
+building_name = ""
 cost = 250
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_ektcr")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+bonuses = Array[ExtResource("3_rmxb5")]([])
+
+[sub_resource type="Resource" id="Resource_lmy07"]
+script = ExtResource("3_rmxb5")
+type_produced = "default"
+multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_3ei8m"]
 script = ExtResource("2_eqnnr")
@@ -37,11 +43,11 @@ amount = 1000000
 
 [sub_resource type="Resource" id="Resource_1u6p7"]
 script = ExtResource("3_7hm47")
-level = 3
+building_name = ""
 cost = 500
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_3ei8m")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+bonuses = Array[ExtResource("3_rmxb5")]([SubResource("Resource_lmy07")])
 
 [sub_resource type="Resource" id="Resource_mxooy"]
 script = ExtResource("2_eqnnr")
@@ -50,11 +56,11 @@ amount = 1000000
 
 [sub_resource type="Resource" id="Resource_soppo"]
 script = ExtResource("3_7hm47")
-level = 4
+building_name = ""
 cost = 1000
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_mxooy")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+bonuses = Array[ExtResource("3_rmxb5")]([])
 
 [sub_resource type="Resource" id="Resource_4uolu"]
 script = ExtResource("2_eqnnr")
@@ -63,15 +69,17 @@ amount = 1000000
 
 [sub_resource type="Resource" id="Resource_6tary"]
 script = ExtResource("3_7hm47")
-level = 5
+building_name = ""
 cost = 2500
 time_to_build = 5
 flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_4uolu")])
-bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+bonuses = Array[ExtResource("3_rmxb5")]([])
 
 [resource]
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
+building_name = "Farm"
+is_built = false
 current_level = 0
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
 description = "The farm than farms doing the farming."

@@ -88,12 +88,12 @@ func get_buildings_bonuses() -> Array[Bonus]:
 		var building_level_bonuses  : Array[Bonus] = current_building.bonuses
 		for bonus in building_level_bonuses:
 			# Check if a bonus of the same type is saved in the array
-			var bonus_pos = bonuses.map(func(el) : return el.type).filter(func(el) : return el != "default").find(bonus.type) 
+			var bonus_pos = bonuses.map(func(el) : return el.type_produced).filter(func(el) : return el != "default").find(bonus.type_produced) 
 			
 			# If doesnt exists in the bonuses array, add it
 			# A new resource has to be created, otherwise the value of the bonus is not reseted for the next calculation
 			var new_bonus = Bonus.new()
-			new_bonus.type = bonus.type
+			new_bonus.type_produced = bonus.type_produced
 			new_bonus.multiplier_bonus = bonus.multiplier_bonus
 			
 			if bonus_pos == -1:

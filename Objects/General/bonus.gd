@@ -5,7 +5,7 @@ extends Resource
 	DEFAULT,
 	BONUS_INCOME,
 	BONUS_MANPOWER
-	) var type = DEFAULT
+	) var type_produced = DEFAULT
 @export_range(0.0, 9.0, 0.05) var multiplier_bonus : float = 0.1
 
 const DEFAULT = "default"
