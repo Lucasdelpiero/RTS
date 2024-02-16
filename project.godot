@@ -24,6 +24,7 @@ Signals="*res://Objects/General/signals.gd"
 
 gdscript/warnings/unused_variable=0
 gdscript/warnings/unreachable_code=0
+gdscript/warnings/untyped_declaration=1
 
 [file_customization]
 

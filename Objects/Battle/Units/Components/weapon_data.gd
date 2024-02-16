@@ -1,6 +1,6 @@
 extends Resource
 class_name WeaponData
 
-func get_type():
-	return null
+func get_type() -> String:
+	return ""
 

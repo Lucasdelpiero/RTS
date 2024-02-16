@@ -185,7 +185,7 @@ script = ExtResource("10_tuffa")
 script = ExtResource("11_7t20r")
 primary_type = "Melee"
 primary_weapon = SubResource("Resource_m4iyd")
-separator = null
+separator = "                  "
 secondary_type = "Melee"
 secondary_weapon = SubResource("Resource_oc2o2")
 
