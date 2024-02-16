@@ -57,16 +57,16 @@ var target_unit : Unit = null
 #endregion
 
 #region Signals
-signal show_overlay_unit(data)
-signal sg_unit_hovered(value)
-signal sg_unit_selected(value)
-signal sg_troops_number_changed(value, max)
-signal sg_move_component_set_destination(value)
-signal sg_move_component_set_face_direction(value)
-signal sg_move_component_set_next_point(value)
+signal show_overlay_unit(data : OverlayUnitData)
+signal sg_unit_hovered(value : bool)
+signal sg_unit_selected(value : bool)
+signal sg_troops_number_changed(value : int, max : int)
+signal sg_move_component_set_destination(value : Vector2)
+signal sg_move_component_set_face_direction(value : float)
+signal sg_move_component_set_next_point(value : Vector2)
 #endregion
 
-func _ready():
+func _ready() -> void:
 	troops_number = troops_number_max
 	selectedPolygon.visible = false
 #	print("%s: has a shield of value: %s" % [name, shield])
@@ -94,7 +94,7 @@ func _ready():
 
 #	print(weapons.selected_weapon.get_type())
 
-func _input(_event):
+func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("delete"):
 		if hovered:
 			routed = true
@@ -104,7 +104,7 @@ func _input(_event):
 			visible = false
 			
 
-func _physics_process(_delta):
+func _physics_process(_delta : float) -> void:
 #	$Label.text = str(target_unit)
 	nameLabel.text = name
 #	var pos = marker.position
@@ -112,7 +112,7 @@ func _physics_process(_delta):
 #	nameLabel._set_position(marker.global_position)
 #	overlay.set_position(marker.global_position)
 
-func set_color(value):
+func set_color(value : Color) -> void:
 	if value == null or army_color == null:
 		return
 	army_color = value
@@ -122,16 +122,16 @@ func set_color(value):
 
 #region Setters/Getters
 
-func set_hovered(value):
+func set_hovered(value: bool) -> void:
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	spriteBase.set_material(null)
 	if hovered:
-		var shader = Globals.shader_hovered
+		var shader : Material = Globals.shader_hovered 
 		spriteBase.set_material(shader)
 	sg_unit_hovered.emit(value)
 
-func set_selected(value : bool):
+func set_selected(value : bool) -> void:
 	selected = value
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
@@ -145,7 +145,7 @@ func set_selected(value : bool):
 	sg_unit_selected.emit(value)
 
 # Used when the unit spawn in the battle to update the destination to the current position
-func set_destination(_value):
+func set_destination(_value : Vector2) -> void:
 	if moveComponent == null:
 		return
 	sg_move_component_set_destination.emit(self.global_position)
@@ -153,10 +153,10 @@ func set_destination(_value):
 #	moveComponent.destination = self.global_position
 #	moveComponent.next_point = self.global_position
 
-func get_destination():
+func get_destination() -> Vector2:
 	return moveComponent.destination
 
-func set_face_direction(value : float = 0):
+func set_face_direction(value : float = 0) -> void:
 	rotation = value
 	if moveComponent == null:
 		push_error("there is not moveComponent")
@@ -164,7 +164,7 @@ func set_face_direction(value : float = 0):
 	sg_move_component_set_face_direction.emit(value)
 #	moveComponent.face_direction = value
 
-func set_chase(value : Unit):
+func set_chase(value : Unit) -> void:
 #	print_debug("set chase")
 	if moveComponent == null:
 		return
@@ -182,38 +182,38 @@ func set_chase(value : Unit):
 	else:
 		moveComponent.chase_in_queue = false
 
-func set_troops_number(value):
+func set_troops_number(value : int) -> void:
 	troops_number = value
 	sg_troops_number_changed.emit(value, troops_number_max)
 
 
-func _on_unit_detector_mouse_entered():
+func _on_unit_detector_mouse_entered() -> void:
 	hovered = true
 	update_overlay()
 
-func _on_unit_detector_mouse_exited():
+func _on_unit_detector_mouse_exited() -> void:
 	hovered = false
 
-func move_to(aDestination, face_direction ):
+func move_to(aDestination : Vector2, face_direction : float) -> void:
 	if moveComponent == null:
 		return
 	state = State.MOVING
 	moveComponent.move_to(aDestination, face_direction)
 	moveComponent.chasing = false
 
-func reached_destination():
+func reached_destination() -> void:
 	if target_unit == null:
 		state = State.IDLE # set conditions
 		pass
 	pass
 
-func attack_target(value : Unit):
+func attack_target(value : Unit) -> void:
 	if value == null:
 		printerr(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
 	target_unit = value
 	weapons.go_to_attack()
-	var weapon_type  = weapons.get_mouse_over_weapon_type()
+	var weapon_type : String = weapons.get_mouse_over_weapon_type()
 	if weapon_type == "Melee":
 		if state == State.MELEE:
 			#print("melee")
@@ -227,11 +227,11 @@ func attack_target(value : Unit):
 		else:
 			set_chase(value)
 
-func attack_again():
+func attack_again() -> void:
 #	print_debug("attack again")
 #	print(target_unit)
 	if target_unit != null and state == State.FIRING:
-		var weapon_type = weapons.get_in_use_weapon_type()
+		var weapon_type : String = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
 			if weapons.get_if_target_in_weapon_range(target_unit):
 				range_attack(target_unit)
@@ -242,10 +242,10 @@ func attack_again():
 		pass
 
 
-func melee(data : HurtboxData):
+func melee(data : HurtboxData) -> void:
 	if data == null:
 		return
-	var new_data = data["areas"]
+	var new_data : Array = data["areas"]
 	moveComponent.move_to_face_melee(new_data)
 	state = State.MELEE
 	target_unit = data.target
@@ -258,7 +258,7 @@ func melee(data : HurtboxData):
 #	print("got into melee")
 #	pass
 
-func range_attack(target : Unit):
+func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
 	state = State.FIRING
 	moveComponent.face_unit(target)
@@ -266,11 +266,11 @@ func range_attack(target : Unit):
 	weapons.attack(target)
 	pass
 
-func alternative_weapon(use_secondary):
+func alternative_weapon(use_secondary : bool) -> void:
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(_data : AttackData):
+func recieved_attack(_data : AttackData) -> void:
 #	print("i recieved damage")
 #	print(data)
 	troops_number -= 10
@@ -281,20 +281,20 @@ func update_overlay() -> void :
 	if not hovered:
 		return
 	var overlay_unit = OverlayUnit.new() as OverlayUnit
-	var data = overlay_unit.get_data_from_unit(self as Unit)
+	var data : OverlayUnitData = overlay_unit.get_data_from_unit(self as Unit)
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
 	pass
 
-func send_unit_card_data():
+func send_unit_card_data() -> void:
 	troops_number = troops_number
 	weapons.get_ammo_data()
 
-func get_type():
+func get_type() -> int:
 	return type
 
-func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
-	var unit = area.owner as Unit
+func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
+	var unit : Unit = area.owner as Unit
 #	print("enemy in range")
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
 		enemies_in_range.push_back(unit)
@@ -308,11 +308,11 @@ func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or id
 	pass # Replace with function body.
 
 
-func _on_range_of_attack_area_exited(area):
+func _on_range_of_attack_area_exited(area : Area2D) -> void:
 	var unit = area.owner as Unit
-	var index = enemies_in_range.find(unit)
+	var index : int = enemies_in_range.find(unit)
 	if index >= 0:
-		var newArr = enemies_in_range.duplicate()
+		var newArr : Array = enemies_in_range.duplicate()
 #		newArr.remove_at(index)
 		enemies_in_range = newArr.duplicate()
 #		print(enemies_in_range)
@@ -320,7 +320,8 @@ func _on_range_of_attack_area_exited(area):
 
 	pass # Replace with function body.
 
-func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -> unit
+# From weapon -> weapon_manager -> unit
+func check_if_target_is_in_range(arr : Array) -> void: 
 	for i in arr:
 		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
@@ -328,7 +329,7 @@ func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -
 	pass
 
 
-func _on_unit_detector_area_entered(area):
+func _on_unit_detector_area_entered(area : Area2D) -> void:
 	var unit = area.owner as Unit
 	if unit == null: # fix crash
 		return
@@ -339,7 +340,7 @@ func _on_unit_detector_area_entered(area):
 #		pass
 	pass # Replace with function body.
 
-func _on_unit_detector_area_exited(area):
+func _on_unit_detector_area_exited(area : Area2D) -> void:
 	var _unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
@@ -348,7 +349,7 @@ func _on_unit_detector_area_exited(area):
 	pass # Replace with function body.
 
 
-func _on_range_weapon_reached_new_enemy(enemies):
+func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
 #	print(enemies)
 	if state != State.CHASING: # or is in fire at will
 		return
@@ -357,7 +358,7 @@ func _on_range_weapon_reached_new_enemy(enemies):
 		range_attack(target_unit)
 	pass # Replace with function body.
 
-func _on_range_weapon_reload_time_over(_node):
+func _on_range_weapon_reload_time_over(_node : Node ) -> void:
 	if state != State.FIRING:
 		return
 	if enemies_in_range.has(target_unit):

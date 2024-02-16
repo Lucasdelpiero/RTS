@@ -34,7 +34,7 @@ func set_starting_position():
 		var unit = army[i] as Unit
 		var newPos = spawnMarker.global_position + spacing * i - offset
 		unit.global_position = newPos
-		unit.set_destination("pan") # Used just to update the destination to the current position
+		unit.set_destination(Vector2.ZERO) # Used just to update the destination to the current position
 		unit.set_face_direction(spawnMarker.rotation)
 		unit.state = unit.State.IDLE # In case units overlaps while spawning and are set to melee stance
 		if ownership != "":
