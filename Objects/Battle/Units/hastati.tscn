@@ -12,7 +12,7 @@ weaponsData = ExtResource("2_5jbtb")
 shield = 3
 metadata/_edit_horizontal_guides_ = [-73.0, -158.0]
 
-[node name="Marker2D" parent="." index="3"]
+[node name="Marker2D" parent="." index="2"]
 visible = false
 
 [node name="NameLabel" parent="Marker2D/Node" index="0"]
@@ -22,7 +22,7 @@ text = "Hastati"
 [node name="SpriteType" parent="SpriteBase" index="0"]
 texture = ExtResource("3_v5n0j")
 
-[node name="Weapons" parent="." index="6" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
+[node name="Weapons" parent="." index="5" node_paths=PackedStringArray("primary_weapon", "secondary_weapon")]
 primary_weapon = NodePath("MeleeWeapon")
 secondary_weapon = NodePath("RangeWeapon")
 
@@ -49,7 +49,7 @@ position = Vector2(-1, 0)
 rotation = 3.12973
 target_position = Vector2(85, -77)
 
-[node name="HitBoxComponent" parent="." index="9"]
+[node name="HitBoxComponent" parent="." index="8"]
 visible = true
 
 [connection signal="area_exited" from="UnitDetector" to="." method="_on_unit_detector_area_exited"]
