@@ -37,7 +37,7 @@ func resource_incoming(data : Production) -> void:
 	resources_generated.push_back(data)
 
 func process_resources_recieved() -> void:
-	var total_gold_generated = resources_generated.map(func(el): return el.gold).reduce(func(a,b): return a + b)
+	var total_gold_generated : int = resources_generated.map(func(el): return el.gold).reduce(func(a,b): return a + b)
 	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return

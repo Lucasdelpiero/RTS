@@ -14,7 +14,7 @@ signal sg_send_ammo_data_unit_to_card(value : int, maxAmmo : int)
 func _ready() -> void:
 	
 	if get_children().size() == 0: # Give at least a default weapon
-		var def_weapon = DefaultWeapon.instantiate()
+		var def_weapon : Weapon = DefaultWeapon.instantiate()
 		add_child(def_weapon)
 	
 	var weapons : Array = get_children() as Array[Weapon]
@@ -93,8 +93,8 @@ func weapon_can_attack_again(weapon : Weapon) -> void:
 		in_use_weapon_ready_to_attack.emit()
 	pass
 
-func change_to_melee_weapon(): # Used when the unit run out of ammo
-	var weapons = get_children() as Array[Weapon]
+func change_to_melee_weapon() -> void: # Used when the unit run out of ammo
+	var weapons : Array = get_children() as Array[Weapon]
 	for weapon in weapons as Array[Weapon]:
 		if weapon.type == "Melee":
 			in_use_weapon = weapon
@@ -120,14 +120,14 @@ func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array:
 	return [0, 0] # default value needed
 	
 
-func get_mouse_over_weapon_type():
+func get_mouse_over_weapon_type() -> String:
 #	print(in_use_weapon)
 	return mouse_over_weapon.get_type()
 
-func get_in_use_weapon_type():
+func get_in_use_weapon_type() -> String:
 	return in_use_weapon.get_type()
 
-func new_enemy_reached(value : Array): # signal emitted from the range weapon
+func new_enemy_reached(value : Array) -> void: # signal emitted from the range weapon
 	if in_use_weapon == null:
 		return 
 	if in_use_weapon.get_type() == "Range":
