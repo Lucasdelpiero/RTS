@@ -19,18 +19,18 @@ func set_data_from_object(aProvince : Province = null):
 		return
 	
 	# Getting names of properties in the province
-	var province_property_list = aProvince.get_property_list().map(func(el): return el.name)
-	var data_property_list = get_property_list().map(func(el): return el.name)
-	var in_both : Array = []
+	var province_property_list : Array = aProvince.get_property_list().map(func(el : Dictionary): return el.name)
+	var data_property_list : Array = get_property_list().map(func(el : Dictionary): return el.name)
+	var in_both : Array[String] = []
 	
 	# Store the ones that are in both objects
-	for data_property in data_property_list:
+	for data_property in data_property_list as Array[String]:
 		if data_property in province_property_list:
 			in_both.push_back(data_property)
 	in_both.erase("script") # thing that i for sure DONT want to overwrite 
 	
 	# Set the properties automatically in the resource
-	for property in in_both:
+	for property in in_both as Array[String]:
 		set(property, aProvince.get(property))
 		#print("%s: %s" % [property, get(property)])
 	
