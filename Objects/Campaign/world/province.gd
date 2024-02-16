@@ -251,4 +251,3 @@ func get_province_bonuses(aBuildings_manager : BuildingsManager, nation : Nation
 	return local_province_bonuses
 
 
-

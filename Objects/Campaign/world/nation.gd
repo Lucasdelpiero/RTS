@@ -4,15 +4,9 @@ class_name Nation
 
 signal sg_update_resources_ui(data : TotalProductionData)
 
-<<<<<<< Updated upstream
 @export var NATION_TAG  : String = ""
 @export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
 @export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
-=======
-@export var NATION_TAG : String  = ""
-@export_color_no_alpha var nationOutline = Color(0, 0, 0)
-@export_color_no_alpha var nationColor = Color(0, 0, 0)
->>>>>>> Stashed changes
 @export_range(10, 1000, 0.1) var gold : float = 100 : 
 	set(value):
 		gold = value
