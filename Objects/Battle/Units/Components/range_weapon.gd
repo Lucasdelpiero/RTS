@@ -78,7 +78,7 @@ func shoot(target : Unit):
 	reloading = true
 	pass
 
-func get_type():
+func get_type() :
 	return type
 
 func get_attack():

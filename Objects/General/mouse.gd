@@ -17,12 +17,12 @@ var ui = null
 # To draw the rectangle selection
 var start_rectangle := Vector2(0.0, 0.0)
 var end_rectangle := Vector2(0.0, 0.0)
-@onready var rectangleLine = %rectangleLine
-@onready var renctangleMarker = %rectangleMarker
-@onready var col = $Node/Area2D/CollisionShape2D
-@onready var areaNode = $Node/Area2D
-@onready var hoveredTimer = %HoveredTimer
-@export_range(1, 500, 1) var rectangleDrawDistance = 10
+@onready var rectangleLine : Line2D = %rectangleLine
+@onready var renctangleMarker : Marker2D = %rectangleMarker
+@onready var col : CollisionShape2D = $Node/Area2D/CollisionShape2D
+@onready var areaNode : Area2D = $Node/Area2D
+@onready var hoveredTimer : Timer = %HoveredTimer
+@export_range(1, 500, 1) var rectangleDrawDistance : int = 10
 
 # To move units
 var start_formation := Vector2(0.0, 0.0)
@@ -32,20 +32,20 @@ var mouse_normal = load("res://Assets/mouse_normal_24.png")
 var mouse_melee = load("res://Assets/mouse_melee_2.png")
 var mouse_range = load("res://Assets/mouse_range.png")
 
-func _ready():
+func _ready() -> void:
 	col.disabled = true
 #	Input.set_custom_mouse_cursor(mouse_melee)
 
-func _input(_event):
+func _input(_event : InputEvent) -> void:
 	pass
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	areaNode.global_position = get_global_mouse_position()
 	draw_rectangle()
 
 # Used in campaing map to select a province
-func set_province_selected():
+func set_province_selected() -> void:
 	if provinceWithMouseOver == null or hovered.size() > 0:
 		ui.update_province_data(null) # set ui to not visible
 
@@ -62,7 +62,7 @@ func set_province_selected():
 	pass
 
 ## Gets in a list the army hovered
-func update_army_campaing_selection(data):
+func update_army_campaing_selection(data) -> void:
 	# If the army has the mouse over it, it will be added to a list
 	if (data.mouseOverSelf):
 		hovered.push_back( data.node )
@@ -199,7 +199,7 @@ func _on_area_2d_area_entered(area):
 		pass
 
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(area : Area2D) -> void:
 	# When the selection area leaves the army, it will be deselected if it leaves while the mouse is being
 	# clicked ( while its changing shape )
 	if Input.is_action_pressed("Click_Left"):
@@ -211,12 +211,12 @@ func _on_area_2d_area_exited(area):
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
 
 # Once the mouse is hovering an army for enough time, the data will show up
-func _on_hovered_timer_timeout():
+func _on_hovered_timer_timeout() -> void:
 #	print("print the hovered")
 #	print(hovered)
 	pass # Replace with function body.
 
-func _on_alternate_cursor_timeout():
+func _on_alternate_cursor_timeout() -> void:
 	if weapon_displayed == "Range":
 		Input.set_custom_mouse_cursor(mouse_melee)
 		weapon_displayed = "Melee"

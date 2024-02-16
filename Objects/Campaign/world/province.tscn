@@ -41,6 +41,7 @@ visible = false
 z_index = 50
 z_as_relative = false
 
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="area_entered" from="MouseDetector" to="." method="_on_mouse_detector_area_entered"]
 [connection signal="area_exited" from="MouseDetector" to="." method="_on_mouse_detector_area_exited"]
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]
