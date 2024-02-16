@@ -73,7 +73,7 @@ func save() -> Dictionary:
 	# in an array
 	var armies : Array = get_children()
 	var army_array : Array = []
-	for army in armies:
+	for army in armies :
 		army_array.push_back(army.save())
 	
 	var save_dict : Dictionary = {

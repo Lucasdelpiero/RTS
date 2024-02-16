@@ -1,7 +1,7 @@
 extends WeaponData
 class_name RangeWeapon
 
-var type = "Range"
+var type : String = "Range"
 @export_enum("Bow", "Javelin","Slingshot") var weapon : String = "Bow"
 @export_range(1, 1000, 1) var base_attack : int = 1
 @export_range(1, 10000, 1) var base_max_range : int = 1000
@@ -10,8 +10,8 @@ var type = "Range"
 @export var fire_shot : bool = false
 @export var pierce_armor : bool = false
 
-func get_type():
+func get_type() -> String:
 	return "Range"
 
-func get_damage():
+func get_damage() -> int:
 	return 100

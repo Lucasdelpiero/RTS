@@ -30,7 +30,7 @@ func _ready() -> void:
 			secondary_weapon = weapons [1]
 #			mouse_over_weapon = secondary_weapon ### maybe delete this?
 	
-	for weapon in weapons:
+	for weapon  in weapons as Array[Weapon]:
 		if weapon.get_type() == "Range":
 			weapon.ran_out_of_ammo.connect(change_to_melee_weapon)
 			weapon.reached_new_enemy.connect(new_enemy_reached)
@@ -88,34 +88,36 @@ func attack(target : Unit) -> void:
 		in_use_weapon.attack(target)
 	pass
 
-func weapon_can_attack_again(weapon) -> void:
+func weapon_can_attack_again(weapon : Weapon) -> void:
 	if weapon == in_use_weapon: # only the weapon in use can ask to attack again
 		in_use_weapon_ready_to_attack.emit()
 	pass
 
 func change_to_melee_weapon(): # Used when the unit run out of ammo
 	var weapons = get_children() as Array[Weapon]
-	for weapon in weapons:
+	for weapon in weapons as Array[Weapon]:
 		if weapon.type == "Melee":
 			in_use_weapon = weapon
 #			set_in_use_weapon(weapon)
 #			print("now i use melee")
 	pass
 
-func get_ammo_data(aAmmo = null, aMaxAmmo = null): 
-	if aMaxAmmo != null:
+func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array: 
+	if aMaxAmmo != 0:
 		sg_send_ammo_data_unit_to_card.emit(aAmmo, aMaxAmmo)
-		return [0, 0]
-	var amount = 0
-	var total = 1
-	var weapons = get_children() as Array[Weapon]
+		#return [0, 0] # i dont know why this was 0, 0
+		return [aAmmo, aMaxAmmo]
+	var amount : int = 0
+	var total : int = 1
+	var weapons : Array = get_children() as Array[Weapon]
 	for weapon in weapons as Array[Weapon]:
 		if weapon.get_type() == "Range":
 			if weapon.has_ammo():
 				amount = weapon.current_ammunition
 				total = weapon.max_ammunition
-#		return [amount, total]
+		#return [amount, total]
 	sg_send_ammo_data_unit_to_card.emit(amount, total)
+	return [0, 0] # default value needed
 	
 
 func get_mouse_over_weapon_type():
@@ -133,15 +135,16 @@ func new_enemy_reached(value : Array): # signal emitted from the range weapon
 #		print(value)
 	pass
 
-func get_if_target_in_weapon_range(value : Unit):
+func get_if_target_in_weapon_range(value : Unit) -> bool:
 	if in_use_weapon == null:
 			return false # maybe should be changed idk
 	if in_use_weapon.get_type() == "Range":
 		return in_use_weapon.check_if_target_is_in_area(value)
+	return false # default case, needed only for type return to have a return value in all cases
 
-func set_weapons_visibility(value, use_secondary : bool = false):
-	var weapons = get_children() as Array[Weapon]
-	for weapon in weapons:
+func set_weapons_visibility(value : bool, use_secondary : bool = false) -> void:
+	var weapons : Array = get_children() as Array[Weapon]
+	for weapon in weapons as Array[Weapon]:
 		if weapon == primary_weapon:
 			weapon.set_visibility(value and !use_secondary)
 #			weapon.visible = value and !use_secondary
