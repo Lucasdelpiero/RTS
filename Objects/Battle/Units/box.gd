@@ -11,22 +11,22 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-@onready var mouse : Mouse = null
+@onready var mouse = null
 var hovered : bool = false : set = set_hovered
 var selected : bool = false : set = set_selected
 var world = null
 var routed : bool = false
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
 @onready var hurtBoxComponent = %HurtBoxComponent
-@export var ownership : String = "ROME"
+@export var ownership = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
-@onready var nameLabel : Label = %NameLabel
-@onready var weapons : WeaponsManager = $Weapons as WeaponsManager
-@onready var rangeOfAttack : Area2D = $RangeOfAttack
-@onready var unitDetector : Area2D = %UnitDetector
+@onready var nameLabel = %NameLabel
+@onready var weapons = $Weapons as WeaponsManager
+@onready var rangeOfAttack = $RangeOfAttack
+@onready var unitDetector = %UnitDetector
 #@onready var overlay : OverlayUnit = %Overlay
 @onready var marker : Marker2D = $Marker2D
 @export var weaponsData : WeaponsData = WeaponsData.new()
@@ -49,8 +49,8 @@ enum State  {
 	FIRING = 4,
 	FLEEING = 5,
 }
-var state : int = State.IDLE
-@export_color_no_alpha var army_color : Color = Color(1.0, 1.0, 1.0) : set = set_color
+var state = State.IDLE
+@export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0) : set = set_color
 @export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
 var target_unit : Unit = null
@@ -58,15 +58,15 @@ var target_unit : Unit = null
 
 #region Signals
 signal show_overlay_unit(data)
-signal sg_unit_hovered(value : bool)
-signal sg_unit_selected(value : bool)
-signal sg_troops_number_changed(value : int, max : int)
-signal sg_move_component_set_destination(value : Vector2) 
-signal sg_move_component_set_face_direction(value : float)
-signal sg_move_component_set_next_point(value : Vector2)
+signal sg_unit_hovered(value)
+signal sg_unit_selected(value)
+signal sg_troops_number_changed(value, max)
+signal sg_move_component_set_destination(value)
+signal sg_move_component_set_face_direction(value)
+signal sg_move_component_set_next_point(value)
 #endregion
 
-func _ready() -> void:
+func _ready():
 	troops_number = troops_number_max
 	selectedPolygon.visible = false
 #	print("%s: has a shield of value: %s" % [name, shield])
@@ -94,7 +94,7 @@ func _ready() -> void:
 
 #	print(weapons.selected_weapon.get_type())
 
-func _input(_event : InputEvent) -> void:
+func _input(_event):
 	if Input.is_action_just_pressed("delete"):
 		if hovered:
 			routed = true
@@ -104,19 +104,15 @@ func _input(_event : InputEvent) -> void:
 			visible = false
 			
 
-func _physics_process(_delta : float) -> void:
-	#if Engine.is_editor_hint():
-		#return
-	#$Label.text = str(target_unit)
-	#nameLabel.text = str(name)
-	#nameLabel.set_text(name)
+func _physics_process(_delta):
+#	$Label.text = str(target_unit)
+	nameLabel.text = name
 #	var pos = marker.position
 #	print(pos)
 #	nameLabel._set_position(marker.global_position)
 #	overlay.set_position(marker.global_position)
-	pass
 
-func set_color(value : Color) -> void:
+func set_color(value):
 	if value == null or army_color == null:
 		return
 	army_color = value
@@ -126,7 +122,7 @@ func set_color(value : Color) -> void:
 
 #region Setters/Getters
 
-func set_hovered(value : bool) -> void:
+func set_hovered(value):
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
 	spriteBase.set_material(null)
@@ -149,7 +145,7 @@ func set_selected(value : bool):
 	sg_unit_selected.emit(value)
 
 # Used when the unit spawn in the battle to update the destination to the current position
-func set_destination(_value) -> void:
+func set_destination(_value):
 	if moveComponent == null:
 		return
 	sg_move_component_set_destination.emit(self.global_position)
@@ -157,10 +153,10 @@ func set_destination(_value) -> void:
 #	moveComponent.destination = self.global_position
 #	moveComponent.next_point = self.global_position
 
-func get_destination() -> Vector2:
+func get_destination():
 	return moveComponent.destination
 
-func set_face_direction(value : float = 0) -> void:
+func set_face_direction(value : float = 0):
 	rotation = value
 	if moveComponent == null:
 		push_error("there is not moveComponent")
@@ -168,7 +164,7 @@ func set_face_direction(value : float = 0) -> void:
 	sg_move_component_set_face_direction.emit(value)
 #	moveComponent.face_direction = value
 
-func set_chase(value : Unit) -> void:
+func set_chase(value : Unit):
 #	print_debug("set chase")
 	if moveComponent == null:
 		return
@@ -186,32 +182,32 @@ func set_chase(value : Unit) -> void:
 	else:
 		moveComponent.chase_in_queue = false
 
-func set_troops_number(value : int):
+func set_troops_number(value):
 	troops_number = value
 	sg_troops_number_changed.emit(value, troops_number_max)
 
 
-func _on_unit_detector_mouse_entered() -> void:
+func _on_unit_detector_mouse_entered():
 	hovered = true
 	update_overlay()
 
-func _on_unit_detector_mouse_exited() -> void:
+func _on_unit_detector_mouse_exited():
 	hovered = false
 
-func move_to(aDestination, face_direction ) -> void:
+func move_to(aDestination, face_direction ):
 	if moveComponent == null:
 		return
 	state = State.MOVING
 	moveComponent.move_to(aDestination, face_direction)
 	moveComponent.chasing = false
 
-func reached_destination() -> void:
+func reached_destination():
 	if target_unit == null:
 		state = State.IDLE # set conditions
 		pass
 	pass
 
-func attack_target(value : Unit) -> void:
+func attack_target(value : Unit):
 	if value == null:
 		printerr(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
@@ -231,7 +227,7 @@ func attack_target(value : Unit) -> void:
 		else:
 			set_chase(value)
 
-func attack_again() -> void:
+func attack_again():
 #	print_debug("attack again")
 #	print(target_unit)
 	if target_unit != null and state == State.FIRING:
@@ -246,7 +242,7 @@ func attack_again() -> void:
 		pass
 
 
-func melee(data : HurtboxData) -> void:
+func melee(data : HurtboxData):
 	if data == null:
 		return
 	var new_data = data["areas"]
@@ -262,7 +258,7 @@ func melee(data : HurtboxData) -> void:
 #	print("got into melee")
 #	pass
 
-func range_attack(target : Unit) -> void:
+func range_attack(target : Unit):
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
 	state = State.FIRING
 	moveComponent.face_unit(target)
@@ -270,11 +266,11 @@ func range_attack(target : Unit) -> void:
 	weapons.attack(target)
 	pass
 
-func alternative_weapon(use_secondary) -> void:
+func alternative_weapon(use_secondary):
 #	weaponsData.change_weapon(use_secondary)
 	weapons.alternative_weapon(use_secondary)
 
-func recieved_attack(_data : AttackData) -> void:
+func recieved_attack(_data : AttackData):
 #	print("i recieved damage")
 #	print(data)
 	troops_number -= 10
@@ -284,20 +280,20 @@ func update_overlay() -> void :
 	await get_tree().create_timer(1.0).timeout
 	if not hovered:
 		return
-	var overlay_unit : OverlayUnit = OverlayUnit.new() as OverlayUnit
-	var data : OverlayUnitData = overlay_unit.get_data_from_unit(self as Unit)
+	var overlay_unit = OverlayUnit.new() as OverlayUnit
+	var data = overlay_unit.get_data_from_unit(self as Unit)
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
 	pass
 
-func send_unit_card_data() -> void:
+func send_unit_card_data():
 	troops_number = troops_number
 	weapons.get_ammo_data()
 
-func get_type() -> int:
+func get_type():
 	return type
 
-func _on_range_of_attack_area_entered(area) -> void: # Used maybe for ia to charge or idk
+func _on_range_of_attack_area_entered(area): # Used maybe for ia to charge or idk
 	var unit = area.owner as Unit
 #	print("enemy in range")
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
@@ -312,7 +308,7 @@ func _on_range_of_attack_area_entered(area) -> void: # Used maybe for ia to char
 	pass # Replace with function body.
 
 
-func _on_range_of_attack_area_exited(area) -> void:
+func _on_range_of_attack_area_exited(area):
 	var unit = area.owner as Unit
 	var index = enemies_in_range.find(unit)
 	if index >= 0:
@@ -324,7 +320,7 @@ func _on_range_of_attack_area_exited(area) -> void:
 
 	pass # Replace with function body.
 
-func check_if_target_is_in_range(arr : Array) -> void: # From weapon -> weapon_manager -> unit
+func check_if_target_is_in_range(arr : Array): # From weapon -> weapon_manager -> unit
 	for i in arr:
 		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
@@ -332,8 +328,8 @@ func check_if_target_is_in_range(arr : Array) -> void: # From weapon -> weapon_m
 	pass
 
 
-func _on_unit_detector_area_entered(area) -> void:
-	var unit : Unit = area.owner as Unit
+func _on_unit_detector_area_entered(area):
+	var unit = area.owner as Unit
 	if unit == null: # fix crash
 		return
 #	if unit.ownership != self.ownership:
@@ -343,7 +339,7 @@ func _on_unit_detector_area_entered(area) -> void:
 #		pass
 	pass # Replace with function body.
 
-func _on_unit_detector_area_exited(area : Area2D) -> void:
+func _on_unit_detector_area_exited(area):
 	var _unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
@@ -352,7 +348,7 @@ func _on_unit_detector_area_exited(area : Area2D) -> void:
 	pass # Replace with function body.
 
 
-func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
+func _on_range_weapon_reached_new_enemy(enemies):
 #	print(enemies)
 	if state != State.CHASING: # or is in fire at will
 		return
@@ -361,7 +357,7 @@ func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
 		range_attack(target_unit)
 	pass # Replace with function body.
 
-func _on_range_weapon_reload_time_over(_node) -> void:
+func _on_range_weapon_reload_time_over(_node):
 	if state != State.FIRING:
 		return
 	if enemies_in_range.has(target_unit):

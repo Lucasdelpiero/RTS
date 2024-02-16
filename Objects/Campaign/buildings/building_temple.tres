@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://cflnuxx2fo6oi"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://cflnuxx2fo6oi"]
 
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_00ddq"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="1_m8tff"]
@@ -36,29 +36,11 @@ time_to_build = 5
 flat_production = Array[ExtResource("1_m8tff")]([SubResource("Resource_3xnen")])
 bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_lo0br")])
 
-[sub_resource type="Resource" id="Resource_yn8jn"]
-script = ExtResource("1_m8tff")
-type_produced = "manpower"
-amount = 100
-
-[sub_resource type="Resource" id="Resource_n2i1w"]
-script = ExtResource("1_m8tff")
-type_produced = "gold"
-amount = 250
-
-[sub_resource type="Resource" id="Resource_ok681"]
-script = ExtResource("3_4becn")
-building_name = ""
-cost = 100
-time_to_build = 5
-flat_production = Array[ExtResource("1_m8tff")]([SubResource("Resource_yn8jn"), SubResource("Resource_n2i1w")])
-bonuses = Array[ExtResource("1_00ddq")]([])
-
 [resource]
 script = ExtResource("3_ls77v")
 building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
 is_built = false
 current_level = 0
-levels = Array[ExtResource("3_4becn")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud"), SubResource("Resource_ok681")])
+levels = Array[ExtResource("3_4becn")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
 description = "PRAY THE SUN"

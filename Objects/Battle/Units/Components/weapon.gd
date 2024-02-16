@@ -2,33 +2,30 @@
 extends Node2D
 class_name Weapon
 
-var type : String = ""
+var type = null
 var weapon := ""
 
-func connect_signals_to_manager(_parent : WeaponsManager) -> void:
+func connect_signals_to_manager(_parent : WeaponsManager):
 	pass
 
-func get_attack() -> int:
+func get_attack():
 	# Space for modifiers
-	return 0
 	pass
 
-func get_shooting_range() -> float:
+func get_shooting_range():
 	# Space for modifiers
-	return 0.0
 	pass
 
-func get_shooting_speed() -> float:
+func get_shooting_speed():
 	# Space for modifiers
-	return 0.0
 	pass
 
-func get_type() -> String:
+func get_type():
 	return type
 
-func set_visibility(value : bool) -> void:
+func set_visibility(value):
 	visible = value
 	pass
 
-func has_ammo() -> bool:
+func has_ammo():
 	return false # Used so the melee range return something 

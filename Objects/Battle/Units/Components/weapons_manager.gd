@@ -6,18 +6,18 @@ var mouse_over_weapon : Weapon = null   # The weapon that will be chose during a
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
 var DefaultWeapon : PackedScene = load("res://Objects/Battle/Units/Components/melee_weapon.tscn")
-signal send_units_in_range(value : Array)
+signal send_units_in_range(value)
 signal in_use_weapon_ready_to_attack
-signal sg_send_ammo_data_unit_to_card(value : int, maxAmmo : int)
+signal sg_send_ammo_data_unit_to_card(value, maxAmmo)
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	
 	if get_children().size() == 0: # Give at least a default weapon
-		var def_weapon : Weapon = DefaultWeapon.instantiate()
+		var def_weapon = DefaultWeapon.instantiate()
 		add_child(def_weapon)
 	
-	var weapons : Array = get_children() as Array[Weapon]
+	var weapons = get_children() as Array[Weapon]
 	
 	
 	if weapons.size() > 0:
@@ -43,11 +43,11 @@ func _ready() -> void:
 		push_error("Unit doesnt have a weapon to use")
 	set_weapons_visibility(false)
 
-func connect_signals() -> void:
+func connect_signals():
 	pass
 
-var reseted_weapon : bool = false
-func alternative_weapon(use_secondary : bool = false) -> void:
+var reseted_weapon = false
+func alternative_weapon(use_secondary : bool = false):
 #	return mouse_over_weapon
 	reseted_weapon = false
 	if use_secondary and secondary_weapon != null:
@@ -62,7 +62,7 @@ func alternative_weapon(use_secondary : bool = false) -> void:
 		reseted_weapon = true
 #		print("back to normal")
 
-func set_in_use_weapon(value : Weapon) -> void:
+func set_in_use_weapon(value : Weapon):
 	if in_use_weapon != value:
 		if value.get_type() == "Range":
 			if value.has_ammo():
@@ -73,28 +73,28 @@ func set_in_use_weapon(value : Weapon) -> void:
 #			print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 #	print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 
-func go_to_attack(use_secondary : bool = false) -> void:
+func go_to_attack(use_secondary : bool = false):
 	use_secondary = Input.is_action_pressed("Secondary_Weapon")
 	if use_secondary:
 		in_use_weapon = mouse_over_weapon
 	else:
 		in_use_weapon = primary_weapon
 
-func attack(target : Unit) -> void:
-	var type : String = in_use_weapon.get_type()
+func attack(target : Unit):
+	var type = in_use_weapon.get_type()
 	if type == "Range":
 		in_use_weapon.call_deferred("shoot",target) # Called this way to avoid error in debugger
 	if type == "Melee":
 		in_use_weapon.attack(target)
 	pass
 
-func weapon_can_attack_again(weapon : Weapon) -> void:
+func weapon_can_attack_again(weapon):
 	if weapon == in_use_weapon: # only the weapon in use can ask to attack again
 		in_use_weapon_ready_to_attack.emit()
 	pass
 
-func change_to_melee_weapon() -> void: # Used when the unit run out of ammo
-	var weapons : Array = get_children() as Array[Weapon]
+func change_to_melee_weapon(): # Used when the unit run out of ammo
+	var weapons = get_children() as Array[Weapon]
 	for weapon in weapons:
 		if weapon.type == "Melee":
 			in_use_weapon = weapon
@@ -102,31 +102,30 @@ func change_to_melee_weapon() -> void: # Used when the unit run out of ammo
 #			print("now i use melee")
 	pass
 
-func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array: 
-	if aMaxAmmo != 0:
+func get_ammo_data(aAmmo = null, aMaxAmmo = null): 
+	if aMaxAmmo != null:
 		sg_send_ammo_data_unit_to_card.emit(aAmmo, aMaxAmmo)
 		return [0, 0]
-	var amount : int = 0
-	var total : int = 1
-	var weapons : Array = get_children() as Array[Weapon]
+	var amount = 0
+	var total = 1
+	var weapons = get_children() as Array[Weapon]
 	for weapon in weapons as Array[Weapon]:
 		if weapon.get_type() == "Range":
 			if weapon.has_ammo():
 				amount = weapon.current_ammunition
 				total = weapon.max_ammunition
-		return [amount, total]
+#		return [amount, total]
 	sg_send_ammo_data_unit_to_card.emit(amount, total)
-	return [0, 0] # default
 	
 
-func get_mouse_over_weapon_type() -> String:
+func get_mouse_over_weapon_type():
 #	print(in_use_weapon)
 	return mouse_over_weapon.get_type()
 
-func get_in_use_weapon_type() -> String:
+func get_in_use_weapon_type():
 	return in_use_weapon.get_type()
 
-func new_enemy_reached(value : Array) -> void: # signal emitted from the range weapon
+func new_enemy_reached(value : Array): # signal emitted from the range weapon
 	if in_use_weapon == null:
 		return 
 	if in_use_weapon.get_type() == "Range":
@@ -134,15 +133,14 @@ func new_enemy_reached(value : Array) -> void: # signal emitted from the range w
 #		print(value)
 	pass
 
-func get_if_target_in_weapon_range(value : Unit) -> bool:
+func get_if_target_in_weapon_range(value : Unit):
 	if in_use_weapon == null:
 			return false # maybe should be changed idk
 	if in_use_weapon.get_type() == "Range":
 		return in_use_weapon.check_if_target_is_in_area(value)
-	return false # just needed to have a default value
 
-func set_weapons_visibility(value : bool, use_secondary : bool = false) -> void:
-	var weapons : Array = get_children() as Array[Weapon]
+func set_weapons_visibility(value, use_secondary : bool = false):
+	var weapons = get_children() as Array[Weapon]
 	for weapon in weapons:
 		if weapon == primary_weapon:
 			weapon.set_visibility(value and !use_secondary)

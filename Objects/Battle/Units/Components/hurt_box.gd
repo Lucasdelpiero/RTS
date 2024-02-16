@@ -1,19 +1,19 @@
 extends Area2D
 class_name HurtBox
 
-@onready var meleePoint : Marker2D = $MeleePoint
-@onready var checkSpace : Area2D = $MeleePoint/CheckSpace
-var occupied : bool = false
+@onready var meleePoint = $MeleePoint
+@onready var checkSpace = $MeleePoint/CheckSpace
+var occupied = false
 var occupant : Unit = null
 
-func get_hurtbox_group() -> Array:
-	var parent : Node2D = get_parent()
+func get_hurtbox_group():
+	var parent = get_parent()
 	if parent == null:
-		return []
+		return null
 	return parent.get_children()
 
 
-func _on_check_space_area_entered(area : Area2D) -> void:
+func _on_check_space_area_entered(area):
 #	print("Found area")
 	if not occupied:
 		occupied = true
@@ -21,18 +21,18 @@ func _on_check_space_area_entered(area : Area2D) -> void:
 	p()
 	pass # Replace with function body.
 
-func _on_check_space_area_exited(_area : Area2D) -> void:
+func _on_check_space_area_exited(_area):
 	if checkSpace.get_overlapping_areas().size() == 0:
 		occupied = false
 		occupant = null
 		p()
 	pass # Replace with function body.
 
-func recieved_attack(_data : AttackData) -> void:
+func recieved_attack(_data : AttackData):
 	pass
 
-func p() -> void:
-	var _oc : String = ""
+func p():
+	var _oc = ""
 	if occupant != null:
 		_oc = occupant.name
 #	if owner.name == "Hastati":
