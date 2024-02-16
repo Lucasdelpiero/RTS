@@ -6,18 +6,18 @@ var mouse_over_weapon : Weapon = null   # The weapon that will be chose during a
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
 var DefaultWeapon : PackedScene = load("res://Objects/Battle/Units/Components/melee_weapon.tscn")
-signal send_units_in_range(value)
+signal send_units_in_range(value : Array)
 signal in_use_weapon_ready_to_attack
-signal sg_send_ammo_data_unit_to_card(value, maxAmmo)
+signal sg_send_ammo_data_unit_to_card(value : int, maxAmmo : int)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	
 	if get_children().size() == 0: # Give at least a default weapon
 		var def_weapon = DefaultWeapon.instantiate()
 		add_child(def_weapon)
 	
-	var weapons = get_children() as Array[Weapon]
+	var weapons : Array = get_children() as Array[Weapon]
 	
 	
 	if weapons.size() > 0:
@@ -43,11 +43,11 @@ func _ready():
 		push_error("Unit doesnt have a weapon to use")
 	set_weapons_visibility(false)
 
-func connect_signals():
+func connect_signals() -> void:
 	pass
 
-var reseted_weapon = false
-func alternative_weapon(use_secondary : bool = false):
+var reseted_weapon : bool = false
+func alternative_weapon(use_secondary : bool = false) -> void:
 #	return mouse_over_weapon
 	reseted_weapon = false
 	if use_secondary and secondary_weapon != null:
@@ -62,7 +62,7 @@ func alternative_weapon(use_secondary : bool = false):
 		reseted_weapon = true
 #		print("back to normal")
 
-func set_in_use_weapon(value : Weapon):
+func set_in_use_weapon(value : Weapon) -> void:
 	if in_use_weapon != value:
 		if value.get_type() == "Range":
 			if value.has_ammo():
@@ -73,22 +73,22 @@ func set_in_use_weapon(value : Weapon):
 #			print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 #	print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 
-func go_to_attack(use_secondary : bool = false):
+func go_to_attack(use_secondary : bool = false) -> void:
 	use_secondary = Input.is_action_pressed("Secondary_Weapon")
 	if use_secondary:
 		in_use_weapon = mouse_over_weapon
 	else:
 		in_use_weapon = primary_weapon
 
-func attack(target : Unit):
-	var type = in_use_weapon.get_type()
+func attack(target : Unit) -> void:
+	var type : String = in_use_weapon.get_type()
 	if type == "Range":
 		in_use_weapon.call_deferred("shoot",target) # Called this way to avoid error in debugger
 	if type == "Melee":
 		in_use_weapon.attack(target)
 	pass
 
-func weapon_can_attack_again(weapon):
+func weapon_can_attack_again(weapon) -> void:
 	if weapon == in_use_weapon: # only the weapon in use can ask to attack again
 		in_use_weapon_ready_to_attack.emit()
 	pass
