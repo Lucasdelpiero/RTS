@@ -1,16 +1,16 @@
 extends UnitsManagement
 
 var units := []
-var hovered_units := []
-var organized_units := [] : set = set_organized_units
+var hovered_units : Array[Unit] = []
+var organized_units : Array[Unit] = [] : set = set_organized_units
 var start_drag := Vector2.ZERO
 var end_drag := Vector2.ZERO
-var drag_distance_draw = 300
-var created_sprites = false
+var drag_distance_draw : int = 300
+var created_sprites : bool = false
 var sprites_to_draw : Array = []
 @onready var sprites_types : Array = []
 @export var texture_types : Array[Texture2D] = []
-var alpha_color = 0.5
+var alpha_color : float = 0.5
 @export var world : BattleMap = null
 var group_1 : Array = []
 var destination
@@ -18,13 +18,13 @@ var destination
 signal new_group_created(army)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	if world == null:
 		return
 	new_group_created.connect(world.order_battle_ui_to_create_group)
 	pass # Replace with function body.
 
-func _unhandled_input(_event):
+func _unhandled_input(_event : InputEvent) -> void:
 	if world == null:
 		return
 	
@@ -42,15 +42,15 @@ func _unhandled_input(_event):
 		create_group(units)
 		pass
 
-func _process(_delta):
+func _process(_delta : float) -> void:
 	Globals.debug_update_label("PlayerU", "PU manager: %s" % [units.size()])
 	pass
 
-func create_group(army):
+func create_group(army) -> void:
 	new_group_created.emit(army)
 	pass
 
-func dragging_draw_and_move():
+func dragging_draw_and_move() -> void:
 	if Input.is_action_just_pressed("Click_Right"):
 		start_drag = world.get_global_mouse_position()
 	
@@ -59,14 +59,14 @@ func dragging_draw_and_move():
 		end_drag = world.get_global_mouse_position()
 		if start_drag.distance_to(end_drag) >= drag_distance_draw or created_sprites:
 			if not created_sprites:
-				for unit in units:
-					var spriteBase = Sprite2D.new()
+				for unit in units as Array[Unit]:
+					var spriteBase := Sprite2D.new() as Sprite2D
 					spriteBase.set_texture(load("res://Assets/units/unit_base_256.png"))
-					var col = unit.army_color
+					var col : Color = unit.army_color as Color
 					col.a = alpha_color
 					spriteBase.set_modulate(col)
 					world.add_child(spriteBase)
-					var spriteType = Sprite2D.new()
+					var spriteType := Sprite2D.new() as Sprite2D
 					spriteType.set_texture(load("res://Assets/units/unit_default_icon_256.png"))
 					spriteType.set_modulate(col)
 					world.add_child(spriteType)
@@ -92,11 +92,11 @@ func dragging_draw_and_move():
 	if Input.is_action_just_released("Click_Right"):
 		destination = world.get_global_mouse_position()
 		if start_drag.distance_to(end_drag) >= drag_distance_draw or created_sprites:
-			for sprite in sprites_types:
+			for sprite in sprites_types as Array:
 				sprite[0].call_deferred("queue_free")
 				sprite[1].call_deferred("queue_free")
 			sprites_types = []
-			for sprite in sprites_to_draw:
+			for sprite in sprites_to_draw as Array[Sprite2D]:
 				sprite.queue_free()
 			draw_units(true)
 			sprites_to_draw = []
@@ -105,16 +105,16 @@ func dragging_draw_and_move():
 			move_without_draggin(destination)
 
 # Draw and move units in the formation dragged across the screen
-var toDelete = []
-func draw_units(move):
-	var organized = get_organized_units(units, start_drag.angle_to_point(end_drag))
+var toDelete : Array[Node] = []
+func draw_units(move) -> void:
+	var organized : Array[Unit] = get_organized_units(units, start_drag.angle_to_point(end_drag))
 	if organized == null:
 		return
 	organized_units = organized
-	var unit_width = 256
-	var amount = organized.size() 
-	var min_margin = 20
-	var margin = 1
+	var unit_width : int = 256
+	var amount : int = organized.size() 
+	var min_margin : int = 20
+	var margin : int = 1
 	for i in toDelete:
 		if i != null:
 			i.queue_free()
@@ -140,47 +140,47 @@ func draw_units(move):
 			spriteType.rotation = angle
 		
 
-func move_without_draggin(center):
+func move_without_draggin(center : Vector2) -> void:
 	if center == null:
 		printerr("Player manager doesnt have a center")
 		return
-	var enemies_hovered = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
+	var enemies_hovered : Array = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
 	if enemies_hovered.size() > 0:
-		var target = hovered_units[0]
+		var target : Unit = hovered_units[0] as Unit
 		for unit in units as Array[Unit]:
 			unit.attack_target(target)
 #			unit.set_chase(target)
 		return
 	
-	var unit_width = 256
-	var _amount = units.size()
-	var _margin = 20
-	var mouse = world.get_global_mouse_position()
-	var average_position = get_average_position(units)
-	var face_angle = average_position.angle_to_point(center)
-	var angle_formation = get_face_to_formation_angle(face_angle)
-	var organized = get_organized_units(units, angle_formation)
+	var unit_width : int = 256
+	var _amount : int = units.size()
+	var _margin : int = 20
+	var mouse : Vector2 = world.get_global_mouse_position()
+	var average_position : Vector2 = get_average_position(units)
+	var face_angle : float = average_position.angle_to_point(center)
+	var angle_formation : float = get_face_to_formation_angle(face_angle)
+	var organized : Array[Unit] = get_organized_units(units, angle_formation)
 	
 	if organized == null:
 		return
 	for i in organized.size():
-		var offset = Vector2(cos(angle_formation), sin(angle_formation)) * unit_width  * (organized.size() - 1) / 2
-		var new_pos = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i ) - offset
+		var offset : Vector2 = Vector2(cos(angle_formation), sin(angle_formation)) * unit_width  * (organized.size() - 1) / 2
+		var new_pos : Vector2 = mouse + Vector2(cos(angle_formation) * unit_width * i, sin(angle_formation) * unit_width * i ) - offset
 		organized[i].move_to(new_pos, angle_formation)
 
-func set_organized_units(value):
+func set_organized_units(value : Array[Unit]) -> void:
 	if value == null:
 		return
-	var org_type = organized_units.map(func(el) : return el.get_type() )
-	var value_type = value.map(func(el) : return el.get_type() )
+	var org_type : Array = organized_units.map(func(el : Unit) : return el.get_type() )
+	var value_type : Array = value.map(func(el : Unit) : return el.get_type() )
 	if org_type.hash() != value_type.hash():
 		organized_units = value.duplicate()
 		update_draw_type()
 
-func set_new_value(value : Array):
+func set_new_value(value : Array) -> void:
 	organized_units = value.duplicate()
 
-func update_draw_type():
+func update_draw_type() -> void:
 	for i in sprites_types.size():
 		var size = organized_units.size()
 		if i >= organized_units.size() or organized_units.size() == 0:

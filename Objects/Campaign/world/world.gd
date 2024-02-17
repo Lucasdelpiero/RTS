@@ -11,11 +11,11 @@ var map : AStar2D # navmap
 @onready var battleMenu = %BattleMenu # temporarelly instanced always
 var armies_in_battle : Array[ArmyCampaing] = []
 
-var playerNation = "ROME"
-var playerNode = null
-var nations := []
-var provinces := []
-var provinceSelected  = null
+var playerNation : String = "ROME"
+var playerNode : Nation = null
+var nations : Array[Nation] = []
+var provinces : Array[Province] = []
+var provinceSelected : Province = null
 
 # ID of provinces are stored using the position as key ("xPosition_yPosition")
 # using and underscore to separate the coordinates with their values floored as an int
@@ -42,7 +42,7 @@ func initialize_world() -> void:
 	
 #	army.get_to_closer_point(map)
 
-	nations = nationsGroup.get_children()
+	nations.assign(nationsGroup.get_children())
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
@@ -63,7 +63,7 @@ func initialize_world() -> void:
 			army.sg_was_selected.connect(new_unit_selected)
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
-	provinces = get_tree().get_nodes_in_group("provinces")
+	provinces.assign( get_tree().get_nodes_in_group("provinces") )
 	var nations_tags = nations.map(func(el): return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
 	for province in provinces as Array[Province]:
 		province.world = self
@@ -96,8 +96,8 @@ func change_map_shown(type : String) -> void:
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map() -> void:
 	map = AStar2D.new()
-	var provinces_temp = get_tree().get_nodes_in_group("provinces")
-	
+	var provinces_temp : Array[Province] 
+	provinces_temp.assign( get_tree().get_nodes_in_group("provinces") )
 	# Add points
 	for province in provinces_temp:
 		province.get_connections()
@@ -111,7 +111,7 @@ func get_nav_map() -> void:
 	
 	# Add connections
 	for province in provinces_temp:
-		var connections = province.connections
+		var connections : Array = province.connections
 		for con in connections:
 			if !map.are_points_connected(province.ID, con):
 				map.connect_points(province.ID, con)
@@ -152,7 +152,7 @@ func send_data_to_ui() -> void:
 		return
 	
 	var data : TotalProductionData = TotalProductionData.new()
-	data.gold = playerNode.gold
+	data.gold = ceili(playerNode.gold)
 	data.manpower = playerNode.manpower
 	UI.update_data(data)
 	pass
@@ -166,11 +166,11 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 #	main.update_armies_for_battle(units_in_battle)
 	for army in armies_in_battle :
 		if army.ownership == Globals.playerNation:
-			if !Globals.playerArmy.has(army):
-				Globals.playerArmy.push_back(army)
+			if !(Globals.playerArmy).has(army):
+				(Globals.playerArmy).push_back(army)
 		else:
-			if !Globals.enemyArmy.has(army):
-				Globals.enemyArmy.push_back(army)
+			if !(Globals.enemyArmy as Array).has(army):
+				(Globals.enemyArmy as Array).push_back(army)
 	battleMenu.visible = true
 	battleMenu.update()
 #	print(Globals.playerArmy)
@@ -178,7 +178,7 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 #	print(units_in_battle)
 	pass
 
-func start_battle():
+func start_battle() -> void:
 	# Send the info of the armies to the global script
 	for army in Globals.playerArmy:
 		Globals.playerArmyData.push_back(army.army_data)
@@ -186,14 +186,14 @@ func start_battle():
 		Globals.enemyArmyData.push_back(army.army_data)
 	main.start_battle()
 
-func _on_btn_start_battle_pressed():
+func _on_btn_start_battle_pressed() -> void:
 	start_battle()
 
-func new_unit_selected(value):
+func new_unit_selected(value : ArmyCampaing) -> void:
 	UI.update_selected_armies(value)
 
 # TEST
-func _on_timer_generate_resources_timeout():
+func _on_timer_generate_resources_timeout() -> void:
 	for province in provinces as Array[Province]:
 		province.generate_resources()
 	for nation in nations as Array[Nation]:

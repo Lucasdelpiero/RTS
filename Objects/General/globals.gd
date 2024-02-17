@@ -4,11 +4,15 @@ var mouse_in_province = 1
 var camera_angle := 0.0
 var playerNation : String = "ROME"
 var player_nation_node : Nation = null
-var playerArmy : Array[Unit] = [] # Array of armies of the player
+# Array of armies of the player to be loaded in the battlemap
+# it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
+var playerArmy : Array = [] 
 var playerArmyData : Array[ArmyData] = []  # Array of armies data each containing units
 var player_gold : int = 0 # used by UI in buttons to easily check the amount of money the player has
 var player_manpower : int = 0
-var enemyArmy : Array[Unit] = []
+# Array of army of the enemy player to be loaded in the battlemap
+# it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
+var enemyArmy : Array = []
 var enemyArmyData : Array[ArmyData] = []
 var debug : Debug = null
 var debug_personal : Array = []
@@ -17,8 +21,8 @@ var campaign_map : CampaignMap = null
 var battle_map : BattleMap = null : set = set_battle_map
 var campaign_UI : CampaignUI = null
 
-var shader_hovered = preload("res://Shaders/hovered.tres")
-var shader_selected = preload("res://Shaders/selected.tres")
+var shader_hovered := preload("res://Shaders/hovered.tres") as Material
+var shader_selected := preload("res://Shaders/selected.tres") as Material
 
 signal sg_battlemap_set_units_selected(unit, value)
 

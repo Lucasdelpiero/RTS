@@ -63,7 +63,7 @@ func _on_add_building_pressed() -> void:
 	var not_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
 	
 	for building in not_built:
-		var button = ButtonBuilding.instantiate() as BuildingButton
+		var button := ButtonBuilding.instantiate() as BuildingButton
 		buildings_available_container.add_child(button)
 		
 		button.province_data = province_data

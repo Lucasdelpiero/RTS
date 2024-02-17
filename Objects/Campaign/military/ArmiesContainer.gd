@@ -10,9 +10,9 @@ func updateArmiesData(data : Array[ArmyCampaing]) -> void:
 		node.queue_free()
 	
 	for army in data as Array[ArmyCampaing]:
-		var armyCampaignUI : ArmyCampaignUI = armyCampaignUI.instantiate() as ArmyCampaignUI
-		vbox.add_child(armyCampaignUI)
-		armyCampaignUI.update_data(army)
+		var newArmyCampaignUI : ArmyCampaignUI = armyCampaignUI.instantiate() as ArmyCampaignUI
+		vbox.add_child(newArmyCampaignUI)
+		newArmyCampaignUI.update_data(army)
 		pass
 	pass
 

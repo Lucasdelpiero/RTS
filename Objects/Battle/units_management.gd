@@ -3,23 +3,23 @@ class_name UnitsManagement
 
 ## Utilities used by the player and the IA to control the Units
 
-@onready var margin_between_units = 280 # Margin used to distance units from each other once ordered to move
+@onready var margin_between_units : int= 280 # Margin used to distance units from each other once ordered to move
 
-func get_face_to_formation_angle(value):
+func get_face_to_formation_angle(value : float) -> float:
 	return value + PI / 2
 
-func get_average_position(array : Array) -> Vector2:
+func get_average_position(array : Array[Unit]) -> Vector2:
 	if array.size() == 0:
 		return Vector2.ZERO
-	var average_position = Vector2.ZERO
+	var average_position := Vector2.ZERO
 	for i in array.size():
 		average_position += array[i].global_position
 	average_position /= array.size()
 	return average_position 
 
-func get_organized_units(aUnits, angle_formation = 0.0) -> Array[Unit]:
-	var comparation = [] # Array used to sort the new order for the units in the array
-	var average_position = Vector2.ZERO # Average position of army
+func get_organized_units(aUnits : Array, angle_formation : float = 0.0) -> Array[Unit]:
+	var comparation : Array = [] # Array used to sort the new order for the units in the array
+	var average_position := Vector2.ZERO # Average position of army
 	
 	if aUnits.size() == 0:
 		return []
@@ -33,21 +33,21 @@ func get_organized_units(aUnits, angle_formation = 0.0) -> Array[Unit]:
 	# This allow the unit in first unit in the left to be the one in the left, the one that is in a higher position be higher in the new formation, etc
 	# The organization is from lower value to higher value
 	for i in aUnits.size():
-		var unit = aUnits[i].global_position
-		var to_unit_angle = average_position.angle_to_point(unit)
-		var distance = average_position.distance_to(unit)
+		var unit_position : Vector2 = aUnits[i].global_position
+		var to_unit_angle : float = average_position.angle_to_point(unit_position)
+		var distance : float = average_position.distance_to(unit_position)
 		# Value to compare who has to go in the most left flank and right flank
 		# In the x_value the gets the distance in the x axis and is weighted using the angle of the mouse dragging, this weight having more importance as the 
 		# new formation angle goes more along the x axis. The same for the y axis
-		var x_value =   cos(to_unit_angle)  * distance * cos(angle_formation) 
-		var y_value =   sin(to_unit_angle)  * distance *  sin(angle_formation)
-		var value = x_value + y_value
+		var x_value : float =   cos(to_unit_angle)  * distance * cos(angle_formation) 
+		var y_value : float =   sin(to_unit_angle)  * distance *  sin(angle_formation)
+		var value : float = x_value + y_value
 		
 		# Add the reference to the unit and the value to compare
 		comparation.push_back([aUnits[i], value])
 	
 	# Array will be sorted from lower to higher using the value for the positioning
-	comparation.sort_custom(func(a, b) : return a[1] < b[1])
+	comparation.sort_custom(func(a : Array, b : Array) : return a[1] < b[1])
 	
 	# New array organized, getting only the reference to the unit to be positioned
 	var new_arr : Array[Unit] = []
@@ -65,6 +65,7 @@ func move_units(aUnits : Array,
 	
 #	armyMarker.global_position = targetPosition 
 	var organized_units : Array[Unit] = get_organized_units(aUnits, angle_formation)
+	
 	# Offset in case its forming from the center
 	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
 	# Offset used when the army has an anchor at the rightest point and needs to form to the left side
@@ -91,11 +92,15 @@ func get_enemy_groups( enemy_units := [], arg_distance_to_be_in_group : float = 
 		
 		for o in groups.size(): # Iteration of every group
 			for p in groups[o].size(): # Iteration of comparation with every unit already in a group
-				var other_unit = groups[o][p] as Unit
+				var other_unit := groups[o][p] as Unit
+				if other_unit == null:
+					push_error("Element in group is not of type Unit")
+					continue
+				
 				if unit.global_position.distance_to(other_unit.global_position) < arg_distance_to_be_in_group:
 					# Checks if the unit exists in any of the groups and if its in none it can be added to a group
 					group_to_add_units = o # Sets the place to add the group if its found in the current unit
-					var can_add = true
+					var can_add : bool = true
 					has_to_create_new_group = false # found a group so its not needed to create a new one
 					for g in groups.size():
 						if groups[g].has(unit):
@@ -109,22 +114,22 @@ func get_enemy_groups( enemy_units := [], arg_distance_to_be_in_group : float = 
 			groups.push_back([unit])
 	
 #	# Put together in the same group another entire group if this have at least one unit close to the first group ( put together multiples groups were into 1 group when it should )
-	var final_groups = [groups[0].duplicate(true)]
+	var final_groups : Array = [groups[0].duplicate(true)]
 #	final_groups = groups.duplicate(true)
 	# Group to see if should be put in the same group as other group
-	var place_to_add_in_group = 0
+	var place_to_add_in_group : int = 0
 #	if Input.is_action_pressed("Debug"):
 #		print(final_groups)
 	for i in groups.size():
-		var unite_group = false # If it has to unite the group with the one before 
-		var groups_deleted = []
-		var add_new_array = true  # if the original group doesnt find someone close it will be added to the finalGroup as it is ## CHANGE NAME
+		var unite_group : bool = false # If it has to unite the group with the one before 
+		var groups_deleted : Array = []
+		var add_new_array : bool = true  # if the original group doesnt find someone close it will be added to the finalGroup as it is ## CHANGE NAME
 		if i > 0:
-			var originGroup = groups[i].duplicate()
+			var originGroup : Array = groups[i].duplicate() 
 			# Comparation groups
 			for o in final_groups.size():
 				if not groups_deleted.has(i):  # Condition is here as when find one unit in the group close enough, the group is added and the "i" is beign ignored, it would add the group every time a unit is close in the group without being this line here
-					var unite = should_unite_group(originGroup, final_groups[o], arg_distance_to_be_in_group)
+					var unite : bool = should_unite_group(originGroup, final_groups[o], arg_distance_to_be_in_group)
 					if unite:
 #						if Input.is_action_pressed("Debug"):
 #							print("group %s in original group should unite with the final group %s" % [i, o])
@@ -159,10 +164,10 @@ func get_enemy_groups( enemy_units := [], arg_distance_to_be_in_group : float = 
 	
 	return final_groups
 
-func should_unite_group(arr1 : Array, arr2 : Array, distance):
+func should_unite_group(arr1 : Array[Unit], arr2 : Array[Unit], distance : float) -> bool:
 	for i in arr1.size():
-		var object = 24
-		var unit = arr1[i]
+		var object : int = 24
+		var unit : Unit = arr1[i] as Unit
 		if typeof(unit) != object:
 			print("error: type of unit of type %s, expected object in arr1" % [typeof(unit)])
 			return false
@@ -179,12 +184,12 @@ func should_unite_group(arr1 : Array, arr2 : Array, distance):
 				return true
 	return false
 
-func get_main_group(aGroups): # Get an array with the player "groups"
+func get_main_group(aGroups) -> Array: # Get an array with the player "groups"
 	if typeof(aGroups) != 28:
 		push_error("get_main_group argument is not an array")
-		return null
-	var largest_number = 0
-	var largest = null
+		return []
+	var largest_number : int = 0
+	var largest : Array = []
 	for group in aGroups:
 		if typeof(group) != 28:
 			push_error("Element inside array is not another array")
@@ -193,13 +198,13 @@ func get_main_group(aGroups): # Get an array with the player "groups"
 			largest = group.duplicate()
 	return largest
 
-func get_distance_to_closest(groups : Array, from: Vector2):
-	var closest = INF
+func get_distance_to_closest(groups : Array, from: Vector2) -> float:
+	var closest : float = INF
 	var distance := 0.0
 	for group in groups:
 		if typeof(group) != 28:
 			push_error("Group is not an array")
-			return null
+			return NAN # in case of error return NAN
 		for unit in group as Array[Unit]:
 			distance = unit.global_position.distance_to(from)
 			if distance < closest:

@@ -2,15 +2,15 @@
 class_name Projectile
 extends CharacterBody2D
 
-var speed = 1500.0
+var speed : float = 1500.0
 var target : Vector2 = Vector2.ZERO
 var lifetime : float = 100.0
 var attack : float = 1.0
-@onready var timer : Timer = $Timer 
-@onready var timer_to_hit = $TimerToHit
-@onready var particles : GPUParticles2D = $GPUParticles2D
-@onready var area2d : Area2D = $Area2D
-signal dealedDamage(data)
+@onready var timer := $Timer as Timer
+@onready var timer_to_hit := $TimerToHit as Timer
+@onready var particles := $GPUParticles2D as GPUParticles2D
+@onready var area2d := $Area2D as Area2D
+signal dealedDamage(data : int)
 
 func create_projectile(data : Dictionary):
 	global_position = data.global_position

@@ -60,19 +60,23 @@ func _ready():
 	move_to_group_marker(units)
 #	print(get_main_group(get_enemy_groups(player_units, 2000)))
 	# TEST
-	var main_group = get_main_group(get_enemy_groups(player_units, 2000))
+	var main_group : Array = get_main_group(get_enemy_groups(player_units, 2000))
 	groups_manager.create_group(group_front, main_group, infantryMarker, true)
 	groups_manager.create_group(group_archers, main_group, rangeMarker, true)
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true)
 	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false)
 
-# Makes the IA focus on the largest
-func focus_on_largest_group():
+# Makes the IA focus on the largest group of enemies
+func focus_on_largest_group() -> void:
 	var groups = get_enemy_groups(player_units, 2000)
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
-	var closest = get_distance_to_closest(groups, armyMarker.global_position)
+	var closest : float = get_distance_to_closest(groups, armyMarker.global_position)
+	if closest == NAN : # in case of not finding a group closest will have value NAN
+		push_error("Could not find an enemy group")
+		return
+	
 	var action = general.get_next_action()
 	var focus = general.get_largest_group(groups)
 	groups_manager.main_enemy_group = focus
@@ -136,12 +140,12 @@ func move_to_group_marker(aUnits):
 	if typeof(aUnits) != 28:
 		push_error("Expected array in function")
 		return
-	var infantry_in_arg = aUnits.filter(func(el) : return el.get_type() == 1)
-	var range_in_arg = aUnits.filter(func(el) : return el.get_type() == 2)
-	var cavalry_in_arg = aUnits.filter(func(el) : return el.get_type() == 3)
-	var half_cavalry = int(floor(cavalry_in_arg.size() / 2))
-	var cavalry_left_flank = cavalry_in_arg.slice(0, half_cavalry)
-	var cavalry_right_flank = cavalry_in_arg.slice(half_cavalry)
+	var infantry_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 1)
+	var range_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 2)
+	var cavalry_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 3)
+	var half_cavalry : int = int(floor(cavalry_in_arg.size() / 2))
+	var cavalry_left_flank : Array = cavalry_in_arg.slice(0, half_cavalry)
+	var cavalry_right_flank : Array = cavalry_in_arg.slice(half_cavalry)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
 	

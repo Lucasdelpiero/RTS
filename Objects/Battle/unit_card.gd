@@ -5,21 +5,21 @@ class_name UnitCard
 @onready var texture_type : TextureRect = %TextureType 
 @onready var hp_bar : ProgressBar = %HpBar
 @onready var ammo_bar : ProgressBar = %AmmoBar
-var unit_reference = null
-var group = 10 # 10 = not in a group
-var position_in_group = 0 # 
+var unit_reference : Unit = null
+var group : int= 10 # 10 = not in a group
+var position_in_group : int = 0 # 
 var selected : bool = false
 var panel = self["theme_override_styles/panel"]
-var panel_border_color_original = panel.border_color
-@export_color_no_alpha var selected_color
+var panel_border_color_original : Color = panel.border_color as Color
+@export_color_no_alpha var selected_color : Color
 
-signal sg_card_selected(value)
-signal sg_card_hovered(value)
+signal sg_card_selected(value : bool)
+signal sg_card_hovered(value : bool)
 signal sg_requested_data_from_unit()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var _min_size = Vector2(size.x, 0)
+func _ready() -> void:
+	var _min_size : Vector2 = Vector2(size.x, 0)
 	await  get_tree().create_timer(0.01).timeout # Required to give time to the box to load
 	sg_requested_data_from_unit.emit()
 #	sg_card_selected.connect(Signals.battlemap_set_units_selected)
@@ -27,7 +27,7 @@ func _ready():
 #	texture_type.set_custom_minimum_size(min_size)
 	pass # Replace with function body.
 
-func set_texture_type(type):
+func set_texture_type(type : int) -> void:
 	if type == 1:
 		texture_type.set_texture(load("res://Assets/units/unit_infantry_icon_256.png"))
 	if type == 2:
@@ -36,7 +36,7 @@ func set_texture_type(type):
 		texture_type.set_texture(load("res://Assets/units/unit_cavalry_icon_256.png"))
 	texture_base.modulate = Color(randf(), randf(), randf())
 
-func set_selected(value):
+func set_selected(value : bool) -> void:
 	if unit_reference == null:
 		return
 	sg_card_selected.emit(unit_reference, value)
@@ -45,15 +45,15 @@ func set_selected(value):
 #	unit_reference.set_selected(true)
 	pass
 
-func is_hovered(value):
+func is_hovered(value : bool) -> void:
 #	if selected:
 #		return
-	var shader = null
+	var shader : Material = null
 	if value:
-		shader = Globals.shader_hovered
+		shader = Globals.shader_hovered as Material
 	set_material(shader)
 
-func is_selected(value):
+func is_selected(value : bool) -> void:
 	selected = value
 	var _shader = null
 	panel.border_color = panel_border_color_original
@@ -62,21 +62,21 @@ func is_selected(value):
 		panel.border_color = selected_color
 #	set_material(shader)
 
-func set_troops_number(value, max_value):
+func set_troops_number(value : int, max_value : int) -> void:
 	hp_bar.max_value = max_value
 	hp_bar.value = value
 	pass
 
-func set_ammo(value, max_value):
+func set_ammo(value : int, max_value : int) -> void:
 #	print_debug("something something")
 	ammo_bar.max_value = max_value
 	ammo_bar.value = value
 
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	set_selected(true)
 
 
-func _on_button_mouse_entered():
+func _on_button_mouse_entered() -> void:
 	if unit_reference == null:
 		return
 	unit_reference.set_hovered(true)
@@ -85,7 +85,7 @@ func _on_button_mouse_entered():
 	pass # Replace with function body.
 
 
-func _on_button_mouse_exited():
+func _on_button_mouse_exited() -> void:
 	if unit_reference == null:
 		return
 	unit_reference.set_hovered(false)

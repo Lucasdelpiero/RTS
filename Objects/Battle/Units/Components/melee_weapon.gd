@@ -21,7 +21,7 @@ func attack(target : Unit) -> void:
 	#print("attacked")
 	last_target = target
 	dealedDamage.connect(target.recieved_attack)
-	var data = AttackData.new()
+	var data : AttackData = AttackData.new()
 	data.attack = base_attack
 	data.charge = base_charge
 	data.anti_cabalry_bonus = anti_cabalry_bonus
@@ -33,9 +33,9 @@ func get_attack() -> int :
 	#Space for modifiers
 	return base_attack
 
-func get_type():
+func get_type() -> String :
 	return type
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	readyToAttack.emit(self)
 	pass # Replace with function body.

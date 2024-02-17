@@ -1,11 +1,11 @@
 class_name TaskGroup
 extends UnitsManagement
 
-var group  = []
-var enemy_group_focused  = []
-var main_enemy_group = []
-var marker_to_anchor = null # Parent marker to all markers used to get the angle to position the units
-var marker_to_follow = null
+var group  : Array[Unit] = []
+var enemy_group_focused  : Array[Unit] = []
+var main_enemy_group : Array[Unit] = []
+var marker_to_anchor : Marker2D = null # Parent marker to all markers used to get the angle to position the units
+var marker_to_follow : Marker2D = null
 @onready var moveTimer : Timer = $moveTimer
 
 # Used to poition while following the marker
@@ -14,13 +14,13 @@ var right_to_left : bool = false
 
 enum Task {FOLLOW_MARKER, HOLD, ADVANCE, SKIRMISH, MELEE, FLEE}
 
-var task = Task.FOLLOW_MARKER
+var task : int = Task.FOLLOW_MARKER
 
-func move_units_to_markers():
+func move_units_to_markers() -> void:
 	if marker_to_follow == null or marker_to_anchor == null:
 		return
-	var average_pos = get_average_position(main_enemy_group)
-	var angle = marker_to_anchor.global_position.angle_to_point(average_pos) 
+	var average_pos : Vector2 = get_average_position(main_enemy_group)
+	var angle : float = marker_to_anchor.global_position.angle_to_point(average_pos) 
 	angle += PI/2 # Adds a quarter rotation so that the unit looks at that place
 	
 	
@@ -32,7 +32,7 @@ func move_units_to_markers():
 		right_to_left)
 	
 
-func _on_move_timer_timeout():
+func _on_move_timer_timeout() -> void:
 	return
 	move_units_to_markers()
 	moveTimer.start(5)

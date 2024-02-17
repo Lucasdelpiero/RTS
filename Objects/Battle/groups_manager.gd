@@ -1,24 +1,28 @@
 extends Node
 class_name GroupsManager
 
-var task_group_res = preload("res://Objects/Battle/task_group.tscn")
+var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn")
 
-var groups = []
-var main_enemy_group = [] : set = set_main_enemy_group
+var groups : Array[Unit] = []
+var main_enemy_group : Array[Unit] = [] : set = set_main_enemy_group
 
 func _ready():
 	for node in get_children(): 
 		node.queue_free()
 
-func create_group(units_group = [], enemy_group = [], market_to_follow = null, start_from_center : bool = false, right_to_left : bool = false):
-	var task_group = task_group_res.instantiate() as TaskGroup
-	task_group.group = units_group.duplicate(true)
-	task_group.enemy_group_focused = enemy_group.duplicate(true)
+func create_group(units_group = [], enemy_group = [], marker_to_follow : Marker2D = null, start_from_center : bool = false, right_to_left : bool = false):
+	if enemy_group.is_empty():
+		push_error("enemy_group is empty")
+		return
+	
+	var task_group := task_group_res.instantiate() as TaskGroup
+	task_group.group.assign( units_group.duplicate(true) ) # Cast Array into Array[Unit]
+	task_group.enemy_group_focused.assign( enemy_group.duplicate(true) ) # Cast Array into Array[Unit]
 	task_group.startFromCenter = start_from_center
 	task_group.right_to_left = right_to_left
-	if market_to_follow != null:
-		task_group.marker_to_follow = market_to_follow
-		task_group.marker_to_anchor = market_to_follow.get_parent()
+	if marker_to_follow != null:
+		task_group.marker_to_follow = marker_to_follow
+		task_group.marker_to_anchor = marker_to_follow.get_parent() as Marker2D
 	add_child(task_group)
 
 func set_main_enemy_group(value):

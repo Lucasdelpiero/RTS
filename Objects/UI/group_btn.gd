@@ -7,11 +7,11 @@ var node_to_align_with : UnitCard = null
 
 signal sg_group_button_pressed
 
-func _on_pressed():
+func _on_pressed() -> void:
 	sg_group_button_pressed.emit(group)
 	pass # Replace with function body.
 
-func reposition():
+func reposition() -> void:
 	if node_to_align_with == null:
 		return
 	await get_tree().create_timer(0.01).timeout # This is needed to avoid getting a wrogn position while going fullscreen
@@ -19,7 +19,7 @@ func reposition():
 	global_position.y += vertical_offset
 	global_position.x += horizontal_offset
 
-func update_on_window_resize():
+func update_on_window_resize() -> void:
 	reposition()
 
 
