@@ -92,7 +92,7 @@ func get_buildings_bonuses() -> Array[Bonus]:
 			
 			# If doesnt exists in the bonuses array, add it
 			# A new resource has to be created, otherwise the value of the bonus is not reseted for the next calculation
-			var new_bonus = Bonus.new()
+			var new_bonus : Bonus = Bonus.new()
 			new_bonus.type_produced = bonus.type_produced
 			new_bonus.multiplier_bonus = bonus.multiplier_bonus
 			

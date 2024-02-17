@@ -4,7 +4,7 @@ extends Polygon2D
 
 @onready var inside_color : Color = Color(1.0, 1.0, 1.0)
 @onready var outside_color : Color = Color(0.0, 0.0, 0.0)
-@export_color_no_alpha var outLine = Color(0, 0, 0) : set = set_color_border
+@export_color_no_alpha var outLine : Color = Color(0, 0, 0) : set = set_color_border
 @export_range(1, 20, 0.1) var width : float = 2.0 : set = set_width
 @onready var border : Line2D = %Border
 @onready var city : Marker2D = %PosProvince
@@ -17,13 +17,13 @@ extends Polygon2D
 var nation_owner : Nation  = null # used to get bonuses for resources
 
 @export_category("DATA")
-@export_range(0, 10000, 1) var ID = 0
-@export_enum("plains", "hills", "mountains", "desert")  var terrain_type = "plains"
-@export_range(0.1, 10, 0.1) var weight = 1.0
-@export_range(100, 100000, 1) var population = 1000
-@export_range(0.1, 100, 0.1) var base_income = 10.0 
-@export_enum("hellenic", "celtic", "punic") var religion = "hellenic"
-@export_enum("latin", "celt","greek", "phoenician") var culture = "latin"
+@export_range(0, 10000, 1) var ID : int = 0
+@export_enum("plains", "hills", "mountains", "desert")  var terrain_type : String = "plains"
+@export_range(0.1, 10, 0.1) var weight : float = 1.0
+@export_range(100, 100000, 1) var population : int = 1000
+@export_range(0.1, 100, 0.1) var base_income : float = 10.0 
+@export_enum("hellenic", "celtic", "punic") var religion : String = "hellenic"
+@export_enum("latin", "celt","greek", "phoenician") var culture : String = "latin"
 @export var buildings_manager : BuildingsManager
 var nation_bonuses : Array[Bonus] = []
 @export var province_bonuses : Array[Bonus] = []
@@ -50,8 +50,8 @@ var paths : Array
 var world = null
 
 # Control
-var hovered = false
-var selected = false
+var hovered : bool = false
+var selected : bool = false
 var mouseOverSelf : bool = false : set = send_mouse_over
 @onready var campaign_UI : CampaignUI 
 signal sg_mouseOverSelf(mouseOverSelf : bool)

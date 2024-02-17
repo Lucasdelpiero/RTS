@@ -3,7 +3,7 @@ extends Area2D
 @export var unit : Unit 
 
 func is_colliding() -> bool:
-	var areas : Array = get_overlapping_areas().filter(func(el : Area2D) : return el.owner is Unit)
+	var areas : Array = get_overlapping_areas().filter(func(el : Area2D) : return el.owner is Unit ) as Array[Area2D]
 	return areas.size() > 0
 
 func get_push_vector() -> Vector2:

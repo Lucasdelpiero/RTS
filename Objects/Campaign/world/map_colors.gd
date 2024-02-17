@@ -1,26 +1,26 @@
 extends Resource
 class_name MapColors
 
-var default_color = Color(1, 0, 1)
+var default_color : Color = Color(1, 0, 1)
 @export_group("Terrain")
-@export_color_no_alpha var plains = Color(1, 0, 1)
-@export_color_no_alpha var hills = Color(1, 0, 1)
-@export_color_no_alpha var mountains = Color(1, 0, 1)
-@export_color_no_alpha var desert = Color(1, 0, 1)
+@export_color_no_alpha var plains : Color = Color(1, 0, 1)
+@export_color_no_alpha var hills : Color = Color(1, 0, 1)
+@export_color_no_alpha var mountains : Color = Color(1, 0, 1)
+@export_color_no_alpha var desert : Color = Color(1, 0, 1)
 
 @export_group("Religion")
-@export_color_no_alpha var hellenic = Color(1, 0, 1)
-@export_color_no_alpha var celtic = Color(1, 0, 1)
-@export_color_no_alpha var punic = Color(1, 0, 1)
+@export_color_no_alpha var hellenic : Color = Color(1, 0, 1)
+@export_color_no_alpha var celtic : Color = Color(1, 0, 1)
+@export_color_no_alpha var punic : Color = Color(1, 0, 1)
 
 @export_group("Culture")
-@export_color_no_alpha var latin = Color(1, 0, 1)
-@export_color_no_alpha var celt = Color(1, 0, 1)
-@export_color_no_alpha var greek = Color(1, 0, 1)
-@export_color_no_alpha var phoenician = Color(1, 0, 1)
+@export_color_no_alpha var latin : Color = Color(1, 0, 1)
+@export_color_no_alpha var celt : Color = Color(1, 0, 1)
+@export_color_no_alpha var greek : Color = Color(1, 0, 1)
+@export_color_no_alpha var phoenician : Color = Color(1, 0, 1)
 
 
-func get_terrain_color(terrain_type = "none"):
+func get_terrain_color(terrain_type = "none") -> Color:
 	match terrain_type:
 		"plains":
 			return plains
@@ -35,7 +35,7 @@ func get_terrain_color(terrain_type = "none"):
 		_:
 			return default_color
 
-func get_religion_color(religion = "none"):
+func get_religion_color(religion = "none") -> Color:
 	match religion:
 		"hellenic":
 			return hellenic
@@ -46,7 +46,7 @@ func get_religion_color(religion = "none"):
 		_:
 			return default_color
 
-func get_culture_color(culture = "none"):
+func get_culture_color(culture = "none") -> Color:
 	match culture:
 		"latin":
 			return latin

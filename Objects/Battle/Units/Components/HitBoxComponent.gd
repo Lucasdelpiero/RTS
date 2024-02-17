@@ -51,11 +51,11 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 
 	# Get the closest collision area
 	var closest : Area2D = null
-	for unit in unitsCollidingWith:
-		var closest_distance = 99999999 # Large number just to be replaced with anything
+	for unit in unitsCollidingWith :
+		var closest_distance : int = 99999999 # Large number just to be replaced with anything
 		var unit_areas = unitsCollidingWith[unit]
 		for ar in unit_areas as Array[Area2D]:
-			var distance_to_area = global_position.distance_to(ar.global_position)
+			var distance_to_area : float = global_position.distance_to(ar.global_position)
 			if distance_to_area < closest_distance:
 				closest = ar
 				closest_distance = distance_to_area 
@@ -66,12 +66,12 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 #	print("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
-func _on_area_2d_area_exited(_area):
+func _on_area_2d_area_exited(_area : Area2D) -> void:
 #	print("se fue")
 	pass # Replace with function body.
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 #	print("attack")
 	melee_detected(targetArea)
 	timer.start()

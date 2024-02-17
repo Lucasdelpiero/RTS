@@ -16,17 +16,17 @@ var hovered : bool = false : set = set_hovered
 var selected : bool = false : set = set_selected
 var world = null
 var routed : bool = false
-@onready var sprite = $Sprite2D
+@onready var sprite : Sprite2D = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
 @onready var hurtBoxComponent = %HurtBoxComponent
-@export var ownership = "ROME"
+@export var ownership : String = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
-@onready var nameLabel = %NameLabel
-@onready var weapons = $Weapons as WeaponsManager
-@onready var rangeOfAttack = $RangeOfAttack
-@onready var unitDetector = %UnitDetector
+@onready var nameLabel : Label = %NameLabel as Label
+@onready var weapons : WeaponsManager = $Weapons as WeaponsManager
+@onready var rangeOfAttack : Area2D = $RangeOfAttack
+@onready var unitDetector : Area2D = %UnitDetector
 #@onready var overlay : OverlayUnit = %Overlay
 @onready var marker : Marker2D = $Marker2D
 @export var weaponsData : WeaponsData = WeaponsData.new()
@@ -49,8 +49,8 @@ enum State  {
 	FIRING = 4,
 	FLEEING = 5,
 }
-var state = State.IDLE
-@export_color_no_alpha var army_color = Color(1.0, 1.0, 1.0) : set = set_color
+var state : int = State.IDLE
+@export_color_no_alpha var army_color : Color = Color(1.0, 1.0, 1.0) : set = set_color
 @export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
 var target_unit : Unit = null
@@ -280,7 +280,7 @@ func update_overlay() -> void :
 	await get_tree().create_timer(1.0).timeout
 	if not hovered:
 		return
-	var overlay_unit = OverlayUnit.new() as OverlayUnit
+	var overlay_unit : OverlayUnit = OverlayUnit.new() as OverlayUnit
 	var data : OverlayUnitData = overlay_unit.get_data_from_unit(self as Unit)
 	show_overlay_unit.emit(data)
 #	overlay.update_data(data)
@@ -309,7 +309,7 @@ func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for i
 
 
 func _on_range_of_attack_area_exited(area : Area2D) -> void:
-	var unit = area.owner as Unit
+	var unit : Unit = area.owner as Unit
 	var index : int = enemies_in_range.find(unit)
 	if index >= 0:
 		var newArr : Array = enemies_in_range.duplicate()
@@ -341,7 +341,7 @@ func _on_unit_detector_area_entered(area : Area2D) -> void:
 	pass # Replace with function body.
 
 func _on_unit_detector_area_exited(area : Area2D) -> void:
-	var _unit = area.owner as Unit
+	var _unit : Unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
 #	print("an enemy is leaving")

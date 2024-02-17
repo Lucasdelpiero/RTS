@@ -1,9 +1,9 @@
 extends Label
 
-@onready var variable_name = "" : get = get_var_name
+@onready var variable_name : String = "" : get = get_var_name
 
-func change_text(value):
+func change_text(value : String) -> void:
 	text = value
 
-func get_var_name():
+func get_var_name() -> String:
 	return variable_name

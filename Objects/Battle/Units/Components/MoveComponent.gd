@@ -149,8 +149,8 @@ func move_to(to : Vector2, final_face_direction: float) -> void:
 	update_is_anchored() # used here to not anchor the unit if the distance is greater than 128 pixels
 	if path.size() > 0 : 
 		if path[path.size() - 1].distance_to(unit.global_position) > 128:
-			var a = Vector2(cos(face_direction), sin(face_direction))
-			var b = Vector2(cos(unit.rotation), sin(unit.rotation))
+			var a : Vector2 = Vector2(cos(face_direction), sin(face_direction))
+			var b : Vector2 = Vector2(cos(unit.rotation), sin(unit.rotation))
 			if a.dot(b) < 0 and not chasing:
 				return
 #				unit.rotation = lerp_angle(unit.rotation, unit.rotation + PI, 1.0)
@@ -311,7 +311,7 @@ func set_nav_map(value : TileMap):
 	pass
 
 
-func _on_timer_chase_timeout():
+func _on_timer_chase_timeout() -> void:
 #	print("timer done")
 	if chasing:
 		chase()

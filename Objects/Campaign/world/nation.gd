@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func set_colors() -> void:
 	var armies : Array = get_children()
-	for a in armies:
+	for a in armies :
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally
 
