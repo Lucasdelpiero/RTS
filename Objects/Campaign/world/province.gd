@@ -135,7 +135,7 @@ func update_to_nation_color() -> void:
 
 func send_mouse_over(value : bool) -> void:
 	mouseOverSelf = value
-	var data_temp = {
+	var data_temp : Dictionary = {
 		"mouseOverSelf" = value ,
 		"node" = self,
 	}
@@ -213,7 +213,7 @@ func generate_resources() -> void:
 	if nation_owner == null:
 		return
 		
-	var resources_produced = get_province_income()
+	var resources_produced : Production = get_province_income() 
 	sg_resources_generated.emit(resources_produced)
 
 # This is not made in a getter funcion because when trying to change the value,

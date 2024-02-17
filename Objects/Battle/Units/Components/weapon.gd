@@ -8,7 +8,7 @@ var weapon := ""
 func connect_signals_to_manager(_parent : WeaponsManager) -> void:
 	pass
 
-func get_attack() -> float :
+func get_attack() -> int :
 	# Space for modifiers
 	return 0
 	pass

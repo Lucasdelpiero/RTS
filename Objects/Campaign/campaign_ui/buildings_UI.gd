@@ -1,3 +1,4 @@
+class_name BuildingsUI
 extends Control
 
 # Used to send a signal to the province to ask them to update the UI using the send_data_to_ui function
@@ -6,14 +7,14 @@ signal sg_update_UI_requested
 #TODO move this node and code to the UI folder
 
 @onready var buildings_container = %BuildingsContainer
-@onready var overview_container : Control = %OverviewContainer
-@onready var add_building_button : Button = %AddBuilding 
-@onready var ButtonBuilding  = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
+@onready var overview_container : OverviewContainer = %OverviewContainer as OverviewContainer
+@onready var add_building_button : Button = %AddBuilding  as Button
+@onready var ButtonBuilding : PackedScene = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
 @export var buildings_manager : BuildingsManager # checks what can or can not be build
 
 @onready var to_be_built_container = %ToBeBuiltContainer # used to show or not the buildings container
 @export var np_buildings_available_container : NodePath # Show buttons of available buildings
-@onready var buildings_available_container = get_node(np_buildings_available_container)
+@onready var buildings_available_container : Button = get_node(np_buildings_available_container) as Button
 
 # Icons for the buildings stored in the UI manager to avoid wasting memory on a texture for each building
 @export_group("Buildings icons")
@@ -47,7 +48,7 @@ var buildings : Array[Building] : # updated when province data changes <- update
 
 
 # Creates the buttons for the avialable buildings to be built
-func _on_add_building_pressed():
+func _on_add_building_pressed() -> void:
 	if buildings_available_container == null:
 		push_error("There is no nodepath where to add the buttons")
 		return
@@ -79,21 +80,21 @@ func _on_add_building_pressed():
 	pass # Replace with function body.
 
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	to_be_built_container.visible = false
 	overview_container.hide()
 
 # Creates the buttens used in the UI to build and and to look for already built buildings
 func create_building_buttons(aBuildings : Array[Building]) -> void:
 	
-	var children = buildings_container.get_children()
+	var children : Array[Node] = buildings_container.get_children()
 	for to_delete in children:
 		if to_delete is BuildingButton:
 			to_delete.queue_free()
 	
 	var campaign_ui : CampaignUI = Globals.campaign_UI
 	for building in aBuildings:
-		var button = ButtonBuilding.instantiate() as BuildingButton
+		var button : BuildingButton = ButtonBuilding.instantiate() as BuildingButton
 		buildings_container.add_child(button)
 		
 		button.building_reference = building
@@ -122,7 +123,7 @@ func start_construction(aBuilding : Building) -> void:
 		push_error("There is not building to be built")
 		return
 	
-	var new_buildings = buildings.duplicate(true)
+	var new_buildings : Array[Building] = buildings.duplicate(true) as Array[Building]
 	aBuilding.is_built = true
 	new_buildings.push_back(aBuilding.duplicate(true))
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)

@@ -7,14 +7,14 @@ extends Weapon
 var can_attack : bool = true
 var last_target : Unit = null
 
-signal dealedDamage(data)
-signal readyToAttack(value)
+signal dealedDamage(data : AttackData)
+signal readyToAttack(value : Weapon)
 
-func _ready():
+func _ready() -> void:
 	type = "Melee"
 	weapon = weapon_type
 
-func attack(target : Unit):
+func attack(target : Unit) -> void:
 	if target == null:
 		printerr("IS FUCKING NULL")
 		return
@@ -29,7 +29,7 @@ func attack(target : Unit):
 	dealedDamage.disconnect(target.recieved_attack)
 	$Timer.start(1.0)
 
-func get_attack():
+func get_attack() -> int :
 	#Space for modifiers
 	return base_attack
 

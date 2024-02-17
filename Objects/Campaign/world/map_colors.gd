@@ -20,7 +20,7 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var phoenician : Color = Color(1, 0, 1)
 
 
-func get_terrain_color(terrain_type = "none") -> Color:
+func get_terrain_color(terrain_type : String = "none") -> Color:
 	match terrain_type:
 		"plains":
 			return plains
@@ -35,7 +35,7 @@ func get_terrain_color(terrain_type = "none") -> Color:
 		_:
 			return default_color
 
-func get_religion_color(religion = "none") -> Color:
+func get_religion_color(religion : String = "none") -> Color:
 	match religion:
 		"hellenic":
 			return hellenic
@@ -46,7 +46,7 @@ func get_religion_color(religion = "none") -> Color:
 		_:
 			return default_color
 
-func get_culture_color(culture = "none") -> Color:
+func get_culture_color(culture : String = "none") -> Color:
 	match culture:
 		"latin":
 			return latin

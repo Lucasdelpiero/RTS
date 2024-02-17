@@ -21,7 +21,7 @@ var province_data : ProvinceData = ProvinceData.new() :
 		#])
 		province_data = value
 
-func _ready():
+func _ready() -> void:
 	await get_tree().create_timer(0.01).timeout # Gives time to the UI to update the gold of the player
 	update()
 
@@ -51,7 +51,7 @@ func update() -> void:
 	pass
 
 
-func _on_pressed():
+func _on_pressed() -> void:
 	if building_reference == null:
 		push_error("There is not reference to building in the button")
 		return

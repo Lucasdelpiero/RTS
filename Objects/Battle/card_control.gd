@@ -1,3 +1,4 @@
+class_name CardControl
 extends HBoxContainer
 
 @onready var Unit_Card = preload("res://Objects/Battle/unit_card.tscn")
@@ -52,7 +53,7 @@ func _input(_event):
 #		select_group(num)
 	pass
 
-func create_cards(army):
+func create_cards(army : Array[Unit]) -> void:
 	var flow_container = Flow_Container_Cards.instantiate()
 	add_child(flow_container)
 	for unit in army as Array[Unit]:
@@ -72,7 +73,7 @@ func create_cards(army):
 		total_cards.push_back(unit_card)
 	pass
 
-func create_group(army): 
+func create_group(army : Array[Unit]) -> void: 
 #	var cards = get_children(true).filter(func(el) : return el is UnitCard)
 	
 	if total_cards.size() < 1:
@@ -133,7 +134,7 @@ func create_group(army):
 	update_groups()
 	update_positions()
 
-func update_groups():
+func update_groups() -> void:
 #	var cards = get_children(true).filter(func(el) : return el is UnitCard)
 
 	for group in groups:

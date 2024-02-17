@@ -1,9 +1,9 @@
 extends Node2D
 class_name BattleMap
 
-var player_units := []
-var units_hovered := [] 
-var units_selected := []
+var player_units : Array[Unit] = []
+var units_hovered : Array[Unit] = [] 
+var units_selected : Array[Unit] = []
 var main = null # Main scene controlling scene transitions and data
 @onready var mouse = %Mouse as Mouse
 @onready var camera = %Camera
@@ -37,7 +37,9 @@ func _ready():
 		unit.mouse = mouse
 		unit.world = self
 		unit.show_overlay_unit.connect(send_data_to_overlay)
-	player_units = playerArmy.get_children()
+	
+	player_units.assign(playerArmy.get_children()) # Cast the Array[Node] to an Array[Unit] as it inserts the array
+	#player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
 		el.navigation_tilemap = navigationTileMap
 	order_to_create_group.connect(battleUI.order_card_control_to_create_group)
@@ -46,7 +48,7 @@ func _ready():
 #	mouse.ui = UI
 	pass # Replace with function body.
 
-func _unhandled_input(_event):
+func _unhandled_input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Click_Left"):
 		# De-selects all units
 		for unit in units_selected:
@@ -124,11 +126,11 @@ func set_units_selected(unit : Unit, selected : bool):
 		units.selected = true # This makes calling the selection 2 times but its needed for the square selectoin
 	playerUnitsManagement.units = units_selected.duplicate()
 
-func get_weapon_types():
-	var weapon_types_in_selection = []
+func get_weapon_types() -> Array[String]:
+	var weapon_types_in_selection : Array[String] = []
 	for unit in units_selected as Array[Unit]:
-		var weapons = unit.weapons as WeaponsManager
-		var type = weapons.mouse_over_weapon.get_type()
+		var weapons : WeaponsManager = unit.weapons as WeaponsManager
+		var type : String = weapons.mouse_over_weapon.get_type()
 		if not weapon_types_in_selection.has(type):
 			weapon_types_in_selection.push_back(type)
 #	print(weapon_types_in_selection)

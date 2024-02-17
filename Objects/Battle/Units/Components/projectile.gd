@@ -1,4 +1,5 @@
 @tool
+class_name Projectile
 extends CharacterBody2D
 
 var speed = 1500.0
@@ -35,25 +36,25 @@ func create_projectile(data : Dictionary):
 #	$CPUParticles2D2.initial_velocity_min = 0
 #	$CPUParticles2D2.initial_velocity_min = speed
 
-func _physics_process(_delta):
+func _physics_process(_delta : float) -> void:
 	velocity = Vector2(cos(rotation), sin(rotation)) * speed
 	move_and_slide()
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	queue_free()
 	pass # Replace with function body.
 
 
-func _on_area_2d_area_entered(area):
-	var unit = area.owner as Unit
+func _on_area_2d_area_entered(area : Area2D) -> void:
+	var unit : Unit = area.owner as Unit
 	dealedDamage.connect(unit.recieved_attack)
-	var data = AttackData.new()
+	var data : AttackData = AttackData.new()
 	data.attack = attack
 	dealedDamage.emit(data)
 	dealedDamage.disconnect(unit.recieved_attack)
 	pass # Replace with function body.
 
 # Used so the hitbox only is enabled to deal damage at the end of its lifetime when the projectile reach the destination
-func _on_timer_to_hit_timeout():
+func _on_timer_to_hit_timeout() -> void:
 	area2d.monitoring = true
 

@@ -13,7 +13,7 @@ var terrain_type : String = "none"
 var buildings : Array[Building] = []
 
 # Uses the province and all the data is setted here
-func set_data_from_object(aProvince : Province = null):
+func set_data_from_object(aProvince : Province = null) -> void:
 	if aProvince == null:
 		push_error("There is not object to set data from")
 		return

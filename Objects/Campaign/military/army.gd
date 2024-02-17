@@ -8,16 +8,16 @@ var world : CampaignMap = null
 var own_map : AStar2D
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
-@onready var line = $Node/Line2D
-@onready var icon = $Icon
+@onready var line : Line2D = $Node/Line2D
+@onready var icon : Sprite2D = $Icon
 
-@export var army_name = ""
+@export var army_name : String = ""
 enum  { IDLE, MOVING, FIGHTING, SIEGING }
 var state = IDLE
 @export var ownership := ""
-@export_range( 10, 10000, 1) var SPEED = 500
-@onready var army_color := Color(0.0, 0.0, 0.0, 1.0) : set = set_color
-var test = true
+@export_range( 10, 10000, 1) var SPEED : int = 500
+@onready var army_color : Color = Color(0.0, 0.0, 0.0, 1.0) : set = set_color
+var test : bool= true
 var starting_point : Vector2 # Were the army starts traveling from one point to other
 
 # The three next points are important to avoid bugs and make sure that the army always travel from one point
@@ -30,28 +30,28 @@ var second_point : Vector2 # Second point in the path
 #endregion
 
 ## CONTROL
-var hovered = false
-var selected = false : set = set_selected
-var mouseOverSelf = false : set = send_mouse_over
-signal sg_mouseOverSelf(mouseOverSelf) # Signal to say if the mouse is over the node
-signal sg_enemy_encountered(army, enemy)
-signal sg_was_selected(value)
+var hovered : bool = false
+var selected : bool  = false : set = set_selected
+var mouseOverSelf : bool = false : set = send_mouse_over
+signal sg_mouseOverSelf(mouseOverSelf : bool) # Signal to say if the mouse is over the node
+signal sg_enemy_encountered(army : ArmyCampaing, enemy : ArmyCampaing)
+signal sg_was_selected(value : bool)
 
 signal get_pathfinding(army ,current_position)
 
 @export var army_data : ArmyData = ArmyData.new() 
 
-func _ready():
+func _ready() -> void:
 	if Engine.is_editor_hint(): # Used to avoid errors
 		return
 	
 	world = Globals.campaign_map
 	army_data.ownership = ownership
 	army_data.position = global_position
-	var army = army_data.army_units
+	var army : Array[UnitData] = army_data.army_units
 
 
-func _unhandled_input(_event):
+func _unhandled_input(_event : InputEvent) -> void:
 		# Selection of the army selected
 	if Input.is_action_just_pressed("Click_Left"):
 		if str(ownership) == Globals.playerNation:
@@ -77,7 +77,7 @@ func _unhandled_input(_event):
 				state = MOVING
 
 
-func _physics_process(delta):
+func _physics_process(delta : float) -> void:
 #	draw_path()
 	match state:
 		IDLE:
@@ -90,7 +90,7 @@ func _physics_process(delta):
 
 # Once everything in the game is loaded the main world call this function to put the army in the center
 # of the closer navigation point
-func get_to_closer_point(map):
+func get_to_closer_point(map : AStar2D) -> void:
 	var closer_id = map.get_closest_point(self.global_position)
 	self.global_position = map.get_point_position(closer_id)
 	world = get_tree().get_nodes_in_group("world")[0]
@@ -108,7 +108,7 @@ func draw_path():
 	line.points = pathing
 
 
-func move(delta):
+func move(delta : float) -> void:
 	draw_path()
 	
 	if get_tree().is_paused():
@@ -116,9 +116,9 @@ func move(delta):
 	
 	if path.size() > 0:
 		global_position = global_position.move_toward(path[0], delta * SPEED)
-		var closest_point = path[0]
-		var distance_to_point = global_position.distance_to(closest_point)
-		var _destination = path[path.size() - 1]
+		var closest_point : Vector2 = path[0]
+		var distance_to_point : float = global_position.distance_to(closest_point)
+		var _destination : Vector2 = path[path.size() - 1]
 		$Node/closest.global_position = closest_point
 		
 		# A bug here has to be fixed 
@@ -142,7 +142,7 @@ func get_pathing(destination) -> Array:
 		push_error("There is no map to navigate in the unit")
 		return []
 	
-	var from = own_map.get_closest_point(self.global_position)
+	var from : int = own_map.get_closest_point(self.global_position) # ID of closest point
 	# The destination is the place the army wants to go, that being the las province hovered
 	# If there is not a province being hovered, it will be used the closest point to the mouse
 	var to = destination
@@ -184,9 +184,9 @@ func get_path_province_names(provinces : Array) -> Array:
 		return []
 	
 	var path_province_names : Array = [] 
-	for city in provinces:
+	for city in provinces :
 		# The world stores the names using the global_position as key
-		var province_name = world.get_province_name_by_position(city)
+		var province_name : String = world.get_province_name_by_position(city)
 		# Safeguard to get the name
 		if province_name == null:
 			push_warning("Province name could not be retrieved using its global position")
@@ -196,9 +196,9 @@ func get_path_province_names(provinces : Array) -> Array:
 	
 	return path_province_names
 
-func send_mouse_over(value):
+func send_mouse_over(value : bool) -> void:
 	mouseOverSelf = value
-	var data_temp = {
+	var data_temp : Dictionary= {
 		"mouseOverSelf" = value , 
 		"node" = self,
 	}
@@ -206,55 +206,55 @@ func send_mouse_over(value):
 #	print(mouseOverSelf)
 
 # If the mouse is over or leave the node sends a signal on the change of the boolean
-func _on_mouse_detector_mouse_entered():
+func _on_mouse_detector_mouse_entered() -> void:
 	mouseOverSelf = true # activates signal sg_mouseOverSelf
 
 
-func _on_mouse_detector_mouse_exited():
+func _on_mouse_detector_mouse_exited() -> void:
 	mouseOverSelf = false # activates signal sg_mouseOverSelf
 
 
-func set_hovered(value):
+func set_hovered(value) -> void:
 	hovered = value
-	var shader = null
+	var shader : Material = null
 	if !selected:
 		if hovered:
-			shader = load("res://Shaders/hovered.tres")
+			shader = load("res://Shaders/hovered.tres") as Material
 		else:
 			shader = null
 		icon.set_material(shader)
 
 
-func set_selected(value):
+func set_selected(value : bool) -> void:
 	# If the value is setted to the same it had before, it will return early,
 	# avoiding calling multiple times the setter
 	if value == selected:
 		return
 	
 	selected = value
-	var shader = null
+	var shader : Material = null
 	if selected:
-		shader = load("res://Shaders/selected.tres")
+		shader = load("res://Shaders/selected.tres") as Material
 		icon.set_material(shader)
 		icon.material.set_shader_parameter("inside_color", army_color)
 	icon.set_material(shader)
 	emit_signal("sg_was_selected", self)
 
 
-func set_color(color : Color):
+func set_color(color : Color) -> void:
 	army_color = color
 	self.modulate = army_color
 
 
-func _on_army_detector_area_entered(area):
-#	print(area.owner.ownership)
-	if area.owner.ownership != self.ownership:
-		emit_signal("sg_enemy_encountered", self, area.owner)
-#		print(self.name, " encountered the enemy: ", area.owner.name)
-#		print(area.owner.ownership)
-#		print("====================")
-		pass
-	pass # Replace with function body.
+func _on_army_detector_area_entered(area : Area2D) -> void:
+	if not area.owner is ArmyCampaing:
+		push_error("Owner of the area is not an army")
+		return
+	
+	var temp_army : ArmyCampaing = area.owner as ArmyCampaing
+	if temp_army.ownership != self.ownership:
+		emit_signal("sg_enemy_encountered", self, temp_army)
+
 
 
 # Saves all the army data and sent it to the nation to be copiled into an array 

@@ -5,17 +5,17 @@ class_name CampaignMap
 var map : AStar2D # navmap
 
 @onready var navigation = $NavigationRegion2D
-@onready var nationsGroup = $NationsGroup
+@onready var nationsGroup : Node = $NationsGroup
 @onready var UI : CampaignUI = %CampaingUI
 @onready var mouse = $Mouse
 @onready var battleMenu = %BattleMenu # temporarelly instanced always
-var armies_in_battle : Array = []
+var armies_in_battle : Array[ArmyCampaing] = []
 
 var playerNation = "ROME"
 var playerNode = null
 var nations := []
 var provinces := []
-var provinceSelected = null
+var provinceSelected  = null
 
 # ID of provinces are stored using the position as key ("xPosition_yPosition")
 # using and underscore to separate the coordinates with their values floored as an int
@@ -23,14 +23,14 @@ var dictionary_provinces_by_position : Dictionary = {}
 # Stores the name of the provinces using the ID as a key
 var dictionary_ID_to_name : Dictionary = {}
 
-func _init():
+func _init() -> void:
 	Globals.campaign_map = self
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	initialize_world()
 
-func initialize_world():
+func initialize_world() -> void:
 	get_nav_map()
 	mouse.world = self
 	mouse.ui = UI
@@ -84,17 +84,17 @@ func initialize_world():
 		
 	send_data_to_ui()
 
-func _unhandled_input(_event):
+func _unhandled_input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
 
-func change_map_shown(type):
-	for province in provinces:
+func change_map_shown(type : String) -> void:
+	for province in provinces as Array[Province]:
 		province.set_map_type_shown(type)
 		pass
 
 ## Generate a navigation map using the provinces and their connections
-func get_nav_map():
+func get_nav_map() -> void:
 	map = AStar2D.new()
 	var provinces_temp = get_tree().get_nodes_in_group("provinces")
 	
@@ -146,7 +146,7 @@ func get_nation_by_tag(_tag : String = "") -> Nation:
 			return nation
 	return null
 
-func send_data_to_ui():
+func send_data_to_ui() -> void:
 	if playerNode == null:
 		push_error("Player node is null")
 		return
@@ -157,14 +157,14 @@ func send_data_to_ui():
 	UI.update_data(data)
 	pass
 
-func enemy_encountered(aarmy, enemy):
+func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 	if not armies_in_battle.has(aarmy):
 		armies_in_battle.push_back(aarmy)
 	if not armies_in_battle.has(enemy):
 		armies_in_battle.push_back(enemy)
 #	print("%s will fight %s" % [army, enemy])
 #	main.update_armies_for_battle(units_in_battle)
-	for army in armies_in_battle:
+	for army in armies_in_battle :
 		if army.ownership == Globals.playerNation:
 			if !Globals.playerArmy.has(army):
 				Globals.playerArmy.push_back(army)

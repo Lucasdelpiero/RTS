@@ -6,46 +6,46 @@ var hovered := []
 var selected_armies := []
 var hovered_enemy : bool = false : set = set_hovered_enemy
 var weapon_types : = [] # cursor types for the type of weapon the army will atack with
-var weapon_displayed = "" # weapon currently being displayed
+var weapon_displayed : String = "" # weapon currently being displayed
 
-var lastProvinceWithMouseOver = null
-var provinceWithMouseOver = null 
-var provinceSelected = null
+var lastProvinceWithMouseOver : Province = null
+var provinceWithMouseOver : Province = null 
+var provinceSelected : Province = null
 var world = null
 var ui = null
 
 # To draw the rectangle selection
 var start_rectangle := Vector2(0.0, 0.0)
 var end_rectangle := Vector2(0.0, 0.0)
-@onready var rectangleLine = %rectangleLine
-@onready var renctangleMarker = %rectangleMarker
-@onready var col = $Node/Area2D/CollisionShape2D
-@onready var areaNode = $Node/Area2D
-@onready var hoveredTimer = %HoveredTimer
-@export_range(1, 500, 1) var rectangleDrawDistance = 10
+@onready var rectangleLine : Line2D = %rectangleLine as Line2D
+@onready var renctangleMarker : Marker2D = %rectangleMarker as Marker2D
+@onready var col : CollisionShape2D = $Node/Area2D/CollisionShape2D as CollisionShape2D
+@onready var areaNode : Area2D = $Node/Area2D as Area2D
+@onready var hoveredTimer : Timer = %HoveredTimer as Timer
+@export_range(1, 500, 1) var rectangleDrawDistance : float = 10
 
 # To move units
 var start_formation := Vector2(0.0, 0.0)
 var end_formation := Vector2(0.0, 0.0)
 
-var mouse_normal = load("res://Assets/mouse_normal_24.png")
-var mouse_melee = load("res://Assets/mouse_melee_2.png")
-var mouse_range = load("res://Assets/mouse_range.png")
+var mouse_normal := load("res://Assets/mouse_normal_24.png") as Texture
+var mouse_melee := load("res://Assets/mouse_melee_2.png") as Texture
+var mouse_range := load("res://Assets/mouse_range.png") as Texture
 
-func _ready():
+func _ready() -> void:
 	col.disabled = true
 #	Input.set_custom_mouse_cursor(mouse_melee)
 
-func _input(_event):
+func _input(_event : InputEvent) -> void:
 	pass
 
 
-func _process(_delta):
+func _process(_delta : float) -> void:
 	areaNode.global_position = get_global_mouse_position()
 	draw_rectangle()
 
 # Used in campaing map to select a province
-func set_province_selected():
+func set_province_selected() -> void:
 	if provinceWithMouseOver == null or hovered.size() > 0:
 		ui.update_province_data(null) # set ui to not visible
 
@@ -62,7 +62,7 @@ func set_province_selected():
 	pass
 
 ## Gets in a list the army hovered
-func update_army_campaing_selection(data):
+func update_army_campaing_selection(data) -> void:
 	# If the army has the mouse over it, it will be added to a list
 	if (data.mouseOverSelf):
 		hovered.push_back( data.node )
@@ -113,7 +113,7 @@ func update_province_selection(data):
 			provinceWithMouseOver.set_hovered(false)
 
 # The selection rectangle is drawn and the collisions are used to select troops
-func draw_rectangle():
+func draw_rectangle() -> void:
 	if Input.is_action_just_pressed("Click_Left"):
 		start_rectangle = get_global_mouse_position()
 	if Input.is_action_pressed("Click_Left"):
@@ -121,12 +121,12 @@ func draw_rectangle():
 	
 	# When the mouse is dragged enought, the rectangle starts getting drawn
 	if start_rectangle.distance_to(end_rectangle) > rectangleDrawDistance:
-		var distance = start_rectangle.distance_to(end_rectangle) 
-		var angle = start_rectangle.angle_to_point(end_rectangle)
-		var cam_angle = Globals.camera_angle
+		var distance : float = start_rectangle.distance_to(end_rectangle) 
+		var angle : float = start_rectangle.angle_to_point(end_rectangle)
+		var cam_angle : float = Globals.camera_angle
 		# The calculation takes in consideration the angle of the rectangle and the cam angle
-		var width = distance * cos(cam_angle) * cos(angle) + distance * sin(cam_angle) * sin(angle)
-		var height = distance * cos(cam_angle) * sin(angle) - distance * sin(cam_angle) * cos(angle)
+		var width : float = distance * cos(cam_angle) * cos(angle) + distance * sin(cam_angle) * sin(angle)
+		var height : float = distance * cos(cam_angle) * sin(angle) - distance * sin(cam_angle) * cos(angle)
 		# Activate the collisionShape
 		areaNode.global_position = start_rectangle
 		col.disabled = false
@@ -158,11 +158,11 @@ func draw_rectangle():
 		for line in 5:
 			rectangleLine.set_point_position(line, Vector2.ZERO)
 
-func set_hovered_enemy(value): # value given from battle map
+func set_hovered_enemy(value : bool) -> void: # value given from battle map
 	hovered_enemy = value
 	set_mouse_cursor()
 
-func set_weapon_types(value): # value given by the battle map
+func set_weapon_types(value : Array[String]) -> void: # value given by the battle map
 	weapon_types = value.duplicate()
 	set_mouse_cursor()
 
