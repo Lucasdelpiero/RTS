@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -400.0
 @onready var mouse = null
 var hovered : bool = false : set = set_hovered
 var selected : bool = false : set = set_selected
-var world = null
+var world : Variant = null
 var routed : bool = false
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var spriteBase : Sprite2D = %SpriteBase

@@ -173,7 +173,7 @@ func should_unite_group(arr1 : Array[Unit], arr2 : Array[Unit], distance : float
 			return false
 		var first = unit.global_position as Vector2
 		for o in arr2.size():
-			var other = arr2[o]
+			var other  = arr2[o]
 			if typeof(other) != object:
 				print("error: type of unit of type %s, expected object in arr2" % [typeof(other)])
 				return false

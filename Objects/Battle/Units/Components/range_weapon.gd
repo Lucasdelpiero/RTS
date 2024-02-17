@@ -141,8 +141,8 @@ func _on_area_range_area_exited(area : Area2D) -> void:
 #			print(enemies_in_weapon_range)
 
 func check_if_target_is_in_area(value : Unit) -> bool:
-	var areas := areaRange.get_overlapping_areas() as Array[Area2D]
-	var units := areas.map(func(el : Area2D) : return el.owner) as Array[Unit]
+	var areas : Array = areaRange.get_overlapping_areas() 
+	var units : Array = areas.map(func(el : Area2D) : return el.owner) 
 	return units.has(value)
 
 func _on_reload_timer_timeout() -> void:
