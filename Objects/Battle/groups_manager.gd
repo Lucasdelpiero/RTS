@@ -6,11 +6,18 @@ var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn
 var groups : Array[Unit] = []
 var main_enemy_group : Array[Unit] = [] : set = set_main_enemy_group
 
-func _ready():
+func _ready() -> void:
 	for node in get_children(): 
 		node.queue_free()
 
-func create_group(units_group = [], enemy_group = [], marker_to_follow : Marker2D = null, start_from_center : bool = false, right_to_left : bool = false):
+func create_group(
+		units_group : Array[Unit] = [], 
+		enemy_group : Array[Unit] = [], 
+		marker_to_follow : Marker2D = null, 
+		start_from_center : bool = false, 
+		right_to_left : bool = false
+		) -> void:
+	
 	if enemy_group.is_empty():
 		push_error("enemy_group is empty")
 		return
@@ -25,8 +32,8 @@ func create_group(units_group = [], enemy_group = [], marker_to_follow : Marker2
 		task_group.marker_to_anchor = marker_to_follow.get_parent() as Marker2D
 	add_child(task_group)
 
-func set_main_enemy_group(value):
-	main_enemy_group = value.duplicate(true)
+func set_main_enemy_group(value : Array[Unit]) -> void:
+	main_enemy_group.assign(value)
 	for child in get_children():
 		child.main_enemy_group = value.duplicate(true)
 	

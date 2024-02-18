@@ -1,3 +1,4 @@
+class_name DebugLabel
 extends Label
 
 @onready var variable_name : String = "" : get = get_var_name

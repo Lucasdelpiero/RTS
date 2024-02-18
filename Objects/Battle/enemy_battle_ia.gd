@@ -3,8 +3,8 @@ extends UnitsManagement
 
 #region Properties
 
-@export var armyGroup : Node = null 
-var units := []
+@export var armyGroup : Node = null  # NOTE needs to be its own class and have a method to get all its children called as an array[Unit to avoid overhead trying to get them
+var units : Array[Unit] = []
 @onready var armyMarker : Marker2D = %ArmyMarker
 @onready var infantryMarker : Marker2D = %InfantryMarker
 @onready var rangeMarker : Marker2D = %RangeMarker
@@ -12,21 +12,21 @@ var units := []
 @onready var rightFlankMarker : Marker2D= %RightFlank
 @export var playerGroup : Node = null
 var player_units := []
-var distance_to_be_in_group = 500
+var distance_to_be_in_group : int = 500
 var playerGroups : Array[Array] = []
 @export var general : General 
-@onready var groups_manager  = %GroupsManager as GroupsManager
-@onready var timerAdvance = %TimerAdvance
+@onready var groups_manager  := %GroupsManager as GroupsManager
+@onready var timerAdvance := %TimerAdvance as Timer
 
-var infantry_units = []
-var range_units = []
-var cavalry_units = []
+var infantry_units : Array[Unit] = []
+var range_units : Array[Unit] = []
+var cavalry_units : Array[Unit] = []
 
-var group_front = []
-var group_archers = []
-var group_left_flank = []
-var group_right_flank = []
-var group_reserves = []
+var group_front : Array[Unit] = []
+var group_archers : Array[Unit] = []
+var group_left_flank : Array[Unit] = []
+var group_right_flank : Array[Unit]= []
+var group_reserves : Array[Unit] = []
 
 # This array stores the units that already where targeted by the IA to be atacked
 # TODO move this property and behaviout asociated to other place for a behaviour tree 
@@ -51,16 +51,23 @@ func _ready():
 		return
 	if playerGroup == null:
 		return
+	
+	# get_enemy_groups needs a typed array, so to be safe
 	player_units = playerGroup.get_children() 
-	get_enemy_groups(player_units, 2000)
+	var player_units_typed : Array[Unit] 
+	player_units_typed.assign(player_units)
+	get_enemy_groups(player_units_typed, 2000)
+	
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
-	units = armyGroup.get_children() as Array[Unit]
+	
+	var units_temp : Array = armyGroup.get_children() # used to change the type of the array below
+	units.assign(units_temp)
 	group_units_by_type(units as Array[Unit])
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
 #	print(get_main_group(get_enemy_groups(player_units, 2000)))
 	# TEST
-	var main_group : Array = get_main_group(get_enemy_groups(player_units, 2000))
+	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, 2000))
 	groups_manager.create_group(group_front, main_group, infantryMarker, true)
 	groups_manager.create_group(group_archers, main_group, rangeMarker, true)
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true)
@@ -116,49 +123,57 @@ func focus_on_largest_group() -> void:
 #	generalState = GeneralStates.FIGHTING
 	pass
 
-func group_units_by_type(aUnits):
+func group_units_by_type(aUnits : Array[Unit]) -> void:
 	if aUnits == null or typeof(aUnits) != 28:
 		push_error("invalid argument")
 		return
-	infantry_units = aUnits.filter(func(el) : return el.type == 1)
-	range_units = aUnits.filter(func(el) : return el.type == 2)
-	cavalry_units = aUnits.filter(func(el) : return el.type == 3)
+	#infantry_units = aUnits.filter(func(el) : return el.type == 1)
+	#range_units = aUnits.filter(func(el) : return el.type == 2)
+	#cavalry_units = aUnits.filter(func(el) : return el.type == 3)
+	infantry_units.assign(aUnits.filter(func(el : Unit) : return el.type == 1))
+	range_units.assign(aUnits.filter(func(el : Unit) : return el.type == 2))
+	cavalry_units.assign(aUnits.filter(func(el : Unit) : return el.type == 3))
 	
 	# Groups used for the formation
-	group_front = infantry_units.duplicate()
-	group_archers = range_units.duplicate()
-	var half_cavalry = int(floor(cavalry_units.size() / 2))
-	group_left_flank = cavalry_units.slice(0, half_cavalry).duplicate()
-	group_right_flank = cavalry_units.slice(half_cavalry).duplicate()
+	#group_front = infantry_units.duplicate()
+	#group_archers = range_units.duplicate()
+	group_front.assign(infantry_units)
+	group_archers.assign(range_units)
+	var half_cavalry : int = floori( float( cavalry_units.size()) / 2.0 )
+	#group_left_flank = cavalry_units.slice(0, half_cavalry).duplicate()
+	#group_right_flank = cavalry_units.slice(half_cavalry).duplicate()
+	group_left_flank.assign(cavalry_units.slice(0, half_cavalry).duplicate())
+	group_right_flank.assign(cavalry_units.slice(half_cavalry).duplicate())
 
-func get_data_to_think_next_action():
+func get_data_to_think_next_action() -> void:
 	
 	pass
 
 
-func move_to_group_marker(aUnits):
+func move_to_group_marker(aUnits : Array[Unit]) -> void:
 	if typeof(aUnits) != 28:
 		push_error("Expected array in function")
 		return
-	var infantry_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 1)
-	var range_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 2)
-	var cavalry_in_arg : Array = aUnits.filter(func(el) : return el.get_type() == 3)
-	var half_cavalry : int = int(floor(cavalry_in_arg.size() / 2))
+	var infantry_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 1)
+	var range_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 2)
+	var cavalry_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 3)
+	var cavalry_amount : float = float(cavalry_in_arg.size()) # done to avoid the message of floating point dropped
+	var half_cavalry : int = floori(cavalry_amount / 2.0) # done to avoid the message of floating point dropped
 	var cavalry_left_flank : Array = cavalry_in_arg.slice(0, half_cavalry)
 	var cavalry_right_flank : Array = cavalry_in_arg.slice(half_cavalry)
 	move_units(infantry_in_arg,infantryMarker.global_position,PI, PI, true)
 	move_units(range_in_arg,rangeMarker.global_position, PI, PI, true)
 	
-	var distance_from_infantry = 512
-	var right_flank_pos = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
-	var left_flak_pos = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
+	var distance_from_infantry : int = 512
+	var right_flank_pos : Vector2 = get_flank_position(infantry_in_arg, "right", PI, distance_from_infantry)
+	var left_flak_pos : Vector2 = get_flank_position(infantry_in_arg, "left", PI, distance_from_infantry)
 	rightFlankMarker.global_position = right_flank_pos
 	leftFlankMarker.global_position = left_flak_pos
 	move_units(cavalry_left_flank, leftFlankMarker.global_position, PI, PI, false, true)
 	move_units(cavalry_right_flank, rightFlankMarker.global_position , PI, PI , false)
 
 
-func get_flank_position(aUnits : Array = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0):
+func get_flank_position(aUnits : Array = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0) -> Vector2:
 	var units_group = aUnits as Array[Unit]
 	if units.size() == 0 or flank == "none":
 		return armyMarker.position # it needs to be te local position
@@ -166,6 +181,9 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 		return ( units_group[0].get_destination() -Vector2(cos(angle_formation), sin(angle_formation)) * distance )
 	if flank == "right":
 		return (units_group[units_group.size() - 1].get_destination() + Vector2(cos(angle_formation), sin(angle_formation)) * distance )
+	
+	push_error("Not valid position could be obtained so the default army marker position was returned")
+	return armyMarker.position
 
 # TODO move this code to a separated node to create a behavior tree
 func check_to_advance():

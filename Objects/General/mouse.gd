@@ -2,7 +2,7 @@ extends Node2D
 class_name Mouse
 
 # for army
-var hovered := []
+var hovered := [] # needs to be a normal array to use "push"
 var selected_armies := []
 var hovered_enemy : bool = false : set = set_hovered_enemy
 var weapon_types : = [] # cursor types for the type of weapon the army will atack with
@@ -11,7 +11,7 @@ var weapon_displayed : String = "" # weapon currently being displayed
 var lastProvinceWithMouseOver : Province = null
 var provinceWithMouseOver : Province = null 
 var provinceSelected : Province = null
-var world = null
+var world : Variant = null
 var ui = null
 
 # To draw the rectangle selection
@@ -62,7 +62,7 @@ func set_province_selected() -> void:
 	pass
 
 ## Gets in a list the army hovered
-func update_army_campaing_selection(data) -> void:
+func update_army_campaing_selection(data : Dictionary) -> void:
 	# If the army has the mouse over it, it will be added to a list
 	if (data.mouseOverSelf):
 		hovered.push_back( data.node )
@@ -70,7 +70,7 @@ func update_army_campaing_selection(data) -> void:
 	# If doesnt have the mouse anymore it will be deleted from the list
 	else:
 		hoveredTimer.stop() # Stop timer to show data of the armies hovered
-		var temp = hovered.duplicate()
+		var temp : Array = hovered.duplicate(true)
 		for i in hovered.size():
 			if hovered[i] == data.node:
 				temp.remove_at(i)
@@ -167,7 +167,7 @@ func set_weapon_types(value : Array[String]) -> void: # value given by the battl
 	set_mouse_cursor()
 
 # Centralizes the state change of the mouse
-func set_mouse_cursor():
+func set_mouse_cursor() -> void:
 #	Input.set_custom_mouse_cursor(mouse_normal)
 	if hovered_enemy:
 		if weapon_types.size() > 1:
@@ -185,17 +185,19 @@ func set_mouse_cursor():
 	
 
 ## Use the selection box to select armies
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(area : Area2D) -> void:
 	# To select armies in the campaing map
-	if area.owner is ArmyCampaing:
-		if Globals.playerNation == area.owner.ownership:
-			area.owner.selected = true
+	var army_to_compare := area.owner as ArmyCampaing
+	if army_to_compare is ArmyCampaing:
+		if Globals.playerNation == army_to_compare.ownership :
+			army_to_compare.selected = true
 	
 	# To select units in the battle map
 	# should be used for the selection
-	if area.owner is Unit:
-		if area.owner.ownership == Globals.playerNation:
-			world.set_units_selected(area.owner, true) # add to list of units hovered
+	var unit_to_compare := area.owner as Unit
+	if unit_to_compare is Unit:
+		if  Globals.playerNation == unit_to_compare.ownership:
+			world.set_units_selected(unit_to_compare, true) # add to list of units hovered
 		pass
 
 

@@ -1,6 +1,6 @@
 @tool
-extends Node
 class_name Nation
+extends Node
 
 signal sg_update_resources_ui(data : TotalProductionData)
 

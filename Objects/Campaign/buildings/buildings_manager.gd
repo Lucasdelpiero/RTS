@@ -20,7 +20,8 @@ var province_data : ProvinceData = ProvinceData.new() :
 func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	 #Create a new resource to get the constants stored in a variable
 	var new_building : Building = Building.new()
-	var all_buildings_constants : Array = new_building.BUILDING_CONSTANTS
+	var all_buildings_constants : Array[String] 
+	all_buildings_constants.assign(new_building.BUILDING_CONSTANTS)
 	
 	
 	#Globals.debug_update_label("constants", "constants: %s" %[all_buildings_constants])
@@ -88,7 +89,7 @@ func get_buildings_bonuses() -> Array[Bonus]:
 		var building_level_bonuses  : Array[Bonus] = current_building.bonuses
 		for bonus in building_level_bonuses:
 			# Check if a bonus of the same type is saved in the array
-			var bonus_pos = bonuses.map(func(el) : return el.type_produced).filter(func(el) : return el != "default").find(bonus.type_produced) 
+			var bonus_pos = bonuses.map(func(el : Bonus) : return el.type_produced).filter(func(el : String) : return el != "default").find(bonus.type_produced) 
 			
 			# If doesnt exists in the bonuses array, add it
 			# A new resource has to be created, otherwise the value of the bonus is not reseted for the next calculation

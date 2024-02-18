@@ -58,7 +58,7 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 			var distance_to_area : float = global_position.distance_to(ar.global_position)
 			if distance_to_area < closest_distance:
 				closest = ar
-				closest_distance = distance_to_area 
+				closest_distance = int(distance_to_area )
 		targetArea = closest
 #		print(owner.name, ": ",targetArea.owner)
 	if closest != null:

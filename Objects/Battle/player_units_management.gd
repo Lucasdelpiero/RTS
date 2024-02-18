@@ -15,7 +15,7 @@ var alpha_color : float = 0.5
 var group_1 : Array = []
 var destination
 
-signal new_group_created(army)
+signal new_group_created(army : Array[Unit])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _process(_delta : float) -> void:
 	Globals.debug_update_label("PlayerU", "PU manager: %s" % [units.size()])
 	pass
 
-func create_group(army) -> void:
+func create_group(army : Array[Unit]) -> void:
 	new_group_created.emit(army)
 	pass
 
@@ -106,7 +106,7 @@ func dragging_draw_and_move() -> void:
 
 # Draw and move units in the formation dragged across the screen
 var toDelete : Array[Node] = []
-func draw_units(move) -> void:
+func draw_units(move : bool) -> void:
 	var organized : Array[Unit] = get_organized_units(units, start_drag.angle_to_point(end_drag))
 	if organized == null:
 		return
@@ -124,16 +124,16 @@ func draw_units(move) -> void:
 		margin = max(min_margin, margin)
 		
 	for i in organized_units.size():
-			var angle = start_drag.angle_to_point(end_drag)
-			var distance = unit_width + margin
-			var new_pos = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
+			var angle : float = start_drag.angle_to_point(end_drag)
+			var distance : float = unit_width + margin
+			var new_pos : Vector2 = start_drag + Vector2(cos(angle), sin(angle)) * distance * i
 			if move:
 				organized[i].move_to(new_pos, angle)
 			
 			if sprites_types.size() == 0 or i >= sprites_types.size():
 				continue
-			var spriteBase = sprites_types[i][0] as Sprite2D
-			var spriteType = sprites_types[i][1] as Sprite2D
+			var spriteBase := sprites_types[i][0] as Sprite2D # NOTE refactor
+			var spriteType := sprites_types[i][1] as Sprite2D # NOTE refactor
 			spriteBase.global_position = new_pos
 			spriteType.global_position = new_pos
 			spriteBase.rotation = angle
@@ -144,7 +144,7 @@ func move_without_draggin(center : Vector2) -> void:
 	if center == null:
 		printerr("Player manager doesnt have a center")
 		return
-	var enemies_hovered : Array = hovered_units.filter( func(el) : return el.ownership != Globals.playerNation)
+	var enemies_hovered : Array = hovered_units.filter( func(el : Unit) : return el.ownership != Globals.playerNation)
 	if enemies_hovered.size() > 0:
 		var target : Unit = hovered_units[0] as Unit
 		for unit in units as Array[Unit]:
@@ -171,10 +171,10 @@ func move_without_draggin(center : Vector2) -> void:
 func set_organized_units(value : Array[Unit]) -> void:
 	if value == null:
 		return
-	var org_type : Array = organized_units.map(func(el : Unit) : return el.get_type() )
-	var value_type : Array = value.map(func(el : Unit) : return el.get_type() )
+	var org_type : Array = organized_units.map(func(el : Unit) : return el.get_type() as int )
+	var value_type : Array = value.map(func(el : Unit) : return el.get_type() as int )
 	if org_type.hash() != value_type.hash():
-		organized_units = value.duplicate()
+		organized_units.assign(value.duplicate())
 		update_draw_type()
 
 func set_new_value(value : Array) -> void:
@@ -182,11 +182,12 @@ func set_new_value(value : Array) -> void:
 
 func update_draw_type() -> void:
 	for i in sprites_types.size():
-		var size = organized_units.size()
+		var size : int = organized_units.size()
 		if i >= organized_units.size() or organized_units.size() == 0:
 			return
-		var type = organized_units[i].get_type()
-		var default = "res://Assets/units/unit_default_icon_256.png"
+		var type : int = organized_units[i].get_type()
+		var default : String = "res://Assets/units/unit_default_icon_256.png"
+		# NOTE it needs a refactor
 		if type < texture_types.size():
 			sprites_types[i][1].set_texture(texture_types[type])
 		else:

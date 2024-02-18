@@ -14,7 +14,7 @@ signal sg_update_UI_requested
 
 @onready var to_be_built_container = %ToBeBuiltContainer # used to show or not the buildings container
 @export var np_buildings_available_container : NodePath # Show buttons of available buildings
-@onready var buildings_available_container  = get_node(np_buildings_available_container) 
+@onready var buildings_available_container := get_node(np_buildings_available_container) as HBoxContainer 
 
 # Icons for the buildings stored in the UI manager to avoid wasting memory on a texture for each building
 @export_group("Buildings icons")

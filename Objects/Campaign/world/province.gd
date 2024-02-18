@@ -47,7 +47,7 @@ var connections : Array
 var paths : Array
 
 # The scene root first children
-var world = null
+var world : CampaignMap = null
 
 # Control
 var hovered : bool = false

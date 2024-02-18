@@ -330,7 +330,7 @@ func check_if_target_is_in_range(arr : Array) -> void:
 
 
 func _on_unit_detector_area_entered(area : Area2D) -> void:
-	var unit = area.owner as Unit
+	var unit : Unit = area.owner as Unit
 	if unit == null: # fix crash
 		return
 #	if unit.ownership != self.ownership:

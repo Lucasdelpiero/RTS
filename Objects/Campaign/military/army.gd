@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -400.0
 
 @export var army_name : String = ""
 enum  { IDLE, MOVING, FIGHTING, SIEGING }
-var state = IDLE
+var state : int = IDLE
 @export var ownership := ""
 @export_range( 10, 10000, 1) var SPEED : int = 500
 @onready var army_color : Color = Color(0.0, 0.0, 0.0, 1.0) : set = set_color
@@ -37,7 +37,7 @@ signal sg_mouseOverSelf(mouseOverSelf : bool) # Signal to say if the mouse is ov
 signal sg_enemy_encountered(army : ArmyCampaing, enemy : ArmyCampaing)
 signal sg_was_selected(value : bool)
 
-signal get_pathfinding(army ,current_position)
+signal get_pathfinding(army : ArmyCampaing, current_position : Vector2)
 
 @export var army_data : ArmyData = ArmyData.new() 
 
@@ -214,7 +214,7 @@ func _on_mouse_detector_mouse_exited() -> void:
 	mouseOverSelf = false # activates signal sg_mouseOverSelf
 
 
-func set_hovered(value) -> void:
+func set_hovered(value : bool) -> void:
 	hovered = value
 	var shader : Material = null
 	if !selected:
@@ -297,7 +297,7 @@ func load_data(data : Dictionary):
 	army_data.ownership = ownership
 	var units : Array[UnitData] = []
 	for unit in data.army_data.army_units:
-		var unit_data = UnitData.new()
+		var unit_data : UnitData = UnitData.new()
 		unit_data.scene = load(unit.scene_path) 
 		units.push_back(unit_data)
 		

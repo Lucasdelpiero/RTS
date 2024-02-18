@@ -61,37 +61,37 @@ func move_units(aUnits : Array,
 		angle_formation : float = 0.0,
 		face_direction : float = 0.0, 
 		startFromCenter : bool = false, 
-		right_to_left : bool = false):
+		right_to_left : bool = false) -> void:
 	
 #	armyMarker.global_position = targetPosition 
 	var organized_units : Array[Unit] = get_organized_units(aUnits, angle_formation)
 	
 	# Offset in case its forming from the center
-	var offset = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
+	var offset : Vector2 = int(startFromCenter) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) / 2
 	# Offset used when the army has an anchor at the rightest point and needs to form to the left side
-	var offset_right_to_left = int(right_to_left) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) 
+	var offset_right_to_left : Vector2 = int(right_to_left) * Vector2(cos(angle_formation), sin(angle_formation)) * margin_between_units  * (organized_units.size() - 1) 
 	
 	for i in organized_units.size():
-		var unit = organized_units[i] as Unit
-		var formation_pos = Vector2( cos(angle_formation), sin(angle_formation) ) * margin_between_units * i # Position incremented as the position in the formation gets larger
-		var newPos =  targetPosition + formation_pos  - offset - offset_right_to_left
+		var unit := organized_units[i] as Unit
+		var formation_pos : Vector2 = Vector2( cos(angle_formation), sin(angle_formation) ) * margin_between_units * i # Position incremented as the position in the formation gets larger
+		var newPos : Vector2 =  targetPosition + formation_pos  - offset - offset_right_to_left
 		unit.move_to(newPos, face_direction)
 
 # enemy units used to be player_units array
-func get_enemy_groups( enemy_units := [], arg_distance_to_be_in_group : float = 500):
-	var group_to_add_units = 0
+func get_enemy_groups( enemy_units : Array[Unit] = [], arg_distance_to_be_in_group : float = 500) -> Array:
+	var group_to_add_units : int  = 0
 	if enemy_units.size() < 1 :
 		push_error("player_units array is empty")
-		return null
-	var groups = [[enemy_units[0]]]
+		return []
+	var groups : Array = [[enemy_units[0]]]
 	
 	# Creates temporal groups of units that are close to each other ( because of how it works usually creates multiple groups when it should create only 1, these will be put together below )
-	for i in enemy_units.size(): # Iteration of every unit
-		var unit = enemy_units[i] as Unit
-		var has_to_create_new_group = true # If a unit has to create a new group when its not close enough to be part of an already existing group
+	for i : int in enemy_units.size(): # Iteration of every unit
+		var unit := enemy_units[i] as Unit
+		var has_to_create_new_group := true # If a unit has to create a new group when its not close enough to be part of an already existing group
 		
-		for o in groups.size(): # Iteration of every group
-			for p in groups[o].size(): # Iteration of comparation with every unit already in a group
+		for o : int in groups.size(): # Iteration of every group
+			for p : int in groups[o].size(): # Iteration of comparation with every unit already in a group
 				var other_unit := groups[o][p] as Unit
 				if other_unit == null:
 					push_error("Element in group is not of type Unit")
@@ -161,7 +161,6 @@ func get_enemy_groups( enemy_units := [], arg_distance_to_be_in_group : float = 
 #		for group in final_groups.size():
 #			print("%s: %s" %[group, final_groups[group].map(func(e): return e.name ) ] )
 #		print("============================")
-	
 	return final_groups
 
 func should_unite_group(arr1 : Array[Unit], arr2 : Array[Unit], distance : float) -> bool:
@@ -169,39 +168,44 @@ func should_unite_group(arr1 : Array[Unit], arr2 : Array[Unit], distance : float
 		var object : int = 24
 		var unit : Unit = arr1[i] as Unit
 		if typeof(unit) != object:
-			print("error: type of unit of type %s, expected object in arr1" % [typeof(unit)])
+			push_error("error: type of unit of type %s, expected object in arr1" % [typeof(unit)])
 			return false
-		var first = unit.global_position as Vector2
+		var first := unit.global_position as Vector2
 		for o in arr2.size():
-			var other  = arr2[o]
+			var other  := arr2[o] as Unit
 			if typeof(other) != object:
-				print("error: type of unit of type %s, expected object in arr2" % [typeof(other)])
+				push_error("error: type of unit of type %s, expected object in arr2" % [typeof(other)])
 				return false
-			var second = other.global_position as Vector2
+			var second := other.global_position as Vector2
 			if first.distance_to(second) < distance:
 				if Input.is_action_pressed("Debug"):
 					print("%s is close to %s " % [unit, other])
 				return true
 	return false
 
-func get_main_group(aGroups) -> Array: # Get an array with the player "groups"
+func get_main_group(aGroups : Array) -> Array[Unit]: # Get an array with the player "groups"
 	if typeof(aGroups) != 28:
 		push_error("get_main_group argument is not an array")
 		return []
 	var largest_number : int = 0
 	var largest : Array = []
-	for group in aGroups:
+	for group : Array in aGroups:
 		if typeof(group) != 28:
 			push_error("Element inside array is not another array")
 			continue
 		if group.size() > largest_number:
 			largest = group.duplicate()
-	return largest
+	var largest_group_typed : Array[Unit] = []
+	largest_group_typed.assign(largest)
+	return largest_group_typed
 
 func get_distance_to_closest(groups : Array, from: Vector2) -> float:
 	var closest : float = INF
 	var distance := 0.0
-	for group in groups:
+	for group : Array in groups:
+		if not group is Array:
+			push_error("Group is not an array")
+			return NAN
 		if typeof(group) != 28:
 			push_error("Group is not an array")
 			return NAN # in case of error return NAN
@@ -211,7 +215,7 @@ func get_distance_to_closest(groups : Array, from: Vector2) -> float:
 				closest = distance
 	return closest
 
-func get_units_ordered_by_distance(aUnits : Array, unit_position : Vector2) -> Array :
+func get_units_ordered_by_distance(aUnits : Array[Unit], unit_position : Vector2) -> Array[Unit] :
 	#region Safeguard
 	for unit in aUnits:
 		if not unit is Unit:
@@ -234,6 +238,8 @@ func get_units_ordered_by_distance(aUnits : Array, unit_position : Vector2) -> A
 	for pair in all_units:
 		units_ordered.push_back(pair[0])
 	
-	return units_ordered
+	var units_ordered_typed : Array[Unit] = []
+	units_ordered_typed.assign(units_ordered)
+	return units_ordered_typed
 
 

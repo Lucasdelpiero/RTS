@@ -91,9 +91,9 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 	for production in data_flat_current_production:
 		temp_production_text += "%s: %s" % [production.type_produced, production.amount] 
 	label_production.text = temp_production_text
-	var bonuses : Array[Bonus] = building_current.bonuses
+	var bonuses_current : Array[Bonus] = building_current.bonuses
 	temp_bonus_text = ""
-	for bonus in bonuses:
+	for bonus in bonuses_current:
 		temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus * 100) + "%"]
 	label_bonus.text = temp_bonus_text
 	
