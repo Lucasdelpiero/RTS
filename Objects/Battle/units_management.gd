@@ -47,7 +47,7 @@ func get_organized_units(aUnits : Array, angle_formation : float = 0.0) -> Array
 		comparation.push_back([aUnits[i], value])
 	
 	# Array will be sorted from lower to higher using the value for the positioning
-	comparation.sort_custom(func(a : Array, b : Array) : return a[1] < b[1])
+	comparation.sort_custom(func(a : Array, b : Array) -> bool : return a[1] < b[1])
 	
 	# New array organized, getting only the reference to the unit to be positioned
 	var new_arr : Array[Unit] = []
@@ -78,7 +78,11 @@ func move_units(aUnits : Array,
 		unit.move_to(newPos, face_direction)
 
 # enemy units used to be player_units array
-func get_enemy_groups( enemy_units : Array[Unit] = [], arg_distance_to_be_in_group : float = 500) -> Array:
+func get_enemy_groups( 
+		enemy_units : Array[Unit] = [], 
+		arg_distance_to_be_in_group : float = 500
+		) -> Array:
+		
 	var group_to_add_units : int  = 0
 	if enemy_units.size() < 1 :
 		push_error("player_units array is empty")
@@ -232,10 +236,10 @@ func get_units_ordered_by_distance(aUnits : Array[Unit], unit_position : Vector2
 		all_units.push_back([unit, distance])
 	
 	# Sort by ascending order of distance to the unit compared to
-	all_units.sort_custom(func(a, b): return a[1] < b[1])
+	all_units.sort_custom(func(a : Array, b : Array) -> bool: return a[1] < b[1])
 	
 	var units_ordered : Array = []
-	for pair in all_units:
+	for pair in all_units as Array[Array]:
 		units_ordered.push_back(pair[0])
 	
 	var units_ordered_typed : Array[Unit] = []

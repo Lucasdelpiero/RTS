@@ -1,7 +1,7 @@
 extends Node
 
-var mouse_in_province = 1
-var camera_angle := 0.0
+var mouse_in_province : int = 1
+var camera_angle : float = 0.0
 var playerNation : String = "ROME"
 var player_nation_node : Nation = null
 # Array of armies of the player to be loaded in the battlemap
@@ -24,52 +24,44 @@ var campaign_UI : CampaignUI = null
 var shader_hovered := preload("res://Shaders/hovered.tres") as Material
 var shader_selected := preload("res://Shaders/selected.tres") as Material
 
-signal sg_battlemap_set_units_selected(unit, value)
+signal sg_battlemap_set_units_selected(unit : Unit, value : bool)
 
 var PERSONAL_DEBUGGER : String = "DebugPersonal" # just to avoid mistakes
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-func set_battle_map(value):
+func set_battle_map(value : BattleMap) -> void:
 	battle_map = value
 	Signals.battle_map = value
 
-func battlemap_set_units_selected(unit, value):
+func battlemap_set_units_selected(unit : Unit, value : bool) -> void:
 	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 
-func reset_armies():
+func reset_armies() -> void:
 	playerArmy = []
 	playerArmyData = []
 	enemyArmy = []
 	enemyArmyData = []
 
-func debug_update_label(variable_name : String , value):
+func debug_update_label(variable_name : String , value : Variant) -> void:
 	if debug == null:
 		return
-	debug.update_label(variable_name, value)
+	var value_string : String = str(value)
+	debug.update_label(variable_name, value_string)
 	pass
 
-func personal_debug_update(owner_node ,ID , value ):
-	var personal_debugger = owner_node.find_child(PERSONAL_DEBUGGER) as DebugPersonal
+func personal_debug_update(owner_node : Node ,ID : String, value : Variant ) -> void:
+	var value_string : String = str(value)
+	var personal_debugger := owner_node.find_child(PERSONAL_DEBUGGER) as DebugPersonal
 	if personal_debugger == null:
 		push_warning("%s doesnt have a personal debugger" % [owner_node.name])
 		return
 		
-	personal_debugger.update_local_value_label(ID, value)
+	personal_debugger.update_local_value_label(ID, value_string)
 	
 
-func window_resized():
-	var to_update = get_tree().get_nodes_in_group("update_on_window_resize")
-	for node in to_update:
+func window_resized() -> void:
+	var to_update : Array = get_tree().get_nodes_in_group("update_on_window_resize")
+	for node in to_update as Array[Node]:
 		node.update_on_window_resize()
 	if main == null:
 		return

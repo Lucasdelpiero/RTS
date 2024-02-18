@@ -3,15 +3,15 @@ extends UnitsManagement
 
 #region Properties
 
-@export var armyGroup : Node = null  # NOTE needs to be its own class and have a method to get all its children called as an array[Unit to avoid overhead trying to get them
+@export var armyGroup : UnitsGroupControl = null 
 var units : Array[Unit] = []
 @onready var armyMarker : Marker2D = %ArmyMarker
 @onready var infantryMarker : Marker2D = %InfantryMarker
 @onready var rangeMarker : Marker2D = %RangeMarker
 @onready var leftFlankMarker : Marker2D= %LeftFlank
 @onready var rightFlankMarker : Marker2D= %RightFlank
-@export var playerGroup : Node = null
-var player_units := []
+@export var playerGroup : UnitsGroupControl = null
+var player_units : Array[Unit] = []
 var distance_to_be_in_group : int = 500
 var playerGroups : Array[Array] = []
 @export var general : General 
@@ -39,11 +39,11 @@ enum GeneralStates {
 	FIGHTING,
 	FLEEING
 }
-var generalState = GeneralStates.WAITING
+var generalState : int = GeneralStates.WAITING
 
 #endregion
 
-func _ready():
+func _ready() -> void:
 	if general == null:
 		general = General.new()
 #	print(general.charisma)
@@ -53,16 +53,17 @@ func _ready():
 		return
 	
 	# get_enemy_groups needs a typed array, so to be safe
-	player_units = playerGroup.get_children() 
-	var player_units_typed : Array[Unit] 
-	player_units_typed.assign(player_units)
-	get_enemy_groups(player_units_typed, 2000)
+	var player_units_temp : = playerGroup.get_children() 
+	var player_units_typed : Array[Unit] = []
+	player_units_typed.assign(player_units_temp)
+	player_units.assign(player_units_typed)
+	
+	get_enemy_groups(player_units, 2000)
 	
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
 	
-	var units_temp : Array = armyGroup.get_children() # used to change the type of the array below
-	units.assign(units_temp)
-	group_units_by_type(units as Array[Unit])
+	units = armyGroup.get_units_group()
+	group_units_by_type(units )
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
 #	print(get_main_group(get_enemy_groups(player_units, 2000)))
@@ -75,7 +76,7 @@ func _ready():
 
 # Makes the IA focus on the largest group of enemies
 func focus_on_largest_group() -> void:
-	var groups = get_enemy_groups(player_units, 2000)
+	var groups : Array = get_enemy_groups(player_units, 2000)
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
@@ -84,23 +85,23 @@ func focus_on_largest_group() -> void:
 		push_error("Could not find an enemy group")
 		return
 	
-	var action = general.get_next_action()
-	var focus = general.get_largest_group(groups)
+	var action : String = general.get_next_action()
+	var focus : Array[Unit] = general.get_largest_group(groups)
 	groups_manager.main_enemy_group = focus
 #	Globals.debug_update_label("size", focus.size())
 #	Globals.debug_update_label("closest", "closest: %s" %[closest])
-	var to_sort = groups.duplicate(true)
-	to_sort.sort_custom(func(a, b): return a.size() > b.size())
-	var groups_by_size = to_sort.duplicate(true)
+	var to_sort : Array = groups.duplicate(true)
+	to_sort.sort_custom(func(a : Array, b : Array) -> bool : return a.size() > b.size())
+	var groups_by_size : Array = to_sort.duplicate(true)
 	var text_group_size : String = ""
 	for i in groups_by_size.size():
 		text_group_size += "size: %s \n" % [groups_by_size[i].size()]
 	Globals.debug_update_label("size%s", "size: %s" % [text_group_size])
 	if focus == null:
 		return
-	var average_pos = get_average_position(focus)
-	var angle = armyMarker.global_position.angle_to_point(average_pos) 
-	var new_pos = armyMarker.global_position + Vector2(cos(angle), -sin(angle)) * 20
+	var average_pos : Vector2 = get_average_position(focus)
+	var angle : float = armyMarker.global_position.angle_to_point(average_pos) 
+	var new_pos : Vector2 = armyMarker.global_position + Vector2(cos(angle), -sin(angle)) * 20
 #	Globals.debug_update_label("focus", "Focus: %s" %[focus.map(func(el): return el.name)])
 	
 	# Parent marker will look towards main player group
@@ -130,9 +131,9 @@ func group_units_by_type(aUnits : Array[Unit]) -> void:
 	#infantry_units = aUnits.filter(func(el) : return el.type == 1)
 	#range_units = aUnits.filter(func(el) : return el.type == 2)
 	#cavalry_units = aUnits.filter(func(el) : return el.type == 3)
-	infantry_units.assign(aUnits.filter(func(el : Unit) : return el.type == 1))
-	range_units.assign(aUnits.filter(func(el : Unit) : return el.type == 2))
-	cavalry_units.assign(aUnits.filter(func(el : Unit) : return el.type == 3))
+	infantry_units.assign(aUnits.filter(func(el : Unit) -> bool : return el.type == 1 ))
+	range_units.assign(aUnits.filter(func(el : Unit) -> bool : return el.type == 2 ))
+	cavalry_units.assign(aUnits.filter(func(el : Unit) -> bool : return el.type == 3))
 	
 	# Groups used for the formation
 	#group_front = infantry_units.duplicate()
@@ -154,9 +155,9 @@ func move_to_group_marker(aUnits : Array[Unit]) -> void:
 	if typeof(aUnits) != 28:
 		push_error("Expected array in function")
 		return
-	var infantry_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 1)
-	var range_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 2)
-	var cavalry_in_arg : Array = aUnits.filter(func(el : Unit) : return el.get_type() == 3)
+	var infantry_in_arg : Array = aUnits.filter(func(el : Unit) -> bool : return el.get_type() == 1 )
+	var range_in_arg : Array = aUnits.filter(func(el : Unit) -> bool : return el.get_type() == 2 )
+	var cavalry_in_arg : Array = aUnits.filter(func(el : Unit) -> bool : return el.get_type()  == 3 )
 	var cavalry_amount : float = float(cavalry_in_arg.size()) # done to avoid the message of floating point dropped
 	var half_cavalry : int = floori(cavalry_amount / 2.0) # done to avoid the message of floating point dropped
 	var cavalry_left_flank : Array = cavalry_in_arg.slice(0, half_cavalry)
@@ -173,8 +174,8 @@ func move_to_group_marker(aUnits : Array[Unit]) -> void:
 	move_units(cavalry_right_flank, rightFlankMarker.global_position , PI, PI , false)
 
 
-func get_flank_position(aUnits : Array = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0) -> Vector2:
-	var units_group = aUnits as Array[Unit]
+func get_flank_position(aUnits : Array[Unit] = [], flank : String = "none", angle_formation : float = 0, distance : float = 0.0) -> Vector2:
+	var units_group := aUnits as Array[Unit]
 	if units.size() == 0 or flank == "none":
 		return armyMarker.position # it needs to be te local position
 	if flank == "left":
@@ -186,8 +187,8 @@ func get_flank_position(aUnits : Array = [], flank : String = "none", angle_form
 	return armyMarker.position
 
 # TODO move this code to a separated node to create a behavior tree
-func check_to_advance():
-	var a_units_to_move : Array = units
+func check_to_advance() -> void:
+	var a_units_to_move : Array[Unit] = units
 	var a_player_units : Array = player_units
 	if a_player_units.size() == 0 or a_units_to_move.size() == 0:
 		push_error("There are no units of the player or the IA")
@@ -202,7 +203,7 @@ func check_to_advance():
 
 # The units will move towards the position at a certian distance as a time, that distance as absolute values or as percentage of distance to the target
 # TODO move this code to a separated node to create a behavior tree
-func advance(aUnits: Array, target_position : Vector2, current_position : Vector2, distance_to_move : float, as_percentage: bool = false) -> void:
+func advance(aUnits: Array[Unit], target_position : Vector2, current_position : Vector2, distance_to_move : float, as_percentage: bool = false) -> void:
 	#region Safeguard
 	for unit in aUnits:
 		if not unit is Unit:
@@ -224,21 +225,21 @@ func advance(aUnits: Array, target_position : Vector2, current_position : Vector
 
 # Send units to attack to melee, units already targeted are stored in units_already_targeted array
 # TODO move this code to a separated node to create a behavior tree
-func send_units_to_attack(aGroup : Array, aEnemy_units : Array):
+func send_units_to_attack(aGroup : Array[Unit], aEnemy_units : Array[Unit]) -> void:
 	#region Safeguard
-	for unit in aGroup:
+	for unit in aGroup as Array[Unit]:
 		if not unit is Unit:
 			push_error("There is an object that is not a unit")
 			return
-	for unit in aEnemy_units:
+	for unit in aEnemy_units as Array[Unit]:
 		if not unit is Unit:
 			push_error("There is an object that is not a unit")
 			return
 	#endregion
 	
 	for unit in aGroup as Array[Unit]:
-		var unit_has_targeted_enemy = false # used to store when the unit has chosen an enemy to attack
-		var enemies_by_distance = get_units_ordered_by_distance(aEnemy_units, unit.global_position)
+		var unit_has_targeted_enemy : bool = false # used to store when the unit has chosen an enemy to attack
+		var enemies_by_distance :Array[Unit] = get_units_ordered_by_distance(aEnemy_units, unit.global_position)
 		for enemy in enemies_by_distance as Array[Unit]:
 			if not units_already_targeted.has(enemy) and not unit_has_targeted_enemy:
 				units_already_targeted.push_back(enemy)
@@ -247,7 +248,7 @@ func send_units_to_attack(aGroup : Array, aEnemy_units : Array):
 		
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	#focus_on_largest_group()
 	#get_enemy_groups(player_units, 2000)
 	return
@@ -263,7 +264,7 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 
-func _on_timer_advance_timeout():
+func _on_timer_advance_timeout() -> void:
 	#timerAdvance.start(5)
 	#check_to_advance()
 	pass

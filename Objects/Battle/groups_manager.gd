@@ -1,6 +1,8 @@
 extends Node
 class_name GroupsManager
 
+# Used by the UI to organize units in groups so they can have a task to do when needed
+
 var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn")
 
 var groups : Array[Unit] = []
@@ -37,7 +39,9 @@ func set_main_enemy_group(value : Array[Unit]) -> void:
 	for child in get_children():
 		child.main_enemy_group = value.duplicate(true)
 	
-func tell_move_units_to_markers():
+func tell_move_units_to_markers() -> void:
 	for child in get_children():
 		child.move_units_to_markers()
 	pass
+
+

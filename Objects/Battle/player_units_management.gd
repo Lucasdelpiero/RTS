@@ -144,7 +144,7 @@ func move_without_draggin(center : Vector2) -> void:
 	if center == null:
 		printerr("Player manager doesnt have a center")
 		return
-	var enemies_hovered : Array = hovered_units.filter( func(el : Unit) : return el.ownership != Globals.playerNation)
+	var enemies_hovered : Array = hovered_units.filter( func(el : Unit) -> bool : return el.ownership != Globals.playerNation)
 	if enemies_hovered.size() > 0:
 		var target : Unit = hovered_units[0] as Unit
 		for unit in units as Array[Unit]:
@@ -171,8 +171,8 @@ func move_without_draggin(center : Vector2) -> void:
 func set_organized_units(value : Array[Unit]) -> void:
 	if value == null:
 		return
-	var org_type : Array = organized_units.map(func(el : Unit) : return el.get_type() as int )
-	var value_type : Array = value.map(func(el : Unit) : return el.get_type() as int )
+	var org_type : Array = organized_units.map(func(el : Unit) -> int : return el.get_type() as int )
+	var value_type : Array = value.map(func(el : Unit) -> int: return el.get_type() as int )
 	if org_type.hash() != value_type.hash():
 		organized_units.assign(value.duplicate())
 		update_draw_type()
