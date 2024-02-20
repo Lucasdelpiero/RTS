@@ -64,7 +64,7 @@ func initialize_world() -> void:
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	provinces.assign( get_tree().get_nodes_in_group("provinces") )
-	var nations_tags = nations.map(func(el): return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
+	var nations_tags : Array = nations.map(func(el : Nation) -> String : return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
 	for province in provinces as Array[Province]:
 		province.world = self
 		province.update_to_nation_color()
@@ -74,8 +74,8 @@ func initialize_world() -> void:
 		
 		# Connect province with the nation owner to give them resources
 		if nations_tags.has(province.ownership):
-			var nation_pos = nations_tags.find(province.ownership) # can be used as condition for not finding it
-			var nation = nations[nation_pos] 
+			var nation_pos : int = nations_tags.find(province.ownership) # can be used as condition for not finding it
+			var nation : Nation = nations[nation_pos] 
 			province.nation_owner = nation as Nation # Add reference to the province to send resources bonus data
 			# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
 			if not province.sg_resources_generated.is_connected(nation.resource_incoming):
@@ -96,7 +96,7 @@ func change_map_shown(type : String) -> void:
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map() -> void:
 	map = AStar2D.new()
-	var provinces_temp : Array[Province] 
+	var provinces_temp : Array[Province] = []
 	provinces_temp.assign( get_tree().get_nodes_in_group("provinces") )
 	# Add points
 	for province in provinces_temp:
@@ -118,7 +118,8 @@ func get_nav_map() -> void:
 		pass
 	pass
 
-func get_nav_path(from : int, to : int ):
+# maybe it shoud be changed to return the map or something
+func get_nav_path(from : int, to : int ) -> void:
 	map.get_point_path(from, to)
 	pass
 
@@ -180,9 +181,9 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 
 func start_battle() -> void:
 	# Send the info of the armies to the global script
-	for army in Globals.playerArmy:
+	for army in Globals.playerArmy as Array[ArmyCampaing]:
 		Globals.playerArmyData.push_back(army.army_data)
-	for army in Globals.enemyArmy:
+	for army in Globals.enemyArmy as Array[ArmyCampaing]:
 		Globals.enemyArmyData.push_back(army.army_data)
 	main.start_battle()
 

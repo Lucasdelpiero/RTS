@@ -1,3 +1,4 @@
+class_name ButtonGroupCardUnits
 extends Button
 
 var group : int = 10

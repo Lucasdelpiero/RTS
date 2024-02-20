@@ -1,6 +1,6 @@
 extends Node
 
-var mouse_in_province : int = 1
+var mouse_in_province : int = -1  # -1 means that no province is selected
 var camera_angle : float = 0.0
 var playerNation : String = "ROME"
 var player_nation_node : Nation = null

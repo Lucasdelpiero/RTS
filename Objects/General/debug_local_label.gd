@@ -1,4 +1,4 @@
 extends Label
 
-@onready var ID = "0"
+@onready var ID : String = "0"
 

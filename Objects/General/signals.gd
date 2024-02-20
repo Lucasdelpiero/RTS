@@ -2,10 +2,10 @@ extends Node
 
 var battle_map : BattleMap = null 
 
-signal sg_battlemap_set_units_selected(unit, value )
-signal sg_battlemap_set_units_hovered(unit, value )
+signal sg_battlemap_set_units_selected(unit , value  )
+signal sg_battlemap_set_units_hovered(unit , value )
 
-func battlemap_set_units_selected(unit, value) -> void:
+func battlemap_set_units_selected(unit , value) -> void:
 	sg_battlemap_set_units_selected.emit(unit, value)
 	pass
 

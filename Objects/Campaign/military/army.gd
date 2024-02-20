@@ -66,7 +66,8 @@ func _unhandled_input(_event : InputEvent) -> void:
 #		get_pathing(get_global_mouse_position())
 		#TODO refactor this
 		if selected : 
-			var new_path = get_pathing(Globals.mouse_in_province)
+			var destination : int = Globals.mouse_in_province
+			var new_path : Array = get_pathing(destination)
 			if new_path.size() > 0:
 				path = new_path
 				var path_names : Array = get_path_province_names(new_path)
@@ -137,7 +138,8 @@ func move(delta : float) -> void:
 	state = IDLE
 
 
-func get_pathing(destination) -> Array:
+# Recieves the ID of the province it has to path to and returns a path
+func get_pathing(destination : int) -> Array:
 	if own_map == null:
 		push_error("There is no map to navigate in the unit")
 		return []
@@ -145,8 +147,8 @@ func get_pathing(destination) -> Array:
 	var from : int = own_map.get_closest_point(self.global_position) # ID of closest point
 	# The destination is the place the army wants to go, that being the las province hovered
 	# If there is not a province being hovered, it will be used the closest point to the mouse
-	var to = destination
-	if (destination == null) :
+	var to : int = destination
+	if (destination == null or destination == -1) :
 		to = own_map.get_closest_point(get_global_mouse_position())
 	var new_path : Array = own_map.get_point_path(from, to)
 	draw_path()
@@ -296,7 +298,7 @@ func load_data(data : Dictionary):
 	army_data = ArmyData.new() # It has to create a new one because it wont update if its not new
 	army_data.ownership = ownership
 	var units : Array[UnitData] = []
-	for unit in data.army_data.army_units:
+	for unit in data.army_data.army_units :
 		var unit_data : UnitData = UnitData.new()
 		unit_data.scene = load(unit.scene_path) 
 		units.push_back(unit_data)

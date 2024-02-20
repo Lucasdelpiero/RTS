@@ -1,5 +1,5 @@
-extends Node2D
 class_name Main
+extends Node2D
 
 var playerArmy : Array = []
 var enemyArmy : Array = []
@@ -25,11 +25,30 @@ func _ready():
 
 	pass # Replace with function body.
 
-func start_battle():
-	save_game()
-	var world = get_tree().get_nodes_in_group("world")[0] as Node2D
-	world.queue_free()
-	var battleWorld = load("res://Objects/Battle/battle_map.tscn").instantiate() as BattleMap
+func start_battle() -> void:
+	# Try loading map and if it works move there
+	#region check for the battle_map
+	var battle_map_scene := load("res://Objects/Battle/battle_map.tscn") as PackedScene
+	if battle_map_scene == null:
+		push_error("Scene couldnt be loaded")
+		return 
+	var battleWorld := battle_map_scene.instantiate() as BattleMap
+	if battleWorld == null:
+		push_error("Battlemap couldnt be instantiated")
+		return
+	#endregion
+	
+	# If it reached here then there is a map loaded and can save the game and move to the battle
+	var world := get_tree().get_nodes_in_group("world")[0] as CampaignMap
+	if world == null:
+		push_error("World couldnt be found")
+		return
+	
+	save_game() # Save before the battle
+	
+	world.queue_free() # delete the world
+	
+	# Now lets go to battle
 	add_child(battleWorld)
 	battleWorld.main = self
 	battleWorld.sg_finished_battle.connect(return_from_battle)
@@ -67,21 +86,24 @@ func load_game():
 	var _save := SaveGameAsJSON.new()
 	var data = _save.load_savegame()
 	# Remove armies to clean before loading them
-	var armies_to_remove = get_tree().get_nodes_in_group("armies")
-	for army in armies_to_remove:
+	var armies_to_remove : Array = get_tree().get_nodes_in_group("armies")
+	for army in armies_to_remove as Array[Node]:
 		army.queue_free()
 	
 	# Give the data to every nation and they will use the data to
 	# update their data and create the armies and give them data to load
 	# like a cascade
-	var nations = get_tree().get_nodes_in_group("nations")
+	var nations : Array = get_tree().get_nodes_in_group("nations")
 	for el in data.nations:
 		for nation in nations:
 			if el.NATION_TAG == nation.NATION_TAG:
 				nation.load_data(el)
 				nation.set_colors()
 				pass
-	var world = get_tree().get_nodes_in_group("world")[0]
+	var world : CampaignMap = get_tree().get_nodes_in_group("world")[0] as CampaignMap
+	if world == null:
+		push_error("There is no world found")
+		return
 	world.initialize_world()
 
 func _create_or_load_save() -> void:
@@ -92,8 +114,8 @@ func _create_or_load_save() -> void:
 #		save.write_savegame()
 	save_game()
 
-func window_resized():
-	var to_update = get_tree().get_nodes_in_group("update_on_window_resize")
+func window_resized() -> void:
+	var to_update : Array = get_tree().get_nodes_in_group("update_on_window_resize")
 	for node in to_update:
 #		if node.has("update_on_window_resize"):
 		node.update_on_window_resize()

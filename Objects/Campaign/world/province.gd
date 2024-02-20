@@ -177,7 +177,9 @@ func _on_mouse_detector_mouse_entered() -> void:
 func _on_mouse_detector_mouse_exited() -> void:
 #	print("exited")
 	mouseOverSelf = false
-	Globals.mouse_in_province = null
+	# BUG changing the value of the Globals.mouse_in_province to -1 caused to change the value
+	# to -1 AFTER the value of the next province was selected, which caused a bug
+	#Globals.mouse_in_province = -1 # value used to mean notthing
 
 func set_hovered(value : bool) -> void:
 	hovered = value

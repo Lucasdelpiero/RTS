@@ -1,6 +1,6 @@
 @tool
-extends Node
 class_name UnitsGroupControl
+extends Node
 
 @export var spawnMarker : Marker2D = null
 @export_color_no_alpha var army_color : Color = Color(0.5, 0.5, 0.5) : set = set_color

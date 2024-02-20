@@ -16,7 +16,7 @@ func _input(_event : InputEvent) -> void:
 
 func update_label(variable_name : String , value : String) -> void:
 #	print(variable_name)
-	var label : Array = vbox.get_children().filter(func(el : DebugLabel): return el.variable_name == variable_name)
+	var label : Array = vbox.get_children().filter(func(el : DebugLabel) -> bool: return el.variable_name == variable_name)
 	if label.size() == 0:
 		var new_label : DebugLabel = DebugLabelP.instantiate() as DebugLabel
 		vbox.add_child(new_label)

@@ -4,29 +4,29 @@ class_name BattleMap
 var player_units : Array[Unit] = []
 var units_hovered : Array[Unit] = [] 
 var units_selected : Array[Unit] = []
-var main = null # Main scene controlling scene transitions and data
-@onready var mouse = %Mouse as Mouse
-@onready var camera = %Camera
-@onready var playerArmy = $PlayerArmy
-@onready var enemyArmy = $EnemyArmy
-@onready var navigationTileMap = $NavigationTileMap
-@onready var playerUnitsManagement = $PlayerUnitsManagement
-@onready var battleUI : BattleUI = $BattleUI
-var nav_map = null
+var main  : Main = null # Main scene controlling scene transitions and data
+@onready var mouse := %Mouse as Mouse
+@onready var camera := %Camera as Camera2D
+@onready var playerArmy := $PlayerArmy as UnitsGroupControl
+@onready var enemyArmy := $EnemyArmy as UnitsGroupControl
+@onready var navigationTileMap := $NavigationTileMap as TileMap
+@onready var playerUnitsManagement := $PlayerUnitsManagement as UnitsManagement
+@onready var battleUI := $BattleUI as BattleUI
+var nav_map : Variant = null
 
-@onready var spawnPlayer = %SpawnPlayer
-@onready var spawnEnemy = %SpawnEnemy
+@onready var spawnPlayer := %SpawnPlayer as Marker2D
+@onready var spawnEnemy := %SpawnEnemy as Marker2D
 
-signal sg_finished_battle(data)
+signal sg_finished_battle(data : Dictionary)
 signal sg_clean_overlay_unit
-signal create_cards(army)
-signal order_to_create_group(army)
+signal create_cards(army : Array[Unit])
+signal order_to_create_group(army : Array[Unit])
 
-func _init():
+func _init() -> void:
 	Globals.battle_map = self
 	
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 #	Globals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	Signals.sg_battlemap_set_units_selected.connect(set_units_selected)
 	Signals.sg_battlemap_set_units_hovered.connect(set_units_hovered)
@@ -67,19 +67,19 @@ func _unhandled_input(_event : InputEvent) -> void:
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta : float) -> void:
 	Globals.debug_update_label("World U.sel: ", "World U.sel: %s" % [units_selected.size()])
 	pass
 
-func set_units_hovered(unit : Unit, hovered : bool):
-	var temp_copy = units_hovered.duplicate()
+func set_units_hovered(unit : Unit, hovered : bool) -> void:
+	var temp_copy : Array = units_hovered.duplicate()
 	# Add it if is being hovered
 	if hovered:
 		temp_copy.push_back(unit)
 #		print("added")
 	# If not hovered, remove
 	if not hovered:
-		var unit_position = units_hovered.find(unit)
+		var unit_position : int = units_hovered.find(unit)
 #		print("unit position: %s" % [unit_position])
 		if unit_position == -1: # If its not found it will return withouht modifing the array
 			return
@@ -91,7 +91,7 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	playerUnitsManagement.hovered_units = units_hovered.duplicate()
 	
 	# Check for enemy in hovering
-	var hover_enemy = false
+	var hover_enemy : bool = false
 	for i in units_hovered as Array[Unit]:
 		if i.ownership != Globals.playerNation:
 			hover_enemy = true
@@ -109,9 +109,9 @@ func set_units_hovered(unit : Unit, hovered : bool):
 	
 	pass
 
-func set_units_selected(unit : Unit, selected : bool):
-	var temp_copy = units_selected.duplicate()
-	var unit_position = units_selected.find(unit)
+func set_units_selected(unit : Unit, selected : bool) -> void:
+	var temp_copy : Array = units_selected.duplicate()
+	var unit_position : int= units_selected.find(unit)
 	# Add unit if its not in the array
 	if not units_selected.has(unit) and selected: ## this was modified
 		temp_copy.push_back(unit)
@@ -136,21 +136,21 @@ func get_weapon_types() -> Array[String]:
 #	print(weapon_types_in_selection)
 	return weapon_types_in_selection
 
-func move_player_units():
+func move_player_units() -> void:
 	pass
 
-func spawn_units():
+func spawn_units() -> void:
 	# Instantiate and add to the tree the units in the armies
 	for army in Globals.playerArmyData:
 		for unit in army.army_units:
-			var scene = unit.scene.instantiate()
+			var scene := unit.scene.instantiate() as Unit
 			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, 1000)
 			
 	for army in Globals.enemyArmyData:
 		for unit in army.army_units:
-			var scene = unit.scene.instantiate()
+			var scene := unit.scene.instantiate() as Unit
 			enemyArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, -1000)
@@ -158,11 +158,12 @@ func spawn_units():
 	playerArmy.start_units()
 	enemyArmy.start_units()
 
-func finish_battle():
-	var player_army = playerArmy.get_children().filter(func(el): return !el.routed )
-	var enemy_army = enemyArmy.get_children().filter(func(el): return !el.routed )
+func finish_battle() -> void:
+	var player_army : Array = playerArmy.get_children().filter(func(el : Unit) -> bool: return !el.routed )
+	var enemy_army : Array = enemyArmy.get_children().filter(func(el : Unit) -> bool: return !el.routed )
 	
-	var data = {
+	# NOTE this below should be a resource
+	var data : Dictionary = {
 		"battleMap" : self,
 		"playerArmy" : [player_army],
 		"enemyArmy" : [enemy_army],
@@ -170,14 +171,14 @@ func finish_battle():
 	emit_signal("sg_finished_battle", data)
 	pass
 
-func send_data_to_overlay(data : OverlayUnitData):
+func send_data_to_overlay(data : OverlayUnitData) -> void:
 	battleUI.update_overlay(data)
 	pass
 
-func order_battle_ui_to_create_group(army):
+func order_battle_ui_to_create_group(army : Array[Unit]) -> void:
 	order_to_create_group.emit(army)
 	pass
 
-func _on_finish_battle_button_pressed():
+func _on_finish_battle_button_pressed() -> void:
 	finish_battle()
 	pass # Replace with function body.

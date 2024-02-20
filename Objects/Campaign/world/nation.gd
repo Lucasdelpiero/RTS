@@ -28,7 +28,9 @@ func _ready() -> void:
 	set_colors()
 
 func set_colors() -> void:
-	var armies : Array = get_children()
+	var armies_temp : Array = get_children()
+	var armies : Array[ArmyCampaing] = []
+	armies.assign(armies_temp)
 	for a in armies :
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally
@@ -37,14 +39,14 @@ func resource_incoming(data : Production) -> void:
 	resources_generated.push_back(data)
 
 func process_resources_recieved() -> void:
-	var total_gold_generated : int = resources_generated.map(func(el): return el.gold).reduce(func(a,b): return a + b)
+	var total_gold_generated : int = resources_generated.map(func(el : Production) -> int: return el.gold).reduce(func(a : int,b : int) -> int: return a + b)
 	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return
 	
 	gold += total_gold_generated
 	
-	var total_manpower_generated : int = resources_generated.map(func(el): return el.manpower).reduce(func(a,b): return a + b)
+	var total_manpower_generated : int = resources_generated.map(func(el : Production) -> int: return el.manpower).reduce(func(a : int,b : int) -> int: return a + b)
 	if total_manpower_generated == null:
 		push_error("Error in calculating resources")
 		return
@@ -73,7 +75,7 @@ func save() -> Dictionary:
 	# in an array
 	var armies : Array = get_children()
 	var army_array : Array = []
-	for army in armies :
+	for army in armies as Array[ArmyCampaing]:
 		army_array.push_back(army.save())
 	
 	var save_dict : Dictionary = {
@@ -103,7 +105,10 @@ func load_data(data : Dictionary) -> void:
 	manpower = data.manpower
 	# Every army is created and their data is sent to them to be processed
 	for army in data.armies:
-		var scene = load(army.filename).instantiate() 
+		var scene := load(army.filename).instantiate() as ArmyCampaing
+		if scene == null:
+			push_error("Error loading an army")
+			continue
 		add_child(scene)
 		scene.load_data(army)
 
