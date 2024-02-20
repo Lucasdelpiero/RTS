@@ -143,7 +143,7 @@ func spawn_units() -> void:
 	# Instantiate and add to the tree the units in the armies
 	for army in Globals.playerArmyData:
 		for unit in army.army_units:
-			var scene = unit.scene.instantiate() 
+			var scene := unit.scene.instantiate() as Unit
 			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, 1000)

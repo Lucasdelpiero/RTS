@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-@onready var mouse : Mouse = null
+@onready var mouse = null
 var hovered : bool = false : set = set_hovered
 var selected : bool = false : set = set_selected
 var world : Variant = null
@@ -20,7 +20,7 @@ var routed : bool = false
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
-@onready var hurtBoxComponent := %HurtBoxComponent 
+@onready var hurtBoxComponent = %HurtBoxComponent
 @export var ownership : String = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
 @onready var nameLabel : Label = %NameLabel as Label
@@ -321,8 +321,8 @@ func _on_range_of_attack_area_exited(area : Area2D) -> void:
 	pass # Replace with function body.
 
 # From weapon -> weapon_manager -> unit
-func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
-	for i in arr as Array[Unit]:
+func check_if_target_is_in_range(arr : Array) -> void: 
+	for i in arr:
 		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
 #			print("Enemy is hereeeeeee")

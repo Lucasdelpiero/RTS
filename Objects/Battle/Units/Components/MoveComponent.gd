@@ -11,7 +11,7 @@ var chase_in_queue : bool= false # The chasing was ordered after queueing a path
 var next_point : Vector2 = Vector2.ZERO
 var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
-var nav_map : Variant = null
+var nav_map = null
 @export_range(1,800, 1) var speed : int = 200
 var pushVector := Vector2.ZERO
 var anchored := true # if an unit reached an empty position is true, else it will be false unit is true
@@ -177,7 +177,7 @@ func update_facing_angle() -> void:
 	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
 
 # The anchor variable is used to set when the unit can be pushed or not by another unit when they intersect their collision areas
-func update_is_anchored(value : Variant = null) -> void:
+func update_is_anchored(value = null) -> void:
 	if path.size() == 0:
 			if not unit.unitDetector.is_colliding():
 				anchored = true
@@ -306,7 +306,7 @@ func stop_movement() -> void:
 	chasing = false # maybe this cause a bug when following a unit that is running
 	unit.reached_destination()
 
-func set_nav_map(value : TileMap) -> void:
+func set_nav_map(value : TileMap):
 	nav_map = value.get_navigation_map(0)
 	pass
 
