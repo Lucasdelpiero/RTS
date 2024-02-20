@@ -54,8 +54,8 @@ func _on_add_building_pressed() -> void:
 		return
 	
 	# Delete buildings buttons to create a fresh list, the filter avoid deleting the "back button"
-	for building in buildings_available_container.get_children().filter(
-		func(el) : return el is BuildingButton
+	for building : Node in buildings_available_container.get_children().filter(
+		func(el : Node) -> bool: return el is BuildingButton
 	): 
 		building.queue_free()
 	

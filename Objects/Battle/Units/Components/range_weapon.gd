@@ -1,7 +1,7 @@
 extends Weapon
 
 @export_enum("Bow", "Javelin","Slingshot") var weapon_type : String = "Bow"
-@export var Projectile : PackedScene = preload("res://Objects/Battle/Units/Components/projectile.tscn")
+@export var ProjectileP := preload("res://Objects/Battle/Units/Components/projectile.tscn") as PackedScene
 @export_range(1, 1000, 1) var base_attack : int = 1
 @export_range(1, 10000, 1) var base_max_range : int = 1000
 @export_range(0.0, 2.0, 0.01) var base_reloading_speed : float = 1.0
@@ -26,7 +26,7 @@ var enemies_in_weapon_range : Array[Unit] = []
 signal reached_new_enemy(enemies : Array[Unit])
 signal reload_time_over(node : Weapon)
 signal ran_out_of_ammo
-signal sg_ammo_amount_changed(value, total)
+signal sg_ammo_amount_changed(value : int, total : int)
 @onready var reloading : bool = false
 
 func _ready() -> void:
@@ -63,7 +63,7 @@ func shoot(target : Unit) -> void:
 	if reloading or current_ammunition < 1:
 		return
 	current_ammunition -= 1
-	var projectile := Projectile.instantiate() as Projectile
+	var projectile := ProjectileP.instantiate() as Projectile
 	get_tree().get_root().add_child(projectile)
 	var angle : float = global_position.angle_to_point(target.global_position)
 	var data : Dictionary = {
@@ -142,7 +142,7 @@ func _on_area_range_area_exited(area : Area2D) -> void:
 
 func check_if_target_is_in_area(value : Unit) -> bool:
 	var areas : Array = areaRange.get_overlapping_areas() 
-	var units : Array = areas.map(func(el : Area2D) : return el.owner) 
+	var units : Array = areas.map(func(el : Area2D) -> Node2D : return el.owner) 
 	return units.has(value)
 
 func _on_reload_timer_timeout() -> void:
