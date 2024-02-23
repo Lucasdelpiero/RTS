@@ -28,6 +28,7 @@ func melee_detected(aTargetArea : Area2D) -> void:
 #	emit_signal("melee_reached", data)
 	pass
 
+# TODO refactor this function to improve type safety 
 # Detect ALL enemy units is colliding with and choses the one closest
 # Detect areas and store them each together with the object they come from in a dictionary
 func _on_area_2d_area_entered(area : Area2D) -> void:
@@ -51,7 +52,7 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 
 	# Get the closest collision area
 	var closest : Area2D = null
-	for unit : Unit in unitsCollidingWith :
+	for unit : Variant in unitsCollidingWith :
 		var closest_distance : int = 99999999 # Large number just to be replaced with anything
 		var unit_areas : Array = unitsCollidingWith[unit]
 		for ar in unit_areas as Array[Area2D]:

@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://woeoxt74h51w" path="res://Objects/Campaign/terrain_decoration/mountain_sprite.tscn" id="16_2ii1p"]
 [ext_resource type="PackedScene" uid="uid://doro7yhp67ejg" path="res://Objects/Campaign/terrain_decoration/mountains_sprite.tscn" id="16_xm6lb"]
 [ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/world/province.tscn" id="16_y4d8b"]
-[ext_resource type="PackedScene" path="res://Objects/Campaign/military/battle_menu.tscn" id="17_0w4y1"]
+[ext_resource type="PackedScene" uid="uid://besh0hskqlkv7" path="res://Objects/Campaign/military/battle_menu.tscn" id="17_0w4y1"]
 [ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="19_jlb3w"]
 [ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="20_5w16y"]
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="21_kmvxn"]

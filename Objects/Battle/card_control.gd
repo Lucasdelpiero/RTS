@@ -54,7 +54,7 @@ func _input(_event : InputEvent) -> void:
 	pass
 
 func create_cards(army : Array[Unit]) -> void:
-	var flow_container = Flow_Container_Cards.instantiate()
+	var flow_container := Flow_Container_Cards.instantiate() as FlowContainer
 	add_child(flow_container)
 	var total_cards_temp : Array = []
 	for unit in army as Array[Unit]:
@@ -94,7 +94,7 @@ func create_group(army : Array[Unit]) -> void:
 	# Check to delete group if all units are in the same group
 	var has_to_delete_group : bool = false
 	var cards_to_delete_group : Array = []
-	var group_filter = null
+	var group_filter : Variant = null # uses variant type because null is part of the logic
 	for unit in army:
 #		for card in cards:
 		for card in total_cards:
@@ -111,7 +111,7 @@ func create_group(army : Array[Unit]) -> void:
 				pass
 		Globals.debug_update_label("groupfilter", "group filter: %s" % [group_filter])
 	if has_to_delete_group:
-		for card in cards_to_delete_group:
+		for card in cards_to_delete_group as Array[UnitCard]:
 			card.group = 10 
 		update_groups()
 		update_positions()
@@ -119,7 +119,7 @@ func create_group(army : Array[Unit]) -> void:
 	
 	
 	# Add unit to group if someone has a group (currently add its to the first group it gets from a unit, maybe should be changed to the lower number in the units)
-	var add_to_group_number = null
+	var add_to_group_number : Variant = null # is variant because uses null to handle error, maybe could be changed
 	for unit in army: # Check if someone has a group
 #		for card in cards:
 		for card in total_cards as Array[UnitCard]:
@@ -161,7 +161,7 @@ func update_positions() -> void:
 	for card in cards as Array[UnitCard] :
 		remove_child(card)
 	
-	var containers_to_remove : Array = get_children(true).filter(func(el : Node) : return !(el is UnitCard))
+	var containers_to_remove : Array = get_children(true).filter(func(el : Node) -> bool : return !(el is UnitCard))
 	for container in containers_to_remove as Array[Node]: # Currently the containers are the flow containers
 		for card in container.get_children():
 			container.remove_child(card)

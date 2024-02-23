@@ -12,7 +12,7 @@ var lastProvinceWithMouseOver : Province = null
 var provinceWithMouseOver : Province = null 
 var provinceSelected : Province = null
 var world : Variant = null
-var ui = null
+var ui : Variant = null
 
 # To draw the rectangle selection
 var start_rectangle := Vector2(0.0, 0.0)
@@ -88,7 +88,7 @@ func update_army_campaing_selection(data : Dictionary) -> void:
 
 # TODO refactor this to use a resource instead of a dictionary
 # Updates the province being hovered
-func update_province_selection(data) -> void:
+func update_province_selection(data : Variant) -> void: # uses variant because uses null to update
 	# Updating the function with data == null just updates without adding info
 	# If the province doesnt have the mouse over it, it will stop being hovered
 #	print("before: %s" % [provinceWithMouseOver])

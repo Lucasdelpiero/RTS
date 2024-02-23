@@ -96,6 +96,7 @@ func save() -> Dictionary:
 	}
 	return save_dict
 
+# TODO change this so it recieves a resource instead of a dictionary
 func load_data(data : Dictionary) -> void:
 	# Have to clear this garbage
 #	var world = get_tree().get_nodes_in_group("world")[0] 
@@ -104,7 +105,7 @@ func load_data(data : Dictionary) -> void:
 	gold = data.gold
 	manpower = data.manpower
 	# Every army is created and their data is sent to them to be processed
-	for army in data.armies:
+	for army : Variant in data.armies:
 		var scene := load(army.filename).instantiate() as ArmyCampaing
 		if scene == null:
 			push_error("Error loading an army")

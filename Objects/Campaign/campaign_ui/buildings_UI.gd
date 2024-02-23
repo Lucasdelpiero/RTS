@@ -6,13 +6,13 @@ signal sg_update_UI_requested
 
 #TODO move this node and code to the UI folder
 
-@onready var buildings_container = %BuildingsContainer
+@onready var buildings_container := %BuildingsContainer
 @onready var overview_container : OverviewContainer = %OverviewContainer as OverviewContainer
 @onready var add_building_button : Button = %AddBuilding  as Button
 @onready var ButtonBuilding : PackedScene = preload("res://Objects/Campaign/campaign_ui/button_building.tscn")
 @export var buildings_manager : BuildingsManager # checks what can or can not be build
 
-@onready var to_be_built_container = %ToBeBuiltContainer # used to show or not the buildings container
+@onready var to_be_built_container := %ToBeBuiltContainer # used to show or not the buildings container
 @export var np_buildings_available_container : NodePath # Show buttons of available buildings
 @onready var buildings_available_container := get_node(np_buildings_available_container) as HBoxContainer 
 

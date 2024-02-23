@@ -3,9 +3,9 @@ extends Node2D
 
 var playerArmy : Array = []
 var enemyArmy : Array = []
-var playerNation = ""
+var playerNation : String = ""
 
-var World = preload("res://Objects/Campaign/world/world.tscn")
+var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -56,7 +56,7 @@ func start_battle() -> void:
 
 func return_from_battle(data : Dictionary) -> void:
 	data.battleMap.queue_free()
-	var world = World.instantiate()
+	var world := World.instantiate() as CampaignMap
 	world.main = self
 	add_child(world)
 	Globals.reset_armies()
@@ -84,7 +84,7 @@ func save_game() -> void:
 
 func load_game() -> void:
 	var _save := SaveGameAsJSON.new()
-	var data := _save.load_savegame()
+	var data : Variant = _save.load_savegame()
 	# Remove armies to clean before loading them
 	var armies_to_remove : Array = get_tree().get_nodes_in_group("armies")
 	for army in armies_to_remove as Array[Node]:
@@ -94,8 +94,8 @@ func load_game() -> void:
 	# update their data and create the armies and give them data to load
 	# like a cascade
 	var nations : Array = get_tree().get_nodes_in_group("nations")
-	for el in data.nations:
-		for nation in nations:
+	for el : Dictionary in data.nations:
+		for nation in nations as Array[Nation]:
 			if el.NATION_TAG == nation.NATION_TAG:
 				nation.load_data(el)
 				nation.set_colors()
@@ -116,6 +116,6 @@ func _create_or_load_save() -> void:
 
 func window_resized() -> void:
 	var to_update : Array = get_tree().get_nodes_in_group("update_on_window_resize")
-	for node in to_update:
+	for node : Node in to_update:
 #		if node.has("update_on_window_resize"):
 		node.update_on_window_resize()

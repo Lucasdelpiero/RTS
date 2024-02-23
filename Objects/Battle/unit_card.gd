@@ -9,7 +9,7 @@ var unit_reference : Unit = null
 var group : int= 10 # 10 = not in a group
 var position_in_group : int = 0 # 
 var selected : bool = false
-var panel = self["theme_override_styles/panel"]
+var panel : Variant = self["theme_override_styles/panel"]
 var panel_border_color_original : Color = panel.border_color as Color
 @export_color_no_alpha var selected_color : Color
 
@@ -57,7 +57,7 @@ func is_hovered(value : bool) -> void:
 
 func is_selected(value : bool) -> void:
 	selected = value
-	var _shader = null
+	var _shader : Material = null
 	panel.border_color = panel_border_color_original
 	if value:
 		_shader = Globals.shader_selected

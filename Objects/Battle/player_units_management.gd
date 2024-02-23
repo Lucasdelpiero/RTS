@@ -13,7 +13,7 @@ var sprites_to_draw : Array = []
 var alpha_color : float = 0.5
 @export var world : BattleMap = null
 var group_1 : Array = []
-var destination
+var destination : Variant = null # Uses Variant type instead of Vector2 because null is part of the logic
 
 signal new_group_created(army : Array[Unit])
 
@@ -92,7 +92,7 @@ func dragging_draw_and_move() -> void:
 	if Input.is_action_just_released("Click_Right"):
 		destination = world.get_global_mouse_position()
 		if start_drag.distance_to(end_drag) >= drag_distance_draw or created_sprites:
-			for sprite in sprites_types as Array:
+			for sprite : Array in sprites_types as Array:
 				sprite[0].call_deferred("queue_free")
 				sprite[1].call_deferred("queue_free")
 			sprites_types = []

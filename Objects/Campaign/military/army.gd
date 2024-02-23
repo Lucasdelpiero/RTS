@@ -67,7 +67,7 @@ func _unhandled_input(_event : InputEvent) -> void:
 		#TODO refactor this
 		if selected : 
 			var destination : int = Globals.mouse_in_province
-			var new_path : Array = get_pathing(destination)
+			var new_path : Array[Vector2] = get_pathing(destination)
 			if new_path.size() > 0:
 				path = new_path
 				var path_names : Array = get_path_province_names(new_path)
@@ -92,7 +92,7 @@ func _physics_process(delta : float) -> void:
 # Once everything in the game is loaded the main world call this function to put the army in the center
 # of the closer navigation point
 func get_to_closer_point(map : AStar2D) -> void:
-	var closer_id = map.get_closest_point(self.global_position)
+	var closer_id : int = map.get_closest_point(self.global_position)
 	self.global_position = map.get_point_position(closer_id)
 	world = get_tree().get_nodes_in_group("world")[0]
 	own_map = map
@@ -100,7 +100,7 @@ func get_to_closer_point(map : AStar2D) -> void:
 
 
 # Draws the path that the army is following
-func draw_path():
+func draw_path() -> void:
 	# The positions in the path has to be added in the pathing array to avoid bugs
 	var pathing : PackedVector2Array = []
 	pathing.append(global_position) # Where the line start
@@ -139,7 +139,7 @@ func move(delta : float) -> void:
 
 
 # Recieves the ID of the province it has to path to and returns a path
-func get_pathing(destination : int) -> Array:
+func get_pathing(destination : int) -> Array[Vector2]:
 	if own_map == null:
 		push_error("There is no map to navigate in the unit")
 		return []
@@ -175,12 +175,14 @@ func get_pathing(destination : int) -> Array:
 	if starting_point == last_point and self.global_position.distance_to(starting_point) < margin_until_moves:
 		return []
 	
-	return new_path
+	var new_path_typed : Array[Vector2] = []
+	new_path_typed.assign(new_path)
+	return new_path_typed
 
 
 # Get the name of the province using its global position in the world from a dictionary in the world node
 # It uses the global_position of the city (point in the path), not the province global_position
-func get_path_province_names(provinces : Array) -> Array:
+func get_path_province_names(provinces : Array[Vector2]) -> Array:
 	if world == null:
 		push_error("There is no world reference")
 		return []
@@ -259,17 +261,18 @@ func _on_army_detector_area_entered(area : Area2D) -> void:
 
 
 
+# TODO replace the return type to a resource
 # Saves all the army data and sent it to the nation to be copiled into an array 
 # of al the armies in the nation
-func save():
-	var units = []
-	for unit in army_data.army_units:
-		var unit_data = {
+func save() -> Dictionary:
+	var units : Array = []
+	for unit in army_data.army_units as Array[UnitData]:
+		var unit_data : Dictionary = {
 			"scene_path" : unit.scene.get_path(),
 		}
 		units.push_back(unit_data)
 	
-	var save_dict = {
+	var save_dict : Dictionary = {
 		"rid" : self.get_rid().get_id(),
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
@@ -288,7 +291,7 @@ func save():
 	return save_dict
 
 # Process the data given once the game is loaded
-func load_data(data : Dictionary):
+func load_data(data : Dictionary) -> void:
 	ownership = data.ownership
 	army_name = data.army_name
 	SPEED = data.speed
@@ -298,7 +301,7 @@ func load_data(data : Dictionary):
 	army_data = ArmyData.new() # It has to create a new one because it wont update if its not new
 	army_data.ownership = ownership
 	var units : Array[UnitData] = []
-	for unit in data.army_data.army_units :
+	for unit in data.army_data.army_units as Array[UnitData] :
 		var unit_data : UnitData = UnitData.new()
 		unit_data.scene = load(unit.scene_path) 
 		units.push_back(unit_data)

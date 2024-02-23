@@ -20,7 +20,7 @@ var province_data : ProvinceData = ProvinceData.new() :
 func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	 #Create a new resource to get the constants stored in a variable
 	var new_building : Building = Building.new()
-	var all_buildings_constants : Array[String] 
+	var all_buildings_constants : Array[String] = [] 
 	all_buildings_constants.assign(new_building.BUILDING_CONSTANTS)
 	
 	

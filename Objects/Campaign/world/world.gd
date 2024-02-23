@@ -4,11 +4,11 @@ class_name CampaignMap
 @export var main : Main
 var map : AStar2D # navmap
 
-@onready var navigation = $NavigationRegion2D
-@onready var nationsGroup : Node = $NationsGroup
-@onready var UI : CampaignUI = %CampaingUI
-@onready var mouse = $Mouse
-@onready var battleMenu = %BattleMenu # temporarelly instanced always
+@onready var navigation := $NavigationRegion2D as NavigationRegion2D
+@onready var nationsGroup := $NationsGroup as Node
+@onready var UI : = %CampaingUI as CampaignUI
+@onready var mouse := $Mouse as Mouse
+@onready var battleMenu := %BattleMenu as Control # temporarelly instanced always
 var armies_in_battle : Array[ArmyCampaing] = []
 
 var playerNation : String = "ROME"
@@ -112,7 +112,7 @@ func get_nav_map() -> void:
 	# Add connections
 	for province in provinces_temp:
 		var connections : Array = province.connections
-		for con in connections:
+		for con : int in connections:
 			if !map.are_points_connected(province.ID, con):
 				map.connect_points(province.ID, con)
 		pass

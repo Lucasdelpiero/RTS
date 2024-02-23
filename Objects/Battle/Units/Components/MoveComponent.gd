@@ -177,7 +177,7 @@ func update_facing_angle() -> void:
 	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
 
 # The anchor variable is used to set when the unit can be pushed or not by another unit when they intersect their collision areas
-func update_is_anchored(value = null) -> void:
+func update_is_anchored(value : Variant = null) -> void:
 	if path.size() == 0:
 			if not unit.unitDetector.is_colliding():
 				anchored = true
