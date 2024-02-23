@@ -13,8 +13,8 @@ var panel = self["theme_override_styles/panel"]
 var panel_border_color_original : Color = panel.border_color as Color
 @export_color_no_alpha var selected_color : Color
 
-signal sg_card_selected(value : bool)
-signal sg_card_hovered(value : bool)
+signal sg_card_selected(unit_reference : Unit, value : bool)
+signal sg_card_hovered(unit_reference : Unit, value : bool)
 signal sg_requested_data_from_unit()
 
 # Called when the node enters the scene tree for the first time.
@@ -39,10 +39,12 @@ func set_texture_type(type : int) -> void:
 func set_selected(value : bool) -> void:
 	if unit_reference == null:
 		return
-	sg_card_selected.emit(unit_reference, value)
+	
+	sg_card_selected.emit(unit_reference as Unit, value)
+	#sg_card_selected.emit(value)
 #	unit_reference.set_hovered(false) # THIS HAS TO BE HERE to change the hovered state and avoid being selected every time you click
 	is_hovered(true) # Used just to have the hovered shader after you click the card, can be deleted without compromising the game
-#	unit_reference.set_selected(true)
+	#unit_reference.set_selected(true)
 	pass
 
 func is_hovered(value : bool) -> void:

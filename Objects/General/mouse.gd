@@ -85,8 +85,10 @@ func update_army_campaing_selection(data : Dictionary) -> void:
 		hovered[0].set_hovered(true)
 	
 	update_province_selection(null) # Used to update the provinces to being unhovered
+
+# TODO refactor this to use a resource instead of a dictionary
 # Updates the province being hovered
-func update_province_selection(data):
+func update_province_selection(data) -> void:
 	# Updating the function with data == null just updates without adding info
 	# If the province doesnt have the mouse over it, it will stop being hovered
 #	print("before: %s" % [provinceWithMouseOver])
@@ -201,7 +203,7 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 		pass
 
 
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(area : Area2D) -> void:
 	# When the selection area leaves the army, it will be deselected if it leaves while the mouse is being
 	# clicked ( while its changing shape )
 	if Input.is_action_pressed("Click_Left"):
@@ -213,12 +215,12 @@ func _on_area_2d_area_exited(area):
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
 
 # Once the mouse is hovering an army for enough time, the data will show up
-func _on_hovered_timer_timeout():
+func _on_hovered_timer_timeout() -> void:
 #	print("print the hovered")
 #	print(hovered)
 	pass # Replace with function body.
 
-func _on_alternate_cursor_timeout():
+func _on_alternate_cursor_timeout() -> void:
 	if weapon_displayed == "Range":
 		Input.set_custom_mouse_cursor(mouse_melee)
 		weapon_displayed = "Melee"

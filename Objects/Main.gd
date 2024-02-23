@@ -9,7 +9,7 @@ var World = preload("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 #	_save.world = self
 	Globals.main = self
 	playerNation = Globals.playerNation
@@ -54,7 +54,7 @@ func start_battle() -> void:
 	battleWorld.sg_finished_battle.connect(return_from_battle)
 	pass
 
-func return_from_battle(data : Dictionary):
+func return_from_battle(data : Dictionary) -> void:
 	data.battleMap.queue_free()
 	var world = World.instantiate()
 	world.main = self
@@ -65,11 +65,11 @@ func return_from_battle(data : Dictionary):
 	
 	pass
 
-func save_game():
-	var armies_to_save = get_tree().get_nodes_in_group("armies")
-	var nations_to_save = get_tree().get_nodes_in_group("nations")
+func save_game() -> void:
+	var armies_to_save : Array = get_tree().get_nodes_in_group("armies")
+	var nations_to_save : Array = get_tree().get_nodes_in_group("nations")
 	
-	var data = {
+	var data : Dictionary = {
 		"armies": armies_to_save, # not used
 		"nations": nations_to_save,
 	}
@@ -82,9 +82,9 @@ func save_game():
 
 
 
-func load_game():
+func load_game() -> void:
 	var _save := SaveGameAsJSON.new()
-	var data = _save.load_savegame()
+	var data := _save.load_savegame()
 	# Remove armies to clean before loading them
 	var armies_to_remove : Array = get_tree().get_nodes_in_group("armies")
 	for army in armies_to_remove as Array[Node]:

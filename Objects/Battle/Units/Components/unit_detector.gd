@@ -3,7 +3,7 @@ extends Area2D
 @export var unit : Unit 
 
 func is_colliding() -> bool:
-	var areas : Array = get_overlapping_areas().filter(func(el : Area2D) : return el.owner is Unit )
+	var areas : Array = get_overlapping_areas().filter(func(el : Area2D) -> bool : return el.owner is Unit )
 	return areas.size() > 0
 
 func get_push_vector() -> Vector2:
@@ -17,7 +17,7 @@ func get_push_vector() -> Vector2:
 	return push_vector
 
 func get_push_strength() -> Vector2:
-	var units : Array = get_overlapping_areas().filter(func(el : Area2D) : return el.owner is Unit).map(func(el : Unit) : return el.owner) as Array[Unit]
+	var units : Array = get_overlapping_areas().filter(func(el : Area2D) -> bool: return el.owner is Unit).map(func(el : Unit) -> Unit : return el.owner) as Array[Unit]
 	var total_strength : Vector2 = Vector2.ZERO
 	for u in units as Array[Unit]:
 		var strength : float = 1.0

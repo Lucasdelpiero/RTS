@@ -20,7 +20,7 @@ var routed : bool = false
 @onready var spriteBase : Sprite2D = %SpriteBase
 @onready var spriteType : Sprite2D = %SpriteType
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
-@onready var hurtBoxComponent = %HurtBoxComponent
+@onready var hurtBoxComponent : = %HurtBoxComponent as Node2D
 @export var ownership : String = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
 @onready var nameLabel : Label = %NameLabel as Label
@@ -246,7 +246,9 @@ func melee(data : HurtboxData) -> void:
 	if data == null:
 		return
 	var new_data : Array = data["areas"]
-	moveComponent.move_to_face_melee(new_data)
+	var new_data_typed : Array[Area2D] = []
+	new_data_typed.assign(new_data)
+	moveComponent.move_to_face_melee(new_data_typed)
 	state = State.MELEE
 	target_unit = data.target
 	if target_unit == null:
@@ -321,8 +323,8 @@ func _on_range_of_attack_area_exited(area : Area2D) -> void:
 	pass # Replace with function body.
 
 # From weapon -> weapon_manager -> unit
-func check_if_target_is_in_range(arr : Array) -> void: 
-	for i in arr:
+func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
+	for i in arr as Array[Unit]:
 		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
 #			print("Enemy is hereeeeeee")

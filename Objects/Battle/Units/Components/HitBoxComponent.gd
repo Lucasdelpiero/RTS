@@ -37,7 +37,7 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 	
 	# Clears dictionary where saved collided units and areas are stored
 	unitsCollidingWith.clear()
-	var areas : Array = hitbox.get_overlapping_areas().filter(func(el : Area2D) : return el.owner.ownership != owner.ownership)
+	var areas : Array = hitbox.get_overlapping_areas().filter(func(el : Area2D) -> bool : return el.owner.ownership != owner.ownership)
 #	print(areas)
 
 	for a in areas as Array[Area2D]:
@@ -51,9 +51,9 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 
 	# Get the closest collision area
 	var closest : Area2D = null
-	for unit in unitsCollidingWith :
+	for unit : Unit in unitsCollidingWith :
 		var closest_distance : int = 99999999 # Large number just to be replaced with anything
-		var unit_areas = unitsCollidingWith[unit]
+		var unit_areas : Array = unitsCollidingWith[unit]
 		for ar in unit_areas as Array[Area2D]:
 			var distance_to_area : float = global_position.distance_to(ar.global_position)
 			if distance_to_area < closest_distance:

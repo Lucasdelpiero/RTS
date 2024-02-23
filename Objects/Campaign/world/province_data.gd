@@ -19,8 +19,8 @@ func set_data_from_object(aProvince : Province = null) -> void:
 		return
 	
 	# Getting names of properties in the province
-	var province_property_list : Array = aProvince.get_property_list().map(func(el : Dictionary): return el.name)
-	var data_property_list : Array = get_property_list().map(func(el : Dictionary): return el.name)
+	var province_property_list : Array = aProvince.get_property_list().map(func(el : Dictionary) -> String: return el.name)
+	var data_property_list : Array = get_property_list().map(func(el : Dictionary) -> String: return el.name)
 	var in_both : Array[String] = []
 	
 	# Store the ones that are in both objects

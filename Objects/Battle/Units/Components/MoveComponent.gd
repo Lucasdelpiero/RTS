@@ -11,7 +11,7 @@ var chase_in_queue : bool= false # The chasing was ordered after queueing a path
 var next_point : Vector2 = Vector2.ZERO
 var path : PackedVector2Array = []
 var navigation_tilemap : TileMap = null : set = set_nav_map
-var nav_map = null
+var nav_map : Variant = null
 @export_range(1,800, 1) var speed : int = 200
 var pushVector := Vector2.ZERO
 var anchored := true # if an unit reached an empty position is true, else it will be false unit is true
@@ -306,7 +306,7 @@ func stop_movement() -> void:
 	chasing = false # maybe this cause a bug when following a unit that is running
 	unit.reached_destination()
 
-func set_nav_map(value : TileMap):
+func set_nav_map(value : TileMap) -> void:
 	nav_map = value.get_navigation_map(0)
 	pass
 

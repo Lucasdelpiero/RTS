@@ -19,14 +19,14 @@ func write_savegame(data_to_save) -> void:
 		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
 		return
 	
-	var nations_to_save = []
+	var nations_to_save : Array = []
 	
-	for nation in data_to_save.nations:
+	for nation : Nation in data_to_save.nations:
 		nations_to_save.push_back(nation.save())
 	
 #	print(nations)
 	
-	var data = {
+	var data : Dictionary = {
 		"nations" : nations_to_save
 	}
 	var json_string := JSON.stringify(data)
@@ -35,9 +35,9 @@ func write_savegame(data_to_save) -> void:
 
 
 
-func load_savegame() : # -> void:
+func load_savegame() -> Dictionary : # -> void:
 	if not FileAccess.file_exists(SAVE_GAME_PATH):
-		return
+		return {}
 	
 	var save_game = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	var json_string = save_game.get_as_text(true)

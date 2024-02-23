@@ -71,7 +71,7 @@ func create_cards(army : Array[Unit]) -> void:
 		
 #		add_child(unit_card)
 		flow_container.add_child(unit_card)
-		unit_card.unit_reference = unit
+		unit_card.unit_reference = unit as Unit
 		unit_card.set_texture_type(unit.get_type())
 		unit_card.sg_card_selected.connect(card_selected)
 		unit_card.sg_card_hovered.connect(card_hovered)
@@ -224,13 +224,13 @@ func deselect_all_cards() -> void:
 			sg_card_selected_to_battlemap.emit(card.unit_reference, false)
 	pass
 
-func card_selected(unit : UnitCard, value : bool) -> void: # Individual card clicked
+func card_selected(unit : Unit, value : bool) -> void: # Individual card clicked
 	if not Input.is_action_pressed("Control"):
 		deselect_all_cards()
 	
-	sg_card_selected_to_battlemap.emit(unit, value)
+	sg_card_selected_to_battlemap.emit(unit, value )
 #	print(card)
 	pass
 
-func card_hovered(unit : UnitCard, value : bool) -> void:
+func card_hovered(unit : Unit, value : bool) -> void:
 	sg_card_hovered_to_battlemap.emit(unit, value)
