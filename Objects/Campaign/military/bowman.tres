@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://c6160o34jcgfy"]
 
 [ext_resource type="PackedScene" uid="uid://c772uoiyt6oiu" path="res://Objects/Battle/Units/bowman.tscn" id="1_npnax"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/unit_data.gd" id="2_lqxa3"]

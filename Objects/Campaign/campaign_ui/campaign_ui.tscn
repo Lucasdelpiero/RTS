@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=17 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/ArmiesContainer.gd" id="2_hbtxh"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dlocmixobx0d" path="res://Assets/ui/buildings/building_icon_farm.png" id="7_83dcm"]
 [ext_resource type="PackedScene" uid="uid://cxxkxansqr52n" path="res://Objects/Campaign/campaign_ui/overview_container.tscn" id="11_q7mbf"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
+[ext_resource type="PackedScene" uid="uid://bxcpvldpdl5np" path="res://Objects/Campaign/military/army_creator/army_creator_UI.tscn" id="16_5wiph"]
 
 [node name="CampaingUI" type="CanvasLayer"]
 process_mode = 3
@@ -275,6 +276,12 @@ grow_horizontal = 0
 
 [node name="SpeedButtonContainer" parent="Container/TimePanel" instance=ExtResource("14_x8ggf")]
 layout_mode = 2
+
+[node name="ArmyCreatorUI" parent="Container" instance=ExtResource("16_5wiph")]
+layout_mode = 1
+offset_left = 943.0
+offset_top = 51.0
+offset_bottom = -3.0
 
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]

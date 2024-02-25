@@ -52,15 +52,17 @@ func initialize_world() -> void:
 			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
 				nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
 	
-	for army in get_tree().get_nodes_in_group("armies"):
-		army.world = self
-		army.get_to_closer_point(map)
-		if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
-			army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
-		if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
-			army.sg_enemy_encountered.connect(self.enemy_encountered)
-		if not army.sg_was_selected.is_connected(new_unit_selected):
-			army.sg_was_selected.connect(new_unit_selected)
+	for army in get_tree().get_nodes_in_group("armies") as Array[ArmyCampaing]:
+		initialize_army(army)
+		#army.world = self
+		#army.get_to_closer_point(map)
+		#if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
+			#army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+		#if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
+			#army.sg_enemy_encountered.connect(self.enemy_encountered)
+		#if not army.sg_was_selected.is_connected(new_unit_selected):
+			#army.sg_was_selected.connect(new_unit_selected)
+
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	provinces.assign( get_tree().get_nodes_in_group("provinces") )
@@ -92,6 +94,21 @@ func change_map_shown(type : String) -> void:
 	for province in provinces as Array[Province]:
 		province.set_map_type_shown(type)
 		pass
+
+# Function is separated so it can be called again when new units are created
+func initialize_army(army : ArmyCampaing) -> void:
+	army.world = self
+	army.get_to_closer_point(map)
+	# Signal for Selection for the mouse
+	if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
+		army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+	# Signal for army encounter
+	if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
+		army.sg_enemy_encountered.connect(self.enemy_encountered)
+	# Signal for Selection
+	if not army.sg_was_selected.is_connected(new_unit_selected):
+		army.sg_was_selected.connect(new_unit_selected)
+
 
 ## Generate a navigation map using the provinces and their connections
 func get_nav_map() -> void:

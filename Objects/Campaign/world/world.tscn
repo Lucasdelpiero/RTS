@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dwmaniuju8qd7" path="res://Objects/Campaign/world/nation.tscn" id="5_j8h1j"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="6_rnqqn"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/hastati.tres" id="7_msm0q"]
-[ext_resource type="Resource" path="res://Objects/Campaign/military/bowman.tres" id="8_v3wbt"]
+[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/bowman.tres" id="8_v3wbt"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/army_data.gd" id="9_5dn3s"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Shader" path="res://Objects/Campaign/world/graphics/water.gdshader" id="12_f07y5"]

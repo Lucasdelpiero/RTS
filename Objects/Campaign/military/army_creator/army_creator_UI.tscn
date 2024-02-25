@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxcpvldpdl5np"]
+
+[ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_orkym"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/army_creator/army_creator_UI.gd" id="1_qt6kx"]
+[ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="3_vvd2k"]
+[ext_resource type="PackedScene" uid="uid://c4h7u5gwt5l34" path="res://Objects/Campaign/military/army_creator/army_creator_component.tscn" id="4_yu200"]
+
+[node name="ArmyCreatorUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_orkym")
+script = ExtResource("1_qt6kx")
+ArmyCampaignP = ExtResource("3_vvd2k")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 196.0
+
+[node name="BtnCreateArmy" type="Button" parent="."]
+layout_mode = 2
+offset_left = 26.0
+offset_top = 148.0
+offset_right = 152.0
+offset_bottom = 179.0
+text = "Create army"
+
+[node name="LabelProvinceSpawn" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ArmyCreatorComponent" parent="." instance=ExtResource("4_yu200")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]

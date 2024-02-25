@@ -1,6 +1,9 @@
 @tool
-extends Resource
 class_name ArmyData
+extends Resource
+
+# Stores all data needed for the ArmyCampaign class to keep track of the units and ownership
+# The UnitData class inside an array contain all the data needed to create all units
 
 # The array will have at least An unit at the start
 #@export var army_units : Array[UnitData] = [UnitData.new()] : set = set_array

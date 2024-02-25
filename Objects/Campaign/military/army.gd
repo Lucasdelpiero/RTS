@@ -1,6 +1,6 @@
 @tool
-extends CharacterBody2D
 class_name ArmyCampaing
+extends CharacterBody2D
 
 #region properties
 
