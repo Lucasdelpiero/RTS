@@ -5,10 +5,7 @@ extends Label
 @onready var node_to_follow : Node = null 
 @onready var property_to_follow : String = ""
 @onready var prefix : String = ""
-
-func _physics_process(_delta : float) -> void:
-	update()
-	pass
+@onready var timerUpdate := $TimerUpdate
 
 func update() -> void:
 	if node_to_follow == null:
@@ -19,3 +16,8 @@ func update() -> void:
 	text = prefix + str(node_to_follow.get(property_to_follow))
 	
 	pass
+
+
+func _on_timer_update_timeout() -> void:
+	update()
+	pass # Replace with function body.

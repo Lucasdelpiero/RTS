@@ -11,3 +11,9 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Test"
 script = ExtResource("1_lgp73")
+
+[node name="TimerUpdate" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="TimerUpdate" to="." method="_on_timer_update_timeout"]

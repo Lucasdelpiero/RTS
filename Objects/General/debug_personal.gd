@@ -4,10 +4,12 @@ extends Node2D
 @onready var container : PanelContainer = %PanelContainer
 @onready var vbox : VBoxContainer = %VBoxContainer
 @onready var marker : Marker2D = %MarkerBase
+@onready var timer_update_position := %TimerUpdatePosition as Timer
 var AutoUpdateLabelP := preload("res://Objects/General/auto_updtate_label.tscn") as PackedScene
 var DebugLocalLabel := preload("res://Objects/General/debug_local_label.tscn") as PackedScene
 # ID is used to pass values from local variables to a global script thay will search for this debugger to send the data from any place of the object
 var ID : String = "	"
+var parent : Node = null
 
 @onready var personal_data := debug_personal_data.new() as debug_personal_data # just to have it at hand 
 
@@ -34,21 +36,13 @@ var ID : String = "	"
 
 func _ready() -> void:
 	marker.visible = false
-	var node := get_parent() as Node
-	if node == null:
+	parent = get_parent() as Node
+	if parent == null:
 		return
 	for property in properties as Array[String]:
-		if property == "" or node.get(property) == null :
+		if property == "" or parent.get(property) == null :
 			continue
-		update_label(node, property, property + str(": "))
-
-func _physics_process(_delta : float) -> void:
-	var node := get_parent() as Node2D
-	if node == null:
-		return
-	if marker == null:
-		return
-	marker.global_position = node.global_position
+		update_label(parent, property, property + str(": "))
 
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Debug"):
@@ -92,4 +86,13 @@ func update_local_value_label(aID : String, value : Variant) -> void:
 	# Updates the value
 	var label : Label = labels[0] as Label # Needed to avoid a crash
 	label.text = str(value)
-	
+
+
+
+func _on_timer_update_position_timeout() -> void:
+	if parent == null:
+		return
+	if marker == null:
+		return
+	marker.global_position = parent.global_position
+	pass # Replace with function body.

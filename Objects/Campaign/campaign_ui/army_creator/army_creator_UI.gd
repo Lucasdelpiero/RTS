@@ -16,7 +16,7 @@ extends Control
 @onready var container_btn_creator_units := %ContainerBtnCreatorUnits as VBoxContainer
 # Container of the buttons that are the in the new army to be created
 @onready var container_btn_new_army := %ContainerBtnNewArmy as VBoxContainer
-@onready var new_army_manager := %NewArmyManager as PanelContainer
+@onready var new_army_manager := %NewArmyManager as NewArmyManager
 
 # TEST
 func _ready() -> void:
@@ -62,9 +62,5 @@ func _on_btn_create_army_pressed() -> void:
 	var spawn_position := Vector2(200, 200)
 	
 	army_creator_component.create_army(nation, army_data, spawn_position)
-	delete_buttons_new_army()
+	new_army_manager.delete_buttons_new_army()
 
-func delete_buttons_new_army() -> void:
-	var buttons := container_btn_new_army.get_children() as Array
-	for button in buttons as Array[Button]:
-		button.queue_free()

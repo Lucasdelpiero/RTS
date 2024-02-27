@@ -9,3 +9,5 @@ unit_name = "Hastati"
 scene = ExtResource("1_rktj2")
 experience = 0
 health = 100.0
+base_cost = 200
+base_maintanance_cost = 30

@@ -66,33 +66,56 @@ anchor_right = 1.0
 offset_left = -399.0
 offset_top = 8.0
 offset_right = -206.0
-offset_bottom = 188.0
+offset_bottom = 250.0
 grow_horizontal = 0
 mouse_force_pass_scroll_events = false
 script = ExtResource("7_vh664")
 BtnArmyCreatorUnit = ExtResource("4_jqncl")
 
-[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager"]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NewArmyManager/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NewArmyManager/VBoxContainer/MarginContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_right = 5
 
-[node name="ContainerBtnNewArmy" type="VBoxContainer" parent="NewArmyManager/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="ContainerBtnNewArmy" type="VBoxContainer" parent="NewArmyManager/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelCost" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost:  "
+
+[node name="LabelMaintanence" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Maintanence: "
+
+[node name="TotalUnits" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="BtnCreateArmy" type="Button" parent="."]
 layout_mode = 1
