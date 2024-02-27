@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_lqxa3")
+unit_name = "Bowmen"
 scene = ExtResource("1_npnax")
 experience = 0
 health = 100.0

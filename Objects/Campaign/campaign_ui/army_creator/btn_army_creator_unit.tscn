@@ -1,10 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvfxbxjjelt38"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/military/army_creator/btn_army_creator_unit.gd" id="1_nx47e"]
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.gd" id="1_11eu8"]
 
 [node name="BtnArmyCreatorUnit" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
-script = ExtResource("1_nx47e")
+size_flags_horizontal = 3
+focus_mode = 0
+script = ExtResource("1_11eu8")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

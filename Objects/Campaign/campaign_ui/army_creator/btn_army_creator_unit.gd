@@ -4,9 +4,9 @@ extends Button
 # Button that holds the data of the unit that should be added to a list
 # in an army that will be created.
 
-# Sent to the army_creator_UI so it adds the unit data to a list to create
+# Sent to the new army manager so it adds the unit data to a list to create
 # a new unit for the army.
-# The same army_creator_ui connects this signal the signal to itself
+# The army_creator_ui connects this signal the signal to the new army manager
 signal sg_send_unit_data(data : UnitData) 
 # Used in the new army container to tell when a button is deleted
 signal sg_button_deleted(node : ButtonArmyCreatorUnit)

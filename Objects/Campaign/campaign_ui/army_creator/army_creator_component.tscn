@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4h7u5gwt5l34"]
+
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_component.gd" id="1_gubus"]
+[ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="2_xvjdm"]
+
+[node name="ArmyCreatorComponent" type="Node"]
+script = ExtResource("1_gubus")
+ArmyCampaignP = ExtResource("2_xvjdm")

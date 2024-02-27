@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=73 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/hastati.tres" id="7_msm0q"]
 [ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/bowman.tres" id="8_v3wbt"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/army_data.gd" id="9_5dn3s"]
+[ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/cavalry.tres" id="9_8pwe8"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Shader" path="res://Objects/Campaign/world/graphics/water.gdshader" id="12_f07y5"]
 [ext_resource type="Texture2D" uid="uid://bjojgo41sopy" path="res://Objects/Campaign/world/graphics/water_noise_texture.tres" id="13_1gxr8"]
@@ -30,7 +31,7 @@
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
-army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt")])
+army_units = Array[Resource("res://Objects/Campaign/military/unit_data.gd")]([ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("7_msm0q"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("8_v3wbt"), ExtResource("9_8pwe8")])
 
 [sub_resource type="Resource" id="Resource_q8c0w"]
 script = ExtResource("9_5dn3s")
