@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="3_udnsm"]
 [ext_resource type="PackedScene" uid="uid://dvfxbxjjelt38" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.tscn" id="4_jqncl"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="5_sgoi6"]
-[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/bowman.tres" id="6_gdan8"]
+[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="6_gdan8"]
 [ext_resource type="PackedScene" uid="uid://c4h7u5gwt5l34" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_component.tscn" id="7_luj42"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/new_army_manager.gd" id="7_vh664"]
 
