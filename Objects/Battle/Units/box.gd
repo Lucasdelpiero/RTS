@@ -105,12 +105,7 @@ func _input(_event : InputEvent) -> void:
 			
 
 func _physics_process(_delta : float) -> void:
-#	$Label.text = str(target_unit)
 	nameLabel.text = name
-#	var pos = marker.position
-#	print(pos)
-#	nameLabel._set_position(marker.global_position)
-#	overlay.set_position(marker.global_position)
 
 func set_color(value : Color) -> void:
 	if value == null or army_color == null:
@@ -121,6 +116,17 @@ func set_color(value : Color) -> void:
 	$ShowDirection.modulate = army_color
 
 #region Setters/Getters
+## Sets the scene properties to match the scene_unit_data and generates weapons from that resource
+func set_scene_unit_data(data : SceneUnitData) -> void:
+	print("old_armor: % / new_armor: %" % [armor, data.armor])
+	type = data.type
+	veterany = data.veterany
+	armor = data.armor
+	shield = data.shield
+	
+	
+	
+	pass
 
 func set_hovered(value: bool) -> void:
 	hovered = value
@@ -150,8 +156,6 @@ func set_destination(_value : Vector2) -> void:
 		return
 	sg_move_component_set_destination.emit(self.global_position)
 	sg_move_component_set_next_point.emit(self.global_position)
-#	moveComponent.destination = self.global_position
-#	moveComponent.next_point = self.global_position
 
 func get_destination() -> Vector2:
 	return moveComponent.destination

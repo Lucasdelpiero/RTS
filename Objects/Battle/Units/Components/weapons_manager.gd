@@ -6,6 +6,10 @@ var mouse_over_weapon : Weapon = null   # The weapon that will be chose during a
 @export var primary_weapon : Weapon = null
 @export var secondary_weapon : Weapon = null
 var DefaultWeapon : PackedScene = load("res://Objects/Battle/Units/Components/melee_weapon.tscn")
+@export var MeleeWeaponP : PackedScene = null
+@export var RangeWeaponP : PackedScene = null
+
+
 signal send_units_in_range(value : Array)
 signal in_use_weapon_ready_to_attack
 signal sg_send_ammo_data_unit_to_card(value : int, maxAmmo : int)
@@ -44,6 +48,21 @@ func _ready() -> void:
 	set_weapons_visibility(false)
 
 func connect_signals() -> void:
+	pass
+
+## Generate weapons from the scene data stored in a unit_data resource
+func generate_weapon_from_scene_data(weapon : SceneWeaponData , is_main_weapon : bool) -> void:
+	if weapon is SceneWeaponMeleeData:
+		var new_melee_weapon := MeleeWeaponP.instantiate() 
+		add_child(new_melee_weapon)
+		
+		pass
+	if weapon is SceneWeaponRangeData:
+		var new_range_weapon := RangeWeaponP.instantiate()
+		add_child(new_range_weapon)
+		pass
+	
+	
 	pass
 
 var reseted_weapon : bool = false

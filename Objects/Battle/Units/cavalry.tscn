@@ -18,7 +18,7 @@ weapon_type = "Spear"
 
 [node name="MeleeWeapon2" parent="Weapons" index="1" instance=ExtResource("3_wkjjb")]
 
-[node name="MoveComponent" parent="." index="6"]
+[node name="MoveComponent" parent="." index="7"]
 speed = 500
 
 [editable path="DebugPersonal"]

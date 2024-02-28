@@ -14,6 +14,10 @@ func _ready() -> void:
 	type = "Melee"
 	weapon = weapon_type
 
+func set_values_from_scene_data(data : SceneWeaponMeleeData) -> void:
+	
+	pass
+
 func attack(target : Unit) -> void:
 	if target == null:
 		printerr("IS FUCKING NULL")

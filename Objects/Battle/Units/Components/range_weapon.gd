@@ -47,6 +47,10 @@ func connect_signals_to_manager(parent : WeaponsManager) -> void:
 #	reached_new_enemy.connect(parent.new_enemy_reached)
 	pass
 
+func set_values_from_scene_data(data : SceneWeaponRangeData) -> void:
+	
+	pass
+
 func set_current_ammunition(value : int) -> void:
 #	if current_ammunition != 0:
 #		print("%s changed to %s" % [current_ammunition, value])

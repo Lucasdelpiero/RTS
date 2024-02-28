@@ -1,5 +1,5 @@
-extends WeaponData
 class_name RangeWeapon
+extends WeaponData
 
 var type : String = "Range"
 @export_enum("Bow", "Javelin","Slingshot") var weapon : String = "Bow"
