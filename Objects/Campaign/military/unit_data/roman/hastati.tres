@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://d2w3bw50854bv"]
 
 [ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="1_rktj2"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data.gd" id="2_qow0w"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_qow0w"]
 
 [resource]
 script = ExtResource("2_qow0w")

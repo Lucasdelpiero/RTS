@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.gd" id="2_8w0bf"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="3_udnsm"]
 [ext_resource type="PackedScene" uid="uid://dvfxbxjjelt38" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.tscn" id="4_jqncl"]
-[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/hastati.tres" id="5_fmdma"]
-[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/bowman.tres" id="6_qyo6h"]
+[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="5_sgoi6"]
+[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/bowman.tres" id="6_gdan8"]
 [ext_resource type="PackedScene" uid="uid://c4h7u5gwt5l34" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_component.tscn" id="7_luj42"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/new_army_manager.gd" id="7_vh664"]
 
@@ -45,17 +45,17 @@ layout_mode = 2
 [node name="BtnArmyCreatorUnit" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
 text = "Hastati"
-unit_data = ExtResource("5_fmdma")
+unit_data = ExtResource("5_sgoi6")
 
 [node name="BtnArmyCreatorUnit2" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
 text = "Bowman"
-unit_data = ExtResource("6_qyo6h")
+unit_data = ExtResource("6_gdan8")
 
 [node name="BtnArmyCreatorUnit3" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
 text = "Box"
-unit_data = ExtResource("5_fmdma")
+unit_data = ExtResource("5_sgoi6")
 
 [node name="NewArmyManager" type="PanelContainer" parent="."]
 unique_name_in_owner = true

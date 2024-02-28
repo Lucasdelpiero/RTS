@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://c2cbjscuefr16"]
 
 [ext_resource type="PackedScene" uid="uid://ba3haq528ht28" path="res://Objects/Battle/Units/cavalry.tscn" id="1_73wug"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data.gd" id="2_011dv"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_011dv"]
 
 [resource]
 script = ExtResource("2_011dv")
