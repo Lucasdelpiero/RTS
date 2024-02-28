@@ -147,6 +147,7 @@ func spawn_units() -> void:
 			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, 1000)
+			scene.set_scene_unit_data(unit.scene_unit_data)
 			
 	for army in Globals.enemyArmyData:
 		for unit in army.army_units:
@@ -154,6 +155,7 @@ func spawn_units() -> void:
 			enemyArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, -1000)
+			scene.set_scene_unit_data(unit.scene_unit_data)
 	# Initialize units
 	playerArmy.start_units()
 	enemyArmy.start_units()

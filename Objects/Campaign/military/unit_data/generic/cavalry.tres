@@ -1,12 +1,48 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://c2cbjscuefr16"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=10 format=3 uid="uid://c2cbjscuefr16"]
 
 [ext_resource type="PackedScene" uid="uid://ba3haq528ht28" path="res://Objects/Battle/Units/cavalry.tscn" id="1_73wug"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_011dv"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="2_28mcc"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="2_37nc7"]
+[ext_resource type="PackedScene" uid="uid://clwesawyh31ay" path="res://Objects/Battle/Units/Components/projectile.tscn" id="4_ihr3u"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="5_2u3yv"]
+
+[sub_resource type="Resource" id="Resource_paxff"]
+script = ExtResource("2_37nc7")
+weapon_type = "Sword"
+base_attack = 50
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_hma4f"]
+script = ExtResource("5_2u3yv")
+weapon_type = "Bow"
+ProjectileP = ExtResource("4_ihr3u")
+base_attack = 1
+base_max_range = 1000
+base_reloading_speed = 1.0
+reload_time = 3.0
+base_ammunition = 2
+fire_shot = false
+pierce_armor = false
+move_while_shooting = false
+partian_shooting = false
+degree_margin = 60.0
+
+[sub_resource type="Resource" id="Resource_nuahq"]
+script = ExtResource("2_28mcc")
+type = 3
+veterany = 1
+armor = 50
+shield = 1
+main_weapon = SubResource("Resource_paxff")
+secondary_weapon = SubResource("Resource_hma4f")
 
 [resource]
 script = ExtResource("2_011dv")
 unit_name = "Cavalry"
 scene = ExtResource("1_73wug")
+scene_unit_data = SubResource("Resource_nuahq")
 experience = 0
 health = 100.0
 base_cost = 300

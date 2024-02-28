@@ -22,7 +22,7 @@ var routed : bool = false
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
 @onready var hurtBoxComponent : = %HurtBoxComponent as Node2D
 @export var ownership : String = "ROME"
-@export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
+@export_enum("Infantry:1", "Range:2", "Cavalry:3") var type : int = 1
 @onready var nameLabel : Label = %NameLabel as Label
 @onready var weapons : WeaponsManager = $Weapons as WeaponsManager
 @onready var rangeOfAttack : Area2D = $RangeOfAttack
@@ -83,6 +83,7 @@ func _ready() -> void:
 		return
 	if Engine.is_editor_hint(): # Used to avoid getting error while using the @tool thing
 		return
+	
 	sg_move_component_set_destination.connect(moveComponent.set_destination)
 	sg_move_component_set_face_direction.connect(moveComponent.set_face_direciton)
 	sg_move_component_set_next_point.connect(moveComponent.set_next_point)
@@ -118,15 +119,16 @@ func set_color(value : Color) -> void:
 #region Setters/Getters
 ## Sets the scene properties to match the scene_unit_data and generates weapons from that resource
 func set_scene_unit_data(data : SceneUnitData) -> void:
-	print("old_armor: % / new_armor: %" % [armor, data.armor])
+	if data == null:
+		return
 	type = data.type
 	veterany = data.veterany
 	armor = data.armor
 	shield = data.shield
-	
-	
-	
-	pass
+	weapons.generate_weapon_from_scene_data(data.main_weapon, true)
+	weapons.generate_weapon_from_scene_data(data.secondary_weapon, false)
+
+
 
 func set_hovered(value: bool) -> void:
 	hovered = value
@@ -139,6 +141,7 @@ func set_hovered(value: bool) -> void:
 
 func set_selected(value : bool) -> void:
 	selected = value
+	# TODO needs to be changed to relay on the weapons node so it can be used dinamically
 	rangeOfAttack.visible = (value and weaponsData.selected_weapon is RangeWeapon )
 #	var shader = null
 #	if selected:

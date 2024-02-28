@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://d0qglixbf5jcg"]
+[gd_scene load_steps=52 format=3 uid="uid://d0qglixbf5jcg"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://cowxiuqx35gta" path="res://Objects/Battle/battle_ui.tscn" id="2_41tas"]
@@ -188,6 +188,20 @@ primary_weapon = SubResource("Resource_m4iyd")
 separator = "                  "
 secondary_type = "Melee"
 secondary_weapon = SubResource("Resource_oc2o2")
+
+[sub_resource type="Resource" id="Resource_e18qt"]
+script = ExtResource("9_e4se1")
+weapon = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_ollnb"]
+script = ExtResource("11_7t20r")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_e18qt")
+separator = "                  "
+secondary_type = ""
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jyvkp"]
 vertices = PackedVector2Array(-9239, 3565, -8695, -8291, 14249, -8110, 14430, 8136, -8831, 7910)
@@ -398,42 +412,49 @@ army_color = Color(0.341176, 0.447059, 0.45098, 1)
 position = Vector2(1190, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry2" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(914, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry3" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(638, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry4" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(362, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry5" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(86, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry6" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(-190, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry7" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(-466, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+weaponsData = SubResource("Resource_ollnb")
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]

@@ -5,7 +5,7 @@ extends Resource
 # Taking a unit box as base it adds the weapons data to spawn with and
 # modifies the values such as defense and shield size
 
-@export_enum("Infantry:1", "Range:2", "Cabalry:3") var type : int = 1
+@export_enum("Infantry:1", "Range:2", "Cavalry:3") var type : int = 1
 # Weapons data ?
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1

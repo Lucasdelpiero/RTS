@@ -36,11 +36,10 @@ func _ready() -> void:
 #	collisionShape.shape.set_radius(base_max_range)
 	if partian_shooting:
 		degree_margin = 360
-	if owner.name == "Hastati":
-		set_polygon_range()
 	set_polygon_range()
 	max_ammunition = base_ammunition * 1
 	current_ammunition = max_ammunition
+
 
 func connect_signals_to_manager(parent : WeaponsManager) -> void:
 #	reloadTimer.timeout.connect(parent.weapon_can_attack_again)
@@ -56,7 +55,8 @@ func set_values_from_scene_data(data : SceneWeaponRangeData) -> void:
 	base_max_range = data.base_max_range
 	base_reloading_speed = data.base_reloading_speed
 	reload_time = data.reload_time
-	base_ammunition = data.base_ammunition
+	max_ammunition = data.base_ammunition * 1
+	current_ammunition = data.base_ammunition
 	fire_shot = data.fire_shot
 	pierce_armor = data.pierce_armor
 	move_while_shooting = data.move_while_shooting
@@ -127,6 +127,10 @@ func set_polygon_range() -> void:
 
 func _on_area_range_area_entered(area : Area2D) -> void:
 	var unit : Unit = area.owner as Unit
+	if unit == null:
+		push_error("Couldnt find unit as owner")
+		return
+	
 	if unit.ownership != owner.ownership:
 		if not enemies_in_weapon_range.has(unit):
 			enemies_in_weapon_range.push_back(unit)

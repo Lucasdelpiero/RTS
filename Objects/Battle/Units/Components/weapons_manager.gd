@@ -51,21 +51,40 @@ func connect_signals() -> void:
 	pass
 
 ## Generate weapons from the scene data stored in a unit_data resource
-func generate_weapon_from_scene_data(weapon : SceneWeaponData , _is_main_weapon : bool) -> void:
+func generate_weapon_from_scene_data(weapon : SceneWeaponData , is_main_weapon : bool) -> void:
+	if weapon == null:
+		return
+	
 	if weapon is SceneWeaponMeleeData:
 		var new_melee_weapon := MeleeWeaponP.instantiate()  as MeleeWeaponInstance
 		add_child(new_melee_weapon)
+		new_melee_weapon.owner = owner
 		new_melee_weapon.set_values_from_scene_data(weapon)
 		
-		pass
+		new_melee_weapon.readyToAttack.connect(weapon_can_attack_again)
+		
+		if is_main_weapon:
+			primary_weapon = new_melee_weapon
+		else:
+			secondary_weapon = new_melee_weapon
+		
 	if weapon is SceneWeaponRangeData:
 		var new_range_weapon := RangeWeaponP.instantiate() as RangeWeaponInstance
 		add_child(new_range_weapon)
+		new_range_weapon.owner = owner
 		new_range_weapon.set_values_from_scene_data(weapon)
-		pass
+		
+		new_range_weapon.connect_signals_to_manager(self)
+		new_range_weapon.ran_out_of_ammo.connect(change_to_melee_weapon)
+		new_range_weapon.reached_new_enemy.connect(new_enemy_reached)
+		new_range_weapon.sg_ammo_amount_changed.connect(get_ammo_data)
+		
+		if is_main_weapon:
+			primary_weapon = new_range_weapon
+		else:
+			secondary_weapon = new_range_weapon
 	
-	
-	pass
+
 
 var reseted_weapon : bool = false
 func alternative_weapon(use_secondary : bool = false) -> void:
