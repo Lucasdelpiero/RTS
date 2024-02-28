@@ -1,3 +1,4 @@
+class_name RangeWeaponInstance
 extends Weapon
 
 @export_enum("Bow", "Javelin","Slingshot") var weapon_type : String = "Bow"
@@ -47,9 +48,20 @@ func connect_signals_to_manager(parent : WeaponsManager) -> void:
 #	reached_new_enemy.connect(parent.new_enemy_reached)
 	pass
 
+## Values are set from data stored in an unit_data resource
 func set_values_from_scene_data(data : SceneWeaponRangeData) -> void:
-	
-	pass
+	weapon_type = data.weapon_type
+	#projectile
+	base_attack = data.base_attack
+	base_max_range = data.base_max_range
+	base_reloading_speed = data.base_reloading_speed
+	reload_time = data.reload_time
+	base_ammunition = data.base_ammunition
+	fire_shot = data.fire_shot
+	pierce_armor = data.pierce_armor
+	move_while_shooting = data.move_while_shooting
+	partian_shooting = data.partian_shooting
+	degree_margin = data.degree_margin
 
 func set_current_ammunition(value : int) -> void:
 #	if current_ammunition != 0:

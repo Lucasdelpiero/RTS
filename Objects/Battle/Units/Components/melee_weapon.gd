@@ -1,3 +1,4 @@
+class_name MeleeWeaponInstance
 extends Weapon
 
 @export_enum("Sword", "Spear", "Pike", "Dagger") var weapon_type : String = "Sword"
@@ -14,9 +15,12 @@ func _ready() -> void:
 	type = "Melee"
 	weapon = weapon_type
 
+## Values are set from data stored in an unit_data resource
 func set_values_from_scene_data(data : SceneWeaponMeleeData) -> void:
-	
-	pass
+	weapon_type = data.weapon_type
+	base_attack = data.base_attack
+	base_charge = data.base_charge
+	anti_cabalry_bonus = data.anti_cabalry_bonus
 
 func attack(target : Unit) -> void:
 	if target == null:

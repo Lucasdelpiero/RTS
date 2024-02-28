@@ -115,7 +115,8 @@ func chase(target_to_chase : Unit = null) -> void:
 
 func move_to(to : Vector2, final_face_direction: float) -> void:
 	if unit == null or nav_map == null:
-		push_error("%s doesnt have a nav_map or unit" % [owner.name])
+		#push_error("%s doesnt have a nav_map or unit" % [owner.name])
+		push_error("%s doesnt have a nav_map or unit" % ["test"])
 		return
 	if unit.state == unit.State.MELEE:
 		stop_movement()

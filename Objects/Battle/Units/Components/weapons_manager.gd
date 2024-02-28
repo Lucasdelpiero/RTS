@@ -51,15 +51,17 @@ func connect_signals() -> void:
 	pass
 
 ## Generate weapons from the scene data stored in a unit_data resource
-func generate_weapon_from_scene_data(weapon : SceneWeaponData , is_main_weapon : bool) -> void:
+func generate_weapon_from_scene_data(weapon : SceneWeaponData , _is_main_weapon : bool) -> void:
 	if weapon is SceneWeaponMeleeData:
-		var new_melee_weapon := MeleeWeaponP.instantiate() 
+		var new_melee_weapon := MeleeWeaponP.instantiate()  as MeleeWeaponInstance
 		add_child(new_melee_weapon)
+		new_melee_weapon.set_values_from_scene_data(weapon)
 		
 		pass
 	if weapon is SceneWeaponRangeData:
-		var new_range_weapon := RangeWeaponP.instantiate()
+		var new_range_weapon := RangeWeaponP.instantiate() as RangeWeaponInstance
 		add_child(new_range_weapon)
+		new_range_weapon.set_values_from_scene_data(weapon)
 		pass
 	
 	

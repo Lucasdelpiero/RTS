@@ -158,6 +158,9 @@ func set_destination(_value : Vector2) -> void:
 	sg_move_component_set_next_point.emit(self.global_position)
 
 func get_destination() -> Vector2:
+	if moveComponent == null:
+		push_error("Couldnt find a move componene")
+		return Vector2.ZERO
 	return moveComponent.destination
 
 func set_face_direction(value : float = 0) -> void:
