@@ -102,7 +102,10 @@ func create_building_buttons(aBuildings : Array[Building]) -> void:
 		button.icon = get_icon_for_building(building.building_type)
 		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
 		button.sg_send_building_reference_to_overview.connect(overview_container.show_building_overview_2)
-		button.sg_building_upgrade.connect(upgrade_building)
+		
+		# Buildings will only be upgradable pressing the button if the player owns that province
+		if button.province_data.province.nation_owner == Globals.player_nation_node:
+			button.sg_building_upgrade.connect(upgrade_building)
 	
 	pass
 

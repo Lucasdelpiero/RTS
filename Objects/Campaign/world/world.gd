@@ -48,6 +48,7 @@ func initialize_world() -> void:
 			playerNation = nation.NATION_TAG
 			playerNode = nation
 			Globals.playerNation = nation.NATION_TAG
+			Globals.player_nation_node = nation
 			 # Used to not reconnect when reloading the world
 			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
 				nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
