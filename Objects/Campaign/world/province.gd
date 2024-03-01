@@ -23,8 +23,7 @@ var nation_owner : Nation  = null # used to get bonuses for resources
 @export_range(100, 100000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
 @export_enum("hellenic", "celtic", "punic") var religion : String = "hellenic"
-@export_enum("latin", "celt","greek", "phoenician") var culture : String = "latin"
-#@export var culture : Cultures.list = Cultures.list.LATIN
+@export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 var nation_bonuses : Array[Bonus] = []
 @export var province_bonuses : Array[Bonus] = []
