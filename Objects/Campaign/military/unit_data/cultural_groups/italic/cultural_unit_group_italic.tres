@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GroupSceneUnitData" load_steps=4 format=3 uid="uid://g4dc4blk6jx3"]
+
+[ext_resource type="Resource" uid="uid://d0l0bvfuy6pjy" path="res://Objects/Campaign/military/unit_data/cultural_groups/italic/italic_infantry_mercenary.tres" id="1_uewvp"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd" id="2_i2pby"]
+[ext_resource type="Resource" uid="uid://bmku8rymtmcmn" path="res://Objects/Campaign/military/unit_data/cultural_groups/italic/italic_skirmisher_mercenary.tres" id="2_y6whv"]
+
+[resource]
+script = ExtResource("2_i2pby")
+ID = "italic"
+array_scene_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/unit_data.gd")]([ExtResource("1_uewvp"), ExtResource("2_y6whv")])
