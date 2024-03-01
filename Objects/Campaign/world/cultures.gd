@@ -5,17 +5,19 @@ extends Resource
 # mistakes writing
 
 enum list {
-	ITALIC,
+	NONE,
+	LATIN,
 	CELT,
 	GREEK,
 	PHOENICIAN,
 	EGIPCIAN,
 	BRETON,
-	GERMANIC
+	GERMANIC,
 }
 
 
-const ITALIC := "italic"
+const NONE := ""
+const LATIN := "latin"
 const CELT := "celt"
 const GREEK := "greek"
 const PHOENICIAN := "phoenician"
@@ -23,4 +25,10 @@ const EGIPCIAN := "egipcian"
 const BRETON := "breton"
 const GERMANIC := "germanic"
 
+const names : Array[String] = [
+	NONE,
+	LATIN,
+	CELT,
+	GREEK,
+]
 

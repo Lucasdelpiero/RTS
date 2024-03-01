@@ -2,7 +2,6 @@ extends Node
 
 @export var cultural_group_unit_data : Array[GroupSceneUnitData] = []
 @export var national_group_unit_data : Array[GroupSceneUnitData] = []
-@export var culture_name : Cultures.list
 
 
 var mouse_in_province : int = -1  # -1 means that no province is selected
