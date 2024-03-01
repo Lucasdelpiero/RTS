@@ -76,7 +76,7 @@ func _ready() -> void:
 		#buildings_manager = BuildingsManager.new()
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 		push_error("building_manager had to be created") # just to test
-	pass
+	buildings_manager.initialize() # Makes all buildings uniques to each province
 
 func _draw() -> void:
 	var poly : PackedVector2Array = get_polygon()

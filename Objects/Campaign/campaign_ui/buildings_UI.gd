@@ -149,13 +149,12 @@ func start_construction(aBuilding : Building) -> void:
 	player_nation.gold -= aBuilding.get_building().cost
 
 
-# Recueves signal from button_building to upgrade a building
+# Recieves signal from button_building to upgrade a building
 func upgrade_building(aBuilding : Building) -> void:
 	#region early returns
 	if aBuilding == null:
 		push_error("There is not building to be built")
 		return
-	
 	# Wonrt be upgraded if at max level
 	var max_level : int = aBuilding.levels.size() - 1
 	if aBuilding.current_level == max_level:

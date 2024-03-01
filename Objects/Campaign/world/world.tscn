@@ -58,12 +58,12 @@ shader_parameter/noise_secondary = ExtResource("13_1gxr8")
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
 buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
 
 [sub_resource type="Resource" id="Resource_qswa1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_jl7t7"]
@@ -76,7 +76,7 @@ building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
 buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
 
 [sub_resource type="Resource" id="Resource_oyxa5"]
 resource_local_to_scene = true
@@ -729,7 +729,6 @@ color = Color(0.368627, 0.360784, 0.968627, 1)
 outLine = Color(0.176471, 0.168627, 0.701961, 1)
 ID = 21
 terrain_type = "mountains"
-culture = 0
 buildings_manager = SubResource("Resource_446f6")
 
 [node name="GreeceMap" type="Sprite2D" parent="."]

@@ -28,6 +28,7 @@ flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_producti
 bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_bviel")
 building_type = "BUILDING_GOVERNMENT"
 building_name = "Government hall"

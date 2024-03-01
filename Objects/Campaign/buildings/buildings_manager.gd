@@ -16,6 +16,18 @@ var province_data : ProvinceData = ProvinceData.new() :
 
 @export var building_types : Array[Building]  # Buildings that can be uilt
 
+# NEEDED as resoures "local_to_scene" are not local even while beign toggled on
+# makes all the "Building" resources uniques
+func initialize() -> void:
+	var temp_buildings : Array = []
+	for building in buildings:
+		var temp_building : Variant = building.duplicate(true)
+		temp_buildings.push_back(temp_building)
+	
+	var typed_buildigns : Array[Building] = []
+	typed_buildigns.assign(temp_buildings)
+	buildings = typed_buildigns
+
 
 func get_buildings_not_made(aBuildings : Array[Building]) -> Array[Building] :
 	 #Create a new resource to get the constants stored in a variable
