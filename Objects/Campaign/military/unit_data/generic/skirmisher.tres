@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=10 format=3 uid="uid://bcw4cuje4n8mr"]
+
+[ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_npxwj"]
+[ext_resource type="PackedScene" uid="uid://clwesawyh31ay" path="res://Objects/Battle/Units/Components/projectile.tscn" id="2_op6ax"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_pb08e"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="3_gjt6y"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="4_0nyvf"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="5_1es21"]
+
+[sub_resource type="Resource" id="Resource_k1asl"]
+script = ExtResource("3_gjt6y")
+weapon_type = "Javelin"
+ProjectileP = ExtResource("2_op6ax")
+base_attack = 20
+base_max_range = 600
+base_reloading_speed = 1.0
+reload_time = 3.0
+base_ammunition = 30
+fire_shot = false
+pierce_armor = true
+move_while_shooting = true
+partian_shooting = false
+degree_margin = 60.0
+
+[sub_resource type="Resource" id="Resource_53s6c"]
+script = ExtResource("5_1es21")
+weapon_type = "Dagger"
+base_attack = 2
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_yvyor"]
+script = ExtResource("4_0nyvf")
+type = 2
+veterany = 0
+armor = 2
+shield = 1
+main_weapon = SubResource("Resource_k1asl")
+secondary_weapon = SubResource("Resource_53s6c")
+
+[resource]
+script = ExtResource("2_pb08e")
+unit_name = "Skirmisher"
+scene = ExtResource("1_npxwj")
+scene_unit_data = SubResource("Resource_yvyor")
+experience = 0
+health = 100.0
+base_cost = 100
+base_maintanance_cost = 10

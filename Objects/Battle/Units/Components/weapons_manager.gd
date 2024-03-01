@@ -55,6 +55,7 @@ func generate_weapon_from_scene_data(weapon : SceneWeaponData , is_main_weapon :
 	if weapon == null:
 		return
 	
+	# Instantiate melee weapon
 	if weapon is SceneWeaponMeleeData:
 		var new_melee_weapon := MeleeWeaponP.instantiate()  as MeleeWeaponInstance
 		add_child(new_melee_weapon)
@@ -67,13 +68,15 @@ func generate_weapon_from_scene_data(weapon : SceneWeaponData , is_main_weapon :
 			primary_weapon = new_melee_weapon
 		else:
 			secondary_weapon = new_melee_weapon
-		
+	
+	# Instantiate range weapon
 	if weapon is SceneWeaponRangeData:
 		var new_range_weapon := RangeWeaponP.instantiate() as RangeWeaponInstance
 		add_child(new_range_weapon)
 		new_range_weapon.owner = owner
 		new_range_weapon.set_values_from_scene_data(weapon)
 		
+		new_range_weapon.set_polygon_range()
 		new_range_weapon.connect_signals_to_manager(self)
 		new_range_weapon.ran_out_of_ammo.connect(change_to_melee_weapon)
 		new_range_weapon.reached_new_enemy.connect(new_enemy_reached)

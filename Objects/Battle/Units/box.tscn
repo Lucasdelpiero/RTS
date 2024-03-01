@@ -1,6 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://6b22yls05sfo"]
+[gd_scene load_steps=29 format=3 uid="uid://6b22yls05sfo"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_h6a7m"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_a13h5"]
 [ext_resource type="PackedScene" uid="uid://drxlf76g7y02i" path="res://Objects/General/debug_personal.tscn" id="4_iawob"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/marker2d.gd" id="4_ydajr"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/position_node.tscn" id="5_ylt6l"]
@@ -14,6 +16,20 @@
 [ext_resource type="PackedScene" uid="uid://d1y7cah7fc235" path="res://Objects/Battle/Units/Components/unit_detector.tscn" id="14_3mp3t"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/Units/Components/hurt_box.tscn" id="14_d14jk"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HitBoxComponent.gd" id="15_u43wy"]
+
+[sub_resource type="Resource" id="Resource_xp73p"]
+script = ExtResource("2_h6a7m")
+weapon = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_5vxcj"]
+script = ExtResource("3_a13h5")
+primary_type = "Melee"
+primary_weapon = SubResource("Resource_xp73p")
+separator = "                  "
+secondary_type = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbuut"]
 size = Vector2(252, 14)
@@ -52,6 +68,7 @@ collision_layer = 4
 collision_mask = 4
 slide_on_ceiling = false
 script = ExtResource("1_qofug")
+weaponsData = SubResource("Resource_5vxcj")
 moveComponent = NodePath("MoveComponent")
 metadata/_edit_horizontal_guides_ = [-73.0]
 

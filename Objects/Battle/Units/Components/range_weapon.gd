@@ -110,6 +110,7 @@ func set_visibility(value : bool) -> void:
 func set_polygon_range() -> void:
 	var polygon : PackedVector2Array = []
 	var total_range : float = base_max_range
+	var first_polygon_point := Vector2.ZERO
 	if not partian_shooting: # if it a rounds range doesnt need to have a line going to the center of the unit
 		polygon.push_back(Vector2.ZERO)
 	for i in range(polygon_count ):
@@ -118,8 +119,12 @@ func set_polygon_range() -> void:
 		var face_angle : float = deg_to_rad(270)
 		if (angle > face_angle - deg_to_rad(degree_margin)) and (angle < face_angle + deg_to_rad(degree_margin)):
 			polygon.push_back(poly)
+		if i == 0:
+			first_polygon_point = poly
 	if not partian_shooting:
 		polygon.push_back(Vector2.ZERO)
+	else: # Close polygon if there is a 360 degree value
+		polygon.push_back(first_polygon_point) 
 	collisionPolygon.set_polygon(polygon)
 	$Polygon2D.set_polygon(polygon)
 	$Line2D.points = polygon
