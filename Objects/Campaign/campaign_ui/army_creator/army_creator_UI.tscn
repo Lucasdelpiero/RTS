@@ -12,11 +12,7 @@
 
 [node name="ArmyCreatorUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 theme = ExtResource("1_1txks")
 script = ExtResource("2_8w0bf")
@@ -28,7 +24,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -206.0
+offset_right = 206.0
 offset_bottom = 196.0
 grow_horizontal = 0
 
@@ -64,10 +60,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -399.0
-offset_top = 8.0
-offset_right = -206.0
-offset_bottom = 250.0
+offset_left = 209.0
+offset_top = 1.0
+offset_right = 402.0
+offset_bottom = 243.0
 grow_horizontal = 0
 mouse_force_pass_scroll_events = false
 script = ExtResource("7_vh664")
@@ -123,9 +119,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -169.0
+offset_left = 34.0
 offset_top = 165.0
-offset_right = -43.0
+offset_right = 160.0
 offset_bottom = 196.0
 grow_horizontal = 0
 text = "Create army"
@@ -139,4 +135,14 @@ offset_bottom = 23.0
 [node name="ArmyCreatorComponent" parent="." instance=ExtResource("7_luj42")]
 unique_name_in_owner = true
 
+[node name="BtnCloseWindow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 363.0
+offset_top = -26.0
+offset_right = 397.0
+offset_bottom = 5.0
+focus_mode = 0
+text = "x"
+
 [connection signal="pressed" from="BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
+[connection signal="pressed" from="BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]

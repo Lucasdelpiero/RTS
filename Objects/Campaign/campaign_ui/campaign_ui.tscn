@@ -146,6 +146,7 @@ layout_mode = 2
 
 [node name="OverviewContainer" parent="Container/Province/BuildingsUI" instance=ExtResource("11_q7mbf")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.056
@@ -198,11 +199,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Container"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 127.0
-offset_right = 121.0
-offset_bottom = 226.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -137.0
+offset_top = 119.0
+offset_right = -15.0
+offset_bottom = 218.0
+grow_horizontal = 0
 
 [node name="ArmiesContainer" type="VBoxContainer" parent="Container/PanelContainer"]
 unique_name_in_owner = true
@@ -279,9 +284,19 @@ layout_mode = 2
 
 [node name="ArmyCreatorUI" parent="Container" instance=ExtResource("16_malfg")]
 layout_mode = 1
-offset_left = 943.0
-offset_top = 51.0
-offset_bottom = -3.0
+offset_left = 4.0
+offset_top = 125.0
+offset_right = 4.0
+offset_bottom = 125.0
+
+[node name="BtnArmyCreation" type="Button" parent="Container"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 57.0
+offset_right = 123.0
+offset_bottom = 88.0
+focus_mode = 0
+text = "Army Creation"
 
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
@@ -291,3 +306,4 @@ offset_bottom = -3.0
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnTerrainMap" to="Container/MapTypesManager" method="_on_btn_terrain_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnReligionMap" to="Container/MapTypesManager" method="_on_btn_religion_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnCultureMap" to="Container/MapTypesManager" method="_on_btn_culture_map_button_down"]
+[connection signal="pressed" from="Container/BtnArmyCreation" to="Container/ArmyCreatorUI" method="_on_btn_army_creation_pressed"]

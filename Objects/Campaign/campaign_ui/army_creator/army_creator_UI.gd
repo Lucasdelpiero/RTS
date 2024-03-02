@@ -17,9 +17,11 @@ extends Control
 # Container of the buttons that are the in the new army to be created
 @onready var container_btn_new_army := %ContainerBtnNewArmy as VBoxContainer
 @onready var new_army_manager := %NewArmyManager as NewArmyManager
+@onready var button_open_window : Button = null
 
 # TEST
 func _ready() -> void:
+	visible = false
 	var buttons : Array = container_btn_creator_units.get_children()
 	for button in buttons as Array[ButtonArmyCreatorUnit]:
 		# TEST
@@ -64,3 +66,13 @@ func _on_btn_create_army_pressed() -> void:
 	army_creator_component.create_army(nation, army_data, spawn_position)
 	new_army_manager.delete_buttons_new_army()
 
+
+func _on_btn_close_window_pressed() -> void:
+	visible = false
+	if button_open_window == null:
+		return
+	button_open_window.set_toggled(false)
+
+
+func _on_btn_army_creation_pressed() -> void:
+	visible = !visible
