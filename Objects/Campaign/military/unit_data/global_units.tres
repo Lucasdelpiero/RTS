@@ -1,9 +1,19 @@
-[gd_resource type="Resource" script_class="GlobalUnits" load_steps=3 format=3 uid="uid://ck005oarpv1i1"]
+[gd_resource type="Resource" script_class="GlobalUnits" load_steps=8 format=3 uid="uid://ck005oarpv1i1"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/global_units.gd" id="1_3vf4s"]
 [ext_resource type="Resource" uid="uid://g4dc4blk6jx3" path="res://Objects/Campaign/military/unit_data/cultural_groups/italic/cultural_unit_group_italic.tres" id="1_83gqa"]
+[ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="2_nhv23"]
+[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="3_kuinb"]
+[ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="4_0d4eg"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd" id="5_lumxj"]
+
+[sub_resource type="Resource" id="Resource_remmj"]
+script = ExtResource("5_lumxj")
+nation_exclusive = "ROME"
+cultural_group_exlclusive = 0
+array_scene_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/unit_data.gd")]([ExtResource("2_nhv23"), ExtResource("3_kuinb"), ExtResource("4_0d4eg")])
 
 [resource]
 script = ExtResource("1_3vf4s")
-cultural_group_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd")]([ExtResource("1_83gqa")])
-national_group_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd")]([])
+cultural_group_unit_data = Array[ExtResource("5_lumxj")]([ExtResource("1_83gqa")])
+national_group_unit_data = Array[ExtResource("5_lumxj")]([SubResource("Resource_remmj")])

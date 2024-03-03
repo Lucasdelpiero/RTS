@@ -86,3 +86,14 @@ func get_units_by_culture(culture_id : int) -> Array[UnitData]:
 
 	return culture_units
 
+
+func get_units_by_nation(nation_tag : String) -> Array[UnitData]:
+	var national_units : Array[UnitData] = []
+	for nation in global_units.national_group_unit_data:
+		if nation.nation_exclusive == nation_tag:
+			national_units.assign(nation.array_scene_unit_data)
+	
+	return national_units
+
+
+
