@@ -31,6 +31,7 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = true
 	mapTypesManager.new_map_selected.connect(change_map_shown)
 	#Globals.campaign_UI = self
 	pass # Replace with function body.
