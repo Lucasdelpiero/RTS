@@ -15,6 +15,7 @@ signal sg_button_deleted(node : ButtonArmyCreatorUnit)
 	set(value):
 		if value == null:
 			return
+		unit_data = value
 		text = value.unit_name
 
 func _on_pressed() -> void:

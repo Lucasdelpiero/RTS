@@ -98,11 +98,11 @@ func _on_btn_army_creation_pressed() -> void:
 		button.queue_free()
 	# Get units by the culture (exclusive)
 	var culture_units_data : Array[UnitData] = Globals.get_units_by_culture(player_nation.culture)
-	print(culture_units_data)
 	for unit_data in culture_units_data:
 		var new_button_unit := BtnArmyCreatorUnit.instantiate() as ButtonArmyCreatorUnit
 		container_btn_creator_units.add_child(new_button_unit)
 		new_button_unit.unit_data = unit_data
+		new_button_unit.sg_send_unit_data.connect(new_army_manager.add_unit_to_list)
 		pass
 	# Get units by the nation_tag (exclusive)
 
