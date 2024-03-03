@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0evgiss0fg6h"]
+
+[ext_resource type="Script" path="res://Objects/UI/btn_province.gd" id="1_3e2tv"]
+
+[node name="BtnProvince" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+script = ExtResource("1_3e2tv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

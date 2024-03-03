@@ -19,13 +19,30 @@ signal sg_update_resources_ui(data : TotalProductionData)
 @export_range(0, 500000, 1) var manpower : int = 10000
 @export var isPlayer : bool = false
 @export var nation_banuses : Array[Bonus] = []
+@export var capital : Province = null :
+	set(value):
+		if value == null: # reset value (for editing)
+			capital = value
+			return
+		# Capital needs to be owned by the nation to be set
+		if value.ownership == NATION_TAG: 
+			capital = value
+			return
+		
+		push_error("Capital is not owned by the nation")
 
 var resources_generated : Array[Production] = []
 
 var total_production_last_time : TotalProductionData = null
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_colors()
+	if capital == null:
+		capital = get_default_capital()
+		pass
 
 func set_colors() -> void:
 	var armies_temp : Array = get_children()
@@ -34,6 +51,15 @@ func set_colors() -> void:
 	for a in armies :
 		a.army_color = nationColor # Color used in the "selected" shader
 		a.modulate = nationColor # Color used normally
+
+# Used mostly to get a capital for small nation of 1 or few provinces
+func get_default_capital() -> Province:
+	var provinces : Array = get_tree().get_nodes_in_group("provinces")
+	var my_provinces : Array = provinces.filter(func(el: Province) -> bool: return NATION_TAG == el.ownership)
+	var new_capital : Province = null
+	if my_provinces.size() > 0:
+		new_capital = my_provinces[0]
+	return new_capital
 
 func resource_incoming(data : Production) -> void:
 	resources_generated.push_back(data)
@@ -65,8 +91,6 @@ func process_resources_recieved() -> void:
 	sg_update_resources_ui.emit(data)
 	
 	total_production_last_time = data
-
-
 
 
 # The nations stores all their data and their armies data and returns it to be used in the savegame

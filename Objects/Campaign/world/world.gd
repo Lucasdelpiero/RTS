@@ -159,6 +159,11 @@ func get_province_name_by_position(aPosition : Vector2 ) -> String:
 	
 	return province_name
 
+# Returns an array containing all provinces of a nation tag
+func get_provinces_by_tag(nation_tag : String ) -> Array[Province]:
+	var provinces_of_tag : Array = provinces.filter(func(el : Province) -> bool: return nation_tag == el.ownership)
+	return provinces_of_tag
+
 func get_nation_by_tag(_tag : String = "") -> Nation:
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer:

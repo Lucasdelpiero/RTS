@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxcpvldpdl5np"]
+[gd_scene load_steps=11 format=3 uid="uid://bxcpvldpdl5np"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_1txks"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.gd" id="2_8w0bf"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="3_udnsm"]
 [ext_resource type="PackedScene" uid="uid://dvfxbxjjelt38" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.tscn" id="4_jqncl"]
+[ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="5_fixwj"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="5_sgoi6"]
 [ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="6_gdan8"]
 [ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="7_bisgy"]
@@ -18,6 +19,7 @@ theme = ExtResource("1_1txks")
 script = ExtResource("2_8w0bf")
 BtnArmyCreatorUnit = ExtResource("4_jqncl")
 ArmyCampaignP = ExtResource("3_udnsm")
+btn_provinceP = ExtResource("5_fixwj")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -62,8 +64,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 209.0
 offset_top = 1.0
-offset_right = 402.0
-offset_bottom = 243.0
+offset_right = 460.0
+offset_bottom = 362.0
 grow_horizontal = 0
 mouse_force_pass_scroll_events = false
 script = ExtResource("7_vh664")
@@ -113,6 +115,32 @@ text = "Maintanence: "
 [node name="TotalUnits" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Total:"
+
+[node name="BtnProvinceSpawn" type="Button" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Recruited in:"
+alignment = 0
+
+[node name="SpawnProvincePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 474.0
+offset_top = 5.0
+offset_right = 717.0
+offset_bottom = 359.0
+
+[node name="SpawnProvinceContainer" type="VBoxContainer" parent="SpawnProvincePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 243.0
+offset_bottom = 326.0
+
+[node name="Label" type="Label" parent="SpawnProvincePanel/SpawnProvinceContainer"]
+layout_mode = 2
+text = "Province to spawn in:"
 
 [node name="BtnCreateArmy" type="Button" parent="."]
 layout_mode = 1
@@ -124,25 +152,21 @@ offset_top = 165.0
 offset_right = 160.0
 offset_bottom = 196.0
 grow_horizontal = 0
+focus_mode = 0
 text = "Create army"
-
-[node name="LabelProvinceSpawn" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="ArmyCreatorComponent" parent="." instance=ExtResource("7_luj42")]
 unique_name_in_owner = true
 
 [node name="BtnCloseWindow" type="Button" parent="."]
 layout_mode = 0
-offset_left = 363.0
-offset_top = -26.0
-offset_right = 397.0
-offset_bottom = 5.0
+offset_left = 414.0
+offset_top = -30.0
+offset_right = 448.0
+offset_bottom = 1.0
 focus_mode = 0
 text = "x"
 
+[connection signal="pressed" from="NewArmyManager/VBoxContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]
 [connection signal="pressed" from="BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
 [connection signal="pressed" from="BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]
