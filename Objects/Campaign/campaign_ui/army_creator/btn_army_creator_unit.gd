@@ -11,7 +11,11 @@ signal sg_send_unit_data(data : UnitData)
 # Used in the new army container to tell when a button is deleted
 signal sg_button_deleted(node : ButtonArmyCreatorUnit)
 
-@export var unit_data : UnitData = null
+@export var unit_data : UnitData = null :
+	set(value):
+		if value == null:
+			return
+		text = value.unit_name
 
 func _on_pressed() -> void:
 	if unit_data == null:

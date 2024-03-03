@@ -315,6 +315,7 @@ visible = false
 
 [node name="Rome" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "ROME"
+culture = 1
 nationOutline = Color(0.266667, 0.054902, 0.0705882, 1)
 nationColor = Color(0.521569, 0.117647, 0.117647, 1)
 gold = 371.0
@@ -409,6 +410,7 @@ army_data = SubResource("Resource_kdomc")
 
 [node name="Etruria" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "ETRURIA"
+culture = 1
 nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
 nationColor = Color(0.439216, 0.435294, 0.388235, 1)
 capital = NodePath("../../Italy/Etruria")
@@ -422,18 +424,21 @@ army_data = SubResource("Resource_v5grm")
 
 [node name="Carthage" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "CARTHAGE"
+culture = 4
 nationOutline = Color(0.726563, 0.445313, 0.675781, 1)
 nationColor = Color(0.858824, 0.858824, 0.858824, 1)
 capital = NodePath("../../NorthAfrica/Carthage")
 
 [node name="Sparta" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "SPARTA"
+culture = 3
 nationOutline = Color(0.128906, 0.0273438, 0.0273438, 1)
 nationColor = Color(0.277344, 0.0546875, 0.0546875, 1)
 capital = NodePath("../../Greece/Sparta")
 
 [node name="Macedon" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "MACEDON"
+culture = 3
 nationOutline = Color(0.215686, 0.0470588, 0.239216, 1)
 nationColor = Color(0.317647, 0.0941176, 0.34902, 1)
 capital = NodePath("../../Greece/Boethia")

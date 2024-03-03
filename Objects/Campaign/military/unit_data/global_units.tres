@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GlobalUnits" load_steps=3 format=3 uid="uid://ck005oarpv1i1"]
+
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/global_units.gd" id="1_3vf4s"]
+[ext_resource type="Resource" uid="uid://g4dc4blk6jx3" path="res://Objects/Campaign/military/unit_data/cultural_groups/italic/cultural_unit_group_italic.tres" id="1_83gqa"]
+
+[resource]
+script = ExtResource("1_3vf4s")
+cultural_group_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd")]([ExtResource("1_83gqa")])
+national_group_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/group_scene_unit_data.gd")]([])

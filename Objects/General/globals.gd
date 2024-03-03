@@ -1,8 +1,6 @@
 extends Node
 
-@export var cultural_group_unit_data : Array[GroupSceneUnitData] = []
-@export var national_group_unit_data : Array[GroupSceneUnitData] = []
-
+var global_units : GlobalUnits = null
 
 var mouse_in_province : int = -1  # -1 means that no province is selected
 var camera_angle : float = 0.0
@@ -28,9 +26,17 @@ var campaign_UI : CampaignUI = null
 var shader_hovered := preload("res://Shaders/hovered.tres") as Material
 var shader_selected := preload("res://Shaders/selected.tres") as Material
 
+var global_units_res_path := preload("res://Objects/Campaign/military/unit_data/global_units.tres") as GlobalUnits
+
 signal sg_battlemap_set_units_selected(unit : Unit, value : bool)
 
 var PERSONAL_DEBUGGER : String = "DebugPersonal" # just to avoid mistakes
+
+func _ready() -> void:
+	# global_units NEED to be setted in the ready function as if they are tried to be set
+	# in the editor they dont show up, thats why they are preloaded and setted here
+	global_units = global_units_res_path
+
 
 func set_battle_map(value : BattleMap) -> void:
 	battle_map = value
@@ -70,4 +76,13 @@ func window_resized() -> void:
 	if main == null:
 		return
 	main.window_resized()
+
+
+func get_units_by_culture(culture_id : int) -> Array[UnitData]:
+	var culture_units : Array[UnitData] = []
+	for culture in global_units.cultural_group_unit_data:
+		if culture.cultural_group_exlclusive == culture_id:
+			culture_units.assign(culture.array_scene_unit_data)
+
+	return culture_units
 

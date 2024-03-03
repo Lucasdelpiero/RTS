@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource("2_i2pby")
 nation_exclusive = ""
-cultural_group_exlceluive = 1
+cultural_group_exlclusive = 1
 array_scene_unit_data = Array[Resource("res://Objects/Campaign/military/unit_data/unit_data.gd")]([ExtResource("1_uewvp"), ExtResource("2_y6whv")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxcpvldpdl5np"]
+[gd_scene load_steps=12 format=3 uid="uid://bxcpvldpdl5np"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_1txks"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.gd" id="2_8w0bf"]
@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://c4h7u5gwt5l34" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_component.tscn" id="7_luj42"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/new_army_manager.gd" id="7_vh664"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3krf"]
+
 [node name="ArmyCreatorUI" type="Control"]
+layout_direction = 2
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
@@ -22,6 +25,8 @@ ArmyCampaignP = ExtResource("3_udnsm")
 btn_provinceP = ExtResource("5_fixwj")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(206, 200)
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -31,30 +36,45 @@ offset_bottom = 196.0
 grow_horizontal = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_direction = 2
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ContainerBtnCreatorUnits" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="BtnArmyCreatorUnit" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
+[node name="ContainerBtnCreatorUnits" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_direction = 2
 layout_mode = 2
-text = "Hastati"
+
+[node name="BtnArmyCreatorUnit" parent="PanelContainer/MarginContainer/VBoxContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
+layout_mode = 2
+text = "Hastatiaaaaaa"
 unit_data = ExtResource("5_sgoi6")
 
-[node name="BtnArmyCreatorUnit2" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
+[node name="BtnArmyCreatorUnit2" parent="PanelContainer/MarginContainer/VBoxContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
 text = "Bowman"
 unit_data = ExtResource("6_gdan8")
 
-[node name="BtnArmyCreatorUnit3" parent="PanelContainer/MarginContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
+[node name="BtnArmyCreatorUnit3" parent="PanelContainer/MarginContainer/VBoxContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
 text = "Cavalry"
 unit_data = ExtResource("7_bisgy")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+theme_override_styles/separator = SubResource("StyleBoxFlat_q3krf")
+
+[node name="BtnCreateArmy" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Create army"
 
 [node name="NewArmyManager" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -71,10 +91,23 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("7_vh664")
 BtnArmyCreatorUnit = ExtResource("4_jqncl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="NewArmyManager"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer"]
+[node name="BtnCloseWindow" type="Button" parent="NewArmyManager/VBoxContainer2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_mode = 0
+text = "x"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -82,91 +115,75 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NewArmyManager/VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_right = 5
 
-[node name="ContainerBtnNewArmy" type="VBoxContainer" parent="NewArmyManager/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="ContainerBtnNewArmy" type="VBoxContainer" parent="NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NewArmyManager/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+alignment = 2
 
-[node name="LabelCost" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+[node name="LabelCost" type="Label" parent="NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cost:  "
 
-[node name="LabelMaintanence" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+[node name="LabelMaintanence" type="Label" parent="NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Maintanence: "
 
-[node name="TotalUnits" type="Label" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+[node name="TotalUnits" type="Label" parent="NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Total:"
 
-[node name="BtnProvinceSpawn" type="Button" parent="NewArmyManager/VBoxContainer/VBoxContainer"]
+[node name="BtnProvinceSpawn" type="Button" parent="NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Recruited in:"
 alignment = 0
 
-[node name="SpawnProvincePanel" type="Panel" parent="."]
+[node name="SpawnProvincePanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 350)
 layout_mode = 2
 offset_left = 474.0
 offset_top = 5.0
-offset_right = 717.0
+offset_right = 703.0
 offset_bottom = 359.0
 
 [node name="SpawnProvinceContainer" type="VBoxContainer" parent="SpawnProvincePanel"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_right = 243.0
-offset_bottom = 326.0
 
 [node name="Label" type="Label" parent="SpawnProvincePanel/SpawnProvinceContainer"]
 layout_mode = 2
 text = "Province to spawn in:"
 
-[node name="BtnCreateArmy" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 34.0
-offset_top = 165.0
-offset_right = 160.0
-offset_bottom = 196.0
-grow_horizontal = 0
-focus_mode = 0
-text = "Create army"
-
 [node name="ArmyCreatorComponent" parent="." instance=ExtResource("7_luj42")]
 unique_name_in_owner = true
 
-[node name="BtnCloseWindow" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(730, 435)
 layout_mode = 0
-offset_left = 414.0
-offset_top = -30.0
-offset_right = 448.0
-offset_bottom = 1.0
-focus_mode = 0
-text = "x"
+offset_right = 723.0
+offset_bottom = 435.0
 
-[connection signal="pressed" from="NewArmyManager/VBoxContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]
-[connection signal="pressed" from="BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
-[connection signal="pressed" from="BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
+[connection signal="pressed" from="NewArmyManager/VBoxContainer2/BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]
+[connection signal="pressed" from="NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]

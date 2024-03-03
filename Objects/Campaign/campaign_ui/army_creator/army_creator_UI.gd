@@ -18,7 +18,7 @@ extends Control
 @onready var new_army_manager := %NewArmyManager as NewArmyManager
 
 @onready var button_open_window : Button = null
-@onready var spawn_province_panel := %SpawnProvincePanel as Panel
+@onready var spawn_province_panel := %SpawnProvincePanel as PanelContainer
 @onready var spawn_province_container := %SpawnProvinceContainer as VBoxContainer
 @export var btn_provinceP : PackedScene = null
 @onready var btn_province_spawn := %BtnProvinceSpawn as Button
@@ -82,7 +82,7 @@ func _on_btn_close_window_pressed() -> void:
 		return
 	button_open_window.set_toggled(false)
 
-
+# Open the window to create a new army
 func _on_btn_army_creation_pressed() -> void:
 	var player_nation : Nation = Globals.player_nation_node
 	if player_nation == null:
@@ -91,7 +91,20 @@ func _on_btn_army_creation_pressed() -> void:
 	province_to_spawn_in = player_nation.capital
 	btn_province_spawn.text = "Recruited in: %s" % [province_to_spawn_in.name]
 	visible = !visible
-
+	
+	# Clean the list
+	var buttons_to_delete : Array = container_btn_creator_units.get_children()
+	for button in buttons_to_delete as Array[Node]:
+		button.queue_free()
+	# Get units by the culture (exclusive)
+	var culture_units_data : Array[UnitData] = Globals.get_units_by_culture(player_nation.culture)
+	print(culture_units_data)
+	for unit_data in culture_units_data:
+		var new_button_unit := BtnArmyCreatorUnit.instantiate() as ButtonArmyCreatorUnit
+		container_btn_creator_units.add_child(new_button_unit)
+		new_button_unit.unit_data = unit_data
+		pass
+	# Get units by the nation_tag (exclusive)
 
 func _on_btn_province_spawn_pressed() -> void:
 	# Clean container

@@ -5,6 +5,7 @@ extends Node
 signal sg_update_resources_ui(data : TotalProductionData)
 
 @export var NATION_TAG  : String = ""
+@export var culture : Cultures.list = Cultures.list.NONE
 @export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
 @export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold : float = 100 : 
