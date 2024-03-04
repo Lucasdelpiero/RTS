@@ -3,8 +3,10 @@ extends CanvasLayer
 
 var gold : int = 0
 var last_time_production_data : TotalProductionData = null
-@onready var goldLabel : RichTextLabel = %GoldLabel as RichTextLabel
-@onready var manpowerLabel : RichTextLabel = %ManpowerLabel as RichTextLabel
+@onready var gold_label : RichTextLabel = %GoldLabel as RichTextLabel
+@onready var gold_change_label := %GoldChangeLabel as RichTextLabel
+@onready var manpower_label : RichTextLabel = %ManpowerLabel as RichTextLabel
+@onready var manpower_change_label := %ManpowerChangeLabel as RichTextLabel
 
 @onready var buildingsUI : BuildingsUI = %BuildingsUI as BuildingsUI
 
@@ -43,46 +45,62 @@ func _process(_delta : float) -> void:
 	pass
 
 func update_data(data : TotalProductionData) -> void:
-	#goldLabel.text = "Gold: %d" % [data.gold]
+	#gold_label.text = "Gold: %d" % [data.gold]
 	last_time_production_data = data
 	Globals.player_gold = data.gold
 	# needs a label for each label or is annoying
-	update_gold_label(data.gold, data.gold_generated)
+	update_gold_label(data.gold)
+	update_gold_change_label(data.gold_generated)
 	sg_gold_amount_changed.emit()
 	
 	
-	var manpower_compact : String = get_compact_num(data.manpower)
-	var manpower_generated_compact : String = get_compact_num(data.manpower_generated)
-	manpowerLabel.clear()
-	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1
-	manpowerLabel.add_text("Manpower: %s" % [manpower_compact])
-	manpowerLabel.pop() # 1
-	manpowerLabel.push_color( get_color_by_sign(data.manpower_generated) ) # 1
-	manpowerLabel.add_text(" (+%s)" % manpower_generated_compact) # 2
-	manpowerLabel.pop() # 1
+	#var manpower_compact : String = get_compact_num(data.manpower)
+	#var manpower_generated_compact : String = get_compact_num(data.manpower_generated)
+	update_manpower_label(data.manpower)
+	update_manpower_change_label(data.manpower_generated)
+	#manpower_label.clear()
+	#manpower_label.push_hint("Manpower is obtained from the provinces population and buildings") # 1
+	#manpower_label.add_text("Manpower: %s" % [manpower_compact])
+	#manpower_label.pop() # 1
+	#manpower_label.push_color( get_color_by_sign(data.manpower_generated) ) # 1
+	#manpower_label.add_text(" (+%s)" % manpower_generated_compact) # 2
+	#manpower_label.pop() # 1
 
 	pass
 
-# Needs to have 2 separated labels to avoid problems and use these nasty workaournd
-# "change" argument use -123456 as default value to check if has to update the new value or what
-func update_gold_label(current_amount : int, change: int = -123456) -> void:
-	var change_to_label : int = last_time_production_data.gold_generated
-	if change != -123456: # INF is used as a default value so it can be used when the current amount changes but doesnt need a change amount
-		change_to_label = change
+func update_gold_label(current_amount : int) -> void:
 	var gold_compact : String = get_compact_num(current_amount)
-	var gold_generated_compact : String = get_compact_num(change_to_label)
-	goldLabel.clear()
-	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
-	goldLabel.push_color(COLOR_GOLD) # 2
-	goldLabel.add_text("Gold" )
-	goldLabel.pop() # 2
-	goldLabel.add_text(": %s" % [gold_compact])
-	goldLabel.pop() # 1
-	goldLabel.push_color( get_color_by_sign(change_to_label) ) # 1
-	goldLabel.add_text(" (+%s) " % [gold_generated_compact]) # 2
-	goldLabel.pop() # 1
+	gold_label.clear()
+	gold_label.push_hint("Gold is obtained from your provinces and buildings") # 1
+	gold_label.push_color(COLOR_GOLD) # 2
+	gold_label.add_text("Gold" )
+	gold_label.pop() # 2
+	gold_label.add_text(": %s" % [gold_compact])
+	gold_label.pop() # 1
 	
+func update_gold_change_label(change : int) -> void:
+	var gold_change_compact : String = get_compact_num(change)
+	gold_change_label.clear()
+	gold_change_label.push_hint("Gold is obtained from your provinces and buildings") # 1
+	gold_change_label.push_color( get_color_by_sign(change) ) # 1
+	gold_change_label.add_text(" (+%s) " % [gold_change_compact]) # 2
+	gold_change_label.pop() # 1
+
+func update_manpower_label(current_amount: int) -> void:
+	var manpower_compact : String = get_compact_num(current_amount)
+	manpower_label.clear()
+	manpower_label.push_hint("Manpower is obtained from the provinces population and buildings") # 1
+	manpower_label.add_text("Manpower: %s" % [manpower_compact])
+	manpower_label.pop() # 1
 	pass
+
+func update_manpower_change_label(change : int) -> void:
+	var manpower_change_compact : String = get_compact_num(change)
+	manpower_change_label.clear()
+	manpower_change_label.push_color( get_color_by_sign(change) ) # 1
+	manpower_change_label.add_text(" (+%s)" % manpower_change_compact) # 2
+	manpower_change_label.pop() # 1
+
 
 func update_province_data(data : ProvinceData) -> void:
 	if data == null:
@@ -101,7 +119,7 @@ func update_province_data(data : ProvinceData) -> void:
 func get_compact_num(number : int) -> String :
 	# Converted to float and int just to avoid waring over precision lost
 	var compact_num : String = str(number)
-	if number >= 10_000:
+	if number >= 100_000:
 		compact_num = "%sK" % [floori(float(number) / 1_000)]
 	
 	if number >= 1_000_000:
