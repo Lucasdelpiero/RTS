@@ -47,22 +47,24 @@ split_offset = 200
 
 [node name="HSplitContainerGold" type="HSplitContainer" parent="Container/Panel/MarginContainer/HSplitContainer"]
 layout_mode = 2
-split_offset = 101
+split_offset = 116
 
 [node name="GoldLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainerGold"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Gold: 999999"
+text = "Gold: 999999.9K"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 hint_underlined = false
 
 [node name="GoldChangeLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainerGold"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "99999"
+text = "99999.9K"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 hint_underlined = false
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Container/Panel/MarginContainer/HSplitContainer"]
@@ -72,17 +74,19 @@ split_offset = 165
 [node name="ManpowerLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Manpower: 999999"
+text = "Manpower: 99999.9K"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 hint_underlined = false
 
 [node name="ManpowerChangeLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "999999"
+text = "99999.9K"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 hint_underlined = false
 
 [node name="Province" type="Panel" parent="Container"]

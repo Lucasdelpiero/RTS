@@ -117,13 +117,13 @@ func update_province_data(data : ProvinceData) -> void:
 
 # 100000 -> 100K  / 10000000 -> 10M
 func get_compact_num(number : int) -> String :
-	# Converted to float and int just to avoid waring over precision lost
 	var compact_num : String = str(number)
-	if number >= 100_000:
-		compact_num = "%sK" % [floori(float(number) / 1_000)]
+	if number >= 10_000:
+		compact_num = "%1.1fK" % [float(number) / 1_000]
+		
 	
 	if number >= 1_000_000:
-		compact_num = "%sM" % [floori(float(number) / 1_000_000)]
+		compact_num = "%1.2fM" % [float(number) / 1_000_000]
 	
 	return compact_num
 
