@@ -298,6 +298,7 @@ offset_bottom = 88.0
 focus_mode = 0
 text = "Army Creation"
 
+[connection signal="sg_gold_amount_changed" from="." to="Container/ArmyCreatorUI" method="_on_campaing_ui_sg_gold_amount_changed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer/BackButton" to="Container/Province/BuildingsUI" method="_on_back_button_pressed"]
 [connection signal="resized" from="Container/PanelContainer/ArmiesContainer" to="Container/PanelContainer/ArmiesContainer" method="_on_resized"]

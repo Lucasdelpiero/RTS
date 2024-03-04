@@ -16,6 +16,7 @@ extends Control
 # Container of the buttons that are the in the new army to be created
 @onready var container_btn_new_army := %ContainerBtnNewArmy as VBoxContainer
 @onready var new_army_manager := %NewArmyManager as NewArmyManager
+@onready var btn_create_army := %BtnCreateArmy as Button # Create army if the player has enough money
 
 @onready var button_open_window : Button = null
 @onready var spawn_province_panel := %SpawnProvincePanel as PanelContainer
@@ -148,3 +149,12 @@ func set_province_to_spawn_in(value : Province) -> void:
 	province_to_spawn_in = value
 	btn_province_spawn.text = "Recruited in: %s" % [province_to_spawn_in.name]
 	spawn_province_panel.visible = false
+
+# Its called when:
+# - The amount of money of the player changes in the UI
+# - There is a change in the list of units to create in the army
+func check_if_can_afford_army() -> void:
+	btn_create_army.disabled = Globals.player_gold < new_army_manager.army_cost
+
+func _on_campaing_ui_sg_gold_amount_changed() -> void:
+	check_if_can_afford_army()

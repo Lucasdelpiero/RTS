@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=79 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -26,6 +26,8 @@
 [ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="19_jlb3w"]
 [ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="20_5w16y"]
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="21_kmvxn"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="21_nkfwd"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="22_lcv0d"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="22_leoek"]
 [ext_resource type="PackedScene" uid="uid://cc7nsjg04s2lx" path="res://Objects/General/debug.tscn" id="23_ae5rc"]
 
@@ -54,233 +56,267 @@ shader_parameter/offset_factor = Vector2(5, 2)
 shader_parameter/amplitude = Vector2(0.05, 0.05)
 shader_parameter/noise_secondary = ExtResource("13_1gxr8")
 
+[sub_resource type="Resource" id="Resource_8xh07"]
+script = ExtResource("21_nkfwd")
+building_name = "Village hall"
+cost = 100
+time_to_build = 5
+flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
+bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+
+[sub_resource type="Resource" id="Resource_e82p4"]
+script = ExtResource("21_nkfwd")
+building_name = "Town hall"
+cost = 500
+time_to_build = 5
+flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
+bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+
+[sub_resource type="Resource" id="Resource_3a4xk"]
+script = ExtResource("21_nkfwd")
+building_name = "City hall"
+cost = 1200
+time_to_build = 5
+flat_production = Array[Resource("res://Objects/Campaign/buildings/flat_production.gd")]([])
+bonuses = Array[Resource("res://Objects/General/bonus.gd")]([])
+
+[sub_resource type="Resource" id="Resource_hwyty"]
+resource_local_to_scene = true
+script = ExtResource("22_lcv0d")
+building_type = "BUILDING_GOVERNMENT"
+building_name = "Government hall"
+is_built = true
+current_level = 0
+levels = Array[ExtResource("21_nkfwd")]([SubResource("Resource_8xh07"), SubResource("Resource_e82p4"), SubResource("Resource_3a4xk")])
+description = "A government building, that is really cool"
+
 [sub_resource type="Resource" id="Resource_rvyfb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hwyty"), ExtResource("20_5w16y")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 
 [sub_resource type="Resource" id="Resource_qswa1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_jl7t7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_e8e7l"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([])
 
 [sub_resource type="Resource" id="Resource_oyxa5"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_ulv7f"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_iqkbt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_tecg6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_2isp3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_giglj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_ouba8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_6otsc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_svff3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_itake"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_dkpll"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_nndnu"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_m4xsk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_446f6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_gdtr8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_pdtrp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_5sw6r"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_s18sr"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_qomcl"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_rcdvs"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_m1pi1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_bdwx5"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_pmjga"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_e5iaw"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_eehve"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_vflcx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_oyjlo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_f5l3d"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_o3vyf"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_o3t25"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_jvp14"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_24pfj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_3fgbp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_liigb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
-building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
 vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)

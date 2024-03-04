@@ -2,6 +2,7 @@ class_name CampaignUI
 extends CanvasLayer
 
 var gold : int = 0
+var last_time_production_data : TotalProductionData = null
 @onready var goldLabel : RichTextLabel = %GoldLabel as RichTextLabel
 @onready var manpowerLabel : RichTextLabel = %ManpowerLabel as RichTextLabel
 
@@ -22,7 +23,7 @@ const COLOR_GREY : Color = Color.LIGHT_SLATE_GRAY
 const COLOR_GOLD : Color = Color.GOLD
 
 signal changed_map_shown(type : String)
-signal sg_gold_amount_changed # tells the building buttons that the gold amount of the player changed
+signal sg_gold_amount_changed # tells the building buttons and UI that the gold amount of the player changed
 
 var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
@@ -43,19 +44,10 @@ func _process(_delta : float) -> void:
 
 func update_data(data : TotalProductionData) -> void:
 	#goldLabel.text = "Gold: %d" % [data.gold]
-	var gold_compact : String = get_compact_num(data.gold)
-	var gold_generated_compact : String = get_compact_num(data.gold_generated)
+	last_time_production_data = data
 	Globals.player_gold = data.gold
-	goldLabel.clear()
-	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
-	goldLabel.push_color(COLOR_GOLD) # 2
-	goldLabel.add_text("Gold" )
-	goldLabel.pop() # 2
-	goldLabel.add_text(": %s" % [gold_compact])
-	goldLabel.pop() # 1
-	goldLabel.push_color( get_color_by_sign(data.gold_generated) ) # 1
-	goldLabel.add_text(" (+%s) " % [gold_generated_compact]) # 2
-	goldLabel.pop() # 1
+	# needs a label for each label or is annoying
+	update_gold_label(data.gold, data.gold_generated)
 	sg_gold_amount_changed.emit()
 	
 	
@@ -69,6 +61,27 @@ func update_data(data : TotalProductionData) -> void:
 	manpowerLabel.add_text(" (+%s)" % manpower_generated_compact) # 2
 	manpowerLabel.pop() # 1
 
+	pass
+
+# Needs to have 2 separated labels to avoid problems and use these nasty workaournd
+# "change" argument use -123456 as default value to check if has to update the new value or what
+func update_gold_label(current_amount : int, change: int = -123456) -> void:
+	var change_to_label : int = last_time_production_data.gold_generated
+	if change != -123456: # INF is used as a default value so it can be used when the current amount changes but doesnt need a change amount
+		change_to_label = change
+	var gold_compact : String = get_compact_num(current_amount)
+	var gold_generated_compact : String = get_compact_num(change_to_label)
+	goldLabel.clear()
+	goldLabel.push_hint("Gold is obtained from your provinces and buildings") # 1
+	goldLabel.push_color(COLOR_GOLD) # 2
+	goldLabel.add_text("Gold" )
+	goldLabel.pop() # 2
+	goldLabel.add_text(": %s" % [gold_compact])
+	goldLabel.pop() # 1
+	goldLabel.push_color( get_color_by_sign(change_to_label) ) # 1
+	goldLabel.add_text(" (+%s) " % [gold_generated_compact]) # 2
+	goldLabel.pop() # 1
+	
 	pass
 
 func update_province_data(data : ProvinceData) -> void:

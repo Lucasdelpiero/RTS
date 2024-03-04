@@ -10,7 +10,8 @@ var player_nation_node : Nation = null
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
 var playerArmy : Array = [] 
 var playerArmyData : Array[ArmyData] = []  # Array of armies data each containing units
-var player_gold : int = 0 # used by UI in buttons to easily check the amount of money the player has
+# used by UI in buttons to easily check the amount of money the player has
+var player_gold : int = 0
 var player_manpower : int = 0
 # Array of army of the enemy player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"

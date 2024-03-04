@@ -76,6 +76,7 @@ theme_override_constants/separation = 19
 theme_override_styles/separator = SubResource("StyleBoxFlat_q3krf")
 
 [node name="BtnCreateArmy" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Create army"
@@ -171,5 +172,8 @@ layout_mode = 2
 text = "Province to spawn in:"
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
+[connection signal="units_list_changed" from="HBoxContainer/NewArmyManager" to="." method="check_if_can_afford_army"]
 [connection signal="pressed" from="HBoxContainer/NewArmyManager/VBoxContainer2/BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]
+[connection signal="child_entered_tree" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ContainerBtnNewArmy" to="HBoxContainer/NewArmyManager" method="_on_container_btn_new_army_child_entered_tree"]
+[connection signal="child_exiting_tree" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ContainerBtnNewArmy" to="HBoxContainer/NewArmyManager" method="_on_container_btn_new_army_child_exiting_tree"]
 [connection signal="pressed" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]

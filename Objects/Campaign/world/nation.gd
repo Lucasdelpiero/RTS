@@ -3,6 +3,7 @@ class_name Nation
 extends Node
 
 signal sg_update_resources_ui(data : TotalProductionData)
+signal sg_gold_amount_changed(value : int)
 
 @export var NATION_TAG  : String = ""
 @export var culture : Cultures.list = Cultures.list.NONE
@@ -16,7 +17,8 @@ signal sg_update_resources_ui(data : TotalProductionData)
 			total_production_last_time = TotalProductionData.new()
 			data = total_production_last_time
 		data.gold = int(gold)
-		sg_update_resources_ui.emit(data) # needed to update when money is spent
+		sg_gold_amount_changed.emit(gold)
+		#sg_update_resources_ui.emit(data) # needed to update when money is spent
 @export_range(0, 500000, 1) var manpower : int = 10000
 @export var isPlayer : bool = false
 @export var nation_banuses : Array[Bonus] = []
@@ -103,6 +105,7 @@ func process_resources_recieved() -> void:
 	data.gold_generated = total_gold_generated - army_total_cost
 	data.manpower_generated = total_manpower_generated
 	sg_update_resources_ui.emit(data)
+
 	
 	total_production_last_time = data
 
