@@ -67,11 +67,24 @@ func resource_incoming(data : Production) -> void:
 
 func process_resources_recieved() -> void:
 	var total_gold_generated : int = resources_generated.map(func(el : Production) -> int: return el.gold).reduce(func(a : int,b : int) -> int: return a + b)
+	var gold_delta : int = 0
 	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return
 	
-	gold += total_gold_generated
+	# Armies cost
+	var armies : Array[ArmyCampaing] = []
+	armies.assign(get_children())
+	var army_cost_list : Array[int] = []
+	army_cost_list.assign(armies.map(func(el: ArmyCampaing) -> int: return el.army_data.get_army_cost()))
+	var army_total_cost : int = 0
+	# Uses a for loop instead of a reduce to handle empty arrays
+	for cost in army_cost_list:
+		army_total_cost += cost
+	
+	gold_delta = total_gold_generated - army_total_cost
+	
+	gold += gold_delta
 	
 	var total_manpower_generated : int = resources_generated.map(func(el : Production) -> int: return el.manpower).reduce(func(a : int,b : int) -> int: return a + b)
 	if total_manpower_generated == null:
@@ -87,7 +100,7 @@ func process_resources_recieved() -> void:
 	var data : TotalProductionData = TotalProductionData.new()
 	data.gold = int(gold)
 	data.manpower = manpower
-	data.gold_generated = total_gold_generated
+	data.gold_generated = total_gold_generated - army_total_cost
 	data.manpower_generated = total_manpower_generated
 	sg_update_resources_ui.emit(data)
 	

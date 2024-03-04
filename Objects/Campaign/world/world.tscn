@@ -57,7 +57,7 @@ shader_parameter/noise_secondary = ExtResource("13_1gxr8")
 [sub_resource type="Resource" id="Resource_rvyfb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y")])
 building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("19_jlb3w")])
 
 [sub_resource type="Resource" id="Resource_qswa1"]
@@ -349,62 +349,6 @@ army_data = SubResource("Resource_kdomc")
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(1272, 733)
 army_name = "Legio IV"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI2" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI3" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI4" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI5" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI6" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI7" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
-ownership = "ROME"
-army_data = SubResource("Resource_kdomc")
-
-[node name="Legio VI8" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
-modulate = Color(0.521569, 0.117647, 0.117647, 1)
-position = Vector2(640, 275)
-army_name = "Legio VI"
 ownership = "ROME"
 army_data = SubResource("Resource_kdomc")
 

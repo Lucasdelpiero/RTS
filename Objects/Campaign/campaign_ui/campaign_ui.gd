@@ -65,7 +65,7 @@ func update_data(data : TotalProductionData) -> void:
 	manpowerLabel.push_hint("Manpower is obtained from the provinces population and buildings") # 1
 	manpowerLabel.add_text("Manpower: %s" % [manpower_compact])
 	manpowerLabel.pop() # 1
-	manpowerLabel.push_color( get_color_by_sign(data.gold_generated) ) # 1
+	manpowerLabel.push_color( get_color_by_sign(data.manpower_generated) ) # 1
 	manpowerLabel.add_text(" (+%s)" % manpower_generated_compact) # 2
 	manpowerLabel.pop() # 1
 
