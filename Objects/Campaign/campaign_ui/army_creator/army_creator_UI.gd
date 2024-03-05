@@ -73,6 +73,8 @@ func _on_btn_create_army_pressed() -> void:
 	if province_to_spawn_in != null:
 		spawn_position = province_to_spawn_in.global_position
 	
+	var army_cost : int = army_data.get_army_cost()
+	nation.gold -= army_cost
 	army_creator_component.create_army(nation, army_data, spawn_position)
 	new_army_manager.delete_buttons_new_army()
 
@@ -154,7 +156,12 @@ func set_province_to_spawn_in(value : Province) -> void:
 # - The amount of money of the player changes in the UI
 # - There is a change in the list of units to create in the army
 func check_if_can_afford_army() -> void:
-	btn_create_army.disabled = Globals.player_gold < new_army_manager.army_cost
+	var can_afford_army : bool = Globals.player_gold > new_army_manager.army_cost
+	var new_units_amount : int = container_btn_new_army.get_children().size()
+	if not can_afford_army  or new_units_amount == 0:
+		btn_create_army.disabled = true 
+		return
+	btn_create_army.disabled = false
 
 func _on_campaing_ui_sg_gold_amount_changed() -> void:
 	check_if_can_afford_army()

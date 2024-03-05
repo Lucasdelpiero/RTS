@@ -10,6 +10,10 @@ func create_army(nation_owner : Nation ,army_data : ArmyData, spawn_position : V
 		push_error("Couldnt find the campaign map reference")
 		return
 	
+	if army_data.army_units.size() == 0:
+		push_error("There are not units in the army data")
+		return
+	
 	var new_army := ArmyCampaignP.instantiate() as ArmyCampaing
 	nation_owner.add_child(new_army)
 	

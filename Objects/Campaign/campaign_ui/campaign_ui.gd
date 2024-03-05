@@ -44,29 +44,15 @@ func _ready() -> void:
 func _process(_delta : float) -> void:
 	pass
 
+# Sends data to to the UI of the production of the nation 
 func update_data(data : TotalProductionData) -> void:
-	#gold_label.text = "Gold: %d" % [data.gold]
 	last_time_production_data = data
-	Globals.player_gold = data.gold
-	# needs a label for each label or is annoying
 	update_gold_label(data.gold)
 	update_gold_change_label(data.gold_generated)
 	sg_gold_amount_changed.emit()
 	
-	
-	#var manpower_compact : String = get_compact_num(data.manpower)
-	#var manpower_generated_compact : String = get_compact_num(data.manpower_generated)
 	update_manpower_label(data.manpower)
 	update_manpower_change_label(data.manpower_generated)
-	#manpower_label.clear()
-	#manpower_label.push_hint("Manpower is obtained from the provinces population and buildings") # 1
-	#manpower_label.add_text("Manpower: %s" % [manpower_compact])
-	#manpower_label.pop() # 1
-	#manpower_label.push_color( get_color_by_sign(data.manpower_generated) ) # 1
-	#manpower_label.add_text(" (+%s)" % manpower_generated_compact) # 2
-	#manpower_label.pop() # 1
-
-	pass
 
 func update_gold_label(current_amount : int) -> void:
 	var gold_compact : String = get_compact_num(current_amount)
@@ -109,13 +95,14 @@ func update_province_data(data : ProvinceData) -> void:
 	set_province_visibility(true)
 	populationLabel.text = "Population: %s" % [data.population]
 	incomeLabel.text = "Income: %s" % [data.base_income]
-#	nameLabel.text = "alf"
 	nameLabel.text = "%s" %[data.name]
 	
 	buildingsUI.province_data = data # sends all data including the buildings 
 	pass
 
-# 100000 -> 100K  / 10000000 -> 10M
+
+# Converts the large numbers to a more readable ones for the UI
+# 100000 -> 100.0K  / 10000000 -> 10.00M
 func get_compact_num(number : int) -> String :
 	var compact_num : String = str(number)
 	if number >= 10_000:
@@ -131,6 +118,7 @@ func set_province_visibility(value : bool) -> void:
 	province.visible = value
 #	province.visible = false
 
+# Color for the UI numbers which means: green = increasing ; red = decreasing 
 func get_color_by_sign(num : int) -> Color :
 	if num > 0:
 		return COLOR_GREEN

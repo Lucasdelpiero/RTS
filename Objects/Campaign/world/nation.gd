@@ -9,7 +9,7 @@ signal sg_gold_amount_changed(value : int)
 @export var culture : Cultures.list = Cultures.list.NONE
 @export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
 @export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
-@export_range(10, 1000, 0.1) var gold : float = 100 : 
+@export_range(10, 1000, 0.1) var gold : int = 100 : 
 	set(value):
 		gold = value
 		var data : TotalProductionData = total_production_last_time
@@ -18,6 +18,8 @@ signal sg_gold_amount_changed(value : int)
 			data = total_production_last_time
 		data.gold = int(gold)
 		sg_gold_amount_changed.emit(gold)
+		if NATION_TAG == Globals.playerNation:
+			Globals.player_gold = gold
 		#sg_update_resources_ui.emit(data) # needed to update when money is spent
 @export_range(0, 500000, 1) var manpower : int = 10000
 @export var isPlayer : bool = false
@@ -78,7 +80,7 @@ func process_resources_recieved() -> void:
 	var armies : Array[ArmyCampaing] = []
 	armies.assign(get_children())
 	var army_cost_list : Array[int] = []
-	army_cost_list.assign(armies.map(func(el: ArmyCampaing) -> int: return el.army_data.get_army_cost()))
+	army_cost_list.assign(armies.map(func(el: ArmyCampaing) -> int: return el.army_data.get_army_maintanance_cost()))
 	var army_total_cost : int = 0
 	# Uses a for loop instead of a reduce to handle empty arrays
 	for cost in army_cost_list:

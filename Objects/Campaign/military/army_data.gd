@@ -29,6 +29,16 @@ func add(value : UnitData) -> void:
 	pass
 
 func get_army_cost() -> int :
+	var unit_cost_list : Array = army_units.map(func(el : UnitData) -> int: return el.base_cost)
+	var total_cost : int = 0
+	# Done with a for loop instead of a reduce function to have a safe line and avoid work-arounds for empty arrays and so
+	for cost in unit_cost_list as Array[int]:
+		total_cost += cost
+	var test_arr : Array[int] = [2,4,5,6]
+	var test : int = test_arr.reduce(func(a: int,b: int) -> int: return a + b, 0)
+	return total_cost
+
+func get_army_maintanance_cost() -> int :
 	var unit_cost_list : Array = army_units.map(func(el : UnitData) -> int: return el.base_maintanance_cost)
 	var total_cost : int = 0
 	# Done with a for loop instead of a reduce function to have a safe line and avoid work-arounds for empty arrays and so

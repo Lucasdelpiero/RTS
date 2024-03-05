@@ -36,7 +36,7 @@ theme = ExtResource("2_ikmmu")
 [node name="Panel" type="PanelContainer" parent="Container"]
 layout_mode = 0
 offset_right = 479.0
-offset_bottom = 54.0
+offset_bottom = 55.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Container/Panel"]
 layout_mode = 2
@@ -44,15 +44,17 @@ layout_mode = 2
 [node name="HSplitContainer" type="HSplitContainer" parent="Container/Panel/MarginContainer"]
 layout_mode = 2
 split_offset = 200
+dragger_visibility = 1
 
 [node name="HSplitContainerGold" type="HSplitContainer" parent="Container/Panel/MarginContainer/HSplitContainer"]
 layout_mode = 2
 split_offset = 116
+dragger_visibility = 1
 
 [node name="GoldLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainerGold"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Gold: 999999.9K"
+text = "Gold: 999999.99K"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -61,7 +63,7 @@ hint_underlined = false
 [node name="GoldChangeLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainerGold"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "99999.9K"
+text = "99999.99K"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -70,6 +72,7 @@ hint_underlined = false
 [node name="HSplitContainer" type="HSplitContainer" parent="Container/Panel/MarginContainer/HSplitContainer"]
 layout_mode = 2
 split_offset = 165
+dragger_visibility = 1
 
 [node name="ManpowerLabel" type="RichTextLabel" parent="Container/Panel/MarginContainer/HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true

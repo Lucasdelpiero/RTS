@@ -34,6 +34,7 @@ func update_label_cost() -> void:
 	label_cost.text = "Cost: %s" % [cost]
 	label_mantanence.text = "Maintanence: %s" % [maintanence]
 	label_total_units.text = "Army size: %s" % [buttons_typed.size()]
+	units_list_changed.emit()
 
 func delete_individual_button(node : ButtonArmyCreatorUnit) -> void:
 	node.queue_free()
@@ -54,7 +55,13 @@ func delete_buttons_new_army() -> void:
 
 
 func _on_container_btn_new_army_child_entered_tree(_node: Node) -> void:
+	# Gives time to update the army_cost and to properly disable the button if the player
+	# cannot afford the the army
+	await get_tree().create_timer(0.01).timeout
 	units_list_changed.emit()
 
 func _on_container_btn_new_army_child_exiting_tree(_node: Node) -> void:
+	# Gives time to update the army_cost and to properly disable the button if the player
+	# cannot afford the the army
+	await get_tree().create_timer(0.01).timeout 
 	units_list_changed.emit()
