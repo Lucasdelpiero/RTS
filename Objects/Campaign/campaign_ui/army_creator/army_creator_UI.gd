@@ -36,6 +36,8 @@ func _ready() -> void:
 		# TEST
 # TEST
 
+
+# Army creation
 func _on_btn_create_army_pressed() -> void:
 	if province_to_spawn_in == null:
 		#push_error("There needs to be a province where to spawn in")
@@ -75,10 +77,14 @@ func _on_btn_create_army_pressed() -> void:
 	
 	var army_cost : int = army_data.get_army_cost()
 	nation.gold -= army_cost
+	var manpower_cost: int = army_data.get_army_manpower_cost()
+	nation.manpower -= manpower_cost
 	army_creator_component.create_army(nation, army_data, spawn_position)
 	new_army_manager.delete_buttons_new_army()
+	
 
 
+# Close window
 func _on_btn_close_window_pressed() -> void:
 	visible = false
 	if button_open_window == null:
@@ -158,7 +164,8 @@ func set_province_to_spawn_in(value : Province) -> void:
 func check_if_can_afford_army() -> void:
 	var can_afford_army : bool = Globals.player_gold > new_army_manager.army_cost
 	var new_units_amount : int = container_btn_new_army.get_children().size()
-	if not can_afford_army  or new_units_amount == 0:
+	var has_enough_soldiers : int = Globals.player_manpower > new_army_manager.army_manpower_cost
+	if not can_afford_army  or new_units_amount == 0 or not has_enough_soldiers:
 		btn_create_army.disabled = true 
 		return
 	btn_create_army.disabled = false

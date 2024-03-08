@@ -53,6 +53,7 @@ func initialize_world() -> void:
 			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
 				nation.sg_update_resources_ui.connect(Globals.campaign_UI.update_data)
 				nation.sg_gold_amount_changed.connect(Globals.campaign_UI.update_gold_label)
+				nation.sg_manpower_amount_changed.connect(Globals.campaign_UI.update_manpower_label)
 	
 	for army in get_tree().get_nodes_in_group("armies") as Array[ArmyCampaing]:
 		initialize_army(army)

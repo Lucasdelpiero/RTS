@@ -7,9 +7,11 @@ signal units_list_changed # When an unit is added or removed to the Vbox contain
 @onready var container_btn_new_army := %ContainerBtnNewArmy as VBoxContainer
 @onready var label_cost := %LabelCost as Label
 @onready var label_mantanence := %LabelMaintanence as Label
+@onready var label_manpower_cost := %LabelManpowerCost as Label
 @onready var label_total_units := %TotalUnits as Label
 
 var army_cost : int = 0
+var army_manpower_cost : int = 0
 
 func add_unit_to_list(data : UnitData) -> void:
 	var new_button_unit := BtnArmyCreatorUnit.instantiate() as ButtonArmyCreatorUnit
@@ -26,14 +28,18 @@ func update_label_cost() -> void:
 	buttons_typed.assign(buttons_temp)
 	var cost : int = 0
 	var maintanence : int = 0
+	var manpower_cost : int = 0
 	for button in buttons_typed:
 		cost += button.unit_data.base_cost
 		maintanence += button.unit_data.base_maintanance_cost
+		manpower_cost += button.unit_data.base_manpower_cost
 	
 	army_cost = cost # Used to know if the button to create the unit should be disabled or not
+	army_manpower_cost = manpower_cost # Used to know if the button to create the unit should be disabled or not
 	label_cost.text = "Cost: %s" % [cost]
 	label_mantanence.text = "Maintanence: %s" % [maintanence]
 	label_total_units.text = "Army size: %s" % [buttons_typed.size()]
+	label_manpower_cost.text = "Manpower needed: %s" % [manpower_cost]
 	units_list_changed.emit()
 
 func delete_individual_button(node : ButtonArmyCreatorUnit) -> void:

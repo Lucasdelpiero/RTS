@@ -66,10 +66,13 @@ func update_gold_label(current_amount : int) -> void:
 	
 func update_gold_change_label(change : int) -> void:
 	var gold_change_compact : String = get_compact_num(change)
+	var plus_minus : String = "+"
+	if sign(change) <= 0: # TODO refactor this
+		plus_minus = ""
 	gold_change_label.clear()
 	gold_change_label.push_hint("Gold is obtained from your provinces and buildings") # 1
 	gold_change_label.push_color( get_color_by_sign(change) ) # 1
-	gold_change_label.add_text(" (+%s) " % [gold_change_compact]) # 2
+	gold_change_label.add_text(" (%s%s) " % [plus_minus, gold_change_compact]) # 2
 	gold_change_label.pop() # 1
 
 func update_manpower_label(current_amount: int) -> void:
@@ -82,9 +85,12 @@ func update_manpower_label(current_amount: int) -> void:
 
 func update_manpower_change_label(change : int) -> void:
 	var manpower_change_compact : String = get_compact_num(change)
+	var plus_minus : String = "+"
+	if sign(change) <= 0: # TODO refactor this
+		plus_minus = ""
 	manpower_change_label.clear()
 	manpower_change_label.push_color( get_color_by_sign(change) ) # 1
-	manpower_change_label.add_text(" (+%s)" % manpower_change_compact) # 2
+	manpower_change_label.add_text(" (%s%s)" % [plus_minus, manpower_change_compact]) # 2
 	manpower_change_label.pop() # 1
 
 

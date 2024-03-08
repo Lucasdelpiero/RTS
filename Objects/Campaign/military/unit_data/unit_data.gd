@@ -9,4 +9,5 @@ class_name UnitData
 @export_range(0.1, 100, 0.1) var health : float = 100.0
 @export_range(0, 10000, 1) var base_cost: int = 100
 @export_range(0, 10000, 1) var base_maintanance_cost : int = 10
+@export_range(0, 10000, 1) var base_manpower_cost : int = 200
 

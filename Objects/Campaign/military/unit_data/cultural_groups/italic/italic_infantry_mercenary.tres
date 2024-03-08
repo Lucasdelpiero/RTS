@@ -29,3 +29,4 @@ experience = 0
 health = 100.0
 base_cost = 100
 base_maintanance_cost = 10
+base_manpower_cost = 10000

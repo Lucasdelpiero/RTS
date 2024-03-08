@@ -57,7 +57,7 @@ layout_mode = 2
 
 [node name="BtnArmyCreatorUnit" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
 layout_mode = 2
-text = "Hastatiaaaaaa"
+text = "Hastati"
 unit_data = ExtResource("5_sgoi6")
 
 [node name="BtnArmyCreatorUnit2" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ContainerBtnCreatorUnits" instance=ExtResource("4_jqncl")]
@@ -140,6 +140,12 @@ size_flags_horizontal = 3
 text = "Cost:  "
 
 [node name="LabelMaintanence" type="Label" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Maintanence: "
+
+[node name="LabelManpowerCost" type="Label" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
