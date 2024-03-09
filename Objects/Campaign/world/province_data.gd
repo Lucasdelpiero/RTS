@@ -7,7 +7,7 @@ var name : String = "Unnamed"
 var base_income : float = 0.0
 var population : int = 1
 var religion : String = "none"
-var culture : String = "none"
+var culture : int = 0
 var terrain_type : String = "none"
 
 var buildings : Array[Building] = []
@@ -33,6 +33,8 @@ func set_data_from_object(aProvince : Province = null) -> void:
 	for property in in_both as Array[String]:
 		set(property, aProvince.get(property))
 		#print("%s: %s" % [property, get(property)])
+	
+
 	
 	# For properties that are not shared it has to be done here
 	buildings = aProvince.buildings_manager.buildings 

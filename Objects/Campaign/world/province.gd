@@ -204,7 +204,6 @@ func send_data_to_ui() -> void:
 	
 	var data : ProvinceData = ProvinceData.new()
 	data.set_data_from_object(self) 
-	
 	sg_send_data_to_ui.connect(campaign_UI.update_province_data)
 	emit_signal("sg_send_data_to_ui", data)
 	sg_send_data_to_ui.disconnect(campaign_UI.update_province_data)

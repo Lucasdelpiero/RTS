@@ -10,10 +10,12 @@ var last_time_production_data : TotalProductionData = null
 
 @onready var buildingsUI : BuildingsUI = %BuildingsUI as BuildingsUI
 
-@onready var province : Panel = %Province as Panel
-@onready var populationLabel : Label = %PopulationLabel as Label
-@onready var incomeLabel : Label = %IncomeLabel as Label
-@onready var nameLabel : Label = %NameLabel as Label
+@onready var province := %Province as Panel
+@onready var population_label := %PopulationLabel as Label
+@onready var income_label := %IncomeLabel as Label
+@onready var name_label := %NameLabel as Label
+@onready var culture_label := %CultureLabel as Label
+@onready var religion_label := %ReligionLabel as Label
 
 @onready var armiesContainer := %ArmiesContainer as ArmiesContainer
 @onready var mapTypesManager : PanelContainer = %MapTypesManager as PanelContainer
@@ -99,9 +101,13 @@ func update_province_data(data : ProvinceData) -> void:
 		set_province_visibility(false)
 		return
 	set_province_visibility(true)
-	populationLabel.text = "Population: %s" % [data.population]
-	incomeLabel.text = "Income: %s" % [data.base_income]
-	nameLabel.text = "%s" %[data.name]
+	population_label.text = "Population: %s" % [data.population]
+	income_label.text = "Income: %s" % [data.base_income]
+	name_label.text = "%s" %[data.name]
+	var culture : String = Cultures.get_name_by_enum(data.culture)
+	culture_label.text = "%s" % [culture.capitalize()]
+	religion_label.text = "%s" % [data.religion.capitalize()]
+	
 	
 	buildingsUI.province_data = data # sends all data including the buildings 
 	pass

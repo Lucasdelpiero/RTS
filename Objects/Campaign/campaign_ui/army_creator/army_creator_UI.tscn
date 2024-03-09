@@ -30,7 +30,7 @@ unique_name_in_owner = true
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(730, 435)
 layout_mode = 0
-offset_right = 928.0
+offset_right = 916.0
 offset_bottom = 435.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
@@ -80,6 +80,13 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Create army"
+
+[node name="BtnProvinceSpawn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Recruited in:"
+alignment = 0
 
 [node name="NewArmyManager" type="PanelContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -137,31 +144,24 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Cost:  "
+text = "Cost: 0"
 
 [node name="LabelMaintanence" type="Label" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Maintanence: "
+text = "Maintanence: 0"
 
 [node name="LabelManpowerCost" type="Label" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Maintanence: "
+text = "Manpower cost: 0 "
 
 [node name="TotalUnits" type="Label" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Total:"
-
-[node name="BtnProvinceSpawn" type="Button" parent="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-focus_mode = 0
-text = "Recruited in:"
-alignment = 0
+text = "Army size: 0"
 
 [node name="SpawnProvincePanel" type="PanelContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -178,8 +178,8 @@ layout_mode = 2
 text = "Province to spawn in:"
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]
 [connection signal="units_list_changed" from="HBoxContainer/NewArmyManager" to="." method="check_if_can_afford_army"]
 [connection signal="pressed" from="HBoxContainer/NewArmyManager/VBoxContainer2/BtnCloseWindow" to="." method="_on_btn_close_window_pressed"]
 [connection signal="child_entered_tree" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ContainerBtnNewArmy" to="HBoxContainer/NewArmyManager" method="_on_container_btn_new_army_child_entered_tree"]
 [connection signal="child_exiting_tree" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/ContainerBtnNewArmy" to="HBoxContainer/NewArmyManager" method="_on_container_btn_new_army_child_exiting_tree"]
-[connection signal="pressed" from="HBoxContainer/NewArmyManager/VBoxContainer2/VBoxContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]
