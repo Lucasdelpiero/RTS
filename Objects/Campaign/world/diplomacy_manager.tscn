@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coyngrgktqsap"]
+
+[ext_resource type="Script" path="res://Objects/Campaign/world/diplomacy_manager.gd" id="1_18e62"]
+
+[node name="DiplomacyManager" type="Node"]
+script = ExtResource("1_18e62")

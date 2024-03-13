@@ -10,6 +10,7 @@ var map : AStar2D # navmap
 @onready var mouse := $Mouse as Mouse
 @onready var battleMenu := %BattleMenu as Control # temporarelly instanced always
 var armies_in_battle : Array[ArmyCampaing] = []
+@onready var nations_group := %NationsGroup as Node
 
 var playerNation : String = "ROME"
 var playerNode : Nation = null

@@ -1,10 +1,11 @@
-[gd_scene load_steps=79 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=80 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
 [ext_resource type="PackedScene" uid="uid://cflnvw8xegsy5" path="res://Objects/General/camera.tscn" id="3_h1dnb"]
 [ext_resource type="PackedScene" uid="uid://cynwt6kdn6rk7" path="res://Objects/Campaign/campaign_ui/campaign_ui.tscn" id="4_h0nd8"]
 [ext_resource type="PackedScene" uid="uid://dwmaniuju8qd7" path="res://Objects/Campaign/world/nation.tscn" id="5_j8h1j"]
+[ext_resource type="PackedScene" uid="uid://coyngrgktqsap" path="res://Objects/Campaign/world/diplomacy_manager.tscn" id="5_vu0ir"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="6_rnqqn"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="7_62luw"]
 [ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="8_2js6r"]
@@ -347,7 +348,12 @@ metadata/_edit_lock_ = true
 [node name="Province" parent="CampaingUI/Container" index="1"]
 visible = false
 
+[node name="DiplomacyManager" parent="." node_paths=PackedStringArray("nation_group") instance=ExtResource("5_vu0ir")]
+unique_name_in_owner = true
+nation_group = NodePath("../NationsGroup")
+
 [node name="NationsGroup" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Rome" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "ROME"
