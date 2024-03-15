@@ -345,7 +345,15 @@ offset_top = 57.0
 offset_right = 123.0
 offset_bottom = 88.0
 focus_mode = 0
-text = "Army Creation"
+text = " Army Creation "
+
+[node name="BtnDiplomacy" type="Button" parent="Container"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 57.0
+offset_right = 223.0
+offset_bottom = 88.0
+text = " Diplomacy "
 
 [connection signal="sg_gold_amount_changed" from="." to="Container/ArmyCreatorUI" method="_on_campaing_ui_sg_gold_amount_changed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
