@@ -176,7 +176,7 @@ func _on_btn_diplomacy_pressed() -> void:
 		return
 	
 	var player_tag : String = Globals.playerNation
-	Signals.diplomacy_nation_request_data(player_tag)
+	Signals.sg_diplomacy_nation_request_data.emit(player_tag)
 	
 
 func set_relations_data(data: DiplomacyNation) -> void:

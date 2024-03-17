@@ -75,5 +75,4 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 func diplomacy_nation_send_data_to_UI(nation_tag: String) -> void:
 	print(nation_tag)
 	var relations_data := get_relationships_from(nation_tag)
-	Signals.diplomacy_nation_send_data(relations_data)
-	#Signals.diplomacy_nation_send_data(data)
+	Signals.sg_diplomacy_nation_send_data.emit(relations_data)
