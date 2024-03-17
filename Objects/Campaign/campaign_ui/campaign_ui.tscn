@@ -332,6 +332,7 @@ grow_horizontal = 0
 layout_mode = 2
 
 [node name="ArmyCreatorUI" parent="Container" instance=ExtResource("16_malfg")]
+visible = false
 layout_mode = 1
 offset_left = 4.0
 offset_top = 125.0
@@ -353,7 +354,21 @@ offset_left = 133.0
 offset_top = 57.0
 offset_right = 223.0
 offset_bottom = 88.0
+focus_mode = 0
 text = " Diplomacy "
+
+[node name="DiplomacyContainer" type="PanelContainer" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 271.0
+offset_top = 113.0
+offset_right = 485.0
+offset_bottom = 369.0
+
+[node name="Test" type="VBoxContainer" parent="Container/DiplomacyContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
 
 [connection signal="sg_gold_amount_changed" from="." to="Container/ArmyCreatorUI" method="_on_campaing_ui_sg_gold_amount_changed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]
@@ -365,3 +380,4 @@ text = " Diplomacy "
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnReligionMap" to="Container/MapTypesManager" method="_on_btn_religion_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnCultureMap" to="Container/MapTypesManager" method="_on_btn_culture_map_button_down"]
 [connection signal="pressed" from="Container/BtnArmyCreation" to="Container/ArmyCreatorUI" method="_on_btn_army_creation_pressed"]
+[connection signal="pressed" from="Container/BtnDiplomacy" to="." method="_on_btn_diplomacy_pressed"]

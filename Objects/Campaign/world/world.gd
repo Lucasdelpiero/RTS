@@ -11,6 +11,7 @@ var map : AStar2D # navmap
 @onready var battleMenu := %BattleMenu as Control # temporarelly instanced always
 var armies_in_battle : Array[ArmyCampaing] = []
 @onready var nations_group := %NationsGroup as Node
+@onready var diplomacy_manager := %DiplomacyManager as DiplomacyManager
 
 var playerNation : String = "ROME"
 var playerNode : Nation = null

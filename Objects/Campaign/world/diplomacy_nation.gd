@@ -1,6 +1,7 @@
 class_name DiplomacyNation
 extends Resource
 
+
 # Contains all diplomatically relationships between one state and all the others
 var NATION_TAG  : String = ""
 var culture : Cultures.list = Cultures.list.NONE
@@ -33,14 +34,31 @@ func calculate_relationships(nations : Array[Nation]) -> void:
 
 
 func improve_relationship_with(nation_tag : String, amount: int) -> void:
-	var nation_tag_pos : int = relationships.map(func(el: Array) -> String: return el[0]).find(nation_tag) # TODO change this unsafe shit
+	var nation_tag_pos : int = -1 # default value
+	for i in relationships.size():
+		if relationships[i][0] == nation_tag:
+			nation_tag_pos = i
+	
 	if nation_tag_pos == -1:
 		push_error("Couldnt find the nation to improve relationship with")
 		return
+	
 	# TEST
 	var new_value : int = relationships[nation_tag_pos][1] + amount
 	relationships[nation_tag_pos] = [nation_tag , new_value]
-	relationships[2][0] = "ALFONSO"
-	relationships[2][1] = 69
 	# TEST
+	pass
+
+func get_relationship_with(nation_tag: String) -> DiplomacyNation:
+	var nation_tag_pos : int = -1 # default value
+	for i in relationships.size():
+		if relationships[i][0] == nation_tag:
+			nation_tag_pos = i
+	
+	if nation_tag_pos == -1:
+		push_error("Couldnt find the nation to get relationship with")
+		return null
+	
+	return relationships[nation_tag_pos]
+	
 	pass

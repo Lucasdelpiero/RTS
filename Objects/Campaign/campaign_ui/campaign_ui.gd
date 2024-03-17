@@ -1,6 +1,10 @@
 class_name CampaignUI
 extends CanvasLayer
 
+signal changed_map_shown(type : String)
+signal sg_gold_amount_changed # tells the building buttons and UI that the gold amount of the player changed
+signal sg_diplomacy_data_requested(nation_tag : String) # Requests the world node to send data to the CampaignUI node
+
 var gold : int = 0
 var last_time_production_data : TotalProductionData = null
 @onready var gold_label : RichTextLabel = %GoldLabel as RichTextLabel
@@ -19,6 +23,7 @@ var last_time_production_data : TotalProductionData = null
 
 @onready var armiesContainer := %ArmiesContainer as ArmiesContainer
 @onready var mapTypesManager : PanelContainer = %MapTypesManager as PanelContainer
+@onready var diplomacy_container := %DiplomacyContainer as PanelContainer
 
 const COLOR_GREEN : Color = Color.GREEN_YELLOW
 const COLOR_RED : Color = Color.FIREBRICK
@@ -26,18 +31,18 @@ const COLOR_GREY : Color = Color.LIGHT_SLATE_GRAY
 
 const COLOR_GOLD : Color = Color.GOLD
 
-signal changed_map_shown(type : String)
-signal sg_gold_amount_changed # tells the building buttons and UI that the gold amount of the player changed
 
 var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
 func _init() -> void:
 	Globals.campaign_UI = self
+	Signals.sg_diplomacy_nation_send_data.connect(set_relations_data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = true
 	mapTypesManager.new_map_selected.connect(change_map_shown)
+	diplomacy_container.visible = false
 	#Globals.campaign_UI = self
 	pass # Replace with function body.
 
@@ -161,3 +166,33 @@ func _on_button_pressed() -> void:
 #	print("btn pressed")
 	pass # Replace with function body.
 
+
+
+func _on_btn_diplomacy_pressed() -> void:
+	diplomacy_container.visible = !diplomacy_container.visible 
+	var world := Globals.campaign_map as CampaignMap
+	if world == null:
+		push_error("Couldnt find the world")
+		return
+	
+	var player_tag : String = Globals.playerNation
+	Signals.diplomacy_nation_request_data(player_tag)
+	
+
+func set_relations_data(data: DiplomacyNation) -> void:
+	print(data.relationships)
+	var test := %Test as Control
+	
+	# Delete children
+	for child in test.get_children() as Array[Node]:
+		child.queue_free()
+		
+	for relation in data.relationships as Array[Array]:
+		var new_label := Label.new() 
+		test.add_child(new_label)
+		new_label.text = "%s : %s" % [relation[0], relation[1]]
+		
+		
+		pass
+	
+	pass
