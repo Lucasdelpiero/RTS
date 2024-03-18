@@ -11,4 +11,11 @@ signal sg_diplomacy_nation_request_data(nation_tag : String)
 # DiplomacyManager get a request for data and then send the data 
 signal sg_diplomacy_nation_send_data(data : DiplomacyNation)
 
+# Used in the battlemap when pressing a number to select a group
+func battlemap_set_units_selected(unit : Unit, value : bool) -> void:
+	sg_battlemap_set_units_selected.emit(unit, value)
+
+func battlemap_set_units_hovered(unit : Unit, value : bool) -> void:
+	sg_battlemap_set_units_hovered.emit(unit, value)
+
 
