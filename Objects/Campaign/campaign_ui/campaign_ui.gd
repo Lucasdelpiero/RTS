@@ -23,7 +23,7 @@ var last_time_production_data : TotalProductionData = null
 
 @onready var armiesContainer := %ArmiesContainer as ArmiesContainer
 @onready var mapTypesManager : PanelContainer = %MapTypesManager as PanelContainer
-@onready var diplomacy_container := %DiplomacyContainer as PanelContainer
+@onready var diplomacy_UI := %DiplomacyUI as DiplomacyUI
 
 const COLOR_GREEN : Color = Color.GREEN_YELLOW
 const COLOR_RED : Color = Color.FIREBRICK
@@ -36,13 +36,12 @@ var selectedArmies : Array[ArmyCampaing] = [] # Used in UI
 
 func _init() -> void:
 	Globals.campaign_UI = self
-	Signals.sg_diplomacy_nation_send_data.connect(set_relations_data)
+	#Signals.sg_diplomacy_nation_send_data.connect(set_relations_data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = true
 	mapTypesManager.new_map_selected.connect(change_map_shown)
-	diplomacy_container.visible = false
 	#Globals.campaign_UI = self
 	pass # Replace with function body.
 
@@ -169,7 +168,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_btn_diplomacy_pressed() -> void:
-	diplomacy_container.visible = !diplomacy_container.visible 
+	diplomacy_UI.visible = !diplomacy_UI.visible 
 	var world := Globals.campaign_map as CampaignMap
 	if world == null:
 		push_error("Couldnt find the world")

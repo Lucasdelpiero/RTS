@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cynwt6kdn6rk7"]
+[gd_scene load_steps=18 format=3 uid="uid://cynwt6kdn6rk7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/campaign_ui.gd" id="1_m73j6"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/ArmiesContainer.gd" id="2_hbtxh"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxkxansqr52n" path="res://Objects/Campaign/campaign_ui/overview_container.tscn" id="11_q7mbf"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="14_x8ggf"]
 [ext_resource type="PackedScene" uid="uid://bxcpvldpdl5np" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.tscn" id="16_malfg"]
+[ext_resource type="PackedScene" uid="uid://cn1pw3qq8o0oo" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.tscn" id="17_tguus"]
 
 [node name="CampaingUI" type="CanvasLayer"]
 process_mode = 3
@@ -357,18 +358,13 @@ offset_bottom = 88.0
 focus_mode = 0
 text = " Diplomacy "
 
-[node name="DiplomacyContainer" type="PanelContainer" parent="Container"]
+[node name="DiplomacyUI" parent="Container" instance=ExtResource("17_tguus")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 271.0
-offset_top = 113.0
-offset_right = 485.0
-offset_bottom = 369.0
-
-[node name="Test" type="VBoxContainer" parent="Container/DiplomacyContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-alignment = 1
+offset_left = 222.0
+offset_top = 110.0
+offset_right = 436.0
+offset_bottom = 366.0
 
 [connection signal="sg_gold_amount_changed" from="." to="Container/ArmyCreatorUI" method="_on_campaing_ui_sg_gold_amount_changed"]
 [connection signal="pressed" from="Container/Province/BuildingsUI/BuildingsContainer/AddBuilding" to="Container/Province/BuildingsUI" method="_on_add_building_pressed"]

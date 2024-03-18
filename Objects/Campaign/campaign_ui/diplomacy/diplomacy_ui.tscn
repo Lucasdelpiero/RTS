@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn1pw3qq8o0oo"]
+
+[ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_ekkjt"]
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.gd" id="1_p0bcd"]
+[ext_resource type="PackedScene" uid="uid://bv5ukbkf0qppu" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.tscn" id="3_tfvbl"]
+
+[node name="DiplomacyUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 646.0
+theme = ExtResource("1_ekkjt")
+script = ExtResource("1_p0bcd")
+BtnDiplomacyNationP = ExtResource("3_tfvbl")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_left = 228.0
+offset_top = 96.0
+offset_right = 435.0
+offset_bottom = 354.0
+
+[node name="ListRelationships" type="VBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="BtnDiplomacyNation" parent="PanelContainer/ListRelationships" instance=ExtResource("3_tfvbl")]
+layout_mode = 2
+
+[node name="BtnDiplomacyNation" parent="." instance=ExtResource("3_tfvbl")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 204.0
+offset_bottom = 51.0

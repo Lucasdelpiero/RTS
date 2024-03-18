@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv5ukbkf0qppu"]
+
+[ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_8tfjq"]
+[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.gd" id="1_i2xsw"]
+[ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_y2iiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf1nk"]
+
+[node name="BtnDiplomacyNation" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 40)
+offset_left = 24.0
+offset_top = 152.0
+offset_right = 206.0
+offset_bottom = 192.0
+theme = ExtResource("1_y2iiy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mf1nk")
+script = ExtResource("1_i2xsw")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SplitContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/SplitContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/SplitContainer/MarginContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_8tfjq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+
+[node name="SplitContainer" type="SplitContainer" parent="HBoxContainer/SplitContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+split_offset = 180
+dragger_visibility = 2
+
+[node name="LabelNation" type="Label" parent="HBoxContainer/SplitContainer/MarginContainer/SplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Macedonia"
+
+[node name="LabelRelations" type="Label" parent="HBoxContainer/SplitContainer/MarginContainer/SplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
