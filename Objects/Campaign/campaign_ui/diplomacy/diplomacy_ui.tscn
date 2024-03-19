@@ -31,9 +31,31 @@ alignment = 1
 [node name="BtnDiplomacyNation" parent="PanelContainer/ListRelationships" instance=ExtResource("3_tfvbl")]
 layout_mode = 2
 
-[node name="BtnDiplomacyNation" parent="." instance=ExtResource("3_tfvbl")]
+[node name="DiploActionsContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 204.0
-offset_bottom = 51.0
+offset_left = 438.0
+offset_top = 98.0
+offset_right = 569.0
+offset_bottom = 350.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DiploActionsContainer"]
+layout_mode = 2
+
+[node name="BtnImproveRelations" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Improve relations"
+
+[node name="BtnDecreaseRelations" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Decrease relations"
+
+[node name="BtnMakeClientState" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Make client state"
+
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDecreaseRelations" to="." method="_on_btn_decrease_relations_pressed"]

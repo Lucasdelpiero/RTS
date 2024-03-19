@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://besh0hskqlkv7"]
+[gd_scene load_steps=4 format=3 uid="uid://besh0hskqlkv7"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/military/battle_menu.gd" id="1_32am3"]
+[ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_fvykk"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="2_ejs2v"]
 
 [node name="BattleMenu" type="Panel"]
@@ -14,6 +15,7 @@ offset_bottom = -442.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_fvykk")
 script = ExtResource("1_32am3")
 
 [node name="Btn_StartBattle" parent="." instance=ExtResource("2_ejs2v")]

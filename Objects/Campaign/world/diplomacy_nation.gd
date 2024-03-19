@@ -49,7 +49,7 @@ func improve_relationship_with(nation_tag : String, amount: int) -> void:
 	# TEST
 	pass
 
-func get_relationship_with(nation_tag: String) -> DiplomacyNation:
+func get_relationship_with(nation_tag: String) -> int:
 	var nation_tag_pos : int = -1 # default value
 	for i in relationships.size():
 		if relationships[i][0] == nation_tag:
@@ -57,8 +57,8 @@ func get_relationship_with(nation_tag: String) -> DiplomacyNation:
 	
 	if nation_tag_pos == -1:
 		push_error("Couldnt find the nation to get relationship with")
-		return null
+		return -1
 	
-	return relationships[nation_tag_pos]
+	return relationships[nation_tag_pos][1]
 	
 	pass

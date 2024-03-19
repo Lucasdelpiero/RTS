@@ -16,6 +16,7 @@ var diplomacy_nations : Array[DiplomacyNation] = []
 
 func _init() -> void:
 	Signals.sg_diplomacy_nation_request_data.connect(diplomacy_nation_send_data_to_UI)
+	Signals.sg_diplomacy_nation_improve_relations.connect(improve_relationship)
 
 func _ready() -> void:
 	if nation_group == null:
@@ -39,14 +40,14 @@ func _ready() -> void:
 		#print(nation.NATION_TAG)
 		#print(nation.relationships)
 		if nation.NATION_TAG != "ROME":
-			improve_relationship("ROME",nation.NATION_TAG)
+			improve_relationship("ROME",nation.NATION_TAG, 25)
 		#print(nation.NATION_TAG)
 		#print(nation.relationships)
 	# TEST
 	
 
 # Uses the NATION_TAG string to find the diplomacy nations and improve their relationship
-func improve_relationship(sender: String, reciever: String) -> void:
+func improve_relationship(sender: String, reciever: String, amount: int) -> void:
 	var diplomacy_nation_tags : Array = diplomacy_nations.map(func(el: DiplomacyNation) -> String: return el.NATION_TAG)
 	var sender_position : int = diplomacy_nation_tags.find(sender)
 	var reciever_position : int = diplomacy_nation_tags.find(reciever)
@@ -54,9 +55,12 @@ func improve_relationship(sender: String, reciever: String) -> void:
 		push_error("Sender or reciever couldnt be found on diplomacy list")
 		return
 	# TEST
-	var improvement : int = 55
-	diplomacy_nations[reciever_position].improve_relationship_with(sender, improvement)
+	diplomacy_nations[reciever_position].improve_relationship_with(sender, amount)
 	# TEST
+	# Sends the data so that the buttons update their values
+	if sender == Globals.playerNation:
+		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.playerNation)
+		Signals.sg_diplomacy_relations_changed.emit(reciever, current_relations)
 	pass
 
 func get_relationships_from(nation_tag: String) -> DiplomacyNation:
@@ -73,6 +77,5 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 # Sends the relationships data of the player nation to the UI 
 # UI request it -> DiplomacyManager send it -> UI use it
 func diplomacy_nation_send_data_to_UI(nation_tag: String) -> void:
-	print(nation_tag)
 	var relations_data := get_relationships_from(nation_tag)
 	Signals.sg_diplomacy_nation_send_data.emit(relations_data)
