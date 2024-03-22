@@ -20,7 +20,7 @@ signal sg_diplomacy_relations_changed(nation_tag: String, new_value: int)
 # a panel so the nation can be interacted with
 signal sg_btn_diplomacy_nation_selected(nation_tag : String)
 
-signal sg_btn_diplomacy_annexed_nation(nation_tag: String)
+signal sg_btn_diplomacy_annexed_nation(nation_tag: String, target_tag: String)
 
 #endregion
 

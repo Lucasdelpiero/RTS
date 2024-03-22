@@ -229,19 +229,27 @@ func _on_timer_generate_resources_timeout() -> void:
 		pass
 	pass # Replace with function body.
 
-# Deletes the nation annexed
-func annexed_nation(nation_tag: String)-> void:
+# Deletes the nation annexed and gives the provinces to the target nation
+func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> void:
 	# TEST it needs to be its own function and have a target so the IA can use it
 	for province in get_tree().get_nodes_in_group("provinces") as Array[Province]:
-		if province.ownership == nation_tag:
-			province.ownership = Globals.playerNation
+		if province.ownership == annexed_nation_tag:
+			province.ownership = target_nation_tag
 			province.set_color_inside(Globals.player_nation_node.nationColor)
 			province.set_color_border(Globals.player_nation_node.nationOutline)
+			var target_nation : Nation = get_nation_by_tag(target_nation_tag)
+			if target_nation == null:
+				push_error("This error shouldnt happen wtf")
+				return
+			province.nation_owner = target_nation
+			province.sg_resources_generated.connect(target_nation.resource_incoming)
+
+			
 			# NOTE NEEDS TO UPDATE THE RESOURCES
 	# TEST
 	
 	for nation in nations:
-		if nation.NATION_TAG == nation_tag:
+		if nation.NATION_TAG == annexed_nation_tag:
 			nations.erase(nation) # Remove this line to test so it doesnt crash the game when there is no nation
 			nation.queue_free()
 	
