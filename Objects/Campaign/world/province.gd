@@ -14,7 +14,16 @@ extends Polygon2D
 
 @export_category("Ownership")
 @export var ownership := ""
-var nation_owner : Nation  = null # used to get bonuses for resources
+
+# used to get bonuses for resources
+var nation_owner : Nation  = null :
+	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
+		nation_owner = new_owner
+		ownership = new_owner.NATION_TAG
+		set_color_inside(new_owner.nationColor)
+		set_color_border(new_owner.nationOutline)
+		# TODO disconnect all signals from sg_resources_generated because the province will keep sending resources to the former nation if this one exists
+		sg_resources_generated.connect(new_owner.resource_incoming)
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID : int = 0
@@ -95,6 +104,7 @@ func _input(_event : InputEvent) -> void:
 #			selected = true
 #		else:
 #			selected = false
+
 
 func set_color_inside(col: Color) -> void:
 	inside_color = col
