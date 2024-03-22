@@ -2,10 +2,8 @@ extends Node
 
 var battle_map : BattleMap = null 
 
-signal sg_battlemap_set_units_selected(unit : Unit, value : bool) # DO NOTHING YET
-signal sg_battlemap_set_units_hovered(unit : Unit, value : bool) # DO NOTHING YET
-
 # UI
+#region diplomacy
 # UI request data -> DiplomacyManager recieve it  
 signal sg_diplomacy_nation_request_data(nation_tag : String)
 
@@ -21,6 +19,14 @@ signal sg_diplomacy_relations_changed(nation_tag: String, new_value: int)
 # Used when the button representing a nation is pressed to send data to create
 # a panel so the nation can be interacted with
 signal sg_btn_diplomacy_nation_selected(nation_tag : String)
+
+signal sg_btn_diplomacy_annexed_nation(nation_tag: String)
+
+#endregion
+
+
+signal sg_battlemap_set_units_selected(unit : Unit, value : bool) # DO NOTHING YET
+signal sg_battlemap_set_units_hovered(unit : Unit, value : bool) # DO NOTHING YET
 
 # Used in the battlemap when pressing a number to select a group
 func battlemap_set_units_selected(unit : Unit, value : bool) -> void:

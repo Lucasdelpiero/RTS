@@ -52,6 +52,11 @@ layout_mode = 2
 focus_mode = 0
 text = "Decrease relations"
 
+[node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Annex state"
+
 [node name="BtnMakeClientState" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
@@ -59,3 +64,4 @@ text = "Make client state"
 
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDecreaseRelations" to="." method="_on_btn_decrease_relations_pressed"]
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnAnnex" to="." method="_on_btn_annex_pressed"]

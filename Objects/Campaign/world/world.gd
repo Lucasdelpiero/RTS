@@ -5,7 +5,6 @@ class_name CampaignMap
 var map : AStar2D # navmap
 
 @onready var navigation := $NavigationRegion2D as NavigationRegion2D
-@onready var nationsGroup := $NationsGroup as Node
 @onready var UI : = %CampaingUI as CampaignUI
 @onready var mouse := $Mouse as Mouse
 @onready var battleMenu := %BattleMenu as Control # temporarelly instanced always
@@ -27,6 +26,7 @@ var dictionary_ID_to_name : Dictionary = {}
 
 func _init() -> void:
 	Globals.campaign_map = self
+	Signals.sg_btn_diplomacy_annexed_nation.connect(annexed_nation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,7 +44,7 @@ func initialize_world() -> void:
 	
 #	army.get_to_closer_point(map)
 
-	nations.assign(nationsGroup.get_children())
+	nations.assign(nations_group.get_children())
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
@@ -228,3 +228,21 @@ func _on_timer_generate_resources_timeout() -> void:
 		nation.process_resources_recieved()
 		pass
 	pass # Replace with function body.
+
+# Deletes the nation annexed
+func annexed_nation(nation_tag: String)-> void:
+	# TEST it needs to be its own function and have a target so the IA can use it
+	for province in get_tree().get_nodes_in_group("provinces") as Array[Province]:
+		if province.ownership == nation_tag:
+			province.ownership = Globals.playerNation
+			province.set_color_inside(Globals.player_nation_node.nationColor)
+			province.set_color_border(Globals.player_nation_node.nationOutline)
+			# NOTE NEEDS TO UPDATE THE RESOURCES
+	# TEST
+	
+	for nation in nations:
+		if nation.NATION_TAG == nation_tag:
+			nations.erase(nation) # Remove this line to test so it doesnt crash the game when there is no nation
+			nation.queue_free()
+	
+

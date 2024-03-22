@@ -2,7 +2,7 @@
 class_name Province # New icon o be made
 extends Polygon2D
 
-@onready var inside_color : Color = Color(1.0, 1.0, 1.0)
+@onready var inside_color : Color = Color(1.0, 1.0, 1.0) : set = set_color_inside
 @onready var outside_color : Color = Color(0.0, 0.0, 0.0)
 @export_color_no_alpha var outLine : Color = Color(0, 0, 0) : set = set_color_border
 @export_range(1, 20, 0.1) var width : float = 2.0 : set = set_width
@@ -95,6 +95,11 @@ func _input(_event : InputEvent) -> void:
 #			selected = true
 #		else:
 #			selected = false
+
+func set_color_inside(col: Color) -> void:
+	inside_color = col
+	color = inside_color
+	queue_redraw()
 
 func set_color_border(col : Color) -> void:
 	outLine = col

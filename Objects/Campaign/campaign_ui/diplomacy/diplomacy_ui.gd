@@ -62,3 +62,9 @@ func _on_btn_decrease_relations_pressed() -> void:
 		push_error("Not a nation selected to interact with")
 		return
 
+
+func _on_btn_annex_pressed() -> void:
+	if current_diplomacy_tag == "":
+		push_error("not a nation selected to annex")
+		return
+	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag)
