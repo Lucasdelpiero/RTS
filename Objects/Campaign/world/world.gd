@@ -234,18 +234,15 @@ func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> voi
 	# TEST it needs to be its own function and have a target so the IA can use it
 	for province in get_tree().get_nodes_in_group("provinces") as Array[Province]:
 		if province.ownership == annexed_nation_tag:
-			province.ownership = target_nation_tag
-			province.set_color_inside(Globals.player_nation_node.nationColor)
-			province.set_color_border(Globals.player_nation_node.nationOutline)
 			var target_nation : Nation = get_nation_by_tag(target_nation_tag)
 			if target_nation == null:
 				push_error("This error shouldnt happen wtf")
 				return
+			province.ownership = target_nation_tag
+			province.set_color_inside(target_nation.nationColor)
+			province.set_color_border(target_nation.nationOutline)
 			province.nation_owner = target_nation
 			province.sg_resources_generated.connect(target_nation.resource_incoming)
-
-			
-			# NOTE NEEDS TO UPDATE THE RESOURCES
 	# TEST
 	
 	for nation in nations:
