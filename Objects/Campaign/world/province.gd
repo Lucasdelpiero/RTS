@@ -22,6 +22,7 @@ var nation_owner : Nation  = null :
 		ownership = new_owner.NATION_TAG
 		set_color_inside(new_owner.nationColor)
 		set_color_border(new_owner.nationOutline)
+		outside_color = new_owner.nationOutline
 		# TODO disconnect all signals from sg_resources_generated because the province will keep sending resources to the former nation if this one exists
 		sg_resources_generated.connect(new_owner.resource_incoming)
 
