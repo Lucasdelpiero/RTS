@@ -12,6 +12,7 @@ var current_diplomacy_tag : String = ""
 func _init() -> void:
 	Signals.sg_diplomacy_nation_send_data.connect(set_relations_data)
 	Signals.sg_btn_diplomacy_nation_selected.connect(set_current_diplomacy_nation_selected)
+	Signals.sg_nation_deleted.connect(delete_btn_diplomacy_nation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,7 +46,12 @@ func set_relations_data(data: DiplomacyNation) -> void:
 func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	current_diplomacy_tag = nation_tag
 	diplo_actions_container.visible = true
-	
+
+func delete_btn_diplomacy_nation(nation_tag : String) -> void:
+	for button  in list_relationships.get_children() as Array[BtnDiplomacyNation]:
+		if button.NATION_TAG == nation_tag:
+			button.queue_free()
+			return
 
 func _on_btn_improve_relations_pressed() -> void:
 	if current_diplomacy_tag == null:

@@ -61,4 +61,9 @@ func get_relationship_with(nation_tag: String) -> int:
 	
 	return relationships[nation_tag_pos][1]
 	
-	pass
+# Used when a nation dissapears
+func delete_relationship(nation_tag: String) -> void:
+	for i in relationships.size():
+		if relationships[i][0] == nation_tag:
+			relationships.erase(relationships[i])
+			return

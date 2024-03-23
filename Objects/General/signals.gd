@@ -2,6 +2,19 @@ extends Node
 
 var battle_map : BattleMap = null 
 
+# World
+# When the world has new or less nations and modify its array containing the nations
+# all the things that needs to keep an array of the living nations are updated with
+# the new array (UI, diplomacy relationships, etc)
+signal sg_nations_array_changed(nation_array: Array[Nation])
+
+# For when a nation is deleted and one wants to delete this specific nation from
+# parts of the code without having to use the entire list of nations
+# ex. removing a deleted nation from a list without having to create the list from zero
+# with all the nations containing the array 
+# Used in the world when a nation is annexed
+signal sg_nation_deleted(nation_tag : String)
+
 # UI
 #region diplomacy
 # UI request data -> DiplomacyManager recieve it  

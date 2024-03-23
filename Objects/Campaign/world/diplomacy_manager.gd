@@ -17,6 +17,9 @@ var diplomacy_nations : Array[DiplomacyNation] = []
 func _init() -> void:
 	Signals.sg_diplomacy_nation_request_data.connect(diplomacy_nation_send_data_to_UI)
 	Signals.sg_diplomacy_nation_improve_relations.connect(improve_relationship)
+	Signals.sg_nations_array_changed.connect(update_nations_array)
+	Signals.sg_nation_deleted.connect(delete_nation_from_relationships)
+	
 
 func _ready() -> void:
 	if nation_group == null:
@@ -79,3 +82,17 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 func diplomacy_nation_send_data_to_UI(nation_tag: String) -> void:
 	var relations_data := get_relationships_from(nation_tag)
 	Signals.sg_diplomacy_nation_send_data.emit(relations_data)
+
+func update_nations_array(nations_array : Array[Nation]) -> void:
+	nations.assign(nations_array)
+
+func delete_nation_from_relationships(nation_tag: String) -> void:
+	var diplomacy_nation_to_erase : DiplomacyNation = null
+	for diplo_nation in diplomacy_nations:
+		diplo_nation.delete_relationship(nation_tag)
+		if diplo_nation.NATION_TAG == nation_tag:
+			diplomacy_nation_to_erase = diplo_nation
+		
+	if diplomacy_nation_to_erase != null:
+		diplomacy_nations.erase(diplomacy_nation_to_erase)
+		

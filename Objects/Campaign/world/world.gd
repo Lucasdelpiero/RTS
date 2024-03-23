@@ -1,6 +1,7 @@
 extends Node2D
 class_name CampaignMap
 
+
 @export var main : Main
 var map : AStar2D # navmap
 
@@ -14,7 +15,9 @@ var armies_in_battle : Array[ArmyCampaing] = []
 
 var playerNation : String = "ROME"
 var playerNode : Nation = null
-var nations : Array[Nation] = []
+# Needs to call the signals when updated because using assign doesnt trigger a setter
+# NOTE it could be used a setter and assigning inside the setter (to try) 
+var nations : Array[Nation] = [] 
 var provinces : Array[Province] = []
 var provinceSelected : Province = null
 
@@ -43,8 +46,8 @@ func initialize_world() -> void:
 	main = get_tree().get_nodes_in_group("main")[0]
 	
 #	army.get_to_closer_point(map)
-
 	nations.assign(nations_group.get_children())
+	Signals.sg_nations_array_changed.emit(nations)
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
 			playerNation = nation.NATION_TAG
@@ -244,5 +247,8 @@ func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> voi
 		if nation.NATION_TAG == annexed_nation_tag:
 			nations.erase(nation) # Remove this line to test so it doesnt crash the game when there is no nation
 			nation.queue_free()
+			# Tells the UI who was deleted and is used to delete the corresponding
+			# UI elements to this nation (buttons to interact in diplo as ex.)
+			Signals.sg_nation_deleted.emit(annexed_nation_tag)
 	
 
