@@ -175,23 +175,19 @@ func _on_btn_diplomacy_pressed() -> void:
 		return
 	
 	var player_tag : String = Globals.playerNation
+	# Request data to to the DiplomacyManager build the DiplomacyUI
 	Signals.sg_diplomacy_nation_request_data.emit(player_tag)
 	
 
 func set_relations_data(data: DiplomacyNation) -> void:
-	print(data.relationships)
 	var test := %Test as Control
 	
 	# Delete children
 	for child in test.get_children() as Array[Node]:
 		child.queue_free()
 		
-	for relation in data.relationships as Array[Array]:
+	for relation in data.relationships as Array[DiplomacyRelationship]:
 		var new_label := Label.new() 
 		test.add_child(new_label)
-		new_label.text = "%s : %s" % [relation[0], relation[1]]
+		new_label.text = "%s : %s" % [relation.nation_tag, relation.relations]
 		
-		
-		pass
-	
-	pass
