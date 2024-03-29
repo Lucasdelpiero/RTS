@@ -28,16 +28,16 @@ func set_relations_data(data: DiplomacyNation) -> void:
 	for child in test.get_children() as Array[Node]:
 		child.queue_free()
 		
-	for relation in data.relationships as Array[Array]:
+	for relation in data.relationships as Array[DiplomacyRelationship]:
 		if BtnDiplomacyNationP == null:
 			return
 		var new_label := Label.new()
 		var btn_diplomacy_nation := BtnDiplomacyNationP.instantiate() as BtnDiplomacyNation
 		test.add_child(btn_diplomacy_nation)
 		
-		btn_diplomacy_nation.set_nation_name(str(relation[0]))
-		btn_diplomacy_nation.set_relations_value(relation[1])
-		btn_diplomacy_nation.NATION_TAG = str(relation[0])
+		btn_diplomacy_nation.set_nation_name(relation.nation_tag)
+		btn_diplomacy_nation.set_relations_value(relation.relations)
+		btn_diplomacy_nation.NATION_TAG = relation.nation_tag
 		#new_label.text = "%s : %s" % [relation[0], relation[1]]
 		
 	
