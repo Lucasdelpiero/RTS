@@ -62,7 +62,7 @@ func _on_btn_create_army_pressed() -> void:
 		push_error("Couldnt find the world")
 		return
 	
-	var player_tag : String = Globals.playerNation
+	var player_tag : String = Globals.player_nation
 	var nation := world.get_nation_by_tag(player_tag) as Nation
 	
 	if nation == null:
@@ -107,7 +107,7 @@ func _on_btn_army_creation_pressed() -> void:
 		button.queue_free()
 	
 	# Get units by the nation_tag (exclusive)
-	var nation_units_data : Array[UnitData] = Globals.get_units_by_nation(Globals.playerNation)
+	var nation_units_data : Array[UnitData] = Globals.get_units_by_nation(Globals.player_nation)
 	for unit_data in nation_units_data:
 		var new_button_unit := BtnArmyCreatorUnit.instantiate() as ButtonArmyCreatorUnit
 		container_btn_creator_units.add_child(new_button_unit)
@@ -139,7 +139,7 @@ func _on_btn_province_spawn_pressed() -> void:
 		return
 	#endregion
 	
-	var player_provinces : Array[Province] = world.get_provinces_by_tag(Globals.playerNation)
+	var player_provinces : Array[Province] = world.get_provinces_by_tag(Globals.player_nation)
 	
 	for province in player_provinces as Array[Province]:
 		var new_button_province := btn_provinceP.instantiate() as BtnProvince

@@ -195,7 +195,7 @@ func update_is_anchored(value : Variant = null) -> void:
 		anchored = value
 
 func draw_path() -> void:
-	var has_to_draw : bool = ( unit.selected and unit.ownership == Globals.playerNation )
+	var has_to_draw : bool = ( unit.selected and unit.ownership == Globals.player_nation )
 	line.visible = has_to_draw
 	if not has_to_draw:
 		return

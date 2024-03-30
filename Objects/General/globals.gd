@@ -4,19 +4,19 @@ var global_units : GlobalUnits = null
 
 var mouse_in_province : int = -1  # -1 means that no province is selected
 var camera_angle : float = 0.0
-var playerNation : String = "ROME"
+var player_nation : String = "ROME"
 var player_nation_node : Nation = null
 # Array of armies of the player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
-var playerArmy : Array = [] 
-var playerArmyData : Array[ArmyData] = []  # Array of armies data each containing units
+var player_army : Array = [] 
+var player_army_data : Array[ArmyData] = []  # Array of armies data each containing units
 # used by UI in buttons to easily check the amount of money the player has
 var player_gold : int = 0
 var player_manpower : int = 0
 # Array of army of the enemy player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
 var enemyArmy : Array = []
-var enemyArmyData : Array[ArmyData] = []
+var enemy_army_data : Array[ArmyData] = []
 var debug : Debug = null
 var debug_personal : Array = []
 var main : Main = null
@@ -48,10 +48,10 @@ func battlemap_set_units_selected(unit : Unit, value : bool) -> void:
 	pass
 
 func reset_armies() -> void:
-	playerArmy = []
-	playerArmyData = []
+	player_army = []
+	player_army_data = []
 	enemyArmy = []
-	enemyArmyData = []
+	enemy_army_data = []
 
 func debug_update_label(variable_name : String , value : Variant) -> void:
 	if debug == null:
