@@ -32,7 +32,7 @@ var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked o
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
 		overview_container.hide()
 		# Disable new buildings button if the player doesnt own the province
-		var is_the_owner_of_province : bool = (province_data.province.ownership == Globals.player_nation)
+		var is_the_owner_of_province : bool = (province_data.province.ownership == Globals.playerNation)
 		add_building_button.visible = is_the_owner_of_province
 
 var buildings : Array[Building] : # updated when province data changes <- updated when clicked on a province

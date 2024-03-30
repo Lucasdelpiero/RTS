@@ -1,15 +1,15 @@
 extends Control
 
-@onready var player_army := %PlayerArmy as Label
-@onready var enemy_army := %EnemyArmy as Label
+@onready var playerArmy := %PlayerArmy as Label
+@onready var enemyArmy := %EnemyArmy as Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func update() -> void:
-#	player_army.text = Globals.player_nation
-#	enemy_army.text = Globals.enemy_army[0].ownership
+#	playerArmy.text = Globals.playerNation
+#	enemyArmy.text = Globals.enemyArmy[0].ownership
 	pass
 
 

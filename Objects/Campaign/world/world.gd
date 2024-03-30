@@ -8,18 +8,18 @@ var map : AStar2D # navmap
 @onready var navigation := $NavigationRegion2D as NavigationRegion2D
 @onready var UI : = %CampaingUI as CampaignUI
 @onready var mouse := $Mouse as Mouse
-@onready var battle_menu := %BattleMenu as Control # temporarelly instanced always
+@onready var battleMenu := %BattleMenu as Control # temporarelly instanced always
 var armies_in_battle : Array[ArmyCampaing] = []
 @onready var nations_group := %NationsGroup as Node
 @onready var diplomacy_manager := %DiplomacyManager as DiplomacyManager
 
-var player_nation : String = "ROME"
-var player_node : Nation = null
+var playerNation : String = "ROME"
+var playerNode : Nation = null
 # Needs to call the signals when updated because using assign doesnt trigger a setter
 # NOTE it could be used a setter and assigning inside the setter (to try) 
 var nations : Array[Nation] = [] 
 var provinces : Array[Province] = []
-var province_selected : Province = null
+var provinceSelected : Province = null
 
 # ID of provinces are stored using the position as key ("xPosition_yPosition")
 # using and underscore to separate the coordinates with their values floored as an int
@@ -50,9 +50,9 @@ func initialize_world() -> void:
 	Signals.sg_nations_array_changed.emit(nations)
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
-			player_nation = nation.nation_tag
-			player_node = nation
-			Globals.player_nation = nation.nation_tag
+			playerNation = nation.NATION_TAG
+			playerNode = nation
+			Globals.playerNation = nation.NATION_TAG
 			Globals.player_nation_node = nation
 			 # Used to not reconnect when reloading the world
 			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
@@ -74,7 +74,7 @@ func initialize_world() -> void:
 #		connect("sg_mouseOverSelf", mouse, "update")
 	
 	provinces.assign( get_tree().get_nodes_in_group("provinces") )
-	var nations_tags : Array = nations.map(func(el : Nation) -> String : return el.nation_tag) # Used to compare with the property "ownership" in the provinces and get what belongs to who
+	var nations_tags : Array = nations.map(func(el : Nation) -> String : return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
 	for province in provinces as Array[Province]:
 		province.world = self
 		province.update_to_nation_color()
@@ -178,13 +178,13 @@ func get_nation_by_tag(_tag : String = "") -> Nation:
 	return null
 
 func send_data_to_ui() -> void:
-	if player_node == null:
+	if playerNode == null:
 		push_error("Player node is null")
 		return
 	
 	var data : TotalProductionData = TotalProductionData.new()
-	data.gold = ceili(player_node.gold)
-	data.manpower = player_node.manpower
+	data.gold = ceili(playerNode.gold)
+	data.manpower = playerNode.manpower
 	UI.update_data(data)
 	pass
 
@@ -196,25 +196,25 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 #	print("%s will fight %s" % [army, enemy])
 #	main.update_armies_for_battle(units_in_battle)
 	for army in armies_in_battle :
-		if army.ownership == Globals.player_nation:
-			if !(Globals.player_army).has(army):
-				(Globals.player_army).push_back(army)
+		if army.ownership == Globals.playerNation:
+			if !(Globals.playerArmy).has(army):
+				(Globals.playerArmy).push_back(army)
 		else:
-			if !(Globals.enemy_army as Array).has(army):
-				(Globals.enemy_army as Array).push_back(army)
-	battle_menu.visible = true
-	battle_menu.update()
-#	print(Globals.player_army)
-#	print(Globals.enemy_army)
+			if !(Globals.enemyArmy as Array).has(army):
+				(Globals.enemyArmy as Array).push_back(army)
+	battleMenu.visible = true
+	battleMenu.update()
+#	print(Globals.playerArmy)
+#	print(Globals.enemyArmy)
 #	print(units_in_battle)
 	pass
 
 func start_battle() -> void:
 	# Send the info of the armies to the global script
-	for army in Globals.player_army as Array[ArmyCampaing]:
-		Globals.player_army_data.push_back(army.army_data)
-	for army in Globals.enemy_army as Array[ArmyCampaing]:
-		Globals.enemy_army_data.push_back(army.army_data)
+	for army in Globals.playerArmy as Array[ArmyCampaing]:
+		Globals.playerArmyData.push_back(army.army_data)
+	for army in Globals.enemyArmy as Array[ArmyCampaing]:
+		Globals.enemyArmyData.push_back(army.army_data)
 	main.start_battle()
 
 func _on_btn_start_battle_pressed() -> void:
@@ -244,7 +244,7 @@ func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> voi
 			province.nation_owner = target_nation
 	# The nation itself will be eliminated
 	for nation in nations:
-		if nation.nation_tag == annexed_nation_tag:
+		if nation.NATION_TAG == annexed_nation_tag:
 			nations.erase(nation) # Remove this line to test so it doesnt crash the game when there is no nation
 			nation.queue_free()
 			# Tells the UI who was deleted and is used to delete the corresponding

@@ -3,7 +3,7 @@ extends Resource
 
 
 # Contains all diplomatically relationships between one state and all the others
-var nation_tag  : String = ""
+var NATION_TAG  : String = ""
 var culture : Cultures.list = Cultures.list.NONE
 var religion : int = 0 # currently nations dont have an official relationship
 var nation_color : Color = Color(0, 0, 0) 
@@ -12,7 +12,7 @@ var relationships : Array[DiplomacyRelationship] = [] # Temporarelly a simple ar
 
 # Function called on the diplomacy manager to set the properties of the resource
 func initialize(nation : Nation) -> void:
-	nation_tag = nation.nation_tag
+	NATION_TAG = nation.NATION_TAG
 	culture = nation.culture
 	religion = 888888 # nothing yet
 	nation_color = nation.nationColor
@@ -22,14 +22,14 @@ func calculate_relationships(nations : Array[Nation]) -> void:
 	var temp_relationship : Array = []
 	for nation in nations:
 		# Skip adding themselves to the relationship list
-		if nation.nation_tag == nation_tag:
+		if nation.NATION_TAG == NATION_TAG:
 			continue
 		
 		var relations : int = 0
 		if nation.culture == culture:
 			relations += 25
 		var new_relationship := DiplomacyRelationship.new()
-		new_relationship.nation_tag = nation.nation_tag
+		new_relationship.nation_tag = nation.NATION_TAG
 		new_relationship.relations = relations
 		temp_relationship.push_back(new_relationship)
 	relationships.assign(temp_relationship)
@@ -38,12 +38,12 @@ func calculate_relationships(nations : Array[Nation]) -> void:
 	pass
 
 
-func improve_relationship_with(nation_tag_arg : String, amount: int) -> void:
+func improve_relationship_with(nation_tag : String, amount: int) -> void:
 	var nation_tag_pos : int = -1 # default value
 	for i in relationships.size():
 		#if relationships[i][0] == nation_tag:
 			#nation_tag_pos = i
-		if relationships[i].nation_tag == nation_tag_arg:
+		if relationships[i].nation_tag == nation_tag:
 			nation_tag_pos = i
 	
 	if nation_tag_pos == -1:
@@ -58,17 +58,17 @@ func improve_relationship_with(nation_tag_arg : String, amount: int) -> void:
 	# TEST
 	pass
 
-func get_relationship_with(nation_tag_arg: String) -> int:
+func get_relationship_with(nation_tag: String) -> int:
 	for relation in relationships:
-		if relation.nation_tag == nation_tag_arg:
+		if relation.nation_tag == nation_tag:
 			return relation.relations
 		
 	push_error("Couldnt find the nation to get relationship with")
 	return -1
 	
 # Used when a nation dissapears
-func delete_relationship(nation_tag_arg: String) -> void:
+func delete_relationship(nation_tag: String) -> void:
 	for i in relationships.size():
-		if relationships[i].nation_tag == nation_tag_arg:
+		if relationships[i].nation_tag == nation_tag:
 			relationships.erase(relationships[i])
 			return

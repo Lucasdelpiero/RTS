@@ -40,18 +40,18 @@ func _ready() -> void:
 	
 	# TEST
 	for nation in diplomacy_nations:
-		#print(nation.nation_tag)
+		#print(nation.NATION_TAG)
 		#print(nation.relationships)
-		if nation.nation_tag != "ROME":
-			improve_relationship("ROME",nation.nation_tag, 25)
-		#print(nation.nation_tag)
+		if nation.NATION_TAG != "ROME":
+			improve_relationship("ROME",nation.NATION_TAG, 25)
+		#print(nation.NATION_TAG)
 		#print(nation.relationships)
 	# TEST
 	
 
-# Uses the nation_tag string to find the diplomacy nations and improve their relationship
+# Uses the NATION_TAG string to find the diplomacy nations and improve their relationship
 func improve_relationship(sender: String, reciever: String, amount: int) -> void:
-	var diplomacy_nation_tags : Array = diplomacy_nations.map(func(el: DiplomacyNation) -> String: return el.nation_tag)
+	var diplomacy_nation_tags : Array = diplomacy_nations.map(func(el: DiplomacyNation) -> String: return el.NATION_TAG)
 	var sender_position : int = diplomacy_nation_tags.find(sender)
 	var reciever_position : int = diplomacy_nation_tags.find(reciever)
 	if sender_position == -1 or reciever_position == -1:
@@ -61,15 +61,15 @@ func improve_relationship(sender: String, reciever: String, amount: int) -> void
 	diplomacy_nations[reciever_position].improve_relationship_with(sender, amount)
 	# TEST
 	# Sends the data so that the buttons update their values
-	if sender == Globals.player_nation:
-		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.player_nation)
+	if sender == Globals.playerNation:
+		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.playerNation)
 		Signals.sg_diplomacy_relations_changed.emit(reciever, current_relations)
 	pass
 
 func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 	var nation_tag_position : int = -1
 	for i in diplomacy_nations.size():
-		if nation_tag == diplomacy_nations[i].nation_tag:
+		if nation_tag == diplomacy_nations[i].NATION_TAG:
 			nation_tag_position = i
 	
 	if nation_tag_position == -1:
@@ -90,7 +90,7 @@ func delete_nation_from_relationships(nation_tag: String) -> void:
 	var diplomacy_nation_to_erase : DiplomacyNation = null
 	for diplo_nation in diplomacy_nations:
 		diplo_nation.delete_relationship(nation_tag)
-		if diplo_nation.nation_tag == nation_tag:
+		if diplo_nation.NATION_TAG == nation_tag:
 			diplomacy_nation_to_erase = diplo_nation
 		
 	if diplomacy_nation_to_erase != null:

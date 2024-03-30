@@ -1,9 +1,9 @@
 class_name Main
 extends Node2D
 
-var player_army : Array = []
-var enemy_army : Array = []
-var player_nation : String = ""
+var playerArmy : Array = []
+var enemyArmy : Array = []
+var playerNation : String = ""
 
 var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
@@ -12,7 +12,7 @@ var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
 func _ready() -> void:
 #	_save.world = self
 	Globals.main = self
-	player_nation = Globals.player_nation
+	playerNation = Globals.playerNation
 	
 	# TEST
 	#_create_or_load_save()
@@ -96,7 +96,7 @@ func load_game() -> void:
 	var nations : Array = get_tree().get_nodes_in_group("nations")
 	for el : Dictionary in data.nations:
 		for nation in nations as Array[Nation]:
-			if el.nation_tag == nation.nation_tag:
+			if el.NATION_TAG == nation.NATION_TAG:
 				nation.load_data(el)
 				nation.set_colors()
 				pass

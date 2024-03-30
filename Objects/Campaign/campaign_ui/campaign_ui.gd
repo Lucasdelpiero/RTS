@@ -174,7 +174,7 @@ func _on_btn_diplomacy_pressed() -> void:
 		push_error("Couldnt find the world")
 		return
 	
-	var player_tag : String = Globals.player_nation
+	var player_tag : String = Globals.playerNation
 	# Request data to to the DiplomacyManager build the DiplomacyUI
 	Signals.sg_diplomacy_nation_request_data.emit(player_tag)
 	
