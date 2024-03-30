@@ -81,6 +81,8 @@ func resource_incoming(data : Production) -> void:
 	resources_generated.push_back(data)
 
 func process_resources_recieved() -> void:
+	if resources_generated.is_empty():
+		return
 	var total_gold_generated : int = resources_generated.map(func(el : Production) -> int: return el.gold).reduce(func(a : int,b : int) -> int: return a + b)
 	var gold_delta : int = 0
 	if total_gold_generated == null:

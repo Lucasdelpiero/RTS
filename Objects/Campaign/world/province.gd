@@ -18,13 +18,19 @@ extends Polygon2D
 # used to get bonuses for resources
 var nation_owner : Nation  = null :
 	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
+		# If the nation changes ownership it will disconnect all signals to the previous owner
+		if nation_owner != new_owner and nation_owner != null:
+			disconnect_all_signals()
+		
 		nation_owner = new_owner
 		ownership = new_owner.NATION_TAG
 		set_color_inside(new_owner.nation_color)
 		set_color_border(new_owner.nation_outline_color)
 		outside_color = new_owner.nation_outline_color
-		# TODO disconnect all signals from sg_resources_generated because the province will keep sending resources to the former nation if this one exists
+		
+		# Connects signals to send resources to the owner nation
 		sg_resources_generated.connect(new_owner.resource_incoming)
+		
 
 @export_category("DATA")
 @export_range(0, 10000, 1) var ID : int = 0
@@ -88,6 +94,15 @@ func _ready() -> void:
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 		push_error("building_manager had to be created") # just to test
 	buildings_manager.initialize() # Makes all buildings uniques to each province
+
+# Used for example when the nation changes ownership, to disconnect sending resources
+# to the nation was the previous owner
+func disconnect_all_signals() -> void:
+	var cons: Array = sg_resources_generated.get_connections()
+	for con : Variant in cons:
+		if con["signal"].is_connected(con["callable"]):
+			con["signal"].disconnect(con["callable"])
+
 
 func _draw() -> void:
 	var poly : PackedVector2Array = get_polygon()

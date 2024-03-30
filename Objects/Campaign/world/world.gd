@@ -88,8 +88,10 @@ func initialize_world() -> void:
 			var nation : Nation = nations[nation_pos] 
 			province.nation_owner = nation as Nation # Add reference to the province to send resources bonus data
 			# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
-			if not province.sg_resources_generated.is_connected(nation.resource_incoming):
-				province.sg_resources_generated.connect(nation.resource_incoming)
+			# NOTE below is commented for testing changing ownership
+			# TODO fix this
+			#if not province.sg_resources_generated.is_connected(nation.resource_incoming):
+				#province.sg_resources_generated.connect(nation.resource_incoming)
 
 		
 	send_data_to_ui()
