@@ -98,7 +98,7 @@ func _draw() -> void:
 		border.add_point(polygon[1]) # Closes the line from the end point to the start point
 	
 	border.width = width
-	border.default_color = outline_color
+	border.default_color = outLine
 
 func _input(_event : InputEvent) -> void:
 	pass
@@ -115,8 +115,7 @@ func set_color_inside(col: Color) -> void:
 	queue_redraw()
 
 func set_color_border(col : Color) -> void:
-	outline_color = col
-	outline_color = col
+	outLine = col
 	queue_redraw()
 
 func set_width(new_width : float) -> void:
@@ -146,7 +145,7 @@ func get_connections() -> void:
 func update_to_nation_color() -> void:
 	for nation  in world.nations as Array[Nation]:
 		if nation.NATION_TAG == str(self.ownership):
-			self.outline_color = nation.nationOutline
+			self.outLine = nation.nationOutline
 			self.color = nation.nationColor
 			self.inside_color = nation.nationColor
 			self.outside_color = nation.nationOutline
@@ -167,23 +166,23 @@ func set_map_type_shown(type : String) -> void:
 	match type:
 		"political":
 			color = inside_color
-			border.default_color = outline_color
+			border.default_color = outLine
 			self_modulate.a = 1.0
 			border.self_modulate.a = 1.0
-			outline_color = outside_color
+			outLine = outside_color
 			
 		"terrain":
 			var new_color : Color = map_colors.get_terrain_color(terrain_type)
 			color = new_color
-			outline_color = new_color
+			outLine = new_color
 		"religion":
 			var new_color : Color = map_colors.get_religion_color(religion)
 			color = new_color
-			outline_color = new_color
+			outLine = new_color
 		"culture":
 			var new_color : Color = map_colors.get_culture_color(culture)
 			color = new_color
-			outline_color = new_color
+			outLine = new_color
 		_:
 			return
 	
