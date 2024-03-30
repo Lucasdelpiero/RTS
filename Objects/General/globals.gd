@@ -16,7 +16,7 @@ var player_manpower : int = 0
 # Array of army of the enemy player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
 var enemy_army : Array = []
-var enemy_armyData : Array[ArmyData] = []
+var enemy_army_data : Array[ArmyData] = []
 var debug : Debug = null
 var debug_personal : Array = []
 var main : Main = null
@@ -51,7 +51,7 @@ func reset_armies() -> void:
 	player_army = []
 	player_army_Data = []
 	enemy_army = []
-	enemy_armyData = []
+	enemy_army_data = []
 
 func debug_update_label(variable_name : String , value : Variant) -> void:
 	if debug == null:

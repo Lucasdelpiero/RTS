@@ -19,7 +19,7 @@ var playerNode : Nation = null
 # NOTE it could be used a setter and assigning inside the setter (to try) 
 var nations : Array[Nation] = [] 
 var provinces : Array[Province] = []
-var provinceSelected : Province = null
+var province_selected : Province = null
 
 # ID of provinces are stored using the position as key ("xPosition_yPosition")
 # using and underscore to separate the coordinates with their values floored as an int
@@ -49,7 +49,7 @@ func initialize_world() -> void:
 	nations.assign(nations_group.get_children())
 	Signals.sg_nations_array_changed.emit(nations)
 	for nation in nations as Array[Nation]:
-		if nation.isPlayer == true:
+		if nation.is_player == true:
 			player_nation = nation.NATION_TAG
 			playerNode = nation
 			Globals.player_nation = nation.NATION_TAG
@@ -64,14 +64,14 @@ func initialize_world() -> void:
 		initialize_army(army)
 		#army.world = self
 		#army.get_to_closer_point(map)
-		#if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
-			#army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+		#if not army.sg_mouse_over_self.is_connected(mouse.update_army_campaing_selection):
+			#army.sg_mouse_over_self.connect(mouse.update_army_campaing_selection)
 		#if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
 			#army.sg_enemy_encountered.connect(self.enemy_encountered)
 		#if not army.sg_was_selected.is_connected(new_unit_selected):
 			#army.sg_was_selected.connect(new_unit_selected)
 
-#		connect("sg_mouseOverSelf", mouse, "update")
+#		connect("sg_mouse_over_self", mouse, "update")
 	
 	provinces.assign( get_tree().get_nodes_in_group("provinces") )
 	var nations_tags : Array = nations.map(func(el : Nation) -> String : return el.NATION_TAG) # Used to compare with the property "ownership" in the provinces and get what belongs to who
@@ -79,8 +79,8 @@ func initialize_world() -> void:
 		province.world = self
 		province.update_to_nation_color()
 		# NOTE Check if is connected before connecting it as loading a game runs this function again and cause errors
-		if not province.sg_mouseOverSelf.is_connected(mouse.update_province_selection): 
-			province.sg_mouseOverSelf.connect(mouse.update_province_selection)
+		if not province.sg_mouse_over_self.is_connected(mouse.update_province_selection): 
+			province.sg_mouse_over_self.connect(mouse.update_province_selection)
 		
 		# Connect province with the nation owner to give them resources
 		if nations_tags.has(province.ownership):
@@ -108,8 +108,8 @@ func initialize_army(army : ArmyCampaing) -> void:
 	army.world = self
 	army.get_to_closer_point(map)
 	# Signal for Selection for the mouse
-	if not army.sg_mouseOverSelf.is_connected(mouse.update_army_campaing_selection):
-		army.sg_mouseOverSelf.connect(mouse.update_army_campaing_selection)
+	if not army.sg_mouse_over_self.is_connected(mouse.update_army_campaing_selection):
+		army.sg_mouse_over_self.connect(mouse.update_army_campaing_selection)
 	# Signal for army encounter
 	if not army.sg_enemy_encountered.is_connected(self.enemy_encountered):
 		army.sg_enemy_encountered.connect(self.enemy_encountered)
@@ -173,7 +173,7 @@ func get_provinces_by_tag(nation_tag : String ) -> Array[Province]:
 
 func get_nation_by_tag(_tag : String = "") -> Nation:
 	for nation in nations as Array[Nation]:
-		if nation.isPlayer:
+		if nation.is_player:
 			return nation
 	return null
 
@@ -214,7 +214,7 @@ func start_battle() -> void:
 	for army in Globals.player_army as Array[ArmyCampaing]:
 		Globals.player_army_Data.push_back(army.army_data)
 	for army in Globals.enemy_army as Array[ArmyCampaing]:
-		Globals.enemy_armyData.push_back(army.army_data)
+		Globals.enemy_army_data.push_back(army.army_data)
 	main.start_battle()
 
 func _on_btn_start_battle_pressed() -> void:

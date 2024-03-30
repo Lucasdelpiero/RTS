@@ -149,7 +149,7 @@ func spawn_units() -> void:
 			scene.global_position = Vector2(0, 1000)
 			scene.set_scene_unit_data(unit.scene_unit_data)
 			
-	for army in Globals.enemy_armyData:
+	for army in Globals.enemy_army_data:
 		for unit in army.army_units:
 			var scene := unit.scene.instantiate() as Unit
 			enemy_army.add_child(scene)

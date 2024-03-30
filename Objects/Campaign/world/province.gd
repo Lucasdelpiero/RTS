@@ -5,6 +5,7 @@ extends Polygon2D
 @onready var inside_color : Color = Color(1.0, 1.0, 1.0) : set = set_color_inside
 @onready var outside_color : Color = Color(0.0, 0.0, 0.0)
 @export_color_no_alpha var outLine : Color = Color(0, 0, 0) : set = set_color_border
+@export_color_no_alpha var outline_color : Color = Color(0, 0, 0) : set = set_color_border
 @export_range(1, 20, 0.1) var width : float = 2.0 : set = set_width
 @onready var border : Line2D = %Border
 @onready var city : Marker2D = %PosProvince
@@ -62,9 +63,9 @@ var world : CampaignMap = null
 # Control
 var hovered : bool = false
 var selected : bool = false
-var mouseOverSelf : bool = false : set = send_mouse_over
+var mouse_over_self : bool = false : set = send_mouse_over
 @onready var campaign_UI : CampaignUI 
-signal sg_mouseOverSelf(mouseOverSelf : bool)
+signal sg_mouse_over_self(mouse_over_self : bool)
 signal sg_send_data_to_ui(data : ProvinceData)
 signal sg_resources_generated(data : Production) # sent to the nation, needs to be rewired when the ownership changes
 
@@ -72,6 +73,7 @@ signal sg_resources_generated(data : Production) # sent to the nation, needs to 
 func _ready() -> void:
 	inside_color = color
 	outside_color = outLine
+	outline_color = outLine
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly : PackedVector2Array = get_polygon()
@@ -150,12 +152,12 @@ func update_to_nation_color() -> void:
 	pass
 
 func send_mouse_over(value : bool) -> void:
-	mouseOverSelf = value
+	mouse_over_self = value
 	var data_temp : Dictionary = {
-		"mouseOverSelf" = value ,
+		"mouse_over_self" = value ,
 		"node" = self,
 	}
-	emit_signal("sg_mouseOverSelf", data_temp)
+	emit_signal("sg_mouse_over_self", data_temp)
 	pass
 
 func set_map_type_shown(type : String) -> void:
@@ -187,12 +189,12 @@ func set_map_type_shown(type : String) -> void:
 
 func _on_mouse_detector_mouse_entered() -> void:
 #	print("entered")
-	mouseOverSelf = true
+	mouse_over_self = true
 	Globals.mouse_in_province = ID
 
 func _on_mouse_detector_mouse_exited() -> void:
 #	print("exited")
-	mouseOverSelf = false
+	mouse_over_self = false
 	# BUG changing the value of the Globals.mouse_in_province to -1 caused to change the value
 	# to -1 AFTER the value of the next province was selected, which caused a bug
 	#Globals.mouse_in_province = -1 # value used to mean notthing

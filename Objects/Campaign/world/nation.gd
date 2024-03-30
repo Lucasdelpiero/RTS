@@ -10,6 +10,8 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 @export var culture : Cultures.list = Cultures.list.NONE
 @export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
 @export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
+@export_color_no_alpha var nation_outline : Color = Color(0, 0, 0)
+@export_color_no_alpha var nation_color : Color = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold : int = 100 : 
 	set(value):
 		gold = value
@@ -31,7 +33,7 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 		sg_manpower_amount_changed.emit(manpower)
 		if NATION_TAG == Globals.player_nation:
 			Globals.player_manpower = manpower
-@export var isPlayer : bool = false
+@export var is_player : bool = false
 @export var nation_banuses : Array[Bonus] = []
 @export var capital : Province = null :
 	set(value):
@@ -53,6 +55,8 @@ var total_production_last_time : TotalProductionData = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	nation_color = nationColor
+	nation_outline = nationOutline
 	set_colors()
 	if capital == null:
 		capital = get_default_capital()

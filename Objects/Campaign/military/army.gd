@@ -32,8 +32,8 @@ var second_point : Vector2 # Second point in the path
 ## CONTROL
 var hovered : bool = false
 var selected : bool  = false : set = set_selected
-var mouseOverSelf : bool = false : set = send_mouse_over
-signal sg_mouseOverSelf(mouseOverSelf : bool) # Signal to say if the mouse is over the node
+var mouse_over_self : bool = false : set = send_mouse_over
+signal sg_mouse_over_self(mouse_over_self : bool) # Signal to say if the mouse is over the node
 signal sg_enemy_encountered(army : ArmyCampaing, enemy : ArmyCampaing)
 signal sg_was_selected(value : bool)
 
@@ -201,21 +201,21 @@ func get_path_province_names(provinces : Array[Vector2]) -> Array:
 	return path_province_names
 
 func send_mouse_over(value : bool) -> void:
-	mouseOverSelf = value
+	mouse_over_self = value
 	var data_temp : Dictionary= {
-		"mouseOverSelf" = value , 
+		"mouse_over_self" = value , 
 		"node" = self,
 	}
-	emit_signal("sg_mouseOverSelf", data_temp)
-#	print(mouseOverSelf)
+	emit_signal("sg_mouse_over_self", data_temp)
+#	print(mouse_over_self)
 
 # If the mouse is over or leave the node sends a signal on the change of the boolean
 func _on_mouse_detector_mouse_entered() -> void:
-	mouseOverSelf = true # activates signal sg_mouseOverSelf
+	mouse_over_self = true # activates signal sg_mouse_over_self
 
 
 func _on_mouse_detector_mouse_exited() -> void:
-	mouseOverSelf = false # activates signal sg_mouseOverSelf
+	mouse_over_self = false # activates signal sg_mouse_over_self
 
 
 func set_hovered(value : bool) -> void:

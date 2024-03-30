@@ -10,7 +10,7 @@ var weapon_displayed : String = "" # weapon currently being displayed
 
 var lastProvinceWithMouseOver : Province = null
 var provinceWithMouseOver : Province = null 
-var provinceSelected : Province = null
+var province_selected : Province = null
 var world : Variant = null
 var ui : Variant = null
 
@@ -50,21 +50,21 @@ func set_province_selected() -> void:
 		ui.update_province_data(null) # set ui to not visible
 
 	if provinceWithMouseOver != null:
-		if provinceSelected != null:
-			provinceSelected.set_selected(false)
+		if province_selected != null:
+			province_selected.set_selected(false)
 
 		# The province will be selected only when there are not armies selected
 		if hovered.size() == 0:
 			provinceWithMouseOver.set_selected(true)
 			provinceWithMouseOver.send_data_to_ui()
-			provinceSelected = provinceWithMouseOver
-			world.provinceSelected = provinceSelected
+			province_selected = provinceWithMouseOver
+			world.province_selected = province_selected
 	pass
 
 ## Gets in a list the army hovered
 func update_army_campaing_selection(data : Dictionary) -> void:
 	# If the army has the mouse over it, it will be added to a list
-	if (data.mouseOverSelf):
+	if (data.mouse_over_self):
 		hovered.push_back( data.node )
 		hoveredTimer.start()  # Start timer to show data of the armies hovered
 	# If doesnt have the mouse anymore it will be deleted from the list
@@ -93,7 +93,7 @@ func update_province_selection(data : Variant) -> void: # uses variant because u
 	# If the province doesnt have the mouse over it, it will stop being hovered
 #	print("before: %s" % [provinceWithMouseOver])
 	if data != null:
-		if data.mouseOverSelf == false :
+		if data.mouse_over_self == false :
 			data.node.set_hovered(false)
 			if provinceWithMouseOver != null:
 				provinceWithMouseOver.set_hovered(false)
@@ -109,7 +109,7 @@ func update_province_selection(data : Variant) -> void: # uses variant because u
 	# and also has to have the mouse over it
 	# It needs to be separated from the indentation in "data!= null" so it can updated once the army is unhovered
 	if provinceWithMouseOver != null:
-		if hovered.size() == 0 and provinceWithMouseOver.mouseOverSelf: 
+		if hovered.size() == 0 and provinceWithMouseOver.mouse_over_self: 
 			provinceWithMouseOver.set_hovered(true)
 		else:
 			provinceWithMouseOver.set_hovered(false)
