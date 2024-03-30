@@ -1,9 +1,9 @@
 class_name Main
 extends Node2D
 
-var player_army : Array = []
+var playerArmy : Array = []
 var enemyArmy : Array = []
-var player_nation : String = ""
+var playerNation : String = ""
 
 var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
@@ -12,7 +12,7 @@ var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
 func _ready() -> void:
 #	_save.world = self
 	Globals.main = self
-	player_nation = Globals.player_nation
+	playerNation = Globals.playerNation
 	
 	# TEST
 	#_create_or_load_save()

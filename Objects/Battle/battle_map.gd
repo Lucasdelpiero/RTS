@@ -7,7 +7,7 @@ var units_selected : Array[Unit] = []
 var main  : Main = null # Main scene controlling scene transitions and data
 @onready var mouse := %Mouse as Mouse
 @onready var camera := %Camera as Camera2D
-@onready var player_army := $PlayerArmy as UnitsGroupControl
+@onready var playerArmy := $PlayerArmy as UnitsGroupControl
 @onready var enemyArmy := $EnemyArmy as UnitsGroupControl
 @onready var navigationTileMap := $NavigationTileMap as TileMap
 @onready var playerUnitsManagement := $PlayerUnitsManagement as UnitsManagement
@@ -38,8 +38,8 @@ func _ready() -> void:
 		unit.world = self
 		unit.show_overlay_unit.connect(send_data_to_overlay)
 	
-	player_units.assign(player_army.get_children()) # Cast the Array[Node] to an Array[Unit] as it inserts the array
-	#player_units = player_army.get_children()
+	player_units.assign(playerArmy.get_children()) # Cast the Array[Node] to an Array[Unit] as it inserts the array
+	#player_units = playerArmy.get_children()
 	for el in get_tree().get_nodes_in_group("uses_navigation"):
 		el.navigation_tilemap = navigationTileMap
 	order_to_create_group.connect(battleUI.order_card_control_to_create_group)
@@ -56,7 +56,7 @@ func _unhandled_input(_event : InputEvent) -> void:
 			set_units_selected(unit , false) # Has to be called here and not in the unit to avoid an infinite calling
 		# Select the units with the mouse over them
 		for unit in units_hovered:
-			if unit.ownership == Globals.player_nation:
+			if unit.ownership == Globals.playerNation:
 				unit.selected = true
 				set_units_selected(unit, true) # Has to be called here and not in the unit to avoid an infinite calling
 	if Input.is_action_just_pressed("Secondary_Weapon"):
@@ -93,7 +93,7 @@ func set_units_hovered(unit : Unit, hovered : bool) -> void:
 	# Check for enemy in hovering
 	var hover_enemy : bool = false
 	for i in units_hovered as Array[Unit]:
-		if i.ownership != Globals.player_nation:
+		if i.ownership != Globals.playerNation:
 			hover_enemy = true
 	mouse.set_weapon_types(get_weapon_types())
 	mouse.set_hovered_enemy(hover_enemy)
@@ -141,15 +141,15 @@ func move_player_units() -> void:
 
 func spawn_units() -> void:
 	# Instantiate and add to the tree the units in the armies
-	for army in Globals.player_army_data:
+	for army in Globals.playerArmyData:
 		for unit in army.army_units:
 			var scene := unit.scene.instantiate() as Unit
-			player_army.add_child(scene)
+			playerArmy.add_child(scene)
 			scene.ownership = army.ownership
 			scene.global_position = Vector2(0, 1000)
 			scene.set_scene_unit_data(unit.scene_unit_data)
 			
-	for army in Globals.enemy_army_data:
+	for army in Globals.enemyArmyData:
 		for unit in army.army_units:
 			var scene := unit.scene.instantiate() as Unit
 			enemyArmy.add_child(scene)
@@ -157,18 +157,18 @@ func spawn_units() -> void:
 			scene.global_position = Vector2(0, -1000)
 			scene.set_scene_unit_data(unit.scene_unit_data)
 	# Initialize units
-	player_army.start_units()
+	playerArmy.start_units()
 	enemyArmy.start_units()
 
 func finish_battle() -> void:
-	var player_army_temp : Array = player_army.get_children().filter(func(el : Unit) -> bool: return !el.routed )
-	var enemy_army_temo : Array = enemyArmy.get_children().filter(func(el : Unit) -> bool: return !el.routed )
+	var player_army : Array = playerArmy.get_children().filter(func(el : Unit) -> bool: return !el.routed )
+	var enemy_army : Array = enemyArmy.get_children().filter(func(el : Unit) -> bool: return !el.routed )
 	
 	# NOTE this below should be a resource
 	var data : Dictionary = {
 		"battleMap" : self,
-		"player_army" : [player_army_temp],
-		"enemyArmy" : [enemy_army_temp],
+		"playerArmy" : [player_army],
+		"enemyArmy" : [enemy_army],
 	}
 	emit_signal("sg_finished_battle", data)
 	pass

@@ -191,14 +191,14 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 	# To select armies in the campaing map
 	var army_to_compare := area.owner as ArmyCampaing
 	if army_to_compare is ArmyCampaing:
-		if Globals.player_nation == army_to_compare.ownership :
+		if Globals.playerNation == army_to_compare.ownership :
 			army_to_compare.selected = true
 	
 	# To select units in the battle map
 	# should be used for the selection
 	var unit_to_compare := area.owner as Unit
 	if unit_to_compare is Unit:
-		if  Globals.player_nation == unit_to_compare.ownership:
+		if  Globals.playerNation == unit_to_compare.ownership:
 			world.set_units_selected(unit_to_compare, true) # add to list of units hovered
 		pass
 
@@ -211,7 +211,7 @@ func _on_area_2d_area_exited(area : Area2D) -> void:
 			area.owner.selected = false
 	# This should be used for the selection
 		if area.owner is Unit:
-			if area.owner.ownership == Globals.player_nation: # 1 is the player
+			if area.owner.ownership == Globals.playerNation: # 1 is the player
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
 
 # Once the mouse is hovering an army for enough time, the data will show up

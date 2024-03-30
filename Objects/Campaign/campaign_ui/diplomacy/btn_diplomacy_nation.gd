@@ -12,7 +12,7 @@ func _init() -> void:
 
 func initialize(data : DiplomacyNation) -> void:
 	label_nation.text = data.NATION_TAG
-	var player : String = Globals.player_nation
+	var player : String = Globals.playerNation
 	pass
 
 func set_nation_name(value: String) -> void:

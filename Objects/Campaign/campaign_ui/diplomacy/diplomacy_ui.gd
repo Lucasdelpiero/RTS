@@ -57,7 +57,7 @@ func _on_btn_improve_relations_pressed() -> void:
 	if current_diplomacy_tag == null:
 		push_error("Not a nation selected to interact with")
 		return
-	var player : String = Globals.player_nation
+	var player : String = Globals.playerNation
 	Signals.sg_diplomacy_nation_improve_relations.emit(player, current_diplomacy_tag, 55)
 	
 	
@@ -73,4 +73,4 @@ func _on_btn_annex_pressed() -> void:
 	if current_diplomacy_tag == "":
 		push_error("not a nation selected to annex")
 		return
-	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
+	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.playerNation)
