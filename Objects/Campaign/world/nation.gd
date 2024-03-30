@@ -22,14 +22,14 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 		# Avoid error when initializing the engine
 		if Engine.is_editor_hint():
 			return
-		if NATION_TAG == Globals.playerNation:
+		if NATION_TAG == Globals.player_nation:
 			Globals.player_gold = gold
 		#sg_update_resources_ui.emit(data) # needed to update when money is spent
 @export_range(0, 500000, 1) var manpower : int = 10000 :
 	set(value):
 		manpower = value
 		sg_manpower_amount_changed.emit(manpower)
-		if NATION_TAG == Globals.playerNation:
+		if NATION_TAG == Globals.player_nation:
 			Globals.player_manpower = manpower
 @export var isPlayer : bool = false
 @export var nation_banuses : Array[Bonus] = []

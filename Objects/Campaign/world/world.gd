@@ -13,7 +13,7 @@ var armies_in_battle : Array[ArmyCampaing] = []
 @onready var nations_group := %NationsGroup as Node
 @onready var diplomacy_manager := %DiplomacyManager as DiplomacyManager
 
-var playerNation : String = "ROME"
+var player_nation : String = "ROME"
 var playerNode : Nation = null
 # Needs to call the signals when updated because using assign doesnt trigger a setter
 # NOTE it could be used a setter and assigning inside the setter (to try) 
@@ -50,9 +50,9 @@ func initialize_world() -> void:
 	Signals.sg_nations_array_changed.emit(nations)
 	for nation in nations as Array[Nation]:
 		if nation.isPlayer == true:
-			playerNation = nation.NATION_TAG
+			player_nation = nation.NATION_TAG
 			playerNode = nation
-			Globals.playerNation = nation.NATION_TAG
+			Globals.player_nation = nation.NATION_TAG
 			Globals.player_nation_node = nation
 			 # Used to not reconnect when reloading the world
 			if not nation.sg_update_resources_ui.is_connected(Globals.campaign_UI.update_data):
@@ -196,25 +196,25 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 #	print("%s will fight %s" % [army, enemy])
 #	main.update_armies_for_battle(units_in_battle)
 	for army in armies_in_battle :
-		if army.ownership == Globals.playerNation:
-			if !(Globals.playerArmy).has(army):
-				(Globals.playerArmy).push_back(army)
+		if army.ownership == Globals.player_nation:
+			if !(Globals.player_army).has(army):
+				(Globals.player_army).push_back(army)
 		else:
-			if !(Globals.enemyArmy as Array).has(army):
-				(Globals.enemyArmy as Array).push_back(army)
+			if !(Globals.enemy_army as Array).has(army):
+				(Globals.enemy_army as Array).push_back(army)
 	battleMenu.visible = true
 	battleMenu.update()
-#	print(Globals.playerArmy)
-#	print(Globals.enemyArmy)
+#	print(Globals.player_army)
+#	print(Globals.enemy_army)
 #	print(units_in_battle)
 	pass
 
 func start_battle() -> void:
 	# Send the info of the armies to the global script
-	for army in Globals.playerArmy as Array[ArmyCampaing]:
-		Globals.playerArmyData.push_back(army.army_data)
-	for army in Globals.enemyArmy as Array[ArmyCampaing]:
-		Globals.enemyArmyData.push_back(army.army_data)
+	for army in Globals.player_army as Array[ArmyCampaing]:
+		Globals.player_army_Data.push_back(army.army_data)
+	for army in Globals.enemy_army as Array[ArmyCampaing]:
+		Globals.enemy_armyData.push_back(army.army_data)
 	main.start_battle()
 
 func _on_btn_start_battle_pressed() -> void:

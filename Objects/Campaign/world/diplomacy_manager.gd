@@ -61,8 +61,8 @@ func improve_relationship(sender: String, reciever: String, amount: int) -> void
 	diplomacy_nations[reciever_position].improve_relationship_with(sender, amount)
 	# TEST
 	# Sends the data so that the buttons update their values
-	if sender == Globals.playerNation:
-		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.playerNation)
+	if sender == Globals.player_nation:
+		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.player_nation)
 		Signals.sg_diplomacy_relations_changed.emit(reciever, current_relations)
 	pass
 
