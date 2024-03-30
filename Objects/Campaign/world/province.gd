@@ -4,7 +4,7 @@ extends Polygon2D
 
 @onready var inside_color : Color = Color(1.0, 1.0, 1.0) : set = set_color_inside
 @onready var outside_color : Color = Color(0.0, 0.0, 0.0)
-@export_color_no_alpha var outLine : Color = Color(0, 0, 0) : set = set_color_border
+@export_color_no_alpha var outLine : Color = Color(0, 0, 0) 
 @export_color_no_alpha var outline_color : Color = Color(0, 0, 0) : set = set_color_border
 @export_range(1, 20, 0.1) var width : float = 2.0 : set = set_width
 @onready var border : Line2D = %Border
@@ -115,7 +115,8 @@ func set_color_inside(col: Color) -> void:
 	queue_redraw()
 
 func set_color_border(col : Color) -> void:
-	outLine = col
+	#outLine = col
+	outline_color = col
 	queue_redraw()
 
 func set_width(new_width : float) -> void:
