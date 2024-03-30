@@ -15,7 +15,7 @@ func initialize(nation : Nation) -> void:
 	NATION_TAG = nation.NATION_TAG
 	culture = nation.culture
 	religion = 888888 # nothing yet
-	nation_color = nation.nationColor
+	nation_color = nation.nation_color
 
 func calculate_relationships(nations : Array[Nation]) -> void:
 	relationships.clear()

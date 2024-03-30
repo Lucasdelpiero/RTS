@@ -20,9 +20,9 @@ var nation_owner : Nation  = null :
 	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
 		nation_owner = new_owner
 		ownership = new_owner.NATION_TAG
-		set_color_inside(new_owner.nationColor)
-		set_color_border(new_owner.nationOutline)
-		outside_color = new_owner.nationOutline
+		set_color_inside(new_owner.nation_color)
+		set_color_border(new_owner.nation_outline_color)
+		outside_color = new_owner.nation_outline_color
 		# TODO disconnect all signals from sg_resources_generated because the province will keep sending resources to the former nation if this one exists
 		sg_resources_generated.connect(new_owner.resource_incoming)
 
@@ -144,10 +144,10 @@ func get_connections() -> void:
 func update_to_nation_color() -> void:
 	for nation  in world.nations as Array[Nation]:
 		if nation.NATION_TAG == str(self.ownership):
-			self.outline_color = nation.nationOutline
-			self.color = nation.nationColor
-			self.inside_color = nation.nationColor
-			self.outside_color = nation.nationOutline
+			self.outline_color = nation.nation_outline_color
+			self.color = nation.nation_color
+			self.inside_color = nation.nation_color
+			self.outside_color = nation.nation_outline_color
 	pass
 
 func send_mouse_over(value : bool) -> void:

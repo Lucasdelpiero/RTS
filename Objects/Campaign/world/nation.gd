@@ -8,9 +8,7 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 
 @export var NATION_TAG  : String = ""
 @export var culture : Cultures.list = Cultures.list.NONE
-@export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
-@export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
-@export_color_no_alpha var nation_outline : Color = Color(0, 0, 0)
+@export_color_no_alpha var nation_outline_color : Color = Color(0, 0, 0)
 @export_color_no_alpha var nation_color : Color = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold : int = 100 : 
 	set(value):
@@ -55,8 +53,8 @@ var total_production_last_time : TotalProductionData = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	nation_color = nationColor
-	nation_outline = nationOutline
+	nation_color = nation_color
+	nation_outline_color = nation_outline_color
 	set_colors()
 	if capital == null:
 		capital = get_default_capital()
@@ -67,8 +65,8 @@ func set_colors() -> void:
 	var armies : Array[ArmyCampaing] = []
 	armies.assign(armies_temp)
 	for a in armies :
-		a.army_color = nationColor # Color used in the "selected" shader
-		a.modulate = nationColor # Color used normally
+		a.army_color = nation_color # Color used in the "selected" shader
+		a.modulate = nation_color # Color used normally
 
 # Used mostly to get a capital for small nation of 1 or few provinces
 func get_default_capital() -> Province:
@@ -136,15 +134,15 @@ func save() -> Dictionary:
 	
 	var save_dict : Dictionary = {
 		"NATION_TAG" : NATION_TAG,
-		"nationOutline" : {
-			"r" : nationOutline.r,
-			"g" : nationOutline.g,
-			"b" : nationOutline.b,
+		"nation_outline_color" : {
+			"r" : nation_outline_color.r,
+			"g" : nation_outline_color.g,
+			"b" : nation_outline_color.b,
 		},
-		"nationColor" : {
-			"r" : nationColor.r,
-			"g" : nationColor.g,
-			"b" : nationColor.b,
+		"nation_color" : {
+			"r" : nation_color.r,
+			"g" : nation_color.g,
+			"b" : nation_color.b,
 		},
 		"gold" : gold,
 		"manpower" : manpower,
