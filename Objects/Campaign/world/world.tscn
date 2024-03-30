@@ -363,6 +363,7 @@ nationColor = Color(0.521569, 0.117647, 0.117647, 1)
 nation_outline = Color(0.266667, 0.054902, 0.0705882, 1)
 nation_color = Color(0.521569, 0.117647, 0.117647, 1)
 gold = 371
+is_player = true
 capital = NodePath("../../Italy/Rome")
 
 [node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]

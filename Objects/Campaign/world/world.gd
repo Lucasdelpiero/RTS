@@ -14,7 +14,7 @@ var armies_in_battle : Array[ArmyCampaing] = []
 @onready var diplomacy_manager := %DiplomacyManager as DiplomacyManager
 
 var player_nation : String = "ROME"
-var playerNode : Nation = null
+var player_node : Nation = null
 # Needs to call the signals when updated because using assign doesnt trigger a setter
 # NOTE it could be used a setter and assigning inside the setter (to try) 
 var nations : Array[Nation] = [] 
@@ -51,7 +51,7 @@ func initialize_world() -> void:
 	for nation in nations as Array[Nation]:
 		if nation.is_player == true:
 			player_nation = nation.NATION_TAG
-			playerNode = nation
+			player_node = nation
 			Globals.player_nation = nation.NATION_TAG
 			Globals.player_nation_node = nation
 			 # Used to not reconnect when reloading the world
@@ -178,13 +178,13 @@ func get_nation_by_tag(_tag : String = "") -> Nation:
 	return null
 
 func send_data_to_ui() -> void:
-	if playerNode == null:
+	if player_node == null:
 		push_error("Player node is null")
 		return
 	
 	var data : TotalProductionData = TotalProductionData.new()
-	data.gold = ceili(playerNode.gold)
-	data.manpower = playerNode.manpower
+	data.gold = ceili(player_node.gold)
+	data.manpower = player_node.manpower
 	UI.update_data(data)
 	pass
 
