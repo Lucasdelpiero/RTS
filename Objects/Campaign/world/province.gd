@@ -116,6 +116,7 @@ func set_color_inside(col: Color) -> void:
 
 func set_color_border(col : Color) -> void:
 	outLine = col
+	outline_color = col
 	queue_redraw()
 
 func set_width(new_width : float) -> void:
