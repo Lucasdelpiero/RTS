@@ -37,7 +37,7 @@ func set_relations_data(data: DiplomacyNation) -> void:
 		
 		btn_diplomacy_nation.set_nation_name(relation.nation_tag)
 		btn_diplomacy_nation.set_relations_value(relation.relations)
-		btn_diplomacy_nation.NATION_TAG = relation.nation_tag
+		btn_diplomacy_nation.nation_tag = relation.nation_tag
 		#new_label.text = "%s : %s" % [relation[0], relation[1]]
 		
 	
@@ -49,7 +49,7 @@ func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 
 func delete_btn_diplomacy_nation(nation_tag : String) -> void:
 	for button  in list_relationships.get_children() as Array[BtnDiplomacyNation]:
-		if button.NATION_TAG == nation_tag:
+		if button.nation_tag == nation_tag:
 			button.queue_free()
 			return
 
@@ -57,7 +57,7 @@ func _on_btn_improve_relations_pressed() -> void:
 	if current_diplomacy_tag == null:
 		push_error("Not a nation selected to interact with")
 		return
-	var player : String = Globals.playerNation
+	var player : String = Globals.player_nation
 	Signals.sg_diplomacy_nation_improve_relations.emit(player, current_diplomacy_tag, 55)
 	
 	
@@ -73,4 +73,4 @@ func _on_btn_annex_pressed() -> void:
 	if current_diplomacy_tag == "":
 		push_error("not a nation selected to annex")
 		return
-	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.playerNation)
+	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)

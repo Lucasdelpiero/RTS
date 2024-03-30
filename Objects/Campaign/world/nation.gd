@@ -6,7 +6,7 @@ signal sg_update_resources_ui(data : TotalProductionData)
 signal sg_gold_amount_changed(value : int) # Sent to the campaing_UI node to update the displayed gold amount
 signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to update the displayed manpower amount
 
-@export var NATION_TAG  : String = ""
+@export var nation_tag  : String = ""
 @export var culture : Cultures.list = Cultures.list.NONE
 @export_color_no_alpha var nationOutline : Color = Color(0, 0, 0)
 @export_color_no_alpha var nationColor : Color = Color(0, 0, 0)
@@ -22,14 +22,14 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 		# Avoid error when initializing the engine
 		if Engine.is_editor_hint():
 			return
-		if NATION_TAG == Globals.playerNation:
+		if nation_tag == Globals.player_nation:
 			Globals.player_gold = gold
 		#sg_update_resources_ui.emit(data) # needed to update when money is spent
 @export_range(0, 500000, 1) var manpower : int = 10000 :
 	set(value):
 		manpower = value
 		sg_manpower_amount_changed.emit(manpower)
-		if NATION_TAG == Globals.playerNation:
+		if nation_tag == Globals.player_nation:
 			Globals.player_manpower = manpower
 @export var isPlayer : bool = false
 @export var nation_banuses : Array[Bonus] = []
@@ -39,7 +39,7 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 			capital = value
 			return
 		# Capital needs to be owned by the nation to be set
-		if value.ownership == NATION_TAG: 
+		if value.ownership == nation_tag: 
 			capital = value
 			return
 		
@@ -69,7 +69,7 @@ func set_colors() -> void:
 # Used mostly to get a capital for small nation of 1 or few provinces
 func get_default_capital() -> Province:
 	var provinces : Array = get_tree().get_nodes_in_group("provinces")
-	var my_provinces : Array = provinces.filter(func(el: Province) -> bool: return NATION_TAG == el.ownership)
+	var my_provinces : Array = provinces.filter(func(el: Province) -> bool: return nation_tag == el.ownership)
 	var new_capital : Province = null
 	if my_provinces.size() > 0:
 		new_capital = my_provinces[0]
@@ -79,6 +79,10 @@ func resource_incoming(data : Production) -> void:
 	resources_generated.push_back(data)
 
 func process_resources_recieved() -> void:
+	if resources_generated.is_empty():
+		push_error("There are not resources to process")
+		return
+	
 	var total_gold_generated : int = resources_generated.map(func(el : Production) -> int: return el.gold).reduce(func(a : int,b : int) -> int: return a + b)
 	var gold_delta : int = 0
 	if total_gold_generated == null:
@@ -108,7 +112,7 @@ func process_resources_recieved() -> void:
 	
 	# Reset the resources for the next frame
 	resources_generated.clear()
-	#print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
+	#print("nation: %s  money: %s  resources generated: %s" % [nation_tag, gold, total])
 
 	var data : TotalProductionData = TotalProductionData.new()
 	data.gold = int(gold)
@@ -131,7 +135,7 @@ func save() -> Dictionary:
 		army_array.push_back(army.save())
 	
 	var save_dict : Dictionary = {
-		"NATION_TAG" : NATION_TAG,
+		"nation_tag" : nation_tag,
 		"nationOutline" : {
 			"r" : nationOutline.r,
 			"g" : nationOutline.g,

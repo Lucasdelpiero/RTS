@@ -19,6 +19,6 @@ func create_army(nation_owner : Nation ,army_data : ArmyData, spawn_position : V
 	
 	new_army.global_position = spawn_position
 	new_army.army_data = army_data.duplicate(true) as ArmyData
-	new_army.ownership = nation_owner.NATION_TAG
+	new_army.ownership = nation_owner.nation_tag
 	world.initialize_army(new_army)
 	nation_owner.set_colors() # update colors of ALL units ( to update the new unit )

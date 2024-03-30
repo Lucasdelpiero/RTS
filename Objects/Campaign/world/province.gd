@@ -19,7 +19,7 @@ extends Polygon2D
 var nation_owner : Nation  = null :
 	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
 		nation_owner = new_owner
-		ownership = new_owner.NATION_TAG
+		ownership = new_owner.nation_tag
 		set_color_inside(new_owner.nationColor)
 		set_color_border(new_owner.nationOutline)
 		outside_color = new_owner.nationOutline
@@ -142,7 +142,7 @@ func get_connections() -> void:
 
 func update_to_nation_color() -> void:
 	for nation  in world.nations as Array[Nation]:
-		if nation.NATION_TAG == str(self.ownership):
+		if nation.nation_tag == str(self.ownership):
 			self.outLine = nation.nationOutline
 			self.color = nation.nationColor
 			self.inside_color = nation.nationColor

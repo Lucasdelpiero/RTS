@@ -10,7 +10,7 @@ var weapon_displayed : String = "" # weapon currently being displayed
 
 var lastProvinceWithMouseOver : Province = null
 var provinceWithMouseOver : Province = null 
-var provinceSelected : Province = null
+var province_selected : Province = null
 var world : Variant = null
 var ui : Variant = null
 
@@ -50,15 +50,15 @@ func set_province_selected() -> void:
 		ui.update_province_data(null) # set ui to not visible
 
 	if provinceWithMouseOver != null:
-		if provinceSelected != null:
-			provinceSelected.set_selected(false)
+		if province_selected != null:
+			province_selected.set_selected(false)
 
 		# The province will be selected only when there are not armies selected
 		if hovered.size() == 0:
 			provinceWithMouseOver.set_selected(true)
 			provinceWithMouseOver.send_data_to_ui()
-			provinceSelected = provinceWithMouseOver
-			world.provinceSelected = provinceSelected
+			province_selected = provinceWithMouseOver
+			world.province_selected = province_selected
 	pass
 
 ## Gets in a list the army hovered
@@ -191,14 +191,14 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 	# To select armies in the campaing map
 	var army_to_compare := area.owner as ArmyCampaing
 	if army_to_compare is ArmyCampaing:
-		if Globals.playerNation == army_to_compare.ownership :
+		if Globals.player_nation == army_to_compare.ownership :
 			army_to_compare.selected = true
 	
 	# To select units in the battle map
 	# should be used for the selection
 	var unit_to_compare := area.owner as Unit
 	if unit_to_compare is Unit:
-		if  Globals.playerNation == unit_to_compare.ownership:
+		if  Globals.player_nation == unit_to_compare.ownership:
 			world.set_units_selected(unit_to_compare, true) # add to list of units hovered
 		pass
 
@@ -211,7 +211,7 @@ func _on_area_2d_area_exited(area : Area2D) -> void:
 			area.owner.selected = false
 	# This should be used for the selection
 		if area.owner is Unit:
-			if area.owner.ownership == Globals.playerNation: # 1 is the player
+			if area.owner.ownership == Globals.player_nation: # 1 is the player
 				world.set_units_selected(area.owner, false) # remove from list of units hovered
 
 # Once the mouse is hovering an army for enough time, the data will show up

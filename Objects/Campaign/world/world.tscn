@@ -356,13 +356,13 @@ nation_group = NodePath("../NationsGroup")
 unique_name_in_owner = true
 
 [node name="Rome" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
-NATION_TAG = "ROME"
+nation_tag = ""
 culture = 1
 nationOutline = Color(0.266667, 0.054902, 0.0705882, 1)
 nationColor = Color(0.521569, 0.117647, 0.117647, 1)
 gold = 371
 isPlayer = true
-capital = NodePath("../../Italy/Rome")
+capital = NodePath("../../Italy/Lower Apulia")
 
 [node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
 unique_name_in_owner = true
@@ -395,11 +395,11 @@ ownership = "ROME"
 army_data = SubResource("Resource_kdomc")
 
 [node name="Etruria" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
-NATION_TAG = "ETRURIA"
+nation_tag = ""
 culture = 1
 nationOutline = Color(0.560784, 0.509804, 0.411765, 1)
 nationColor = Color(0.439216, 0.435294, 0.388235, 1)
-capital = NodePath("../../Italy/Etruria")
+capital = NodePath("../../Italy/Lower Apulia")
 
 [node name="Etrurian King" parent="NationsGroup/Etruria" instance=ExtResource("6_rnqqn")]
 modulate = Color(0.439216, 0.435294, 0.388235, 1)
@@ -409,25 +409,25 @@ ownership = "ETRURIA"
 army_data = SubResource("Resource_v5grm")
 
 [node name="Carthage" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
-NATION_TAG = "CARTHAGE"
+nation_tag = ""
 culture = 4
 nationOutline = Color(0.726563, 0.445313, 0.675781, 1)
 nationColor = Color(0.858824, 0.858824, 0.858824, 1)
-capital = NodePath("../../NorthAfrica/Carthage")
+capital = NodePath("../../Italy/Lower Apulia")
 
 [node name="Sparta" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
-NATION_TAG = "SPARTA"
+nation_tag = ""
 culture = 3
 nationOutline = Color(0.128906, 0.0273438, 0.0273438, 1)
 nationColor = Color(0.277344, 0.0546875, 0.0546875, 1)
-capital = NodePath("../../Greece/Sparta")
+capital = NodePath("../../Italy/Lower Apulia")
 
 [node name="Macedon" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
-NATION_TAG = "MACEDON"
+nation_tag = ""
 culture = 3
 nationOutline = Color(0.215686, 0.0470588, 0.239216, 1)
 nationColor = Color(0.317647, 0.0941176, 0.34902, 1)
-capital = NodePath("../../Greece/Boethia")
+capital = NodePath("../../Italy/Lower Apulia")
 
 [node name="EuropeMap" type="Sprite2D" parent="."]
 visible = false
