@@ -10,5 +10,4 @@ multiplier_bonus = 0.1
 
 [node name="Nation" type="Node" groups=["nations", "persistent"]]
 script = ExtResource("1_kw4eg")
-nation_outline_color = null
 nation_banuses = Array[ExtResource("2_ugmad")]([SubResource("Resource_q3t8e"), null])

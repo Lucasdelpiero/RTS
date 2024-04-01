@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn1pw3qq8o0oo"]
+[gd_scene load_steps=5 format=3 uid="uid://cn1pw3qq8o0oo"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_ekkjt"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.gd" id="1_p0bcd"]
 [ext_resource type="PackedScene" uid="uid://bv5ukbkf0qppu" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.tscn" id="3_tfvbl"]
+[ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="4_0fiu2"]
 
 [node name="DiplomacyUI" type="Control"]
 layout_mode = 3
@@ -14,6 +15,7 @@ offset_bottom = 646.0
 theme = ExtResource("1_ekkjt")
 script = ExtResource("1_p0bcd")
 BtnDiplomacyNationP = ExtResource("3_tfvbl")
+BtnProvinceP = ExtResource("4_0fiu2")
 metadata/_edit_lock_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -42,6 +44,16 @@ metadata/_edit_group_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="DiploActionsContainer"]
 layout_mode = 2
 
+[node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Annex state"
+
+[node name="BtnDemandProvinces" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Demand Provinces"
+
 [node name="BtnImproveRelations" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
@@ -52,16 +64,54 @@ layout_mode = 2
 focus_mode = 0
 text = "Decrease relations"
 
-[node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-text = "Annex state"
-
 [node name="BtnMakeClientState" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Make client state"
 
+[node name="ProvincesDemanded" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 361.0
+offset_top = 2.0
+offset_right = 522.0
+offset_bottom = 252.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProvincesDemanded"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProvincesDemanded/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ProvincesDemanded/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Provinces:"
+
+[node name="ProvincesDemandedContainer" type="VBoxContainer" parent="ProvincesDemanded/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnProvince" parent="ProvincesDemanded/HBoxContainer/VBoxContainer/ProvincesDemandedContainer" instance=ExtResource("4_0fiu2")]
+layout_mode = 2
+text = "Macedonia	"
+
+[node name="BtnProvince2" parent="ProvincesDemanded/HBoxContainer/VBoxContainer/ProvincesDemandedContainer" instance=ExtResource("4_0fiu2")]
+layout_mode = 2
+text = "Etruria"
+
+[node name="BtnProvince3" parent="ProvincesDemanded/HBoxContainer/VBoxContainer/ProvincesDemandedContainer" instance=ExtResource("4_0fiu2")]
+layout_mode = 2
+text = "Rome"
+
+[node name="BtnAcceptProvincesDemand" type="Button" parent="ProvincesDemanded/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Accept"
+
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnAnnex" to="." method="_on_btn_annex_pressed"]
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDemandProvinces" to="." method="_on_btn_demand_provinces_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDecreaseRelations" to="." method="_on_btn_decrease_relations_pressed"]
-[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnAnnex" to="." method="_on_btn_annex_pressed"]
+[connection signal="pressed" from="ProvincesDemanded/HBoxContainer/VBoxContainer/BtnAcceptProvincesDemand" to="." method="_on_btn_accept_provinces_demand_pressed"]

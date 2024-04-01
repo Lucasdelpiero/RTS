@@ -35,6 +35,8 @@ signal sg_btn_diplomacy_nation_selected(nation_tag : String)
 
 signal sg_btn_diplomacy_annexed_nation(nation_tag: String, target_tag: String)
 
+signal sg_annex_provinces(nation_tag: String, provinces: Array[Province])
+
 #endregion
 
 

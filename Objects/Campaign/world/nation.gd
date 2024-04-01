@@ -88,7 +88,6 @@ func process_resources_recieved() -> void:
 	if total_gold_generated == null:
 		push_error("Error in calculating resources")
 		return
-	
 	# Armies cost
 	var armies : Array[ArmyCampaing] = []
 	armies.assign(get_children())

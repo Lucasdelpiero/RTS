@@ -30,6 +30,7 @@ var dictionary_ID_to_name : Dictionary = {}
 func _init() -> void:
 	Globals.campaign_map = self
 	Signals.sg_btn_diplomacy_annexed_nation.connect(annexed_nation)
+	Signals.sg_annex_provinces.connect(annex_provinces)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -212,7 +213,7 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 func start_battle() -> void:
 	# Send the info of the armies to the global script
 	for army in Globals.player_army as Array[ArmyCampaing]:
-		Globals.player_army_Data.push_back(army.army_data)
+		Globals.player_army_data.push_back(army.army_data)
 	for army in Globals.enemy_army as Array[ArmyCampaing]:
 		Globals.enemy_army_data.push_back(army.army_data)
 	main.start_battle()
@@ -234,7 +235,7 @@ func _on_timer_generate_resources_timeout() -> void:
 
 # Deletes the nation annexed and gives the provinces to the target nation
 func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> void:
-	# Provinces from this nation will be change ownership to the target natoin
+	# Provinces from this nation will be change ownership to the target nation
 	for province in get_tree().get_nodes_in_group("provinces") as Array[Province]:
 		if province.ownership == annexed_nation_tag:
 			var target_nation : Nation = get_nation_by_tag(target_nation_tag)
@@ -250,5 +251,15 @@ func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> voi
 			# Tells the UI who was deleted and is used to delete the corresponding
 			# UI elements to this nation (buttons to interact in diplo as ex.)
 			Signals.sg_nation_deleted.emit(annexed_nation_tag)
+
+func annex_provinces(nation_tag_annexing: String, provinces_annexed: Array[Province]) -> void:
+	var target_nation : Nation = get_nation_by_tag(nation_tag_annexing)
+	if target_nation == null:
+		push_error("There is no nation node with that ID")
+		return
 	
+	for province in provinces_annexed:
+		province.ownership = nation_tag_annexing
+		province.nation_owner = target_nation
+	pass
 
