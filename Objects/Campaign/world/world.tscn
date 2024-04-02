@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=88 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="8_2js6r"]
 [ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="9_2bscc"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/army_data.gd" id="9_5dn3s"]
+[ext_resource type="Texture2D" uid="uid://feobrykgqrvw" path="res://Assets/Map_Gallia_Tribes_Towns-es.svg.png" id="12_0ux41"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="Shader" path="res://Objects/Campaign/world/graphics/water.gdshader" id="12_f07y5"]
 [ext_resource type="Texture2D" uid="uid://bjojgo41sopy" path="res://Objects/Campaign/world/graphics/water_noise_texture.tres" id="13_1gxr8"]
@@ -478,6 +479,11 @@ nation_outline_color = Color(0.309804, 0.470588, 0.368627, 1)
 nation_color = Color(0.45098, 0.686275, 0.537255, 1)
 capital = NodePath("../../Galia/Lugdunum")
 
+[node name="MapGalliaTribesTowns-es_svg" type="Sprite2D" parent="."]
+position = Vector2(80.1015, -97.7846)
+scale = Vector2(1.39126, 1.39638)
+texture = ExtResource("12_0ux41")
+
 [node name="EuropeMap" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(984, -589)
@@ -493,6 +499,7 @@ texture = ExtResource("13_jsewn")
 metadata/_edit_lock_ = true
 
 [node name="WaterBackground" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(0.00784314, 1, 1, 1)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_smi75")
@@ -844,7 +851,7 @@ buildings_manager = SubResource("Resource_x3wtl")
 path0 = NodePath("../Burdigala")
 path1 = NodePath("../Narbo")
 path2 = NodePath("../Lugdunum")
-path3 = NodePath("../Lutelia")
+path3 = NodePath("../Alesia")
 path4 = NodePath("../Breton")
 
 [node name="Lugdunum" parent="Galia" node_paths=PackedStringArray("path0") instance=ExtResource("16_y4d8b")]
@@ -857,9 +864,9 @@ ID = 205
 religion = "celtic"
 culture = 2
 buildings_manager = SubResource("Resource_khthf")
-path0 = NodePath("../Lutelia")
+path0 = NodePath("../Alesia")
 
-[node name="Lutelia" parent="Galia" node_paths=PackedStringArray("path0") instance=ExtResource("16_y4d8b")]
+[node name="Alesia" parent="Galia" node_paths=PackedStringArray("path0") instance=ExtResource("16_y4d8b")]
 position = Vector2(80.9592, -201.37)
 color = Color(0.486275, 0.686275, 0.435294, 1)
 polygon = PackedVector2Array(211.041, 154.37, 201.041, 145.37, 194.041, 135.37, 183.041, 127.37, 172.041, 122.37, 163.041, 111.37, 158.041, 101.37, 158.041, 93.3698, 160.041, 82.3698, 162.041, 76.3698, 161.041, 65.3698, 155.041, 55.3698, 148.041, 46.3698, 136.041, 37.3698, 125.041, 30.3698, 113.041, 23.3698, 100.041, 9.36984, 89.0408, 6.36984, 77.0408, 0.369843, 68.0408, -7.63016, 56.0408, -14.6302, 43.0408, -19.6302, 33.0408, -22.6302, 17.0408, -36.6302, 2.04076, -43.6302, -16.9592, -44.6302, -28.9592, -49.6302, -36.9592, -59.6302, -39.9592, -80.6302, -39.9592, -90.6302, -39.9592, -102.63, -46.9592, -113.63, -55.9592, -121.63, -63.9592, -121.63, -74.9592, -112.63, -87.9592, -110.63, -102.959, -107.63, -116.959, -97.6302, -122.959, -92.6302, -125.959, -80.6302, -125.959, -75.6302, -130.959, -67.6302, -137.959, -63.6302, -137.959, -58.6302, -137.959, -53.6302, -137.959, -44.6302, -137.959, -34.6302, -132.959, -22.6302, -127.959, -15.6302, -125.959, -7.63016, -122.959, 6.36984, -122.959, 13.3698, -122.959, 25.3698, -120.959, 40.3698, -116.959, 52.3698, -114.959, 64.3698, -114.959, 76.3698, -114.959, 86.3698, -118.959, 99.3698, -121.959, 108.37, -122.959, 120.37, -125.959, 130.37, -127.959, 137.37, -122.959, 138.37, -109.959, 139.37, -82.9592, 132.37, -74.9592, 134.37, -64.9592, 137.37, -52.9592, 143.37, -44.9592, 143.37, -28.9592, 146.37, -21.9592, 142.37, -1.95924, 142.37, 4.04076, 143.37, 26.0408, 141.37, 37.0408, 144.37, 53.0408, 151.37, 62.0408, 165.37, 70.0408, 161.37, 86.0408, 167.37, 92.0408, 174.37, 94.0408, 187.37, 95.0408, 191.37, 107.041, 188.37, 120.041, 186.37, 134.041, 186.37, 148.041, 175.37, 157.041, 174.37, 172.041, 181.37, 189.041, 181.37, 197.041, 181.37, 203.041, 192.37, 209.041, 171.37)
