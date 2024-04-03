@@ -36,6 +36,8 @@ metadata/_edit_lock_ = true
 [node name="MouseDetector" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_mask = 0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MouseDetector"]
 visible = false

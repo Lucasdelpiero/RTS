@@ -18,6 +18,8 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var celt : Color = Color(1, 0, 1)
 @export_color_no_alpha var greek : Color = Color(1, 0, 1)
 @export_color_no_alpha var phoenician : Color = Color(1, 0, 1)
+@export_color_no_alpha var hebrew : Color = Color(1, 1, 1)
+@export_color_no_alpha var egipcian : Color = Color(1, 0, 1)
 
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
@@ -48,7 +50,7 @@ func get_religion_color(religion : String = "none") -> Color:
 
 func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 	var culture_name : String = Cultures.get_name_by_enum(culture)
-	
+	# TODO fix this shit
 	match culture_name:
 		"latin":
 			return latin
@@ -58,6 +60,10 @@ func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 			return phoenician
 		"greek":
 			return greek
+		"hebrew":
+			return hebrew
+		"egipcian":
+			return egipcian
 		_:
 			return default_color
 

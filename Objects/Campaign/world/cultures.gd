@@ -13,6 +13,7 @@ enum list {
 	EGIPCIAN,
 	BRETON,
 	GERMANIC,
+	HEBREW,
 }
 
 # Constans for the names of the cultures to avoid mistakes
@@ -25,6 +26,7 @@ const PHOENICIAN := "phoenician"
 const EGIPCIAN := "egipcian"
 const BRETON := "breton"
 const GERMANIC := "germanic"
+const HEBREW := "hebrew"
 
 # This array NEEDS to have the same order as the name constans
 # as it retrieves the value of the constant based on the name
@@ -37,6 +39,7 @@ static var list_names : Array[String] = [
 	EGIPCIAN,
 	BRETON,
 	GERMANIC,
+	HEBREW,
 ]
 
 # Uses the enum value (int) as index to get the name of the culture
