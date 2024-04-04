@@ -15,6 +15,7 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var punic : Color = Color(1, 0, 1)
 @export_color_no_alpha var judaism : Color = Color(1, 0, 1)
 @export_color_no_alpha var assyrian_polytheism : Color = Color(1, 1, 1)
+@export_color_no_alpha var zoroastrianism : Color = Color(1, 1, 1)
 
 @export_group("Culture")
 @export_color_no_alpha var latin : Color = Color(1, 0, 1)
@@ -28,6 +29,7 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var assyrian : Color = Color(1, 0, 1)
 @export_color_no_alpha var celtiberian : Color = Color(1, 0, 1)
 @export_color_no_alpha var armenian : Color = Color(1, 0, 1)
+@export_color_no_alpha var persian : Color = Color(1, 0, 1)
 
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
@@ -59,6 +61,8 @@ func get_religion_color(religion : String = "none") -> Color:
 			return judaism
 		"assyrian polytheism":
 			return assyrian_polytheism
+		"zoroastrianism":
+			return zoroastrianism
 		_:
 			return default_color
 
@@ -86,6 +90,8 @@ func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 			return celtiberian
 		"armenian":
 			return armenian
+		"persian":
+			return persian
 		_:
 			return default_color
 
