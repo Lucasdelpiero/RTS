@@ -19,7 +19,8 @@ enum list {
 	ASSYRIAN,
 	CELTIBERIAN,
 	ARMENIAN,
-	PERSIAN
+	PERSIAN,
+	ILLYRIAN,
 }
 
 # Constans for the names of the cultures to avoid mistakes
@@ -39,6 +40,7 @@ const ASSYRIAN := "assyrian"
 const CELTIBERIAN := "celtiberian"
 const ARMENIAN := "armenian"
 const PERSIAN := "persian"
+const ILLYRIAN := "illyrian"
 
 # This array NEEDS to have the same order as the name constans
 # as it retrieves the value of the constant based on the name
@@ -58,6 +60,7 @@ static var list_names : Array[String] = [
 	CELTIBERIAN,
 	ARMENIAN,
 	PERSIAN,
+	ILLYRIAN,
 ]
 
 # Uses the enum value (int) as index to get the name of the culture
