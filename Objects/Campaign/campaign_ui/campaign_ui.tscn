@@ -152,6 +152,7 @@ text = "Name"
 
 [node name="NationLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 17.0
 offset_top = 31.0
 offset_right = 70.0
