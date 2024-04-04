@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=195 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -936,6 +936,24 @@ buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_446f6"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_so1ie"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_j6vg0"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_lk1u3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
 buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
@@ -2674,6 +2692,24 @@ ID = 21
 terrain_type = "mountains"
 culture = 1
 buildings_manager = SubResource("Resource_446f6")
+
+[node name="Tracia-Dacia" type="Node2D" parent="Regions"]
+
+[node name="Sardica" parent="Regions/Tracia-Dacia" instance=ExtResource("16_y4d8b")]
+position = Vector2(1229, 275.886)
+polygon = PackedVector2Array(-39.0042, -24.8863, -27.0042, -24.8863, -23.0042, -33.8863, -15.0042, -40.8863, -13.0042, -46.8863, -19.0042, -53.8863, -23.0042, -60.8863, -31.0042, -66.8863, -35.0042, -72.8863, -39.0042, -80.8863, -40.0042, -89.8863, -44.0042, -97.8863, -42.0042, -108.886, -39.0042, -114.886, -34.0042, -124.886, -31.0042, -127.886, -24.0042, -124.886, -18.0042, -118.886, -11.0042, -117.886, -10.0042, -112.886, -18.0042, -108.886, -18.0042, -97.8863, -9.00415, -94.8863, -2.00415, -93.8863, 9.99585, -99.8863, 21.9958, -94.8863, 28.9958, -94.8863, 37.9958, -90.8863, 45.9958, -89.8863, 51.9958, -86.8863, 65.9958, -86.8863, 72.9958, -90.8863, 83.9958, -90.8863, 90.9958, -86.8863, 100.996, -87.8863, 106.996, -69.8863, 106.996, -60.8863, 105.996, -55.8863, 104.996, -44.8863, 98.9958, -32.8863, 92.9958, -25.8863, 88.9958, -16.8863, 82.9958, -9.88632, 78.9958, 2.11368, 72.9958, 9.11368, 68.9958, 17.1137, 68.9958, 25.1137, 68.9958, 32.1137, 66.9958, 39.1137, 59.9958, 48.1137, 60.9958, 61.1137, 56.9958, 70.1137, 52.9958, 73.1137, 46.9958, 75.1137, 41.9958, 75.1137, 34.9958, 79.1137, 22.9958, 83.1137, 17.9958, 83.1137, 9.99585, 84.1137, -0.00415039, 86.1137, -8.00415, 86.1137, -14.0042, 86.1137, -18.0042, 87.1137, -22.0042, 89.1137, -27.0042, 93.1137, -32.0042, 99.1137, -36.0042, 96.1137, -43.0042, 92.1137, -46.0042, 82.1137, -47.0042, 74.1137, -49.0042, 70.1137, -53.0042, 67.1137, -55.0042, 62.1137, -51.0042, 55.1137, -46.0042, 48.1137, -42.0042, 43.1137, -39.0042, 38.1137, -37.0042, 29.1137, -37.0042, 23.1137, -37.0042, 17.1137, -37.0042, 11.1137, -37.0042, 6.11368, -37.0042, -8.88632, -36.0042, -16.8863)
+buildings_manager = SubResource("Resource_so1ie")
+
+[node name="Seuthopolis" parent="Regions/Tracia-Dacia" instance=ExtResource("16_y4d8b")]
+position = Vector2(1348.72, 283.393)
+polygon = PackedVector2Array(-15.7155, -95.3931, 2.28455, -89.3931, 14.2845, -91.3931, 26.2845, -99.3931, 33.2845, -107.393, 45.2845, -117.393, 56.2845, -121.393, 70.2845, -122.393, 82.2845, -126.393, 91.2845, -128.393, 102.285, -127.393, 111.285, -121.393, 118.285, -118.393, 121.285, -105.393, 119.285, -94.3931, 115.285, -83.3931, 111.285, -77.3931, 105.285, -65.3931, 101.285, -57.3931, 98.2845, -41.3931, 99.2845, -29.3931, 100.285, -17.3931, 97.2845, -7.39313, 94.2845, -0.393127, 94.2845, 7.60687, 75.2845, 13.6069, 46.2845, 19.6069, 21.2845, 30.6069, 9.28455, 25.6069, -5.71545, 21.6069, -29.7155, 18.6069, -46.7155, 21.6069, -46.7155, 8.60687, -40.7155, -0.393127, -35.7155, -7.39313, -34.7155, -15.3931, -22.7155, -32.3931, -11.7155, -53.3931, -8.71545, -70.3931, -9.71545, -81.3931)
+buildings_manager = SubResource("Resource_j6vg0")
+
+[node name="Uskadama" parent="Regions/Tracia-Dacia" instance=ExtResource("16_y4d8b")]
+position = Vector2(1425.17, 335.826)
+polygon = PackedVector2Array(-25.1658, -4.82629, -18.1658, 4.17371, 0.834229, 15.1737, 3.83423, 23.1737, 11.8342, 24.1737, 18.8342, 24.1737, 23.8342, 26.1737, 33.8342, 27.1737, 44.8342, 24.1737, 50.8342, 20.1737, 60.8342, 15.1737, 65.8342, 12.1737, 71.8342, 8.17371, 73.8342, 4.17371, 69.8342, -2.82629, 68.8342, -6.82629, 70.8342, -11.8263, 70.8342, -16.8263, 69.8342, -22.8263, 63.8342, -29.8263, 56.8342, -40.8263, 52.8342, -43.8263, 51.8342, -48.8263, 49.8342, -53.8263, 35.8342, -41.8263, 22.8342, -42.8263, 16.8342, -41.8263, 8.83423, -40.8263, -0.165771, -36.8263, -11.1658, -33.8263, -19.1658, -30.8263, -25.1658, -29.8263, -31.1658, -28.8263, -36.1658, -25.8263, -45.1658, -22.8263, -47.1658, -21.8263, -45.1658, -15.8263, -40.1658, -11.8263, -31.1658, -3.82629)
+ownership = "ODRISIOS"
+buildings_manager = SubResource("Resource_lk1u3")
 
 [node name="WaterBackground" type="Sprite2D" parent="."]
 visible = false
