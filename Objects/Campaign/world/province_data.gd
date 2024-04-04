@@ -1,7 +1,7 @@
 class_name ProvinceData
 extends Resource
 
-
+var ownership : String = "" # used just to show in the UI
 var province : Province = null
 var name : String = "Unnamed"
 var base_income : float = 0.0
