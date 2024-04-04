@@ -7,11 +7,14 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var hills : Color = Color(1, 0, 1)
 @export_color_no_alpha var mountains : Color = Color(1, 0, 1)
 @export_color_no_alpha var desert : Color = Color(1, 0, 1)
+@export_color_no_alpha var forest : Color = Color(1, 0, 1)
 
 @export_group("Religion")
 @export_color_no_alpha var hellenic : Color = Color(1, 0, 1)
 @export_color_no_alpha var celtic : Color = Color(1, 0, 1)
 @export_color_no_alpha var punic : Color = Color(1, 0, 1)
+@export_color_no_alpha var judaism : Color = Color(1, 0, 1)
+@export_color_no_alpha var assyrian_polytheism : Color = Color(1, 1, 1)
 
 @export_group("Culture")
 @export_color_no_alpha var latin : Color = Color(1, 0, 1)
@@ -20,6 +23,11 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var phoenician : Color = Color(1, 0, 1)
 @export_color_no_alpha var hebrew : Color = Color(1, 1, 1)
 @export_color_no_alpha var egipcian : Color = Color(1, 0, 1)
+@export_color_no_alpha var aramean : Color = Color(1, 0, 1)
+@export_color_no_alpha var iberian : Color = Color(1, 0, 1)
+@export_color_no_alpha var assyrian : Color = Color(1, 0, 1)
+@export_color_no_alpha var celtiberian : Color = Color(1, 0, 1)
+@export_color_no_alpha var armenian : Color = Color(1, 0, 1)
 
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
@@ -32,6 +40,8 @@ func get_terrain_color(terrain_type : String = "none") -> Color:
 			return  mountains
 		"desert":
 			return desert
+		"forest":
+			return forest
 		"none":
 			return default_color
 		_:
@@ -45,6 +55,10 @@ func get_religion_color(religion : String = "none") -> Color:
 			return celtic
 		"punic":
 			return punic
+		"judaism":
+			return judaism
+		"assyrian polytheism":
+			return assyrian_polytheism
 		_:
 			return default_color
 
@@ -64,6 +78,14 @@ func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 			return hebrew
 		"egipcian":
 			return egipcian
+		"aramean":
+			return aramean
+		"iberian":
+			return iberian
+		"celtiberian":
+			return celtiberian
+		"armenian":
+			return armenian
 		_:
 			return default_color
 

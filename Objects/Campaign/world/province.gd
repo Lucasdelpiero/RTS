@@ -33,12 +33,12 @@ var nation_owner : Nation  = null :
 		
 
 @export_category("DATA")
-@export_range(0, 10000, 1) var ID : int = 0
-@export_enum("plains", "hills", "mountains", "desert")  var terrain_type : String = "plains"
+@export_range(0, 100000, 1) var ID : int = 0
+@export_enum("plains", "hills", "mountains", "desert", "forest")  var terrain_type : String = "plains"
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
-@export_range(100, 100000, 1) var population : int = 1000
+@export_range(100, 1000000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
-@export_enum("hellenic", "celtic", "punic") var religion : String = "hellenic"
+@export_enum("hellenic", "celtic", "punic", "judaism", "assyrian polytheism") var religion : String = "hellenic"
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 var nation_bonuses : Array[Bonus] = []
