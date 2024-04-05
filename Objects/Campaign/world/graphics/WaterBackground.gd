@@ -1,4 +1,4 @@
-@tool
+#@tool causes a memory leak
 extends Sprite2D
 
 # The noise texture is added to an existing noise texture in the shader
