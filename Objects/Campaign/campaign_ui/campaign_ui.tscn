@@ -100,7 +100,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -168.0
+offset_top = -217.0
 offset_right = 389.0
 offset_bottom = -21.0
 grow_vertical = 0
@@ -108,64 +108,66 @@ grow_vertical = 0
 [node name="IncomeLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 255.0
-offset_top = 31.0
-offset_right = 313.0
-offset_bottom = 57.0
+offset_left = 189.0
+offset_top = 77.0
+offset_right = 247.0
+offset_bottom = 103.0
 text = "Income"
 
 [node name="PopulationLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 155.0
-offset_top = 29.0
-offset_right = 240.0
-offset_bottom = 55.0
+offset_left = 12.0
+offset_top = 76.0
+offset_right = 97.0
+offset_bottom = 102.0
 text = "Population"
 
 [node name="NameLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 6.0
-offset_top = 8.0
-offset_right = 165.0
-offset_bottom = 34.0
+offset_left = 17.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 66.0
 text = "Name"
 
 [node name="CultureLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
+layout_direction = 3
 layout_mode = 0
-offset_left = 174.0
-offset_top = 6.0
-offset_right = 264.0
-offset_bottom = 32.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 98.0
+offset_bottom = 35.0
 text = "Name"
 
 [node name="ReligionLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
+layout_direction = 3
 layout_mode = 0
-offset_left = 274.0
-offset_top = 7.0
-offset_right = 347.0
-offset_bottom = 33.0
+offset_left = 6.0
+offset_top = 35.0
+offset_right = 98.0
+offset_bottom = 61.0
 text = "Name"
 
 [node name="NationLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 17.0
-offset_top = 31.0
-offset_right = 70.0
-offset_bottom = 54.0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 161.0
+offset_bottom = 36.0
 text = "Nation"
 
 [node name="BuildingsUI" type="Control" parent="Container/Province"]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 22.0
-offset_top = 88.0
-offset_right = 341.0
-offset_bottom = 131.0
+offset_left = 17.0
+offset_top = 138.0
+offset_right = 336.0
+offset_bottom = 181.0
 script = ExtResource("3_e7y3r")
 buildings_manager = ExtResource("4_kfbbl")
 np_buildings_available_container = NodePath("ToBeBuiltContainer/MarginContainer/HBoxContainer")

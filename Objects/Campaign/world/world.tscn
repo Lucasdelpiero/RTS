@@ -1539,19 +1539,6 @@ autostart = true
 
 [node name="CampaingUI" parent="." instance=ExtResource("4_h0nd8")]
 unique_name_in_owner = true
-visible = false
-
-[node name="Container" parent="CampaingUI" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="Province" parent="CampaingUI/Container" index="1"]
-visible = false
-
-[node name="NationLabel" parent="CampaingUI/Container/Province" index="5"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 53.0
-offset_bottom = 23.0
 
 [node name="DiplomacyManager" parent="." node_paths=PackedStringArray("nation_group") instance=ExtResource("5_vu0ir")]
 unique_name_in_owner = true
@@ -4531,7 +4518,6 @@ buildings_manager = SubResource("Resource_kjmyc")
 [connection signal="pressed" from="BattleMenu/Btn_StartBattle" to="." method="_on_btn_start_battle_pressed"]
 
 [editable path="Mouse"]
-[editable path="CampaingUI"]
 [editable path="Regions/Armenia region/Satala"]
 [editable path="Regions/Armenia region/Satala/PosProvince"]
 [editable path="Regions/Hispania/Basti"]
