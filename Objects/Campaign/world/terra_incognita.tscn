@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctqajsrvojr42"]
+
+[ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/world/province.tscn" id="1_l0u2s"]
+[ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="2_cijhw"]
+[ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="3_xthf4"]
+[ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="4_5vqko"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="5_y1x8h"]
+
+[sub_resource type="Resource" id="Resource_1tx2f"]
+resource_local_to_scene = true
+script = ExtResource("5_y1x8h")
+buildings = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_cijhw")])
+building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]([ExtResource("2_cijhw"), ExtResource("3_xthf4"), ExtResource("4_5vqko")])
+
+[node name="Province" instance=ExtResource("1_l0u2s")]
+color = Color(0.721569, 0.717647, 0.568627, 1)
+outline_color = Color(0.568627, 0.564706, 0.45098, 1)
+terrain_type = "desert"
+religion = "punic"
+buildings_manager = SubResource("Resource_1tx2f")
+
+[node name="Border" parent="." index="1"]
+default_color = Color(0.568627, 0.564706, 0.45098, 1)
+
+[node name="MouseDetector" parent="." index="2"]
+visible = false
+
+[editable path="PosProvince"]

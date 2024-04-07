@@ -22,14 +22,32 @@ metadata/_edit_lock_ = true
 layout_mode = 1
 offset_top = 2.0
 offset_right = 207.0
-offset_bottom = 260.0
+offset_bottom = 324.0
 metadata/_edit_group_ = true
 
-[node name="ListRelationships" type="VBoxContainer" parent="PanelContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="BtnDiplomacyNation" parent="PanelContainer/ListRelationships" instance=ExtResource("3_tfvbl")]
+[node name="CurrentNationsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Nations"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="ListRelationships" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BtnDiplomacyNation" parent="PanelContainer/VBoxContainer/ScrollContainer/ListRelationships" instance=ExtResource("3_tfvbl")]
 layout_mode = 2
 
 [node name="DiploActionsContainer" type="PanelContainer" parent="."]
@@ -37,12 +55,18 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 207.0
 offset_top = 2.0
-offset_right = 359.0
+offset_right = 360.0
 offset_bottom = 254.0
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DiploActionsContainer"]
 layout_mode = 2
+
+[node name="NationSelectedLabel" type="Label" parent="DiploActionsContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Nation"
+horizontal_alignment = 1
 
 [node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2

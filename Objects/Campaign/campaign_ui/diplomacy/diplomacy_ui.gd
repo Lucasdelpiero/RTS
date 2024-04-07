@@ -6,6 +6,7 @@ extends Control
 @onready var diplo_actions_container := %DiploActionsContainer as Control
 @onready var provinces_demanded_panel := %ProvincesDemanded as PanelContainer # Used just to hide or show the menu with the visibility property
 @onready var provinces_demanded_container := %ProvincesDemandedContainer as Container
+@onready var nation_selected_label := %NationSelectedLabel as Label
 @export var BtnDiplomacyNationP : PackedScene 
 @export var BtnProvinceP : PackedScene
 
@@ -49,6 +50,7 @@ func set_relations_data(data: DiplomacyNation) -> void:
 # Sets the nation selected that will be the target of diplomatic actions in the menu
 func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	current_diplomacy_tag = nation_tag
+	nation_selected_label.text = nation_tag.capitalize()
 	diplo_actions_container.visible = true
 	# TODO hide the secondary menues properly
 	provinces_demanded_panel.visible = false
@@ -80,6 +82,7 @@ func _on_btn_annex_pressed() -> void:
 	if current_diplomacy_tag == "":
 		push_error("not a nation selected to annex")
 		return
+	diplo_actions_container.hide()
 	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
 
 
@@ -114,3 +117,4 @@ func _on_btn_accept_provinces_demand_pressed() -> void:
 	demanded_provinces.assign(temp)
 	Signals.sg_annex_provinces.emit(Globals.player_nation, demanded_provinces)
 	provinces_demanded_create_buttons()
+

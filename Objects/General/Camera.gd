@@ -67,6 +67,15 @@ func _process(delta : float) -> void:
 	
 	global_position += velocity 
 	
+	# Keep it inside the window
+	# The compensation is to compensate the distance from the center to the limit, as if it doesnt is multiplied by the compensation
+	# The camera wont stop moving not when the border reach the limit, but until the camera reachs the position of the limit, this compensation
+	# fixes that problem
+	var compensation : float = 0.4
+	global_position.x = clampf(global_position.x , limit_left * compensation, limit_right * compensation)
+	global_position.y = clampf(global_position.y, limit_top * compensation, limit_bottom * compensation)
+	#print(global_position.x)
+	
 	# Zoom in-out
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)
 	target_zoom.y = clamp(target_zoom.y, zoom_min, zoom_max)
@@ -75,5 +84,3 @@ func _process(delta : float) -> void:
 	var rotate_camera : int = int(Input.is_action_pressed("rotate_right")) - int(Input.is_action_pressed("rotate_left"))
 	rotation_degrees += rotate_camera 
 	Globals.camera_angle = rotation
-	
-	pass

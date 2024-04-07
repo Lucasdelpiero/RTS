@@ -1,4 +1,4 @@
-[gd_scene load_steps=283 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=294 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://besh0hskqlkv7" path="res://Objects/Campaign/military/battle_menu.tscn" id="17_0w4y1"]
 [ext_resource type="PackedScene" uid="uid://clwesawyh31ay" path="res://Objects/Battle/Units/Components/projectile.tscn" id="17_doae8"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="18_w06vi"]
+[ext_resource type="PackedScene" uid="uid://ctqajsrvojr42" path="res://Objects/Campaign/world/terra_incognita.tscn" id="19_amwaf"]
 [ext_resource type="Resource" uid="uid://4ec0d48qoin4" path="res://Objects/Campaign/buildings/building_government.tres" id="19_jlb3w"]
 [ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="20_5w16y"]
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="21_kmvxn"]
@@ -227,6 +228,66 @@ base_manpower_cost = 200
 [sub_resource type="Resource" id="Resource_mjsxe"]
 script = ExtResource("9_5dn3s")
 army_units = Array[ExtResource("16_ir871")]([SubResource("Resource_03ufa"), SubResource("Resource_4mpfa"), SubResource("Resource_b7k3v"), SubResource("Resource_xngil")])
+
+[sub_resource type="Resource" id="Resource_0hvuq"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_s0tb5"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_jdtlt"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_ylgtk"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_f0wbs"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_bxeiu"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_y6fit"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_d0kqc"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_5y4hq"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_6f45v"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_h7was"]
 resource_local_to_scene = true
@@ -1492,14 +1553,6 @@ script = ExtResource("22_leoek")
 buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nktg"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
-vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 2173, -164, 1398, 1189, 0, 953)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-
 [sub_resource type="Resource" id="Resource_4wx28"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
@@ -1524,6 +1577,14 @@ script = ExtResource("22_leoek")
 buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nktg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v8dvj"]
+vertices = PackedVector2Array(47, 122, 135, -262, 2173, -164, 1174, 966, 0, 953)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(47, 122, 135, -262, 2173, -164, 1398, 1189, 0, 953)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="World" type="Node2D" groups=["world"]]
 position = Vector2(67, 153)
 script = ExtResource("1_xpr24")
@@ -1536,9 +1597,14 @@ autostart = true
 [node name="Mouse" parent="." instance=ExtResource("2_5u4og")]
 
 [node name="Camera" parent="." instance=ExtResource("3_h1dnb")]
+limit_left = -5000
+limit_top = -4000
+limit_right = 8000
+limit_bottom = 3000
 
 [node name="CampaingUI" parent="." instance=ExtResource("4_h0nd8")]
 unique_name_in_owner = true
+visible = false
 
 [node name="DiplomacyManager" parent="." node_paths=PackedStringArray("nation_group") instance=ExtResource("5_vu0ir")]
 unique_name_in_owner = true
@@ -1782,7 +1848,7 @@ capital = NodePath("../../Regions/Greece/Corinth")
 NATION_TAG = "BOSFORO"
 nation_outline_color = Color(0.0588235, 0.0588235, 0.439216, 1)
 nation_color = Color(0.0666667, 0.0666667, 0.678431, 1)
-capital = NodePath("../../Norte del Mar Negro/Panticapeo")
+capital = NodePath("../../Regions/Norte del Mar Negro/Panticapeo")
 
 [node name="Britons" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
 NATION_TAG = "BRITONS"
@@ -1804,6 +1870,48 @@ nation_color = Color(0, 0.494118, 0, 1)
 capital = NodePath("../../Regions/Galia original/Burdigala")
 
 [node name="Regions" type="Node2D" parent="."]
+
+[node name="TerraIncognita" type="Node2D" parent="Regions"]
+
+[node name="Border" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(-858, 1607, -951, 1647, -1271, 1631, -1533, 1525, -1784, 1172, -1853, 868, -1859, 414, -1904, 55, -1813, -308, -1677, -693, -1511, -1018, -1345, -1244, -1043, -1433, -749, -1516, -454, -1516, 165, -1421, 381, -1269, 830, -1269, 1099, -1305, 1701, -1475, 2024, -1493, 1611, -1332, 4251, -1314, 4296, -452, 4449, 446, 3803, 1523, 3013, 1598, 1885, 1613, 2049, 4502, 2924, 4645, 8152, 4889, 11384, 741, 7703, -4647, 699, -4378, -5623, -3354, -5390, 3991, -2965, 5500, -886, 4746)
+buildings_manager = SubResource("Resource_0hvuq")
+
+[node name="NorthAfrica" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(-845, 1369, -806, 1358, -792, 1304, -743, 1256, -673, 1233, -642, 1197, -594, 1140, -588, 1072, -574, 987, -531, 953, -486, 911, -449, 888, -418, 860, -404, 834, -308, 815, -14, 829, 326, 863, 456, 936, 484, 1035, 592, 970, 733, 999, 821, 1081, 968, 1126, 1021, 1134, 1078, 1106, 1120, 1049, 1183, 1047, 1299, 1109, 1338, 1188, 1440, 1242, 1556, 1259, 1655, 1259, 1740, 1225, 1762, 1233, 1785, 1258, 1801, 1284, 1822, 1338, 1837, 1367, 1848, 1398, 1865, 1432, 1884, 1463, 1903, 1498, 1930, 1542, 1949, 1615, 2060, 4502, -898, 4775, -876, 1631)
+buildings_manager = SubResource("Resource_s0tb5")
+
+[node name="Arabia" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(2074, 1632, 2057, 1580, 2035, 1538, 2021, 1492, 2008, 1465, 1998, 1433, 1979, 1405, 1973, 1380, 1951, 1358, 1936, 1324, 1919, 1304, 1907, 1272, 1887, 1264, 1860, 1262, 1874, 1226, 1877, 1174, 1867, 1191, 1863, 1222, 1851, 1247, 1851, 1265, 1839, 1279, 1829, 1280, 1815, 1267, 1807, 1253, 1796, 1243, 1783, 1226, 1779, 1199, 1777, 1143, 1841, 1141, 1854, 1134, 1926, 1061, 1931, 965, 2057, 876, 2176, 843, 2261, 843, 2314, 926, 2341, 967, 2410, 1026, 2521, 1094, 2583, 1122, 2607, 1162, 2590, 1170, 2586, 1182, 2594, 1185, 2603, 1183, 2611, 1208, 2639, 1266, 2649, 1290, 2674, 1309, 2695, 1335, 2711, 1345, 2721, 1374, 2720, 1410, 2737, 1435, 2751, 1460, 2753, 1430, 2760, 1399, 2773, 1382, 2788, 1385, 2801, 1413, 2798, 1437, 2803, 1454, 2794, 1475, 2878, 1504, 2946, 1478, 2987, 1451, 3022, 1408, 3050, 1375, 3070, 1398, 3080, 1468, 3087, 1529, 3075, 1579, 3065, 1627)
+buildings_manager = SubResource("Resource_jdtlt")
+
+[node name="Scortland" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(-225, -1041, -205, -1044, -159, -1045, -150, -1023, -164, -999, -168, -973, -179, -951, -196, -926, -206, -909, -201, -895, -224, -890, -234, -881, -252, -878, -217, -870, -204, -878, -184, -872, -168, -856, -154, -840, -139, -832, -141, -788, -197, -758, -237, -750, -240, -760, -235, -772, -246, -773, -252, -763, -271, -754, -282, -756, -295, -763, -291, -751, -296, -745, -307, -751, -318, -765, -323, -757, -320, -742, -328, -744, -336, -764, -339, -778, -329, -792, -315, -815, -309, -832, -318, -842, -327, -850, -341, -854, -343, -845, -333, -820, -347, -813, -353, -828, -359, -811, -369, -808, -369, -818, -367, -848, -364, -864, -364, -882, -373, -870, -380, -852, -387, -840, -398, -837, -400, -849, -409, -843, -405, -858, -383, -871, -378, -885, -363, -903, -352, -926, -343, -946, -364, -924, -367, -914, -382, -907, -400, -901, -405, -909, -393, -917, -398, -935, -386, -954, -370, -967, -373, -980, -389, -988, -410, -996, -418, -1006, -426, -1012, -417, -1032, -404, -1038, -400, -1046, -390, -1036, -386, -1017, -378, -1008, -367, -1011, -372, -1023, -376, -1041, -372, -1067, -356, -1072, -349, -1075, -350, -1094, -342, -1106, -333, -1133, -327, -1144, -303, -1138, -287, -1138, -264, -1137, -244, -1145, -221, -1145, -221, -1134, -221, -1115, -240, -1100, -255, -1087, -273, -1066, -266, -1061, -274, -1043, -275, -1032, -260, -1042, -247, -1042, -236, -1052)
+buildings_manager = SubResource("Resource_ylgtk")
+
+[node name="Sweden" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(986, -1304, 1002, -1261, 991, -1205, 917, -1168, 874, -1098, 874, -1021, 852, -965, 847, -901, 778, -882, 748, -858, 738, -818, 700, -805, 663, -823, 652, -863, 634, -895, 642, -935, 628, -989, 591, -1042, 564, -1130, 556, -1189, 537, -1210, 489, -1186, 449, -1144, 388, -1066, 308, -1074, 262, -1144, 236, -1232, 236, -1304, 246, -1347, 986, -1347)
+buildings_manager = SubResource("Resource_f0wbs")
+
+[node name="Denmark" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(401, -840, 401, -864, 401, -892, 395, -912, 403, -934, 411, -966, 432, -991, 472, -995, 491, -1026, 523, -1043, 530, -1026, 534, -1002, 516, -972, 519, -931, 536, -924, 554, -920, 556, -899, 538, -890, 518, -890, 514, -870, 498, -848, 484, -832, 484, -792, 484, -767, 499, -748, 510, -728, 535, -727, 560, -728, 559, -703, 546, -684, 532, -667, 467, -668, 439, -685, 432, -707, 432, -728, 424, -763, 424, -795, 421, -823)
+buildings_manager = SubResource("Resource_bxeiu")
+
+[node name="IslandLarge" parent="Regions/TerraIncognita/Denmark" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(573, -795, 564, -818, 561, -839, 574, -856, 596, -875, 629, -883, 641, -872, 641, -856, 646, -838, 645, -830, 630, -833, 622, -823, 627, -814, 635, -808, 622, -794, 617, -788, 627, -781, 634, -772, 620, -766, 614, -744, 607, -739, 596, -744, 575, -741, 564, -751, 549, -767, 564, -776, 575, -771, 584, -765, 598, -768, 603, -782, 585, -790)
+buildings_manager = SubResource("Resource_y6fit")
+
+[node name="IslandSmall" parent="Regions/TerraIncognita/Denmark" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(511, -781, 500, -795, 494, -807, 491, -820, 498, -829, 516, -835, 522, -835, 525, -820, 539, -819, 543, -808, 543, -795, 538, -781, 538, -769, 525, -774)
+buildings_manager = SubResource("Resource_d0kqc")
+
+[node name="EasterEuropa" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(580, -683, 644, -717, 689, -734, 712, -696, 757, -690, 833, -705, 865, -728, 904, -753, 961, -760, 984, -722, 1023, -721, 1055, -741, 1055, -770, 1099, -779, 1123, -796, 1123, -838, 1106, -915, 1112, -955, 1123, -979, 1138, -1026, 1176, -1045, 1199, -1043, 1223, -1006, 1244, -979, 1280, -975, 1301, -1013, 1301, -1053, 1301, -1098, 1276, -1113, 1255, -1147, 1248, -1198, 1308, -1240, 1380, -1255, 1418, -1247, 1486, -1234, 1512, -1253, 1535, -1279, 1578, -1285, 1607, -1298, 1624, -1347, 4434, -1366, 4416, -82, 2021, -188, 1688.98, -83.5637, 1650, -25, 1596, 42, 1584, 101, 1558, 100, 1531, 125, 1464, 180, 1257, 204, 1048, 157, 928, -84, 737, -156, 635, -343, 576, -516, 513, -669)
+buildings_manager = SubResource("Resource_5y4hq")
+
+[node name="East" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+polygon = PackedVector2Array(2862, -61, 2890, -1, 2887, 55, 2820, 58, 2777, 86, 2735, 126, 2763, 185, 2783, 239, 2842, 253, 2842, 313, 2856, 349, 2896, 318, 2924, 321, 2953, 386, 2921, 406, 2879, 389, 2865, 429, 2859, 462, 2899, 477, 2899, 525, 2916, 553, 2921, 618, 2924, 686, 2882, 697, 2814, 709, 2845, 952, 2647, 1075, 2659, 1131, 2683, 1131, 2691, 1141, 2714, 1133, 2729, 1155, 2745, 1176, 2749, 1193, 2759, 1211, 2767, 1239, 2783, 1253, 2803, 1284, 2832, 1284, 2849, 1299, 2867, 1320, 2902, 1325, 2918, 1344, 2948, 1350, 2975, 1363, 3002, 1349, 3037, 1330, 3068, 1314, 3089, 1326, 3099, 1357, 3108, 1396, 3126, 1406, 3159, 1417, 3216, 1420, 3253, 1431, 3294, 1428, 3340, 1449, 3361, 1444, 3394, 1439, 3416, 1434, 3451, 1439, 3478, 1431, 3515, 1434, 3564, 1434, 3600, 1419, 3629, 1426, 3634, 1449, 3667, 1468, 3673, 1485, 3715, 1560, 4710, 1554, 4692, -214, 2894, -172)
+buildings_manager = SubResource("Resource_6f45v")
 
 [node name="Oriente" type="Node2D" parent="Regions"]
 
@@ -4194,6 +4302,34 @@ religion = "celtic"
 culture = 7
 buildings_manager = SubResource("Resource_s8aou")
 
+[node name="Norte del Mar Negro" type="Node2D" parent="Regions"]
+
+[node name="Panticapeo" parent="Regions/Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
+position = Vector2(1955.73, 58.9228)
+polygon = PackedVector2Array(14.2734, -4.92282, 17.2734, -2.92282, 15.2734, 0.077179, 8.27344, 1.07718, 5.27344, 6.07718, 3.27344, 9.07718, 2.27344, 14.0772, -2.72656, 16.0772, 5.27344, 17.0772, 7.27344, 22.0772, 2.27344, 25.0772, -5.72656, 25.0772, -9.72656, 27.0772, -14.7266, 25.0772, -21.7266, 29.0772, -26.7266, 29.0772, -33.7266, 22.0772, -41.7266, 21.0772, -47.7266, 21.0772, -53.7266, 28.0772, -54.7266, 31.0772, -59.7266, 31.0772, -60.7266, 36.0772, -64.7266, 38.0772, -69.7266, 22.0772, -65.7266, 17.0772, -56.7266, 7.07718, -51.7266, 8.07718, -46.7266, 7.07718, -40.7266, 5.07718, -33.7266, 2.07718, -31.7266, -2.92282, -27.7266, -7.92282, -25.7266, -2.92282, -18.7266, -0.922821, -15.7266, -1.92282, -15.7266, -4.92282, -12.7266, -7.92282, -5.72656, -8.92282, 1.27344, -7.92282, 4.27344, -6.92282, 7.27344, -7.92282, 9.27344, -5.92282)
+ownership = "BOSFORO"
+culture = 3
+buildings_manager = SubResource("Resource_4wx28")
+
+[node name="Quersoneso" parent="Regions/Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
+position = Vector2(1808.89, 121.852)
+polygon = PackedVector2Array(-3.89233, -34.8517, 6.10767, -34.8517, 19.1077, -36.8517, 37.1077, -37.8517, 55.1077, -41.8517, 74.1077, -39.8517, 80.1077, -23.8517, 79.1077, -19.8517, 74.1077, -20.8517, 72.1077, -22.8517, 68.1077, -21.8517, 62.1077, -21.8517, 56.1077, -18.8517, 47.1077, -14.8517, 40.1077, -10.8517, 37.1077, -2.85172, 35.1077, 0.148285, 32.1077, 1.14828, 31.1077, 4.14828, 27.1077, 4.14828, 25.1077, 8.14828, 18.1077, 12.1483, 14.1077, 13.1483, 11.1077, 13.1483, 2.10767, 12.1483, -0.892334, 11.1483, -2.89233, 5.14828, -8.89233, 5.14828, -13.8923, 0.148285, -12.8923, -2.85172, -6.89233, -4.85172, -6.89233, -18.8517, -2.89233, -23.8517)
+ownership = "BOSFORO"
+culture = 3
+buildings_manager = SubResource("Resource_spnpx")
+
+[node name="Tanais" parent="Regions/Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
+position = Vector2(2125.18, -92.2194)
+culture = 3
+buildings_manager = SubResource("Resource_r4a4c")
+
+[node name="Gorgupia" parent="Regions/Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
+position = Vector2(2013.8, 95.5767)
+polygon = PackedVector2Array(37.1992, 25.4233, 38.1992, 16.4233, 34.1992, 5.42334, 32.1992, -7.57666, 27.1992, -14.5767, 23.1992, -20.5767, 21.1992, -26.5767, 17.1992, -38.5767, 12.1992, -45.5767, 9.19922, -40.5767, 5.19922, -36.5767, 0.199219, -35.5767, -12.8008, -35.5767, -20.8008, -38.5767, -25.8008, -40.5767, -28.8008, -43.5767, -32.8008, -42.5767, -33.8008, -37.5767, -30.8008, -38.5767, -32.8008, -33.5767, -30.8008, -32.5767, -25.8008, -32.5767, -22.8008, -32.5767, -22.8008, -28.5767, -28.8008, -27.5767, -33.8008, -25.5767, -36.8008, -23.5767, -39.8008, -25.5767, -42.8008, -25.5767, -41.8008, -21.5767, -38.8008, -17.5767, -35.8008, -15.5767, -29.8008, -14.5767, -23.8008, -14.5767, -18.8008, -11.5767, -13.8008, -9.57666, -9.80078, -6.57666, -7.80078, -2.57666, -5.80078, 3.42334, -3.80078, 9.42334, 0.199219, 13.4233, 7.19922, 16.4233, 15.1992, 18.4233, 19.1992, 19.4233, 23.1992, 18.4233, 21.1992, 13.4233, 25.1992, 15.4233, 29.1992, 20.4233, 30.1992, 24.4233)
+ownership = "BOSFORO"
+culture = 3
+buildings_manager = SubResource("Resource_kjmyc")
+
 [node name="Maps" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.407843)
 
@@ -4297,6 +4433,43 @@ default_color = Color(0.286275, 0.109804, 1, 1)
 
 [node name="West" parent="Maps/Cool texturing" instance=ExtResource("15_4h2o0")]
 position = Vector2(88.0001, -76)
+
+[node name="Um8t2Ej9Acf91-125855654" type="Sprite2D" parent="Maps"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1150, 455)
+scale = Vector2(5.69687, 5.95201)
+texture = ExtResource("39_3wj84")
+
+[node name="LittleArmeniaLocationMapWithGreatHayk" type="Sprite2D" parent="Maps"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(2283, 488)
+scale = Vector2(0.794922, 0.719178)
+texture = ExtResource("46_cxutc")
+
+[node name="AsiaMinorInTheEarly1StCenturyAd-GeneralMap-Provinces,ClientStatesAndMainSettlements-Bleached-EnglishLegend" type="Sprite2D" parent="Maps"]
+visible = false
+position = Vector2(1579.6, 833.77)
+rotation = 3.14159
+scale = Vector2(0.205928, -0.567326)
+texture = ExtResource("47_en3gc")
+
+[node name="PonticKingdom" type="Sprite2D" parent="Maps"]
+visible = false
+modulate = Color(1, 1, 1, 0.141176)
+position = Vector2(1883.34, 313)
+scale = Vector2(0.641723, 0.655864)
+texture = ExtResource("34_qkh2v")
+metadata/_edit_lock_ = true
+
+[node name="MapOfEduensPeople-fr_svg" type="Sprite2D" parent="Maps"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(161, -39)
+scale = Vector2(1.00406, 1.00488)
+texture = ExtResource("44_dvcvx")
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -4445,74 +4618,7 @@ offset_bottom = 335.0
 [node name="Debug" parent="." instance=ExtResource("23_ae5rc")]
 visible = false
 
-[node name="Um8t2Ej9Acf91-125855654" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-position = Vector2(1150, 455)
-scale = Vector2(5.69687, 5.95201)
-texture = ExtResource("39_3wj84")
-
-[node name="LittleArmeniaLocationMapWithGreatHayk" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-position = Vector2(2283, 488)
-scale = Vector2(0.794922, 0.719178)
-texture = ExtResource("46_cxutc")
-
-[node name="AsiaMinorInTheEarly1StCenturyAd-GeneralMap-Provinces,ClientStatesAndMainSettlements-Bleached-EnglishLegend" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1579.6, 833.77)
-scale = Vector2(-0.205928, 0.567326)
-texture = ExtResource("47_en3gc")
-
-[node name="PonticKingdom" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.141176)
-position = Vector2(1883.34, 313)
-scale = Vector2(0.641723, 0.655864)
-texture = ExtResource("34_qkh2v")
-metadata/_edit_lock_ = true
-
-[node name="Node2D" type="Node2D" parent="."]
-
 [node name="WaterBackground" parent="." instance=ExtResource("44_slsmi")]
-visible = false
-
-[node name="MapOfEduensPeople-fr_svg" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-position = Vector2(161, -39)
-scale = Vector2(1.00406, 1.00488)
-texture = ExtResource("44_dvcvx")
-metadata/_edit_lock_ = true
-
-[node name="Norte del Mar Negro" type="Node2D" parent="."]
-
-[node name="Panticapeo" parent="Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
-position = Vector2(1955.73, 58.9228)
-polygon = PackedVector2Array(14.2734, -4.92282, 17.2734, -2.92282, 15.2734, 0.077179, 8.27344, 1.07718, 5.27344, 6.07718, 3.27344, 9.07718, 2.27344, 14.0772, -2.72656, 16.0772, 5.27344, 17.0772, 7.27344, 22.0772, 2.27344, 25.0772, -5.72656, 25.0772, -9.72656, 27.0772, -14.7266, 25.0772, -21.7266, 29.0772, -26.7266, 29.0772, -33.7266, 22.0772, -41.7266, 21.0772, -47.7266, 21.0772, -53.7266, 28.0772, -54.7266, 31.0772, -59.7266, 31.0772, -60.7266, 36.0772, -64.7266, 38.0772, -69.7266, 22.0772, -65.7266, 17.0772, -56.7266, 7.07718, -51.7266, 8.07718, -46.7266, 7.07718, -40.7266, 5.07718, -33.7266, 2.07718, -31.7266, -2.92282, -27.7266, -7.92282, -25.7266, -2.92282, -18.7266, -0.922821, -15.7266, -1.92282, -15.7266, -4.92282, -12.7266, -7.92282, -5.72656, -8.92282, 1.27344, -7.92282, 4.27344, -6.92282, 7.27344, -7.92282, 9.27344, -5.92282)
-ownership = "BOSFORO"
-culture = 3
-buildings_manager = SubResource("Resource_4wx28")
-
-[node name="Quersoneso" parent="Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
-position = Vector2(1808.89, 121.852)
-polygon = PackedVector2Array(-3.89233, -34.8517, 6.10767, -34.8517, 19.1077, -36.8517, 37.1077, -37.8517, 55.1077, -41.8517, 74.1077, -39.8517, 80.1077, -23.8517, 79.1077, -19.8517, 74.1077, -20.8517, 72.1077, -22.8517, 68.1077, -21.8517, 62.1077, -21.8517, 56.1077, -18.8517, 47.1077, -14.8517, 40.1077, -10.8517, 37.1077, -2.85172, 35.1077, 0.148285, 32.1077, 1.14828, 31.1077, 4.14828, 27.1077, 4.14828, 25.1077, 8.14828, 18.1077, 12.1483, 14.1077, 13.1483, 11.1077, 13.1483, 2.10767, 12.1483, -0.892334, 11.1483, -2.89233, 5.14828, -8.89233, 5.14828, -13.8923, 0.148285, -12.8923, -2.85172, -6.89233, -4.85172, -6.89233, -18.8517, -2.89233, -23.8517)
-ownership = "BOSFORO"
-culture = 3
-buildings_manager = SubResource("Resource_spnpx")
-
-[node name="Tanais" parent="Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
-position = Vector2(2125.18, -92.2194)
-culture = 3
-buildings_manager = SubResource("Resource_r4a4c")
-
-[node name="Gorgupia" parent="Norte del Mar Negro" instance=ExtResource("16_y4d8b")]
-position = Vector2(2013.8, 95.5767)
-polygon = PackedVector2Array(37.1992, 25.4233, 38.1992, 16.4233, 34.1992, 5.42334, 32.1992, -7.57666, 27.1992, -14.5767, 23.1992, -20.5767, 21.1992, -26.5767, 17.1992, -38.5767, 12.1992, -45.5767, 9.19922, -40.5767, 5.19922, -36.5767, 0.199219, -35.5767, -12.8008, -35.5767, -20.8008, -38.5767, -25.8008, -40.5767, -28.8008, -43.5767, -32.8008, -42.5767, -33.8008, -37.5767, -30.8008, -38.5767, -32.8008, -33.5767, -30.8008, -32.5767, -25.8008, -32.5767, -22.8008, -32.5767, -22.8008, -28.5767, -28.8008, -27.5767, -33.8008, -25.5767, -36.8008, -23.5767, -39.8008, -25.5767, -42.8008, -25.5767, -41.8008, -21.5767, -38.8008, -17.5767, -35.8008, -15.5767, -29.8008, -14.5767, -23.8008, -14.5767, -18.8008, -11.5767, -13.8008, -9.57666, -9.80078, -6.57666, -7.80078, -2.57666, -5.80078, 3.42334, -3.80078, 9.42334, 0.199219, 13.4233, 7.19922, 16.4233, 15.1992, 18.4233, 19.1992, 19.4233, 23.1992, 18.4233, 21.1992, 13.4233, 25.1992, 15.4233, 29.1992, 20.4233, 30.1992, 24.4233)
-ownership = "BOSFORO"
-culture = 3
-buildings_manager = SubResource("Resource_kjmyc")
 
 [connection signal="timeout" from="TimerGenerateResources" to="." method="_on_timer_generate_resources_timeout"]
 [connection signal="pressed" from="BattleMenu/Btn_StartBattle" to="." method="_on_btn_start_battle_pressed"]
