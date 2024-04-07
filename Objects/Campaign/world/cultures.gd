@@ -67,6 +67,11 @@ static var list_names : Array[String] = [
 	TRACIAN,
 ]
 
+static func get_name_enum(test):
+	var name = list[test]
+	print(name)
+	
+
 # Uses the enum value (int) as index to get the name of the culture
 # stored in the array "list_names" which contains the names 
 # NEEDS to have the exact order of each named enum with its corresponding 

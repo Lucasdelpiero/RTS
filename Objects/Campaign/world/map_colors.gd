@@ -36,73 +36,86 @@ var default_color : Color = Color(1, 0, 1)
 
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
-	match terrain_type:
-		"plains":
-			return plains
-		"hills":
-			return hills
-		"mountains":
-			return  mountains
-		"desert":
-			return desert
-		"forest":
-			return forest
-		"none":
-			return default_color
-		_:
-			return default_color
+	var terrain_color : Variant = get(terrain_type)
+	if terrain_color == null:
+		return default_color
+	return terrain_color
+	
+	#match terrain_type:
+		#"plains":
+			#return plains
+		#"hills":
+			#return hills
+		#"mountains":
+			#return  mountains
+		#"desert":
+			#return desert
+		#"forest":
+			#return forest
+		#"none":
+			#return default_color
+		#_:
+			#return default_color
 
 func get_religion_color(religion : String = "none") -> Color:
-	match religion:
-		"hellenic":
-			return hellenic
-		"celtic":
-			return celtic
-		"punic":
-			return punic
-		"judaism":
-			return judaism
-		"assyrian polytheism":
-			return assyrian_polytheism
-		"zoroastrianism":
-			return zoroastrianism
-		_:
-			return default_color
+	var religion_color : Variant = get(religion)
+	if religion_color == null:
+		return default_color
+	return religion_color
+	#
+	#match religion:
+		#"hellenic":
+			#return hellenic
+		#"celtic":
+			#return celtic
+		#"punic":
+			#return punic
+		#"judaism":
+			#return judaism
+		#"assyrian polytheism":
+			#return assyrian_polytheism
+		#"zoroastrianism":
+			#return zoroastrianism
+		#_:
+			#return default_color
 
 func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 	var culture_name : String = Cultures.get_name_by_enum(culture)
-	# TODO fix this shit
-	match culture_name:
-		"latin":
-			return latin
-		"celt":
-			return celt
-		"phoenician":
-			return phoenician
-		"greek":
-			return greek
-		"hebrew":
-			return hebrew
-		"egipcian":
-			return egipcian
-		"aramean":
-			return aramean
-		"iberian":
-			return iberian
-		"assyrian":
-			return assyrian
-		"celtiberian":
-			return celtiberian
-		"armenian":
-			return armenian
-		"persian":
-			return persian
-		"illyrian":
-			return illyrian
-		"tracian":
-			return tracian
-		"germanic":
-			return germanic
-		_:
-			return default_color
+	var culture_color : Variant = get(culture_name) 
+	if culture_color == null:
+		return default_color
+	return culture_color 
+	#match culture_name:
+		#"latin":
+			#return latin
+		#"celt":
+			#return celt
+		#"phoenician":
+			#return phoenician
+		#"greek":
+			#return greek
+		#"hebrew":
+			#return hebrew
+		#"egipcian":
+			#return egipcian
+		#"aramean":
+			#return aramean
+		#"iberian":
+			#return iberian
+		#"assyrian":
+			#return assyrian
+		#"celtiberian":
+			#return celtiberian
+		#"armenian":
+			#return armenian
+		#"persian":
+			#return persian
+		#"illyrian":
+			#return illyrian
+		#"tracian":
+			#return tracian
+		#"germanic":
+			#return germanic
+		#_:
+			#return default_color
 

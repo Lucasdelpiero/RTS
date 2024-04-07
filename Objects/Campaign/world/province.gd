@@ -38,7 +38,7 @@ var nation_owner : Nation  = null :
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
 @export_range(100, 1000000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
-@export_enum("hellenic", "celtic", "punic", "judaism", "assyrian polytheism", "zoroastrianism") var religion : String = "hellenic"
+@export_enum("hellenic", "celtic", "punic", "judaism", "assyrian_polytheism", "zoroastrianism") var religion : String = "hellenic"
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 var nation_bonuses : Array[Bonus] = []
