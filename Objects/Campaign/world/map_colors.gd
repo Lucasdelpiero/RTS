@@ -32,6 +32,7 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var persian : Color = Color(1, 0, 1)
 @export_color_no_alpha var illyrian : Color = Color(1, 0, 1)
 @export_color_no_alpha var tracian : Color = Color(1, 0, 1)
+@export_color_no_alpha var germanic : Color = Color(1, 0, 1)
 
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
@@ -100,6 +101,8 @@ func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 			return illyrian
 		"tracian":
 			return tracian
+		"germanic":
+			return germanic
 		_:
 			return default_color
 
