@@ -172,7 +172,9 @@ func send_mouse_over(value : bool) -> void:
 		"node" = self,
 	}
 	emit_signal("sg_mouse_over_self", data_temp)
-	pass
+	if value:
+		Signals.sg_last_province_hovered_owner.emit(ownership)
+
 
 func set_map_type_shown(type : String) -> void:
 	if map_colors == null:

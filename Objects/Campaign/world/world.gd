@@ -98,6 +98,8 @@ func initialize_world() -> void:
 func _unhandled_input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Click_Left"):
 		mouse.set_province_selected()
+	if Input.is_action_just_pressed("Click_Right"):
+		mouse.province_open_diplomacy_ui()
 
 func change_map_shown(type : String) -> void:
 	for province in provinces as Array[Province]:

@@ -1,6 +1,8 @@
 extends Node2D
 class_name Mouse
 
+# TODO refactor this to use signals and global variables
+
 # for army
 var hovered := [] # needs to be a normal array to use "push"
 var selected_armies := []
@@ -11,6 +13,7 @@ var weapon_displayed : String = "" # weapon currently being displayed
 var lastProvinceWithMouseOver : Province = null
 var provinceWithMouseOver : Province = null 
 var province_selected : Province = null
+var last_nation_hovered : String = ""
 var world : Variant = null
 var ui : Variant = null
 
@@ -59,6 +62,10 @@ func set_province_selected() -> void:
 			provinceWithMouseOver.send_data_to_ui()
 			province_selected = provinceWithMouseOver
 			world.province_selected = province_selected
+
+func province_open_diplomacy_ui() -> void:
+	var nation_owner : String = Globals.last_province_hovered_owner
+	Signals.sg_province_open_diplomacy.emit(nation_owner)
 	pass
 
 ## Gets in a list the army hovered

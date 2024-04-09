@@ -3,6 +3,7 @@ extends Node
 var global_units : GlobalUnits = null
 
 var mouse_in_province : int = -1  # -1 means that no province is selected
+var last_province_hovered_owner : String = "" # Used to open the diplomacy_tag
 var camera_angle : float = 0.0
 var player_nation : String = "ROME"
 var player_nation_node : Nation = null
@@ -37,6 +38,7 @@ func _ready() -> void:
 	# global_units NEED to be setted in the ready function as if they are tried to be set
 	# in the editor they dont show up, thats why they are preloaded and setted here
 	global_units = global_units_res_path
+	Signals.sg_last_province_hovered_owner.connect(set_last_province_hovered_owner)
 
 
 func set_battle_map(value : BattleMap) -> void:
@@ -96,5 +98,6 @@ func get_units_by_nation(nation_tag : String) -> Array[UnitData]:
 	
 	return national_units
 
-
+func set_last_province_hovered_owner(nation_tag : String) -> void:
+	last_province_hovered_owner = nation_tag
 

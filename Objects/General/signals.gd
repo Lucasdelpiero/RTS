@@ -39,6 +39,13 @@ signal sg_annex_provinces(nation_tag: String, provinces: Array[Province])
 
 #endregion
 
+# On right click open the diplomacy screen on the clicked province owner
+# Emmited by the province.gd script
+# Listened by the Globals.gd script
+signal sg_province_open_diplomacy(nation_tag: String)
+
+# Changes the last province hovered in the Globals variable
+signal sg_last_province_hovered_owner(nation_tag: String)
 
 signal sg_battlemap_set_units_selected(unit : Unit, value : bool) # DO NOTHING YET
 signal sg_battlemap_set_units_hovered(unit : Unit, value : bool) # DO NOTHING YET

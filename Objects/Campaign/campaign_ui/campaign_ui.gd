@@ -169,17 +169,7 @@ func _on_button_pressed() -> void:
 
 
 
-func _on_btn_diplomacy_pressed() -> void:
-	diplomacy_UI.visible = !diplomacy_UI.visible 
-	var world := Globals.campaign_map as CampaignMap
-	if world == null:
-		push_error("Couldnt find the world")
-		return
-	
-	var player_tag : String = Globals.player_nation
-	# Request data to to the DiplomacyManager build the DiplomacyUI
-	Signals.sg_diplomacy_nation_request_data.emit(player_tag)
-	
+
 
 func set_relations_data(data: DiplomacyNation) -> void:
 	var test := %Test as Control

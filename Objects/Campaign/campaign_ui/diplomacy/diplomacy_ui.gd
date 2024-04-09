@@ -17,6 +17,7 @@ func _init() -> void:
 	Signals.sg_diplomacy_nation_send_data.connect(set_relations_data)
 	Signals.sg_btn_diplomacy_nation_selected.connect(set_current_diplomacy_nation_selected)
 	Signals.sg_nation_deleted.connect(delete_btn_diplomacy_nation)
+	Signals.sg_province_open_diplomacy.connect(open_relation_with_nation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,17 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+# Connected through a button or called every time its requested
+func update_diplomacy_nation_data() -> void:
+	request_diplomacy_nation_data()
+
+# Request data that it will be used in set_relations_data
+func request_diplomacy_nation_data() -> void :
+	var player_tag : String = Globals.player_nation
+	# Request data to to the DiplomacyManager build the DiplomacyUI
+	Signals.sg_diplomacy_nation_request_data.emit(player_tag)
+
+# Uses the relationships stored in the player to create a list to interact with
 func set_relations_data(data: DiplomacyNation) -> void:
 	var test := list_relationships as Control
 	
@@ -54,7 +66,16 @@ func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	diplo_actions_container.visible = true
 	# TODO hide the secondary menues properly
 	provinces_demanded_panel.visible = false
-	#
+
+func open_relation_with_nation(nation_tag: String) -> void:
+	# Avoids interacting with ourselves
+	if nation_tag == Globals.player_nation: 
+		return
+	
+	# Update the UI
+	request_diplomacy_nation_data()
+	set_current_diplomacy_nation_selected(nation_tag)
+	show()
 
 func delete_btn_diplomacy_nation(nation_tag : String) -> void:
 	for button  in list_relationships.get_children() as Array[BtnDiplomacyNation]:
@@ -118,3 +139,8 @@ func _on_btn_accept_provinces_demand_pressed() -> void:
 	Signals.sg_annex_provinces.emit(Globals.player_nation, demanded_provinces)
 	provinces_demanded_create_buttons()
 
+
+
+func _on_btn_diplomacy_pressed() -> void:
+	visible = !visible
+	update_diplomacy_nation_data()

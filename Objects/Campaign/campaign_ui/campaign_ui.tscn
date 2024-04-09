@@ -388,4 +388,4 @@ offset_bottom = 357.0
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnReligionMap" to="Container/MapTypesManager" method="_on_btn_religion_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnCultureMap" to="Container/MapTypesManager" method="_on_btn_culture_map_button_down"]
 [connection signal="pressed" from="Container/BtnArmyCreation" to="Container/ArmyCreatorUI" method="_on_btn_army_creation_pressed"]
-[connection signal="pressed" from="Container/BtnDiplomacy" to="." method="_on_btn_diplomacy_pressed"]
+[connection signal="pressed" from="Container/BtnDiplomacy" to="Container/DiplomacyUI" method="_on_btn_diplomacy_pressed"]
