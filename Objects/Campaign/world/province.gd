@@ -179,6 +179,9 @@ func send_mouse_over(value : bool) -> void:
 func set_map_type_shown(type : String) -> void:
 	if map_colors == null:
 		return
+	if ownership == "TERRA_INCOGNITA":
+		return
+	
 	match type:
 		"political":
 			color = inside_color

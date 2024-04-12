@@ -15,6 +15,7 @@ building_types = Array[Resource("res://Objects/Campaign/buildings/building.gd")]
 [node name="Province" instance=ExtResource("1_l0u2s")]
 color = Color(0.721569, 0.717647, 0.568627, 1)
 outline_color = Color(0.568627, 0.564706, 0.45098, 1)
+ownership = "TERRA_INCOGNITA"
 terrain_type = "desert"
 religion = "punic"
 buildings_manager = SubResource("Resource_1tx2f")
