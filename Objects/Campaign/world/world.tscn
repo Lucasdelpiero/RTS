@@ -1,4 +1,4 @@
-[gd_scene load_steps=305 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=318 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cc6tp6w3pnin3" path="res://Assets/800px-Iberia_156BC-es.svg.png" id="35_5s4ip"]
 [ext_resource type="Texture2D" uid="uid://dswb8odtpisge" path="res://Assets/Roman_East_50-es.svg.png" id="37_e14kc"]
 [ext_resource type="Texture2D" uid="uid://cnivuwwckt7qx" path="res://Assets/um8t2ej9acf91-125855654.jpg" id="39_3wj84"]
+[ext_resource type="Texture2D" uid="uid://cyc25fr8lju8q" path="res://Assets/Primera_herencia_de_alejandro_magno.png" id="42_cmgyk"]
 [ext_resource type="Texture2D" uid="uid://mo80iipmg8yj" path="res://Assets/Map_of_Eduens_people-fr.svg.png" id="44_dvcvx"]
 [ext_resource type="PackedScene" uid="uid://db27uar15w555" path="res://Objects/Campaign/world/water_background.tscn" id="44_slsmi"]
 [ext_resource type="Texture2D" uid="uid://by6d5ex1mw0ra" path="res://Assets/Little_Armenia_location_map_with_Great_Hayk.png" id="46_cxutc"]
@@ -325,6 +326,72 @@ script = ExtResource("22_leoek")
 buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
+[sub_resource type="Resource" id="Resource_ukj1p"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_3gmw6"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_uf5nx"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_mygjm"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_n0q6a"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_wvfbj"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_ssv0y"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_cy20f"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_26g3e"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_4hwar"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_fuf5q"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
 [sub_resource type="Resource" id="Resource_wl2ap"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
@@ -368,6 +435,12 @@ buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_6l8wb"]
+resource_local_to_scene = true
+script = ExtResource("22_leoek")
+buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
+building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
+
+[sub_resource type="Resource" id="Resource_0nyjp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
 buildings = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
@@ -1942,68 +2015,89 @@ nation_outline_color = Color(0.192157, 0.376471, 0.254902, 1)
 nation_color = Color(0.270588, 0.529412, 0.356863, 1)
 capital = NodePath("../../Regions/Britania/Kaukoi")
 
+[node name="Seleucid Empire" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]
+NATION_TAG = "SELEUCIDAS"
+nation_outline_color = Color(0.45098, 0.45098, 0.45098, 1)
+nation_color = Color(0.752941, 0.752941, 0.752941, 1)
+capital = NodePath("../../Regions/Oriente/Paropamisade")
+
 [node name="Regions" type="Node2D" parent="."]
 
 [node name="TerraIncognita" type="Node2D" parent="Regions"]
 
 [node name="Border" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(-858, 1607, -951, 1647, -1271, 1631, -1533, 1525, -1784, 1172, -1853, 868, -1859, 414, -1904, 55, -1813, -308, -1677, -693, -1511, -1018, -1345, -1244, -1043, -1433, -749, -1516, -454, -1516, 165, -1421, 256, -1337, 830, -1269, 1099, -1305, 1701, -1475, 2024, -1493, 1638, -1338, 4251, -1314, 4296, -452, 4449, 446, 3803, 1523, 3166.51, 1583.43, 3013, 1598, 1885, 1613, 2049, 4502, 2924, 4645, 8152, 4889, 11384, 741, 7703, -4647, 699, -4378, -5623, -3354, -5390, 3991, -2965, 5500, -886, 4746)
+debug_lines = true
 buildings_manager = SubResource("Resource_0hvuq")
 
 [node name="Arabia" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(2074, 1632, 2057, 1580, 2035, 1538, 2021, 1492, 2008, 1465, 1998, 1433, 1979, 1405, 1973, 1380, 1951, 1358, 1936, 1324, 1919, 1304, 1907, 1272, 1887, 1264, 1860, 1262, 1874, 1226, 1877, 1174, 1867, 1191, 1863, 1222, 1851, 1247, 1851, 1265, 1839, 1279, 1829, 1280, 1815, 1267, 1807, 1253, 1796, 1243, 1783, 1226, 1779, 1199, 1777, 1143, 1841, 1141, 1854, 1134, 1926, 1061, 1931, 965, 2057, 876, 2176, 843, 2261, 843, 2314, 926, 2341, 967, 2410, 1026, 2521, 1094, 2583, 1122, 2607, 1162, 2590, 1170, 2586, 1182, 2594, 1185, 2603, 1183, 2611, 1208, 2639, 1266, 2649, 1290, 2674, 1309, 2695, 1335, 2711, 1345, 2721, 1374, 2720, 1410, 2737, 1435, 2751, 1460, 2753, 1430, 2760, 1399, 2773, 1382, 2788, 1385, 2801, 1413, 2798, 1437, 2803, 1454, 2794, 1475, 2878, 1504, 2946, 1478, 2987, 1451, 3022, 1408, 3050, 1375, 3070, 1398, 3080, 1468, 3087, 1529, 3075, 1579, 3065, 1627)
+debug_lines = true
 buildings_manager = SubResource("Resource_jdtlt")
 
 [node name="NorthAfrica" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(-845, 1369, -806, 1358, -792, 1304, -743, 1256, -673, 1233, -642, 1197, -594, 1140, -588, 1072, -574, 987, -531, 953, -486, 911, -449, 888, -418, 860, -404, 834, -308, 815, -14, 829, 326, 863, 456, 936, 484, 1035, 592, 970, 733, 999, 821, 1081, 968, 1126, 1021, 1134, 1078, 1106, 1120, 1049, 1183, 1047, 1299, 1109, 1338, 1188, 1440, 1242, 1556, 1259, 1655, 1259, 1740, 1225, 1762, 1233, 1785, 1258, 1801, 1284, 1822, 1338, 1837, 1367, 1848, 1398, 1865, 1432, 1884, 1463, 1903, 1498, 1930, 1542, 1949, 1615, 2060, 4502, -898, 4775, -876, 1631)
+debug_lines = true
 buildings_manager = SubResource("Resource_s0tb5")
 
 [node name="Province" parent="Regions/TerraIncognita/NorthAfrica" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(-929, 1645, -840, 1601, 1955, 1616, 3097, 1597, 3105, 4743, -1829, 5381, -1413, 1989)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
+debug_lines = true
 buildings_manager = SubResource("Resource_p3egx")
 
 [node name="Scortland" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(-225, -1041, -205, -1044, -159, -1045, -150, -1023, -164, -999, -168, -973, -179, -951, -196, -926, -206, -909, -201, -895, -224, -890, -234, -881, -252, -878, -217, -870, -204, -878, -184, -872, -168, -856, -154, -840, -139, -832, -141, -788, -197, -758, -237, -750, -240, -760, -235, -772, -246, -773, -252, -763, -271, -754, -282, -756, -295, -763, -291, -751, -296, -745, -307, -751, -318, -765, -323, -757, -320, -742, -328, -744, -336, -764, -339, -778, -329, -792, -315, -815, -309, -832, -318, -842, -327, -850, -341, -854, -343, -845, -333, -820, -347, -813, -353, -828, -359, -811, -369, -808, -369, -818, -367, -848, -364, -864, -364, -882, -373, -870, -380, -852, -387, -840, -398, -837, -400, -849, -409, -843, -405, -858, -383, -871, -378, -885, -363, -903, -352, -926, -343, -946, -364, -924, -367, -914, -382, -907, -400, -901, -405, -909, -393, -917, -398, -935, -386, -954, -370, -967, -373, -980, -389, -988, -410, -996, -418, -1006, -426, -1012, -417, -1032, -404, -1038, -400, -1046, -390, -1036, -386, -1017, -378, -1008, -367, -1011, -372, -1023, -376, -1041, -372, -1067, -356, -1072, -349, -1075, -350, -1094, -342, -1106, -333, -1133, -327, -1144, -303, -1138, -287, -1138, -264, -1137, -244, -1145, -221, -1145, -221, -1134, -221, -1115, -240, -1100, -255, -1087, -273, -1066, -266, -1061, -274, -1043, -275, -1032, -260, -1042, -247, -1042, -236, -1052)
+debug_lines = true
 buildings_manager = SubResource("Resource_ylgtk")
 
 [node name="Sweden" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(986, -1304, 1002, -1261, 991, -1205, 917, -1168, 874, -1098, 874, -1021, 852, -965, 847, -901, 778, -882, 748, -858, 738, -818, 700, -805, 663, -823, 652, -863, 634, -895, 642, -935, 628, -989, 591, -1042, 564, -1130, 556, -1189, 537, -1210, 489, -1186, 449, -1144, 388, -1066, 308, -1074, 262, -1144, 236, -1232, 236, -1304, 247, -1352, 986, -1347)
+debug_lines = true
 buildings_manager = SubResource("Resource_f0wbs")
 
 [node name="Province" parent="Regions/TerraIncognita/Sweden" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(262, -1337, 235, -1362, 236, -1385, 1093, -1400, 1079, -1309, 951, -1288)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
+debug_lines = true
 buildings_manager = SubResource("Resource_o7kja")
 
 [node name="Denmark" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(401, -840, 401, -864, 401, -892, 395, -912, 403, -934, 411, -966, 432, -991, 472, -995, 491, -1026, 523, -1043, 530, -1026, 534, -1002, 516, -972, 519, -931, 536, -924, 554, -920, 556, -899, 538, -890, 518, -890, 514, -870, 498, -848, 484, -832, 484, -792, 484, -767, 499, -748, 510, -728, 535, -727, 560, -728, 559, -703, 546, -684, 532, -667, 467, -668, 439, -685, 432, -707, 432, -728, 424, -763, 424, -795, 421, -823)
+debug_lines = true
 buildings_manager = SubResource("Resource_bxeiu")
 
 [node name="IslandLarge" parent="Regions/TerraIncognita/Denmark" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(573, -795, 564, -818, 561, -839, 574, -856, 596, -875, 629, -883, 641, -872, 641, -856, 646, -838, 645, -830, 630, -833, 622, -823, 627, -814, 635, -808, 622, -794, 617, -788, 627, -781, 634, -772, 620, -766, 614, -744, 607, -739, 596, -744, 575, -741, 564, -751, 549, -767, 564, -776, 575, -771, 584, -765, 598, -768, 603, -782, 585, -790)
+debug_lines = true
 buildings_manager = SubResource("Resource_y6fit")
 
 [node name="IslandSmall" parent="Regions/TerraIncognita/Denmark" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(511, -781, 500, -795, 494, -807, 491, -820, 498, -829, 516, -835, 522, -835, 525, -820, 539, -819, 543, -808, 543, -795, 538, -781, 538, -769, 525, -774)
+debug_lines = true
 buildings_manager = SubResource("Resource_d0kqc")
 
 [node name="EasterEuropa" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(580, -683, 644, -717, 689, -734, 712, -696, 757, -690, 833, -705, 865, -728, 904, -753, 961, -760, 984, -722, 1023, -721, 1055, -741, 1055, -770, 1099, -779, 1123, -796, 1123, -838, 1106, -915, 1112, -955, 1123, -979, 1138, -1026, 1176, -1045, 1199, -1043, 1223, -1006, 1244, -979, 1280, -975, 1301, -1013, 1301, -1053, 1301, -1098, 1276, -1113, 1255, -1147, 1248, -1198, 1308, -1240, 1380, -1255, 1418, -1247, 1486, -1234, 1512, -1253, 1535, -1279, 1578, -1285, 1607, -1298, 1624, -1347, 4434, -1366, 4416, -82, 2021, -188, 1688.98, -83.5637, 1650, -25, 1596, 42, 1584, 101, 1558, 100, 1531, 125, 1464, 180, 1257, 204, 1048, 157, 928, -84, 737, -156, 635, -343, 576, -516, 513, -669)
+debug_lines = true
 buildings_manager = SubResource("Resource_5y4hq")
 
 [node name="East" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
+visible = false
 polygon = PackedVector2Array(2862, -61, 2890, -1, 2887, 55, 2820, 58, 2777, 86, 2735, 126, 2763, 185, 2783, 239, 2842, 253, 2842, 313, 2856, 349, 2896, 318, 2924, 321, 2953, 386, 2921, 406, 2879, 389, 2865, 429, 2859, 462, 2899, 477, 2899, 525, 2916, 553, 2921, 618, 2924, 686, 2882, 697, 2814, 709, 2845, 952, 2647, 1075, 2659, 1131, 2683, 1131, 2691, 1141, 2714, 1133, 2729, 1155, 2745, 1176, 2749, 1193, 2759, 1211, 2767, 1239, 2783, 1253, 2803, 1284, 2832, 1284, 2849, 1299, 2867, 1320, 2902, 1325, 2918, 1344, 2948, 1350, 2975, 1363, 3002, 1349, 3037, 1330, 3068, 1314, 3089, 1326, 3099, 1357, 3108, 1396, 3126, 1406, 3159, 1417, 3216, 1420, 3253, 1431, 3294, 1428, 3340, 1449, 3361, 1444, 3394, 1439, 3416, 1434, 3451, 1439, 3478, 1431, 3515, 1434, 3564, 1434, 3600, 1419, 3629, 1426, 3634, 1449, 3667, 1468, 3673, 1485, 3715, 1560, 4710, 1554, 4692, -214, 2894, -172)
+debug_lines = true
 buildings_manager = SubResource("Resource_6f45v")
 
 [node name="Province" parent="Regions/TerraIncognita/East" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(3663, 1559, 3773, 1504, 2908, -141, 2909, -152, 2879, -154, 2851, -169, 2896, -264, 1642, -1336, 1722, -1366, 4543, -1391, 4975, 1706, 4105, 1925, 3785, 1861)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
+debug_lines = true
 buildings_manager = SubResource("Resource_idh4u")
 
 [node name="Hibernia" parent="Regions/TerraIncognita" instance=ExtResource("19_amwaf")]
 position = Vector2(-469, -638)
 polygon = PackedVector2Array(-49, 42, -34, 9, -41, -31, -37, -70, -22, -89, 18, -93, 40, -83, 49, -57, 43, -28, 48, 8, 51, 48, 35, 81, 14, 98, -35, 112, -57, 106, -65, 70)
+debug_lines = true
 buildings_manager = SubResource("Resource_jf4r8")
 
 [node name="Oriente" type="Node2D" parent="Regions"]
@@ -2012,6 +2106,7 @@ buildings_manager = SubResource("Resource_jf4r8")
 position = Vector2(2638, 814)
 color = Color(1, 0, 1, 0.0313726)
 polygon = PackedVector2Array(-127, 88, -135, 69, -141, 25, -145, 7, -137, -13, -132, -28, -163, -52, -178, -70, -192, -100, -167, -102, -150, -101, -135, -93, -118, -91, -109, -91, -96, -100, -80, -99, -61, -99, -43, -101, -24, -99, -9, -91, 17, -82, 29, -91, 34, -100, 31, -117, 40, -116, 42, -126, 58, -125, 60, -146, 65, -155, 65, -173, 72, -176, 87, -176, 98, -157, 114, -146, 133, -133, 157, -126, 174, -122, 183, -119, 187, -109, 195, -103, 202, -91, 207, -81, 207, -71, 214, -60, 225, -55, 234, -48, 241, -42, 252, -37, 260, -28, 257, -14, 255, 1, 257, 25, 259, 39, 262, 55, 262, 71, 266, 85, 275, 97, 284, 103, 301, 120, 302, 144, 317, 165, 329, 178, 341, 194, 350, 208, 355, 224, 355, 239, 352, 245, 336, 238, 319, 230, 306, 225, 287, 229, 260, 229, 242, 233, 223, 233, 198, 231, 172, 222, 156, 218, 150, 216, 150, 196, 126, 178, 113, 167, 96, 150, 66, 131, 42, 100, 3, 96, -28, 82, -54, 82, -80, 88, -88, 89)
+ownership = "SELEUCIDAS"
 terrain_type = "desert"
 religion = "zoroastrianism"
 culture = 14
@@ -2021,10 +2116,109 @@ buildings_manager = SubResource("Resource_h7was")
 position = Vector2(2518.83, 667.528)
 color = Color(1, 0, 1, 0.133333)
 polygon = PackedVector2Array(-168.83, -46.528, -169.833, -34.5276, -159.833, -23.5276, -134.833, -8.52765, -118.833, 6.47235, -91.8335, 25.4724, -79.8335, 40.4724, -76.8335, 45.4724, -39.8335, 42.4724, -31.8335, 42.4724, -15.8335, 50.4724, 7.1665, 52.4724, 20.1665, 45.4724, 24.1665, 42.4724, 48.1665, 43.4724, 61.1665, 43.4724, 76.1665, 41.4724, 93.1665, 44.4724, 113.167, 52.4724, 133.167, 60.4724, 146.167, 53.4724, 149.167, 46.4724, 146.167, 27.4724, 147.167, 24.4724, 156.167, 26.4724, 159.167, 16.4724, 173.167, 17.4724, 175.167, 0.472351, 180.167, -8.52765, 180.167, -30.5276, 166.167, -32.5276, 150.167, -48.5276, 144.167, -63.5276, 137.167, -78.5276, 137.167, -95.5276, 138.167, -110.528, 136.167, -120.528, 132.167, -123.528, 140.167, -142.528, 141.167, -153.528, 147.167, -143.528, 156.167, -139.528, 155.167, -154.528, 165.167, -155.528, 168.167, -159.528, 160.167, -162.528, 148.167, -167.528, 145.167, -168.528, 142.167, -179.528, 142.167, -188.528, 138.167, -198.528, 133.167, -207.528, 121.167, -212.528, 116.167, -211.528, 112.167, -202.528, 105.167, -200.528, 96.1665, -195.528, 92.1665, -191.528, 85.1665, -184.528, 68.1665, -172.528, 47.1665, -155.528, 40.1665, -148.528, 36.1665, -144.528, 27.1665, -144.528, 18.1665, -133.528, 18.1665, -129.528, 6.1665, -128.528, 3.1665, -121.528, -1.83008, -120.528, -13.8301, -124.528, -21.8301, -116.528, -24.8301, -119.528, -25.8301, -117.528, -28.8335, -116.528, -38.8301, -113.528, -50.8335, -110.528, -52.8301, -109.528, -76.8301, -105.528, -95.8301, -98.528, -106.833, -91.5276, -111.83, -88.528, -119.83, -65.528, -119.83, -63.528, -131.83, -50.528, -146.83, -43.528, -162.83, -47.528)
+ownership = "SELEUCIDAS"
 terrain_type = "mountains"
 religion = "zoroastrianism"
 culture = 14
 buildings_manager = SubResource("Resource_ptmy1")
+
+[node name="Persepolis" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(2890.42, 1149.87)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-214.416, -31.8733, -204.416, -29.8733, -211.416, -27.8733, -217.416, -26.8733, -204.416, -15.8733, -197.416, -13.8733, -182.416, -19.8733, -175.416, -19.8733, -170.416, -8.87329, -163.416, 2.12671, -155.416, 12.1267, -147.416, 21.1267, -142.416, 34.1267, -140.416, 44.1267, -134.416, 41.1267, -129.416, 49.1267, -132.416, 53.1267, -131.416, 63.1267, -123.416, 64.1267, -119.416, 77.1267, -115.416, 87.1267, -108.416, 103.127, -105.416, 112.127, -102.416, 117.127, -96.4155, 122.127, -90.4155, 125.127, -78.4155, 127.127, -68.4155, 126.127, -57.4155, 133.127, -47.4155, 135.127, -38.4155, 143.127, -31.4155, 154.127, -17.4155, 170.127, -6.41553, 175.127, 9.58447, 177.127, 14.5845, 187.127, 25.5845, 191.127, 29.5845, 196.127, 36.5845, 197.127, 41.5845, 195.127, 48.5845, 197.127, 57.5845, 197.127, 62.5845, 202.127, 64.5845, 203.127, 73.5845, 203.127, 76.5845, 211.127, 84.5845, 209.127, 92.5845, 205.127, 102.584, 200.127, 110.584, 194.127, 117.584, 193.127, 124.584, 192.127, 132.584, 181.127, 140.584, 179.127, 150.584, 176.127, 149.584, 172.127, 152.584, 167.127, 164.584, 147.127, 186.584, 92.1267, 194.584, 58.1267, 192.584, 38.1267, 179.584, 14.1267, 160.584, -4.87329, 144.584, -14.8733, 126.584, -29.8733, 110.584, -36.8733, 100.584, -39.8733, 95.5845, -68.8733, 98.5845, -87.8733, 64.5845, -102.873, 53.5845, -106.873, 34.5845, -102.873, 7.58447, -102.873, -10.4155, -98.8733, -37.4155, -99.8733, -54.4155, -100.873, -82.4155, -110.873, -101.416, -115.873, -100.416, -96.8733, -125.416, -90.8733, -153.416, -80.8733, -161.416, -88.8733, -187.416, -73.8733, -200.416, -54.8733, -216.416, -52.8733, -224.416, -48.8733)
+outline_color = Color(0.486275, 0.180392, 0, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_ukj1p")
+
+[node name="Carmania" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3162.56, 1226.73)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-145.561, -167.728, -166.561, -171.728, -169.561, -164.728, -172.561, -145.728, -168.561, -119.728, -158.561, -116.728, -142.561, -108.728, -124.561, -93.7275, -110.561, -84.7275, -89.5613, -64.7275, -76.5613, -39.7275, -73.5613, -19.7275, -81.5613, 15.2725, -104.561, 72.2725, -119.561, 98.2725, -95.5613, 89.2725, -82.5613, 94.2725, -68.5613, 107.272, -62.5613, 116.272, -59.5613, 138.272, -59.5613, 146.272, -54.5613, 161.272, -47.5613, 173.272, -38.5613, 179.272, -22.5613, 179.272, -12.5613, 182.272, -5.56128, 187.272, 8.43872, 188.272, 26.4387, 188.272, 36.4387, 193.272, 47.4387, 196.272, 56.4387, 193.272, 56.4387, 177.272, 48.4387, 155.272, 46.4387, 138.272, 47.4387, 111.272, 51.4387, 96.2725, 59.4387, 77.2725, 67.4387, 58.2725, 77.4387, 45.2725, 87.4387, 34.2725, 107.439, 21.2725, 124.439, 16.2725, 139.439, 9.27246, 162.439, -2.72754, 173.439, -11.7275, 175.439, -35.7275, 171.439, -62.7275, 155.439, -92.7275, 147.439, -118.728, 139.439, -126.728, 126.439, -130.728, 97.4387, -127.728, 85.4387, -133.728, 57.4387, -144.728, 41.4387, -144.728, -9.56128, -166.728, -25.5613, -179.728, -47.5613, -181.728, -61.5613, -181.728, -76.5613, -177.728, -89.5613, -181.728, -99.5613, -178.728, -109.561, -178.728, -115.561, -168.728, -130.561, -161.728)
+outline_color = Color(0.803922, 0, 0, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_3gmw6")
+
+[node name="Partia" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(2944.85, 735.459)
+color = Color(1, 0, 1, 0.0941176)
+polygon = PackedVector2Array(-78.8521, 21.5406, -63.8521, 33.5406, -52.8521, 38.5406, -42.8521, 49.5406, -45.8521, 64.5406, -47.8521, 79.5406, -46.8521, 97.5406, -44.8521, 115.541, -40.8521, 133.541, -40.8521, 149.541, -37.8521, 161.541, -29.8521, 172.541, -21.8521, 177.541, -2.85205, 196.541, -0.852051, 221.541, 12.1479, 240.541, 24.1479, 253.541, 46.1479, 284.541, 52.1479, 302.541, 52.1479, 316.541, 74.1479, 320.541, 87.1479, 325.541, 100.148, 319.541, 106.148, 308.541, 118.148, 308.541, 128.148, 305.541, 141.148, 309.541, 156.148, 305.541, 169.148, 305.541, 193.148, 307.541, 210.148, 321.541, 260.148, 342.541, 267.148, 342.541, 275.148, 342.541, 289.148, 348.541, 303.148, 353.541, 315.148, 359.541, 344.148, 356.541, 357.148, 360.541, 364.148, 354.541, 364.148, 319.541, 358.148, 298.541, 351.148, 279.541, 344.148, 261.541, 339.148, 180.541, 353.148, 154.541, 353.148, 133.541, 347.148, 100.541, 332.148, 80.5406, 307.148, 66.5406, 279.148, 67.5406, 287.148, 42.5406, 326.148, 20.5406, 347.148, 24.5406, 358.148, 8.54065, 359.148, -2.45935, 333.148, -22.4594, 325.148, -33.4594, 308.148, -62.4594, 293.148, -79.4594, 283.148, -90.4594, 270.148, -70.4594, 256.148, -62.4594, 228.148, -46.4594, 209.148, -35.4594, 184.148, -32.4594, 167.148, -40.4594, 135.148, -37.4594, 106.148, -39.4594, 63.1479, -38.4594, 31.1479, -30.4594, 1.14795, -19.4594, -14.8521, -9.45935, -27.8521, 3.54065, -49.8521, 11.5406, -61.8521, 17.5406, -74.8521, 21.5406)
+outline_color = Color(0.447059, 0.462745, 0.623529, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_uf5nx")
+
+[node name="Hircania" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(2961.84, 675.995)
+color = Color(1, 0, 1, 0.12549)
+polygon = PackedVector2Array(-97.8418, 80.0049, -81.8418, 74.0049, -68.8418, 68.0049, -46.8418, 60.0049, -33.8418, 47.0049, -17.8418, 37.0049, 13.1582, 25.0049, 46.1582, 17.0049, 88.1582, 16.0049, 118.158, 18.0049, 150.158, 15.0049, 168.158, 23.0049, 191.158, 20.0049, 251.158, -13.9951, 267.158, -39.9951, 269.158, -57.9951, 229.158, -82.9951, 191.158, -103.995, 168.158, -116.995, 138.158, -135.995, 102.158, -135.995, 74.1582, -130.995, 50.1582, -113.995, 6.1582, -82.9951, -10.8418, -77.9951, -34.8418, -74.9951, -32.8418, -43.9951, -27.8418, -31.9951, -26.8418, -17.9951, -26.8418, -7.99506, -19.8418, -2.99506, -19.8418, 5.00494, -26.8418, 8.00494, -34.8418, 5.00494, -48.8418, 3.00494, -62.8418, 1.00494, -71.8418, 2.00494, -81.8418, 9.00494, -95.8418, 9.00494, -108.842, 11.0049, -115.842, 16.0049, -126.842, 19.0049, -135.842, 19.0049, -136.842, 23.0049, -130.842, 29.0049, -126.842, 32.0049, -114.842, 52.0049, -112.842, 57.0049, -112.842, 66.0049, -108.842, 73.0049, -106.842, 76.0049)
+outline_color = Color(0.431373, 0, 0.501961, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_mygjm")
+
+[node name="Aria" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3363.58, 819.831)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-58.5776, -71.8309, -35.5776, -49.8309, -24.5776, -34.8309, -8.57764, -22.8309, 26.4224, -14.8309, 47.4224, -14.8309, 71.4224, -14.8309, 96.4224, -13.8309, 121.422, -13.8309, 137.422, -17.8309, 160.422, -19.8309, 189.422, -18.8309, 203.422, -22.8309, 221.422, -22.8309, 228.422, -11.8309, 234.422, 1.16907, 214.422, 24.1691, 195.422, 63.1691, 210.422, 71.1691, 205.422, 84.1691, 188.422, 93.1691, 182.422, 102.169, 162.422, 108.169, 137.422, 110.169, 129.422, 103.169, 112.422, 93.1691, 87.4224, 97.1691, 73.4224, 111.169, 57.4224, 115.169, 21.4224, 111.169, 5.42236, 110.169, -1.57764, 92.1691, -21.5776, 92.1691, -42.5776, 92.1691, -67.5776, 82.1691, -61.5776, 70.1691, -61.5776, 49.1691, -64.5776, 35.1691, -68.5776, 14.1691, -84.5776, -6.83093, -110.578, -21.8309, -134.578, -20.8309, -128.578, -38.8309, -92.5776, -59.8309, -69.5776, -55.8309)
+outline_color = Color(0, 0.623529, 0.623529, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_n0q6a")
+
+[node name="Drangiana" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3371.59, 961.324)
+color = Color(1, 0, 1, 0.0470588)
+polygon = PackedVector2Array(174.415, -35.3237, 184.415, -14.3237, 183.415, 6.67627, 179.415, 23.6763, 168.415, 39.6763, 151.415, 55.6763, 134.415, 74.6763, 144.415, 133.676, 150.415, 157.676, 145.415, 189.676, 143.415, 202.676, 131.415, 210.676, 110.415, 217.676, 85.4146, 214.676, 61.4146, 214.676, 23.4146, 214.676, -18.5854, 214.676, -28.5854, 211.676, -30.5854, 209.676, -32.5854, 209.676, -33.5854, 202.676, -49.5854, 172.676, -58.5854, 144.676, -66.5854, 136.676, -58.5854, 129.676, -58.824, 91.6804, -78.5854, 34.6763, -80.5854, 6.67627, -83.5854, -44.3237, -77.5854, -56.3237, -50.5854, -45.3237, -28.5854, -45.3237, -11.5854, -45.3237, -5.58545, -28.3237, 13.4146, -26.3237, 40.4146, -23.3237, 49.4146, -22.3237, 50.4146, -22.3237, 67.4146, -27.3237, 81.4146, -41.3237, 104.415, -44.3237, 119.415, -35.3237, 128.415, -27.3237, 154.415, -29.3237)
+outline_color = Color(0.568627, 0.654902, 0, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_wvfbj")
+
+[node name="Aracosia" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3571.81, 1008.04)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-52.813, 155.957, -32.813, 165.957, -12.813, 156.957, 14.187, 152.957, 24.187, 152.957, 61.187, 151.957, 71.187, 114.957, 112.187, 60.9568, 136.187, 46.9568, 174.187, 35.9568, 187.187, 18.9568, 205.187, -17.0432, 211.187, -39.0432, 233.187, -58.0432, 240.187, -72.0432, 247.187, -106.043, 256.187, -133.043, 270.187, -155.043, 240.187, -158.043, 180.187, -167.043, 112.187, -181.043, 42.187, -182.043, 28.187, -185.043, 9.18701, -162.043, -7.81299, -126.043, 6.18701, -118.043, 0.187012, -101.043, -17.813, -92.0432, -22.813, -84.0432, -11.813, -61.0432, -13.813, -35.0432, -15.813, -27.0432, -16.813, -22.0432, -28.813, -5.04321, -45.813, 10.9568, -61.813, 28.9568, -51.813, 85.9568, -45.813, 109.957)
+outline_color = Color(0.898039, 0, 0.87451, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_ssv0y")
+
+[node name="Bactriana" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3614.52, 667.659)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-14.5198, 126.341, 0.480225, 105.341, 17.4802, 94.3408, 29.4802, 85.3408, 41.4802, 80.3408, 50.4802, 70.3408, 59.4802, 53.3408, 68.4802, 41.3408, 86.4802, 32.3408, 101.48, 29.3408, 124.48, 19.3408, 148.48, 8.34076, 146.48, -3.65924, 123.48, -4.65924, 74.4802, -6.65924, 61.4802, -12.6592, 43.4802, -18.6592, 30.4802, -20.6592, 22.4802, -33.6592, 1.48022, -54.6592, -6.51978, -70.6592, -31.5198, -79.6592, -91.5198, -116.659, -106.52, -123.659, -120.52, -138.659, -139.52, -147.659, -157.52, -158.659, -173.52, -172.659, -186.52, -178.659, -206.52, -179.659, -219.52, -162.659, -235.52, -152.659, -262.52, -149.659, -285.52, -145.659, -303.52, -133.659, -327.52, -115.659, -343.52, -102.659, -358.52, -90.6592, -366.52, -77.6592, -376.52, -70.6592, -382.52, -64.6592, -381.52, -42.6592, -381.52, -23.6592, -358.52, 3.34076, -347.52, 22.3408, -333.52, 43.3408, -317.52, 55.3408, -307.52, 63.3408, -307.52, 74.3408, -308.52, 77.3408, -284.52, 99.3408, -273.52, 114.341, -257.52, 126.341, -224.52, 133.341, -129.52, 134.341, -116.52, 131.341, -112.539, 130.445, -91.5198, 128.341, -61.5198, 129.341, -47.5198, 125.341, -29.5198, 125.341)
+outline_color = Color(0.74902, 0, 0, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_cy20f")
+
+[node name="Paropamisade" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3748.97, 784.584)
+buildings_manager = SubResource("Resource_26g3e")
+
+[node name="Sogdiana" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3604, 470)
+buildings_manager = SubResource("Resource_4hwar")
+
+[node name="Gedrosia" parent="Regions/Oriente" instance=ExtResource("16_y4d8b")]
+position = Vector2(3312, 1314)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(-89, 106, -89, 90, -97, 68, -99, 50, -98, 24, -94, 10, -78, -28, -70, -39, -60, -50, -40, -63, -24, -67, 15, -87, 27, -97, 30, -123, 27, -142, 29, -137, 30, -138, 40, -135, 41.8078, -134.699, 64, -134, 120, -134, 145, -134, 170, -131, 191, -138, 195, -140, 205, -147, 226.643, -135.73, 248.643, -145.73, 275.643, -149.73, 298.643, -149.73, 321.643, -150.73, 329.643, -136.73, 329.643, -119.73, 324.643, -99.7305, 324.643, -82.7305, 324.643, -65.7305, 324.643, -48.7305, 326.643, -38.7305, 329.643, -21.7305, 329.643, -10.7305, 328.643, 3.26953, 322.643, 18.2695, 319.643, 24.2695, 313.643, 56.2695, 315.643, 77.2695, 320.643, 95.2695, 322.643, 105.27, 317.643, 106.27, 303.643, 107.27, 280.643, 107.27, 250.643, 115.27, 224.643, 116.27, 205.643, 119.27, 190.643, 116.27, 168.643, 114.27, 151.643, 114.27, 153.643, 123.27, 137.643, 123.27, 112.643, 123.27, 94.6431, 126.27, 79.6431, 128.27, 61.6431, 128.27, 45.6431, 126.27, 29.6431, 126.27, 5.64307, 118.27, -9.35693, 108.27, -24.3569, 113.27, -52.3569, 112.27, -74.3569, 106.27)
+outline_color = Color(0.639216, 0.639216, 0, 1)
+ownership = "SELEUCIDAS"
+religion = "zoroastrianism"
+culture = 14
+buildings_manager = SubResource("Resource_fuf5q")
 
 [node name="Armenia region" type="Node2D" parent="Regions"]
 
@@ -2081,8 +2275,11 @@ buildings_manager = SubResource("Resource_c3ojm")
 
 [node name="Mtsjeta" parent="Regions/Armenia region" instance=ExtResource("16_y4d8b")]
 position = Vector2(2417.52, 318.224)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(81.48, 1.776, 69.48, -15.224, 56.48, -24.224, 45.48, -30.224, 29.48, -37.224, 10.48, -48.224, -2.52002, -52.224, -13.52, -53.224, -35.52, -45.224, -43.52, -47.224, -64.52, -48.224, -82.52, -48.224, -104.52, -59.224, -114.52, -57.224, -109.52, -47.224, -104.52, -36.224, -107.52, -29.224, -122.52, 3.776, -144.52, 32.776, -152.52, 41.776, -156.52, 51.776, -122.52, 36.776, -106.52, 32.776, -84.52, 48.776, -72.52, 53.776, -64.52, 56.776, -65.52, 58.776, -61.52, 57.776, -50.52, 57.776, -35.52, 53.776, -25.52, 52.776, -16.52, 52.776, -4.52002, 49.776, 11.48, 50.776, 18.48, 50.776, 29.48, 37.776, 38.48, 35.776, 46.48, 30.776, 56.48, 16.776, 72.48, 5.776)
+outline_color = Color(0.415686, 0.203922, 0, 1)
+ownership = "ARMENIA"
 terrain_type = "mountains"
-religion = "assyrian polytheism"
 culture = 13
 buildings_manager = SubResource("Resource_g5lh6")
 
@@ -2112,6 +2309,15 @@ polygon = PackedVector2Array(-3.0022, -33.6517, 33.9978, -49.6517, 48.9978, -52.
 ownership = "PONTO"
 culture = 13
 buildings_manager = SubResource("Resource_6l8wb")
+
+[node name="Albania" parent="Regions/Armenia region" instance=ExtResource("16_y4d8b")]
+position = Vector2(2554.65, 373.023)
+color = Color(1, 0, 1, 0)
+polygon = PackedVector2Array(40.3525, 1.97705, 46.3525, 10.9771, 44.3525, 24.9771, 42.3525, 33.9771, 48.3525, 44.9771, 61.3525, 55.9771, 67.3525, 62.9771, 69.3525, 75.9771, 77.3525, 81.9771, 73.3525, 88.9771, 67.3525, 90.9771, 58.3525, 95.9771, 55.3525, 98.9771, 47.3525, 106.977, 32.3525, 116.977, 9.35254, 135.977, -0.647461, 145.977, -10.6475, 145.977, -20.6475, 159.977, -20.6475, 161.977, -28.6475, 161.977, -29.6475, 152.977, -27.6475, 146.977, -34.6475, 135.977, -36.6475, 130.977, -27.6475, 118.977, -45.6475, 114.977, -58.6475, 110.977, -63.6475, 103.977, -68.6475, 97.9771, -67.6475, 87.9771, -64.6475, 76.9771, -83.6475, 74.9771, -88.6475, 72.9771, -87.6475, 70.9771, -88.6475, 67.9771, -90.6475, 64.9771, -94.6475, 60.9771, -99.6475, 55.9771, -100.647, 41.9771, -96.6475, 35.9771, -95.6475, 32.9771, -98.6475, 27.9771, -106.647, 12.9771, -106.647, 4.97705, -115.647, -2.02295, -105.647, -14.0229, -97.6475, -16.0229, -87.6475, -22.0229, -77.6475, -36.0229, -65.6475, -44.0229, -53.6475, -51.0229, -44.6475, -52.0229, -38.6475, -46.0229, -27.6475, -42.0229, -21.6475, -46.0229, -10.6475, -36.0229, -9.64746, -29.0229, -2.64746, -27.0229, 4.35254, -18.0229, 12.3525, -10.0229, 22.3525, -7.02295, 28.3525, -1.02295)
+outline_color = Color(0.537255, 0.180392, 0.545098, 1)
+ownership = "ARMENIA"
+culture = 13
+buildings_manager = SubResource("Resource_0nyjp")
 
 [node name="Hispania" type="Node2D" parent="Regions"]
 
@@ -2659,6 +2865,7 @@ buildings_manager = SubResource("Resource_dtri1")
 position = Vector2(2647.88, 985.011)
 color = Color(1, 0, 1, 0.0313726)
 polygon = PackedVector2Array(-133.88, -79.011, -94.8799, -79.011, -64.8799, -86.011, -39.8799, -86.011, -6.87988, -72.011, 30.1201, -69.011, 54.1201, -37.011, 82.1201, -20.011, 105.12, 2.98901, 135.12, 25.989, 137.12, 44.989, 138.12, 64.989, 117.12, 69.989, 90.1201, 79.989, 81.1201, 71.989, 52.1201, 88.989, 40.1201, 106.989, 25.1201, 107.989, 16.1201, 112.989, 5.12012, 79.989, -15.8799, 66.989, -50.8799, 57.989, -76.8799, 47.989, -78.8799, 25.989, -71.8799, -0.0109863, -82.8799, -25.011, -100.88, -37.011, -111.88, -52.011)
+ownership = "SELEUCIDAS"
 terrain_type = "hills"
 religion = "zoroastrianism"
 culture = 14
@@ -3051,6 +3258,7 @@ buildings_manager = SubResource("Resource_xdsfo")
 [node name="Phasis" parent="Regions/Asia Menor" instance=ExtResource("16_y4d8b")]
 position = Vector2(2258.51, 345.919)
 polygon = PackedVector2Array(-10.5056, -0.91925, -4.50562, 5.08075, -1.50562, 12.0807, -3.50562, 19.0807, -1.50562, 21.0807, 0.494385, 26.0807, 3.49438, 12.0807, 13.4944, 1.08075, 21.4944, -9.91925, 32.4944, -24.9193, 44.4944, -49.9193, 50.4944, -63.9193, 42.4944, -81.9193, 34.4944, -93.9193, 17.4944, -99.9193, 0.494385, -105.919, -14.5056, -111.919, -36.5056, -117.919, -46.5056, -120.919, -53.5056, -123.919, -63.5056, -126.919, -83.5056, -140.919, -92.5056, -146.919, -96.5056, -142.919, -97.5056, -139.919, -88.5056, -136.919, -84.5056, -130.919, -83.5056, -124.919, -81.5056, -121.919, -76.5056, -120.919, -71.5056, -121.919, -67.5056, -116.919, -59.5056, -116.919, -53.5056, -115.919, -46.5056, -111.919, -43.5056, -111.919, -41.5056, -105.919, -39.5056, -100.919, -37.5056, -96.9193, -31.5056, -95.9193, -25.5056, -91.9193, -20.5056, -88.9193, -18.5056, -85.9193, -17.5056, -76.9193, -14.5056, -72.9193, -12.5056, -61.9193, -9.50562, -56.9193, -8.50562, -51.9193, -8.50562, -47.9193, -6.50562, -40.9193, -2.50562, -34.9193, -1.50562, -27.9193, -1.50562, -20.9193, -1.50562, -12.9193, -5.50562, -7.91925)
+ownership = "PONTO"
 culture = 3
 buildings_manager = SubResource("Resource_x7noo")
 
@@ -4642,14 +4850,6 @@ scale = Vector2(0.839844, 0.896007)
 texture = ExtResource("37_e14kc")
 metadata/_edit_lock_ = true
 
-[node name="PrimeraHerenciaDeAlejandroMagno" type="Sprite2D" parent="Maps"]
-visible = false
-modulate = Color(1, 1, 1, 0.423529)
-position = Vector2(2567, 1017)
-scale = Vector2(1.9707, 2.0898)
-texture = SubResource("CompressedTexture2D_2nktg")
-metadata/_edit_lock_ = true
-
 [node name="EuropeMap" type="Sprite2D" parent="Maps"]
 visible = false
 position = Vector2(984, -589)
@@ -4726,6 +4926,14 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(161, -39)
 scale = Vector2(1.00406, 1.00488)
 texture = ExtResource("44_dvcvx")
+metadata/_edit_lock_ = true
+
+[node name="PrimeraHerenciaDeAlejandroMagno" type="Sprite2D" parent="Maps"]
+visible = false
+modulate = Color(1, 1, 1, 0.188235)
+position = Vector2(2552.72, 991.783)
+scale = Vector2(1.95285, 2.04399)
+texture = ExtResource("42_cmgyk")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -4876,6 +5084,7 @@ offset_bottom = 335.0
 visible = false
 
 [node name="WaterBackground" parent="." instance=ExtResource("44_slsmi")]
+visible = false
 metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="TimerGenerateResources" to="." method="_on_timer_generate_resources_timeout"]

@@ -16,7 +16,6 @@ texture = ExtResource("1_7hxuk")
 script = ExtResource("1_lhs2u")
 width = 4.0
 map_colors = ExtResource("2_xfuls")
-debug_lines = true
 culture = 0
 buildings_manager = ExtResource("4_kq3l2")
 
