@@ -12,6 +12,8 @@ extends Polygon2D
 @onready var collision : CollisionPolygon2D = $MouseDetector/CollisionPolygon2D
 @export var map_colors : MapColors
 
+@export var debug_lines : bool = false
+
 @export_category("Ownership")
 @export var ownership := ""
 
@@ -94,6 +96,10 @@ func _ready() -> void:
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 		push_error("building_manager had to be created") # just to test
 	buildings_manager.initialize() # Makes all buildings uniques to each province
+	
+	if debug_lines:
+		create_debug_lines_connections()
+
 
 # Used for example when the nation changes ownership, to disconnect sending resources
 # to the nation was the previous owner
@@ -144,7 +150,7 @@ func get_connections() -> void:
 	paths = [] # Reset to avoid creating infinite copies
 	# Iterate through the node_paths and ad the ones that arent empty
 	# Done in this way because if "get_node" is used in an empty path it result in debugget errors
-	var p : Array = [path0, path1, path2, path3, path4, path5]
+	var p : Array = [path0, path1, path2, path3, path4, path5, path6, path7, path8, path9, path10]
 	for node in p as Array[Province]:
 		if node != null and not paths.has(node):
 			paths.push_back(node)
@@ -288,4 +294,19 @@ func get_province_bonuses(aBuildings_manager : BuildingsManager, nation : Nation
 	
 	return local_province_bonuses
 
+func create_debug_lines_connections() -> void:
+	var line_color : Color = Color(randf(), randf(), randf())
+	for con in paths as Array[Province]:
+		var city_pos := con.city.global_position
+		var new_line := Line2D.new()
+		world.add_child(new_line)
+		new_line.global_position = Vector2.ZERO
+		new_line.add_point(global_position)
+		new_line.add_point(city_pos)
+		new_line.z_index = 100
+		new_line.z_as_relative = false
+		new_line.width = 4
+		new_line.default_color = line_color
+		pass
+	pass
 
