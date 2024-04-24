@@ -235,6 +235,11 @@ func set_selected(value : bool) -> void:
 	if value == selected:
 		return
 	
+	var army_selected_state := ArmySelected.new()
+	army_selected_state.army = self
+	army_selected_state.selected = value
+	Globals.army_selected_change(army_selected_state)
+	
 	selected = value
 	var shader : Material = null
 	if selected:

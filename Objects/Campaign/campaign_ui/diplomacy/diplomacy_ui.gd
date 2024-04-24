@@ -72,6 +72,10 @@ func open_relation_with_nation(nation_tag: String) -> void:
 	if nation_tag == Globals.player_nation: 
 		return
 	
+	# If an army is selected it wont open the diplomacy screen
+	if Globals.armies_selected.size() > 0:
+		return
+	
 	# Update the UI
 	request_diplomacy_nation_data()
 	set_current_diplomacy_nation_selected(nation_tag)

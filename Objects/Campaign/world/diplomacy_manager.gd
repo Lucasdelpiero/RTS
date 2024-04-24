@@ -71,6 +71,7 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 	for i in diplomacy_nations.size():
 		if nation_tag == diplomacy_nations[i].NATION_TAG:
 			nation_tag_position = i
+			break
 	
 	if nation_tag_position == -1:
 		push_error("Couldnt find nation to retrieve relationship")

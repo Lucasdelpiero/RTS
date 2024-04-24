@@ -7,6 +7,7 @@ var last_province_hovered_owner : String = "" # Used to open the diplomacy_tag
 var camera_angle : float = 0.0
 var player_nation : String = "ROME"
 var player_nation_node : Nation = null
+var armies_selected : Array[ArmySelected] = [] 
 # Array of armies of the player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
 var player_army : Array = [] 
@@ -100,4 +101,19 @@ func get_units_by_nation(nation_tag : String) -> Array[UnitData]:
 
 func set_last_province_hovered_owner(nation_tag : String) -> void:
 	last_province_hovered_owner = nation_tag
+
+func army_selected_change(value : ArmySelected) -> void:
+	# Add army to the list 
+	if value.selected:
+		for army in armies_selected:
+			# If army already is in list, return 
+			if army.army == value.army:
+				return
+		armies_selected.push_back(value)
+	
+	# Erase army if is in the list
+	if not value.selected:
+		for army in armies_selected:
+			if army.army == value.army:
+				armies_selected.erase(army)
 
