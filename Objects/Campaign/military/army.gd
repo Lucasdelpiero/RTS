@@ -67,15 +67,31 @@ func _unhandled_input(_event : InputEvent) -> void:
 		#TODO refactor this
 		if selected : 
 			var destination : int = Globals.mouse_in_province
-			var new_path : Array[Vector2] = get_pathing(destination)
-			if new_path.size() > 0:
-				path = new_path
-				var path_names : Array = get_path_province_names(new_path)
-				Globals.personal_debug_update(self, "path_names", "Path: %s" % [path_names])
-				Globals.personal_debug_update(self, "path", path)
+			var path_start : Vector2 
+			# Start path from the last point in the path
+			if Input.is_action_pressed("Shift") and path.size() > 0:
+				path_start = path[path.size() - 1]
+			else : # Start path in the army position
+				path_start = self.global_position
+			
+			# Create new path from the 2 desired places
+			var new_path : Array[Vector2] = get_pathing(path_start, destination)
+			
+			# Add a new path from the last point in the path
+			if Input.is_action_pressed("Shift"):
+				path.append_array(new_path)
+			else: # Create a new path from the army position
+				if new_path.size() > 0:
+					path = new_path
+			
+			if state != MOVING and path.size() > 0:
+					state = MOVING
+			var path_names : Array = get_path_province_names(path)
+			Globals.personal_debug_update(self, "path_names", "Path: %s" % [path_names])
+			Globals.personal_debug_update(self, "path", path)
 			if state != MOVING and path.size() > 0:
 				Globals.personal_debug_update(self, "move", "now moving")
-				state = MOVING
+			state = MOVING
 
 
 func _physics_process(delta : float) -> void:
@@ -139,12 +155,13 @@ func move(delta : float) -> void:
 
 
 # Recieves the ID of the province it has to path to and returns a path
-func get_pathing(destination : int) -> Array[Vector2]:
+func get_pathing(from_pos : Vector2, destination : int) -> Array[Vector2]:
 	if own_map == null:
 		push_error("There is no map to navigate in the unit")
 		return []
 	
-	var from : int = own_map.get_closest_point(self.global_position) # ID of closest point
+	#var from : int = own_map.get_closest_point(self.global_position) # ID of closest point
+	var from : int = own_map.get_closest_point(from_pos) # ID of closest point
 	# The destination is the place the army wants to go, that being the las province hovered
 	# If there is not a province being hovered, it will be used the closest point to the mouse
 	var to : int = destination
