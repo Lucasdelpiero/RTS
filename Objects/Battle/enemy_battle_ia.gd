@@ -51,7 +51,8 @@ func _ready() -> void:
 		return
 	if playerGroup == null:
 		return
-	
+	# NOTE without the timer it doesnt count all the units, only the ones that were in the battlefield before the ones in the battlemap can load
+	await get_tree().create_timer(0.0).timeout
 	# get_enemy_groups needs a typed array, so to be safe
 	var player_units_temp : = playerGroup.get_children() 
 	var player_units_typed : Array[Unit] = []
@@ -123,6 +124,47 @@ func focus_on_largest_group() -> void:
 			pass
 #	generalState = GeneralStates.FIGHTING
 	pass
+
+
+# It will group the enemies that are at the left, right or behind the front of the army
+# It will be used to get know how many units it would be required to assign to the flanking
+func get_enemy_groups_flanking() -> void :
+	var enemy_groups := get_enemy_groups(player_units, 2000)
+	
+	var minimum_angle_for_flank : float= 30
+	var maximium_angle_for_flank : float = 60
+	
+	Globals.debug_update_label("amount_enemies" , "Enemies size: %s"  % [enemy_groups.size()])
+	
+	var text : String = "" # used to debug the position
+	for group : Array in enemy_groups as Array:
+		var group_temp : Array[Unit] = []
+		group_temp.assign(group)
+		var average_pos := get_average_position(group_temp)
+		var army_pos := armyMarker.global_position
+		# This needs to be used to get the dot product from the angle that the army is facing to
+		var angle_to_average_pos : float = army_pos.angle_to_point(average_pos)
+		var angle_army_is_facing : float = armyMarker.rotation
+		
+		var normalized_avg_pos : Vector2 = Vector2(cos(angle_to_average_pos), sin(angle_army_is_facing)).normalized()
+		var normalized_army_facing : Vector2 = Vector2(cos(angle_army_is_facing), sin(angle_army_is_facing)).normalized()
+		
+		print("normal avg: %s" % normalized_avg_pos)
+		print("normal army facing: %s" % normalized_army_facing)
+		
+		var angle_diff : float = angle_difference(angle_to_average_pos, angle_army_is_facing)
+		angle_diff = rad_to_deg(angle_diff)
+		angle_diff -= 90 # The difference from the position that the rotation and the direction facing
+		
+		if angle_diff < 0 : 
+			angle_diff += 360
+		
+		var dot_product : float = normalized_army_facing.dot(normalized_avg_pos)
+		print("dot: %s" % [dot_product])
+		text += "dot_product: %s \n group: %s \n angle_diff: %s\n" % [dot_product, group.size(), angle_diff]
+		
+	 
+	Globals.debug_update_label("dot", text)
 
 func group_units_by_type(aUnits : Array[Unit]) -> void:
 	if aUnits == null or typeof(aUnits) != 28:
@@ -265,6 +307,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_timer_advance_timeout() -> void:
-	#timerAdvance.start(5)
+	timerAdvance.start(5)
+	get_enemy_groups_flanking()
 	#check_to_advance()
 	pass

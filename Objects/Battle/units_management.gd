@@ -167,7 +167,8 @@ func get_enemy_groups(
 #		print("============================")
 	return final_groups
 
-func should_unite_group(arr1 : Array[Unit], arr2 : Array[Unit], distance : float) -> bool:
+# If the arr1 or arr2 are typed arrays it will crash as it uses normal arrays in other parths of the code
+func should_unite_group(arr1 : Array, arr2 : Array, distance : float) -> bool:
 	for i in arr1.size():
 		var object : int = 24
 		var unit : Unit = arr1[i] as Unit
