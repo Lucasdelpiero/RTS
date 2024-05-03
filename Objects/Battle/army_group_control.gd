@@ -49,9 +49,9 @@ func set_color(value : Color) -> void:
 		unit.army_color = army_color
 #		unit.modulate = army_color
 
+# BUG it returs zero units at the start of the battle while initialializing the world
 func get_units_group() -> Array[Unit]:
 	var units : Array = get_children()
 	var units_group_typed : Array[Unit] = []
 	units_group_typed.assign(units)
-	
 	return units_group_typed

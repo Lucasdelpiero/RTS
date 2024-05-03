@@ -33,6 +33,7 @@ func start_battle() -> void:
 		push_error("Scene couldnt be loaded")
 		return 
 	var battleWorld := battle_map_scene.instantiate() as BattleMap
+	add_child(battleWorld)
 	if battleWorld == null:
 		push_error("Battlemap couldnt be instantiated")
 		return
@@ -49,7 +50,7 @@ func start_battle() -> void:
 	world.queue_free() # delete the world
 	
 	# Now lets go to battle
-	add_child(battleWorld)
+	#add_child(battleWorld)
 	battleWorld.main = self
 	battleWorld.sg_finished_battle.connect(return_from_battle)
 	pass

@@ -58,12 +58,15 @@ func _ready() -> void:
 	var player_units_typed : Array[Unit] = []
 	player_units_typed.assign(player_units_temp)
 	player_units.assign(player_units_typed)
+	var enemy_units_temp := armyGroup.get_children()
+	units.assign(enemy_units_temp)
 	
 	get_enemy_groups(player_units, 2000)
 	
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
 	
 	units = armyGroup.get_units_group()
+
 	group_units_by_type(units )
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
@@ -110,20 +113,20 @@ func focus_on_largest_group() -> void:
 		armyMarker.rotation = angle + PI/2
 	
 	# just to test
-#	var angle_formation = armyMarker.rotation
-#	move_units(group_front,infantryMarker.global_position, angle_formation, angle_formation, true)
-#	move_units(group_archers,rangeMarker.global_position, angle_formation, angle_formation, true)
-#	move_units(group_left_flank, leftFlankMarker.global_position, angle_formation, angle_formation, false, true)
-#	move_units(group_right_flank, rightFlankMarker.global_position , angle_formation, angle_formation , false)
+	#var angle_formation : float = armyMarker.rotation
+	#move_units(group_front,infantryMarker.global_position, angle_formation, angle_formation, true)
+	#move_units(group_archers,rangeMarker.global_position, angle_formation, angle_formation, true)
+	#move_units(group_left_flank, leftFlankMarker.global_position, angle_formation, angle_formation, false, true)
+	#move_units(group_right_flank, rightFlankMarker.global_position , angle_formation, angle_formation , false)
 #	
 	
-	match(action):
-		"move" :
-#			move_units(units, armyMarker.global_position , 0.0, PI)
+	#match(action):
+		#"move" :
+			#move_units(units, armyMarker.global_position , 0.0, PI)
 #			print("alf")
-			pass
+			#pass
 #	generalState = GeneralStates.FIGHTING
-	pass
+	#pass
 
 
 # It will group the enemies that are at the left, right or behind the front of the army
@@ -144,27 +147,37 @@ func get_enemy_groups_flanking() -> void :
 		var army_pos := armyMarker.global_position
 		# This needs to be used to get the dot product from the angle that the army is facing to
 		var angle_to_average_pos : float = army_pos.angle_to_point(average_pos)
-		var angle_army_is_facing : float = armyMarker.rotation
-		
-		var normalized_avg_pos : Vector2 = Vector2(cos(angle_to_average_pos), sin(angle_army_is_facing)).normalized()
-		var normalized_army_facing : Vector2 = Vector2(cos(angle_army_is_facing), sin(angle_army_is_facing)).normalized()
-		
-		print("normal avg: %s" % normalized_avg_pos)
-		print("normal army facing: %s" % normalized_army_facing)
+		var angle_army_is_facing : float = armyMarker.rotation - deg_to_rad(90)
 		
 		var angle_diff : float = angle_difference(angle_to_average_pos, angle_army_is_facing)
 		angle_diff = rad_to_deg(angle_diff)
-		angle_diff -= 90 # The difference from the position that the rotation and the direction facing
+		#angle_diff -= 90 # The difference from the position that the rotation and the direction facing
 		
-		if angle_diff < 0 : 
-			angle_diff += 360
-		
-		var dot_product : float = normalized_army_facing.dot(normalized_avg_pos)
-		print("dot: %s" % [dot_product])
-		text += "dot_product: %s \n group: %s \n angle_diff: %s\n" % [dot_product, group.size(), angle_diff]
-		
-	 
-	Globals.debug_update_label("dot", text)
+		#if angle_diff < 0 : 
+			#angle_diff += 360
+
+		text += "group: %s \n  angle_diff: %s\n  side:%s\n" % [
+			group.size(), 
+			angle_diff, 
+			get_side_by_degree_difference(angle_diff)
+			]
+	
+	Globals.debug_update_label("side", text)
+
+func get_side_by_degree_difference(angle_diff: float) -> String:
+	# 75-115 is a side
+	
+	if abs(angle_diff) > 115:
+		return "back"
+	if abs(angle_diff) < 75:
+		return "front"
+	if angle_diff > 0:
+		return "left"
+	else:
+		return "right"
+	
+	return "none"
+	pass
 
 func group_units_by_type(aUnits : Array[Unit]) -> void:
 	if aUnits == null or typeof(aUnits) != 28:
@@ -305,9 +318,10 @@ func _on_timer_timeout() -> void:
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	pass # Replace with function body.
 
-
+var testing : bool= true
 func _on_timer_advance_timeout() -> void:
 	timerAdvance.start(5)
 	get_enemy_groups_flanking()
+	testing = false
 	#check_to_advance()
 	pass
