@@ -8,7 +8,7 @@ class_name UnitsManagement
 func get_face_to_formation_angle(value : float) -> float:
 	return value + PI / 2
 
-func get_average_position(array : Array[Unit]) -> Vector2:
+func get_average_position(array : Array) -> Vector2:
 	if array.size() == 0:
 		return Vector2.ZERO
 	var average_position := Vector2.ZERO
