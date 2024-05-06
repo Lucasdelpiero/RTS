@@ -171,8 +171,9 @@ func get_enemy_groups_flanking() -> void :
 		
 		# Assign enought units to avoid beign encircled
 		var side : String = get_side_by_degree_difference(angle_diff)
-		var amount : int = group.size()
-		groups_manager.check_side_has_enough_units(side, amount)
+		var group_casted : Array[Unit] = []
+		group_casted.assign(group)
+		groups_manager.check_side_has_enough_units(side, group_casted)
 	
 	Globals.debug_update_label("side", text)
 

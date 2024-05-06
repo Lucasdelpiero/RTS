@@ -53,21 +53,38 @@ func create_group(
 	add_child(task_group)
 
 # If a side doesnt have a similar number of units it will create a new group
-func check_side_has_enough_units(side : String ,enemy_amount : int) -> void:
+func check_side_has_enough_units(side : String , enemy_group : Array[Unit]) -> void:
 	match side:
 		"left":
-			assign_units_side_group(side_left, enemy_amount)
+			assign_units_side_group(side_left, enemy_group)
 		"right":
-			assign_units_side_group(side_right, enemy_amount)
+			assign_units_side_group(side_right, enemy_group)
 		"back":
-			assign_units_side_group(side_back, enemy_amount)
+			assign_units_side_group(side_back, enemy_group)
 
-func assign_units_side_group(task_group : TaskGroup , amount_required : int) -> void:
+func assign_units_side_group(task_group : TaskGroup , enemy_group : Array[Unit]) -> void:
 	var units_needed : int = 0
-	if task_group.group.size() < amount_required:
-		units_needed =  amount_required - task_group.group.size()
+	task_group.enemy_group_focused = enemy_group
+	if task_group.group.size() < enemy_group.size():
+		units_needed =  enemy_group.size() - task_group.group.size()
 		print("not enough soldiers : %s units needed" % units_needed)
+		task_group.add_units_to_group( get_units_that_are_free() )
 
+# Will give the soldiers that is able to spare, it will have a minimium of 1 o 2 units at least
+func get_units_that_are_free() -> Array[Unit]:
+	var units_to_add : Array = []
+	for task_group in get_children() as Array[TaskGroup]:
+		for unit in task_group.group :
+			# TEST 
+			# Add 2 infantry for testing
+			if unit.get_type() == 1 and units_to_add.size() < 2:
+				units_to_add.push_back(unit)
+			pass
+		pass
+	
+	var units_casted : Array[Unit] = []
+	units_casted.assign(units_to_add)
+	return units_casted
 
 
 func set_main_enemy_group(value : Array[Unit]) -> void:

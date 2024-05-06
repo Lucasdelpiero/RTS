@@ -2,7 +2,15 @@ class_name TaskGroup
 extends UnitsManagement
 
 var group  : Array[Unit] = []
-var enemy_group_focused  : Array[Unit] = []
+var enemy_group_focused  : Array[Unit] = [] :
+	set(value):
+		# Potential BUG here so is a place to look for if there is a problem in the future
+		# As only the number is checked if it swaps to other unit but the number is the same it can cause a problem
+		# Maybe a hashmap will be needed in the future
+		if value.size() != enemy_group_focused.size() :
+			print("changed: %s" % value.size())
+			enemy_group_focused = value
+			# send signal to other groups to delete the units assigned here
 var main_enemy_group : Array[Unit] = []
 var marker_to_anchor : Marker2D = null # Parent marker to all markers used to get the angle to position the units
 var marker_to_follow : Marker2D = null
@@ -41,6 +49,13 @@ func get_soldiers_above_requirement() -> int:
 	
 	return 0
 
+func add_units_to_group(units: Array[Unit]) -> void:
+	var temp_group : Array = []
+	temp_group.append_array(group)
+	temp_group.append_array(units)
+	var group_casted : Array[Unit] = []
+	group_casted.assign(temp_group)
+	group = group_casted
 
 func _on_move_timer_timeout() -> void:
 	return
