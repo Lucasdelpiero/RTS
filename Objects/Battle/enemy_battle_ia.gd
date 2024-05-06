@@ -1,6 +1,11 @@
 class_name IA
 extends UnitsManagement
 
+# The EnemyBattleIA will tell the units how they will be groupder and
+# an task (hold on, advance, skirmish, melee) to the groups
+# These groups tell the units exactly what to do
+# The units will have the capacity to ovrride the orders if they see it fit  
+
 #region Properties
 
 @export var armyGroup : UnitsGroupControl = null 
@@ -18,14 +23,16 @@ var playerGroups : Array[Array] = []
 @onready var groups_manager  := %GroupsManager as GroupsManager
 @onready var timerAdvance := %TimerAdvance as Timer
 
+# Type of units
 var infantry_units : Array[Unit] = []
 var range_units : Array[Unit] = []
 var cavalry_units : Array[Unit] = []
 
+# Group of units
 var group_front : Array[Unit] = []
 var group_archers : Array[Unit] = []
-var group_left_flank : Array[Unit] = []
-var group_right_flank : Array[Unit]= []
+var group_left_flank : Array[Unit] = [] # cavalry
+var group_right_flank : Array[Unit]= [] # cavalry
 var group_reserves : Array[Unit] = []
 
 # This array stores the units that already where targeted by the IA to be atacked
@@ -161,6 +168,11 @@ func get_enemy_groups_flanking() -> void :
 			angle_diff, 
 			get_side_by_degree_difference(angle_diff)
 			]
+		
+		# Assign enought units to avoid beign encircled
+		var side : String = get_side_by_degree_difference(angle_diff)
+		var amount : int = group.size()
+		groups_manager.check_side_has_enough_units(side, amount)
 	
 	Globals.debug_update_label("side", text)
 

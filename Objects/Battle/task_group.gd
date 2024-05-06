@@ -21,7 +21,7 @@ func move_units_to_markers() -> void:
 		return
 	var average_pos : Vector2 = get_average_position(main_enemy_group)
 	var angle : float = marker_to_anchor.global_position.angle_to_point(average_pos) 
-	angle += PI/2 # Adds a quarter rotation so that the unit looks at that place
+	angle += PI/4 # Adds a quarter rotation so that the unit looks at that place
 	
 	
 	move_units(group,
@@ -30,7 +30,17 @@ func move_units_to_markers() -> void:
 		angle,
 		startFromCenter,
 		right_to_left)
+
+# Thee difference between the group and its enemy assigned
+func get_strengh_difference() -> float:
 	
+	return 100
+
+# The amount of soldiers that the IA has above the player
+func get_soldiers_above_requirement() -> int:
+	
+	return 0
+
 
 func _on_move_timer_timeout() -> void:
 	return
