@@ -68,15 +68,28 @@ func assign_units_side_group(task_group : TaskGroup , enemy_group : Array[Unit])
 	if task_group.group.size() < enemy_group.size():
 		units_needed =  enemy_group.size() - task_group.group.size()
 		print("not enough soldiers : %s units needed" % units_needed)
-		task_group.add_units_to_group( get_units_that_are_free() )
+		var units_free : Array[Unit] = get_units_that_are_free()
+		task_group.add_units_to_group( units_free )
+		for unit in units_free:
+			Signals.sg_ia_unit_changed_group.emit(task_group, unit)
 
 # Will give the soldiers that is able to spare, it will have a minimium of 1 o 2 units at least
 func get_units_that_are_free() -> Array[Unit]:
 	var units_to_add : Array = []
+	
+	# The group doesnt look for the sides so they wont steal from eachother
+	# TODO refactor this so if there are units that can be spared from the sides
+	# then it could be used in other places
+	var groups_to_look : Array[TaskGroup] = []
+	
 	for task_group in get_children() as Array[TaskGroup]:
-		for unit in task_group.group :
-			# TEST 
-			# Add 2 infantry for testing
+		if task_group != side_left and task_group != side_left and task_group != side_left:
+			groups_to_look.push_back(task_group) 
+	
+	for task_group in groups_to_look:
+		for unit in task_group.group:
+		# TEST 
+		# Add 2 infantry for testing
 			if unit.get_type() == 1 and units_to_add.size() < 2:
 				units_to_add.push_back(unit)
 			pass

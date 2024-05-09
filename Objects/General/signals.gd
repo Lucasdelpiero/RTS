@@ -57,3 +57,6 @@ func battlemap_set_units_selected(unit : Unit, value : bool) -> void:
 func battlemap_set_units_hovered(unit : Unit, value : bool) -> void:
 	sg_battlemap_set_units_hovered.emit(unit, value)
 
+#region IA
+signal sg_ia_unit_changed_group(task_group : TaskGroup, unit : Unit)
+#endregion

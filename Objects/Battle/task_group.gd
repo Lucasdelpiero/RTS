@@ -2,6 +2,7 @@ class_name TaskGroup
 extends UnitsManagement
 
 var group  : Array[Unit] = []
+
 var enemy_group_focused  : Array[Unit] = [] :
 	set(value):
 		# Potential BUG here so is a place to look for if there is a problem in the future
@@ -10,7 +11,8 @@ var enemy_group_focused  : Array[Unit] = [] :
 		if value.size() != enemy_group_focused.size() :
 			print("changed: %s" % value.size())
 			enemy_group_focused = value
-			# send signal to other groups to delete the units assigned here
+	
+
 var main_enemy_group : Array[Unit] = []
 var marker_to_anchor : Marker2D = null # Parent marker to all markers used to get the angle to position the units
 var marker_to_follow : Marker2D = null
@@ -23,6 +25,10 @@ var right_to_left : bool = false
 enum Task {FOLLOW_MARKER, HOLD, ADVANCE, SKIRMISH, MELEE, FLEE}
 
 var task : int = Task.FOLLOW_MARKER
+
+func _ready() -> void:
+	Signals.sg_ia_unit_changed_group.connect(erase_unit_if_changed_group)
+	pass
 
 func move_units_to_markers() -> void:
 	if marker_to_follow == null or marker_to_anchor == null:
@@ -56,6 +62,18 @@ func add_units_to_group(units: Array[Unit]) -> void:
 	var group_casted : Array[Unit] = []
 	group_casted.assign(temp_group)
 	group = group_casted
+
+func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
+	if task_group == self:
+		print("it wont be deleted from here")
+		return
+	
+	if group.has(unit):
+		print("before: %s" % group.size())
+		print("it will delete the unit: %s" % unit.name)
+		group.erase(unit)
+		print("after: %s" % group.size())
+	pass
 
 func _on_move_timer_timeout() -> void:
 	return
