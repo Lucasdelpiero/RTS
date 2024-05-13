@@ -71,9 +71,11 @@ texture = ExtResource("4_1rwry")
 wait_time = 5.0
 one_shot = true
 
-[node name="GroupsManager" type="Node" parent="."]
+[node name="GroupsManager" type="Node" parent="." node_paths=PackedStringArray("left_flank_marker", "right_flank_marker")]
 unique_name_in_owner = true
 script = ExtResource("6_mxm1y")
+left_flank_marker = NodePath("../ArmyMarker/LeftFlank")
+right_flank_marker = NodePath("../ArmyMarker/RightFlank")
 
 [node name="TaskGroup" parent="GroupsManager" instance=ExtResource("7_by1gs")]
 

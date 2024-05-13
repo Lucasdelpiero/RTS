@@ -13,6 +13,9 @@ var side_left : TaskGroup = null
 var side_right : TaskGroup = null
 var side_back : TaskGroup = null
 
+@export var left_flank_marker : Marker2D = null
+@export var right_flank_marker : Marker2D = null
+
 
 func _ready() -> void:
 	# Clean the node tree
@@ -55,14 +58,17 @@ func create_group(
 # If a side doesnt have a similar number of units it will create a new group
 func check_side_has_enough_units(side : String , enemy_group : Array[Unit]) -> void:
 	match side:
-		"left":
-			assign_units_side_group(side_left, enemy_group)
+		"left": # TODO refactor this to send a resource as an argument
+			assign_units_side_group(side_left, enemy_group, left_flank_marker, side)
 		"right":
-			assign_units_side_group(side_right, enemy_group)
+			assign_units_side_group(side_right, enemy_group, right_flank_marker, side)
 		"back":
 			assign_units_side_group(side_back, enemy_group)
 
-func assign_units_side_group(task_group : TaskGroup , enemy_group : Array[Unit]) -> void:
+func assign_units_side_group(task_group : TaskGroup ,
+		enemy_group : Array[Unit],
+		marker_to_follow : Marker2D = null,
+		side : String = "") -> void:
 	var units_needed : int = 0
 	task_group.enemy_group_focused = enemy_group
 	if task_group.group.size() < enemy_group.size():
@@ -72,6 +78,12 @@ func assign_units_side_group(task_group : TaskGroup , enemy_group : Array[Unit])
 		task_group.add_units_to_group( units_free )
 		for unit in units_free:
 			Signals.sg_ia_unit_changed_group.emit(task_group, unit)
+	if marker_to_follow == null:
+		return
+	if side == "left":
+		task_group.right_to_left = true
+	task_group.main_enemy_group = main_enemy_group
+	task_group.marker_to_follow = marker_to_follow
 
 # Will give the soldiers that is able to spare, it will have a minimium of 1 o 2 units at least
 func get_units_that_are_free() -> Array[Unit]:

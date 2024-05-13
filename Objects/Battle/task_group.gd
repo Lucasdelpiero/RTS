@@ -33,7 +33,9 @@ func _ready() -> void:
 func move_units_to_markers() -> void:
 	if marker_to_follow == null or marker_to_anchor == null:
 		return
-	var average_pos : Vector2 = get_average_position(main_enemy_group)
+	#var average_pos : Vector2 = get_average_position(main_enemy_group)
+	#var angle : float = marker_to_anchor.global_position.angle_to_point(average_pos) 
+	var average_pos : Vector2 = get_average_position(enemy_group_focused)
 	var angle : float = marker_to_anchor.global_position.angle_to_point(average_pos) 
 	angle += PI/4 # Adds a quarter rotation so that the unit looks at that place
 	
@@ -76,7 +78,7 @@ func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 	pass
 
 func _on_move_timer_timeout() -> void:
-	return
+	#return
 	move_units_to_markers()
 	moveTimer.start(5)
 	pass
