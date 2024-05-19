@@ -56,6 +56,18 @@ z_index = 20
 z_as_relative = false
 texture = ExtResource("4_1rwry")
 
+[node name="SideLeft" type="Marker2D" parent="ArmyMarker/LeftFlank"]
+unique_name_in_owner = true
+position = Vector2(-31, 246)
+rotation = -1.57079
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/LeftFlank/SideLeft"]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = 20
+z_as_relative = false
+texture = ExtResource("4_1rwry")
+
 [node name="RightFlank" type="Marker2D" parent="ArmyMarker"]
 unique_name_in_owner = true
 position = Vector2(730, 8)
@@ -67,15 +79,43 @@ z_index = 20
 z_as_relative = false
 texture = ExtResource("4_1rwry")
 
+[node name="SideRight" type="Marker2D" parent="ArmyMarker/RightFlank"]
+unique_name_in_owner = true
+position = Vector2(-5, 234)
+rotation = 1.57079
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/RightFlank/SideRight"]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = 20
+z_as_relative = false
+texture = ExtResource("4_1rwry")
+
+[node name="SideBack" type="Marker2D" parent="ArmyMarker"]
+unique_name_in_owner = true
+position = Vector2(0, 685)
+rotation = 3.14159
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ArmyMarker/SideBack"]
+modulate = Color(1, 1, 1, 0.45098)
+z_index = 20
+z_as_relative = false
+texture = ExtResource("4_1rwry")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
-[node name="GroupsManager" type="Node" parent="." node_paths=PackedStringArray("left_flank_marker", "right_flank_marker")]
+[node name="GroupsManager" type="Node" parent="." node_paths=PackedStringArray("army_marker", "left_flank_marker", "right_flank_marker", "left_side_marker", "right_side_marker", "back_side_marker")]
 unique_name_in_owner = true
 script = ExtResource("6_mxm1y")
+army_marker = NodePath("../ArmyMarker")
 left_flank_marker = NodePath("../ArmyMarker/LeftFlank")
 right_flank_marker = NodePath("../ArmyMarker/RightFlank")
+left_side_marker = NodePath("../ArmyMarker/LeftFlank/SideLeft")
+right_side_marker = NodePath("../ArmyMarker/RightFlank/SideRight")
+back_side_marker = NodePath("../ArmyMarker/SideBack")
 
 [node name="TaskGroup" parent="GroupsManager" instance=ExtResource("7_by1gs")]
 

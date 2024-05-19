@@ -13,8 +13,12 @@ var side_left : TaskGroup = null
 var side_right : TaskGroup = null
 var side_back : TaskGroup = null
 
+@export var army_marker : Marker2D = null
 @export var left_flank_marker : Marker2D = null
 @export var right_flank_marker : Marker2D = null
+@export var left_side_marker : Marker2D = null
+@export var right_side_marker : Marker2D = null
+@export var back_side_marker : Marker2D = null
 
 
 func _ready() -> void:
@@ -25,12 +29,21 @@ func _ready() -> void:
 	var side_temp1 := task_group_res.instantiate()
 	add_child(side_temp1)
 	side_left = side_temp1
+	side_left.group_name = "side_left"
+	side_left.marker_to_follow = left_side_marker
+	side_left.marker_to_anchor = army_marker # TEST
 	var side_temp2 := task_group_res.instantiate()
 	add_child(side_temp2)
 	side_right = side_temp2
+	side_right.group_name = "side_right"
+	side_right.marker_to_follow = right_side_marker
+	side_right.marker_to_anchor = army_marker # TEST
 	var side_temp3 := task_group_res.instantiate()
 	add_child(side_temp3)
 	side_back = side_temp3
+	# BUG done just so it doesnt scream to me the debugger
+	side_back.marker_to_anchor = army_marker
+	side_back.marker_to_follow = back_side_marker
 	
 
 func create_group(
@@ -59,9 +72,9 @@ func create_group(
 func check_side_has_enough_units(side : String , enemy_group : Array[Unit]) -> void:
 	match side:
 		"left": # TODO refactor this to send a resource as an argument
-			assign_units_side_group(side_left, enemy_group, left_flank_marker, side)
+			assign_units_side_group(side_left, enemy_group, left_side_marker, side)
 		"right":
-			assign_units_side_group(side_right, enemy_group, right_flank_marker, side)
+			assign_units_side_group(side_right, enemy_group, right_side_marker, side)
 		"back":
 			assign_units_side_group(side_back, enemy_group)
 
@@ -78,8 +91,11 @@ func assign_units_side_group(task_group : TaskGroup ,
 		task_group.add_units_to_group( units_free )
 		for unit in units_free:
 			Signals.sg_ia_unit_changed_group.emit(task_group, unit)
+		
 	if marker_to_follow == null:
+		push_error("There is no marker to follow")
 		return
+		
 	if side == "left":
 		task_group.right_to_left = true
 	task_group.main_enemy_group = main_enemy_group

@@ -274,6 +274,9 @@ rotation = 3.14159
 one_shot = false
 autostart = true
 
+[node name="TaskGroup" parent="EnemyBattleIA/GroupsManager" index="0"]
+debug = true
+
 [node name="Camera" parent="." instance=ExtResource("2_a41j7")]
 unique_name_in_owner = true
 zoom = Vector2(0.3, 0.3)
