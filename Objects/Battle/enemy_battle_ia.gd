@@ -82,10 +82,10 @@ func _ready() -> void:
 #	print(get_main_group(get_enemy_groups(player_units, 2000)))
 	# TEST
 	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, 2000))
-	groups_manager.create_group(group_front, main_group, infantryMarker, true)
-	groups_manager.create_group(group_archers, main_group, rangeMarker, true)
-	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true)
-	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false)
+	groups_manager.create_group(group_front, main_group, infantryMarker, true, false, "infantry")
+	groups_manager.create_group(group_archers, main_group, rangeMarker, true, false, "archers")
+	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true, "flank_left")
+	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false, false,"flank_right")
 
 # Makes the IA focus on the largest group of enemies
 func focus_on_largest_group() -> void:
@@ -148,6 +148,11 @@ func get_enemy_groups_flanking() -> void :
 	
 	Globals.debug_update_label("amount_enemies" , "Enemies size: %s"  % [enemy_groups.size()])
 	
+	# If no side group is needed it will order to disband it
+	var needs_side_left : bool = false
+	var needs_side_right : bool = false
+	var needs_side_back : bool = false
+	
 	var text : String = "" # used to debug the position
 	for group : Array in enemy_groups as Array:
 		var group_temp : Array[Unit] = []
@@ -164,7 +169,6 @@ func get_enemy_groups_flanking() -> void :
 		
 		#if angle_diff < 0 : 
 			#angle_diff += 360
-
 		text += "group: %s \n  angle_diff: %s\n  side:%s\n" % [
 			group.size(), 
 			angle_diff, 
@@ -176,6 +180,21 @@ func get_enemy_groups_flanking() -> void :
 		var group_casted : Array[Unit] = []
 		group_casted.assign(group)
 		groups_manager.check_side_has_enough_units(side, group_casted)
+		# TODO make it better
+		if side == "left":
+			needs_side_left = true
+		if side == "right":
+			needs_side_right = true
+		if side == "back":
+			needs_side_back = true
+	
+	# Groups that will be cleared if not needed
+	if not needs_side_left:
+		groups_manager.group_not_needed_in_side("left")
+	if not needs_side_right:
+		groups_manager.group_not_needed_in_side("right")
+	if not needs_side_back:
+		groups_manager.group_not_needed_in_side("back")
 	
 	Globals.debug_update_label("side", text)
 

@@ -1,8 +1,8 @@
 class_name TaskGroup
 extends UnitsManagement
 
-var group  : Array[Unit] = []
-@onready var group_name : String = "" # used mainly to debug
+var group  : Array[Unit] = [] 
+var group_name : String = "" # used mainly to debug
 @export var debug : bool = true
 
 
@@ -15,6 +15,16 @@ var enemy_group_focused  : Array[Unit] = [] :
 			if debug:
 				print("changed: %s" % value.size())
 			enemy_group_focused = value
+			if enemy_group_focused.size() < group.size():
+				print("Reducing size")
+				var redundant_troops_amount : int = enemy_group_focused.size() - group.size()
+				var redundant_troops : Array = []
+				for i in redundant_troops_amount:
+					redundant_troops.push_back(group[i])
+				for unit in redundant_troops as Array[Unit]:
+					Signals.sg_ia_unit_not_needed_in_side.emit(unit)
+					print("%s is FREEEE" % unit.name)
+				
 	
 
 var main_enemy_group : Array[Unit] = []
@@ -36,7 +46,8 @@ func _ready() -> void:
 
 func move_units_to_markers() -> void:
 	if marker_to_follow == null or marker_to_anchor == null:
-		push_error("Didnt found a markert to follow or anchor")
+		if debug:
+			push_error("Didnt found a markert to follow or anchor")
 		return
 	#var average_pos : Vector2 = get_average_position(main_enemy_group)
 	#var angle : float = marker_to_anchor.global_position.angle_to_point(average_pos) 
@@ -76,7 +87,8 @@ func add_units_to_group(units: Array[Unit]) -> void:
 
 func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 	if task_group == self:
-		print("it wont be deleted from here")
+		if debug:
+			print("it wont be deleted from here")
 		return
 	
 	if group.has(unit):

@@ -8,6 +8,13 @@ var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn
 var groups : Array[Unit] = []
 var main_enemy_group : Array[Unit] = [] : set = set_main_enemy_group
 
+
+# Starting groups
+var task_group_infantry : TaskGroup = null
+var task_group_archers : TaskGroup = null
+var task_group_flank_left : TaskGroup = null
+var task_group_flank_right : TaskGroup = null 
+
 # Groups created to avoid flanking and encirclements
 var side_left : TaskGroup = null
 var side_right : TaskGroup = null
@@ -22,6 +29,8 @@ var side_back : TaskGroup = null
 
 
 func _ready() -> void:
+	Signals.sg_ia_unit_not_needed_in_side.connect(unit_not_needed_in_side)
+	
 	# Clean the node tree
 	for node in get_children(): 
 		node.queue_free()
@@ -42,6 +51,7 @@ func _ready() -> void:
 	add_child(side_temp3)
 	side_back = side_temp3
 	# BUG done just so it doesnt scream to me the debugger
+	side_back.group_name = "side_back"
 	side_back.marker_to_anchor = army_marker
 	side_back.marker_to_follow = back_side_marker
 	
@@ -51,7 +61,8 @@ func create_group(
 		enemy_group : Array[Unit] = [], 
 		marker_to_follow : Marker2D = null, 
 		start_from_center : bool = false, 
-		right_to_left : bool = false
+		right_to_left : bool = false,
+		group_name : String = "none"
 		) -> void:
 	
 	if enemy_group.is_empty():
@@ -63,10 +74,24 @@ func create_group(
 	task_group.enemy_group_focused.assign( enemy_group.duplicate(true) ) # Cast Array into Array[Unit]
 	task_group.startFromCenter = start_from_center
 	task_group.right_to_left = right_to_left
+	task_group.group_name = group_name
 	if marker_to_follow != null:
 		task_group.marker_to_follow = marker_to_follow
 		task_group.marker_to_anchor = marker_to_follow.get_parent() as Marker2D
 	add_child(task_group)
+	
+	# TODO it should be created manually as it doesnt add a benefit 
+	# creating groups in code if all armies will have the same starting groups
+	# Create reference to task groups
+	if group_name == "infantry":
+		task_group_infantry = task_group
+	if group_name == "archers":
+		task_group_archers = task_group
+	if group_name == "flank_left":
+		task_group_flank_left = task_group
+	if group_name == "flank_right":
+		task_group_flank_right = task_group
+	
 
 # If a side doesnt have a similar number of units it will create a new group
 func check_side_has_enough_units(side : String , enemy_group : Array[Unit]) -> void:
@@ -76,7 +101,7 @@ func check_side_has_enough_units(side : String , enemy_group : Array[Unit]) -> v
 		"right":
 			assign_units_side_group(side_right, enemy_group, right_side_marker, side)
 		"back":
-			assign_units_side_group(side_back, enemy_group)
+			assign_units_side_group(side_back, enemy_group, back_side_marker)
 
 func assign_units_side_group(task_group : TaskGroup ,
 		enemy_group : Array[Unit],
@@ -110,8 +135,9 @@ func get_units_that_are_free() -> Array[Unit]:
 	# then it could be used in other places
 	var groups_to_look : Array[TaskGroup] = []
 	
+	# Takes all groups except the ones in the sides and search for empty units
 	for task_group in get_children() as Array[TaskGroup]:
-		if task_group != side_left and task_group != side_left and task_group != side_left:
+		if task_group != side_right and task_group != side_left and task_group != side_back:
 			groups_to_look.push_back(task_group) 
 	
 	for task_group in groups_to_look:
@@ -127,6 +153,29 @@ func get_units_that_are_free() -> Array[Unit]:
 	units_casted.assign(units_to_add)
 	return units_casted
 
+# TaskGroup -> GroupsManager
+# When an unit protecting a side is no longer needed, like when they have 
+# more units than the ones they need to defend against, this is called
+# an unit no longer needed is put in a generic task group in the battle line
+func unit_not_needed_in_side(unit: Unit) -> void:
+	print("FOUND")
+	if unit == null:
+		push_error("Unit is null")
+		return
+	
+	if unit.get_type() == 1 and task_group_infantry != null:
+		print("IS AN INFANTRY")
+		task_group_infantry.add_units_to_group([unit])
+		Signals.sg_ia_unit_changed_group.emit(task_group_infantry, unit)
+		pass
+
+func group_not_needed_in_side(side : String) -> void:
+
+	for task_group in get_children() as Array[TaskGroup]:
+		if task_group.group_name == "side_%s" % side:
+			for unit in task_group.group:
+				unit_not_needed_in_side(unit)
+	pass
 
 func set_main_enemy_group(value : Array[Unit]) -> void:
 	main_enemy_group.assign(value)

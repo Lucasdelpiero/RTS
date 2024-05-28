@@ -302,6 +302,7 @@ func send_unit_card_data() -> void:
 	troops_number = troops_number
 	weapons.get_ammo_data()
 
+# "Infantry:1" "Range:2" "Cavalry:3"
 func get_type() -> int:
 	return type
 

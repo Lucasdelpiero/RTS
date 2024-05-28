@@ -58,5 +58,16 @@ func battlemap_set_units_hovered(unit : Unit, value : bool) -> void:
 	sg_battlemap_set_units_hovered.emit(unit, value)
 
 #region IA
+
+# TaskGroup -> Other TaskGroup`s
+# When an unit changes from one task group to another, this is called
+# to ensure that the unit is deleted from other groups
 signal sg_ia_unit_changed_group(task_group : TaskGroup, unit : Unit)
+
+# TaskGroup -> GroupsManager
+# When an unit protecting a side is no longer needed, like when they have 
+# more units than the ones they need to defend against, this is called
+# an unit no longer needed is put in a generic task group in the battle line
+signal sg_ia_unit_not_needed_in_side(unit: Unit)
+
 #endregion
