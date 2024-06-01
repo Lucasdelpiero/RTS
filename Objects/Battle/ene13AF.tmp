@@ -118,7 +118,6 @@ right_side_marker = NodePath("../ArmyMarker/RightFlank/SideRight")
 back_side_marker = NodePath("../ArmyMarker/SideBack")
 
 [node name="TaskGroup" parent="GroupsManager" instance=ExtResource("7_by1gs")]
-debug = false
 
 [node name="TimerAdvance" type="Timer" parent="."]
 unique_name_in_owner = true

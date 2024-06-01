@@ -87,6 +87,15 @@ func _ready() -> void:
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true, "flank_left")
 	groups_manager.create_group(group_right_flank, main_group, rightFlankMarker, false, false,"flank_right")
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	# TEST if the task_groups work correctly when the angle is different than the started in
+	if  event.is_action_pressed("debug_1", true):
+		army_marker_face_towards(armyMarker.get_global_mouse_position())
+
+func army_marker_face_towards(position: Vector2 ) -> void:
+	armyMarker.rotation = armyMarker.global_position.angle_to_point(position) + PI/2
+
+
 # Makes the IA focus on the largest group of enemies
 func focus_on_largest_group() -> void:
 	var groups : Array = get_enemy_groups(player_units, 2000)

@@ -3,7 +3,7 @@ extends UnitsManagement
 
 var group  : Array[Unit] = [] 
 var group_name : String = "" # used mainly to debug
-@export var debug : bool = true
+@export var debug : bool = false
 
 
 var enemy_group_focused  : Array[Unit] = [] :
@@ -80,15 +80,19 @@ func get_soldiers_above_requirement() -> int:
 func add_units_to_group(units: Array[Unit]) -> void:
 	var temp_group : Array = []
 	temp_group.append_array(group)
-	temp_group.append_array(units)
+	for unit in units: # It prevets duplicacion in the groups
+		if not temp_group.has(unit):
+			temp_group.push_back(unit)
 	var group_casted : Array[Unit] = []
 	group_casted.assign(temp_group)
 	group = group_casted
+	for unit in units:
+		Signals.sg_ia_unit_changed_group.emit(self, unit)
 
 func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 	if task_group == self:
 		if debug:
-			print("it wont be deleted from here")
+			print("it wont be deleted from here: u=%s / tg=%s" % [unit.name, task_group.group_name])
 		return
 	
 	if group.has(unit):

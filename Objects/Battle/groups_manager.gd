@@ -158,21 +158,17 @@ func get_units_that_are_free() -> Array[Unit]:
 # more units than the ones they need to defend against, this is called
 # an unit no longer needed is put in a generic task group in the battle line
 func unit_not_needed_in_side(unit: Unit) -> void:
-	print("FOUND")
 	if unit == null:
 		push_error("Unit is null")
 		return
 	
 	if unit.get_type() == 1 and task_group_infantry != null:
-		print("IS AN INFANTRY")
 		task_group_infantry.add_units_to_group([unit])
-		Signals.sg_ia_unit_changed_group.emit(task_group_infantry, unit)
-		pass
 
 func group_not_needed_in_side(side : String) -> void:
-
 	for task_group in get_children() as Array[TaskGroup]:
-		if task_group.group_name == "side_%s" % side:
+		if task_group.group_name == "side_%s" % side and task_group.group.size() > 0:
+			task_group_infantry.add_units_to_group(task_group.group)
 			for unit in task_group.group:
 				unit_not_needed_in_side(unit)
 	pass
