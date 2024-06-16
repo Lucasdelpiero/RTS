@@ -134,8 +134,8 @@ func get_nav_map() -> void:
 		var pos_key : String = "%s_%s" % [floor(province.city.global_position.x), floor(province.city.global_position.y)]
 		dictionary_provinces_by_position[pos_key] = province.ID
 		dictionary_ID_to_name[province.ID] = province.name
-	#print(provinces)
-	#print(dictionary_provinces_by_position)
+	#push_warning(provinces)
+	#push_warning(dictionary_provinces_by_position)
 	
 	# Add connections
 	for province in provinces_temp:
@@ -158,8 +158,8 @@ func get_province_name_by_position(aPosition : Vector2 ) -> String:
 	var province_name : String = "not found"
 	var province_ID : int = 0
 	
-	#print("pp: %s /ap: %s" %[province_position, x_position])
-	#print(dictionary_provinces_by_position)
+	#push_warning("pp: %s /ap: %s" %[province_position, x_position])
+	#push_warning(dictionary_provinces_by_position)
 	
 	if dictionary_provinces_by_position.has(province_position):
 		province_ID = dictionary_provinces_by_position[province_position]
@@ -196,7 +196,7 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 		armies_in_battle.push_back(aarmy)
 	if not armies_in_battle.has(enemy):
 		armies_in_battle.push_back(enemy)
-#	print("%s will fight %s" % [army, enemy])
+#	push_warning("%s will fight %s" % [army, enemy])
 #	main.update_armies_for_battle(units_in_battle)
 	for army in armies_in_battle :
 		if army.ownership == Globals.player_nation:
@@ -207,9 +207,9 @@ func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
 				(Globals.enemy_army as Array).push_back(army)
 	battleMenu.visible = true
 	battleMenu.update()
-#	print(Globals.player_army)
-#	print(Globals.enemy_army)
-#	print(units_in_battle)
+#	push_warning(Globals.player_army)
+#	push_warning(Globals.enemy_army)
+#	push_warning(units_in_battle)
 	pass
 
 func start_battle() -> void:

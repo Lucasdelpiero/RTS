@@ -111,10 +111,21 @@ func assign_units_side_group(task_group : TaskGroup ,
 	task_group.enemy_group_focused = enemy_group
 	if task_group.group.size() < enemy_group.size():
 		units_needed =  enemy_group.size() - task_group.group.size()
-		print("not enough soldiers : %s units needed" % units_needed)
+		# Get units ordered by the distance to the marker of the side
 		var units_free : Array[Unit] = get_units_that_are_free()
-		task_group.add_units_to_group( units_free )
-		for unit in units_free:
+		var units_sorted : Array[Unit] = sort_by_closest_distance(units_free, marker_to_follow.global_position)
+		
+		var units_to_assign_temp : Array = []
+		# Currently it gets the minimum amount of troops to equalize the enemy, may change in the future
+		for i : int in min(units_needed, units_sorted.size()):
+			units_to_assign_temp.push_back(units_sorted[i])
+		
+		var units_to_assign : Array[Unit] = [] # Casting to a typed array
+		units_to_assign.assign(units_to_assign_temp)
+		
+		# Send the units to the side 
+		task_group.add_units_to_group( units_to_assign )
+		for unit in units_to_assign:
 			Signals.sg_ia_unit_changed_group.emit(task_group, unit)
 		
 	if marker_to_follow == null:
@@ -143,8 +154,7 @@ func get_units_that_are_free() -> Array[Unit]:
 	for task_group in groups_to_look:
 		for unit in task_group.group:
 		# TEST 
-		# Add 2 infantry for testing
-			if unit.get_type() == 1 and units_to_add.size() < 2:
+			if unit.get_type() == 1:
 				units_to_add.push_back(unit)
 			pass
 		pass
@@ -152,6 +162,18 @@ func get_units_that_are_free() -> Array[Unit]:
 	var units_casted : Array[Unit] = []
 	units_casted.assign(units_to_add)
 	return units_casted
+
+
+func sort_by_closest_distance(units: Array[Unit], position_to_compare: Vector2) -> Array[Unit]:
+	if units.is_empty():
+		push_error("Empty array on sort by distance")
+		return []
+	var temp_units : Array = units.duplicate()
+	temp_units.sort_custom(func(a: Unit, b: Unit) -> bool: return a.global_position.distance_to(position_to_compare) < b.global_position.distance_to(position_to_compare) )
+	var typed_units : Array[Unit] = []
+	typed_units.assign(temp_units)
+	return typed_units
+
 
 # TaskGroup -> GroupsManager
 # When an unit protecting a side is no longer needed, like when they have 

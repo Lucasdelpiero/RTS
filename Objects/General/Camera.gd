@@ -74,7 +74,7 @@ func _process(delta : float) -> void:
 	var compensation : float = 0.4
 	global_position.x = clampf(global_position.x , limit_left * compensation, limit_right * compensation)
 	global_position.y = clampf(global_position.y, limit_top * compensation, limit_bottom * compensation)
-	#print(global_position.x)
+	#push_warning(global_position.x)
 	
 	# Zoom in-out
 	target_zoom.x = clamp(target_zoom.x, zoom_min, zoom_max)

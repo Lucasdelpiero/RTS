@@ -69,16 +69,16 @@ signal sg_move_component_set_next_point(value : Vector2)
 func _ready() -> void:
 	troops_number = troops_number_max
 	selectedPolygon.visible = false
-#	print("%s: has a shield of value: %s" % [name, shield])
+#	push_warning("%s: has a shield of value: %s" % [name, shield])
 #	weaponsData = weaponsData.duplicate(true) as WeaponsData # (Maybe not needed) Makes every resource unique to every unit so it can be modified later
 	weaponsData.start()
 #	if name == "Hastati":
 #		weaponsData.primary_weapon.base_attack = 50
 #	await get_tree().create_timer(1.0).timeout
 #	if type == 1:
-#		print(name)
-#		print(weaponsData.primary_weapon.base_attack)
-#		print("=========")
+#		push_warning(name)
+#		push_warning(weaponsData.primary_weapon.base_attack)
+#		push_warning("=========")
 	if moveComponent == null:
 		return
 	if Engine.is_editor_hint(): # Used to avoid getting error while using the @tool thing
@@ -93,7 +93,7 @@ func _ready() -> void:
 		troops_number = troops_number_max
 	update_overlay()
 
-#	print(weapons.selected_weapon.get_type())
+#	push_warning(weapons.selected_weapon.get_type())
 
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("delete"):
@@ -175,7 +175,7 @@ func set_face_direction(value : float = 0) -> void:
 #	moveComponent.face_direction = value
 
 func set_chase(value : Unit) -> void:
-#	print_debug("set chase")
+#	push_warning_debug("set chase")
 	if moveComponent == null:
 		return
 	moveComponent.chase(value)
@@ -183,7 +183,7 @@ func set_chase(value : Unit) -> void:
 #	weaponsData.attack() # set te weapon to the alternative
 	weapons.go_to_attack()
 	if value == null:
-		print("set_chase THE ERROR IS HERE")
+		push_warning("set_chase THE ERROR IS HERE")
 		return
 	target_unit = value
 	state = State.CHASING
@@ -219,14 +219,14 @@ func reached_destination() -> void:
 
 func attack_target(value : Unit) -> void:
 	if value == null:
-		printerr(" attack_target HERE IS THE FUCKING PROBLEM")
+		push_warning(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
 	target_unit = value
 	weapons.go_to_attack()
 	var weapon_type : String = weapons.get_mouse_over_weapon_type()
 	if weapon_type == "Melee":
 		if state == State.MELEE:
-			#print("melee")
+			#push_warning("melee")
 			weapons.in_use_weapon.attack(value)
 		else:
 			set_chase(value)
@@ -238,8 +238,8 @@ func attack_target(value : Unit) -> void:
 			set_chase(value)
 
 func attack_again() -> void:
-#	print_debug("attack again")
-#	print(target_unit)
+#	push_warning_debug("attack again")
+#	push_warning(target_unit)
 	if target_unit != null and state == State.FIRING:
 		var weapon_type : String = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
@@ -262,12 +262,12 @@ func melee(data : HurtboxData) -> void:
 	state = State.MELEE
 	target_unit = data.target
 	if target_unit == null:
-		printerr("melee HERE IS THE PROBLEM")
+		push_warning("melee HERE IS THE PROBLEM")
 		return
 	weapons.attack(target_unit)
 #	var attack = weapons.attack(target_unit)
-#	print(data)
-#	print("got into melee")
+#	push_warning(data)
+#	push_warning("got into melee")
 #	pass
 
 func range_attack(target : Unit) -> void:
@@ -283,8 +283,8 @@ func alternative_weapon(use_secondary : bool) -> void:
 	weapons.alternative_weapon(use_secondary)
 
 func recieved_attack(_data : AttackData) -> void:
-#	print("i recieved damage")
-#	print(data)
+#	push_warning("i recieved damage")
+#	push_warning(data)
 	troops_number -= 10
 	pass
 
@@ -308,13 +308,13 @@ func get_type() -> int:
 
 func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
 	var unit : Unit = area.owner as Unit
-#	print("enemy in range")
+#	push_warning("enemy in range")
 	if not enemies_in_range.has(unit) and unit.ownership != self.ownership:
 		enemies_in_range.push_back(unit)
-#		print(enemies_in_range)
-#		print(target_unit)
+#		push_warning(enemies_in_range)
+#		push_warning(target_unit)
 #	if enemies_in_range.has(target_unit):
-#		print(target_unit)
+#		push_warning(target_unit)
 #		attack_target(target_unit)
 #		state = State.FIRING
 	check_if_target_is_in_range(enemies_in_range)
@@ -328,7 +328,7 @@ func _on_range_of_attack_area_exited(area : Area2D) -> void:
 		var newArr : Array = enemies_in_range.duplicate()
 #		newArr.remove_at(index)
 		enemies_in_range = newArr.duplicate()
-#		print(enemies_in_range)
+#		push_warning(enemies_in_range)
 	check_if_target_is_in_range(enemies_in_range)
 
 	pass # Replace with function body.
@@ -338,7 +338,7 @@ func check_if_target_is_in_range(arr : Array[Unit]) -> void:
 	for i in arr as Array[Unit]:
 		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
-#			print("Enemy is hereeeeeee")
+#			push_warning("Enemy is hereeeeeee")
 	pass
 
 
@@ -349,7 +349,7 @@ func _on_unit_detector_area_entered(area : Area2D) -> void:
 #	if unit.ownership != self.ownership:
 	var angle : float = unit.global_position.angle_to_point(self.global_position)
 	moveComponent.pushVector = Vector2(cos(angle), sin(angle))
-#	print("an enemy is colliding: ")
+#	push_warning("an enemy is colliding: ")
 #		pass
 	pass # Replace with function body.
 
@@ -357,13 +357,13 @@ func _on_unit_detector_area_exited(area : Area2D) -> void:
 	var _unit : Unit = area.owner as Unit
 #	if unit.ownership != self.ownership:
 	moveComponent.pushVector = Vector2.ZERO
-#	print("an enemy is leaving")
+#	push_warning("an enemy is leaving")
 #		pass
 	pass # Replace with function body.
 
 
 func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
-#	print(enemies)
+#	push_warning(enemies)
 	if state != State.CHASING: # or is in fire at will
 		return
 	enemies_in_range = enemies.duplicate()

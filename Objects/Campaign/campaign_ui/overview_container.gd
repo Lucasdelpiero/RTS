@@ -51,7 +51,7 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 	var building_current : BuildingData = data.get_building()
 	var building_next_level : BuildingData = data.get_building_next_level()
 	
-	#print("current_level: %s" % [data.current_level])
+	#push_warning("current_level: %s" % [data.current_level])
 	Globals.debug_update_label("current_level", "current_level : %s" % [data.current_level])
 	
 	# I have to add the \n later if i want to add multiple resources produced
@@ -117,7 +117,7 @@ func hide_building_overview() -> void:
 
 
 func _on_description_text_meta_clicked(meta: Variant) -> void:
-	print(meta)
+	push_warning(meta)
 	pass # Replace with function body.
 
 

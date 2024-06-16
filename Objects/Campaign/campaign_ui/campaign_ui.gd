@@ -164,7 +164,7 @@ func change_map_shown(type : String) -> void:
 	pass
 
 func _on_button_pressed() -> void:
-#	print("btn pressed")
+#	push_warning("btn pressed")
 	pass # Replace with function body.
 
 

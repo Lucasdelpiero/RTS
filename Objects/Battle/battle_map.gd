@@ -76,16 +76,16 @@ func set_units_hovered(unit : Unit, hovered : bool) -> void:
 	# Add it if is being hovered
 	if hovered:
 		temp_copy.push_back(unit)
-#		print("added")
+#		push_warning("added")
 	# If not hovered, remove
 	if not hovered:
 		var unit_position : int = units_hovered.find(unit)
-#		print("unit position: %s" % [unit_position])
+#		push_warning("unit position: %s" % [unit_position])
 		if unit_position == -1: # If its not found it will return withouht modifing the array
 			return
 		# Deletes the unit in the array 
 		temp_copy.remove_at(unit_position)
-#		print("removed")
+#		push_warning("removed")
 	
 	units_hovered = temp_copy.duplicate()
 	playerUnitsManagement.hovered_units = units_hovered.duplicate()
@@ -100,12 +100,12 @@ func set_units_hovered(unit : Unit, hovered : bool) -> void:
 	if units_hovered.size() == 0:
 		sg_clean_overlay_unit.emit()
 #	if hover_enemy:
-#		print("AN ENEMYYYYY")
+#		push_warning("AN ENEMYYYYY")
 #	else:
-#		print("Its safe")
+#		push_warning("Its safe")
 	
 	# Get the closer 
-#	print("units hovered: %s" % [units_hovered])
+#	push_warning("units hovered: %s" % [units_hovered])
 	
 	pass
 
@@ -133,7 +133,7 @@ func get_weapon_types() -> Array[String]:
 		var type : String = weapons.mouse_over_weapon.get_type()
 		if not weapon_types_in_selection.has(type):
 			weapon_types_in_selection.push_back(type)
-#	print(weapon_types_in_selection)
+#	push_warning(weapon_types_in_selection)
 	return weapon_types_in_selection
 
 func move_player_units() -> void:

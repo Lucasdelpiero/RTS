@@ -98,12 +98,12 @@ func alternative_weapon(use_secondary : bool = false) -> void:
 	else:
 		mouse_over_weapon = primary_weapon
 	set_weapons_visibility(true, use_secondary)
-#	print("%s is wanting to use %s" % [owner.name, mouse_over_weapon.weapon])
+#	push_warning("%s is wanting to use %s" % [owner.name, mouse_over_weapon.weapon])
 	await get_tree().create_timer(1).timeout
 	if not owner.selected and not reseted_weapon:
 		mouse_over_weapon = primary_weapon # reset the weapon to avoid bugs, should be refined as it calls the function way to many times
 		reseted_weapon = true
-#		print("back to normal")
+#		push_warning("back to normal")
 
 func set_in_use_weapon(value : Weapon) -> void:
 	if in_use_weapon != value:
@@ -113,8 +113,8 @@ func set_in_use_weapon(value : Weapon) -> void:
 		else:
 			in_use_weapon = value
 #		if owner.selected:
-#			print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
-#	print("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
+#			push_warning("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
+#	push_warning("%s is now using a %s" % [owner.name, in_use_weapon.weapon])
 
 func go_to_attack(use_secondary : bool = false) -> void:
 	use_secondary = Input.is_action_pressed("Secondary_Weapon")
@@ -142,7 +142,7 @@ func change_to_melee_weapon() -> void: # Used when the unit run out of ammo
 		if weapon.type == "Melee":
 			in_use_weapon = weapon
 #			set_in_use_weapon(weapon)
-#			print("now i use melee")
+#			push_warning("now i use melee")
 	pass
 
 func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array: 
@@ -164,7 +164,7 @@ func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array:
 	
 
 func get_mouse_over_weapon_type() -> String:
-#	print(in_use_weapon)
+#	push_warning(in_use_weapon)
 	return mouse_over_weapon.get_type()
 
 func get_in_use_weapon_type() -> String:
@@ -175,7 +175,7 @@ func new_enemy_reached(value : Array) -> void: # signal emitted from the range w
 		return 
 	if in_use_weapon.get_type() == "Range":
 		send_units_in_range.emit(value)
-#		print(value)
+#		push_warning(value)
 	pass
 
 func get_if_target_in_weapon_range(value : Unit) -> bool:

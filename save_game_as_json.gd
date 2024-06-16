@@ -17,7 +17,7 @@ func write_savegame(data_to_save : Dictionary) -> void:
 	var error := FileAccess.open(SAVE_GAME_PATH, FileAccess.WRITE)
 #	var error := _file.open(SAVE_GAME_PATH, FileAccess.WRITE) # this maybe is a bug??
 	if error == null:
-		printerr("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
+		push_warning("Could not open the file %s. Aborting save operation. Error code: %s" % [SAVE_GAME_PATH, error])
 		return
 	
 	var nations_to_save : Array = []
@@ -25,7 +25,7 @@ func write_savegame(data_to_save : Dictionary) -> void:
 	for nation : Nation in data_to_save.nations:
 		nations_to_save.push_back(nation.save())
 	
-#	print(nations)
+#	push_warning(nations)
 	
 	var data : Dictionary = {
 		"nations" : nations_to_save
@@ -47,8 +47,8 @@ func load_savegame() -> Variant : # -> void:
 	# Check if there is any error while parsing the JSON string, skip in case of failure
 	var parse_result := json.parse(json_string)
 	if not parse_result == OK:
-#		print(parse_result)
-		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+#		push_warning(parse_result)
+		push_warning("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 	# Get the data from the JSON object
 	var data : Variant = json.get_data()
 	save_game.close()

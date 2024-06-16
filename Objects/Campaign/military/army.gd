@@ -224,7 +224,7 @@ func send_mouse_over(value : bool) -> void:
 		"node" = self,
 	}
 	emit_signal("sg_mouse_over_self", data_temp)
-#	print(mouse_over_self)
+#	push_warning(mouse_over_self)
 
 # If the mouse is over or leave the node sends a signal on the change of the boolean
 func _on_mouse_detector_mouse_entered() -> void:

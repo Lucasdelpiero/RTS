@@ -114,7 +114,7 @@ func get_enemy_groups(
 
 		# Creates a new array that will contain the new groups
 		if has_to_create_new_group:
-#			print("%s has to create a group" % [unit] )
+#			push_warning("%s has to create a group" % [unit] )
 			groups.push_back([unit])
 	
 #	# Put together in the same group another entire group if this have at least one unit close to the first group ( put together multiples groups were into 1 group when it should )
@@ -123,7 +123,7 @@ func get_enemy_groups(
 	# Group to see if should be put in the same group as other group
 	var place_to_add_in_group : int = 0
 #	if Input.is_action_pressed("Debug"):
-#		print(final_groups)
+#		push_warning(final_groups)
 	for i in groups.size():
 		var unite_group : bool = false # If it has to unite the group with the one before 
 		var groups_deleted : Array = []
@@ -136,7 +136,7 @@ func get_enemy_groups(
 					var unite : bool = should_unite_group(originGroup, final_groups[o], arg_distance_to_be_in_group)
 					if unite:
 #						if Input.is_action_pressed("Debug"):
-#							print("group %s in original group should unite with the final group %s" % [i, o])
+#							push_warning("group %s in original group should unite with the final group %s" % [i, o])
 						# place_to_add_in_group tiene que cambiar
 						final_groups[place_to_add_in_group].append_array(groups[i])
 						groups_deleted.push_back(i)
@@ -144,27 +144,27 @@ func get_enemy_groups(
 
 			if add_new_array:
 #				if Input.is_action_pressed("Debug"):
-#					print("has to add as a new array from %s to %s" % [place_to_add_in_group, place_to_add_in_group + 1])
+#					push_warning("has to add as a new array from %s to %s" % [place_to_add_in_group, place_to_add_in_group + 1])
 				final_groups.push_back(groups[i])
 				place_to_add_in_group += 1
 
 
 		if unite_group:
-#			print("group %s will be united to group %s" % [tempGroup, tempGroup - 1])
+#			push_warning("group %s will be united to group %s" % [tempGroup, tempGroup - 1])
 			final_groups[i - 1].append_array(groups[i])
 			groups_deleted.push_back(i)
 			i = 0
 			pass
 
 		pass
-#	print(final_groups)
+#	push_warning(final_groups)
 #	if Input.is_action_pressed("Debug"):
 #		for group in groups.size():
-#			print("%s: %s" %[group, groups[group].map(func(e): return e.name ) ] )
-#		print("---------------------------")
+#			push_warning("%s: %s" %[group, groups[group].map(func(e): return e.name ) ] )
+#		push_warning("---------------------------")
 #		for group in final_groups.size():
-#			print("%s: %s" %[group, final_groups[group].map(func(e): return e.name ) ] )
-#		print("============================")
+#			push_warning("%s: %s" %[group, final_groups[group].map(func(e): return e.name ) ] )
+#		push_warning("============================")
 	return final_groups
 
 # If the arr1 or arr2 are typed arrays it will crash as it uses normal arrays in other parths of the code
@@ -184,7 +184,7 @@ func should_unite_group(arr1 : Array, arr2 : Array, distance : float) -> bool:
 			var second := other.global_position as Vector2
 			if first.distance_to(second) < distance:
 				if Input.is_action_pressed("Debug"):
-					print("%s is close to %s " % [unit, other])
+					push_warning("%s is close to %s " % [unit, other])
 				return true
 	return false
 

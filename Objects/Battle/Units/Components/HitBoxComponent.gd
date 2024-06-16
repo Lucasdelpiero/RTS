@@ -39,7 +39,7 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 	# Clears dictionary where saved collided units and areas are stored
 	unitsCollidingWith.clear()
 	var areas : Array = hitbox.get_overlapping_areas().filter(func(el : Area2D) -> bool : return el.owner.ownership != owner.ownership)
-#	print(areas)
+#	push_warning(areas)
 
 	for a in areas as Array[Area2D]:
 		# Create the key with the object name and create an array with the first area
@@ -61,19 +61,19 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 				closest = ar
 				closest_distance = int(distance_to_area )
 		targetArea = closest
-#		print(owner.name, ": ",targetArea.owner)
+#		push_warning(owner.name, ": ",targetArea.owner)
 	if closest != null:
 		melee_detected(targetArea)
-#	print("closest: %s from %s" % [closest.name, closest.owner.name] )
+#	push_warning("closest: %s from %s" % [closest.name, closest.owner.name] )
 
 
 func _on_area_2d_area_exited(_area : Area2D) -> void:
-#	print("se fue")
+#	push_warning("se fue")
 	pass # Replace with function body.
 
 
 func _on_timer_timeout() -> void:
-#	print("attack")
+#	push_warning("attack")
 	melee_detected(targetArea)
 	timer.start()
 	pass # Replace with function body.

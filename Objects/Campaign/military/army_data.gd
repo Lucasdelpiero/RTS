@@ -18,13 +18,13 @@ func set_array(value : Array[UnitData]) -> void:
 	var names : Array[String] = value.map(func(el : UnitData) -> String: return el.scene._bundled.names[0]) 
 	# added units will at least be a default unit and not an empty array
 	if new_size > current_size and army_units[new_size - 1] == null:
-		print("ACA SE DEBERIA AUMENTAR UNO")
+		push_warning("ACA SE DEBERIA AUMENTAR UNO")
 		army_units[new_size - 1] = UnitData.new()
 
 func add(value : UnitData) -> void:
 	var new_arr : Array[UnitData] = army_units
 	new_arr.push_back(value)
-#	print(new_arr.size())
+#	push_warning(new_arr.size())
 #	set_array(new_arr)
 	pass
 

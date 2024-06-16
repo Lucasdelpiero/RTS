@@ -7,11 +7,11 @@ var children : Array = []
 
 func _ready() -> void:
 	children = self.get_children()
-#	print(children)
+#	push_warning(children)
 
 func set_pos(value : Vector2) -> void:
 	global_position = value
-#	print(value)
+#	push_warning(value)
 	for child in children as Array[Node2D]:
 		child.global_position = value
 

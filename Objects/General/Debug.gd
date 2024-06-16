@@ -7,7 +7,7 @@ var DebugLabelP : PackedScene = preload("res://Objects/General/debug_label.tscn"
 func _enter_tree() -> void:
 	Globals.debug = self
 	visible = false
-#	print("alfonso")
+#	push_warning("alfonso")
 	pass
 
 func _input(_event : InputEvent) -> void:
@@ -15,7 +15,7 @@ func _input(_event : InputEvent) -> void:
 		visible = !visible
 
 func update_label(variable_name : String , value : String) -> void:
-#	print(variable_name)
+#	push_warning(variable_name)
 	var label : Array = vbox.get_children().filter(func(el : DebugLabel) -> bool: return el.variable_name == variable_name)
 	if label.size() == 0:
 		var new_label : DebugLabel = DebugLabelP.instantiate() as DebugLabel

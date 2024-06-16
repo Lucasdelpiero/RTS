@@ -111,7 +111,7 @@ func process_resources_recieved() -> void:
 	
 	# Reset the resources for the next frame
 	resources_generated.clear()
-	#print("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
+	#push_warning("nation: %s  money: %s  resources generated: %s" % [NATION_TAG, gold, total])
 
 	var data : TotalProductionData = TotalProductionData.new()
 	data.gold = int(gold)

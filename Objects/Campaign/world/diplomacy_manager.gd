@@ -40,12 +40,12 @@ func _ready() -> void:
 	
 	# TEST
 	for nation in diplomacy_nations:
-		#print(nation.NATION_TAG)
-		#print(nation.relationships)
+		#push_warning(nation.NATION_TAG)
+		#push_warning(nation.relationships)
 		if nation.NATION_TAG != "ROME":
 			improve_relationship("ROME",nation.NATION_TAG, 25)
-		#print(nation.NATION_TAG)
-		#print(nation.relationships)
+		#push_warning(nation.NATION_TAG)
+		#push_warning(nation.relationships)
 	# TEST
 	
 

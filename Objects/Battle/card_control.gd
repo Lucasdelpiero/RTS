@@ -169,7 +169,7 @@ func update_positions() -> void:
 	
 	
 	for group in groups as Array[Array]: # used to not create a container for each group
-#		print(group)
+#		push_warning(group)
 		if group.size() < 1:
 			continue
 		var flow_container := Flow_Container_Cards.instantiate() as FlowContainer
@@ -198,7 +198,7 @@ func update_positions() -> void:
 			group_btn.text = str(group + 1)
 
 func select_group(num : int) -> void:
-#	print(num)
+#	push_warning(num)
 	if num == 0:
 		return
 	var group : String = "group_%s" % [num]
@@ -209,7 +209,7 @@ func select_group(num : int) -> void:
 #			card.set_selected(false)
 			sg_card_selected_to_battlemap.emit(card.unit_reference, false)
 	for card in self[group] as Array[UnitCard]:
-#		print(card)
+#		push_warning(card)
 #		card.set_selected(true)
 		sg_card_selected_to_battlemap.emit(card.unit_reference, true)
 	pass
@@ -229,7 +229,7 @@ func card_selected(unit : Unit, value : bool) -> void: # Individual card clicked
 		deselect_all_cards()
 	
 	sg_card_selected_to_battlemap.emit(unit, value )
-#	print(card)
+#	push_warning(card)
 	pass
 
 func card_hovered(unit : Unit, value : bool) -> void:

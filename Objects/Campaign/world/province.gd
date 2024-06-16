@@ -213,12 +213,12 @@ func set_map_type_shown(type : String) -> void:
 	
 
 func _on_mouse_detector_mouse_entered() -> void:
-#	print("entered")
+#	push_warning("entered")
 	mouse_over_self = true
 	Globals.mouse_in_province = ID
 
 func _on_mouse_detector_mouse_exited() -> void:
-#	print("exited")
+#	push_warning("exited")
 	mouse_over_self = false
 	# BUG changing the value of the Globals.mouse_in_province to -1 caused to change the value
 	# to -1 AFTER the value of the next province was selected, which caused a bug

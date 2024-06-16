@@ -24,9 +24,9 @@ func set_values_from_scene_data(data : SceneWeaponMeleeData) -> void:
 
 func attack(target : Unit) -> void:
 	if target == null:
-		printerr("IS FUCKING NULL")
+		push_warning("IS FUCKING NULL")
 		return
-	#print("attacked")
+	#push_warning("attacked")
 	last_target = target
 	dealedDamage.connect(target.recieved_attack)
 	var data : AttackData = AttackData.new()

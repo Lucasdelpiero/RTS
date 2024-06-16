@@ -142,7 +142,7 @@ func draw_units(move : bool) -> void:
 
 func move_without_draggin(center : Vector2) -> void:
 	if center == null:
-		printerr("Player manager doesnt have a center")
+		push_warning("Player manager doesnt have a center")
 		return
 	var enemies_hovered : Array = hovered_units.filter( func(el : Unit) -> bool : return el.ownership != Globals.player_nation)
 	if enemies_hovered.size() > 0:

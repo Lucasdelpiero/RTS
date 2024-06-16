@@ -98,7 +98,7 @@ func update_army_campaing_selection(data : Dictionary) -> void:
 func update_province_selection(data : Variant) -> void: # uses variant because uses null to update
 	# Updating the function with data == null just updates without adding info
 	# If the province doesnt have the mouse over it, it will stop being hovered
-#	print("before: %s" % [provinceWithMouseOver])
+#	push_warning("before: %s" % [provinceWithMouseOver])
 	if data != null:
 		if data.mouse_over_self == false :
 			data.node.set_hovered(false)
@@ -109,7 +109,7 @@ func update_province_selection(data : Variant) -> void: # uses variant because u
 		else:
 			await get_tree().create_timer(0.01).timeout
 			provinceWithMouseOver = data.node
-#	print("after: %s" % [provinceWithMouseOver])
+#	push_warning("after: %s" % [provinceWithMouseOver])
 	
 	### PRIORITY FOR ENTITIES TO BEING HOVERED
 	# For a province to be considered hovered, there should not be any army currently being hovered
@@ -223,8 +223,8 @@ func _on_area_2d_area_exited(area : Area2D) -> void:
 
 # Once the mouse is hovering an army for enough time, the data will show up
 func _on_hovered_timer_timeout() -> void:
-#	print("print the hovered")
-#	print(hovered)
+#	push_warning("push_warning the hovered")
+#	push_warning(hovered)
 	pass # Replace with function body.
 
 func _on_alternate_cursor_timeout() -> void:

@@ -32,7 +32,7 @@ func set_data_from_object(aProvince : Province = null) -> void:
 	# Set the properties automatically in the resource
 	for property in in_both as Array[String]:
 		set(property, aProvince.get(property))
-		#print("%s: %s" % [property, get(property)])
+		#push_warning("%s: %s" % [property, get(property)])
 	
 
 	

@@ -77,8 +77,8 @@ func save_game() -> void:
 	var _save := SaveGameAsJSON.new()
 	_save.write_savegame(data)
 #	var data_to_load = _save.load_savegame()
-#	print(data_to_load)
-#	print("=================")
+#	push_warning(data_to_load)
+#	push_warning("=================")
 #	load_game(data_to_load) # This is just for testing
 
 

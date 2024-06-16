@@ -27,7 +27,7 @@ func get_largest_group(groups : Array[Array]) -> Array[Unit]:
 	var new_group_focused : Array = []
 	for group in groups as Array[Array]:
 		if typeof(group) != 28:
-			printerr("Group is not an array")
+			push_warning("Group is not an array")
 			return []
 		if group.size() > group_size:
 			group_size = group.size()

@@ -14,7 +14,7 @@ var building_reference : Building = null
 
 var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
-		#print("name: %s / culture: %s / religion: %s" % [
+		#push_warning("name: %s / culture: %s / religion: %s" % [
 			#value.name,
 			#value.culture,
 			#value.religion
@@ -73,13 +73,13 @@ func _on_mouse_entered() -> void:
 		var building_data_next_level : BuildingData = building_reference.get_building(true, next_level)
 		sg_send_data_to_overview.emit(building_data_next_level, icon)
 		sg_send_building_reference_to_overview.emit(building_reference, icon)
-		#print("done")
+		#push_warning("done")
 		# TEST
 		return 
 	
 	var building_data_current_level : BuildingData = building_reference.get_building()
 	if building_data_current_level == null: # 
-		print("no data to send")
+		push_warning("no data to send")
 		return
 	sg_send_data_to_overview.emit(building_data_current_level, icon)
 	sg_send_building_reference_to_overview.emit(building_reference, icon)

@@ -15,7 +15,7 @@ func get_hurtbox_group() -> Array:
 
 
 func _on_check_space_area_entered(area : Area2D) -> void:
-#	print("Found area")
+#	push_warning("Found area")
 	if not occupied:
 		occupied = true
 		occupant = area.owner
@@ -37,5 +37,5 @@ func p() -> void:
 	if occupant != null:
 		_oc = occupant.name
 #	if owner.name == "Hastati":
-#		print("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
+#		push_warning("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
 

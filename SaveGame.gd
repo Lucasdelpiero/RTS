@@ -14,17 +14,17 @@ func write_savegame(data) -> void:
 	for army in armies_loaded:
 		var unit = army as ArmyCampaing
 		var army_data = unit.army_data as ArmyData
-		print("%s has %s units serving to %s" % [unit.name, army_data.army_units.size(), army_data.ownership])
+		push_warning("%s has %s units serving to %s" % [unit.name, army_data.army_units.size(), army_data.ownership])
 		armies.push_back(army)
 	
 	for nation in nations_loaded:
 		nations.push_back(nation)
 	
-	print(armies)
+	push_warning(armies)
 
 	
-#	print(armies_loaded)
-#	print(nations_loaded)
+#	push_warning(armies_loaded)
+#	push_warning(nations_loaded)
 	
 	ResourceSaver.save(self, get_save_path())
 

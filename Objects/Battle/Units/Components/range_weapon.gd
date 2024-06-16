@@ -65,7 +65,7 @@ func set_values_from_scene_data(data : SceneWeaponRangeData) -> void:
 
 func set_current_ammunition(value : int) -> void:
 #	if current_ammunition != 0:
-#		print("%s changed to %s" % [current_ammunition, value])
+#		push_warning("%s changed to %s" % [current_ammunition, value])
 	current_ammunition = value
 	if value == 0:
 		set_visibility(false)
@@ -141,8 +141,8 @@ func _on_area_range_area_entered(area : Area2D) -> void:
 			enemies_in_weapon_range.push_back(unit)
 			emit_signal("reached_new_enemy", enemies_in_weapon_range)
 #			reached_new_enemy.emit(enemies_in_weapon_range)
-#			print("there is an enemy here")
-#			print(enemies_in_weapon_range)
+#			push_warning("there is an enemy here")
+#			push_warning(enemies_in_weapon_range)
 
 func _on_area_range_area_exited(area : Area2D) -> void:
 	var unit := area.owner as Unit
@@ -162,8 +162,8 @@ func _on_area_range_area_exited(area : Area2D) -> void:
 			var arr := enemies_in_weapon_range.duplicate() as Array[Unit]
 			arr.remove_at(pos)
 			enemies_in_weapon_range = arr.duplicate() as Array[Unit]
-#			print("deleted enemy")
-#			print(enemies_in_weapon_range)
+#			push_warning("deleted enemy")
+#			push_warning(enemies_in_weapon_range)
 
 func check_if_target_is_in_area(value : Unit) -> bool:
 	var areas : Array = areaRange.get_overlapping_areas() 

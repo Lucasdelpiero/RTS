@@ -68,14 +68,14 @@ func _physics_process(delta : float) -> void:
 	var new : Vector2 = new_speed + pushStrength
 	unit.velocity = new
 	if unit.name == "Hastati":
-#		print(push)
-#		print("new_seed: ", new_speed + push)
-#		print("new: ", new)
+#		push_warning(push)
+#		push_warning("new_seed: ", new_speed + push)
+#		push_warning("new: ", new)
 		pass
 	unit.move_and_slide()
 #	if owner.name == "Rome1":
-#		print(path)
-#		print(unit.velocity)
+#		push_warning(path)
+#		push_warning(unit.velocity)
 	if path.size() == 0:
 		unit.reached_destination()
 	update_facing_angle()
@@ -105,11 +105,11 @@ func chase(target_to_chase : Unit = null) -> void:
 		move_to(target.global_position, unit.global_position.angle_to_point(target.global_position))
 	
 	if timerChase.is_stopped() and chasing:
-#		print("timer set")
+#		push_warning("timer set")
 		timerChase.start(0.5)
 #	await get_tree().create_timer(0.5).timeout
 #	if chasing:
-#		print(target.name)
+#		push_warning(target.name)
 #		chase()
 
 
@@ -164,14 +164,14 @@ func face_unit(value : Unit) -> void:
 	face_direction = unit.global_position.angle_to_point(value.global_position) + ( PI / 2)
 
 func update_facing_angle() -> void:
-#	print(path.size())
+#	push_warning(path.size())
 	var rot_speed : float = 0.05
 	# Once the destination is reached it will face the desired angle
 	if path.size() < 1:
 		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed)
 		return
-#	print(path)
-#	print("what")
+#	push_warning(path)
+#	push_warning("what")
 	# While moving it will face to the movement direction
 	var angle : float = unit.global_position.angle_to_point(next_point) + PI / 2
 	angle = unit.global_position.angle_to_point(unit.global_position + unit.velocity) + PI / 2
@@ -246,34 +246,34 @@ func move_to_face_melee(areas : Array[Area2D]) -> void:
 		else:
 			flank = "Right"
 	# Choose the closest if they are in a chosen flank
-#	print("=====================")
+#	push_warning("=====================")
 	for area in areas as Array[HurtBox]:
 		if area.name == flank:
 			if area.occupied and area.occupant == unit:
 				closest = area
-#				print("its free for me")
+#				push_warning("its free for me")
 			else:
 				closest = area ## temporal
 #				closest = null
-#				print("its fucking occupied")
+#				push_warning("its fucking occupied")
 	###
 	if closest == null :
-#		print("you are fucked dud")
-#		print(angle_difference)
+#		push_warning("you are fucked dud")
+#		push_warning(angle_difference)
 		var second_closest : HurtBox = null
 		var max_distance : float = 10000
 		for area in areas as Array[HurtBox]:
-#			print(area.name)
+#			push_warning(area.name)
 			var distance : float = unit.global_position.distance_to(area.global_position)
 			if distance < max_distance and area.occupant == unit:
-#				print("new area selected")
+#				push_warning("new area selected")
 				second_closest = area
 				max_distance = distance
 		closest = second_closest
 		
 #		return
 	if closest == null:
-#		print("now u are fucked")
+#		push_warning("now u are fucked")
 		return
 	
 	var targetSide : Vector2 = closest.meleePoint.global_position # Place were the unit is going to move
@@ -289,9 +289,9 @@ func move_to_face_melee(areas : Array[Area2D]) -> void:
 #	move_to(targetSide, targetAngle)
 	
 	
-#	print("closest: " +str(closest))
+#	push_warning("closest: " +str(closest))
 	
-#	print(data)
+#	push_warning(data)
 	pass
 
 func get_pathing(to : Vector2) -> Array:
@@ -313,7 +313,7 @@ func set_nav_map(value : TileMap) -> void:
 
 
 func _on_timer_chase_timeout() -> void:
-#	print("timer done")
+#	push_warning("timer done")
 	if chasing:
 		chase()
 	pass # Replace with function body.

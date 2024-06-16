@@ -13,17 +13,17 @@ var enemy_group_focused  : Array[Unit] = [] :
 		# Maybe a hashmap will be needed in the future
 		if value.size() != enemy_group_focused.size() :
 			if debug:
-				print("changed: %s" % value.size())
+				push_warning("changed: %s" % value.size())
 			enemy_group_focused = value
 			if enemy_group_focused.size() < group.size():
-				print("Reducing size")
+				push_warning("Reducing size")
 				var redundant_troops_amount : int = enemy_group_focused.size() - group.size()
 				var redundant_troops : Array = []
 				for i in redundant_troops_amount:
 					redundant_troops.push_back(group[i])
 				for unit in redundant_troops as Array[Unit]:
 					Signals.sg_ia_unit_not_needed_in_side.emit(unit)
-					print("%s is FREEEE" % unit.name)
+					push_warning("%s is FREEEE" % unit.name)
 				
 	
 
@@ -92,16 +92,16 @@ func add_units_to_group(units: Array[Unit]) -> void:
 func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 	if task_group == self:
 		if debug:
-			print("it wont be deleted from here: u=%s / tg=%s" % [unit.name, task_group.group_name])
+			push_warning("it wont be deleted from here: u=%s / tg=%s" % [unit.name, task_group.group_name])
 		return
 	
 	if group.has(unit):
 		if debug:
-			print("before: %s" % group.size())
-			print("it will delete the unit: %s" % unit.name)
+			push_warning("before: %s" % group.size())
+			push_warning("it will delete the unit: %s" % unit.name)
 		group.erase(unit)
 		if debug:
-			print("after: %s" % group.size())
+			push_warning("after: %s" % group.size())
 	pass
 
 func _on_move_timer_timeout() -> void:

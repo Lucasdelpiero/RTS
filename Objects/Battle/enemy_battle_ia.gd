@@ -55,7 +55,7 @@ var generalState : int = GeneralStates.WAITING
 func _ready() -> void:
 	if general == null:
 		general = General.new()
-#	print(general.charisma)
+#	push_warning(general.charisma)
 	if armyGroup == null:
 		return
 	if playerGroup == null:
@@ -79,7 +79,7 @@ func _ready() -> void:
 	group_units_by_type(units )
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
-#	print(get_main_group(get_enemy_groups(player_units, 2000)))
+#	push_warning(get_main_group(get_enemy_groups(player_units, 2000)))
 	# TEST
 	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, 2000))
 	groups_manager.create_group(group_front, main_group, infantryMarker, true, false, "infantry")
@@ -141,7 +141,7 @@ func focus_on_largest_group() -> void:
 	#match(action):
 		#"move" :
 			#move_units(units, armyMarker.global_position , 0.0, PI)
-#			print("alf")
+#			push_warning("alf")
 			#pass
 #	generalState = GeneralStates.FIGHTING
 	#pass
