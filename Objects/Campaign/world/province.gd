@@ -1,4 +1,5 @@
 @tool
+@icon("res://Assets/ui/node_icons/province_icon.png")
 class_name Province # New icon o be made
 extends Polygon2D
 

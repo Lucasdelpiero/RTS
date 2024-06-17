@@ -1,3 +1,4 @@
+@icon("res://Assets/ui/node_icons/unit_card_icon.png")
 extends PanelContainer
 class_name UnitCard
 

@@ -1,3 +1,4 @@
+@icon("res://Assets/ui/node_icons/diplomacy_icon.png")
 class_name DiplomacyManager
 extends Node
 

@@ -1,4 +1,5 @@
 @tool
+@icon("res://Assets/ui/node_icons/army.png")
 class_name Unit
 extends CharacterBody2D
 

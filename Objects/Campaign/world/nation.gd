@@ -1,4 +1,5 @@
 @tool
+@icon("res://Assets/ui/node_icons/nation_icon.png")
 class_name Nation
 extends Node
 
