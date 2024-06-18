@@ -127,6 +127,11 @@ func create_group(army : Array[Unit]) -> void:
 			if unit == card.unit_reference:
 				if add_to_group_number == null and card.group != 10 :
 					add_to_group_number = card.group
+				# Put units in the lower group number
+				if add_to_group_number != null:
+					if card.group < add_to_group_number :
+						add_to_group_number = card.group
+	
 	if add_to_group_number != null: # If someone has a group it puts all into that group
 		for unit in army:
 #			for card in cards:
