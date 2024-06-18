@@ -25,14 +25,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -269.5
-offset_top = -142.0
-offset_right = 268.5
+offset_left = -354.5
+offset_top = -75.9999
+offset_right = 353.5
 offset_bottom = 2.00006
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CardControl" type="HBoxContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
+[node name="CardControl" type="HFlowContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_7itvx")

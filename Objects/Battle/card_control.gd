@@ -1,5 +1,5 @@
 class_name CardControl
-extends HBoxContainer
+extends HFlowContainer
 
 @onready var Unit_Card := preload("res://Objects/Battle/unit_card.tscn") as PackedScene
 @onready var Group_Btn := preload("res://Objects/UI/group_btn.tscn") as PackedScene
@@ -15,9 +15,9 @@ var group_6 := []
 var group_7 := []
 var group_8 := []
 var group_9 := []
-var group_10 := [] # not in gorup
+var group_10 := [] # not in group, also not included in the "groups" array
 
-var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10]
+var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9]
 
 signal sg_card_selected_to_battlemap(card : UnitCard, value : bool)
 signal sg_card_hovered_to_battlemap(card : UnitCard, value : bool)
@@ -69,8 +69,8 @@ func create_cards(army : Array[Unit]) -> void:
 			return
 		#endregion
 		
-#		add_child(unit_card)
-		flow_container.add_child(unit_card)
+		add_child(unit_card)
+		#flow_container.add_child(unit_card) # NOTE changed as the card control is a flow_container
 		unit_card.unit_reference = unit as Unit
 		unit_card.set_texture_type(unit.get_type())
 		unit_card.sg_card_selected.connect(card_selected)
@@ -172,6 +172,7 @@ func update_positions() -> void:
 #		push_warning(group)
 		if group.size() < 1:
 			continue
+			
 		var flow_container := Flow_Container_Cards.instantiate() as FlowContainer
 		add_child(flow_container)
 		for card in group as Array[UnitCard]:
@@ -196,6 +197,12 @@ func update_positions() -> void:
 			group_btn.group = (group + 1)
 			group_btn.sg_group_button_pressed.connect(select_group)
 			group_btn.text = str(group + 1)
+	
+	# Ungrouped units will be added under the card control without an own flowcontainer
+	for card in group_10 as Array[UnitCard]:
+		if card.get_parent() == null:
+			add_child(card)
+
 
 func select_group(num : int) -> void:
 #	push_warning(num)

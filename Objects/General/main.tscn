@@ -6,6 +6,8 @@
 [node name="Main" type="Node2D" groups=["main"]]
 process_mode = 3
 script = ExtResource("1_uyp36")
+metadata/_edit_lock_ = true
 
 [node name="World" parent="." instance=ExtResource("2_sb100")]
 process_mode = 3
+metadata/_edit_lock_ = true
