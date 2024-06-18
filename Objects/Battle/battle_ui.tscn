@@ -1,9 +1,166 @@
-[gd_scene load_steps=5 format=3 uid="uid://cowxiuqx35gta"]
+[gd_scene load_steps=18 format=3 uid="uid://cowxiuqx35gta"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="1_1i1o2"]
 [ext_resource type="Script" path="res://Objects/Battle/card_control.gd" id="2_7itvx"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_7jvig"]
+[ext_resource type="PackedScene" uid="uid://bss5euchhbvrw" path="res://Objects/Battle/unit_card.tscn" id="4_2ilbs"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="4_ukohq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd2fw"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwdqe"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kppug"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdpl"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsu1"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5cf3"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63dfy"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_godgo"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ei16"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4exka"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mob1y"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s21j5"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_1i1o2")
@@ -26,7 +183,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -354.5
-offset_top = -75.9999
+offset_top = -157.0
 offset_right = 353.5
 offset_bottom = 2.00006
 grow_horizontal = 2
@@ -37,6 +194,54 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_7itvx")
 button_spawn_place = NodePath("../..")
+
+[node name="UnitCard" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qd2fw")
+
+[node name="UnitCard2" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwdqe")
+
+[node name="UnitCard3" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kppug")
+
+[node name="UnitCard4" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pdpl")
+
+[node name="UnitCard5" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rsu1")
+
+[node name="UnitCard6" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5cf3")
+
+[node name="UnitCard7" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_63dfy")
+
+[node name="UnitCard8" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_godgo")
+
+[node name="UnitCard9" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ei16")
+
+[node name="UnitCard10" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4exka")
+
+[node name="UnitCard11" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mob1y")
+
+[node name="UnitCard12" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s21j5")
 
 [node name="SpeedButtonContainer" parent="Control" instance=ExtResource("4_ukohq")]
 layout_mode = 0

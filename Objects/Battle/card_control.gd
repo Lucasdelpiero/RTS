@@ -25,6 +25,9 @@ signal sg_card_hovered_to_battlemap(card : UnitCard, value : bool)
 func _ready() -> void:
 	sg_card_selected_to_battlemap.connect(Signals.battlemap_set_units_selected)
 	sg_card_hovered_to_battlemap.connect(Signals.battlemap_set_units_hovered)
+	
+	for card in get_children():
+		card.queue_free()
 	pass
 
 func _input(_event : InputEvent) -> void:
@@ -54,8 +57,6 @@ func _input(_event : InputEvent) -> void:
 	pass
 
 func create_cards(army : Array[Unit]) -> void:
-	var flow_container := Flow_Container_Cards.instantiate() as FlowContainer
-	add_child(flow_container)
 	var total_cards_temp : Array = []
 	for unit in army as Array[Unit]:
 		#region safeguards
