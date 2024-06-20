@@ -32,7 +32,9 @@ var nation_owner : Nation  = null :
 		outside_color = new_owner.nation_outline_color
 		
 		# Connects signals to send resources to the owner nation
-		sg_resources_generated.connect(new_owner.resource_incoming)
+		# Note: condition below prevents reconnecting the signal when exiting a battle
+		if nation_owner != new_owner:
+			sg_resources_generated.connect(new_owner.resource_incoming)
 		
 
 @export_category("DATA")
