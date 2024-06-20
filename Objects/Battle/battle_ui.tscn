@@ -1,88 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cowxiuqx35gta"]
+[gd_scene load_steps=27 format=3 uid="uid://cowxiuqx35gta"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="1_1i1o2"]
 [ext_resource type="Script" path="res://Objects/Battle/card_control.gd" id="2_7itvx"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_7jvig"]
 [ext_resource type="PackedScene" uid="uid://bss5euchhbvrw" path="res://Objects/Battle/unit_card.tscn" id="4_2ilbs"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="4_ukohq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qd2fw"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwdqe"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kppug"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdpl"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsu1"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5cf3"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63dfy"]
 resource_local_to_scene = true
@@ -123,6 +45,45 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6vy0"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjpw1"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56oxu"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4exka"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
@@ -149,7 +110,163 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s21j5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kslll"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcdrj"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bxjh"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v87bo"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdpl"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwmdg"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e07t5"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r61b2"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsu1"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx5jy"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nonc"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma3v5"]
+resource_local_to_scene = true
+bg_color = Color(0.560784, 0.505882, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.341176, 0.270588, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5cf3"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -189,59 +306,104 @@ offset_bottom = 2.00006
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CardControl" type="HFlowContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
+[node name="CardControl" type="HBoxContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_7itvx")
 button_spawn_place = NodePath("../..")
 
-[node name="UnitCard" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="VFlowContainer2" type="VFlowContainer" parent="Control/PanelContainer/CardControl"]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qd2fw")
 
-[node name="UnitCard2" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qwdqe")
-
-[node name="UnitCard3" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kppug")
-
-[node name="UnitCard4" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7pdpl")
-
-[node name="UnitCard5" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1rsu1")
-
-[node name="UnitCard6" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_e5cf3")
-
-[node name="UnitCard7" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard7" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_63dfy")
 
-[node name="UnitCard8" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard8" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_godgo")
 
-[node name="UnitCard9" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard9" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ei16")
 
-[node name="UnitCard10" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="HFlowContainer" type="VFlowContainer" parent="Control/PanelContainer/CardControl"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="UnitCard7" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x6vy0")
+
+[node name="UnitCard8" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vjpw1")
+
+[node name="UnitCard9" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_56oxu")
+
+[node name="UnitCard10" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4exka")
 
-[node name="UnitCard11" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard11" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mob1y")
 
-[node name="UnitCard12" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard13" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_s21j5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kslll")
+
+[node name="UnitCard14" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcdrj")
+
+[node name="UnitCard15" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3bxjh")
+
+[node name="UnitCard16" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v87bo")
+
+[node name="UnitCard4" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pdpl")
+
+[node name="UnitCard19" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwmdg")
+
+[node name="UnitCard20" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e07t5")
+
+[node name="UnitCard21" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r61b2")
+
+[node name="UnitCard5" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rsu1")
+
+[node name="UnitCard12" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yx5jy")
+
+[node name="UnitCard17" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2nonc")
+
+[node name="UnitCard18" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ma3v5")
+
+[node name="UnitCard6" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5cf3")
 
 [node name="SpeedButtonContainer" parent="Control" instance=ExtResource("4_ukohq")]
 layout_mode = 0

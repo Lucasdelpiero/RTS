@@ -1,9 +1,9 @@
 class_name CardControl
-extends HFlowContainer
+extends HBoxContainer
 
 @onready var Unit_Card := preload("res://Objects/Battle/unit_card.tscn") as PackedScene
 @onready var Group_Btn := preload("res://Objects/UI/group_btn.tscn") as PackedScene
-@onready var Flow_Container_Cards := preload("res://Objects/UI/flow_container_cards.tscn") as PackedScene
+@onready var Cards_Group := preload("res://Objects/UI/cards_group.tscn") as PackedScene
 @onready var total_cards : Array[UnitCard]= []
 @export var button_spawn_place : Control = null
 var group_1 := []
@@ -17,7 +17,7 @@ var group_8 := []
 var group_9 := []
 var group_10 := [] # not in group, also not included in the "groups" array
 
-var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9]
+var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10]
 
 signal sg_card_selected_to_battlemap(card : UnitCard, value : bool)
 signal sg_card_hovered_to_battlemap(card : UnitCard, value : bool)
@@ -26,8 +26,8 @@ func _ready() -> void:
 	sg_card_selected_to_battlemap.connect(Signals.battlemap_set_units_selected)
 	sg_card_hovered_to_battlemap.connect(Signals.battlemap_set_units_hovered)
 	
-	for card in get_children():
-		card.queue_free()
+	for child in get_children():
+		child.queue_free()
 	pass
 
 func _input(_event : InputEvent) -> void:
@@ -84,6 +84,12 @@ func create_cards(army : Array[Unit]) -> void:
 		group_10.push_back(unit_card)
 		total_cards_temp.push_back(unit_card)
 	total_cards.assign(total_cards_temp)
+	
+	var starting_group := Cards_Group.instantiate() as CardsGroup
+	add_child(starting_group)
+	for card in total_cards:
+		remove_child(card)
+		starting_group.add_card(card)
 	pass
 
 func create_group(army : Array[Unit]) -> void: 
@@ -170,8 +176,10 @@ func update_positions() -> void:
 	var containers_to_remove : Array = get_children(true).filter(func(el : Node) -> bool : return !(el is UnitCard))
 	for container in containers_to_remove as Array[Node]: # Currently the containers are the flow containers
 		for card in container.get_children():
-			container.remove_child(card)
-		container.queue_free()
+			#container.remove_child(card)
+			container.delete_group()
+		
+		#container.queue_free()
 	
 	
 	for group in groups as Array[Array]: # used to not create a container for each group
@@ -179,11 +187,11 @@ func update_positions() -> void:
 		if group.size() < 1:
 			continue
 			
-		var flow_container := Flow_Container_Cards.instantiate() as FlowContainer
-		add_child(flow_container)
+		var cards_group := Cards_Group.instantiate() as CardsGroup
+		add_child(cards_group)
 		for card in group as Array[UnitCard]:
-#			add_child(card)
-			flow_container.add_child(card)
+			#cards_group.add_child(card)
+			cards_group.add_card(card)
 	for btn in get_tree().get_nodes_in_group("group_btn"):
 		btn.queue_free()
 	
