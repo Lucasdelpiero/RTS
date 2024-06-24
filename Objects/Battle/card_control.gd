@@ -231,8 +231,14 @@ func update_positions() -> void:
 		if card.get_parent() == null:
 			add_child(card)
 
+# Changes the Container size in y-axis to add a new row of units without increasing x-size
 func adjust_row_size() -> void:
 	var rows_amount : int = ceil(float(total_cards.size()) / float(max_units_per_row))
+	# NOTE it could break if the tree structure change
+	get_parent().offset_top = (-1) * rows_amount * row_size
+	get_parent().offset_left = -400
+	get_parent().offset_right = 400
+	
 	custom_minimum_size.y += rows_amount * row_size
 	pass
 	
