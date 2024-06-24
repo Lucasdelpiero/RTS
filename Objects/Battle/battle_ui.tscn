@@ -257,7 +257,6 @@ grow_vertical = 0
 
 [node name="CardControl" type="HBoxContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 9
 script = ExtResource("2_7itvx")
