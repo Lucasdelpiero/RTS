@@ -3,7 +3,9 @@ extends HBoxContainer
 
 @onready var Unit_Card := preload("res://Objects/Battle/unit_card.tscn") as PackedScene
 @onready var Group_Btn := preload("res://Objects/UI/group_btn.tscn") as PackedScene
-@onready var Cards_Group := preload("res://Objects/UI/cards_group.tscn") as PackedScene
+@onready var Cards_Group_Vertical := preload("res://Objects/UI/cards_group_vertical.tscn") as PackedScene
+@onready var Cards_Group_Horizontal := preload("res://Objects/UI/cards_group_horizontal.tscn") as PackedScene
+
 @onready var total_cards : Array[UnitCard]= []
 @export var button_spawn_place : Control = null
 var group_1 := []
@@ -17,7 +19,7 @@ var group_8 := []
 var group_9 := []
 var group_10 := [] # not in group, also not included in the "groups" array
 
-var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9, group_10]
+var groups : Array = [group_1, group_2, group_3, group_4, group_5, group_6, group_7, group_8, group_9] 
 
 signal sg_card_selected_to_battlemap(card : UnitCard, value : bool)
 signal sg_card_hovered_to_battlemap(card : UnitCard, value : bool)
@@ -85,7 +87,8 @@ func create_cards(army : Array[Unit]) -> void:
 		total_cards_temp.push_back(unit_card)
 	total_cards.assign(total_cards_temp)
 	
-	var starting_group := Cards_Group.instantiate() as CardsGroup
+	var starting_group := Cards_Group_Vertical.instantiate() as CardsGroup
+	#var starting_group := Cards_Group_Horizontal.instantiate() as CardsGroup
 	add_child(starting_group)
 	for card in total_cards:
 		remove_child(card)
@@ -163,6 +166,7 @@ func update_groups() -> void:
 
 	for group in groups as Array[Array]:
 		group.clear()
+	group_10.clear() # added as group 10 is not in the groups array
 #	for card in cards:
 	for card in total_cards as Array[UnitCard]:
 		self["group_%s" % [card.group]].push_back(card)
@@ -183,15 +187,21 @@ func update_positions() -> void:
 	
 	
 	for group in groups as Array[Array]: # used to not create a container for each group
-#		push_warning(group)
 		if group.size() < 1:
 			continue
 			
-		var cards_group := Cards_Group.instantiate() as CardsGroup
+		var cards_group := Cards_Group_Vertical.instantiate() as CardsGroup
 		add_child(cards_group)
 		for card in group as Array[UnitCard]:
-			#cards_group.add_child(card)
 			cards_group.add_card(card)
+	
+	if group_10.size() > 0:
+		var cards_group := Cards_Group_Vertical.instantiate() as CardsGroup
+		#var cards_group := Cards_Group_Horizontal.instantiate() as CardsGroup
+		add_child(cards_group)
+		for card in group_10 as Array[UnitCard]:
+			cards_group.add_card(card)
+	
 	for btn in get_tree().get_nodes_in_group("group_btn"):
 		btn.queue_free()
 	
@@ -199,7 +209,7 @@ func update_positions() -> void:
 	if button_spawn_place == null:
 		push_error("There is not a designed parent for the group buttons")
 		return
-	for group in groups.size() - 1: # " -1 " added so it excludes the group 10 (non grouped)
+	for group in groups.size(): #- 1: # " -1 " added so it excludes the group 10 (non grouped)
 		if groups[group].size() > 0 :
 			var group_btn := Group_Btn.instantiate() as ButtonGroupCardUnits
 			button_spawn_place.add_child(group_btn)
@@ -229,6 +239,9 @@ func select_group(num : int) -> void:
 		for card in card_group as Array[UnitCard]:
 #			card.set_selected(false)
 			sg_card_selected_to_battlemap.emit(card.unit_reference, false)
+	for card in group_10 as Array[UnitCard]: # Added as group_10 is not in a group
+		sg_card_selected_to_battlemap.emit(card.unit_reference, false)
+	
 	for card in self[group] as Array[UnitCard]:
 #		push_warning(card)
 #		card.set_selected(true)

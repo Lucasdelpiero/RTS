@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvlch8eov5uwg"]
-
-[ext_resource type="Script" path="res://Objects/UI/cards_group.gd" id="1_0e12y"]
-
-[node name="FlowContainerCards" type="VFlowContainer"]
-script = ExtResource("1_0e12y")

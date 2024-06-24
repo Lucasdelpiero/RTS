@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://cowxiuqx35gta"]
+[gd_scene load_steps=24 format=3 uid="uid://cowxiuqx35gta"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="1_1i1o2"]
 [ext_resource type="Script" path="res://Objects/Battle/card_control.gd" id="2_7itvx"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_7jvig"]
 [ext_resource type="PackedScene" uid="uid://bss5euchhbvrw" path="res://Objects/Battle/unit_card.tscn" id="4_2ilbs"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="4_ukohq"]
+[ext_resource type="PackedScene" uid="uid://b5g5nwbhpybg5" path="res://Objects/UI/cards_group_vertical.tscn" id="5_blqsn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63dfy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mycs"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -19,7 +20,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_godgo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q30q3"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -32,7 +33,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ei16"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpnid"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -45,7 +46,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6vy0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dafbh"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -58,7 +59,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjpw1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs552"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -71,7 +72,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56oxu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdcio"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -84,7 +85,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4exka"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbcq6"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -97,7 +98,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mob1y"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiicc"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -110,7 +111,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kslll"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5aj4m"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -123,7 +124,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcdrj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqjxw"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -136,7 +137,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bxjh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwqs2"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -149,7 +150,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v87bo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqrb3"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -162,7 +163,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdpl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6iv8"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -175,7 +176,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwmdg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h58ws"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -188,7 +189,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e07t5"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m75ga"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -201,7 +202,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r61b2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i72d"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -214,59 +215,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rsu1"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx5jy"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nonc"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma3v5"]
-resource_local_to_scene = true
-bg_color = Color(0.560784, 0.505882, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.490196, 0.341176, 0.270588, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5cf3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wym72"]
 resource_local_to_scene = true
 bg_color = Color(0.560784, 0.505882, 0.435294, 1)
 border_width_left = 2
@@ -309,101 +258,90 @@ grow_vertical = 0
 [node name="CardControl" type="HBoxContainer" parent="Control/PanelContainer" node_paths=PackedStringArray("button_spawn_place")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 9
 script = ExtResource("2_7itvx")
 button_spawn_place = NodePath("../..")
 
-[node name="VFlowContainer2" type="VFlowContainer" parent="Control/PanelContainer/CardControl"]
+[node name="CardGroupsVertical" parent="Control/PanelContainer/CardControl" instance=ExtResource("5_blqsn")]
 visible = false
 layout_mode = 2
 
-[node name="UnitCard7" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard" parent="Control/PanelContainer/CardControl/CardGroupsVertical" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_63dfy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mycs")
 
-[node name="UnitCard8" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard2" parent="Control/PanelContainer/CardControl/CardGroupsVertical" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_godgo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q30q3")
 
-[node name="UnitCard9" parent="Control/PanelContainer/CardControl/VFlowContainer2" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard3" parent="Control/PanelContainer/CardControl/CardGroupsVertical" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4ei16")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpnid")
 
-[node name="HFlowContainer" type="VFlowContainer" parent="Control/PanelContainer/CardControl"]
+[node name="CardGroupsVertical2" parent="Control/PanelContainer/CardControl" instance=ExtResource("5_blqsn")]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="UnitCard7" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard" parent="Control/PanelContainer/CardControl/CardGroupsVertical2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x6vy0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dafbh")
 
-[node name="UnitCard8" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard2" parent="Control/PanelContainer/CardControl/CardGroupsVertical2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vjpw1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rs552")
 
-[node name="UnitCard9" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard3" parent="Control/PanelContainer/CardControl/CardGroupsVertical2" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_56oxu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qdcio")
 
-[node name="UnitCard10" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="CardGroupsVertical3" parent="Control/PanelContainer/CardControl" instance=ExtResource("5_blqsn")]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4exka")
+size_flags_horizontal = 3
 
-[node name="UnitCard11" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mob1y")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
 
-[node name="UnitCard13" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard2" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kslll")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fiicc")
 
-[node name="UnitCard14" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard3" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vcdrj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5aj4m")
 
-[node name="UnitCard15" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard4" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3bxjh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wqjxw")
 
-[node name="UnitCard16" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard5" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_v87bo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwqs2")
 
-[node name="UnitCard4" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard6" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7pdpl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_aqrb3")
 
-[node name="UnitCard19" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard7" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xwmdg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_x6iv8")
 
-[node name="UnitCard20" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard8" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_e07t5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_h58ws")
 
-[node name="UnitCard21" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard9" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_r61b2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m75ga")
 
-[node name="UnitCard5" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard10" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1rsu1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3i72d")
 
-[node name="UnitCard12" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
+[node name="UnitCard11" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yx5jy")
-
-[node name="UnitCard17" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2nonc")
-
-[node name="UnitCard18" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ma3v5")
-
-[node name="UnitCard6" parent="Control/PanelContainer/CardControl/HFlowContainer" instance=ExtResource("4_2ilbs")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_e5cf3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_wym72")
 
 [node name="SpeedButtonContainer" parent="Control" instance=ExtResource("4_ukohq")]
 layout_mode = 0
