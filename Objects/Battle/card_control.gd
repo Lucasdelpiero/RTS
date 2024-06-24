@@ -7,7 +7,11 @@ extends HBoxContainer
 @onready var Cards_Group_Horizontal := preload("res://Objects/UI/cards_group_horizontal.tscn") as PackedScene
 
 @onready var total_cards : Array[UnitCard]= []
-@export var button_spawn_place : Control = null
+@export var button_spawn_place : Control = null # Needs to be attached to the "Control" node just below the BattleUI
+@export var max_units_per_row : int = 15 # units until create a row
+@export var row_size : int = 78
+var starting_size : Vector2 = Vector2(795, 154)
+
 var group_1 := []
 var group_2 := []
 var group_3 := []
@@ -93,7 +97,7 @@ func create_cards(army : Array[Unit]) -> void:
 	for card in total_cards:
 		remove_child(card)
 		starting_group.add_card(card)
-	pass
+	adjust_row_size()
 
 func create_group(army : Array[Unit]) -> void: 
 #	var cards = get_children(true).filter(func(el) : return el is UnitCard)
@@ -227,6 +231,11 @@ func update_positions() -> void:
 		if card.get_parent() == null:
 			add_child(card)
 
+func adjust_row_size() -> void:
+	var rows_amount : int = ceil(float(total_cards.size()) / float(max_units_per_row))
+	custom_minimum_size.y += rows_amount * row_size
+	pass
+	
 
 func select_group(num : int) -> void:
 #	push_warning(num)
@@ -268,3 +277,6 @@ func card_selected(unit : Unit, value : bool) -> void: # Individual card clicked
 
 func card_hovered(unit : Unit, value : bool) -> void:
 	sg_card_hovered_to_battlemap.emit(unit, value)
+
+
+

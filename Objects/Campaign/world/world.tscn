@@ -55,7 +55,7 @@ multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
-army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("9_2bscc")])
+army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("9_2bscc"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw")])
 
 [sub_resource type="Resource" id="Resource_q8c0w"]
 script = ExtResource("9_5dn3s")
@@ -1773,6 +1773,14 @@ unique_name_in_owner = true
 modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(703, 481)
 army_name = "Legio I"
+ownership = "ROME"
+army_data = SubResource("Resource_vvqwv")
+
+[node name="Legio V" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
+unique_name_in_owner = true
+modulate = Color(0.521569, 0.117647, 0.117647, 1)
+position = Vector2(726, 402)
+army_name = "Legio V"
 ownership = "ROME"
 army_data = SubResource("Resource_vvqwv")
 

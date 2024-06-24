@@ -47,6 +47,7 @@ func get_army_manpower_cost() -> int:
 	return total_cost
 
 func get_army_maintanance_cost() -> int :
+	# BUG if there is an empty element in the array it crashes
 	var unit_cost_list : Array = army_units.map(func(el : UnitData) -> int: return el.base_maintanance_cost)
 	var total_cost : int = 0
 	# Done with a for loop instead of a reduce function to have a safe line and avoid work-arounds for empty arrays and so

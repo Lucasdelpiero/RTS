@@ -248,9 +248,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -354.5
-offset_top = -157.0
-offset_right = 353.5
+offset_left = -400.0
+offset_top = -156.0
+offset_right = 399.0
 offset_bottom = 2.00006
 grow_horizontal = 2
 grow_vertical = 0
@@ -297,6 +297,66 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="UnitCard" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard19" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard20" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard21" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard22" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard23" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard24" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard25" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard26" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard12" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard13" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard14" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard15" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard16" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard17" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
+
+[node name="UnitCard18" parent="Control/PanelContainer/CardControl/CardGroupsVertical3" instance=ExtResource("4_2ilbs")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cbcq6")
 
