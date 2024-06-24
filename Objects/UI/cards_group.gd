@@ -1,5 +1,5 @@
 class_name CardsGroup
-#extends Control
+extends Control
 
 
 func add_card(card : UnitCard) -> void:
