@@ -18,6 +18,7 @@ func hide_overlay() -> void:
 
 func create_cards(army : Array[Unit]) -> void:
 	card_control.create_cards(army)
+	card_control_test.create_cards(army)
 	pass
 
 func order_card_control_to_create_group(army : Array[Unit]) -> void:
