@@ -3,7 +3,6 @@ extends HBoxContainer
 
 @onready var Unit_Card := preload("res://Objects/Battle/unit_card.tscn") as PackedScene
 @onready var Group_Btn := preload("res://Objects/UI/group_btn.tscn") as PackedScene
-@onready var Cards_Group_Vertical := preload("res://Objects/UI/cards_group_vertical.tscn") as PackedScene
 @onready var Cards_Grouped := preload("res://Objects/UI/cards_grouped.tscn") as PackedScene
 @onready var Cards_Ungrouped := preload("res://Objects/UI/cards_ungrouped.tscn") as PackedScene
 
