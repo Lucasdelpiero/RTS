@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgdotsgegticb"]
+
+[ext_resource type="Script" path="res://Objects/UI/cards_group_horizontal.gd" id="1_w4h15"]
+
+[node name="CardsUngrouped" type="VFlowContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_w4h15")

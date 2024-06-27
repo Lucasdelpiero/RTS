@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Objects/UI/cards_group_vertical.gd" id="1_ogs7x"]
 
-[node name="CardGroupsVertical" type="VFlowContainer"]
+[node name="CardsGrouped" type="VFlowContainer"]
 script = ExtResource("1_ogs7x")

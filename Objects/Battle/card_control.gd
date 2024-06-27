@@ -4,7 +4,9 @@ extends HBoxContainer
 @onready var Unit_Card := preload("res://Objects/Battle/unit_card.tscn") as PackedScene
 @onready var Group_Btn := preload("res://Objects/UI/group_btn.tscn") as PackedScene
 @onready var Cards_Group_Vertical := preload("res://Objects/UI/cards_group_vertical.tscn") as PackedScene
-@onready var Cards_Group_Horizontal := preload("res://Objects/UI/cards_group_horizontal.tscn") as PackedScene
+@onready var Cards_Grouped := preload("res://Objects/UI/cards_grouped.tscn") as PackedScene
+@onready var Cards_Ungrouped := preload("res://Objects/UI/cards_ungrouped.tscn") as PackedScene
+
 
 @onready var total_cards : Array[UnitCard]= []
 @export var button_spawn_place : Control = null # Needs to be attached to the "Control" node just below the BattleUI
@@ -91,8 +93,7 @@ func create_cards(army : Array[Unit]) -> void:
 		total_cards_temp.push_back(unit_card)
 	total_cards.assign(total_cards_temp)
 	
-	var starting_group := Cards_Group_Vertical.instantiate() as CardsGroup
-	#var starting_group := Cards_Group_Horizontal.instantiate() as CardsGroup
+	var starting_group := Cards_Ungrouped.instantiate() as CardsGroup
 	add_child(starting_group)
 	for card in total_cards:
 		remove_child(card)
@@ -194,14 +195,13 @@ func update_positions() -> void:
 		if group.size() < 1:
 			continue
 			
-		var cards_group := Cards_Group_Vertical.instantiate() as CardsGroup
+		var cards_group := Cards_Grouped.instantiate() as CardsGroup
 		add_child(cards_group)
 		for card in group as Array[UnitCard]:
 			cards_group.add_card(card)
 	
 	if group_10.size() > 0:
-		var cards_group := Cards_Group_Vertical.instantiate() as CardsGroup
-		#var cards_group := Cards_Group_Horizontal.instantiate() as CardsGroup
+		var cards_group := Cards_Ungrouped.instantiate() as CardsGroup
 		add_child(cards_group)
 		for card in group_10 as Array[UnitCard]:
 			cards_group.add_card(card)

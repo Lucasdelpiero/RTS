@@ -1,12 +1,19 @@
 class_name CardsGroup
 extends Control
 
+@export var cards_container : Control = self
 
 func add_card(card : UnitCard) -> void:
-	if not get_children().has(card):
-		add_child(card)
+	if cards_container == null:
+		push_error("There is no default container for cards, selected self node")
+		cards_container = self
+	if not cards_container.get_children().has(card):
+		cards_container.add_child(card)
 
 func delete_group() -> void:
-	for child in get_children():
-		remove_child(child)
+	if cards_container == null:
+		push_error("There is no default container for cards, selected self node")
+		cards_container = self
+	for child in cards_container.get_children():
+		cards_container.remove_child(child)
 	queue_free()
