@@ -17,10 +17,13 @@ func get_average_position(array : Array) -> Vector2:
 	average_position /= array.size()
 	return average_position 
 
+
+# The units will be organize choosing the closer unit to the closest place to be
+# the angle formation is the angle that of the line where the units will be
+# ex. a formation along the x-axis from left to right will have an angle of 0
 func get_organized_units(aUnits : Array, angle_formation : float = 0.0) -> Array[Unit]:
 	var comparation : Array = [] # Array used to sort the new order for the units in the array
 	var average_position := Vector2.ZERO # Average position of army
-	
 	if aUnits.size() == 0:
 		return []
 	# Gets the average position from all units, which is used to get which units are more in the left, right, etc than the others
@@ -56,6 +59,7 @@ func get_organized_units(aUnits : Array, angle_formation : float = 0.0) -> Array
 	
 	return new_arr
 
+# Used only by the IA to move the units to a line formation choosing the closest position
 func move_units(aUnits : Array, 
 		targetPosition : Vector2 , 
 		angle_formation : float = 0.0,

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Objects/General/ia_battle_debug.gd" id="1_v7j1k"]
 
 [node name="IABattleDebug" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_v7j1k")
 
 [node name="Control" type="Control" parent="."]

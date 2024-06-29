@@ -345,10 +345,17 @@ func send_units_to_attack(aGroup : Array[Unit], aEnemy_units : Array[Unit]) -> v
 	# This should clear the BUG when a unit is sent to attack a second time and does nothing
 	units_already_targeted.clear()
 	
+	# NOTE currently not used
+	# Orders the units so they attack the ones that are the closest like in the formation
+	#var temp_angle : float = get_average_position(aGroup).angle_to_point(get_average_position(aEnemy_units)) + PI/2
+	#var group_ordered : Array[Unit] = get_organized_units(aGroup, temp_angle)
+	#var enemies_ordered : Array[Unit] = get_organized_units(aEnemy_units, temp_angle)
+	
 	for unit in aGroup as Array[Unit]:
 		var unit_has_targeted_enemy : bool = false # used to store when the unit has chosen an enemy to attack
 		var enemies_by_distance :Array[Unit] = get_units_ordered_by_distance(aEnemy_units, unit.global_position)
 		for enemy in enemies_by_distance as Array[Unit]:
+		#for enemy in enemies_ordered as Array[Unit]:
 			if not units_already_targeted.has(enemy) and not unit_has_targeted_enemy:
 				units_already_targeted.push_back(enemy)
 				unit.set_chase(enemy)
