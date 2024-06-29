@@ -70,4 +70,20 @@ signal sg_ia_unit_changed_group(task_group : TaskGroup, unit : Unit)
 # an unit no longer needed is put in a generic task group in the battle line
 signal sg_ia_unit_not_needed_in_side(unit: Unit)
 
+# ai_battle_debug -> task_group
+# Sends the units from the left flank to attack
+signal sg_ia_attack_from(group_name : String)
+
+
+
+# task_group -> enemy_battle_ia
+# Unit ask to recieve orders to attack from the enemy battle ia
+signal sg_ia_request_orders_to_attack
+
+# Starts the battle IA to test things
+signal sg_battle_ia_start_update
+
+# Signal stops the battle ia to test things
+signal sg_battle_ia_stop_update
+
 #endregion

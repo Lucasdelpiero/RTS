@@ -40,6 +40,9 @@ var task : int = Task.FOLLOW_MARKER
 
 func _ready() -> void:
 	Signals.sg_ia_unit_changed_group.connect(erase_unit_if_changed_group)
+	Signals.sg_ia_attack_from.connect(debug_check_name_to_send_attack)
+	Signals.sg_battle_ia_start_update.connect(debug_start_update)
+	Signals.sg_battle_ia_stop_update.connect(debug_stop_update)
 	pass
 
 func move_units_to_markers() -> void:
@@ -102,8 +105,24 @@ func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 			#push_warning("after: %s" % group.size())
 	pass
 
+func debug_check_name_to_send_attack(arg_name : String) -> void:
+	if group_name == arg_name:
+		debug_attack_enemy_focused()
+	pass
+
+func debug_attack_enemy_focused() -> void:
+	Signals.sg_ia_request_orders_to_attack.emit(group, enemy_group_focused)
+	pass
+
 func _on_move_timer_timeout() -> void:
 	#return
 	move_units_to_markers()
 	moveTimer.start(5)
 	pass
+
+func debug_start_update() -> void:
+	moveTimer.start(0)
+	
+func debug_stop_update() -> void:
+	moveTimer.stop()
+

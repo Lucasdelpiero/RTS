@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="6_rnqqn"]
 [ext_resource type="Resource" uid="uid://d2w3bw50854bv" path="res://Objects/Campaign/military/unit_data/roman/hastati.tres" id="7_62luw"]
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="7_gxlj2"]
-[ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="8_2js6r"]
-[ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="9_2bscc"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/army_data.gd" id="9_5dn3s"]
+[ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="10_u3gqu"]
 [ext_resource type="Texture2D" uid="uid://feobrykgqrvw" path="res://Assets/Map_Gallia_Tribes_Towns-es.svg.png" id="12_0ux41"]
 [ext_resource type="Texture2D" uid="uid://cbji4uhav74fm" path="res://Assets/EuropeMap.png" id="12_b8id6"]
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="13_3040m"]
@@ -55,7 +54,11 @@ multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
-army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("8_2js6r"), ExtResource("9_2bscc"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw")])
+army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("10_u3gqu"), ExtResource("10_u3gqu")])
+
+[sub_resource type="Resource" id="Resource_bvbsd"]
+script = ExtResource("9_5dn3s")
+army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw")])
 
 [sub_resource type="Resource" id="Resource_q8c0w"]
 script = ExtResource("9_5dn3s")
@@ -1782,7 +1785,7 @@ modulate = Color(0.521569, 0.117647, 0.117647, 1)
 position = Vector2(726, 402)
 army_name = "Legio V"
 ownership = "ROME"
-army_data = SubResource("Resource_vvqwv")
+army_data = SubResource("Resource_bvbsd")
 
 [node name="Legio II" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
 unique_name_in_owner = true
@@ -2036,6 +2039,8 @@ nation_color = Color(0.752941, 0.752941, 0.752941, 1)
 capital = NodePath("../../Regions/Oriente/Ecbatana")
 
 [node name="Regions" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="TerraIncognita" type="Node2D" parent="Regions"]
 

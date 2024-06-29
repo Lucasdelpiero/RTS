@@ -40,6 +40,8 @@ var group_reserves : Array[Unit] = []
 
 # This array stores the units that already where targeted by the IA to be atacked
 # TODO move this property and behaviout asociated to other place for a behaviour tree 
+# BUG This is bugged as the second time is order to attack units it wont do it
+# NOTE needs to clean the list for when the unit is not targeted
 var units_already_targeted : Array = []
 
 enum GeneralStates {
@@ -63,6 +65,9 @@ func _ready() -> void:
 		return
 	# NOTE without the timer it doesnt count all the units, only the ones that were in the battlefield before the ones in the battlemap can load
 	await get_tree().create_timer(0.0).timeout
+	
+	Signals.sg_ia_request_orders_to_attack.connect(send_units_to_attack)
+	
 	# get_enemy_groups needs a typed array, so to be safe
 	var player_units_temp : = playerGroup.get_children() 
 	var player_units_typed : Array[Unit] = []
@@ -323,7 +328,8 @@ func advance(aUnits: Array[Unit], target_position : Vector2, current_position : 
 	#move_units(aUnits, place_to_move_to, angle)
 
 # Send units to attack to melee, units already targeted are stored in units_already_targeted array
-# TODO move this code to a separated node to create a behavior tree
+# NOTE needs to keep ordered the units so it sends the units each to the closer enemy
+# NOTE using the get_units ordered may do the trick
 func send_units_to_attack(aGroup : Array[Unit], aEnemy_units : Array[Unit]) -> void:
 	#region Safeguard
 	for unit in aGroup as Array[Unit]:
@@ -335,6 +341,9 @@ func send_units_to_attack(aGroup : Array[Unit], aEnemy_units : Array[Unit]) -> v
 			push_error("There is an object that is not a unit")
 			return
 	#endregion
+	
+	# This should clear the BUG when a unit is sent to attack a second time and does nothing
+	units_already_targeted.clear()
 	
 	for unit in aGroup as Array[Unit]:
 		var unit_has_targeted_enemy : bool = false # used to store when the unit has chosen an enemy to attack
@@ -369,3 +378,5 @@ func _on_timer_advance_timeout() -> void:
 	testing = false
 	#check_to_advance()
 	pass
+
+

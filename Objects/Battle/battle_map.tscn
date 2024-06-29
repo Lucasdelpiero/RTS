@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://d0qglixbf5jcg"]
+[gd_scene load_steps=53 format=3 uid="uid://d0qglixbf5jcg"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_map.gd" id="1_3dkh7"]
 [ext_resource type="PackedScene" uid="uid://cowxiuqx35gta" path="res://Objects/Battle/battle_ui.tscn" id="2_41tas"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bmavvajsmr1uu" path="res://Objects/Battle/enemy_battle_ia.tscn" id="4_8vivy"]
 [ext_resource type="Script" path="res://Objects/Battle/army_group_control.gd" id="4_e2hns"]
 [ext_resource type="PackedScene" uid="uid://bocqp747crhq7" path="res://Objects/Battle/overlay_unit.tscn" id="4_vae5l"]
+[ext_resource type="PackedScene" uid="uid://3j2q50uqcr56" path="res://Objects/General/ia_battle_debug.tscn" id="5_qo26h"]
 [ext_resource type="PackedScene" path="res://Objects/Battle/navigation_tile_map.tscn" id="6_cde6g"]
 [ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="8_5lvcp"]
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="9_cjm0x"]
@@ -254,6 +255,8 @@ mouse_filter = 2
 
 [node name="HBoxContainer" parent="BattleUI/OverlayUnit/MarginContainer/VBoxContainer" index="0"]
 mouse_filter = 2
+
+[node name="IABattleDebug" parent="." instance=ExtResource("5_qo26h")]
 
 [node name="UnitsController" parent="." node_paths=PackedStringArray("navigation_tilemap") instance=ExtResource("2_cu7ak")]
 navigation_tilemap = NodePath("../NavigationTileMap")
