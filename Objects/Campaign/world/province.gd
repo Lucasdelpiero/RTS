@@ -33,7 +33,7 @@ var nation_owner : Nation  = null :
 		
 		# Connects signals to send resources to the owner nation
 		# Note: condition below prevents reconnecting the signal when exiting a battle
-		if nation_owner != new_owner:
+		if sg_resources_generated.get_connections().is_empty():
 			sg_resources_generated.connect(new_owner.resource_incoming)
 		
 
