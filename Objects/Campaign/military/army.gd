@@ -293,7 +293,9 @@ func save() -> Dictionary:
 		var unit_data : Dictionary = {
 			"scene_path" : unit.scene.get_path(),
 		}
-		units.push_back(unit_data)
+		#var unit_data : UnitData = UnitData.new()
+		#unit_data = unit_data.set_unit_data(unit)
+		#units.push_back(unit_data)
 	
 	var save_dict : Dictionary = {
 		"rid" : self.get_rid().get_id(),
@@ -323,11 +325,12 @@ func load_data(data : Dictionary) -> void:
 	
 	army_data = ArmyData.new() # It has to create a new one because it wont update if its not new
 	army_data.ownership = ownership
+	
 	var units : Array[UnitData] = []
 	for unit in data.army_data.army_units as Array[UnitData] :
-		var unit_data : UnitData = UnitData.new()
+		var unit_data : UnitData = UnitData.new() as UnitData
 		unit_data.scene = load(unit.scene_path) 
 		units.push_back(unit_data)
-		
 	army_data.army_units = units
+
 
