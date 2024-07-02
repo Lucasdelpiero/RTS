@@ -285,48 +285,11 @@ func _on_army_detector_area_entered(area : Area2D) -> void:
 		emit_signal("sg_enemy_encountered", self, temp_army)
 
 
-
-# TODO replace the return type to a resource
-# Saves all the army data and sent it to the nation to be copiled into an array 
-# of al the armies in the nation
-func save_old() -> Dictionary:
-	var units : Array = []
-	for unit in army_data.army_units as Array[UnitData]:
-		var unit_data : Dictionary = {
-			"scene_path" : unit.scene.get_path(),
-		}
-		print(unit_data)
-		#var unit_data : UnitData = UnitData.new()
-		#unit_data = unit_data.set_unit_data(unit)
-		units.push_back(unit_data)
-	
-	var save_dict : Dictionary = {
-		"rid" : self.get_rid().get_id(),
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"army_name" : army_name,
-		"global_position" : {
-				"x" : global_position.x,
-				"y" : global_position.y,
-			},
-		"ownership" : ownership,
-		"speed" : SPEED,
-		"army_data" : {
-			"army_units" = units,
-		},
-		
-	}
-	return save_dict
-
 func save() -> Dictionary:
 	var units : Array = []
 	for unit in army_data.army_units as Array[UnitData]:
-		var unit_data : Dictionary = {
-			"scene_path" : unit.scene.get_path(),
-		}
-		var unit_data_new : Dictionary = unit.get_data_as_dict()
-		#print(unit_data_new)
-		units.push_back(unit_data_new)
+		var unit_data : Dictionary = unit.get_data_as_dict()
+		units.push_back(unit_data)
 	
 	var save_dict : Dictionary = {
 		"rid" : self.get_rid().get_id(),
@@ -346,23 +309,6 @@ func save() -> Dictionary:
 	}
 	return save_dict
 
-# Process the data given once the game is loaded
-func load_data_old(data : Dictionary) -> void:
-	ownership = data.ownership
-	army_name = data.army_name
-	SPEED = data.speed
-	global_position.x = data.global_position.x
-	global_position.y = data.global_position.y
-	
-	army_data = ArmyData.new() # It has to create a new one because it wont update if its not new
-	army_data.ownership = ownership
-	
-	var units : Array[UnitData] = []
-	for unit in data.army_data.army_units as Array[UnitData] :
-		var unit_data : UnitData = UnitData.new() as UnitData
-		unit_data.scene = load(unit.scene_path) 
-		units.push_back(unit_data)
-	army_data.army_units = units
 
 func load_data(data : Dictionary) -> void:
 	ownership = data.ownership

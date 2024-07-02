@@ -1,13 +1,50 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://d2w3bw50854bv"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=10 format=3 uid="uid://d2w3bw50854bv"]
 
 [ext_resource type="PackedScene" uid="uid://cdrwwoq0li4fn" path="res://Objects/Battle/Units/hastati.tscn" id="1_rktj2"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="2_0lkao"]
 [ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_qow0w"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="3_5uwio"]
+[ext_resource type="PackedScene" uid="uid://clwesawyh31ay" path="res://Objects/Battle/Units/Components/projectile.tscn" id="4_h4whv"]
+[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="5_1h45s"]
+
+[sub_resource type="Resource" id="Resource_ii4oh"]
+script = ExtResource("2_0lkao")
+weapon_type = "Sword"
+base_attack = 1
+base_charge = 1
+anti_cabalry_bonus = 0.0
+
+[sub_resource type="Resource" id="Resource_bbx0c"]
+script = ExtResource("5_1h45s")
+weapon_type = "Javelin"
+ProjectileP = ExtResource("4_h4whv")
+base_attack = 1
+base_max_range = 500
+base_reloading_speed = 1.0
+reload_time = 3.0
+base_ammunition = 30
+fire_shot = false
+pierce_armor = false
+move_while_shooting = false
+partian_shooting = false
+degree_margin = 60.0
+
+[sub_resource type="Resource" id="Resource_neypp"]
+script = ExtResource("3_5uwio")
+type = 1
+veterany = 1
+armor = 1
+shield = 0
+main_weapon = SubResource("Resource_ii4oh")
+secondary_weapon = SubResource("Resource_bbx0c")
 
 [resource]
 script = ExtResource("2_qow0w")
 unit_name = "Hastati"
 scene = ExtResource("1_rktj2")
+scene_unit_data = SubResource("Resource_neypp")
 experience = 0
 health = 100.0
 base_cost = 200
 base_maintanance_cost = 30
+base_manpower_cost = 200

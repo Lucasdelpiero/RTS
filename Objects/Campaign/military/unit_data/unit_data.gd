@@ -25,7 +25,9 @@ func get_data_as_dict() -> Dictionary:
 	save_dict.base_maintanance_cost = base_maintanance_cost
 	save_dict.base_manpower_cost = base_manpower_cost
 	
-	# TODO  scene_unit_data 
+	# Not all have an scene unit data
+	if scene_unit_data != null:
+		save_dict.scene_unit_data = scene_unit_data.save_scene_unit_data_as_dict()
 	
 	return save_dict
 	pass
@@ -38,6 +40,10 @@ func load_unit_data(data : Dictionary) -> UnitData:
 	base_maintanance_cost = data.base_maintanance_cost
 	base_manpower_cost = data.base_manpower_cost
 	
-	# TODO scene_unit_data
+	# Not all have an scene unit data
+	if data.has("scene_unit_data"):
+		var new_scene_unit_data : SceneUnitData = SceneUnitData.new()
+		new_scene_unit_data.load_scene_unit_data_as_dict(data.scene_unit_data)
+		scene_unit_data = new_scene_unit_data
 	
 	return self

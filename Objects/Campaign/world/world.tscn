@@ -54,7 +54,7 @@ multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
-army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("10_u3gqu"), ExtResource("10_u3gqu")])
+army_units = Array[ExtResource("16_ir871")]([ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("7_62luw"), ExtResource("10_u3gqu"), ExtResource("10_u3gqu")])
 
 [sub_resource type="Resource" id="Resource_bvbsd"]
 script = ExtResource("9_5dn3s")
