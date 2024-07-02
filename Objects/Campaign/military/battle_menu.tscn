@@ -57,6 +57,7 @@ offset_left = 387.0
 offset_top = 2.0
 offset_right = 0.179962
 offset_bottom = -173.0
+focus_mode = 0
 text = " X "
 
 [connection signal="pressed" from="BtnClose" to="." method="_on_btn_close_pressed"]

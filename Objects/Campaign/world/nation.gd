@@ -132,6 +132,7 @@ func save() -> Dictionary:
 	var armies : Array = get_children()
 	var army_array : Array = []
 	for army in armies as Array[ArmyCampaing]:
+		#army_array.push_back(army.save())
 		army_array.push_back(army.save())
 	
 	var save_dict : Dictionary = {
