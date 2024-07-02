@@ -103,6 +103,26 @@ func _ready() -> void:
 	if debug_lines:
 		create_debug_lines_connections()
 
+func save_data_as_dict() -> Dictionary:
+	var container : Dictionary = {}
+	var province_name : String = name
+	
+	var data : Dictionary = {}
+	data.ownership = ownership
+	data.culture = culture
+	data.religion = religion
+	
+	container[province_name] = data
+	# TODO BUILDING MANAGER
+	return  container
+
+
+func load_data_as_dict(data : Dictionary) -> void:
+	var province_name : String = name
+	ownership = data[province_name].ownership
+	culture = data[province_name].culture
+	religion = data[province_name].religion
+
 
 # Used for example when the nation changes ownership, to disconnect sending resources
 # to the nation was the previous owner

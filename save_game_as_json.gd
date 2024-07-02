@@ -21,15 +21,23 @@ func write_savegame(data_to_save : Dictionary) -> void:
 		return
 	
 	var nations_to_save : Array = []
+	var provinces_to_save_dict : Dictionary = {}
 	
 	for nation : Nation in data_to_save.nations:
 		nations_to_save.push_back(nation.save())
 	
+	# Saved as a dictionary to be able to use KEYS to get the provinces
+	for province : Province in data_to_save.provinces:
+		var province_dict : Dictionary = province.save_data_as_dict()
+		provinces_to_save_dict[province.name] = province_dict
+	
 #	push_warning(nations)
 	
 	var data : Dictionary = {
-		"nations" : nations_to_save
+		"nations" : nations_to_save,
+		"provinces" : provinces_to_save_dict
 	}
+	
 	var json_string := JSON.stringify(data)
 	_file.store_string(json_string)
 	_file.close()

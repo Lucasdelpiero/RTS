@@ -69,10 +69,13 @@ func return_from_battle(data : Dictionary) -> void:
 func save_game() -> void:
 	var armies_to_save : Array = get_tree().get_nodes_in_group("armies")
 	var nations_to_save : Array = get_tree().get_nodes_in_group("nations")
+	var provinces_to_save : Array = get_tree().get_nodes_in_group("provinces")
+	
 	
 	var data : Dictionary = {
 		"armies": armies_to_save, # not used
 		"nations": nations_to_save,
+		"provinces": provinces_to_save,
 	}
 	var _save := SaveGameAsJSON.new()
 	_save.write_savegame(data)
@@ -101,6 +104,14 @@ func load_game() -> void:
 				nation.load_data(el)
 				nation.set_colors()
 				pass
+	
+	var provinces_nodes : Array = get_tree().get_nodes_in_group("provinces")
+	for province in provinces_nodes as Array[Province]:
+		if data.provinces.has(province.name):
+			province.load_data_as_dict(data.provinces[province.name])
+		else:
+			push_error("couldnt find: %s" % [province.name])
+	
 	var world : CampaignMap = get_tree().get_nodes_in_group("world")[0] as CampaignMap
 	if world == null:
 		push_error("There is no world found")
