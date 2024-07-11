@@ -39,10 +39,17 @@ var group_right_flank : Array[Unit]= [] # cavalry
 var group_reserves : Array[Unit] = []
 
 # This array stores the units that already where targeted by the IA to be atacked
+# Units are stored only in 1 cycle to avoid targeting multiple times one enemy
 # TODO move this property and behaviout asociated to other place for a behaviour tree 
 # BUG This is bugged as the second time is order to attack units it wont do it
 # NOTE needs to clean the list for when the unit is not targeted
 var units_already_targeted : Array = []
+
+# Stores units that already were attacked so when units are sent to attack one 
+# at a time it wont attack multiple times
+# is what the intended "units_already_targeted" was going to be
+# is persistent 
+var enemy_group_already_attacked : Array[Unit] = []
 
 enum GeneralStates {
 	WAITING,
@@ -67,6 +74,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.0).timeout
 	
 	Signals.sg_ia_request_orders_to_attack.connect(send_units_to_attack)
+	Signals.sg_ia_request_order_to_attack_one.connect(send_units_to_attack_one)
+	
 	
 	# get_enemy_groups needs a typed array, so to be safe
 	var player_units_temp : = playerGroup.get_children() 
@@ -362,6 +371,18 @@ func send_units_to_attack(aGroup : Array[Unit], aEnemy_units : Array[Unit]) -> v
 				unit_has_targeted_enemy = true
 		
 
+# Used to send units to fight one at a time to make the player fight against an
+# "easy IA" which will commit mistakes, like sending a few units to fight at a time
+# units attacked are stored in "enemy_group_already_attacked" array and used
+# to avoid attacking them again later
+# NOTE look at when to clear the "enemy_group_already_attacked" array
+func send_units_to_attack_one(unit : Unit, enemy_group : Array[Unit]) -> void:
+	var ordered_enemies : Array[Unit] = get_units_ordered_by_distance(enemy_group, unit.global_position)
+	for enemy in ordered_enemies:
+		if not enemy_group_already_attacked.has(enemy):
+			enemy_group_already_attacked.push_back(enemy)
+			unit.set_chase(enemy)
+			return
 
 func _on_timer_timeout() -> void:
 	#focus_on_largest_group()

@@ -75,10 +75,21 @@ signal sg_ia_unit_not_needed_in_side(unit: Unit)
 signal sg_ia_attack_from(group_name : String)
 
 
+# task_group -> enemy_battle_ia
+# Task group ask to recieve orders to attack from the enemy battle ia
+signal sg_ia_request_orders_to_attack(group : Array[Unit], enemy_group : Array[Unit])
+
+# debug_button -> task_group
+# sends a signal to the task group to send an unit to attack
+signal sg_ia_debug_send_one_to_attack(group_name : String)
 
 # task_group -> enemy_battle_ia
-# Unit ask to recieve orders to attack from the enemy battle ia
-signal sg_ia_request_orders_to_attack
+# Task group ask to recieve orders to have 1 unit to attack an enemy unit from a group
+# sending 1 unit at a time to have a "mistake" made by the IA by sending 1 unit
+# at a time to face the player
+signal sg_ia_request_order_to_attack_one(unit : Unit, enemy_group : Array[Unit])
+
+
 
 # Starts the battle IA to test things
 signal sg_battle_ia_start_update

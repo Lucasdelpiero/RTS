@@ -5,7 +5,9 @@ extends UnitsManagement
 var group  : Array[Unit] = [] 
 var group_name : String = "" # used mainly to debug
 @export var debug : bool = false
-
+# Stores units that are currently attacking
+# TODO needs a signal to go from the unit to here to update when is attacking
+var group_units_attacking : Array[Unit] = []
 
 var enemy_group_focused  : Array[Unit] = [] :
 	set(value):
@@ -22,8 +24,7 @@ var enemy_group_focused  : Array[Unit] = [] :
 				#push_warning("redundant troops: %s" % [redundant_troops])
 				for unit in redundant_troops as Array[Unit]:
 					Signals.sg_ia_unit_not_needed_in_side.emit(unit)
-				
-	
+
 
 var main_enemy_group : Array[Unit] = []
 var marker_to_anchor : Marker2D = null # Parent marker to all markers used to get the angle to position the units
@@ -43,6 +44,7 @@ func _ready() -> void:
 	Signals.sg_ia_attack_from.connect(debug_check_name_to_send_attack)
 	Signals.sg_battle_ia_start_update.connect(debug_start_update)
 	Signals.sg_battle_ia_stop_update.connect(debug_stop_update)
+	Signals.sg_ia_debug_send_one_to_attack.connect(debug_attack_one)
 	pass
 
 func move_units_to_markers() -> void:
@@ -113,6 +115,18 @@ func debug_check_name_to_send_attack(arg_name : String) -> void:
 func debug_attack_enemy_focused() -> void:
 	Signals.sg_ia_request_orders_to_attack.emit(group, enemy_group_focused)
 	pass
+
+# attack one enemy from the group
+func debug_attack_one(a_group_name : String) -> void :
+	if group_name != a_group_name:
+		return
+	var group_random_order : Array = group.duplicate()
+	group_random_order.shuffle()
+	for unit in group_random_order as Array[Unit]:
+		if not group_units_attacking.has(unit):
+			group_units_attacking.push_back(unit)
+			Signals.sg_ia_request_order_to_attack_one.emit(unit, enemy_group_focused)
+			return
 
 func _on_move_timer_timeout() -> void:
 	#return

@@ -33,3 +33,9 @@ func _on_btn_stop_update_pressed() -> void:
 func _on_btn_start_update_pressed() -> void:
 	Signals.sg_battle_ia_start_update.emit()
 	pass # Replace with function body.
+
+# Currently only sends the center group containing infantry, later it could send anyone
+func _on_btn_attack_1_unit_pressed() -> void:
+	Signals.sg_battle_ia_stop_update.emit()
+	Signals.sg_ia_debug_send_one_to_attack.emit("infantry")
+	pass # Replace with function body.
