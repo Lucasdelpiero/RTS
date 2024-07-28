@@ -2059,7 +2059,7 @@ polygon = PackedVector2Array(-845, 1369, -806, 1358, -792, 1304, -743, 1256, -67
 debug_lines = true
 buildings_manager = SubResource("Resource_s0tb5")
 
-[node name="Province" parent="Regions/TerraIncognita/NorthAfrica" instance=ExtResource("19_amwaf")]
+[node name="InnerNorthAfrica" parent="Regions/TerraIncognita/NorthAfrica" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(-929, 1645, -840, 1601, 1955, 1616, 3097, 1597, 3105, 4743, -1829, 5381, -1413, 1989)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
 debug_lines = true
@@ -2075,7 +2075,7 @@ polygon = PackedVector2Array(986, -1304, 1002, -1261, 991, -1205, 917, -1168, 87
 debug_lines = true
 buildings_manager = SubResource("Resource_f0wbs")
 
-[node name="Province" parent="Regions/TerraIncognita/Sweden" instance=ExtResource("19_amwaf")]
+[node name="InnerSweden" parent="Regions/TerraIncognita/Sweden" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(262, -1337, 235, -1362, 236, -1385, 1093, -1400, 1079, -1309, 951, -1288)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
 debug_lines = true
@@ -2101,7 +2101,7 @@ polygon = PackedVector2Array(580, -683, 644, -717, 689, -734, 712, -696, 757, -6
 debug_lines = true
 buildings_manager = SubResource("Resource_5y4hq")
 
-[node name="Province" parent="Regions/TerraIncognita/EasterEuropa" instance=ExtResource("19_amwaf")]
+[node name="InnerEastEuropa" parent="Regions/TerraIncognita/EasterEuropa" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(1628, -1338, 1776, -1374, 4937, -1514, 4449, 814, 3770, 882, 3753, 742, 3697, 553, 1606, -740)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
 buildings_manager = SubResource("Resource_x6n7a")
@@ -2112,7 +2112,7 @@ polygon = PackedVector2Array(2862, -61, 2890, -1, 2887, 55, 2820, 58, 2777, 86, 
 debug_lines = true
 buildings_manager = SubResource("Resource_6f45v")
 
-[node name="Province" parent="Regions/TerraIncognita/East" instance=ExtResource("19_amwaf")]
+[node name="InnerEast" parent="Regions/TerraIncognita/East" instance=ExtResource("19_amwaf")]
 polygon = PackedVector2Array(3663, 1559, 3773, 1504, 2908, -141, 2909, -152, 2879, -154, 2851, -169, 2896, -264, 1642, -1336, 1722, -1366, 4543, -1391, 4975, 1706, 4105, 1925, 3785, 1861)
 outline_color = Color(0.721569, 0.717647, 0.568627, 1)
 debug_lines = true
@@ -2633,7 +2633,7 @@ path0 = NodePath("../Sagunto")
 path1 = NodePath("../Tarraco")
 path2 = NodePath("../Vasconia")
 path3 = NodePath("../Numantia")
-path4 = NodePath("../Province2")
+path4 = NodePath("../Province")
 
 [node name="Cartago Nova" parent="Regions/Hispania" instance=ExtResource("16_y4d8b")]
 position = Vector2(-112.728, 628.49)
@@ -2645,7 +2645,7 @@ religion = "punic"
 culture = 4
 buildings_manager = SubResource("Resource_y88ko")
 
-[node name="Province" parent="Regions/Hispania" node_paths=PackedStringArray("path0", "path1", "path2", "path3") instance=ExtResource("16_y4d8b")]
+[node name="Province2" parent="Regions/Hispania" node_paths=PackedStringArray("path0", "path1", "path2", "path3") instance=ExtResource("16_y4d8b")]
 position = Vector2(-262.469, 453.077)
 color = Color(0.470588, 0.0980392, 0.741176, 1)
 polygon = PackedVector2Array(19.469, -86.0767, 18.469, -76.077, 28.469, -59.0767, 28.469, -39.0767, 35.469, -23.0767, 35.469, -6.07666, 40.469, 13.9233, 34.469, 30.9233, 34.469, 50.9233, 51.469, 58.923, 56.469, 77.923, 7.46899, 69.923, -12.531, 74.923, -19.531, 83.923, -31.531, 80.923, -40.531, 71.923, -47.531, 61.9233, -58.531, 54.923, -67.646, 52.923, -64.531, 39.923, -65.531, 26.923, -64.531, 6.92297, -52.531, -4.07703, -38.531, -25.077, -44.456, -42.837, -22.531, -42.0767, -10.531, -80.0767, 2.46896, -80.0767)
@@ -2656,11 +2656,11 @@ religion = "celtic"
 culture = 12
 buildings_manager = SubResource("Resource_l5u62")
 path0 = NodePath("../Caura de los Vetones")
-path1 = NodePath("../Province2")
+path1 = NodePath("../Province")
 path2 = NodePath("../Helmàntica de los Vacceos")
 path3 = NodePath("../Càstulo")
 
-[node name="Province2" parent="Regions/Hispania" instance=ExtResource("16_y4d8b")]
+[node name="Province" parent="Regions/Hispania" instance=ExtResource("16_y4d8b")]
 position = Vector2(-183.905, 418.636)
 color = Color(0.533333, 0.427451, 0.709804, 1)
 polygon = PackedVector2Array(-56.095, -52.636, -28.0951, -47.6356, -13.0951, -44.6356, 3.90491, -36.6356, 25.9049, -33.6356, 56.905, -23.636, 71.34, -19.336, 73.905, -9.63599, 75.905, -3.63599, 87.905, 8.36401, 89.905, 14.364, 84.905, 19.364, 62.905, 31.364, 62.2, 44.754, 51.9049, 64.3644, 41.9049, 70.3644, 16.905, 76.364, 13.9049, 86.3644, 13.325, 97.414, 7.905, 104.364, -7.095, 115.364, -18.095, 113.114, -24.0951, 91.3644, -41.0951, 82.3644, -41.0951, 67.3644, -34.0951, 48.3644, -39.095, 28.364, -39.095, 11.364, -46.095, -5.63599, -46.095, -25.636, -56.0951, -42.6356)
