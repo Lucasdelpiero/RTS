@@ -70,6 +70,11 @@ signal sg_ia_unit_changed_group(task_group : TaskGroup, unit : Unit)
 # an unit no longer needed is put in a generic task group in the battle line
 signal sg_ia_unit_not_needed_in_side(unit: Unit)
 
+# ia_battle_debug -> enemy_battle_ia
+# Units will advance in a formation towards the average position of the enemies
+signal sg_ia_advance
+
+
 # ai_battle_debug -> task_group
 # Sends the units from the left flank to attack
 signal sg_ia_attack_from(group_name : String)

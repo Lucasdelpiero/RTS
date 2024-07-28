@@ -204,6 +204,8 @@ func get_main_group(aGroups : Array) -> Array[Unit]: # Get an array with the pla
 			continue
 		if group.size() > largest_number:
 			largest = group.duplicate()
+			largest_number = group.size()
+	
 	var largest_group_typed : Array[Unit] = []
 	largest_group_typed.assign(largest)
 	return largest_group_typed

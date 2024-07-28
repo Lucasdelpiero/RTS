@@ -75,6 +75,7 @@ func _ready() -> void:
 	
 	Signals.sg_ia_request_orders_to_attack.connect(send_units_to_attack)
 	Signals.sg_ia_request_order_to_attack_one.connect(send_units_to_attack_one)
+	Signals.sg_ia_advance.connect(check_to_advance)
 	
 	
 	# get_enemy_groups needs a typed array, so to be safe
@@ -249,13 +250,9 @@ func group_units_by_type(aUnits : Array[Unit]) -> void:
 	cavalry_units.assign(aUnits.filter(func(el : Unit) -> bool : return el.type == 3))
 	
 	# Groups used for the formation
-	#group_front = infantry_units.duplicate()
-	#group_archers = range_units.duplicate()
 	group_front.assign(infantry_units)
 	group_archers.assign(range_units)
 	var half_cavalry : int = floori( float( cavalry_units.size()) / 2.0 )
-	#group_left_flank = cavalry_units.slice(0, half_cavalry).duplicate()
-	#group_right_flank = cavalry_units.slice(half_cavalry).duplicate()
 	group_left_flank.assign(cavalry_units.slice(0, half_cavalry).duplicate())
 	group_right_flank.assign(cavalry_units.slice(half_cavalry).duplicate())
 
@@ -309,7 +306,15 @@ func check_to_advance() -> void:
 	
 	# Currently moves towards the average, should be changed to be able to chose one of the groups 
 	var current_position : Vector2 = armyMarker.global_position
-	var place_to_move : Vector2 = get_average_position(a_player_units)
+	var main_player_group : Array[Unit] = []
+	var temp_main_group : Array = get_main_group(get_enemy_groups(a_player_units, 2000))
+	
+	if temp_main_group.is_empty():
+		push_error("There doesnt exist a main group of player units")
+		return
+	main_player_group.assign(temp_main_group)
+	
+	var place_to_move : Vector2 = get_average_position(main_player_group)
 	
 	advance(a_units_to_move, place_to_move, current_position, 30, true)
 	pass

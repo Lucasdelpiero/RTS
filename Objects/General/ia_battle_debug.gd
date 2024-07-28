@@ -10,6 +10,7 @@ func _ready() -> void:
 	pass
 
 func _on_btn_advance_pressed() -> void:
+	Signals.sg_ia_advance.emit()
 	pass # Replace with function body.
 
 func _on_btn_side_left_attack_pressed() -> void:
