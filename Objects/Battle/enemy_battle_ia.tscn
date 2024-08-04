@@ -123,5 +123,11 @@ back_side_marker = NodePath("../ArmyMarker/SideBack")
 unique_name_in_owner = true
 autostart = true
 
+[node name="TimerThinkNextAction" type="Timer" parent="."]
+editor_description = "Timer used to trigger the IA to think about the next action"
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerAdvance" to="." method="_on_timer_advance_timeout"]
+[connection signal="timeout" from="TimerThinkNextAction" to="." method="_on_timer_think_next_action_timeout"]

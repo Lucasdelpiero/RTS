@@ -2,6 +2,8 @@
 extends Node
 class_name GroupsManager
 
+@export var debug : bool = false
+
 # Used by the UI to organize units in groups so they can have a task to do when needed
 
 var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn")
@@ -114,6 +116,12 @@ func assign_units_side_group(task_group : TaskGroup ,
 		units_needed =  enemy_group.size() - task_group.group.size()
 		# Get units ordered by the distance to the marker of the side
 		var units_free : Array[Unit] = get_units_that_are_free()
+		
+		# prevents calling functions on empty array
+		if units_free.is_empty():
+			if debug:
+				push_warning("There are not units free to be asigned to a side")
+			return
 		var units_sorted : Array[Unit] = sort_by_closest_distance(units_free, marker_to_follow.global_position)
 		
 		var units_to_assign_temp : Array = []

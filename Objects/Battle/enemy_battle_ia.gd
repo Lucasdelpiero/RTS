@@ -7,6 +7,9 @@ extends UnitsManagement
 # These groups tell the units exactly what to do
 # The units will have the capacity to ovrride the orders if they see it fit  
 
+const DISTANCE_TO_BE_IN_GROUP : int = 2000
+
+
 #region Properties
 
 @export var armyGroup : UnitsGroupControl = null 
@@ -86,7 +89,7 @@ func _ready() -> void:
 	var enemy_units_temp := armyGroup.get_children()
 	units.assign(enemy_units_temp)
 	
-	get_enemy_groups(player_units, 2000)
+	get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
 	
 	await get_tree().create_timer(0.1).timeout # Used to give time to load components of units
 	
@@ -95,9 +98,9 @@ func _ready() -> void:
 	group_units_by_type(units )
 #	move_units(units, armyMarker.global_position , 0.0, PI)
 	move_to_group_marker(units)
-#	push_warning(get_main_group(get_enemy_groups(player_units, 2000)))
+#	push_warning(get_main_group(get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)))
 	# TEST
-	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, 2000))
+	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, DISTANCE_TO_BE_IN_GROUP))
 	groups_manager.create_group(group_front, main_group, infantryMarker, true, false, "infantry")
 	groups_manager.create_group(group_archers, main_group, rangeMarker, true, false, "archers")
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true, "flank_left")
@@ -114,7 +117,7 @@ func army_marker_face_towards(position: Vector2 ) -> void:
 
 # Makes the IA focus on the largest group of enemies
 func focus_on_largest_group() -> void:
-	var groups : Array = get_enemy_groups(player_units, 2000)
+	var groups : Array = get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
 	if groups == null:
 		push_error("enemy groups not detected")
 		return
@@ -166,7 +169,7 @@ func focus_on_largest_group() -> void:
 # It will group the enemies that are at the left, right or behind the front of the army
 # It will be used to get know how many units it would be required to assign to the flanking
 func get_enemy_groups_flanking() -> void :
-	var enemy_groups := get_enemy_groups(player_units, 2000)
+	var enemy_groups := get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
 	
 	var minimum_angle_for_flank : float= 30
 	var maximium_angle_for_flank : float = 60
@@ -296,7 +299,7 @@ func get_flank_position(aUnits : Array[Unit] = [], flank : String = "none", angl
 	push_error("Not valid position could be obtained so the default army marker position was returned")
 	return armyMarker.position
 
-# TODO move this code to a separated node to create a behavior tree
+# If possible, the units advance towards the player
 func check_to_advance() -> void:
 	var a_units_to_move : Array[Unit] = units
 	var a_player_units : Array = player_units
@@ -307,7 +310,7 @@ func check_to_advance() -> void:
 	# Currently moves towards the average, should be changed to be able to chose one of the groups 
 	var current_position : Vector2 = armyMarker.global_position
 	var main_player_group : Array[Unit] = []
-	var temp_main_group : Array = get_main_group(get_enemy_groups(a_player_units, 2000))
+	var temp_main_group : Array = get_main_group(get_enemy_groups(a_player_units, DISTANCE_TO_BE_IN_GROUP))
 	
 	if temp_main_group.is_empty():
 		push_error("There doesnt exist a main group of player units")
@@ -316,11 +319,10 @@ func check_to_advance() -> void:
 	
 	var place_to_move : Vector2 = get_average_position(main_player_group)
 	
-	advance(a_units_to_move, place_to_move, current_position, 30, true)
+	advance(a_units_to_move, place_to_move, current_position, 300, false)
 	pass
 
 # The units will move towards the position at a certian distance as a time, that distance as absolute values or as percentage of distance to the target
-# TODO move this code to a separated node to create a behavior tree
 func advance(aUnits: Array[Unit], target_position : Vector2, current_position : Vector2, distance_to_move : float, as_percentage: bool = false) -> void:
 	#region Safeguard
 	for unit in aUnits:
@@ -335,7 +337,7 @@ func advance(aUnits: Array[Unit], target_position : Vector2, current_position : 
 	if as_percentage:
 		delta_to_move = (target_position - current_position) * (distance_to_move / 100) 
 	var place_to_move_to : Vector2 = current_position + delta_to_move 
-	
+
 	armyMarker.global_position = place_to_move_to
 	armyMarker.rotation = angle + PI/2
 	groups_manager.tell_move_units_to_markers() # So they move instantly
@@ -391,7 +393,7 @@ func send_units_to_attack_one(unit : Unit, enemy_group : Array[Unit]) -> void:
 
 func _on_timer_timeout() -> void:
 	#focus_on_largest_group()
-	#get_enemy_groups(player_units, 2000)
+	#get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
 	return
 	# TEST
 	if units_already_targeted.size() < 1:
@@ -411,5 +413,36 @@ func _on_timer_advance_timeout() -> void:
 	testing = false
 	#check_to_advance()
 	pass
+
+
+func _on_timer_think_next_action_timeout() -> void:
+	think_next_action()
+
+# Timer triggers the IA to think a next action based on circumstances like:
+# - Personality of the general
+# - Actions done before (starts with a advancing, skirmish, melee)
+# -  Difficulty (IA makes mistakes on purpose on easier diffculties)
+func think_next_action() -> void:
+	# Needs to know the actions taken before (advanced, skirmished, etc)
+	# advances the army towards the player
+	# give enough time so that the units can reach the new position
+	var enemy_main_group : Array[Unit] = get_main_group(get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP))
+	var average_position_enemy_group : Vector2 = get_average_position(enemy_main_group)
+	var distance_to_main_group : float = armyMarker.global_position.distance_to(average_position_enemy_group)
+	
+	# TEST for testing it will have the distance to trigger hardcoded
+	var MIN_DISTANCE_TO_TRIGGER_ADVANCE : float = 3000
+	
+	if distance_to_main_group > MIN_DISTANCE_TO_TRIGGER_ADVANCE:
+		check_to_advance()
+	else:
+		print("we cached you")
+	
+	# it needs to store weights with each action to choose when to stop skirmishing
+	# and starting a melee fight
+	
+	
+	pass
+
 
 

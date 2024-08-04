@@ -39,4 +39,5 @@ func _on_btn_start_update_pressed() -> void:
 func _on_btn_attack_1_unit_pressed() -> void:
 	Signals.sg_battle_ia_stop_update.emit()
 	Signals.sg_ia_debug_send_one_to_attack.emit("infantry")
-	pass # Replace with function body.
+	# TODO needs to have a signal emited from the unit to their task group to 
+	# tell them that they are attacking and need to be added to the list of units that are attacking

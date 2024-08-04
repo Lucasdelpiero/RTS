@@ -97,9 +97,11 @@ signal sg_ia_request_order_to_attack_one(unit : Unit, enemy_group : Array[Unit])
 
 
 # Starts the battle IA to test things
+# TaskGroup starts updating
 signal sg_battle_ia_start_update
 
 # Signal stops the battle ia to test things
+# TaskGroup stops updating
 signal sg_battle_ia_stop_update
 
 #endregion
