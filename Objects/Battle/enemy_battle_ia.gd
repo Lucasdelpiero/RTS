@@ -28,6 +28,7 @@ var playerGroups : Array[Array] = []
 @export var general : General 
 @onready var groups_manager  := %GroupsManager as GroupsManager
 @onready var timerAdvance := %TimerAdvance as Timer
+@onready var state_manager := %StateManager as StateManagerIA
 
 # Type of units
 var infantry_units : Array[Unit] = []
@@ -423,23 +424,9 @@ func _on_timer_think_next_action_timeout() -> void:
 # - Actions done before (starts with a advancing, skirmish, melee)
 # -  Difficulty (IA makes mistakes on purpose on easier diffculties)
 func think_next_action() -> void:
-	# Needs to know the actions taken before (advanced, skirmished, etc)
-	# advances the army towards the player
-	# give enough time so that the units can reach the new position
-	var enemy_main_group : Array[Unit] = get_main_group(get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP))
-	var average_position_enemy_group : Vector2 = get_average_position(enemy_main_group)
-	var distance_to_main_group : float = armyMarker.global_position.distance_to(average_position_enemy_group)
-	
-	# TEST for testing it will have the distance to trigger hardcoded
-	var MIN_DISTANCE_TO_TRIGGER_ADVANCE : float = 3000
-	
-	if distance_to_main_group > MIN_DISTANCE_TO_TRIGGER_ADVANCE:
-		check_to_advance()
-	else:
-		print("we cached you")
-	
-	# it needs to store weights with each action to choose when to stop skirmishing
-	# and starting a melee fight
+	var data : DataForStates = DataForStates.new()
+	data.set_data(self)
+	state_manager.update_data_to_process(data)
 	
 	
 	pass

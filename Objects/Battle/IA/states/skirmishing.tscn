@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jfhas8wprsya"]
+
+[ext_resource type="Script" path="res://Objects/Battle/IA/states/skirmishing.gd" id="1_grh2n"]
+
+[node name="Skirmishing" type="Node"]
+script = ExtResource("1_grh2n")

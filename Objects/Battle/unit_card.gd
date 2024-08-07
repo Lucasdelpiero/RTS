@@ -71,7 +71,9 @@ func set_troops_number(value : int, max_value : int) -> void:
 	pass
 
 func set_ammo(value : int, max_value : int) -> void:
-#	push_warning_debug("something something")
+	if max_value == 0:
+		ammo_bar.visible = false
+		
 	ammo_bar.max_value = max_value
 	ammo_bar.value = value
 

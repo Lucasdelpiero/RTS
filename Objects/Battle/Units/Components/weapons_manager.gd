@@ -151,14 +151,15 @@ func get_ammo_data(aAmmo : int = 0, aMaxAmmo : int = 0) -> Array:
 		#return [0, 0] # i dont know why this was 0, 0
 		return [aAmmo, aMaxAmmo]
 	var amount : int = 0
-	var total : int = 1
+	var total : int = 0
 	var weapons : Array = get_children() as Array[Weapon]
 	for weapon in weapons as Array[Weapon]:
 		if weapon.get_type() == "Range":
 			if weapon.has_ammo():
 				amount = weapon.current_ammunition
 				total = weapon.max_ammunition
-		#return [amount, total]
+				sg_send_ammo_data_unit_to_card.emit(amount, total)
+				return [amount, total] # NOTE it was commented
 	sg_send_ammo_data_unit_to_card.emit(amount, total)
 	return [0, 0] # default value needed
 	

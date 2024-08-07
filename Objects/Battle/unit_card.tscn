@@ -49,6 +49,7 @@ corner_detail = 4
 anti_aliasing = false
 
 [node name="UnitCard" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 75)
 offset_right = 70.0
 offset_bottom = 93.0
 size_flags_vertical = 0
@@ -74,7 +75,6 @@ text = "Name"
 
 [node name="MarginContainer" type="PanelContainer" parent="MarginContainer/VH"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_t0fwb")
 
 [node name="TextureBase" type="TextureRect" parent="MarginContainer/VH/MarginContainer"]

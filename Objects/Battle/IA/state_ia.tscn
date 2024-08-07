@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6umikf0sllp3"]
+
+[ext_resource type="Script" path="res://Objects/Battle/IA/state_ia.gd" id="1_t6h18"]
+
+[node name="StateIA" type="Node"]
+script = ExtResource("1_t6h18")

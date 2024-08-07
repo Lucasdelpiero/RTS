@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmavvajsmr1uu"]
+[gd_scene load_steps=12 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Script" path="res://Objects/Battle/general_res.gd" id="2_p4dbk"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c6a32g2bd5bjo" path="res://Assets/units/box_type_cavalry.png" id="4_1rwry"]
 [ext_resource type="Script" path="res://Objects/Battle/groups_manager.gd" id="6_mxm1y"]
 [ext_resource type="PackedScene" uid="uid://bt2o6dtm3p5yd" path="res://Objects/Battle/task_group.tscn" id="7_by1gs"]
+[ext_resource type="Script" path="res://Objects/Battle/IA/state_manager_ia.gd" id="8_66v2g"]
+[ext_resource type="PackedScene" uid="uid://72dmev2edppx" path="res://Objects/Battle/IA/states/advancing.tscn" id="9_xbj11"]
+[ext_resource type="PackedScene" uid="uid://jfhas8wprsya" path="res://Objects/Battle/IA/states/skirmishing.tscn" id="10_r0iw1"]
 
 [sub_resource type="Resource" id="Resource_uiwxx"]
 script = ExtResource("2_p4dbk")
@@ -127,6 +130,14 @@ autostart = true
 editor_description = "Timer used to trigger the IA to think about the next action"
 wait_time = 5.0
 autostart = true
+
+[node name="StateManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_66v2g")
+
+[node name="Advancing" parent="StateManager" instance=ExtResource("9_xbj11")]
+
+[node name="Skirmishing" parent="StateManager" instance=ExtResource("10_r0iw1")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerAdvance" to="." method="_on_timer_advance_timeout"]
