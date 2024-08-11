@@ -4,3 +4,7 @@
 
 [node name="Advancing" type="Node"]
 script = ExtResource("1_du58r")
+
+[node name="TimerStateAdvance" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerStateAdvance" to="." method="_on_timer_state_advance_timeout"]

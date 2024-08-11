@@ -16,10 +16,15 @@ func update_data_to_process(data : DataForStates) -> void :
 		state._update_score(data)
 	states = get_states_by_score()
 	current_state = states[0]
+	
+	if current_state == null:
+		return
+	
 	if debug:
 		print_score()
-	if current_state != null and debug:
-		print(current_state.name)
+	
+	current_state._use_state()
+
 
 func get_states_by_score() -> Array[StateIA]:
 	var temp : Array = states.duplicate()
@@ -32,5 +37,6 @@ func get_states_by_score() -> Array[StateIA]:
 func print_score() -> void:
 	for state in states:
 		print("Score of %s: %s" % [state.name, state.score])
+		print("Current state: [%s]" % current_state.name)
 	pass
 

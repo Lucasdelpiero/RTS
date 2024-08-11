@@ -13,5 +13,5 @@ func _update_score(_data : DataForStates) -> void:
 
 # State -> EnemyBattle IA
 # When the function is active it will send a signal to the IA to act accirding to the state
-func use_state() -> void:
+func _use_state() -> void:
 	pass

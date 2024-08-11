@@ -67,6 +67,7 @@ var generalState : int = GeneralStates.WAITING
 #endregion
 
 func _ready() -> void:
+	randomize()
 	if general == null:
 		general = General.new()
 #	push_warning(general.charisma)
@@ -80,6 +81,7 @@ func _ready() -> void:
 	Signals.sg_ia_request_orders_to_attack.connect(send_units_to_attack)
 	Signals.sg_ia_request_order_to_attack_one.connect(send_units_to_attack_one)
 	Signals.sg_ia_advance.connect(check_to_advance)
+	Signals.sg_ia_state_advancing.connect(advance_towards_player)
 	
 	
 	# get_enemy_groups needs a typed array, so to be safe
@@ -343,6 +345,30 @@ func advance(aUnits: Array[Unit], target_position : Vector2, current_position : 
 	armyMarker.rotation = angle + PI/2
 	groups_manager.tell_move_units_to_markers() # So they move instantly
 	#move_units(aUnits, place_to_move_to, angle)
+
+# Advancing State -> EnemyBattleIA
+# Used as an easier mean to move the units towards the player using only 2 arguments
+func advance_towards_player(distance_to_move : float = 300.0, as_percentage : bool = false) -> void :
+	var a_units_to_move : Array[Unit] = units
+	var a_player_units : Array = player_units
+	if a_player_units.size() == 0 or a_units_to_move.size() == 0:
+		push_error("There are no units of the player or the IA")
+		return
+	
+	# Currently moves towards the average, should be changed to be able to chose one of the groups 
+	var current_position : Vector2 = armyMarker.global_position
+	var main_player_group : Array[Unit] = []
+	var temp_main_group : Array = get_main_group(get_enemy_groups(a_player_units, DISTANCE_TO_BE_IN_GROUP))
+	
+	if temp_main_group.is_empty():
+		push_error("There doesnt exist a main group of player units")
+		return
+	main_player_group.assign(temp_main_group)
+	
+	var place_to_move : Vector2 = get_average_position(main_player_group)
+	
+	advance(a_units_to_move, place_to_move, current_position, distance_to_move, as_percentage)
+
 
 # Send units to attack to melee, units already targeted are stored in units_already_targeted array
 # NOTE needs to keep ordered the units so it sends the units each to the closer enemy

@@ -139,6 +139,7 @@ script = ExtResource("8_66v2g")
 debug = true
 
 [node name="Advancing" parent="StateManager" instance=ExtResource("9_xbj11")]
+distance_to_move = 1000.0
 
 [node name="Skirmishing" parent="StateManager" instance=ExtResource("10_r0iw1")]
 
