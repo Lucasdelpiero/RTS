@@ -28,6 +28,7 @@ const AMMO_GENERAL_AGGRESIVE : float = -25.0
 const MAX_AMMO_USAGE : float = 90.0
 const MIN_AMMO_USAGE : float = 10.0
 
+
 # updates score based on the amount of ammo that the archers have
 func _update_score(data : DataForStates) -> void:
 	var current_ammo : int = 0
@@ -52,16 +53,21 @@ func _update_score(data : DataForStates) -> void:
 	
 	# TEST DIFFICULTY
 	var difficulty : String = "normal" # for testing purpuse
-	var ammo_treshold : float = 50.0 
+	var difficulty_treshold : float = 50.0 # NOTE maybe should be set only once
 	var ammo_porcentage : float = (float(total_ammo) / float(current_ammo)) * 100.0
-	score = 0
-	if difficulty == "easy":
-		ammo_treshold = AMMO_EASY_TRESHOLD
-	if difficulty == "normal":
-		ammo_treshold = AMMO_NORMAL_TRESHOLD
-	if difficulty == "hard":
-		ammo_treshold = AMMO_HARD_TRESHOLD
 	
-	if ammo_porcentage >= ammo_treshold + modifier_of_general:
+	if difficulty == "easy":
+		difficulty_treshold = AMMO_EASY_TRESHOLD
+	if difficulty == "normal":
+		difficulty_treshold = AMMO_NORMAL_TRESHOLD
+	if difficulty == "hard":
+		difficulty_treshold = AMMO_HARD_TRESHOLD
+	
+	var temp_treshold : float = difficulty_treshold + modifier_of_general
+	var ammo_treshold : float = clampf(temp_treshold, MIN_AMMO_USAGE, MAX_AMMO_USAGE )
+	
+	# If it has more ammo % than the treshold it will have a positive score
+	if ammo_porcentage >= ammo_treshold:
 		score = 200
-
+	else:
+		score = 0
