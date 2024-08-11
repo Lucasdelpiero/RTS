@@ -1,5 +1,6 @@
 extends StateIA
 
+var is_active : bool = false
 
 # Score has a relation with the difficulty and the general personality
 # The easier the difficulty the less ammo they will use
@@ -71,3 +72,13 @@ func _update_score(data : DataForStates) -> void:
 		score = 200
 	else:
 		score = 0
+
+
+func _use_state() -> void:
+	if is_active == false:
+		is_active = true
+	Signals.sg_ia_state_skirmishing.emit(true)
+
+func _exit_state() -> void:
+	Signals.sg_ia_state_skirmishing.emit(false)
+

@@ -55,6 +55,10 @@ var units_already_targeted : Array = []
 # is persistent 
 var enemy_group_already_attacked : Array[Unit] = []
 
+# Used to filter the units sent to an skirmish so when the update event happen
+# they are not sent to their army marker while they should be skirmishing
+var units_sent_to_skirmish : Array[Unit] = []
+
 enum GeneralStates {
 	WAITING,
 	MOVING,
@@ -82,6 +86,7 @@ func _ready() -> void:
 	Signals.sg_ia_request_order_to_attack_one.connect(send_units_to_attack_one)
 	Signals.sg_ia_advance.connect(check_to_advance)
 	Signals.sg_ia_state_advancing.connect(advance_towards_player)
+	Signals.sg_ia_state_skirmishing.connect(send_skimishers_to_attack)
 	
 	
 	# get_enemy_groups needs a typed array, so to be safe
@@ -168,6 +173,13 @@ func focus_on_largest_group() -> void:
 #	generalState = GeneralStates.FIGHTING
 	#pass
 
+# Easier way to get the largest group from the player
+func get_main_player_group() -> Array[Unit]: 
+	if player_units.is_empty():
+		push_error("There is no player units to get a main group")
+		return []
+	
+	return get_main_group(get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP))
 
 # It will group the enemies that are at the left, right or behind the front of the army
 # It will be used to get know how many units it would be required to assign to the flanking
@@ -369,6 +381,18 @@ func advance_towards_player(distance_to_move : float = 300.0, as_percentage : bo
 	
 	advance(a_units_to_move, place_to_move, current_position, distance_to_move, as_percentage)
 
+# Skirmishing state -> EnemyBattleIA
+# Sends all the skirmisher to attack or stop attacking
+func send_skimishers_to_attack(is_skirmishing : bool) -> void:
+	if is_skirmishing:
+		send_units_to_attack(group_archers, get_main_player_group())
+		# Stops the skirmisher to going back to their position in the army marker
+		units_sent_to_skirmish.assign(group_archers.duplicate())
+		Signals.sg_ia_task_group_set_moving_to_marker.emit("archers", false)
+	else:
+		units_sent_to_skirmish.clear()
+		Signals.sg_ia_task_group_set_moving_to_marker.emit("archers", true)
+	
 
 # Send units to attack to melee, units already targeted are stored in units_already_targeted array
 # NOTE needs to keep ordered the units so it sends the units each to the closer enemy

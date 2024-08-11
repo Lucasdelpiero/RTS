@@ -15,3 +15,7 @@ func _update_score(_data : DataForStates) -> void:
 # When the function is active it will send a signal to the IA to act accirding to the state
 func _use_state() -> void:
 	pass
+
+# When the state changes, an state can perform a task
+func _exit_state() -> void:
+	pass

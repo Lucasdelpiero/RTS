@@ -3,14 +3,12 @@ extends Node
 class_name GroupsManager
 
 @export var debug : bool = false
-
 # Used by the UI to organize units in groups so they can have a task to do when needed
 
 var task_group_res : PackedScene = preload("res://Objects/Battle/task_group.tscn")
 
 var groups : Array[Unit] = []
 var main_enemy_group : Array[Unit] = [] : set = set_main_enemy_group
-
 
 # Starting groups
 var task_group_infantry : TaskGroup = null
@@ -213,5 +211,7 @@ func tell_move_units_to_markers() -> void:
 	for child in get_children():
 		child.move_units_to_markers()
 	pass
+
+
 
 

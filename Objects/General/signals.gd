@@ -73,6 +73,13 @@ signal sg_ia_unit_not_needed_in_side(unit: Unit)
 # Advancing state -> enemy_battle_ia
 signal sg_ia_state_advancing(distance_to_move : float, as_percentage : bool)
 
+# Skirmishing state -> enemy_battle_ia
+signal sg_ia_state_skirmishing(is_skirmishing : bool)
+
+# Skirmishing state -> enemy_battle_ia -> TaskGroup
+# Stops or start the task group from updating moving towards an army marker
+signal sg_ia_task_group_set_moving_to_marker(a_name : String)
+
 # ia_battle_debug -> enemy_battle_ia
 # Units will advance in a formation towards the average position of the enemies
 signal sg_ia_advance

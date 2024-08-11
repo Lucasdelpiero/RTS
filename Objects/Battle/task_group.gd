@@ -25,6 +25,9 @@ var enemy_group_focused  : Array[Unit] = [] :
 				for unit in redundant_troops as Array[Unit]:
 					Signals.sg_ia_unit_not_needed_in_side.emit(unit)
 
+# This will be stopped when it has to perform certain task
+# like skirmishing or going melee
+var move_to_marker : bool = true
 
 var main_enemy_group : Array[Unit] = []
 var marker_to_anchor : Marker2D = null # Parent marker to all markers used to get the angle to position the units
@@ -41,6 +44,8 @@ var task : int = Task.FOLLOW_MARKER
 
 func _ready() -> void:
 	Signals.sg_ia_unit_changed_group.connect(erase_unit_if_changed_group)
+	Signals.sg_ia_task_group_set_moving_to_marker.connect(set_moving_to_markers)
+	
 	Signals.sg_ia_attack_from.connect(debug_check_name_to_send_attack)
 	Signals.sg_battle_ia_start_update.connect(debug_start_update)
 	Signals.sg_battle_ia_stop_update.connect(debug_stop_update)
@@ -48,6 +53,9 @@ func _ready() -> void:
 	pass
 
 func move_units_to_markers() -> void:
+	if move_to_marker == false:
+		return
+	
 	if marker_to_follow == null or marker_to_anchor == null:
 		if debug:
 			push_error("Didnt found a markert to follow or anchor")
@@ -106,6 +114,12 @@ func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 		#if debug:
 			#push_warning("after: %s" % group.size())
 	pass
+
+
+func set_moving_to_markers(a_name : String = "", value : bool = false) -> void:
+	if group_name == a_name:
+		move_to_marker = value
+	
 
 func debug_check_name_to_send_attack(arg_name : String) -> void:
 	if group_name == arg_name:
