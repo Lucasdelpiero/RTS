@@ -1,6 +1,8 @@
 class_name StateManagerIA
 extends Node
 
+@export var debug : bool = false
+
 var states : Array[StateIA] = []
 var current_state : StateIA = null
 
@@ -12,7 +14,12 @@ func _ready() -> void:
 func update_data_to_process(data : DataForStates) -> void :
 	for state in states:
 		state._update_score(data)
-	print_score()
+	states = get_states_by_score()
+	current_state = states[0]
+	if debug:
+		print_score()
+	if current_state != null and debug:
+		print(current_state.name)
 
 func get_states_by_score() -> Array[StateIA]:
 	var temp : Array = states.duplicate()

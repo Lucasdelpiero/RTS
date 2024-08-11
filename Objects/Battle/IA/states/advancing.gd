@@ -12,9 +12,8 @@ func _update_score(data : DataForStates) -> void:
 	
 	if distance_to_main_group > MIN_DISTANCE_TO_TRIGGER_ADVANCE:
 		score = 1000
-		print("IS ADVANCING")
 	else:
-		score = 50
-		print("we cached you")
+		score = 0
 	
+func state_advance() -> void:
 	pass

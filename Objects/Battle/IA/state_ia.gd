@@ -11,3 +11,7 @@ var score : float = 50.0
 func _update_score(_data : DataForStates) -> void:
 	pass
 
+# State -> EnemyBattle IA
+# When the function is active it will send a signal to the IA to act accirding to the state
+func use_state() -> void:
+	pass

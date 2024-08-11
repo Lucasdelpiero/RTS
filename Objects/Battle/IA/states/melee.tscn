@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0imtsdjphhv3"]
+
+[ext_resource type="Script" path="res://Objects/Battle/IA/states/melee.gd" id="1_uw53n"]
+
+[node name="Melee" type="Node"]
+script = ExtResource("1_uw53n")

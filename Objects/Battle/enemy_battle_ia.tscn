@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmavvajsmr1uu"]
+[gd_scene load_steps=14 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Script" path="res://Objects/Battle/general_res.gd" id="2_p4dbk"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Objects/Battle/IA/state_manager_ia.gd" id="8_66v2g"]
 [ext_resource type="PackedScene" uid="uid://72dmev2edppx" path="res://Objects/Battle/IA/states/advancing.tscn" id="9_xbj11"]
 [ext_resource type="PackedScene" uid="uid://jfhas8wprsya" path="res://Objects/Battle/IA/states/skirmishing.tscn" id="10_r0iw1"]
+[ext_resource type="PackedScene" uid="uid://c0imtsdjphhv3" path="res://Objects/Battle/IA/states/melee.tscn" id="11_sym8v"]
+[ext_resource type="PackedScene" uid="uid://dlxdrf336jk75" path="res://Objects/Battle/IA/states/standing.tscn" id="12_rwwhw"]
 
 [sub_resource type="Resource" id="Resource_uiwxx"]
 script = ExtResource("2_p4dbk")
@@ -134,10 +136,15 @@ autostart = true
 [node name="StateManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_66v2g")
+debug = true
 
 [node name="Advancing" parent="StateManager" instance=ExtResource("9_xbj11")]
 
 [node name="Skirmishing" parent="StateManager" instance=ExtResource("10_r0iw1")]
+
+[node name="Melee" parent="StateManager" instance=ExtResource("11_sym8v")]
+
+[node name="Standing" parent="StateManager" instance=ExtResource("12_rwwhw")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerAdvance" to="." method="_on_timer_advance_timeout"]
