@@ -7,8 +7,9 @@ extends UnitsManagement
 # These groups tell the units exactly what to do
 # The units will have the capacity to ovrride the orders if they see it fit  
 
-const DISTANCE_TO_BE_IN_GROUP : int = 2000
-
+# Constant added here and in the state IA because the editor screams if its in
+# the UnitManagement class
+const DISTANCE_TO_BE_IN_GROUP : float = 2000.0
 
 #region Properties
 

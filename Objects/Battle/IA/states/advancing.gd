@@ -1,3 +1,4 @@
+@icon("res://Assets/ui/node_icons/ia_icon.png")
 extends StateIA
 
 var state_active : bool = false
@@ -14,7 +15,7 @@ func _update_score(data : DataForStates) -> void:
 	# has it as the state with the most priority
 	state_active = false
 	
-	var enemy_main_group : Array[Unit] = get_main_group(get_enemy_groups(data.player_units, DISTANCE_TO_BE_IN_GROUP)) 
+	var enemy_main_group : Array[Unit] = get_main_group(get_enemy_groups(data.player_units)) 
 	var average_position_enemy_group : Vector2 = get_average_position(enemy_main_group)
 	var distance_to_main_group : float = data.armyMarker.global_position.distance_to(average_position_enemy_group)
 	

@@ -5,6 +5,7 @@ class_name UnitsManagement
 
 @onready var margin_between_units : int= 280 # Margin used to distance units from each other once ordered to move
 
+
 func get_face_to_formation_angle(value : float) -> float:
 	return value + PI / 2
 

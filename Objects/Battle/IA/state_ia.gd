@@ -1,5 +1,5 @@
 class_name StateIA
-extends IA
+extends UnitsManagement
 
 # IA State store an "score" of how important is the action to be taken
 # if the enemy is far away, the score for "advance" state will be high, and low if its close 
@@ -7,6 +7,7 @@ extends IA
 # difficulty also plays a role to the score, taking worst decisions when te difficulty is easy
 
 var score : float = 50.0
+const DISTANCE_TO_BE_IN_GROUP : float = 2000.0
 
 func _update_score(_data : DataForStates) -> void:
 	pass
