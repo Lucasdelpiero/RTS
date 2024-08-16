@@ -1,4 +1,3 @@
-@icon("res://Assets/ui/node_icons/ia_icon.png")
 extends StateIA
 
 var state_active : bool = false

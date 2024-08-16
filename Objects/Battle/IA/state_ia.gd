@@ -1,3 +1,4 @@
+@icon("res://Assets/ui/node_icons/ia_icon.png")
 class_name StateIA
 extends UnitsManagement
 
