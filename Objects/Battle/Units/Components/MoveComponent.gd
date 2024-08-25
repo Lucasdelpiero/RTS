@@ -19,6 +19,11 @@ var anchored := true # if an unit reached an empty position is true, else it wil
 @onready var timerChase : Timer = $TimerChase
 var face_direction : float = 0.0
 
+const MARGIN_DISTANCE_TO_MOVE : float = 10
+const MARGIN_ANGLE_TO_MOVE : float = PI/16
+var last_position_moved_to : Vector2 = Vector2.ZERO
+var last_angle_moved_to : float = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if unit == null:
@@ -123,16 +128,18 @@ func move_to(to : Vector2, final_face_direction: float) -> void:
 		return
 	destination  = to
 	
-	# Avoid having the units have a seizure when they move small distances
-	# specially when done in an small amount of time
-	# maybe it would be better to just avoid moving the angle
-	# This is only a problem when many orders are done in an small amount of time (ex. every 0.1 sec)
-	#var distance : float = (unit.global_position.distance_to(destination))
-	#var rotation_difference  = absf(unit.rotation - final_face_direction)  < PI / 6
-	#if distance < 10 and rotation_difference:
-		#push_warning("distancetosmall in distance and rotation")
-		#return
-		#pass
+	# Avoid having the units have a seizure when they move small distances or angles
+	# or more importantly, when they move to the same position and angle
+	if (last_position_moved_to != Vector2.ZERO) and (last_angle_moved_to !=0):
+		var distance_diff : float = destination.distance_to(last_position_moved_to)
+		var angle_diff : float = abs(angle_difference(final_face_direction, last_angle_moved_to))
+		
+		if (distance_diff < MARGIN_DISTANCE_TO_MOVE) and (angle_diff < MARGIN_ANGLE_TO_MOVE):
+			return
+	last_position_moved_to = destination
+	last_angle_moved_to = final_face_direction
+	
+
 
 	#######################
 	# Once i create obstacles i will get this pathing

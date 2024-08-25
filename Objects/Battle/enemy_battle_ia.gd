@@ -478,8 +478,6 @@ func think_next_action() -> void:
 	var data : DataForStates = DataForStates.new()
 	data.set_data(self)
 	state_manager.update_data_to_process(data)
-	
-	
 	pass
 
 

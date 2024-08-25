@@ -25,6 +25,8 @@ var enemy_group_focused  : Array[Unit] = [] :
 				for unit in redundant_troops as Array[Unit]:
 					Signals.sg_ia_unit_not_needed_in_side.emit(unit)
 
+
+
 # This will be stopped when it has to perform certain task
 # like skirmishing or going melee
 var move_to_marker : bool = true
@@ -71,13 +73,21 @@ func move_units_to_markers() -> void:
 	if debug:
 		Globals.debug_update_label("angle", "angle: %s" % angle)
 	
+	# Only move units that are not attacking
+	var units_to_move_to_marker : Array[Unit] = []
+	var units_to_move_to_marker_temp : Array = []
+	for unit in group:
+		if not group_units_attacking.has(unit):
+			units_to_move_to_marker_temp.push_back(unit)
+	units_to_move_to_marker.assign(units_to_move_to_marker_temp)
 	
-	move_units(group,
+	move_units(units_to_move_to_marker,
 		marker_to_follow.global_position, 
 		angle, 
 		angle,
 		startFromCenter,
 		right_to_left)
+
 
 # Thee difference between the group and its enemy assigned
 func get_strengh_difference() -> float:
