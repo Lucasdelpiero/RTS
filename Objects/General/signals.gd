@@ -76,6 +76,21 @@ signal sg_ia_state_advancing(distance_to_move : float, as_percentage : bool)
 # Skirmishing state -> enemy_battle_ia
 signal sg_ia_state_skirmishing(is_skirmishing : bool)
 
+# Melee state -> task_group -> enemy_battle_ia
+# The state tells the task group to request order to
+# attack all unit in the group to attack the player 
+# The enemy_battle_ia will send the attack if it can
+# Ex. If it has the "infantry" group_name it will send all the infantry for a frontal attack 
+signal sg_ia_state_melee_attack_all(group_name : String)
+
+# Melee state -> task_group -> enemy_battle_ia
+# The state tells the task group to querest order
+# to send one unit to attack the player at a time
+# The enemy_battle_ia will send the attack if it can
+# Multiple can be sent using a loop
+# Ex. If it has the "infantry" group_name it will send the infantry for a frontal attack 
+signal sg_ia_state_melee_attack_one(group_name : String)
+
 # Skirmishing state -> enemy_battle_ia -> TaskGroup
 # Stops or start the task group from updating moving towards an army marker
 signal sg_ia_task_group_set_moving_to_marker(a_name : String)
@@ -108,7 +123,7 @@ signal sg_ia_request_order_to_attack_one(unit : Unit, enemy_group : Array[Unit])
 signal sg_battle_ia_start_update
 
 # Signal stops the battle ia to test things
-# TaskGroup stops updating
+# TaskGroup stops updating their movement to the markers
 signal sg_battle_ia_stop_update
 
 #endregion

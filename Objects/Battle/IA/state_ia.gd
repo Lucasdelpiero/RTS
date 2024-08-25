@@ -7,7 +7,8 @@ extends UnitsManagement
 # it stores if it has changed from this state to stop cycling back between one and the other 
 # difficulty also plays a role to the score, taking worst decisions when te difficulty is easy
 
-var score : float = 50.0
+@onready var score : float = 50.0
+@onready var state_active : bool = false
 const DISTANCE_TO_BE_IN_GROUP : float = 2000.0
 
 func _update_score(_data : DataForStates) -> void:

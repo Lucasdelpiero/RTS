@@ -45,6 +45,7 @@ var task : int = Task.FOLLOW_MARKER
 func _ready() -> void:
 	Signals.sg_ia_unit_changed_group.connect(erase_unit_if_changed_group)
 	Signals.sg_ia_task_group_set_moving_to_marker.connect(set_moving_to_markers)
+	Signals.sg_ia_state_melee_attack_one.connect(check_name_to_send_one_unit_to_melee)
 	
 	Signals.sg_ia_attack_from.connect(debug_check_name_to_send_attack)
 	Signals.sg_battle_ia_start_update.connect(debug_start_update)
@@ -119,7 +120,18 @@ func erase_unit_if_changed_group(task_group: TaskGroup , unit: Unit) -> void:
 func set_moving_to_markers(a_name : String = "", value : bool = false) -> void:
 	if group_name == a_name:
 		move_to_marker = value
+
+func check_name_to_send_one_unit_to_melee(arg_name : String) -> void:
+	if group_name != arg_name:
+		return
 	
+	var group_random_order : Array = group.duplicate()
+	group_random_order.shuffle()
+	for unit in group_random_order as Array[Unit]:
+		if not group_units_attacking.has(unit):
+			group_units_attacking.push_back(unit)
+			Signals.sg_ia_request_order_to_attack_one.emit(unit, enemy_group_focused)
+			return
 
 func debug_check_name_to_send_attack(arg_name : String) -> void:
 	if group_name == arg_name:

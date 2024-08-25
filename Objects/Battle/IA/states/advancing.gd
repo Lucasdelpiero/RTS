@@ -1,6 +1,5 @@
 extends StateIA
 
-var state_active : bool = false
 @export_range(0.1, 10.0, 0.1) var interval_update : float = 2.0
 @onready var timer : Timer = %TimerAdvance as Timer
 
@@ -34,3 +33,6 @@ func _use_state() -> void:
 
 func _on_timer_state_advance_timeout() -> void:
 	Signals.sg_ia_state_advancing.emit(distance_to_move, as_percentage)
+
+func exit_state() -> void:
+	state_active = false

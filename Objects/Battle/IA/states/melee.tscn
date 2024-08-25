@@ -4,3 +4,9 @@
 
 [node name="Melee" type="Node"]
 script = ExtResource("1_uw53n")
+
+[node name="TimerOneUnit" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[connection signal="timeout" from="TimerOneUnit" to="." method="_on_timer_one_unit_timeout"]
