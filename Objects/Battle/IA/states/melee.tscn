@@ -4,6 +4,7 @@
 
 [node name="Melee" type="Node"]
 script = ExtResource("1_uw53n")
+wait_time_one_unit = 10.0
 
 [node name="TimerOneUnit" type="Timer" parent="."]
 unique_name_in_owner = true

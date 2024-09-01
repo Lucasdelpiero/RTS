@@ -5,6 +5,8 @@ extends StateIA
 
 @onready var timer_one_unit := %TimerOneUnit as Timer
 @onready var timer_update := %TimerUpdate as Timer
+@export_range(1, 60, 0.5) var wait_time_one_unit : float = 1.0
+@export_range(1, 30, 0.5) var wait_time_update : float = 5.0
 # if its false will send 1 unit at a time
 # if its true will send the max amount of units to attack
 var sending_multiple_units : bool = false
@@ -100,7 +102,7 @@ func _use_state() -> void:
 	if state_active == false:
 		state_active = true
 		if timer_update.is_stopped():
-			timer_update.start(5.0)
+			timer_update.start(wait_time_update)
 
 func send () -> void:
 	
@@ -111,16 +113,15 @@ func send_units_to_melee(group_name : String, amount : int) -> void:
 	pass
 
 func _on_timer_update_timeout() -> void:
-	sending_multiple_units = true
-	max_infantry_send_as_one = 4
 	if sending_multiple_units and infantry_send_as_one < max_infantry_send_as_one:
 		send_units_to_melee("infantry", max_infantry_send_as_one)
 		infantry_send_as_one = max_infantry_send_as_one
 	else:
-		if timer_one_unit.is_stopped():
-			timer_one_unit.start(5)
+		if timer_one_unit.is_stopped(): # it call it even if it cant send more units
+			timer_one_unit.start(wait_time_one_unit) # maybe should be changed
 
 func _on_timer_one_unit_timeout() -> void:
 	if infantry_send_as_one < max_infantry_send_as_one: 
 		infantry_send_as_one += 1
 		Signals.sg_ia_state_melee_attack_one.emit("infantry")
+		timer_one_unit.start(wait_time_one_unit)
