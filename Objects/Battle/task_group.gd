@@ -48,6 +48,7 @@ func _ready() -> void:
 	Signals.sg_ia_unit_changed_group.connect(erase_unit_if_changed_group)
 	Signals.sg_ia_task_group_set_moving_to_marker.connect(set_moving_to_markers)
 	Signals.sg_ia_state_melee_attack_one.connect(check_name_to_send_one_unit_to_melee)
+	Signals.sg_ia_state_melee_attack.connect(check_name_to_send_units_to_melee)
 	
 	Signals.sg_ia_attack_from.connect(debug_check_name_to_send_attack)
 	Signals.sg_battle_ia_start_update.connect(debug_start_update)
@@ -142,6 +143,21 @@ func check_name_to_send_one_unit_to_melee(arg_name : String) -> void:
 			group_units_attacking.push_back(unit)
 			Signals.sg_ia_request_order_to_attack_one.emit(unit, enemy_group_focused)
 			return
+
+func check_name_to_send_units_to_melee(arg_name : String, amount : int) -> void:
+	if group_name != arg_name:
+		return
+	
+	# Pick random units to send
+	var group_random_order : Array[Unit] = group.duplicate() as Array[Unit]
+	group_random_order.shuffle()
+	var amount_to_send : int = floori(min(amount, group_random_order.size()))
+	group_random_order = group_random_order.slice(0, amount_to_send) as Array[Unit]
+	for unit in group_random_order as Array[Unit]:
+		if not group_units_attacking.has(unit):
+			group_units_attacking.push_back(unit)
+	Signals.sg_ia_request_orders_to_attack.emit(group_random_order, enemy_group_focused)
+	
 
 func debug_check_name_to_send_attack(arg_name : String) -> void:
 	if group_name == arg_name:

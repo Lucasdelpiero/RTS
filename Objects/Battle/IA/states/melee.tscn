@@ -9,4 +9,8 @@ script = ExtResource("1_uw53n")
 unique_name_in_owner = true
 wait_time = 3.0
 
+[node name="TimerUpdate" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="TimerOneUnit" to="." method="_on_timer_one_unit_timeout"]
+[connection signal="timeout" from="TimerUpdate" to="." method="_on_timer_update_timeout"]

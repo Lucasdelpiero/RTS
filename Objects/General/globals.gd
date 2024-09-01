@@ -116,4 +116,3 @@ func army_selected_change(value : ArmySelected) -> void:
 		for army in armies_selected:
 			if army.army == value.army:
 				armies_selected.erase(army)
-

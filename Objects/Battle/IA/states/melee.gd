@@ -3,7 +3,8 @@ extends StateIA
 # When this state is active, the IA will send units to attack on melee
 # On easier difficulty it will send units to attack one at a time
 
-@onready var timer := %TimerOneUnit as Timer
+@onready var timer_one_unit := %TimerOneUnit as Timer
+@onready var timer_update := %TimerUpdate as Timer
 # if its false will send 1 unit at a time
 # if its true will send the max amount of units to attack
 var sending_multiple_units : bool = false
@@ -98,19 +99,28 @@ func _update_score(data : DataForStates) -> void:
 func _use_state() -> void:
 	if state_active == false:
 		state_active = true
-		if timer.is_stopped():
-			timer.start(5.0)
+		if timer_update.is_stopped():
+			timer_update.start(5.0)
 
 func send () -> void:
 	
 	pass
 
-func _on_timer_one_unit_timeout() -> void:
-	if sending_multiple_units:
-		# NOTE needs to be changed so that it sends a limited amount at a time
-		Signals.sg_ia_attack_from.emit("infantry")
+func send_units_to_melee(group_name : String, amount : int) -> void:
+	Signals.sg_ia_state_melee_attack.emit(group_name, amount)
+	pass
+
+func _on_timer_update_timeout() -> void:
+	sending_multiple_units = true
+	max_infantry_send_as_one = 4
+	if sending_multiple_units and infantry_send_as_one < max_infantry_send_as_one:
+		send_units_to_melee("infantry", max_infantry_send_as_one)
+		infantry_send_as_one = max_infantry_send_as_one
 	else:
-		# Limits the amount of units send in easier difficulties
-		if infantry_send_as_one < max_infantry_send_as_one: 
-			infantry_send_as_one += 1
-			Signals.sg_ia_state_melee_attack_one.emit("infantry")
+		if timer_one_unit.is_stopped():
+			timer_one_unit.start(5)
+
+func _on_timer_one_unit_timeout() -> void:
+	if infantry_send_as_one < max_infantry_send_as_one: 
+		infantry_send_as_one += 1
+		Signals.sg_ia_state_melee_attack_one.emit("infantry")

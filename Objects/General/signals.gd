@@ -84,6 +84,10 @@ signal sg_ia_state_skirmishing(is_skirmishing : bool)
 signal sg_ia_state_melee_attack_all(group_name : String)
 
 # Melee state -> task_group -> enemy_battle_ia
+# Send an specific amount of units from a group to attack the closest units it has
+signal sg_ia_state_melee_attack(group_name : String, amount : int)
+
+# Melee state -> task_group -> enemy_battle_ia
 # The state tells the task group to querest order
 # to send one unit to attack the player at a time
 # The enemy_battle_ia will send the attack if it can
