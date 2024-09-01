@@ -175,4 +175,3 @@ func debug_start_update() -> void:
 	
 func debug_stop_update() -> void:
 	moveTimer.stop()
-

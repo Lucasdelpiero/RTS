@@ -327,4 +327,3 @@ func load_data(data : Dictionary) -> void:
 		unit_data.scene = load(unit_data.scene_path) 
 		units.push_back(unit_data)
 	army_data.army_units = units
-

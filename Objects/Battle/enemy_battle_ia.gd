@@ -479,6 +479,3 @@ func think_next_action() -> void:
 	data.set_data(self)
 	state_manager.update_data_to_process(data)
 	pass
-
-
-

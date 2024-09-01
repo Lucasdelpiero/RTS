@@ -332,4 +332,3 @@ func create_debug_lines_connections() -> void:
 		new_line.default_color = line_color
 		pass
 	pass
-

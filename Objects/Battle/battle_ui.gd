@@ -27,4 +27,3 @@ func order_card_control_to_create_group(army : Array[Unit]) -> void:
 
 func _on_control_resized() -> void:
 	Globals.window_resized()
-

@@ -44,4 +44,3 @@ func print_score() -> void:
 	for state in states:
 		print("Score of %s: %s" % [state.name, state.score])
 	print("Current state: [%s]" % current_state.name)
-

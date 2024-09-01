@@ -253,6 +253,3 @@ func get_units_ordered_by_distance(aUnits : Array[Unit], unit_position : Vector2
 	var units_ordered_typed : Array[Unit] = []
 	units_ordered_typed.assign(units_ordered)
 	return units_ordered_typed
-
-
-

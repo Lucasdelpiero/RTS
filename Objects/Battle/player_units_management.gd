@@ -193,5 +193,3 @@ func update_draw_type() -> void:
 		else:
 			sprites_types[i][1].set_texture(load(default))
 		
-
-

@@ -56,5 +56,3 @@ func set_data(data : IA) -> void:
 	sideLeft = data.sideLeft
 	sideRight = data.sideRight
 	pass
-
-

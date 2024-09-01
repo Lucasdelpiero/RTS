@@ -80,4 +80,3 @@ func _use_state() -> void:
 func _exit_state() -> void:
 	state_active = true
 	Signals.sg_ia_state_skirmishing.emit(false)
-

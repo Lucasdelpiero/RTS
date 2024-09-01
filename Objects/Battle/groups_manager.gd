@@ -211,7 +211,3 @@ func tell_move_units_to_markers() -> void:
 	for child in get_children():
 		child.move_units_to_markers()
 	pass
-
-
-
-

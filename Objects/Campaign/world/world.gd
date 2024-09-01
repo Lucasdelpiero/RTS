@@ -264,4 +264,3 @@ func annex_provinces(nation_tag_annexing: String, provinces_annexed: Array[Provi
 		province.ownership = nation_tag_annexing
 		province.nation_owner = target_nation
 	pass
-
