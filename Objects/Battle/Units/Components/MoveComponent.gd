@@ -172,17 +172,17 @@ func face_unit(value : Unit) -> void:
 
 func update_facing_angle() -> void:
 #	push_warning(path.size())
-	var rot_speed : float = 0.05
+	var rot_speed : float = 0.05 * Engine.time_scale
 	# Once the destination is reached it will face the desired angle
 	if path.size() < 1:
-		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed)
+		unit.rotation = lerp_angle(unit.rotation, face_direction, rot_speed )
 		return
 #	push_warning(path)
 #	push_warning("what")
 	# While moving it will face to the movement direction
 	var angle : float = unit.global_position.angle_to_point(next_point) + PI / 2
 	angle = unit.global_position.angle_to_point(unit.global_position + unit.velocity) + PI / 2
-	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed)
+	unit.rotation = lerp_angle(unit.rotation,angle, rot_speed )
 
 # The anchor variable is used to set when the unit can be pushed or not by another unit when they intersect their collision areas
 func update_is_anchored(value : Variant = null) -> void:

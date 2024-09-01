@@ -27,12 +27,11 @@ func set_speed(speed: float, pause: bool = false) -> void:
 
 # pauses and unpauses storing the latest speed to use on unpause
 func change_pause_state() -> void:
-	var is_paused : bool = get_tree().paused
-	if not is_paused:
+	if Engine.time_scale != PAUSED_SPEED:
 		last_speed_used = Engine.time_scale
-		set_speed(PAUSED_SPEED, true)
+		set_speed(PAUSED_SPEED)
 		return
-	
+
 	set_speed(last_speed_used)
 
 # TODO change how the game handle the pausing

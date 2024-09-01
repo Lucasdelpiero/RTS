@@ -208,7 +208,8 @@ func update_positions() -> void:
 	for btn in get_tree().get_nodes_in_group("group_btn"):
 		btn.queue_free()
 	
-	await get_tree().create_timer(0.01).timeout # Used so the btn is put in position after the card has changed the position in the container
+	# NOTE
+	#await get_tree().create_timer(0.01).timeout # Used so the btn is put in position after the card has changed the position in the container
 	if button_spawn_place == null:
 		push_error("There is not a designed parent for the group buttons")
 		return
@@ -282,6 +283,3 @@ func card_selected(unit : Unit, value : bool) -> void: # Individual card clicked
 
 func card_hovered(unit : Unit, value : bool) -> void:
 	sg_card_hovered_to_battlemap.emit(unit, value)
-
-
-

@@ -253,6 +253,7 @@ text = "<null>"
 
 [node name="UnitDetector" parent="." instance=ExtResource("14_3mp3t")]
 unique_name_in_owner = true
+process_mode = 3
 collision_mask = 0
 metadata/_edit_lock_ = true
 

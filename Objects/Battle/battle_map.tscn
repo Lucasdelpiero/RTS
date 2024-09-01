@@ -168,6 +168,7 @@ offset_right = 1459.0
 offset_bottom = 105.0
 
 [node name="BattleUI" parent="." instance=ExtResource("2_41tas")]
+process_mode = 3
 
 [node name="OverlayUnit" parent="BattleUI" instance=ExtResource("4_vae5l")]
 visible = false

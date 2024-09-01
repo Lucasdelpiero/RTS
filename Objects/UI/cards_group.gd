@@ -2,6 +2,7 @@ class_name CardsGroup
 extends Control
 
 @export var cards_container : Control = self
+var button_group : ButtonGroupCardUnits = null
 
 func add_card(card : UnitCard) -> void:
 	if cards_container == null:
@@ -17,3 +18,8 @@ func delete_group() -> void:
 	for child in cards_container.get_children():
 		cards_container.remove_child(child)
 	queue_free()
+
+
+func _on_resized() -> void:
+	Signals.sg_battlemap_group_card_changed_size.emit()
+	

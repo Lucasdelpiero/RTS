@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cowxiuqx35gta"]
+[gd_scene load_steps=8 format=3 uid="uid://cowxiuqx35gta"]
 
 [ext_resource type="Script" path="res://Objects/Battle/battle_ui.gd" id="1_1i1o2"]
 [ext_resource type="Script" path="res://Objects/Battle/card_control.gd" id="2_7itvx"]
 [ext_resource type="Theme" uid="uid://dtrviaj4i4u60" path="res://Objects/Themes/ui_light.tres" id="2_7jvig"]
 [ext_resource type="PackedScene" uid="uid://bss5euchhbvrw" path="res://Objects/Battle/unit_card.tscn" id="4_pir7n"]
 [ext_resource type="PackedScene" uid="uid://br1hpckyt33d4" path="res://Objects/UI/speed_button_container.tscn" id="4_ukohq"]
+[ext_resource type="PackedScene" uid="uid://bdt4u750imp77" path="res://Objects/UI/cards_grouped.tscn" id="5_ftwml"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdnwy"]
 resource_local_to_scene = true
@@ -57,6 +58,9 @@ row_size = 80
 [node name="UnitCard" parent="Control/PanelContainer/CardControl" instance=ExtResource("4_pir7n")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdnwy")
+
+[node name="MarginContainer" parent="Control/PanelContainer/CardControl" instance=ExtResource("5_ftwml")]
+layout_mode = 2
 
 [node name="SpeedButtonContainer" parent="Control" instance=ExtResource("4_ukohq")]
 layout_mode = 0

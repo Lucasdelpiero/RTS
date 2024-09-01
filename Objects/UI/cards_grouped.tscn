@@ -23,3 +23,5 @@ theme_override_constants/margin_right = 2
 
 [node name="VFlowContainer" type="VFlowContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+
+[connection signal="resized" from="." to="." method="_on_resized"]

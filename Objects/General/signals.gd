@@ -50,12 +50,16 @@ signal sg_last_province_hovered_owner(nation_tag: String)
 signal sg_battlemap_set_units_selected(unit : Unit, value : bool) # DO NOTHING YET
 signal sg_battlemap_set_units_hovered(unit : Unit, value : bool) # DO NOTHING YET
 
+signal sg_battlemap_group_card_changed_size()
+
 # Used in the battlemap when pressing a number to select a group
 func battlemap_set_units_selected(unit : Unit, value : bool) -> void:
 	sg_battlemap_set_units_selected.emit(unit, value)
 
 func battlemap_set_units_hovered(unit : Unit, value : bool) -> void:
 	sg_battlemap_set_units_hovered.emit(unit, value)
+
+
 
 #region IA
 
