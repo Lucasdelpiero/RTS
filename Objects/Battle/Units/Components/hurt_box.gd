@@ -38,4 +38,3 @@ func p() -> void:
 		_oc = occupant.name
 #	if owner.name == "Hastati":
 #		push_warning("%s in %s now is %s" % [name, owner.name, "Occupied by " + oc if occupied else "Free"])
-

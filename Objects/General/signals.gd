@@ -134,4 +134,5 @@ signal sg_battle_ia_start_update
 # TaskGroup stops updating their movement to the markers
 signal sg_battle_ia_stop_update
 
+
 #endregion

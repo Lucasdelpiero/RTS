@@ -40,6 +40,7 @@ var troops_number : int = 0 :
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
+@export var can_move_in_melee : bool = false
 var enemies_in_range : Array[Unit] = []
 
 enum State  {
@@ -208,6 +209,10 @@ func _on_unit_detector_mouse_exited() -> void:
 func move_to(aDestination : Vector2, face_direction : float) -> void:
 	if moveComponent == null:
 		return
+	#  Dont move if is attacking
+	if state == State.MELEE and not can_move_in_melee:
+		return
+		
 	state = State.MOVING
 	moveComponent.move_to(aDestination, face_direction)
 	moveComponent.chasing = false
@@ -266,10 +271,15 @@ func melee(data : HurtboxData) -> void:
 		push_warning("melee HERE IS THE PROBLEM")
 		return
 	weapons.attack(target_unit)
+	target_unit.attacked_in_melee()
 #	var attack = weapons.attack(target_unit)
 #	push_warning(data)
 #	push_warning("got into melee")
 #	pass
+
+func attacked_in_melee() -> void:
+	if state != State.MELEE:
+		state = State.MELEE
 
 func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range

@@ -235,47 +235,57 @@ ownership = "ROME"
 
 [node name="Hastati" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(342, 1202)
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati2" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(618, 1202)
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati3" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(894, 1202)
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati4" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1170, 1202)
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Hastati5" parent="PlayerArmy" instance=ExtResource("8_5lvcp")]
 position = Vector2(1446, 1202)
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1722, 1202)
 weaponsData = SubResource("Resource_r21t8")
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman2" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1998, 1202)
 weaponsData = SubResource("Resource_vue58")
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Bowman3" parent="PlayerArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(2274, 1202)
 weaponsData = SubResource("Resource_7qbjt")
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Cavalry" parent="PlayerArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(2550, 1202)
 weaponsData = SubResource("Resource_5g4gh")
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="Cavalry2" parent="PlayerArmy" instance=ExtResource("19_k68q6")]
 position = Vector2(2826, 1202)
 weaponsData = SubResource("Resource_kfde0")
+can_move_in_melee = null
 army_color = Color(0.686275, 0.00784314, 0.0588235, 1)
 
 [node name="EnemyArmy" type="Node" parent="." node_paths=PackedStringArray("spawnMarker")]
@@ -289,6 +299,7 @@ position = Vector2(3398, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria2" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
@@ -296,6 +307,7 @@ position = Vector2(3122, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria3" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
@@ -303,6 +315,7 @@ position = Vector2(2846, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria4" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
@@ -310,6 +323,7 @@ position = Vector2(2570, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Etruria5" parent="EnemyArmy" instance=ExtResource("8_5lvcp")]
@@ -317,24 +331,28 @@ position = Vector2(2294, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_8j0nw")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(2018, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman2" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1742, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Bowman3" parent="EnemyArmy" instance=ExtResource("11_kyhj3")]
 position = Vector2(1466, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -342,6 +360,7 @@ position = Vector2(1190, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry2" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -349,6 +368,7 @@ position = Vector2(914, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry3" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -356,6 +376,7 @@ position = Vector2(638, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry4" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -363,6 +384,7 @@ position = Vector2(362, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry5" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -370,6 +392,7 @@ position = Vector2(86, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry6" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -377,6 +400,7 @@ position = Vector2(-190, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="Cavalry7" parent="EnemyArmy" instance=ExtResource("19_k68q6")]
@@ -384,6 +408,7 @@ position = Vector2(-466, -1695)
 rotation = 3.14159
 ownership = "ETRURIA"
 weaponsData = SubResource("Resource_ollnb")
+can_move_in_melee = null
 army_color = Color(0.341176, 0.447059, 0.45098, 1)
 
 [node name="SpawnEnemy" type="Marker2D" parent="."]

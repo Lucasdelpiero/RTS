@@ -77,8 +77,9 @@ func move_units_to_markers() -> void:
 	# Only move units that are not attacking
 	var units_to_move_to_marker : Array[Unit] = []
 	var units_to_move_to_marker_temp : Array = []
+	var in_melee : Array[Unit] = get_units_in_melee(group)
 	for unit in group:
-		if not group_units_attacking.has(unit):
+		if not group_units_attacking.has(unit) and not in_melee.has(unit):
 			units_to_move_to_marker_temp.push_back(unit)
 	units_to_move_to_marker.assign(units_to_move_to_marker_temp)
 	
@@ -185,6 +186,20 @@ func _on_move_timer_timeout() -> void:
 	move_units_to_markers()
 	moveTimer.start(5)
 	pass
+	
+
+# Intended to merge the groups of units sent to attack and add the ones that got
+# into melee 
+# easier than having signals 
+func merge_groups(aGroup : Array[Unit], aGroup2 : Array[Unit]) -> Array[Unit]:
+	var new_array : Array[Unit] = aGroup.duplicate()
+	for unit in aGroup2:
+		if not new_array.has(unit):
+			new_array.push_back(unit)
+	return new_array
+	
+
+	
 
 func debug_start_update() -> void:
 	moveTimer.start(0)
