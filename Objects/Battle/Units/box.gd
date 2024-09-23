@@ -317,6 +317,9 @@ func send_unit_card_data() -> void:
 func get_type() -> int:
 	return type
 
+func get_hurtbox_component() -> HurtBoxComponent:
+	return hurtBoxComponent
+
 func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
 	var unit : Unit = area.owner as Unit
 #	push_warning("enemy in range")

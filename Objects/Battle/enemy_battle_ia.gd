@@ -468,6 +468,7 @@ func _on_timer_advance_timeout() -> void:
 
 
 func _on_timer_think_next_action_timeout() -> void:
+	return
 	think_next_action()
 
 # Timer triggers the IA to think a next action based on circumstances like:
