@@ -6,12 +6,14 @@ class_name HurtBox
 var occupied : bool = false
 var occupant : Unit = null
 
-func get_hurtbox_group() -> Array:
+func get_hurtbox_group() -> Array[HurtBox]:
 	var parent : Marker2D = get_parent() as Marker2D
 	if parent == null:
 		push_error("Parent of hurtbox doesnt exists")
 		return []
-	return parent.get_children()
+	var temp : Array[HurtBox] = []
+	temp.assign(parent.get_children())
+	return temp
 
 
 func _on_check_space_area_entered(area : Area2D) -> void:

@@ -209,8 +209,11 @@ func _on_unit_detector_mouse_exited() -> void:
 func move_to(aDestination : Vector2, face_direction : float) -> void:
 	if moveComponent == null:
 		return
-	#  Dont move if is attacking
+	#  Dont move if is attacking 
 	if state == State.MELEE and not can_move_in_melee:
+		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
+		destination = global_position
+		moveComponent.destination = global_position
 		return
 		
 	state = State.MOVING
@@ -265,6 +268,7 @@ func melee(data : HurtboxData) -> void:
 	var new_data_typed : Array[Area2D] = []
 	new_data_typed.assign(new_data)
 	moveComponent.move_to_face_melee(new_data_typed)
+	moveComponent.destination = data.meleePoint.global_position
 	state = State.MELEE
 	target_unit = data.target
 	if target_unit == null:

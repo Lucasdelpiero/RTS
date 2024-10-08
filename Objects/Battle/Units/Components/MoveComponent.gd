@@ -39,8 +39,10 @@ func _physics_process(delta : float) -> void:
 	
 	draw_path()
 	
-	if unit.state == unit.State.MELEE:
-		unit.global_position = lerp(unit.global_position, destination, 0.2)
+	# BUG when it collide with an enemy it teleports to the place were the unit is moving
+	if unit.state == unit.State.MELEE :
+		if destination.distance_to(unit.global_position) < 100:
+			unit.global_position = lerp(unit.global_position, destination, 0.2)
 	
 	if unit.global_position.distance_to(next_point) <= speed * delta and path.size() > 0 :
 		if not unit.unitDetector.is_colliding():
