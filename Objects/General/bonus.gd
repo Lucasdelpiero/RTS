@@ -12,3 +12,7 @@ const DEFAULT = "default"
 const BONUS_INCOME = "bonus_income"
 const BONUS_MANPOWER = "bonus_manpower"
 
+func copy_bonus(bonus : Bonus) -> Bonus:
+	type_produced = bonus.type_produced
+	multiplier_bonus = bonus.multiplier_bonus
+	return self

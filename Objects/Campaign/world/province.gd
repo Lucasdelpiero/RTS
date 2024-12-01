@@ -27,6 +27,7 @@ var nation_owner : Nation  = null :
 		
 		nation_owner = new_owner
 		ownership = new_owner.NATION_TAG
+		nation_bonuses = get_nation_bonuses()
 		set_color_inside(new_owner.nation_color)
 		set_color_border(new_owner.nation_outline_color)
 		outside_color = new_owner.nation_outline_color
@@ -46,8 +47,12 @@ var nation_owner : Nation  = null :
 @export_enum("hellenic", "celtic", "punic", "judaism", "assyrian_polytheism", "zoroastrianism") var religion : String = "hellenic"
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
-var nation_bonuses : Array[Bonus] = []
+var nation_bonuses : Array[Bonus] = [] :
+	set(value):
+		nation_bonuses = value
 @export var province_bonuses : Array[Bonus] = []
+var building_bonuses : Array[Bonus] = []
+var total_bonuses: Array[Bonus] = []
 #var buildings_manager = null
 
 @export_group("Connections")
@@ -312,10 +317,46 @@ func get_province_bonuses(aBuildings_manager : BuildingsManager, nation : Nation
 	# TEST
 	if name != "Rome":
 		return []
-	
+
+	merge_bonus(province_bonuses, nation_bonuses)
 	var local_province_bonuses : Array[Bonus] = aBuildings_manager.get_buildings_bonuses()
 	
 	return local_province_bonuses
+
+func get_nation_bonuses() -> Array[Bonus]:
+	if nation_owner == null:
+		push_error("Province has no owner")
+		return []
+	
+	return nation_owner.nation_banuses
+
+func merge_bonus(arr1 : Array[Bonus], arr2 : Array[Bonus]) -> Array[Bonus] :
+	var temp : Array[Bonus] = duplicate_bonus_array(arr1)
+	var pos : int
+	for bonus in arr2:
+		pos = find_bonus_type(temp, bonus.type_produced)
+		if pos == -1:
+			temp.push_back(bonus)
+		else:
+			temp[pos].multiplier_bonus += bonus.multiplier_bonus
+	return temp
+
+func find_bonus_type(arr : Array[Bonus], type : String) -> int:
+	var i : int = 0
+	while i < arr.size() and arr[i].type_produced != type:
+		i += 1 
+	if arr[i].type_produced == type:
+		return i
+	else:
+		return -1
+
+func duplicate_bonus_array(arr : Array[Bonus]) -> Array[Bonus]:
+	var temp_arr : Array[Bonus]
+	for bonus in arr:
+		var temp_bonus : Bonus = Bonus.new()
+		temp_bonus.copy_bonus(bonus)
+		temp_arr.push_back(temp_bonus)
+	return temp_arr
 
 func create_debug_lines_connections() -> void:
 	var line_color : Color = Color(randf(), randf(), randf())

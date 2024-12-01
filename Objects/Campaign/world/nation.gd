@@ -169,5 +169,3 @@ func load_data(data : Dictionary) -> void:
 			continue
 		add_child(scene)
 		scene.load_data(army)
-
-
