@@ -1,4 +1,4 @@
-[gd_scene load_steps=330 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=332 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -54,7 +54,12 @@
 [sub_resource type="Resource" id="Resource_q3t8e"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_income"
-multiplier_bonus = 0.1
+multiplier_bonus = 0.5
+
+[sub_resource type="Resource" id="Resource_uw4v8"]
+script = ExtResource("7_gxlj2")
+type_produced = "bonus_manpower"
+multiplier_bonus = 0.4
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
@@ -282,6 +287,11 @@ base_manpower_cost = 200
 [sub_resource type="Resource" id="Resource_mjsxe"]
 script = ExtResource("9_5dn3s")
 army_units = Array[ExtResource("16_ir871")]([SubResource("Resource_03ufa"), SubResource("Resource_4mpfa"), SubResource("Resource_b7k3v"), SubResource("Resource_xngil")])
+
+[sub_resource type="Resource" id="Resource_ywle3"]
+script = ExtResource("7_gxlj2")
+type_produced = "bonus_income"
+multiplier_bonus = 0.1
 
 [sub_resource type="Resource" id="Resource_0hvuq"]
 resource_local_to_scene = true
@@ -1828,7 +1838,7 @@ nation_outline_color = Color(0.266667, 0.054902, 0.0705882, 1)
 nation_color = Color(0.521569, 0.117647, 0.117647, 1)
 gold = 371
 is_player = true
-nation_banuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_q3t8e")])
+nation_banuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_q3t8e"), SubResource("Resource_uw4v8")])
 capital = NodePath("../../Regions/Italy/Rome")
 
 [node name="Legio I" parent="NationsGroup/Rome" instance=ExtResource("6_rnqqn")]
@@ -2004,6 +2014,7 @@ NATION_TAG = "ARMENIA"
 culture = 13
 nation_outline_color = Color(0.203922, 0, 0.141176, 1)
 nation_color = Color(0.298039, 0, 0.211765, 1)
+nation_banuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_ywle3")])
 capital = NodePath("../../Regions/Armenia region/Artaxata")
 
 [node name="Capadocia" parent="NationsGroup" node_paths=PackedStringArray("capital") instance=ExtResource("5_j8h1j")]

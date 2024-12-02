@@ -47,6 +47,9 @@ var nation_owner : Nation  = null :
 @export_enum("hellenic", "celtic", "punic", "judaism", "assyrian_polytheism", "zoroastrianism") var religion : String = "hellenic"
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
+# NOTE
+# Bonuses can be optimized by only recalculating their amount when they changed
+# As this can create bugs as they could dont sync, they are updated each time they are used 
 var nation_bonuses : Array[Bonus] = [] :
 	set(value):
 		nation_bonuses = value
@@ -293,13 +296,18 @@ func generate_resources() -> void:
 ## Gets the income of the province after the modifiers are aplied
 func get_province_income() -> Production:
 	var total_production : Production = buildings_manager.get_buildings_flat_production()
-	var bonuses : Array[Bonus] = get_province_bonuses(buildings_manager, nation_owner)
+	#var bonuses : Array[Bonus] = get_buildings_bonuses(buildings_manager, nation_owner)
 	
 	# Add base provincial production to the calculus
 	total_production.gold += floori(base_income)
 	total_production.manpower += floori(population / 100.0)
 	
-	for bonus in bonuses:
+	# NOTE
+	# If it gets slow it can be made so the bonuses arrays are updated in
+	total_bonuses = get_total_bonuses()
+	
+	#for bonus in bonuses:
+	for bonus in total_bonuses:
 		match bonus.type_produced:
 			"bonus_income": 
 				total_production.gold = ceili(total_production.gold * (1.0 + bonus.multiplier_bonus))
@@ -309,16 +317,11 @@ func get_province_income() -> Production:
 	return total_production
 
 # Gets the bonuses from the buildings and the nation into a single array
-func get_province_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
+func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
 	if nation == null:
 		push_error("There is not a nation owner of this province")
 		return []
 	
-	# TEST
-	if name != "Rome":
-		return []
-
-	merge_bonus(province_bonuses, nation_bonuses)
 	var local_province_bonuses : Array[Bonus] = aBuildings_manager.get_buildings_bonuses()
 	
 	return local_province_bonuses
@@ -330,10 +333,21 @@ func get_nation_bonuses() -> Array[Bonus]:
 	
 	return nation_owner.nation_banuses
 
+func get_total_bonuses() -> Array[Bonus]:
+	var temp_arr : Array[Bonus] = []
+	temp_arr = merge_bonus(province_bonuses, nation_bonuses)
+	building_bonuses = get_buildings_bonuses(buildings_manager, nation_owner)
+	temp_arr = merge_bonus(temp_arr, building_bonuses)
+	return temp_arr
+
 func merge_bonus(arr1 : Array[Bonus], arr2 : Array[Bonus]) -> Array[Bonus] :
 	var temp : Array[Bonus] = duplicate_bonus_array(arr1)
 	var pos : int
 	for bonus in arr2:
+		if bonus == null:
+			push_error("%s:%s has a null bonus" % [nation_owner.name, name])
+			continue
+			
 		pos = find_bonus_type(temp, bonus.type_produced)
 		if pos == -1:
 			temp.push_back(bonus)
@@ -345,7 +359,7 @@ func find_bonus_type(arr : Array[Bonus], type : String) -> int:
 	var i : int = 0
 	while i < arr.size() and arr[i].type_produced != type:
 		i += 1 
-	if arr[i].type_produced == type:
+	if i < arr.size() and arr[i].type_produced == type:
 		return i
 	else:
 		return -1
@@ -353,6 +367,8 @@ func find_bonus_type(arr : Array[Bonus], type : String) -> int:
 func duplicate_bonus_array(arr : Array[Bonus]) -> Array[Bonus]:
 	var temp_arr : Array[Bonus]
 	for bonus in arr:
+		if bonus == null:
+			push_error("Bonus null in array")
 		var temp_bonus : Bonus = Bonus.new()
 		temp_bonus.copy_bonus(bonus)
 		temp_arr.push_back(temp_bonus)
