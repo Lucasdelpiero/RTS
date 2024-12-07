@@ -54,12 +54,12 @@
 [sub_resource type="Resource" id="Resource_q3t8e"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_income"
-multiplier_bonus = 0.5
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_uw4v8"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_manpower"
-multiplier_bonus = 0.4
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_vvqwv"]
 script = ExtResource("9_5dn3s")
@@ -291,7 +291,7 @@ army_units = Array[ExtResource("16_ir871")]([SubResource("Resource_03ufa"), SubR
 [sub_resource type="Resource" id="Resource_ywle3"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_income"
-multiplier_bonus = 0.1
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_0hvuq"]
 resource_local_to_scene = true
@@ -1446,12 +1446,12 @@ building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 [sub_resource type="Resource" id="Resource_kfvc7"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_income"
-multiplier_bonus = 0.1
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_564f2"]
 script = ExtResource("7_gxlj2")
 type_produced = "bonus_manpower"
-multiplier_bonus = 0.2
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_qswa1"]
 resource_local_to_scene = true

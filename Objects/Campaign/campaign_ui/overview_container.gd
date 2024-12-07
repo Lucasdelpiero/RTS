@@ -94,7 +94,8 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 	var bonuses_current : Array[Bonus] = building_current.bonuses
 	temp_bonus_text = ""
 	for bonus in bonuses_current:
-		temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus * 100) + "%"]
+		#temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus * 100) + "%"]
+		temp_bonus_text += get_text_bonus(bonus)
 	label_bonus.text = temp_bonus_text
 	
 	if data.is_max_level():
@@ -108,9 +109,22 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 	var bonuses_temp : Array[Bonus] = building_next_level.bonuses
 	temp_bonus_text = ""
 	for bonus in bonuses_temp:
-		temp_bonus_text += " -> %s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus * 100) + "%"]
+		temp_bonus_text += " -> " + get_text_bonus(bonus)
+		
 	label_bonus.text += temp_bonus_text
 
+func get_text_bonus(bonus : Bonus) -> String:
+	var temp : String = ""
+	if bonus.type_produced == bonus.BONUS_INCOME or bonus.type_produced == bonus.BONUS_MANPOWER :
+		temp += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus) + "%"]
+	elif bonus.type_produced == bonus.BONUS_LOYALTY:
+		temp += "Loyalty"
+		if bonus.multiplier_bonus >= 0:
+			temp += " +"
+		else:
+			temp += " -"
+		temp += str(bonus.multiplier_bonus)
+	return temp
 
 func hide_building_overview() -> void:
 	hide()

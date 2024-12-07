@@ -57,6 +57,7 @@ var nation_bonuses : Array[Bonus] = [] :
 var building_bonuses : Array[Bonus] = []
 var total_bonuses: Array[Bonus] = []
 #var buildings_manager = null
+var loyalty : float = 50
 
 @export_group("Connections")
 var connections : Array
@@ -310,9 +311,9 @@ func get_province_income() -> Production:
 	for bonus in total_bonuses:
 		match bonus.type_produced:
 			"bonus_income": 
-				total_production.gold = ceili(total_production.gold * (1.0 + bonus.multiplier_bonus))
+				total_production.gold = total_production.gold * ceili(1.0 + (bonus.multiplier_bonus / 100.0) )
 			"bonus_manpower":
-				total_production.manpower = ceili(total_production.manpower * (1 + bonus.multiplier_bonus))
+				total_production.manpower = total_production.manpower * ceili(1.0 + (bonus.multiplier_bonus / 100.0) ) 
 	
 	return total_production
 

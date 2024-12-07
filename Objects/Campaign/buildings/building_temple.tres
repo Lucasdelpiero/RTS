@@ -1,40 +1,35 @@
-[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://cflnuxx2fo6oi"]
+[gd_resource type="Resource" script_class="Building" load_steps=9 format=3 uid="uid://cflnuxx2fo6oi"]
 
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_00ddq"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="1_m8tff"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_4becn"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="3_ls77v"]
 
-[sub_resource type="Resource" id="Resource_b0vxh"]
-script = ExtResource("1_m8tff")
-type_produced = "manpower"
-amount = 5000
+[sub_resource type="Resource" id="Resource_xsipi"]
+script = ExtResource("1_00ddq")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 5
 
 [sub_resource type="Resource" id="Resource_acs61"]
 script = ExtResource("3_4becn")
 building_name = ""
 cost = 1000
 time_to_build = 10
-flat_production = Array[ExtResource("1_m8tff")]([SubResource("Resource_b0vxh")])
-bonuses = Array[ExtResource("1_00ddq")]([])
+flat_production = Array[ExtResource("1_m8tff")]([])
+bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_xsipi")])
 
-[sub_resource type="Resource" id="Resource_lo0br"]
+[sub_resource type="Resource" id="Resource_jdsni"]
 script = ExtResource("1_00ddq")
-type_produced = "bonus_manpower"
-multiplier_bonus = 0.2
-
-[sub_resource type="Resource" id="Resource_3xnen"]
-script = ExtResource("1_m8tff")
-type_produced = "manpower"
-amount = 99999
+type_produced = "bonus_loyalty"
+multiplier_bonus = 25
 
 [sub_resource type="Resource" id="Resource_vuvud"]
 script = ExtResource("3_4becn")
 building_name = ""
 cost = 100
 time_to_build = 5
-flat_production = Array[ExtResource("1_m8tff")]([SubResource("Resource_3xnen")])
-bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_lo0br")])
+flat_production = Array[ExtResource("1_m8tff")]([])
+bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_jdsni")])
 
 [resource]
 script = ExtResource("3_ls77v")
