@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://cxcx40xq20vxt"]
+
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="1_vp7ub"]
+[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="2_4byyb"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="2_84ods"]
+[ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="3_kvc2s"]
+
+[sub_resource type="Resource" id="Resource_41l1i"]
+script = ExtResource("2_4byyb")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 5
+
+[sub_resource type="Resource" id="Resource_nt0fc"]
+script = ExtResource("1_vp7ub")
+building_name = ""
+cost = 500
+time_to_build = 5
+flat_production = Array[ExtResource("3_kvc2s")]([])
+bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_41l1i")])
+
+[sub_resource type="Resource" id="Resource_rsp2h"]
+script = ExtResource("2_4byyb")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 10
+
+[sub_resource type="Resource" id="Resource_o6poi"]
+script = ExtResource("1_vp7ub")
+building_name = ""
+cost = 1000
+time_to_build = 5
+flat_production = Array[ExtResource("3_kvc2s")]([])
+bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_rsp2h")])
+
+[sub_resource type="Resource" id="Resource_4l4y6"]
+script = ExtResource("2_4byyb")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 15
+
+[sub_resource type="Resource" id="Resource_rh1tm"]
+script = ExtResource("1_vp7ub")
+building_name = ""
+cost = 2500
+time_to_build = 5
+flat_production = Array[ExtResource("3_kvc2s")]([])
+bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_4l4y6")])
+
+[sub_resource type="Resource" id="Resource_7w0ta"]
+script = ExtResource("2_4byyb")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 25
+
+[sub_resource type="Resource" id="Resource_gi3af"]
+script = ExtResource("1_vp7ub")
+building_name = ""
+cost = 10000
+time_to_build = 5
+flat_production = Array[ExtResource("3_kvc2s")]([])
+bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_7w0ta")])
+
+[resource]
+script = ExtResource("2_84ods")
+building_type = "BUILDING_THEATER"
+building_name = "Theater"
+is_built = false
+current_level = 0
+levels = Array[ExtResource("1_vp7ub")]([SubResource("Resource_nt0fc"), SubResource("Resource_o6poi"), SubResource("Resource_rh1tm"), SubResource("Resource_gi3af")])
+description = ""

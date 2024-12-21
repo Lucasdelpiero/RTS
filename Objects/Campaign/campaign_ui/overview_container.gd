@@ -56,7 +56,7 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 	
 	# I have to add the \n later if i want to add multiple resources produced
 	
-	Globals.debug_update_label("buikt", "building: %s / built: %s" %[
+	Globals.debug_update_label("built", "building: %s / built: %s" %[
 		data.building_type,
 		data.is_built
 		])

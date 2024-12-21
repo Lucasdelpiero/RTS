@@ -103,6 +103,8 @@ func _ready() -> void:
 	
 	campaign_UI = Globals.campaign_UI
 	
+	
+	#TEST create building manager
 	if buildings_manager == null :
 		#buildings_manager = BuildingsManager.new()
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")

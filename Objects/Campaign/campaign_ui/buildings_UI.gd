@@ -100,6 +100,7 @@ func create_building_buttons(aBuildings : Array[Building]) -> void:
 		button.building_reference = building
 		button.province_data = province_data
 		button.icon = get_icon_for_building(building.building_type)
+		#TEST
 		button.sg_send_data_to_overview.connect(overview_container.show_building_overview)
 		button.sg_send_building_reference_to_overview.connect(overview_container.show_building_overview_2)
 		

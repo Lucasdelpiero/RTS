@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingsManager" load_steps=7 format=3 uid="uid://bxvwm4c6x2uue"]
+[gd_resource type="Resource" script_class="BuildingsManager" load_steps=8 format=3 uid="uid://bxvwm4c6x2uue"]
 
 [ext_resource type="Resource" uid="uid://cfr1ud767efnn" path="res://Objects/Campaign/buildings/building_farm.tres" id="1_f1j76"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="1_yr4fn"]
@@ -6,8 +6,9 @@
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="3_1c2i6"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_manager.gd" id="4_q6a85"]
 [ext_resource type="Resource" uid="uid://l16ouy3lqh8k" path="res://Objects/Campaign/buildings/building_market.tres" id="5_2l27x"]
+[ext_resource type="Resource" uid="uid://cxcx40xq20vxt" path="res://Objects/Campaign/buildings/building_theater.tres" id="6_p38du"]
 
 [resource]
 script = ExtResource("4_q6a85")
 buildings = Array[ExtResource("1_yr4fn")]([])
-building_types = Array[ExtResource("1_yr4fn")]([ExtResource("2_6mj56"), ExtResource("1_f1j76"), ExtResource("3_1c2i6"), ExtResource("5_2l27x")])
+building_types = Array[ExtResource("1_yr4fn")]([ExtResource("2_6mj56"), ExtResource("1_f1j76"), ExtResource("3_1c2i6"), ExtResource("5_2l27x"), ExtResource("6_p38du")])

@@ -10,21 +10,25 @@ class_name Building
 	BUILDING_FARM,
 	BUILDING_GOVERNMENT,
 	BUILDING_TEMPLE,
-	BUILDING_MARKET
+	BUILDING_MARKET,
+	BUILDING_THEATER
 ) var building_type : String = DEFAULT
-
+#==============NEEDS to be added to the buildings_UI==================
 #region CONSTANTS for buildings
 const DEFAULT = "DEFAULT"
 const BUILDING_GOVERNMENT = "BUILDING_GOVERNMENT"
 const BUILDING_FARM = "BUILDING_FARM"
 const BUILDING_TEMPLE = "BUILDING_TEMPLE"
 const BUILDING_MARKET = "BUILDING_MARKET"
+const BUILDING_THEATER = "BUILDING_THEATER"
 
+#==============NEEDS to be added to the buildings_UI==================
 var BUILDING_CONSTANTS : Array = [
 	BUILDING_GOVERNMENT,
 	BUILDING_FARM,
 	BUILDING_TEMPLE,
-	BUILDING_MARKET
+	BUILDING_MARKET,
+	BUILDING_THEATER
 ]
 #endregion
 
