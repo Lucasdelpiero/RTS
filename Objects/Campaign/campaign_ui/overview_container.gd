@@ -15,30 +15,30 @@ func _ready() -> void:
 	#hide()
 	pass
 
-func show_building_overview(data : BuildingData, texture : Texture2D) -> void:
-	#return
-	scroll_container.set_v_scroll(0)
-	description_image.set_texture(texture)
-	show()
-	if data == null:
-		return
-	labelCost.text = "Cost: %s" % [data.cost]
-	labelBuildTime.text = "Build time: %s" % [data.time_to_build]
-	description_text.text = data.description
-	# TEST
-	
-	var temp_production_text : String = ""
-	var data_flat_production : Array[FlatProduction] = data.flat_production
-	for production in data_flat_production:
-		temp_production_text += "%s : %s " % [production.type_produced, production.amount]
-	label_production.text = temp_production_text
-	label_name.text = data.building_name
-	# TEST
-	
-	if data.cost == 0 and data.time_to_build == 0:
-		labelCost.text = "Max level reached"
-		labelBuildTime.text = ""
-		pass
+#func show_building_overview(data : BuildingData, texture : Texture2D) -> void:
+	##return
+	#scroll_container.set_v_scroll(0)
+	#description_image.set_texture(texture)
+	#show()
+	#if data == null:
+		#return
+	#labelCost.text = "Cost: %s" % [data.cost]
+	#labelBuildTime.text = "Build time: %s" % [data.time_to_build]
+	#description_text.text = data.description
+	## TEST
+	#
+	#var temp_production_text : String = ""
+	#var data_flat_production : Array[FlatProduction] = data.flat_production
+	#for production in data_flat_production:
+		#temp_production_text += "%s : %s " % [production.type_produced, production.amount]
+	#label_production.text = temp_production_text
+	#label_name.text = data.building_name
+	## TEST
+	#
+	#if data.cost == 0 and data.time_to_build == 0:
+		#labelCost.text = "Max level reached"
+		#labelBuildTime.text = ""
+		#pass
 
 # NOTE i need to rewrite this to not repeate myself
 func show_building_overview_2(data : Building, texture: Texture2D) -> void:
@@ -76,7 +76,7 @@ func show_building_overview_2(data : Building, texture: Texture2D) -> void:
 		var bonuses : Array[Bonus] = building_current.bonuses
 		temp_bonus_text  = ""
 		for bonus in bonuses:
-			temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus * 100) + "%"]
+			temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus) + "%"]
 			pass
 		label_bonus.text = temp_bonus_text
 		return
