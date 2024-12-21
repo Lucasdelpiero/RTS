@@ -43,15 +43,17 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 		labelCost.text = "Cost: %s" % [building_current.cost]
 		labelBuildTime.text = "Build time: %s" % [building_current.time_to_build]
 		description_text.text = building_current.description
+		
 		temp_production_text = ""
 		var data_flat_production : Array[FlatProduction] = building_current.flat_production
 		for production in data_flat_production:
 			temp_production_text += "%s : %s " % [production.type_produced, production.amount]
+		label_production.text = temp_production_text
+		
 		var bonuses : Array[Bonus] = building_current.bonuses
 		temp_bonus_text  = ""
 		for bonus in bonuses:
-			temp_bonus_text += "%s : %s" % [bonus.type_produced, str(bonus.multiplier_bonus) + "%"]
-			pass
+			temp_bonus_text = get_text_bonus(bonus)
 		label_bonus.text = temp_bonus_text
 		return
 	
@@ -60,11 +62,13 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 	labelCost.text = "Cost: %s" % [building_next_level.cost]
 	labelBuildTime.text = "Build time: %s" % [building_next_level.time_to_build]
 	description_text.text = building_next_level.description
+	
 	var data_flat_current_production : Array[FlatProduction] = building_current.flat_production
 	temp_production_text = ""
 	for production in data_flat_current_production:
 		temp_production_text += "%s: %s" % [production.type_produced, production.amount] 
 	label_production.text = temp_production_text
+	
 	var bonuses_current : Array[Bonus] = building_current.bonuses
 	temp_bonus_text = ""
 	for bonus in bonuses_current:
@@ -76,7 +80,8 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 		return
 		
 	var data_flat_next_production : Array[FlatProduction] = building_next_level.flat_production
-	temp_production_text = ""
+	temp_production_text = "" 
+	
 	for production in data_flat_next_production:
 		temp_production_text += " -> %s: %s" % [production.type_produced, production.amount] 
 	label_production.text += temp_production_text
