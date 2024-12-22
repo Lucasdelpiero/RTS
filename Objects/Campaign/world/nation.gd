@@ -9,6 +9,7 @@ signal sg_manpower_amount_changed(value : int) # Sent to the campaing_UI node to
 
 @export var NATION_TAG  : String = ""
 @export var culture : Cultures.list = Cultures.list.NONE
+@export var religion : Religions.list = Religions.list.HELLENIC
 @export_color_no_alpha var nation_outline_color : Color = Color(0, 0, 0)
 @export_color_no_alpha var nation_color : Color = Color(0, 0, 0)
 @export_range(10, 1000, 0.1) var gold : int = 100 : 

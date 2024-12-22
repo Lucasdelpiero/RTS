@@ -162,6 +162,14 @@ offset_right = 161.0
 offset_bottom = 36.0
 text = "Nation"
 
+[node name="LoyaltyLabel" type="Label" parent="Container/Province"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 299.0
+offset_top = 77.0
+offset_right = 339.0
+offset_bottom = 100.0
+
 [node name="BuildingsUI" type="Control" parent="Container/Province"]
 unique_name_in_owner = true
 anchors_preset = 0

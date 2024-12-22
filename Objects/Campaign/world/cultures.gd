@@ -77,4 +77,3 @@ static func get_name_by_enum(num : int) -> String :
 		return NONE
 	
 	return list_names[num]
-

@@ -21,6 +21,7 @@ var last_time_production_data : TotalProductionData = null
 @onready var culture_label := %CultureLabel as Label
 @onready var religion_label := %ReligionLabel as Label
 @onready var nation_label := %NationLabel as Label
+@onready var lotaly_label := %LoyaltyLabel as Label
 
 @onready var armiesContainer := %ArmiesContainer as ArmiesContainer
 @onready var mapTypesManager : PanelContainer = %MapTypesManager as PanelContainer
@@ -113,6 +114,7 @@ func update_province_data(data : ProvinceData) -> void:
 	culture_label.text = "Culture: %s" % [culture.capitalize()]
 	religion_label.text = "Religion: %s" % [data.religion.capitalize()]
 	nation_label.text = data.ownership
+	lotaly_label.text = "L: %s" % data.loyalty
 	
 	
 	buildingsUI.province_data = data # sends all data including the buildings 

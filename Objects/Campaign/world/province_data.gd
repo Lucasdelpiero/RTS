@@ -9,6 +9,7 @@ var population : int = 1
 var religion : String = "none"
 var culture : int = 0
 var terrain_type : String = "none"
+var loyalty : float = 50
 
 var buildings : Array[Building] = []
 
@@ -39,4 +40,3 @@ func set_data_from_object(aProvince : Province = null) -> void:
 	# For properties that are not shared it has to be done here
 	buildings = aProvince.buildings_manager.buildings 
 	province = aProvince # reference to the province
-

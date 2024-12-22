@@ -31,6 +31,7 @@ var nation_owner : Nation  = null :
 		set_color_inside(new_owner.nation_color)
 		set_color_border(new_owner.nation_outline_color)
 		outside_color = new_owner.nation_outline_color
+		loyalty = get_loyalty()
 		
 		# Connects signals to send resources to the owner nation
 		# Note: condition below prevents reconnecting the signal when exiting a battle
@@ -45,6 +46,7 @@ var nation_owner : Nation  = null :
 @export_range(100, 1000000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
 @export_enum("hellenic", "celtic", "punic", "judaism", "assyrian_polytheism", "zoroastrianism") var religion : String = "hellenic"
+@export var religion_well : Religions.list = Religions.list.HELLENIC
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 # NOTE
@@ -93,6 +95,8 @@ func _ready() -> void:
 	inside_color = color
 	outside_color = outline_color
 	outline_color = outline_color
+	religion_well = Religions.get_by_string(religion)
+	loyalty = get_loyalty()
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly : PackedVector2Array = get_polygon()
@@ -318,6 +322,23 @@ func get_province_income() -> Production:
 				total_production.manpower = total_production.manpower * ceili(1.0 + (bonus.multiplier_bonus / 100.0) ) 
 	
 	return total_production
+
+# NOTE currently gets the total loyalty
+# In the future different culture and religion has to be their own bonus
+func get_loyalty() -> float :
+	if nation_owner == null:
+		return 50
+	var temp_loyalty : float = 50
+	var owner_religion : Religions.list = nation_owner.religion
+	var owner_culture : Cultures.list = nation_owner.culture
+	
+	if culture != owner_culture:
+		temp_loyalty -= 10
+	# NOTE once the refactoring is done i have to change the religion_well to religion
+	if religion_well != owner_religion:
+		temp_loyalty -= 10
+	
+	return temp_loyalty
 
 # Gets the bonuses from the buildings and the nation into a single array
 func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
