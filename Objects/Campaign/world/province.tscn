@@ -16,6 +16,8 @@ texture = ExtResource("1_7hxuk")
 script = ExtResource("1_lhs2u")
 width = 4.0
 map_colors = ExtResource("2_xfuls")
+base_income = 11.0
+religion = "hellenic"
 culture = 0
 buildings_manager = ExtResource("4_kq3l2")
 
@@ -45,6 +47,8 @@ visible = false
 z_index = 50
 z_as_relative = false
 
+[connection signal="sg_mouse_over_self" from="." to="." method="_on_sg_mouse_over_self"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="area_entered" from="MouseDetector" to="." method="_on_mouse_detector_area_entered"]
 [connection signal="area_exited" from="MouseDetector" to="." method="_on_mouse_detector_area_exited"]
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_mouse_detector_mouse_entered"]

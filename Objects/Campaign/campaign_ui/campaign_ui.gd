@@ -112,7 +112,7 @@ func update_province_data(data : ProvinceData) -> void:
 	name_label.text = "%s" %[data.name]
 	var culture : String = Cultures.get_name_by_enum(data.culture)
 	culture_label.text = "Culture: %s" % [culture.capitalize()]
-	religion_label.text = "Religion: %s" % [data.religion.capitalize()]
+	religion_label.text = "Religion: %s" % [Religions.get_name_by_enum(data.religion).capitalize()]
 	nation_label.text = data.ownership
 	lotaly_label.text = "L: %s" % data.loyalty
 	

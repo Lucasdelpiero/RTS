@@ -45,8 +45,7 @@ var nation_owner : Nation  = null :
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
 @export_range(100, 1000000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
-@export_enum("hellenic", "celtic", "punic", "judaism", "assyrian_polytheism", "zoroastrianism") var religion : String = "hellenic"
-@export var religion_well : Religions.list = Religions.list.HELLENIC
+@export var religion : Religions.list 
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 # NOTE
@@ -95,7 +94,6 @@ func _ready() -> void:
 	inside_color = color
 	outside_color = outline_color
 	outline_color = outline_color
-	religion_well = Religions.get_by_string(religion)
 	loyalty = get_loyalty()
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
@@ -117,6 +115,9 @@ func _ready() -> void:
 	
 	if debug_lines:
 		create_debug_lines_connections()
+
+
+	
 
 func save_data_as_dict() -> Dictionary:
 	var container : Dictionary = {}
@@ -335,7 +336,7 @@ func get_loyalty() -> float :
 	if culture != owner_culture:
 		temp_loyalty -= 10
 	# NOTE once the refactoring is done i have to change the religion_well to religion
-	if religion_well != owner_religion:
+	if religion != owner_religion:
 		temp_loyalty -= 10
 	
 	return temp_loyalty
@@ -413,3 +414,19 @@ func create_debug_lines_connections() -> void:
 		new_line.default_color = line_color
 		pass
 	pass
+
+# To change color of a province uncomment this and change the visibility
+func _on_visibility_changed() -> void:
+	return
+	#var new_color = Color(randf_range(0,1), randf_range(0,1), randf_range(0,1))
+	##BUG Timer is needed because if not, it will use the color of before the change is done
+	#await get_tree().create_timer(0.01).timeout
+	#var new_outline = new_color
+	#new_outline.r -= 0.2
+	#new_outline.g -= 0.2
+	#new_outline.b -= 0.2
+	#clampf(new_outline.r, 0.0, 1.0)
+	#clampf(new_outline.g, 0.0, 1.0)
+	#clampf(new_outline.b, 0.0, 1.0)
+	#color = new_color
+	#outline_color = new_outline
