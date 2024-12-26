@@ -340,6 +340,10 @@ text = " Religion "
 layout_mode = 2
 text = " Culture"
 
+[node name="BtnLoyaltyMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
+layout_mode = 2
+text = " Loyalty "
+
 [node name="TimePanel" type="PanelContainer" parent="Container"]
 layout_mode = 1
 anchors_preset = 1
@@ -395,5 +399,6 @@ offset_bottom = 357.0
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnTerrainMap" to="Container/MapTypesManager" method="_on_btn_terrain_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnReligionMap" to="Container/MapTypesManager" method="_on_btn_religion_map_button_down"]
 [connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnCultureMap" to="Container/MapTypesManager" method="_on_btn_culture_map_button_down"]
+[connection signal="button_down" from="Container/MapTypesManager/HBoxContainer/BtnLoyaltyMap" to="Container/MapTypesManager" method="_on_btn_loyalty_map_button_down"]
 [connection signal="pressed" from="Container/BtnArmyCreation" to="Container/ArmyCreatorUI" method="_on_btn_army_creation_pressed"]
 [connection signal="pressed" from="Container/BtnDiplomacy" to="Container/DiplomacyUI" method="_on_btn_diplomacy_pressed"]

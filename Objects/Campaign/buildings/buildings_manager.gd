@@ -1,8 +1,11 @@
 extends Resource
 class_name BuildingsManager
 
+signal sg_new_building_done
 
-@export var buildings : Array[Building]
+@export var buildings : Array[Building] :
+	set(value):
+		buildings = value
 var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
 		province_data = value

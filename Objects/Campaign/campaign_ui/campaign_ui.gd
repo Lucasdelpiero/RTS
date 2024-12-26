@@ -185,3 +185,7 @@ func set_relations_data(data: DiplomacyNation) -> void:
 		test.add_child(new_label)
 		new_label.text = "%s : %s" % [relation.nation_tag, relation.relations]
 		
+
+
+func _on_btn_loyalty_map_button_down() -> void:
+	pass # Replace with function body.

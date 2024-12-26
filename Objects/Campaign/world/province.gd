@@ -95,6 +95,7 @@ func _ready() -> void:
 	outside_color = outline_color
 	outline_color = outline_color
 	loyalty = get_loyalty()
+	buildings_manager.sg_new_building_done.connect(update_province_data)
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly : PackedVector2Array = get_polygon()
@@ -201,6 +202,9 @@ func get_connections() -> void:
 			var con : int = node.ID
 			connections.push_back(con)
 
+
+	
+
 func update_to_nation_color() -> void:
 	for nation  in world.nations as Array[Nation]:
 		if nation.NATION_TAG == str(self.ownership):
@@ -247,6 +251,10 @@ func set_map_type_shown(type : String) -> void:
 			var new_color : Color = map_colors.get_culture_color(culture)
 			color = new_color
 			outline_color = new_color
+		"loyalty":
+			var new_color : Color = map_colors.get_loyalty_color(int(loyalty))
+			color = new_color
+			outline_color = new_color
 		_:
 			return
 	
@@ -273,6 +281,12 @@ func set_hovered(value : bool) -> void:
 
 func set_selected(_value : bool) -> void:
 	selected = true
+
+# When a new building is done, the data has to update
+func update_province_data() -> void:
+	loyalty = get_loyalty()
+	send_data_to_ui()
+	pass
 
 func send_data_to_ui() -> void:
 	# NOTE: The campaign_UI is set again inside the funcion to avoid a bug where,
@@ -338,9 +352,12 @@ func get_loyalty() -> float :
 	# NOTE once the refactoring is done i have to change the religion_well to religion
 	if religion != owner_religion:
 		temp_loyalty -= 10
+		
+	var bonuses : Array[Bonus] = get_total_bonuses().filter(func(el: Bonus) -> bool: return el.type_produced == Bonus.BONUS_LOYALTY)
+	for bonus in bonuses:
+		temp_loyalty += bonus.multiplier_bonus
 	
 	return temp_loyalty
-
 # Gets the bonuses from the buildings and the nation into a single array
 func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
 	if nation == null:

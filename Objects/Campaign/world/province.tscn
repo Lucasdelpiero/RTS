@@ -17,7 +17,6 @@ script = ExtResource("1_lhs2u")
 width = 4.0
 map_colors = ExtResource("2_xfuls")
 base_income = 11.0
-religion = "hellenic"
 culture = 0
 buildings_manager = ExtResource("4_kq3l2")
 

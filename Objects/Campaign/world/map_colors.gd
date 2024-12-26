@@ -34,6 +34,14 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var tracian : Color = Color(1, 0, 1)
 @export_color_no_alpha var germanic : Color = Color(1, 0, 1)
 
+@export_group("Loyalty")
+@export_color_no_alpha var perfect : Color = Color(1, 0, 1)
+@export_color_no_alpha var good : Color = Color(1, 0, 1)
+@export_color_no_alpha var mid : Color = Color(1, 0, 1)
+@export_color_no_alpha var bad : Color = Color(1, 0, 1)
+@export_color_no_alpha var awful : Color = Color(1, 0, 1)
+
+
 
 func get_terrain_color(terrain_type : String = "none") -> Color:
 	var terrain_color : Variant = get(terrain_type)
@@ -54,3 +62,15 @@ func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
 	if culture_color == null:
 		return default_color
 	return culture_color 
+	
+func get_loyalty_color(loyalty : int) -> Color:
+	if loyalty >= 85:
+		return perfect
+	elif loyalty >= 65:
+		return good
+	elif loyalty >= 50:
+		return mid
+	elif loyalty >= 30:
+		return bad
+	else:
+		return awful

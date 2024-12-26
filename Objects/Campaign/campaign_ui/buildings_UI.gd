@@ -128,7 +128,9 @@ func start_construction(aBuilding : Building) -> void:
 	var new_buildings : Array[Building] = buildings.duplicate(true) as Array[Building]
 	aBuilding.is_built = true
 	new_buildings.push_back(aBuilding.duplicate(true))
+	# NOTE currently the buildings are done in an instant, they should be refactored
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)
+	province_data.province.buildings_manager.sg_new_building_done.emit()
 	
 	# Done in this way to lower coupling
 	var province_to_update_UI : Province = province_data.province
@@ -180,7 +182,8 @@ func upgrade_building(aBuilding : Building) -> void:
 	player_nation.gold -= cost
 	aBuilding.current_level += 1
 	buildings = buildings # doing this, updates the UI easily
-
+	#province_data.province.buildings_manager.buildings = buildings # UPDATES province UI (loyalty)
+	province_data.province.buildings_manager.sg_new_building_done.emit()
 
 func show_overview() -> void:
 	pass

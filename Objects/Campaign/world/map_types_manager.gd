@@ -13,3 +13,6 @@ func _on_btn_religion_map_button_down() -> void:
 
 func _on_btn_culture_map_button_down() -> void:
 	new_map_selected.emit("culture")
+
+func _on_btn_loyalty_map_button_down() -> void:
+	new_map_selected.emit("loyalty")
