@@ -32,6 +32,9 @@ var nation_owner : Nation  = null :
 		set_color_border(new_owner.nation_outline_color)
 		outside_color = new_owner.nation_outline_color
 		loyalty = get_loyalty()
+		# When anexing it changes to political, this makes it go back
+		# to the last map type shown
+		set_map_type_shown(Globals.last_map_shown)
 		
 		# Connects signals to send resources to the owner nation
 		# Note: condition below prevents reconnecting the signal when exiting a battle
@@ -286,7 +289,8 @@ func set_selected(_value : bool) -> void:
 func update_province_data() -> void:
 	loyalty = get_loyalty()
 	send_data_to_ui()
-	pass
+	# Makes the changes in loyalty in an instant in the world map
+	set_map_type_shown(Globals.last_map_shown)
 
 func send_data_to_ui() -> void:
 	# NOTE: The campaign_UI is set again inside the funcion to avoid a bug where,

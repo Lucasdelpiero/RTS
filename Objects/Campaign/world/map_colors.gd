@@ -42,7 +42,6 @@ var default_color : Color = Color(1, 0, 1)
 @export_color_no_alpha var awful : Color = Color(1, 0, 1)
 
 
-
 func get_terrain_color(terrain_type : String = "none") -> Color:
 	var terrain_color : Variant = get(terrain_type)
 	if terrain_color == null:
@@ -74,3 +73,5 @@ func get_loyalty_color(loyalty : int) -> Color:
 		return bad
 	else:
 		return awful
+
+	

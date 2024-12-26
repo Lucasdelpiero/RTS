@@ -163,6 +163,7 @@ func update_selected_armies(army : ArmyCampaing) -> void:
 
 func change_map_shown(type : String) -> void:
 	changed_map_shown.emit(type)
+	Globals.last_map_shown = type
 	pass
 
 func _on_button_pressed() -> void:

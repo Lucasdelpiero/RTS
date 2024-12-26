@@ -25,6 +25,7 @@ var main : Main = null
 var campaign_map : CampaignMap = null
 var battle_map : BattleMap = null : set = set_battle_map
 var campaign_UI : CampaignUI = null
+var last_map_shown : String = "political"
 
 var shader_hovered := preload("res://Shaders/hovered.tres") as Material
 var shader_selected := preload("res://Shaders/selected.tres") as Material
