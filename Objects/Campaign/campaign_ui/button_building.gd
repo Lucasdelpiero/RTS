@@ -7,6 +7,8 @@ signal sg_construction_started(value : Building)
 signal sg_building_upgrade(value : Building) 
 signal sg_send_data_to_overview(value : BuildingData, image : Texture2D)
 signal sg_send_building_reference_to_overview(value : Building, image : Texture2D)
+signal sg_send_province_data_reference(value : ProvinceData)
+signal sg_send_building_manager_reference(value : BuildingsManager)
 
 @onready var is_built : bool = true # used just to check when to emit the signal of the overview
 
@@ -69,10 +71,14 @@ func _on_mouse_entered() -> void:
 	# Sends the data to the ovewview with +1 level
 	if is_built:
 		# TEST
+		if building_reference == null:
+			push_error("Doesnt have a building reference")
+			return
 		var next_level : int = building_reference.current_level + 1
 		var building_data_next_level : BuildingData = building_reference.get_building(true, next_level)
 		sg_send_data_to_overview.emit(building_data_next_level, icon)
 		sg_send_building_reference_to_overview.emit(building_reference, icon)
+		sg_send_province_data_reference.emit(province_data)
 		#push_warning("done")
 		# TEST
 		return 
@@ -83,4 +89,5 @@ func _on_mouse_entered() -> void:
 		return
 	sg_send_data_to_overview.emit(building_data_current_level, icon)
 	sg_send_building_reference_to_overview.emit(building_reference, icon)
+	sg_send_province_data_reference.emit(province_data)
 	pass # Replace with function body.

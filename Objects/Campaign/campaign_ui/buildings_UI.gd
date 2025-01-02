@@ -71,6 +71,7 @@ func _on_add_building_pressed() -> void:
 		button.building_reference = building.duplicate(true)
 		button.sg_construction_started.connect(start_construction)
 		button.sg_send_building_reference_to_overview.connect(overview_container.show_building_overview)
+		button.sg_send_province_data_reference.connect(overview_container.update_province_reference)
 		button.is_built = false # used just to check when to emit the signal of the overview
 		var campaign_ui : CampaignUI = Globals.campaign_UI
 		if campaign_ui != null:
@@ -101,6 +102,7 @@ func create_building_buttons(aBuildings : Array[Building]) -> void:
 		button.province_data = province_data
 		button.icon = get_icon_for_building(building.building_type)
 		button.sg_send_building_reference_to_overview.connect(overview_container.show_building_overview)
+		button.sg_send_province_data_reference.connect(overview_container.update_province_reference)
 		
 		# Buildings will only be upgradable pressing the button if the player owns that province
 		if button.province_data.province.nation_owner == Globals.player_nation_node:

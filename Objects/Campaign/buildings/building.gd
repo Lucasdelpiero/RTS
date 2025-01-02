@@ -78,5 +78,10 @@ func get_building_next_level() -> BuildingData:
 
 func is_max_level() -> bool:
 	return current_level == ( levels.size() - 1 )
+	
+# When "destroyed" the stats sets back to the default at level zero
+func destroy() -> void:
+	current_level = 0
+	is_built = false
 
  

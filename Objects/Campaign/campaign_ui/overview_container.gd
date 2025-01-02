@@ -11,6 +11,12 @@ extends Control
 @onready var label_production : RichTextLabel = %Production
 @onready var label_bonus : RichTextLabel = %Bonus
 
+@onready var province_data : ProvinceData = null
+# Building currently beign overview, stored in memory to be used to referece
+# what to delete
+@onready var current_building : Building = null
+@onready var current_building_manager : BuildingsManager = null
+
 func _ready() -> void:
 	#hide()
 	pass
@@ -21,9 +27,12 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 	show()
 	if data == null:
 		return
-
+	
 	var building_current : BuildingData = data.get_building()
 	var building_next_level : BuildingData = data.get_building_next_level()
+	
+	# current_building is a reference to delete the building
+	current_building = data
 	
 	#push_warning("current_level: %s" % [data.current_level])
 	Globals.debug_update_label("current_level", "current_level : %s" % [data.current_level])
@@ -117,3 +126,12 @@ func _on_description_text_meta_clicked(meta: Variant) -> void:
 func _on_close_button_pressed() -> void:
 	hide()
 	pass # Replace with function body.
+
+func update_province_reference(value : ProvinceData) -> void:
+	province_data = value
+	
+
+# Destroys the building
+func _on_destroy_button_pressed() -> void:
+	province_data.building_manager.destroy_building(current_building)
+	province_data.province.update_province_data()

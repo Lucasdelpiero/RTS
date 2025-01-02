@@ -96,6 +96,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
+[node name="DestroyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 189.0
+offset_right = 387.0
+offset_bottom = 220.0
+keep_pressed_outside = true
+text = "Destroy"
+
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 373.0
@@ -106,4 +115,5 @@ text = "X"
 icon_alignment = 1
 
 [connection signal="meta_clicked" from="PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/DescriptionText" to="PanelContainer" method="_on_description_text_meta_clicked"]
+[connection signal="pressed" from="DestroyButton" to="." method="_on_destroy_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

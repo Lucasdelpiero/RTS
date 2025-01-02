@@ -10,11 +10,6 @@ var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
 		province_data = value
 		buildings = value.buildings
-		#for building in buildings:
-			#Globals.debug_update_label(
-				#"%s_%s" % [province_data.name, building.building_type],
-				#building.building_type
-			#)
 		get_buildings_not_made(buildings)
 
 @export var building_types : Array[Building]  # Buildings that can be uilt
@@ -120,3 +115,10 @@ func get_buildings_bonuses() -> Array[Bonus]:
 			bonuses[bonus_pos].multiplier_bonus += bonus.multiplier_bonus
 			
 	return bonuses
+	
+func destroy_building(aBuilding : Building) -> void:
+	var temp : Array[Building] = buildings.duplicate(true)
+	for i in buildings.size():
+		if buildings[i].building_name == aBuilding.building_name:
+			temp.remove_at(i)
+	self.buildings = temp

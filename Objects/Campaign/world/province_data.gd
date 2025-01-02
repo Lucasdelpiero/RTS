@@ -12,6 +12,7 @@ var culture : int = 0
 var terrain_type : String = "none"
 var loyalty : float = 50
 
+var building_manager : BuildingsManager = null
 var buildings : Array[Building] = []
 
 # Uses the province and all the data is setted here
@@ -37,7 +38,9 @@ func set_data_from_object(aProvince : Province = null) -> void:
 		#push_warning("%s: %s" % [property, get(property)])
 	
 
-	
+
 	# For properties that are not shared it has to be done here
-	buildings = aProvince.buildings_manager.buildings 
 	province = aProvince # reference to the province
+	building_manager = aProvince.buildings_manager
+	buildings = aProvince.buildings_manager.buildings 
+	
