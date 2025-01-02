@@ -16,7 +16,7 @@ extends Polygon2D
 @export var debug_lines : bool = false
 
 @export_category("Ownership")
-@export var ownership := ""
+@export var ownership := "" 
 
 # used to get bonuses for resources
 var nation_owner : Nation  = null :

@@ -1,4 +1,4 @@
-[gd_scene load_steps=344 format=3 uid="uid://c6ellbjmw3vay"]
+[gd_scene load_steps=350 format=3 uid="uid://c6ellbjmw3vay"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/world/world.gd" id="1_xpr24"]
 [ext_resource type="PackedScene" uid="uid://dl7smlakh6u8f" path="res://Objects/General/mouse.tscn" id="2_5u4og"]
@@ -1427,7 +1427,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([])
 
-[sub_resource type="Resource" id="Resource_hwyty"]
+[sub_resource type="Resource" id="Resource_8ml1n"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1507,19 +1507,64 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([SubResource("Resource_4uolu")])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_3u2a7")])
 
-[sub_resource type="Resource" id="Resource_wslui"]
+[sub_resource type="Resource" id="Resource_74v75"]
+resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_FARM"
 building_name = "Farm"
 is_built = true
-current_level = 2
+current_level = 3
 levels = Array[ExtResource("21_nkfwd")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
 description = "The farm than farms doing the farming."
+
+[sub_resource type="Resource" id="Resource_xsipi"]
+script = ExtResource("7_gxlj2")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 5
+
+[sub_resource type="Resource" id="Resource_acs61"]
+script = ExtResource("21_nkfwd")
+building_name = ""
+cost = 1000
+time_to_build = 10
+flat_production = Array[ExtResource("26_yb3v6")]([])
+bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_xsipi")])
+
+[sub_resource type="Resource" id="Resource_jdsni"]
+script = ExtResource("7_gxlj2")
+type_produced = "bonus_loyalty"
+multiplier_bonus = 25
+
+[sub_resource type="Resource" id="Resource_vuvud"]
+script = ExtResource("21_nkfwd")
+building_name = ""
+cost = 100
+time_to_build = 5
+flat_production = Array[ExtResource("26_yb3v6")]([])
+bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_jdsni")])
+
+[sub_resource type="Resource" id="Resource_2s827"]
+script = ExtResource("22_lcv0d")
+building_type = "BUILDING_TEMPLE"
+building_name = "Temple"
+is_built = true
+current_level = 1
+levels = Array[ExtResource("21_nkfwd")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
+description = "PRAY THE SUN"
+
+[sub_resource type="Resource" id="Resource_y6r7i"]
+script = ExtResource("22_lcv0d")
+building_type = "BUILDING_THEATER"
+building_name = "Temple"
+is_built = true
+current_level = 1
+levels = Array[ExtResource("21_nkfwd")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
+description = "PRAY THE SUN"
 
 [sub_resource type="Resource" id="Resource_rvyfb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hwyty"), SubResource("Resource_wslui")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8ml1n"), SubResource("Resource_74v75"), SubResource("Resource_2s827"), SubResource("Resource_y6r7i")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 
 [sub_resource type="Resource" id="Resource_kfvc7"]

@@ -73,6 +73,7 @@ flat_production = Array[ExtResource("2_4sm3l")]([SubResource("Resource_5jl1o")])
 bonuses = Array[ExtResource("1_tacmw")]([SubResource("Resource_23ta8")])
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_grkri")
 building_type = "BUILDING_MARKET"
 building_name = "Market"

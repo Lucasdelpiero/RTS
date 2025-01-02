@@ -76,6 +76,7 @@ flat_production = Array[ExtResource("2_eqnnr")]([SubResource("Resource_4uolu")])
 bonuses = Array[ExtResource("3_rmxb5")]([SubResource("Resource_3u2a7")])
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_2bf05")
 building_type = "BUILDING_FARM"
 building_name = "Farm"

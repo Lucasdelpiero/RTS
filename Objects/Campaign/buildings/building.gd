@@ -42,6 +42,7 @@ var province_data : ProvinceData = ProvinceData.new()
 
 @export_multiline var description : String = ""
 
+
 # Used to get the current level easier and with the type data
 func get_building(look_at_specific_level : bool = false , level_to_look : int = 0) -> BuildingData:
 	#region error handling

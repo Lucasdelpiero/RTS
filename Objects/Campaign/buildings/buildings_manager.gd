@@ -1,3 +1,5 @@
+@tool
+# The tool is needed to make the buildings unique and select each a different level
 extends Resource
 class_name BuildingsManager
 
@@ -6,6 +8,11 @@ signal sg_new_building_done
 @export var buildings : Array[Building] :
 	set(value):
 		buildings = value
+		# Makes each building unique so it can be changed without altering the original resource
+		if Engine.is_editor_hint():
+			for i in buildings.size():
+				buildings[i] = buildings[i].duplicate(true)
+				buildings[i].is_built = true
 var province_data : ProvinceData = ProvinceData.new() :
 	set(value):
 		province_data = value
