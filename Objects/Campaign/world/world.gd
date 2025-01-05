@@ -230,9 +230,12 @@ func new_unit_selected(value : ArmyCampaing) -> void:
 func _on_timer_generate_resources_timeout() -> void:
 	for province in provinces as Array[Province]:
 		province.generate_resources()
+		# Updates population growth, convertion and that
+		province.update_population() 
+		
 	for nation in nations as Array[Nation]:
 		nation.process_resources_recieved()
-		pass
+	
 	pass # Replace with function body.
 
 # Deletes the nation annexed and gives the provinces to the target nation

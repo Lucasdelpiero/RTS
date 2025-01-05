@@ -1,35 +1,45 @@
-[gd_resource type="Resource" script_class="Building" load_steps=9 format=3 uid="uid://cflnuxx2fo6oi"]
+[gd_resource type="Resource" script_class="Building" load_steps=11 format=3 uid="uid://cflnuxx2fo6oi"]
 
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_00ddq"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="1_m8tff"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_4becn"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="3_ls77v"]
 
-[sub_resource type="Resource" id="Resource_xsipi"]
+[sub_resource type="Resource" id="Resource_w183x"]
 script = ExtResource("1_00ddq")
 type_produced = "bonus_loyalty"
 multiplier_bonus = 5
 
-[sub_resource type="Resource" id="Resource_acs61"]
+[sub_resource type="Resource" id="Resource_6je13"]
+script = ExtResource("1_00ddq")
+type_produced = "bonus_religion_conversion"
+multiplier_bonus = 5
+
+[sub_resource type="Resource" id="Resource_be8om"]
 script = ExtResource("3_4becn")
 building_name = ""
 cost = 1000
 time_to_build = 10
 flat_production = Array[ExtResource("1_m8tff")]([])
-bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_xsipi")])
+bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_w183x"), SubResource("Resource_6je13")])
 
-[sub_resource type="Resource" id="Resource_jdsni"]
+[sub_resource type="Resource" id="Resource_qkx8x"]
 script = ExtResource("1_00ddq")
 type_produced = "bonus_loyalty"
 multiplier_bonus = 25
 
-[sub_resource type="Resource" id="Resource_vuvud"]
+[sub_resource type="Resource" id="Resource_k5c4h"]
+script = ExtResource("1_00ddq")
+type_produced = "bonus_religion_conversion"
+multiplier_bonus = 50
+
+[sub_resource type="Resource" id="Resource_42scd"]
 script = ExtResource("3_4becn")
 building_name = ""
 cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("1_m8tff")]([])
-bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_jdsni")])
+bonuses = Array[ExtResource("1_00ddq")]([SubResource("Resource_qkx8x"), SubResource("Resource_k5c4h")])
 
 [resource]
 script = ExtResource("3_ls77v")
@@ -37,5 +47,7 @@ building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
 is_built = false
 current_level = 0
-levels = Array[ExtResource("3_4becn")]([SubResource("Resource_acs61"), SubResource("Resource_vuvud")])
+levels = Array[ExtResource("3_4becn")]([SubResource("Resource_be8om"), SubResource("Resource_42scd")])
 description = "PRAY THE SUN"
+building_culture = 0
+building_religion = 0

@@ -32,6 +32,7 @@ var BUILDING_CONSTANTS : Array = [
 ]
 #endregion
 
+
 var province_data : ProvinceData = ProvinceData.new()
 # Gives a default name to the BuildingData in case that
 # the BuildingData at that level doesnt have an unique name 
@@ -41,6 +42,15 @@ var province_data : ProvinceData = ProvinceData.new()
 @export var levels : Array[BuildingData] = []
 
 @export_multiline var description : String = ""
+
+#region religion and culture
+@export_category("Religion and Culture")
+## The religion is used to make temples to convert to the religion from the temple
+@export var building_religion : Religions.list = Religions.list.NONE
+## The culture of the building can be used to have specific buildings for cultures
+@export var building_culture : Cultures.list = Cultures.list.NONE
+#endregion
+
 
 
 # Used to get the current level easier and with the type data
@@ -84,5 +94,4 @@ func is_max_level() -> bool:
 func destroy() -> void:
 	current_level = 0
 	is_built = false
-
  

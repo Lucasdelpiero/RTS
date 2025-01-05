@@ -48,7 +48,15 @@ var nation_owner : Nation  = null :
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
 @export_range(100, 1000000, 1) var population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
-@export var religion : Religions.list 
+@export var religion : Religions.list :
+	set(value):
+		if value != religion:
+			religion = value
+			# In case religion changes it will be updated
+			set_map_type_shown(Globals.last_map_shown) 
+# Stores to which religion is converting and the progress
+var conversion_religion : Religions.list
+var conversion_religion_progress : float = 0.0
 @export var culture : Cultures.list = Cultures.list.LATIN
 @export var buildings_manager : BuildingsManager
 # NOTE
@@ -237,9 +245,11 @@ func set_map_type_shown(type : String) -> void:
 	match type:
 		"political":
 			color = inside_color
-			border.default_color = outline_color
 			self_modulate.a = 1.0
-			border.self_modulate.a = 1.0
+			if border != null:
+				border.default_color = outline_color
+			
+				border.self_modulate.a = 1.0
 			outline_color = outside_color
 			
 		"terrain":
@@ -317,6 +327,28 @@ func generate_resources() -> void:
 	var resources_produced : Production = get_province_income() 
 	sg_resources_generated.emit(resources_produced)
 
+# Updates population growth, religion and cultural convertion
+func update_population() -> void:
+	var bonuses : Array[Bonus] = get_buildings_bonuses(buildings_manager,nation_owner)
+	var conversion_religion_bonus : Bonus = null
+	for bonus in bonuses:
+		if bonus.type_produced == bonus.BONUS_RELIGION_CONVERSION:
+			conversion_religion_bonus = bonus
+
+	if conversion_religion_bonus != null: 
+		conversion_religion = nation_owner.religion
+		conversion_religion_progress += conversion_religion_bonus.multiplier_bonus
+		
+		if conversion_religion_progress >= 100:
+			religion = nation_owner.religion
+
+		
+		
+
+func update_conversion_religion() -> void:
+	
+	pass
+
 # This is not made in a getter funcion because when trying to change the value,
 # when accesing the value this one gets changed
 ## Gets the income of the province after the modifiers are aplied
@@ -364,8 +396,8 @@ func get_loyalty() -> float :
 	return temp_loyalty
 # Gets the bonuses from the buildings and the nation into a single array
 func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
-	if nation == null:
-		push_error("There is not a nation owner of this province")
+	if nation == null and ownership != "TERRA_INCOGNITA":
+		push_error("There is not a nation owner of this province ", name)
 		return []
 	
 	var local_province_bonuses : Array[Bonus] = aBuildings_manager.get_buildings_bonuses()

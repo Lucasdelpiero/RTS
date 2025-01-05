@@ -8,6 +8,7 @@ var base_income : float = 0.0
 var population : int = 1
 var religion : Religions.list = Religions.list.NONE
 var religion_well : Religions.list 
+var conversion_religion_progress : float = 0.0
 var culture : int = 0
 var terrain_type : String = "none"
 var loyalty : float = 50

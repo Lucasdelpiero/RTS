@@ -20,6 +20,7 @@ var last_time_production_data : TotalProductionData = null
 @onready var name_label := %NameLabel as Label
 @onready var culture_label := %CultureLabel as Label
 @onready var religion_label := %ReligionLabel as Label
+@onready var conversion_religion_bar := %ConversionRelBar as ProgressBar
 @onready var nation_label := %NationLabel as Label
 @onready var lotaly_label := %LoyaltyLabel as Label
 
@@ -113,6 +114,11 @@ func update_province_data(data : ProvinceData) -> void:
 	var culture : String = Cultures.get_name_by_enum(data.culture)
 	culture_label.text = "Culture: %s" % [culture.capitalize()]
 	religion_label.text = "Religion: %s" % [Religions.get_name_by_enum(data.religion).capitalize()]
+	if data.conversion_religion_progress >= 100 or data.conversion_religion_progress == 0:
+		conversion_religion_bar.visible = false
+	else:
+		conversion_religion_bar.visible = true
+	conversion_religion_bar.value = data.conversion_religion_progress
 	nation_label.text = data.ownership
 	lotaly_label.text = "L: %s" % data.loyalty
 	
