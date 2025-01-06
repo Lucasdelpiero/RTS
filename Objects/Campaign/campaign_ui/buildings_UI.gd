@@ -26,11 +26,15 @@ signal sg_update_UI_requested
 
 var province_data : ProvinceData = ProvinceData.new() : # Updated when clicked on a province
 	set(value):
+		# Only when clicked a new province it hides the UI, not when updated
+		if province_data.province != value.province:
+			overview_container.hide()
+		
 		province_data = value
 		buildings = value.buildings
 		buildings_manager.province_data = value
 		var to_be_built : Array[Building] = buildings_manager.get_buildings_not_made(buildings)
-		overview_container.hide()
+		
 		# Disable new buildings button if the player doesnt own the province
 		var is_the_owner_of_province : bool = (province_data.province.ownership == Globals.player_nation)
 		add_building_button.visible = is_the_owner_of_province
@@ -43,8 +47,11 @@ var buildings : Array[Building] : # updated when province data changes <- update
 		
 		create_building_buttons(value)
 		
-		buildings = value
-		to_be_built_container.visible = false
+		# Only hide new buildings buildings when a something was built, not when updated the UI with the same buildings (like when updates the population, religion, etc)
+		if buildings != value:
+			to_be_built_container.visible = false
+		buildings = value 
+		
 
 
 # Creates the buttons for the avialable buildings to be built

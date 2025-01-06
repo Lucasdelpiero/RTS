@@ -84,3 +84,5 @@ is_built = false
 current_level = 0
 levels = Array[ExtResource("3_7hm47")]([SubResource("Resource_bnhxp"), SubResource("Resource_2x3o1"), SubResource("Resource_1u6p7"), SubResource("Resource_soppo"), SubResource("Resource_6tary")])
 description = "The farm than farms doing the farming."
+building_religion = 0
+building_culture = 0

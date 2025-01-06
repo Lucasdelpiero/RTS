@@ -53,7 +53,8 @@ var nation_owner : Nation  = null :
 		if value != religion:
 			religion = value
 			# In case religion changes it will be updated
-			set_map_type_shown(Globals.last_map_shown) 
+			if not Engine.is_editor_hint(): # Avoid error in editor
+				set_map_type_shown(Globals.last_map_shown) 
 # Stores to which religion is converting and the progress
 var conversion_religion : Religions.list
 var conversion_religion_progress : float = 0.0

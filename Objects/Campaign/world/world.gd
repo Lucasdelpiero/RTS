@@ -226,17 +226,6 @@ func _on_btn_start_battle_pressed() -> void:
 func new_unit_selected(value : ArmyCampaing) -> void:
 	UI.update_selected_armies(value)
 
-# TEST
-func _on_timer_generate_resources_timeout() -> void:
-	for province in provinces as Array[Province]:
-		province.generate_resources()
-		# Updates population growth, convertion and that
-		province.update_population() 
-		
-	for nation in nations as Array[Nation]:
-		nation.process_resources_recieved()
-	
-	pass # Replace with function body.
 
 # Deletes the nation annexed and gives the provinces to the target nation
 func annexed_nation(annexed_nation_tag: String, target_nation_tag: String)-> void:
@@ -267,3 +256,25 @@ func annex_provinces(nation_tag_annexing: String, provinces_annexed: Array[Provi
 		province.ownership = nation_tag_annexing
 		province.nation_owner = target_nation
 	pass
+
+# TEST 
+#func _on_timer_generate_resources_timeout() -> void:
+	#for province in provinces as Array[Province]:
+		#province.generate_resources()
+		## Updates population growth, convertion and that
+		#province.update_population() 
+		#
+	#for nation in nations as Array[Nation]:
+		#nation.process_resources_recieved()
+	
+# Each game tick the world call for updates on provinces and natios
+func _on_timer_game_tick_timeout() -> void:
+	for province in provinces as Array[Province]:
+		province.generate_resources()
+		# Updates population growth, convertion and that
+		province.update_population() 
+		
+	for nation in nations as Array[Nation]:
+		nation.process_resources_recieved()
+	
+	Signals.sg_update_province_ui.emit()

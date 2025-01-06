@@ -49,5 +49,5 @@ is_built = false
 current_level = 0
 levels = Array[ExtResource("3_4becn")]([SubResource("Resource_be8om"), SubResource("Resource_42scd")])
 description = "PRAY THE SUN"
-building_culture = 0
 building_religion = 0
+building_culture = 0

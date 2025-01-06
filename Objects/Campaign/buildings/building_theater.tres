@@ -65,3 +65,5 @@ is_built = false
 current_level = 0
 levels = Array[ExtResource("1_vp7ub")]([SubResource("Resource_nt0fc"), SubResource("Resource_o6poi"), SubResource("Resource_rh1tm"), SubResource("Resource_gi3af")])
 description = ""
+building_religion = 0
+building_culture = 0

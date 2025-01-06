@@ -14,6 +14,7 @@ var last_time_production_data : TotalProductionData = null
 
 @onready var buildingsUI : BuildingsUI = %BuildingsUI as BuildingsUI
 
+@onready var last_province_updated : Province = null
 @onready var province := %Province as Panel
 @onready var population_label := %PopulationLabel as Label
 @onready var income_label := %IncomeLabel as Label
@@ -45,6 +46,7 @@ func _init() -> void:
 func _ready() -> void:
 	visible = true
 	mapTypesManager.new_map_selected.connect(change_map_shown)
+	Signals.sg_update_province_ui.connect(update_last_province_data)
 	#Globals.campaign_UI = self
 	pass # Replace with function body.
 
@@ -102,12 +104,17 @@ func update_manpower_change_label(change : int) -> void:
 	manpower_change_label.add_text(" (%s%s)" % [plus_minus, manpower_change_compact]) # 2
 	manpower_change_label.pop() # 1
 
+func update_last_province_data() -> void:
+	if last_province_updated != null and province.visible:
+		last_province_updated.send_data_to_ui()
 
 func update_province_data(data : ProvinceData) -> void:
 	if data == null:
 		set_province_visibility(false)
 		return
 	set_province_visibility(true)
+	last_province_updated = data.province
+	
 	population_label.text = "Population: %s" % [data.population]
 	income_label.text = "Income: %s" % [data.base_income]
 	name_label.text = "%s" %[data.name]
