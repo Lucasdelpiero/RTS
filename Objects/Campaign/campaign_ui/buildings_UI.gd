@@ -129,6 +129,7 @@ func get_icon_for_building(type : String) -> Texture2D:
 
 
 # Recieves signal from the button_building to start a new building
+# NOTE needs refactor, its not right to have the UI alter the state of the building manager
 func start_construction(aBuilding : Building) -> void:
 	if aBuilding == null:
 		push_error("There is not building to be built")
@@ -136,6 +137,8 @@ func start_construction(aBuilding : Building) -> void:
 	
 	var new_buildings : Array[Building] = buildings.duplicate(true) as Array[Building]
 	aBuilding.is_built = true
+	aBuilding.building_religion = province_data.religion_owner
+	aBuilding.building_culture = province_data.culture_owner
 	new_buildings.push_back(aBuilding.duplicate(true))
 	# NOTE currently the buildings are done in an instant, they should be refactored
 	province_data.province.buildings_manager.buildings = new_buildings.duplicate(true)

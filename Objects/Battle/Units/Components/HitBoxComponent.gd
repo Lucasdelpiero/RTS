@@ -52,8 +52,8 @@ func get_closest_hurtbox(areas : Array[HurtBox]) -> HurtBox:
 			closest_distance = distance_to_area
 	if closest == null:
 		push_warning("The closest area cannot be used")
-		for area in areas:
-			print(area.name)
+		#for area in areas:
+			#print(area.name)
 	return closest
 
 func _on_area_2d_area_entered(area : Area2D) -> void:

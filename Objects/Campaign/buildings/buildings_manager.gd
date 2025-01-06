@@ -28,9 +28,16 @@ func initialize() -> void:
 	for building in buildings:
 		var temp_building : Variant = building.duplicate(true)
 		temp_buildings.push_back(temp_building)
+		
 	
 	var typed_buildigns : Array[Building] = []
 	typed_buildigns.assign(temp_buildings)
+	
+	# BUG it doesnt set a religion in the building
+	for building in typed_buildigns as Array[Building]:
+		building.building_religion = province_data.religion
+		building.building_culture = province_data.culture
+	
 	buildings = typed_buildigns
 
 
@@ -103,6 +110,12 @@ func get_buildings_bonuses() -> Array[Bonus]:
 		if current_building == null:
 			push_error("Building data returned null")
 			continue # skip the things below
+		
+		# Skips if the temple and religion are not the same
+		if building.building_type == building.BUILDING_TEMPLE:
+			if province_data.religion_owner != building.building_religion:
+				continue
+		
 		var building_level_bonuses  : Array[Bonus] = current_building.bonuses
 		for bonus in building_level_bonuses:
 			# Check if a bonus of the same type is saved in the array

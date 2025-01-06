@@ -6,10 +6,12 @@ var province : Province = null
 var name : String = "Unnamed"
 var base_income : float = 0.0
 var population : int = 1
+var religion_owner : Religions.list = Religions.list.NONE
 var religion : Religions.list = Religions.list.NONE
 var religion_well : Religions.list 
 var conversion_religion_progress : float = 0.0
-var culture : int = 0
+var culture_owner : Cultures.list
+var culture : Cultures.list = Cultures.list.NONE
 var terrain_type : String = "none"
 var loyalty : float = 50
 
@@ -38,10 +40,12 @@ func set_data_from_object(aProvince : Province = null) -> void:
 		set(property, aProvince.get(property))
 		#push_warning("%s: %s" % [property, get(property)])
 	
-
-
 	# For properties that are not shared it has to be done here
 	province = aProvince # reference to the province
 	building_manager = aProvince.buildings_manager
 	buildings = aProvince.buildings_manager.buildings 
+	religion_owner = aProvince.get_religion_nation_owner()
+	culture_owner = aProvince.get_culture_nation_owner()
+	religion = aProvince.religion
+	culture = aProvince.culture
 	

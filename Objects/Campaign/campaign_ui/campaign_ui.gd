@@ -45,6 +45,7 @@ func _init() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = true
+	set_province_visibility(false)
 	mapTypesManager.new_map_selected.connect(change_map_shown)
 	Signals.sg_update_province_ui.connect(update_last_province_data)
 	#Globals.campaign_UI = self

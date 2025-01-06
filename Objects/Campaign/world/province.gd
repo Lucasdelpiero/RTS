@@ -32,6 +32,9 @@ var nation_owner : Nation  = null :
 		set_color_border(new_owner.nation_outline_color)
 		outside_color = new_owner.nation_outline_color
 		loyalty = get_loyalty()
+		var new_province_data : ProvinceData = ProvinceData.new()
+		new_province_data.set_data_from_object(self)
+		buildings_manager.province_data = new_province_data
 		# When anexing it changes to political, this makes it go back
 		# to the last map type shown
 		set_map_type_shown(Globals.last_map_shown)
@@ -52,14 +55,26 @@ var nation_owner : Nation  = null :
 	set(value):
 		if value != religion:
 			religion = value
+			loyalty = get_loyalty()
 			# In case religion changes it will be updated
 			if not Engine.is_editor_hint(): # Avoid error in editor
 				set_map_type_shown(Globals.last_map_shown) 
 # Stores to which religion is converting and the progress
 var conversion_religion : Religions.list
-var conversion_religion_progress : float = 0.0
-@export var culture : Cultures.list = Cultures.list.LATIN
-@export var buildings_manager : BuildingsManager
+var conversion_religion_progress : float = 0.0 : 
+	set(value):
+		if conversion_religion != religion:
+			conversion_religion_progress = value
+		if conversion_religion_progress >= 100:
+			conversion_religion_progress = 0.0
+			religion = conversion_religion
+	
+	
+@export var culture : Cultures.list = Cultures.list.LATIN :
+	set(value):
+		culture = value
+		loyalty = get_loyalty()
+@export var buildings_manager : BuildingsManager 
 # NOTE
 # Bonuses can be optimized by only recalculating their amount when they changed
 # As this can create bugs as they could dont sync, they are updated each time they are used 
@@ -108,6 +123,7 @@ func _ready() -> void:
 	outline_color = outline_color
 	loyalty = get_loyalty()
 	buildings_manager.sg_new_building_done.connect(update_province_data)
+	
 	await get_tree().create_timer(1).timeout
 #	mouseDetectorCollition.shape.points = []
 	var poly : PackedVector2Array = get_polygon()
@@ -124,7 +140,13 @@ func _ready() -> void:
 		#buildings_manager = BuildingsManager.new()
 		buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 		push_error("building_manager had to be created") # just to test
+	
+	var new_province_data : ProvinceData = ProvinceData.new()
+	new_province_data.set_data_from_object(self)
+	buildings_manager.province_data = new_province_data
 	buildings_manager.initialize() # Makes all buildings uniques to each province
+	
+	
 	
 	if debug_lines:
 		create_debug_lines_connections()
@@ -340,11 +362,6 @@ func update_population() -> void:
 		conversion_religion = nation_owner.religion
 		conversion_religion_progress += conversion_religion_bonus.multiplier_bonus
 		
-		if conversion_religion_progress >= 100:
-			religion = nation_owner.religion
-
-		
-		
 
 func update_conversion_religion() -> void:
 	
@@ -374,6 +391,17 @@ func get_province_income() -> Production:
 				total_production.manpower = total_production.manpower * ceili(1.0 + (bonus.multiplier_bonus / 100.0) ) 
 	
 	return total_production
+
+# Used to avoid getting errors on borders, which doesnt have owner
+func get_religion_nation_owner() -> Religions.list :
+	if nation_owner == null:
+		return Religions.list.NONE
+	return nation_owner.religion
+
+func get_culture_nation_owner() -> Cultures.list:
+	if nation_owner == null:
+		return Cultures.list.NONE
+	return nation_owner.culture
 
 # NOTE currently gets the total loyalty
 # In the future different culture and religion has to be their own bonus

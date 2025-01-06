@@ -175,6 +175,20 @@ offset_top = 77.0
 offset_right = 339.0
 offset_bottom = 100.0
 
+[node name="ConversionRelBar" type="ProgressBar" parent="Container/Province"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 6)
+layout_mode = 0
+offset_left = 265.0
+offset_top = 31.0
+offset_right = 365.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jqdhg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqxnl")
+step = 1.0
+value = 37.0
+show_percentage = false
+
 [node name="BuildingsUI" type="Control" parent="Container/Province"]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -229,9 +243,9 @@ anchor_top = -2.047
 anchor_right = -0.056
 anchor_bottom = -2.047
 offset_left = -0.136
-offset_top = -252.979
+offset_top = -301.979
 offset_right = 407.864
-offset_bottom = 0.0211105
+offset_bottom = -48.9789
 
 [node name="ToBeBuiltContainer" type="PanelContainer" parent="Container/Province/BuildingsUI"]
 unique_name_in_owner = true
@@ -272,20 +286,6 @@ layout_mode = 2
 
 [node name="ButtonBuilding3" parent="Container/Province/BuildingsUI/ToBeBuiltContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_3i5kl")]
 layout_mode = 2
-
-[node name="ConversionRelBar" type="ProgressBar" parent="Container/Province"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 6)
-layout_mode = 0
-offset_left = 265.0
-offset_top = 31.0
-offset_right = 365.0
-offset_bottom = 37.0
-theme_override_styles/background = SubResource("StyleBoxFlat_jqdhg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_nqxnl")
-step = 1.0
-value = 37.0
-show_percentage = false
 
 [node name="PanelContainer" type="PanelContainer" parent="Container"]
 layout_mode = 1
