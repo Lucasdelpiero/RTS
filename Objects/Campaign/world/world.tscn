@@ -317,7 +317,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([])
 
-[sub_resource type="Resource" id="Resource_sdxlh"]
+[sub_resource type="Resource" id="Resource_6pglb"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -332,10 +332,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_0hvuq"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_sdxlh")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6pglb")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_v6jn7"]
+[sub_resource type="Resource" id="Resource_f4y2g"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -350,10 +350,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_jdtlt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v6jn7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f4y2g")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ujwkj"]
+[sub_resource type="Resource" id="Resource_ranp5"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -368,10 +368,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_s0tb5"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ujwkj")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ranp5")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hf8lj"]
+[sub_resource type="Resource" id="Resource_a5nq8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -386,10 +386,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_p3egx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hf8lj")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a5nq8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_bn14q"]
+[sub_resource type="Resource" id="Resource_uqskt"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -404,10 +404,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ylgtk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bn14q")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_uqskt")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6e0pk"]
+[sub_resource type="Resource" id="Resource_p4riv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -422,10 +422,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_f0wbs"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6e0pk")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p4riv")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_d00ky"]
+[sub_resource type="Resource" id="Resource_3ydrn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -440,10 +440,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_o7kja"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_d00ky")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3ydrn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_g0qq0"]
+[sub_resource type="Resource" id="Resource_t0yw1"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -458,10 +458,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_bxeiu"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_g0qq0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_t0yw1")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_b5teb"]
+[sub_resource type="Resource" id="Resource_8fcyd"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -476,10 +476,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_y6fit"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_b5teb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8fcyd")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_t5cbr"]
+[sub_resource type="Resource" id="Resource_tjdhi"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -494,10 +494,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_d0kqc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_t5cbr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tjdhi")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_61aag"]
+[sub_resource type="Resource" id="Resource_3ivln"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -512,10 +512,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5y4hq"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_61aag")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3ivln")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_px5er"]
+[sub_resource type="Resource" id="Resource_r8scj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -530,10 +530,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_x6n7a"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_px5er")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_r8scj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_mql4l"]
+[sub_resource type="Resource" id="Resource_rjugy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -548,10 +548,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6f45v"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mql4l")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rjugy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yfv4j"]
+[sub_resource type="Resource" id="Resource_dxgbu"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -566,10 +566,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_idh4u"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yfv4j")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dxgbu")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_o670p"]
+[sub_resource type="Resource" id="Resource_r0kdq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -584,10 +584,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_jf4r8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_o670p")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_r0kdq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qpre1"]
+[sub_resource type="Resource" id="Resource_hpukh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -602,10 +602,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_h7was"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qpre1")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hpukh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_awi8c"]
+[sub_resource type="Resource" id="Resource_b0t7w"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -620,10 +620,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ptmy1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_awi8c")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_b0t7w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_w8aix"]
+[sub_resource type="Resource" id="Resource_qp1xe"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -638,10 +638,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ukj1p"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_w8aix")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qp1xe")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_p4l8h"]
+[sub_resource type="Resource" id="Resource_qh0bs"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -656,10 +656,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3gmw6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p4l8h")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qh0bs")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6lahn"]
+[sub_resource type="Resource" id="Resource_bq5gv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -674,10 +674,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_uf5nx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6lahn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bq5gv")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dovp5"]
+[sub_resource type="Resource" id="Resource_jru7l"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -692,10 +692,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_mygjm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dovp5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jru7l")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_snul7"]
+[sub_resource type="Resource" id="Resource_p3yxh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -710,10 +710,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_n0q6a"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_snul7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p3yxh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xe42n"]
+[sub_resource type="Resource" id="Resource_kfqs4"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -728,10 +728,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wvfbj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xe42n")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kfqs4")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_auk5l"]
+[sub_resource type="Resource" id="Resource_lg2uq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -746,10 +746,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ssv0y"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_auk5l")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_lg2uq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qegpl"]
+[sub_resource type="Resource" id="Resource_s20bb"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -764,10 +764,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_cy20f"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qegpl")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_s20bb")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_luhf0"]
+[sub_resource type="Resource" id="Resource_od30y"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -782,10 +782,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_26g3e"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_luhf0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_od30y")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_a4iic"]
+[sub_resource type="Resource" id="Resource_kp0f4"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -800,10 +800,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4hwar"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a4iic")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kp0f4")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3putw"]
+[sub_resource type="Resource" id="Resource_0i0j3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -818,10 +818,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_fuf5q"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3putw")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0i0j3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_flpxy"]
+[sub_resource type="Resource" id="Resource_bdjc3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -836,10 +836,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wl2ap"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_flpxy")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bdjc3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7hu0g"]
+[sub_resource type="Resource" id="Resource_po0ff"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -854,10 +854,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_da5tx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7hu0g")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_po0ff")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_jxham"]
+[sub_resource type="Resource" id="Resource_ktr2l"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -872,10 +872,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5qpkk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jxham")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ktr2l")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_pnfjn"]
+[sub_resource type="Resource" id="Resource_rx5lw"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -890,10 +890,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_c3ojm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pnfjn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rx5lw")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qqsjl"]
+[sub_resource type="Resource" id="Resource_nj2il"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -908,10 +908,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_g5lh6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qqsjl")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nj2il")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_jf0dp"]
+[sub_resource type="Resource" id="Resource_yxxhg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -926,10 +926,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_yqr5j"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jf0dp")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yxxhg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_wq21v"]
+[sub_resource type="Resource" id="Resource_un61q"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -944,10 +944,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_56x4f"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wq21v")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_un61q")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_uk3cv"]
+[sub_resource type="Resource" id="Resource_dk727"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -962,10 +962,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6l8wb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_uk3cv")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dk727")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ajvt6"]
+[sub_resource type="Resource" id="Resource_d5q7g"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -980,10 +980,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_0nyjp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ajvt6")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_d5q7g")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_f5nfl"]
+[sub_resource type="Resource" id="Resource_7tsxs"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -998,10 +998,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_cq7g4"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f5nfl")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7tsxs")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_y0b08"]
+[sub_resource type="Resource" id="Resource_p2dma"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1016,10 +1016,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_conlt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y0b08")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p2dma")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_drjx4"]
+[sub_resource type="Resource" id="Resource_t84pq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1034,10 +1034,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_uwapm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_drjx4")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_t84pq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dgox6"]
+[sub_resource type="Resource" id="Resource_sr0c6"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1052,10 +1052,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ko3w7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dgox6")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_sr0c6")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_0djgq"]
+[sub_resource type="Resource" id="Resource_7rhyp"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1070,10 +1070,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_deqjy"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0djgq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7rhyp")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_q55te"]
+[sub_resource type="Resource" id="Resource_kahlj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1088,10 +1088,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3ofos"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q55te")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kahlj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_j5lfx"]
+[sub_resource type="Resource" id="Resource_da8hn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1106,10 +1106,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vtvml"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_j5lfx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_da8hn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_0bqte"]
+[sub_resource type="Resource" id="Resource_e54rn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1124,10 +1124,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_dbpef"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0bqte")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_e54rn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dtr47"]
+[sub_resource type="Resource" id="Resource_0jbuy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1142,10 +1142,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_32umd"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dtr47")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0jbuy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_a28fr"]
+[sub_resource type="Resource" id="Resource_c57ku"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1160,10 +1160,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3yx31"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a28fr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_c57ku")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_12qq8"]
+[sub_resource type="Resource" id="Resource_6w7e8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1178,10 +1178,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_80nh7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_12qq8")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6w7e8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fdnyj"]
+[sub_resource type="Resource" id="Resource_xw020"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1196,10 +1196,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_cw70d"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fdnyj")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xw020")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_bd6qc"]
+[sub_resource type="Resource" id="Resource_256cj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1214,10 +1214,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_kyqpt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bd6qc")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_256cj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dokng"]
+[sub_resource type="Resource" id="Resource_lwn1v"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1232,10 +1232,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_2xrp3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dokng")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_lwn1v")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_mmugq"]
+[sub_resource type="Resource" id="Resource_ge8mf"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1250,10 +1250,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_j1hwx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mmugq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ge8mf")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_e88yi"]
+[sub_resource type="Resource" id="Resource_ol6xn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1268,10 +1268,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_k7blh"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_e88yi")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ol6xn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dum83"]
+[sub_resource type="Resource" id="Resource_bsthy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1286,10 +1286,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_yflfb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dum83")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bsthy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_c6u55"]
+[sub_resource type="Resource" id="Resource_4spnt"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1304,10 +1304,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_sgkpp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_c6u55")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4spnt")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_f6t2h"]
+[sub_resource type="Resource" id="Resource_uwk8w"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1322,10 +1322,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vaf2t"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f6t2h")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_uwk8w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xcxdc"]
+[sub_resource type="Resource" id="Resource_o650e"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1340,10 +1340,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_bx407"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xcxdc")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_o650e")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hxsgr"]
+[sub_resource type="Resource" id="Resource_ga5by"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1358,10 +1358,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_khhpe"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hxsgr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ga5by")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ej034"]
+[sub_resource type="Resource" id="Resource_bopxa"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1376,10 +1376,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_g8ln1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ej034")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bopxa")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_whfa4"]
+[sub_resource type="Resource" id="Resource_e51t1"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1394,10 +1394,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_y88ko"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_whfa4")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_e51t1")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dyg64"]
+[sub_resource type="Resource" id="Resource_gqnxy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1412,10 +1412,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_l5u62"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dyg64")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gqnxy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ggfav"]
+[sub_resource type="Resource" id="Resource_ol4fe"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1430,10 +1430,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_cmao8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ggfav")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ol4fe")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_5btov"]
+[sub_resource type="Resource" id="Resource_6qnnf"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1448,10 +1448,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_pg4qx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5btov")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6qnnf")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_kk14j"]
+[sub_resource type="Resource" id="Resource_bnw43"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1466,10 +1466,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6a65r"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kk14j")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bnw43")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_31cl4"]
+[sub_resource type="Resource" id="Resource_wtfw5"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1484,10 +1484,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qat7v"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_31cl4")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wtfw5")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fku7j"]
+[sub_resource type="Resource" id="Resource_6m2vf"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1502,10 +1502,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vjmjg"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fku7j")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6m2vf")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_mjg64"]
+[sub_resource type="Resource" id="Resource_serfq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1520,10 +1520,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wtjto"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mjg64")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_serfq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rlqca"]
+[sub_resource type="Resource" id="Resource_g5kfu"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1538,10 +1538,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_svd80"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rlqca")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_g5kfu")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_pdadp"]
+[sub_resource type="Resource" id="Resource_pbhgs"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1556,10 +1556,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_q33f1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pdadp")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pbhgs")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_2ovn5"]
+[sub_resource type="Resource" id="Resource_pvpx2"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1574,10 +1574,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_b3o52"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2ovn5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pvpx2")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_0l2m7"]
+[sub_resource type="Resource" id="Resource_gihb1"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1592,10 +1592,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_pvfws"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0l2m7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gihb1")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_lij00"]
+[sub_resource type="Resource" id="Resource_rlsum"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1610,10 +1610,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wi6xh"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_lij00")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rlsum")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hitv7"]
+[sub_resource type="Resource" id="Resource_rnm7f"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1628,10 +1628,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_gkoeo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hitv7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rnm7f")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_g4en5"]
+[sub_resource type="Resource" id="Resource_7sidq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1646,10 +1646,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_bm2u4"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_g4en5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7sidq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ohqtn"]
+[sub_resource type="Resource" id="Resource_pchoj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1664,10 +1664,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vr2e2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ohqtn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pchoj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_luvjl"]
+[sub_resource type="Resource" id="Resource_ncgae"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1682,10 +1682,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_pxga2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_luvjl")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ncgae")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xr4oh"]
+[sub_resource type="Resource" id="Resource_spgee"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1700,10 +1700,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_i8xc8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xr4oh")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_spgee")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ldclq"]
+[sub_resource type="Resource" id="Resource_a6yco"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1718,10 +1718,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_tdtrs"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ldclq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a6yco")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_80mcr"]
+[sub_resource type="Resource" id="Resource_nu682"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1736,10 +1736,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_sl6fw"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_80mcr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nu682")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_i44nn"]
+[sub_resource type="Resource" id="Resource_xuodb"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1754,10 +1754,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7nqcv"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_i44nn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xuodb")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hlq5m"]
+[sub_resource type="Resource" id="Resource_74luj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1772,10 +1772,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_dtri1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hlq5m")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_74luj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fv8sp"]
+[sub_resource type="Resource" id="Resource_e4ydx"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1790,10 +1790,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_m52jy"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fv8sp")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_e4ydx")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_5qvhy"]
+[sub_resource type="Resource" id="Resource_esuwa"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1808,10 +1808,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_114xp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5qvhy")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_esuwa")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_x1ikb"]
+[sub_resource type="Resource" id="Resource_g3fjr"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1826,10 +1826,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5lt7o"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_x1ikb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_g3fjr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_151cf"]
+[sub_resource type="Resource" id="Resource_s2ini"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1844,10 +1844,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vw8bx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_151cf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_s2ini")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_v0213"]
+[sub_resource type="Resource" id="Resource_mqusg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1862,10 +1862,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6ksel"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v0213")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mqusg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_u64wn"]
+[sub_resource type="Resource" id="Resource_p1l5f"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1880,10 +1880,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_j85r1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_u64wn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p1l5f")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ckuvm"]
+[sub_resource type="Resource" id="Resource_yg8yn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1898,10 +1898,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_sacnd"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ckuvm")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yg8yn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_y8icb"]
+[sub_resource type="Resource" id="Resource_dojbr"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1916,10 +1916,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_i2ru0"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y8icb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dojbr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_er0pf"]
+[sub_resource type="Resource" id="Resource_1x0rb"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1934,10 +1934,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_34548"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_er0pf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_1x0rb")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_684y2"]
+[sub_resource type="Resource" id="Resource_8nixf"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1952,10 +1952,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_08soo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_684y2")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8nixf")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_51aur"]
+[sub_resource type="Resource" id="Resource_8lkia"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1970,10 +1970,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_b1xul"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_51aur")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8lkia")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_srjoa"]
+[sub_resource type="Resource" id="Resource_4saex"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -1988,10 +1988,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_nibjd"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_srjoa")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4saex")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hexjf"]
+[sub_resource type="Resource" id="Resource_hxdui"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2006,10 +2006,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_8swgd"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hexjf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hxdui")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_kmx8a"]
+[sub_resource type="Resource" id="Resource_e2vgm"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2024,10 +2024,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_f1g1u"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kmx8a")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_e2vgm")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_tisl0"]
+[sub_resource type="Resource" id="Resource_hm4ih"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2042,10 +2042,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ub6wv"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tisl0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hm4ih")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6t0y6"]
+[sub_resource type="Resource" id="Resource_rggtq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2060,10 +2060,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_mvc50"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6t0y6")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rggtq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dnc2g"]
+[sub_resource type="Resource" id="Resource_nskmk"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2078,10 +2078,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rli8q"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dnc2g")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nskmk")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_1duic"]
+[sub_resource type="Resource" id="Resource_fq15f"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2096,10 +2096,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_bccbu"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_1duic")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fq15f")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dqiul"]
+[sub_resource type="Resource" id="Resource_m8jcs"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2114,10 +2114,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_0tbt8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dqiul")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_m8jcs")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_kpayt"]
+[sub_resource type="Resource" id="Resource_kyxwv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2132,10 +2132,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_gdimr"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kpayt")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kyxwv")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xtihc"]
+[sub_resource type="Resource" id="Resource_2g1f8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2150,10 +2150,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7dhx4"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xtihc")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2g1f8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3au35"]
+[sub_resource type="Resource" id="Resource_38gg5"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2168,10 +2168,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rqoa2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3au35")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_38gg5")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_frnkh"]
+[sub_resource type="Resource" id="Resource_xxssa"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2186,10 +2186,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3frm3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_frnkh")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xxssa")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rv7rn"]
+[sub_resource type="Resource" id="Resource_smuvm"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2204,10 +2204,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_l1arm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rv7rn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_smuvm")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_wkuqb"]
+[sub_resource type="Resource" id="Resource_a1kwv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2222,10 +2222,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5dg8u"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wkuqb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a1kwv")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ffjjh"]
+[sub_resource type="Resource" id="Resource_b5u4c"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2240,10 +2240,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3yg4c"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ffjjh")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_b5u4c")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dje5a"]
+[sub_resource type="Resource" id="Resource_8qmy2"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2258,10 +2258,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ki6b8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dje5a")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8qmy2")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_axe1v"]
+[sub_resource type="Resource" id="Resource_2fyoj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2276,10 +2276,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_kx35e"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_axe1v")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2fyoj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_cf1xo"]
+[sub_resource type="Resource" id="Resource_weii3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2294,10 +2294,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ys2qt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_cf1xo")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_weii3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_eaikf"]
+[sub_resource type="Resource" id="Resource_642v1"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2312,10 +2312,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_w6f1j"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_eaikf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_642v1")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_5ewu1"]
+[sub_resource type="Resource" id="Resource_wg38w"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2330,10 +2330,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_a76jb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5ewu1")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wg38w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_sqx8r"]
+[sub_resource type="Resource" id="Resource_qxfdg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2348,10 +2348,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qbfwn"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_sqx8r")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qxfdg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ocuea"]
+[sub_resource type="Resource" id="Resource_iwj4s"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2366,10 +2366,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_prh8u"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ocuea")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_iwj4s")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yq4wc"]
+[sub_resource type="Resource" id="Resource_m87u8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2384,10 +2384,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3wrwy"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yq4wc")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_m87u8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_c3sgp"]
+[sub_resource type="Resource" id="Resource_rp8us"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2402,10 +2402,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xdsfo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_c3sgp")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rp8us")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_arxhi"]
+[sub_resource type="Resource" id="Resource_vnau8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2420,10 +2420,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_x7noo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_arxhi")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vnau8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fsr5o"]
+[sub_resource type="Resource" id="Resource_q88lv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2438,10 +2438,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_0lff7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fsr5o")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q88lv")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_vkjq1"]
+[sub_resource type="Resource" id="Resource_i7bqh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2456,10 +2456,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_24pfj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vkjq1")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_i7bqh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fx76d"]
+[sub_resource type="Resource" id="Resource_hiviy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2474,10 +2474,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3fgbp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fx76d")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hiviy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_najy5"]
+[sub_resource type="Resource" id="Resource_7aleu"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2492,10 +2492,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_liigb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_najy5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7aleu")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_sottg"]
+[sub_resource type="Resource" id="Resource_302vx"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2510,10 +2510,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_no2nt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_sottg")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_302vx")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_nkac2"]
+[sub_resource type="Resource" id="Resource_hhkke"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2528,10 +2528,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_fuggo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nkac2")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hhkke")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_8rgr5"]
+[sub_resource type="Resource" id="Resource_4j7r4"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2546,10 +2546,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4elpk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8rgr5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4j7r4")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_q1xc5"]
+[sub_resource type="Resource" id="Resource_86jrt"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2564,10 +2564,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_r2yqs"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q1xc5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_86jrt")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_1qknx"]
+[sub_resource type="Resource" id="Resource_qse5r"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2582,10 +2582,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7d8sv"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_1qknx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qse5r")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_aesfn"]
+[sub_resource type="Resource" id="Resource_p7dim"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2600,10 +2600,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_almk1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_aesfn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_p7dim")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ewaly"]
+[sub_resource type="Resource" id="Resource_mfbit"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2618,10 +2618,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_utaj7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ewaly")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mfbit")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ugfpr"]
+[sub_resource type="Resource" id="Resource_i0upx"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2636,10 +2636,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6aqn8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ugfpr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_i0upx")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_vq10a"]
+[sub_resource type="Resource" id="Resource_a4f8n"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2654,10 +2654,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4utqp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vq10a")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a4f8n")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_d1rwx"]
+[sub_resource type="Resource" id="Resource_7nl7f"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2672,10 +2672,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_14yff"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_d1rwx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7nl7f")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_x6c4w"]
+[sub_resource type="Resource" id="Resource_dp0cq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2690,10 +2690,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7qwlm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_x6c4w")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dp0cq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7ai6n"]
+[sub_resource type="Resource" id="Resource_8n7qe"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2708,10 +2708,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_gdtr8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7ai6n")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8n7qe")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6mij5"]
+[sub_resource type="Resource" id="Resource_5chej"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2726,10 +2726,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_pdtrp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6mij5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5chej")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_aayxw"]
+[sub_resource type="Resource" id="Resource_ivvij"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2744,10 +2744,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5sw6r"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_aayxw")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ivvij")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hid6i"]
+[sub_resource type="Resource" id="Resource_lbgkn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2762,10 +2762,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_s18sr"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hid6i")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_lbgkn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_bc1fm"]
+[sub_resource type="Resource" id="Resource_2w606"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2780,10 +2780,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qomcl"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bc1fm")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2w606")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rhhc1"]
+[sub_resource type="Resource" id="Resource_ax4v5"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2798,10 +2798,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rcdvs"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rhhc1")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ax4v5")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_nidte"]
+[sub_resource type="Resource" id="Resource_4r7bt"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2816,10 +2816,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_m1pi1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nidte")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4r7bt")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_l1tta"]
+[sub_resource type="Resource" id="Resource_v11gc"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2834,10 +2834,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_bdwx5"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_l1tta")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v11gc")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_x8dx7"]
+[sub_resource type="Resource" id="Resource_h2p7n"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2852,10 +2852,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_pmjga"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_x8dx7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_h2p7n")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7jfhu"]
+[sub_resource type="Resource" id="Resource_vhy1b"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2870,10 +2870,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_e5iaw"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7jfhu")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vhy1b")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_42qe1"]
+[sub_resource type="Resource" id="Resource_njlh5"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2888,10 +2888,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_eehve"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_42qe1")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_njlh5")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_501vk"]
+[sub_resource type="Resource" id="Resource_5qgoa"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2906,10 +2906,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vflcx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_501vk")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5qgoa")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ejfs6"]
+[sub_resource type="Resource" id="Resource_oa7fw"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2924,10 +2924,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_oyjlo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ejfs6")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_oa7fw")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_y7nyf"]
+[sub_resource type="Resource" id="Resource_ry1p8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2942,10 +2942,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_f5l3d"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y7nyf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ry1p8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_h4yap"]
+[sub_resource type="Resource" id="Resource_gacou"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2960,10 +2960,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_o3vyf"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_h4yap")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gacou")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ygsug"]
+[sub_resource type="Resource" id="Resource_jd41m"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2978,10 +2978,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_o3t25"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ygsug")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jd41m")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_odxce"]
+[sub_resource type="Resource" id="Resource_cra60"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -2996,10 +2996,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_jvp14"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_odxce")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_cra60")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ohs71"]
+[sub_resource type="Resource" id="Resource_is2hf"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3014,10 +3014,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_effhg"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ohs71")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_is2hf")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_55vqp"]
+[sub_resource type="Resource" id="Resource_dtrfh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3032,10 +3032,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5meqi"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_55vqp")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dtrfh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_a7ri0"]
+[sub_resource type="Resource" id="Resource_1n4kh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3050,10 +3050,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rlqpm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_a7ri0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_1n4kh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_8tnj3"]
+[sub_resource type="Resource" id="Resource_jwwup"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3068,10 +3068,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_8h27l"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8tnj3")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jwwup")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3u5na"]
+[sub_resource type="Resource" id="Resource_t6iju"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3086,10 +3086,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_0vhrv"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3u5na")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_t6iju")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yu8ak"]
+[sub_resource type="Resource" id="Resource_v6md6"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3104,10 +3104,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_27yd1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yu8ak")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v6md6")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_msni5"]
+[sub_resource type="Resource" id="Resource_0qodq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3122,10 +3122,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_o8boo"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_msni5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0qodq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_dwc7b"]
+[sub_resource type="Resource" id="Resource_giik7"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3140,10 +3140,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xdsmb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dwc7b")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_giik7")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_11emy"]
+[sub_resource type="Resource" id="Resource_y3tae"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3158,10 +3158,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_i4xxh"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_11emy")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y3tae")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6uxly"]
+[sub_resource type="Resource" id="Resource_tlot3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3176,10 +3176,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_h7cmt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6uxly")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tlot3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_y1xfo"]
+[sub_resource type="Resource" id="Resource_dsgtk"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3194,10 +3194,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_g2r37"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y1xfo")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_dsgtk")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_4tiju"]
+[sub_resource type="Resource" id="Resource_fpdf7"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3212,10 +3212,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xpoe6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4tiju")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fpdf7")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xgvw3"]
+[sub_resource type="Resource" id="Resource_2qokb"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3230,10 +3230,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_eo2k6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xgvw3")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2qokb")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_5b6a0"]
+[sub_resource type="Resource" id="Resource_odj46"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3248,10 +3248,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ge6uf"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5b6a0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_odj46")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6lesq"]
+[sub_resource type="Resource" id="Resource_b5ggk"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3266,10 +3266,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4nh2k"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6lesq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_b5ggk")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_gi6ae"]
+[sub_resource type="Resource" id="Resource_12drg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3284,10 +3284,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_68v2u"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gi6ae")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_12drg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qbstw"]
+[sub_resource type="Resource" id="Resource_bhra7"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3302,10 +3302,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5lqtp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qbstw")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_bhra7")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7wfkf"]
+[sub_resource type="Resource" id="Resource_nc0bw"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3320,10 +3320,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_x3wtl"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7wfkf")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nc0bw")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_u2v58"]
+[sub_resource type="Resource" id="Resource_q1uut"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3338,10 +3338,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_khthf"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_u2v58")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q1uut")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_i2sa3"]
+[sub_resource type="Resource" id="Resource_m44y3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3356,10 +3356,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_b70uj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_i2sa3")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_m44y3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qtka5"]
+[sub_resource type="Resource" id="Resource_7gyjo"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3374,10 +3374,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_lan8a"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qtka5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7gyjo")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_jd1fv"]
+[sub_resource type="Resource" id="Resource_7eb33"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3392,10 +3392,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_dq2vm"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jd1fv")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7eb33")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7qoyl"]
+[sub_resource type="Resource" id="Resource_1yfng"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3410,10 +3410,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_gs3p3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7qoyl")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_1yfng")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6lh04"]
+[sub_resource type="Resource" id="Resource_v2i85"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3461,7 +3461,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_qkx8x"), SubResource("Resource_k5c4h")])
 
-[sub_resource type="Resource" id="Resource_g7b2p"]
+[sub_resource type="Resource" id="Resource_gflxe"]
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
@@ -3475,10 +3475,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7eis1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6lh04"), SubResource("Resource_g7b2p")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v2i85"), SubResource("Resource_gflxe")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_054wj"]
+[sub_resource type="Resource" id="Resource_0yigj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3493,10 +3493,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_kx23h"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_054wj")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0yigj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_qf0og"]
+[sub_resource type="Resource" id="Resource_it1xg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3511,10 +3511,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_s4xtr"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qf0og")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_it1xg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rllne"]
+[sub_resource type="Resource" id="Resource_qi3hh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3529,10 +3529,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wptcx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rllne")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qi3hh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rdtne"]
+[sub_resource type="Resource" id="Resource_flhut"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3547,10 +3547,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_3ybj3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rdtne")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_flhut")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6xvyx"]
+[sub_resource type="Resource" id="Resource_nnv1y"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3565,10 +3565,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xksmk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6xvyx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_nnv1y")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_4ebao"]
+[sub_resource type="Resource" id="Resource_egdiu"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3583,10 +3583,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_v6df2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4ebao")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_egdiu")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_o1ga0"]
+[sub_resource type="Resource" id="Resource_q4e5s"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3601,10 +3601,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xj257"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_o1ga0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q4e5s")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_ak8tr"]
+[sub_resource type="Resource" id="Resource_to4tr"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3619,10 +3619,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7fkmt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ak8tr")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_to4tr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_585l5"]
+[sub_resource type="Resource" id="Resource_mjiqm"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3637,10 +3637,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4mfl4"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_585l5")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mjiqm")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_38y4f"]
+[sub_resource type="Resource" id="Resource_igj08"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3655,10 +3655,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ia4jd"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_38y4f")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_igj08")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fgqft"]
+[sub_resource type="Resource" id="Resource_qq87o"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3673,10 +3673,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qusjf"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fgqft")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qq87o")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3ho5x"]
+[sub_resource type="Resource" id="Resource_gimqq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3691,7 +3691,7 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4v3le"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3ho5x")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gimqq")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="Resource" id="Resource_esaeb"]
@@ -3718,7 +3718,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([])
 
-[sub_resource type="Resource" id="Resource_14bg1"]
+[sub_resource type="Resource" id="Resource_4mo8r"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3800,7 +3800,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([SubResource("Resource_4uolu")])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_3u2a7")])
 
-[sub_resource type="Resource" id="Resource_d83gp"]
+[sub_resource type="Resource" id="Resource_4dujh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_FARM"
@@ -3838,7 +3838,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_jdsni")])
 
-[sub_resource type="Resource" id="Resource_0yqt1"]
+[sub_resource type="Resource" id="Resource_1ws6s"]
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
@@ -3849,7 +3849,7 @@ description = "PRAY THE SUN"
 building_religion = 0
 building_culture = 0
 
-[sub_resource type="Resource" id="Resource_vaikw"]
+[sub_resource type="Resource" id="Resource_t2vrc"]
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_THEATER"
 building_name = "Temple"
@@ -3863,7 +3863,7 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rvyfb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_14bg1"), SubResource("Resource_d83gp"), SubResource("Resource_0yqt1"), SubResource("Resource_vaikw")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4mo8r"), SubResource("Resource_4dujh"), SubResource("Resource_1ws6s"), SubResource("Resource_t2vrc")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w")])
 
 [sub_resource type="Resource" id="Resource_kfvc7"]
@@ -3876,7 +3876,7 @@ script = ExtResource("7_gxlj2")
 type_produced = "bonus_manpower"
 multiplier_bonus = 0
 
-[sub_resource type="Resource" id="Resource_djhfn"]
+[sub_resource type="Resource" id="Resource_hjtnd"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -3958,7 +3958,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([SubResource("Resource_if1rq")])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_eg1af")])
 
-[sub_resource type="Resource" id="Resource_4rq2t"]
+[sub_resource type="Resource" id="Resource_eqggv"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_FARM"
@@ -3996,7 +3996,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("26_yb3v6")]([])
 bonuses = Array[ExtResource("7_gxlj2")]([SubResource("Resource_4tm40")])
 
-[sub_resource type="Resource" id="Resource_3tprx"]
+[sub_resource type="Resource" id="Resource_5v4dr"]
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
@@ -4010,10 +4010,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qswa1"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_djhfn"), SubResource("Resource_4rq2t"), SubResource("Resource_3tprx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hjtnd"), SubResource("Resource_eqggv"), SubResource("Resource_5v4dr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_vwssi"]
+[sub_resource type="Resource" id="Resource_3a0r8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4025,7 +4025,7 @@ description = "A government building, that is really cool"
 building_religion = 0
 building_culture = 0
 
-[sub_resource type="Resource" id="Resource_5gpou"]
+[sub_resource type="Resource" id="Resource_85f3w"]
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_TEMPLE"
 building_name = "Temple"
@@ -4039,10 +4039,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_jl7t7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vwssi"), SubResource("Resource_5gpou")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3a0r8"), SubResource("Resource_85f3w")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_id4ga"]
+[sub_resource type="Resource" id="Resource_6mgke"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4054,7 +4054,7 @@ description = "A government building, that is really cool"
 building_religion = 0
 building_culture = 0
 
-[sub_resource type="Resource" id="Resource_vpnvb"]
+[sub_resource type="Resource" id="Resource_onlxq"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_FARM"
@@ -4069,10 +4069,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_e8e7l"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_id4ga"), SubResource("Resource_vpnvb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6mgke"), SubResource("Resource_onlxq")])
 building_types = Array[ExtResource("22_lcv0d")]([])
 
-[sub_resource type="Resource" id="Resource_k1b8d"]
+[sub_resource type="Resource" id="Resource_gflfy"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4087,10 +4087,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_oyxa5"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_k1b8d")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gflfy")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yasx6"]
+[sub_resource type="Resource" id="Resource_6os4m"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4105,10 +4105,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ulv7f"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yasx6")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6os4m")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_f881d"]
+[sub_resource type="Resource" id="Resource_o70ir"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4123,10 +4123,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_iqkbt"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f881d")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_o70ir")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fyjhy"]
+[sub_resource type="Resource" id="Resource_l10nx"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4141,10 +4141,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_tecg6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fyjhy")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_l10nx")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xks48"]
+[sub_resource type="Resource" id="Resource_qo571"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4159,10 +4159,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_2isp3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xks48")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qo571")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_miuov"]
+[sub_resource type="Resource" id="Resource_l8e0c"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4177,10 +4177,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_36ywc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_miuov")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_l8e0c")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_imk7w"]
+[sub_resource type="Resource" id="Resource_5834f"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4195,10 +4195,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ouba8"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_imk7w")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5834f")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_70ywt"]
+[sub_resource type="Resource" id="Resource_ufrms"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4213,10 +4213,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6otsc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_70ywt")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ufrms")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_8yslo"]
+[sub_resource type="Resource" id="Resource_hraxw"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4231,10 +4231,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_svff3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8yslo")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hraxw")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7ku6o"]
+[sub_resource type="Resource" id="Resource_2nlc0"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4249,10 +4249,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_itake"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7ku6o")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2nlc0")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_01npn"]
+[sub_resource type="Resource" id="Resource_mo7j7"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4267,10 +4267,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_dkpll"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_01npn")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mo7j7")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_2jtn0"]
+[sub_resource type="Resource" id="Resource_scyjo"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4285,10 +4285,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_nndnu"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2jtn0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_scyjo")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_x5u1c"]
+[sub_resource type="Resource" id="Resource_2g1q4"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4303,10 +4303,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_m4xsk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_x5u1c")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2g1q4")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_630yw"]
+[sub_resource type="Resource" id="Resource_wwgqr"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4321,10 +4321,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_446f6"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_630yw")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wwgqr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_2i7nv"]
+[sub_resource type="Resource" id="Resource_falyk"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4339,10 +4339,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_q4868"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2i7nv")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_falyk")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_8l41v"]
+[sub_resource type="Resource" id="Resource_b6a7g"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4357,10 +4357,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_kr8g2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8l41v")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_b6a7g")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_j2pme"]
+[sub_resource type="Resource" id="Resource_coiea"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4375,10 +4375,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rceme"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_j2pme")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_coiea")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rqkix"]
+[sub_resource type="Resource" id="Resource_runrh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4393,10 +4393,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_so1ie"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rqkix")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_runrh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_y7uam"]
+[sub_resource type="Resource" id="Resource_yb50p"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4411,10 +4411,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_j6vg0"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y7uam")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yb50p")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_7g56c"]
+[sub_resource type="Resource" id="Resource_tf36n"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4429,10 +4429,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_lk1u3"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7g56c")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tf36n")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_0breg"]
+[sub_resource type="Resource" id="Resource_q8nn3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4447,10 +4447,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_k2c2y"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0breg")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q8nn3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_v0vj8"]
+[sub_resource type="Resource" id="Resource_ik1vp"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4465,10 +4465,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ilcia"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_v0vj8")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ik1vp")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_647wh"]
+[sub_resource type="Resource" id="Resource_uw6ig"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4483,10 +4483,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_b8pio"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_647wh")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_uw6ig")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_aiku7"]
+[sub_resource type="Resource" id="Resource_oemrj"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4501,10 +4501,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_wap23"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_aiku7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_oemrj")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_hkx43"]
+[sub_resource type="Resource" id="Resource_5xoex"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4519,10 +4519,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_hgxx7"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_hkx43")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_5xoex")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xtrif"]
+[sub_resource type="Resource" id="Resource_f2v0h"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4537,10 +4537,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_p2yjp"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xtrif")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f2v0h")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_rpu55"]
+[sub_resource type="Resource" id="Resource_m13cg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4555,10 +4555,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_7k8sa"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rpu55")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_m13cg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_0pmpb"]
+[sub_resource type="Resource" id="Resource_8rekg"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4573,10 +4573,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vrxxc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0pmpb")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8rekg")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_mb730"]
+[sub_resource type="Resource" id="Resource_qjpsl"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4591,10 +4591,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qh7qk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mb730")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_qjpsl")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_jr0ex"]
+[sub_resource type="Resource" id="Resource_w3g7v"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4609,10 +4609,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_n5buk"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_jr0ex")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_w3g7v")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_k40vk"]
+[sub_resource type="Resource" id="Resource_q0364"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4627,10 +4627,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_13s2t"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_k40vk")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_q0364")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3nuhq"]
+[sub_resource type="Resource" id="Resource_ssi4s"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4645,10 +4645,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_qw5ep"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3nuhq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ssi4s")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_pwrv8"]
+[sub_resource type="Resource" id="Resource_8f0lr"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4663,10 +4663,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_fl6yj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_pwrv8")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8f0lr")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6u2vs"]
+[sub_resource type="Resource" id="Resource_xegn8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4681,10 +4681,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_vpkpa"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6u2vs")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xegn8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_8mltx"]
+[sub_resource type="Resource" id="Resource_axij1"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4699,10 +4699,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_l0t6l"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_8mltx")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_axij1")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_mhrsd"]
+[sub_resource type="Resource" id="Resource_g8wbh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4717,10 +4717,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_1wxey"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_mhrsd")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_g8wbh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_t76jt"]
+[sub_resource type="Resource" id="Resource_wxyrm"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4735,10 +4735,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_hi52t"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_t76jt")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_wxyrm")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_w3vje"]
+[sub_resource type="Resource" id="Resource_f6o30"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4753,10 +4753,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_rti8k"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_w3vje")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_f6o30")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_3hnw7"]
+[sub_resource type="Resource" id="Resource_rxamt"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4771,10 +4771,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_nola2"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_3hnw7")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rxamt")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_gbwgq"]
+[sub_resource type="Resource" id="Resource_4nj0y"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4789,10 +4789,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_xas74"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_gbwgq")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4nj0y")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_fiqtd"]
+[sub_resource type="Resource" id="Resource_6jxa8"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4807,10 +4807,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4v4ff"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_fiqtd")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6jxa8")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_vppih"]
+[sub_resource type="Resource" id="Resource_end2b"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4825,10 +4825,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_ib1eb"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vppih")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_end2b")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_6cq5w"]
+[sub_resource type="Resource" id="Resource_64nr7"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4843,10 +4843,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_fsr0f"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_6cq5w")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_64nr7")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yyrn0"]
+[sub_resource type="Resource" id="Resource_y8li3"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4861,10 +4861,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_6dv5m"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yyrn0")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_y8li3")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_yy5ke"]
+[sub_resource type="Resource" id="Resource_0mwbn"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4879,10 +4879,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_epx2a"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_yy5ke")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_0mwbn")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_uh664"]
+[sub_resource type="Resource" id="Resource_teqqw"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4897,10 +4897,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_5fppg"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_uh664")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_teqqw")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_tv342"]
+[sub_resource type="Resource" id="Resource_rueho"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4915,10 +4915,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4codj"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tv342")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_rueho")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_tcjnt"]
+[sub_resource type="Resource" id="Resource_xrose"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4933,10 +4933,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_iiq1h"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tcjnt")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xrose")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_2pnyi"]
+[sub_resource type="Resource" id="Resource_ups0b"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4951,10 +4951,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_77qa0"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_2pnyi")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_ups0b")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_vd46o"]
+[sub_resource type="Resource" id="Resource_smhpp"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4969,10 +4969,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_s8aou"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_vd46o")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_smhpp")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_xd4ho"]
+[sub_resource type="Resource" id="Resource_4y6sp"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -4987,10 +4987,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_4wx28"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_xd4ho")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_4y6sp")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_tb41u"]
+[sub_resource type="Resource" id="Resource_7sfjs"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -5005,10 +5005,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_spnpx"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_tb41u")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_7sfjs")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_d0qay"]
+[sub_resource type="Resource" id="Resource_r3thh"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -5023,10 +5023,10 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_r4a4c"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_d0qay")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_r3thh")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
-[sub_resource type="Resource" id="Resource_kg07l"]
+[sub_resource type="Resource" id="Resource_oja6i"]
 resource_local_to_scene = true
 script = ExtResource("22_lcv0d")
 building_type = "BUILDING_GOVERNMENT"
@@ -5041,7 +5041,7 @@ building_culture = 0
 [sub_resource type="Resource" id="Resource_kjmyc"]
 resource_local_to_scene = true
 script = ExtResource("22_leoek")
-buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_kg07l")])
+buildings = Array[ExtResource("22_lcv0d")]([SubResource("Resource_oja6i")])
 building_types = Array[ExtResource("22_lcv0d")]([ExtResource("19_jlb3w"), ExtResource("20_5w16y"), ExtResource("21_kmvxn")])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nktg"]

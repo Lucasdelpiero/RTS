@@ -77,8 +77,8 @@ func _on_mouse_entered() -> void:
 		var next_level : int = building_reference.current_level + 1
 		var building_data_next_level : BuildingData = building_reference.get_building(true, next_level)
 		sg_send_data_to_overview.emit(building_data_next_level, icon)
-		sg_send_building_reference_to_overview.emit(building_reference, icon)
 		sg_send_province_data_reference.emit(province_data)
+		sg_send_building_reference_to_overview.emit(building_reference, icon)
 		#push_warning("done")
 		# TEST
 		return 

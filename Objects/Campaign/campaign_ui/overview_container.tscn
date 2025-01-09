@@ -83,6 +83,36 @@ fit_content = true
 meta_underlined = false
 hint_underlined = false
 
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Culture" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer3"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Religion" type="RichTextLabel" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer3"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+fit_content = true
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -97,11 +127,13 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
 [node name="DestroyButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 318.0
-offset_top = 189.0
-offset_right = 387.0
-offset_bottom = 220.0
+offset_left = 321.0
+offset_top = 154.0
+offset_right = 390.0
+offset_bottom = 185.0
+focus_mode = 0
 keep_pressed_outside = true
 text = "Destroy"
 

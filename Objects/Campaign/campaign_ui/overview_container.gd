@@ -6,10 +6,14 @@ extends Control
 @onready var description_text : RichTextLabel = %DescriptionText
 @onready var scroll_container : ScrollContainer = %ScrollContainer
 @onready var description_image : TextureRect = %DescriptionImage
+@onready var btn_destroy : Button = %DestroyButton
 
-@onready var label_name : RichTextLabel = %Name
-@onready var label_production : RichTextLabel = %Production
-@onready var label_bonus : RichTextLabel = %Bonus
+@onready var label_name : RichTextLabel = %Name as RichTextLabel
+@onready var label_production : RichTextLabel = %Production as RichTextLabel
+@onready var label_bonus : RichTextLabel = %Bonus as RichTextLabel
+@onready var label_culture : RichTextLabel = %Culture as RichTextLabel
+@onready var label_religion : RichTextLabel = %Religion as RichTextLabel
+
 
 @onready var province_data : ProvinceData = null
 # Building currently beign overview, stored in memory to be used to referece
@@ -64,8 +68,12 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 		for bonus in bonuses:
 			temp_bonus_text = get_text_bonus(bonus)
 		label_bonus.text = temp_bonus_text
+		label_religion.text = "Religion: " + Religions.get_name_by_enum(province_data.religion_owner).capitalize()
+		label_culture.text = "Culture: " + Cultures.get_name_by_enum(province_data.culture_owner).capitalize()
+		btn_destroy.visible = false
 		return
 	
+	btn_destroy.visible = true
 	# If the building is in place, show the current production, the next level and and the cost
 	label_name.text = building_current.building_name
 	labelCost.text = "Cost: %s" % [building_next_level.cost]
@@ -85,6 +93,10 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 		temp_bonus_text += get_text_bonus(bonus)
 	label_bonus.text = temp_bonus_text
 	
+	
+	label_religion.text = "Religion: " + Religions.get_name_by_enum(data.building_religion).capitalize()
+	label_culture.text = "Culture: " + Cultures.get_name_by_enum(data.building_culture).capitalize()
+	
 	if data.is_max_level():
 		return
 		
@@ -98,8 +110,10 @@ func show_building_overview(data : Building, texture: Texture2D) -> void:
 	temp_bonus_text = ""
 	for bonus in bonuses_temp:
 		temp_bonus_text += " -> " + get_text_bonus(bonus)
-		
+	
 	label_bonus.text += temp_bonus_text
+	
+	
 
 func get_text_bonus(bonus : Bonus) -> String:
 	var temp : String = ""
@@ -135,3 +149,4 @@ func update_province_reference(value : ProvinceData) -> void:
 func _on_destroy_button_pressed() -> void:
 	province_data.building_manager.destroy_building(current_building)
 	province_data.province.update_province_data()
+	visible = false
