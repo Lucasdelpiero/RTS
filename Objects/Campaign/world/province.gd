@@ -3,6 +3,8 @@
 class_name Province # New icon o be made
 extends Polygon2D
 
+var building_start_path : String= "res://Objects/Campaign/buildings/buildings_start.tres"
+
 @onready var inside_color : Color = Color(1.0, 1.0, 1.0) : set = set_color_inside
 @onready var outside_color : Color = Color(0.0, 0.0, 0.0)
 @export_color_no_alpha var outline_color : Color = Color(0, 0, 0) : set = set_color_border
@@ -50,6 +52,8 @@ var nation_owner : Nation  = null :
 @export_enum("plains", "hills", "mountains", "desert", "forest")  var terrain_type : String = "plains"
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
 @export_range(100, 1000000, 1) var population : int = 1000
+var base_max_population : int = 1000
+var max_population : int = 1000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
 @export var religion : Religions.list :
 	set(value):
@@ -361,6 +365,12 @@ func update_population() -> void:
 	if conversion_religion_bonus != null: 
 		conversion_religion = nation_owner.religion
 		conversion_religion_progress += conversion_religion_bonus.multiplier_bonus
+	
+	var unique_bonuses : Array[UniqueBonus] = get_buildings_unique_bonuses(buildings_manager,nation_owner)
+	# NOTE change the base max population to the ready place
+	base_max_population = get_terrain_max_population()
+	for bonus in unique_bonuses:
+		bonus.set_modified_province(self)
 		
 
 func update_conversion_religion() -> void:
@@ -433,6 +443,24 @@ func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Natio
 	
 	return local_province_bonuses
 
+func get_terrain_max_population() -> int:
+	match terrain_type:
+		"plains": return 10000
+		"hills": return 8000
+		"forest": return 7000
+		"mountains": return 6000
+		"desert": return 3000
+		_: return 5000
+
+func get_buildings_unique_bonuses(aBuildings_manager: BuildingsManager, nation: Nation) -> Array[UniqueBonus]:
+	if nation == null and ownership != "TERRA_INCOGNITA":
+		push_error("There is not a nation owner of this province ", name)
+		return []
+	
+	var local_province_bonuses : Array[UniqueBonus] = aBuildings_manager.get_buildings_unique_bonuses()
+	
+	return local_province_bonuses
+
 func get_nation_bonuses() -> Array[Bonus]:
 	if nation_owner == null:
 		push_error("Province has no owner")
@@ -499,6 +527,7 @@ func create_debug_lines_connections() -> void:
 
 # To change color of a province uncomment this and change the visibility
 func _on_visibility_changed() -> void:
+	#buildings_manager = load("res://Objects/Campaign/buildings/buildings_start.tres")
 	return
 	#var new_color = Color(randf_range(0,1), randf_range(0,1), randf_range(0,1))
 	##BUG Timer is needed because if not, it will use the color of before the change is done
