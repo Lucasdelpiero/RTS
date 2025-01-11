@@ -34,7 +34,7 @@ time_to_build = 5
 flat_production = Array[ExtResource("8_8khk4")]([])
 bonuses = Array[ExtResource("7_4y7jp")]([])
 
-[sub_resource type="Resource" id="Resource_sfub2"]
+[sub_resource type="Resource" id="Resource_16taa"]
 resource_local_to_scene = true
 script = ExtResource("1_15che")
 building_type = "BUILDING_GOVERNMENT"
@@ -49,5 +49,5 @@ building_culture = 0
 [resource]
 resource_local_to_scene = true
 script = ExtResource("3_ti3yg")
-buildings = Array[ExtResource("1_15che")]([SubResource("Resource_sfub2")])
+buildings = Array[ExtResource("1_15che")]([SubResource("Resource_16taa")])
 building_types = Array[ExtResource("1_15che")]([ExtResource("1_lriku"), ExtResource("2_ysk5l"), ExtResource("3_1yb8j"), ExtResource("5_46if8")])
