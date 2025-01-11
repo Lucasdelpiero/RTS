@@ -50,6 +50,7 @@ var nation_owner : Nation  = null :
 @export_enum("plains", "hills", "mountains", "desert", "forest")  var terrain_type : String = "plains"
 @export_range(0.1, 10, 0.1) var weight : float = 1.0
 @export_range(100, 1000000, 1) var population : int = 1000
+var population_limit : int = 10_000_000
 @export_range(0.1, 100, 0.1) var base_income : float = 10.0 
 @export var religion : Religions.list :
 	set(value):
@@ -418,11 +419,17 @@ func get_loyalty() -> float :
 	if religion != owner_religion:
 		temp_loyalty -= 10
 		
-	var bonuses : Array[Bonus] = get_total_bonuses().filter(func(el: Bonus) -> bool: return el.type_produced == Bonus.BONUS_LOYALTY)
+	var bonuses : Array[Bonus] = get_total_bonuses().filter(func(el: Bonus) -> bool: return el.type_produced == BonusMultiplicative.BONUS_LOYALTY)
 	for bonus in bonuses:
 		temp_loyalty += bonus.multiplier_bonus
 	
 	return temp_loyalty
+
+# Uses the terrain, building and national bonuses to know the population limit
+func get_population_limit() -> int :
+	
+	return 0
+
 # Gets the bonuses from the buildings and the nation into a single array
 func get_buildings_bonuses(aBuildings_manager : BuildingsManager, nation : Nation) -> Array[Bonus]:
 	if nation == null and ownership != "TERRA_INCOGNITA":

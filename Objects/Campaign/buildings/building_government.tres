@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://4ec0d48qoin4"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://4ec0d48qoin4"]
 
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="2_eir2x"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="3_23o50"]
+[ext_resource type="Script" path="res://Objects/General/bonuses/bonus_max_population.gd" id="3_mgs15"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_thl1t"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_bviel"]
+
+[sub_resource type="Resource" id="Resource_ipg43"]
+script = ExtResource("3_mgs15")
+incremented_by = 100
+type_produced = "bonus_income"
+multiplier_bonus = 0
 
 [sub_resource type="Resource" id="Resource_8xh07"]
 script = ExtResource("3_thl1t")
@@ -11,7 +18,7 @@ building_name = "Village hall"
 cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("3_23o50")]([])
-bonuses = Array[ExtResource("2_eir2x")]([])
+bonuses = Array[ExtResource("2_eir2x")]([SubResource("Resource_ipg43")])
 
 [sub_resource type="Resource" id="Resource_e82p4"]
 script = ExtResource("3_thl1t")
