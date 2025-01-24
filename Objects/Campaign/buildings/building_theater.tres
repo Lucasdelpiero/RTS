@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://cxcx40xq20vxt"]
+[gd_resource type="Resource" script_class="Building" load_steps=14 format=3 uid="uid://cxcx40xq20vxt"]
 
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="1_vp7ub"]
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="2_4byyb"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="2_84ods"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="3_kvc2s"]
+[ext_resource type="Script" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_dmmwx"]
 
 [sub_resource type="Resource" id="Resource_41l1i"]
 script = ExtResource("2_4byyb")
@@ -17,6 +18,7 @@ cost = 500
 time_to_build = 5
 flat_production = Array[ExtResource("3_kvc2s")]([])
 bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_41l1i")])
+unique_bonuses = Array[ExtResource("4_dmmwx")]([])
 
 [sub_resource type="Resource" id="Resource_rsp2h"]
 script = ExtResource("2_4byyb")
@@ -30,6 +32,7 @@ cost = 1000
 time_to_build = 5
 flat_production = Array[ExtResource("3_kvc2s")]([])
 bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_rsp2h")])
+unique_bonuses = Array[ExtResource("4_dmmwx")]([])
 
 [sub_resource type="Resource" id="Resource_4l4y6"]
 script = ExtResource("2_4byyb")
@@ -43,6 +46,7 @@ cost = 2500
 time_to_build = 5
 flat_production = Array[ExtResource("3_kvc2s")]([])
 bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_4l4y6")])
+unique_bonuses = Array[ExtResource("4_dmmwx")]([])
 
 [sub_resource type="Resource" id="Resource_7w0ta"]
 script = ExtResource("2_4byyb")
@@ -56,6 +60,7 @@ cost = 10000
 time_to_build = 5
 flat_production = Array[ExtResource("3_kvc2s")]([])
 bonuses = Array[ExtResource("2_4byyb")]([SubResource("Resource_7w0ta")])
+unique_bonuses = Array[ExtResource("4_dmmwx")]([])
 
 [resource]
 script = ExtResource("2_84ods")

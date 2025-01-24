@@ -68,6 +68,11 @@ layout_mode = 2
 text = "Nation"
 horizontal_alignment = 1
 
+[node name="BtnDeclareWar" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Declare War"
+
 [node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
@@ -143,6 +148,7 @@ layout_mode = 2
 focus_mode = 0
 text = "Accept"
 
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDeclareWar" to="." method="_on_btn_declare_war_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnAnnex" to="." method="_on_btn_annex_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDemandProvinces" to="." method="_on_btn_demand_provinces_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]

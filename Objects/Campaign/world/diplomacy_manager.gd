@@ -20,6 +20,7 @@ func _init() -> void:
 	Signals.sg_diplomacy_nation_improve_relations.connect(improve_relationship)
 	Signals.sg_nations_array_changed.connect(update_nations_array)
 	Signals.sg_nation_deleted.connect(delete_nation_from_relationships)
+	Signals.sg_declare_war.connect(set_war)
 	
 
 func _ready() -> void:
@@ -79,6 +80,19 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 		return null
 	return diplomacy_nations[nation_tag_position]
 
+# Call functions on both nations to set the war between both nations
+func set_war(nation_origin: String, nation_target: String) -> void:
+	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
+	var target : DiplomacyNation  = find_nation_relationship(nation_target)
+	
+	if origin == null or target == null:
+		push_error("One of the nations doesnt exists or is not in the array")
+		return 
+	
+	origin.set_war_status(target.NATION_TAG)
+	target.set_war_status(origin.NATION_TAG)
+
+
 # Sends the relationships data of the player nation to the UI 
 # UI request it -> DiplomacyManager send it -> UI use it
 func diplomacy_nation_send_data_to_UI(nation_tag: String) -> void:
@@ -87,6 +101,12 @@ func diplomacy_nation_send_data_to_UI(nation_tag: String) -> void:
 
 func update_nations_array(nations_array : Array[Nation]) -> void:
 	nations.assign(nations_array)
+
+func find_nation_relationship(nation_tag: String) -> DiplomacyNation:
+	for nation in diplomacy_nations:
+		if nation.NATION_TAG == nation_tag:
+			return nation
+	return null
 
 func delete_nation_from_relationships(nation_tag: String) -> void:
 	var diplomacy_nation_to_erase : DiplomacyNation = null

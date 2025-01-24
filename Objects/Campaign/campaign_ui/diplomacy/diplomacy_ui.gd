@@ -94,8 +94,6 @@ func _on_btn_improve_relations_pressed() -> void:
 	var player : String = Globals.player_nation
 	Signals.sg_diplomacy_nation_improve_relations.emit(player, current_diplomacy_tag, 55)
 	
-	
-	
 
 func _on_btn_decrease_relations_pressed() -> void:
 	if current_diplomacy_tag == "":
@@ -148,3 +146,10 @@ func _on_btn_accept_provinces_demand_pressed() -> void:
 func _on_btn_diplomacy_pressed() -> void:
 	visible = !visible
 	update_diplomacy_nation_data()
+
+
+func _on_btn_declare_war_pressed() -> void:
+	if current_diplomacy_tag == "":
+		push_error("not a nation selected to declare war")
+		return
+	Signals.sg_declare_war.emit(Globals.player_nation, current_diplomacy_tag)

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Building" load_steps=16 format=3 uid="uid://l16ouy3lqh8k"]
+[gd_resource type="Resource" script_class="Building" load_steps=17 format=3 uid="uid://l16ouy3lqh8k"]
 
 [ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_tacmw"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="2_4sm3l"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="2_grkri"]
 [ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_hifne"]
+[ext_resource type="Script" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_q3fqp"]
 
 [sub_resource type="Resource" id="Resource_qxpts"]
 script = ExtResource("1_tacmw")
@@ -17,6 +18,7 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_4sm3l")]([])
 bonuses = Array[ExtResource("1_tacmw")]([SubResource("Resource_qxpts")])
+unique_bonuses = Array[ExtResource("4_q3fqp")]([])
 
 [sub_resource type="Resource" id="Resource_26sg6"]
 script = ExtResource("1_tacmw")
@@ -35,6 +37,7 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_4sm3l")]([SubResource("Resource_r4u60")])
 bonuses = Array[ExtResource("1_tacmw")]([SubResource("Resource_26sg6")])
+unique_bonuses = Array[ExtResource("4_q3fqp")]([])
 
 [sub_resource type="Resource" id="Resource_mo2rh"]
 script = ExtResource("1_tacmw")
@@ -53,6 +56,7 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_4sm3l")]([SubResource("Resource_eqp55")])
 bonuses = Array[ExtResource("1_tacmw")]([SubResource("Resource_mo2rh")])
+unique_bonuses = Array[ExtResource("4_q3fqp")]([])
 
 [sub_resource type="Resource" id="Resource_23ta8"]
 script = ExtResource("1_tacmw")
@@ -71,6 +75,7 @@ cost = 100
 time_to_build = 5
 flat_production = Array[ExtResource("2_4sm3l")]([SubResource("Resource_5jl1o")])
 bonuses = Array[ExtResource("1_tacmw")]([SubResource("Resource_23ta8")])
+unique_bonuses = Array[ExtResource("4_q3fqp")]([])
 
 [resource]
 resource_local_to_scene = true

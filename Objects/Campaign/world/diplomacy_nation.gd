@@ -65,10 +65,24 @@ func get_relationship_with(nation_tag: String) -> int:
 		
 	push_error("Couldnt find the nation to get relationship with")
 	return -1
-	
+
+func set_war_status(target: String) -> void:
+	var relationship : DiplomacyRelationship = find_nation_relationship(target)
+	if relationship == null:
+		push_error("Relationship with that nation doesnt exists")
+		return
+		
+	relationship.status = DiplomacyRelationship.Status.AT_WAR
+
 # Used when a nation dissapears
 func delete_relationship(nation_tag: String) -> void:
 	for i in relationships.size():
 		if relationships[i].nation_tag == nation_tag:
 			relationships.erase(relationships[i])
 			return
+
+func find_nation_relationship(nation: String) -> DiplomacyRelationship:
+	for relationship in relationships:
+		if relationship.nation_tag == nation:
+			return relationship
+	return null
