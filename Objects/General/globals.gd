@@ -4,14 +4,15 @@ var global_units : GlobalUnits = null
 
 var mouse_in_province : int = -1  # -1 means that no province is selected
 var last_province_hovered_owner : String = "" # Used to open the diplomacy_tag
+var diplomacy_manager : DiplomacyManager = null
 var camera_angle : float = 0.0
 var player_nation : String = "ROME"
 var player_nation_node : Nation = null
 var armies_selected : Array[ArmySelected] = [] 
 # Array of armies of the player to be loaded in the battlemap
 # it NEEDS to be a normal Array and not a typed one to perform functions as "push" and "has"
-var player_army : Array = [] 
-var player_army_data : Array[ArmyData] = []  # Array of armies data each containing units
+var player_army : Array = []
+var player_army_data : Array[ArmyData] = [] # Array of armies data each containing units
 # used by UI in buttons to easily check the amount of money the player has
 var player_gold : int = 0
 var player_manpower : int = 0

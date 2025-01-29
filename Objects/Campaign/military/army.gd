@@ -280,9 +280,27 @@ func _on_army_detector_area_entered(area : Area2D) -> void:
 		push_error("Owner of the area is not an army")
 		return
 	
+	# At the start of the game, they can detect each others before the ownership is set to the army
+	if self.ownership == "" :
+		return
+	
 	var temp_army : ArmyCampaing = area.owner as ArmyCampaing
-	if temp_army.ownership != self.ownership:
+	# Avoids detecting itself as an enemy
+	if temp_army.ownership == self.ownership :
+		#push_error("They are of the same owner")
+		return
+		
+	var diplo_manager : DiplomacyManager = Globals.diplomacy_manager
+	if diplo_manager == null:
+		push_error("Diplomacy manager doesnt exists")
+		return
+	var at_war : bool = diplo_manager.is_at_war_with(self.ownership ,temp_army.ownership)
+	
+
+	if temp_army.ownership != self.ownership and at_war:
 		emit_signal("sg_enemy_encountered", self, temp_army)
+	#if temp_army.ownership != self.ownership:
+		#emit_signal("sg_enemy_encountered", self, temp_army)
 
 
 func save() -> Dictionary:

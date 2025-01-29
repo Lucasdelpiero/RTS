@@ -21,6 +21,7 @@ func _init() -> void:
 	Signals.sg_nations_array_changed.connect(update_nations_array)
 	Signals.sg_nation_deleted.connect(delete_nation_from_relationships)
 	Signals.sg_declare_war.connect(set_war)
+	Globals.diplomacy_manager = self
 	
 
 func _ready() -> void:
@@ -64,7 +65,7 @@ func improve_relationship(sender: String, reciever: String, amount: int) -> void
 	# TEST
 	# Sends the data so that the buttons update their values
 	if sender == Globals.player_nation:
-		var current_relations : int = diplomacy_nations[reciever_position].get_relationship_with(Globals.player_nation)
+		var current_relations : int = diplomacy_nations[reciever_position].get_relations_with(Globals.player_nation)
 		Signals.sg_diplomacy_relations_changed.emit(reciever, current_relations)
 	pass
 
@@ -91,6 +92,17 @@ func set_war(nation_origin: String, nation_target: String) -> void:
 	
 	origin.set_war_status(target.NATION_TAG)
 	target.set_war_status(origin.NATION_TAG)
+
+func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
+	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
+	if origin == null:
+		push_error("Nation [%s] origin couldnt be found" % nation_origin)
+		
+	var relationship : DiplomacyRelationship = origin.get_relationship_with(nation_target)
+	
+	if relationship.status == relationship.Status.AT_WAR:
+		return true
+	return false
 
 
 # Sends the relationships data of the player nation to the UI 

@@ -13,5 +13,3 @@ func _physics_process(delta : float) -> void:
 	noise_texture.noise.offset.x += velocity.x * delta / scale.x
 	noise_texture.noise.offset.y += velocity.y * delta / scale.y
 	pass
-
-
