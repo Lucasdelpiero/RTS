@@ -15,6 +15,7 @@ var status : Status = Status.NEUTRAL
 enum Status  {
 	NEUTRAL,
 	AT_WAR,
+	ALLIED,
 	VASSAL,
 	OVERLORD
 } 

@@ -192,19 +192,34 @@ func send_data_to_ui() -> void:
 	pass
 
 func enemy_encountered(aarmy : ArmyCampaing, enemy : ArmyCampaing) -> void:
-	if not armies_in_battle.has(aarmy):
-		armies_in_battle.push_back(aarmy)
-	if not armies_in_battle.has(enemy):
-		armies_in_battle.push_back(enemy)
-#	push_warning("%s will fight %s" % [army, enemy])
-#	main.update_armies_for_battle(units_in_battle)
-	for army in armies_in_battle :
-		if army.ownership == Globals.player_nation:
-			if !(Globals.player_army).has(army):
-				(Globals.player_army).push_back(army)
-		else:
-			if !(Globals.enemy_army as Array).has(army):
-				(Globals.enemy_army as Array).push_back(army)
+	# The groups that the army has close to itself
+	var armies_first_detected : Array[ArmyCampaing] = aarmy.get_armies_in_area_detector()
+	var armies_second_detected : Array[ArmyCampaing] = enemy.get_armies_in_area_detector()
+	
+	# Separates all the armyes to the first army and allied agains enemies and their allies
+	var armies_first : Array[ArmyCampaing] = []
+	var armies_second : Array[ArmyCampaing] = []
+	
+	for army in armies_first_detected:
+		if army.ownership == aarmy.ownership or Globals.diplomacy_manager.is_allied_with(aarmy.ownership ,army.ownership):
+			armies_first.push_back(army)
+	
+	for army in armies_second_detected:
+		# Adds the enemies of the first army to the second army
+		# so even if those enemies armies ar not allied, they can go together to battle the first army
+		var is_at_war : bool = false
+		if army.ownership != aarmy.ownership and enemy.ownership != army.ownership :
+			is_at_war = Globals.diplomacy_manager.is_at_war_with(aarmy.ownership ,army.ownership)
+		if army.ownership == enemy.ownership or is_at_war:
+			armies_second.push_back(army)
+	
+	if aarmy.ownership == Globals.player_nation:
+		Globals.player_army = armies_first
+		Globals.enemy_army = armies_second
+	elif enemy.ownership == Globals.player_nation:
+		Globals.player_army = armies_second
+		Globals.enemy_army = armies_first
+	
 	battleMenu.visible = true
 	battleMenu.update()
 #	push_warning(Globals.player_army)

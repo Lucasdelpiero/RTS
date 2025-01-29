@@ -9,8 +9,9 @@ var world : CampaignMap = null
 var own_map : AStar2D
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
-@onready var line : Line2D = $Node/Line2D
-@onready var icon : Sprite2D = $Icon
+@onready var line : Line2D = $Node/Line2D as Line2D
+@onready var icon : Sprite2D = $Icon as Sprite2D
+@onready var army_detector : Area2D = $ArmyDetector as Area2D
 
 @export var army_name : String = ""
 enum  { IDLE, MOVING, FIGHTING, SIEGING }
@@ -302,6 +303,12 @@ func _on_army_detector_area_entered(area : Area2D) -> void:
 	#if temp_army.ownership != self.ownership:
 		#emit_signal("sg_enemy_encountered", self, temp_army)
 
+func get_armies_in_area_detector() -> Array[ArmyCampaing]:
+	var army_areas : Array[Area2D] = army_detector.get_overlapping_areas()
+	var army_casted : Array[ArmyCampaing] = []
+	for army in army_areas as Array[Area2D]:
+		army_casted.push_back(army.owner as ArmyCampaing)
+	return  army_casted
 
 func save() -> Dictionary:
 	var units : Array = []

@@ -94,16 +94,30 @@ func set_war(nation_origin: String, nation_target: String) -> void:
 	target.set_war_status(origin.NATION_TAG)
 
 func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
+	if nation_origin == nation_target:
+		push_error("Its the same nation")
+		return false
+	
 	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
 	if origin == null:
 		push_error("Nation [%s] origin couldnt be found" % nation_origin)
-		
+	
 	var relationship : DiplomacyRelationship = origin.get_relationship_with(nation_target)
 	
 	if relationship.status == relationship.Status.AT_WAR:
 		return true
 	return false
 
+func is_allied_with(nation_origin: String, nation_target: String) -> bool:
+	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
+	if origin == null:
+		push_error("Nation [%s] origin couldnt be found" % nation_origin)
+		
+	var relationship : DiplomacyRelationship = origin.get_relationship_with(nation_target)
+	
+	if relationship.status == relationship.Status.ALLIED:
+		return true
+	return false
 
 # Sends the relationships data of the player nation to the UI 
 # UI request it -> DiplomacyManager send it -> UI use it
