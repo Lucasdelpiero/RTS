@@ -7,6 +7,16 @@ extends CharacterBody2D
 
 var world : CampaignMap = null
 var own_map : AStar2D
+var province_standing_on : Province = null : # Province where the army is influencing 
+	set(value):
+		if value == null:
+			if province_standing_on != null:
+				province_standing_on.army_out(self)
+			province_standing_on = value
+		else:
+			province_standing_on = value
+			province_standing_on.army_in(self)
+			
 var path : PackedVector2Array = []
 const JUMP_VELOCITY = -400.0
 @onready var line : Line2D = $Node/Line2D as Line2D
@@ -96,6 +106,7 @@ func _unhandled_input(_event : InputEvent) -> void:
 			if state != MOVING and path.size() > 0:
 				Globals.personal_debug_update(self, "move", "now moving")
 			state = MOVING
+			province_standing_on = null
 
 
 func _physics_process(delta : float) -> void:
@@ -117,6 +128,22 @@ func get_to_closer_point(map : AStar2D) -> void:
 	world = get_tree().get_nodes_in_group("world")[0]
 	own_map = map
 	starting_point = global_position
+
+# Gets the province closest to the army
+func get_province(map: AStar2D) -> Province:
+	var closer_id : int = map.get_closest_point(self.global_position)
+	print(closer_id)
+	var world_map : CampaignMap = Globals.campaign_map
+	if world_map == null:
+		push_error("Couldnt find campaign map in global script")
+		return null
+	
+	var province : Province = world_map.get_province_by_id(closer_id)
+	if province == null:
+		push_error("Province couldnt be found on campaign map")
+		return null
+	print(province.name)
+	return province
 
 
 # Draws the path that the army is following
@@ -150,6 +177,8 @@ func move(delta : float) -> void:
 			path.remove_at(0)
 			if path.size() > 0:
 				next_point = path[0]
+			else:
+				destination_reached(own_map)
 		# Update the position in the resource every time it moves
 		army_data.position = global_position
 		return
@@ -157,6 +186,20 @@ func move(delta : float) -> void:
 	Globals.personal_debug_update(self, "move", "reached the place")
 	state = IDLE
 
+# When the destination is reached it will siege the city if is an enemy province
+# or recover troops if is its own territory
+func destination_reached(map: AStar2D) -> void:
+	var world_map : CampaignMap = Globals.campaign_map
+	var id_prov : int = map.get_closest_point(self.global_position)
+	var province : Province = world_map.get_province_by_id(id_prov)
+	
+	if province == null:
+		push_error("Province couldnt be found")
+		return
+	
+	province_standing_on = province
+	
+	pass
 
 # Recieves the ID of the province it has to path to and returns a path
 func get_pathing(from_pos : Vector2, destination : int) -> Array[Vector2]:

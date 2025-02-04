@@ -15,6 +15,8 @@ var building_start_path : String= "res://Objects/Campaign/buildings/buildings_st
 @onready var collision : CollisionPolygon2D = $MouseDetector/CollisionPolygon2D
 @export var map_colors : MapColors
 
+var armies_in_province : Array[ArmyCampaing] = []
+
 @export var debug_lines : bool = false
 
 @export_category("Ownership")
@@ -372,6 +374,18 @@ func update_population() -> void:
 	for bonus in unique_bonuses:
 		bonus.set_modified_province(self)
 		
+
+# The two functions below control which armies are in the province
+# these are used to apply buffs and debuffs to the provinces
+func army_in(army: ArmyCampaing) -> void:
+	if not armies_in_province.has(army):
+		armies_in_province.push_back(army)
+
+func army_out(army: ArmyCampaing) -> void:
+	var pos: int = armies_in_province.find(army)
+	if pos != -1:
+		armies_in_province.remove_at(pos)
+	
 
 func update_conversion_religion() -> void:
 	

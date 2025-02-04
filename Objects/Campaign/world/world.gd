@@ -151,6 +151,14 @@ func get_nav_path(from : int, to : int ) -> void:
 	map.get_point_path(from, to)
 	pass
 
+func get_province_by_id(id: int) -> Province:
+	for province in provinces:
+		if province.ID == id:
+			return province
+
+	push_error("Province not found")
+	return null
+
 # Returns the province name using the x position and the ID
 # TODO change this as it maybe its not very reliable
 func get_province_name_by_position(aPosition : Vector2 ) -> String:
