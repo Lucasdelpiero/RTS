@@ -69,14 +69,6 @@ func improve_relationship(sender: String, reciever: String, amount: int) -> void
 		Signals.sg_diplomacy_relations_changed.emit(reciever, current_relations)
 	pass
 
-func get_nation(nation_tag: String) -> Nation:
-	for nation in nations:
-		if nation.NATION_TAG == nation_tag:
-			return nation
-	
-	push_error("Nation couldnt be found")
-	return null
-
 func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 	var nation_tag_position : int = -1
 	for i in diplomacy_nations.size():
@@ -117,13 +109,10 @@ func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
 	return false
 
 func is_allied_with(nation_origin: String, nation_target: String) -> bool:
-	if nation_origin == nation_target:
-		return false
-	
 	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
 	if origin == null:
 		push_error("Nation [%s] origin couldnt be found" % nation_origin)
-	
+		
 	var relationship : DiplomacyRelationship = origin.get_relationship_with(nation_target)
 	
 	if relationship.status == relationship.Status.ALLIED:

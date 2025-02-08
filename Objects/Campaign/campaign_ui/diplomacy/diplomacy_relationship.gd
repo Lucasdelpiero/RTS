@@ -7,7 +7,6 @@ class_name DiplomacyRelationship
 # diplomacy_nation holds a diplomacy_relationship for each nation it has a relation
 
 var nation_tag : String = ""
-var nation : Nation = null
 var relations : int = 0
 
 # Status of the country with the country (at war, vassal, neutral) 

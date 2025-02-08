@@ -9,7 +9,6 @@ extends Resource
 #@export var army_units : Array[UnitData] = [UnitData.new()] : set = set_array
 @export var army_units : Array[UnitData] = [] 
 var ownership : String = ""
-var owner_nation : Nation = null
 var position : Vector2 = Vector2.ZERO
 
 func set_array(value : Array[UnitData]) -> void:
