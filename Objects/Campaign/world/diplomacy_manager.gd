@@ -109,6 +109,9 @@ func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
 	return false
 
 func is_allied_with(nation_origin: String, nation_target: String) -> bool:
+	if nation_origin == nation_target:
+		return false
+	
 	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
 	if origin == null:
 		push_error("Nation [%s] origin couldnt be found" % nation_origin)

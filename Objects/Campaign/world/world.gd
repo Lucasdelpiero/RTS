@@ -293,6 +293,7 @@ func annex_provinces(nation_tag_annexing: String, provinces_annexed: Array[Provi
 # Each game tick the world call for updates on provinces and natios
 func _on_timer_game_tick_timeout() -> void:
 	for province in provinces as Array[Province]:
+		province.update_armies_effects()
 		province.generate_resources()
 		# Updates population growth, convertion and that
 		province.update_population() 

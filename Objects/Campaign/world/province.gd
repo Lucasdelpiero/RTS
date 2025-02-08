@@ -14,6 +14,7 @@ var building_start_path : String= "res://Objects/Campaign/buildings/buildings_st
 @onready var mouseDetector : Area2D = %MouseDetector
 @onready var collision : CollisionPolygon2D = $MouseDetector/CollisionPolygon2D
 @export var map_colors : MapColors
+@onready var occupation_strips : Sprite2D = %OccupationStrips
 
 var armies_in_province : Array[ArmyCampaing] = []
 
@@ -21,7 +22,22 @@ var armies_in_province : Array[ArmyCampaing] = []
 
 @export_category("Ownership")
 @export var ownership := "" 
-
+var occupied_by := ""
+var sieged_by := ""
+var occupation_progress : float = 0 :
+	set(value):
+		if sieged_by != occupied_by:
+			occupation_progress = value
+		if value >= 10:
+			occupied_by = sieged_by
+			occupation_progress = 0
+			print("%s was occupied by %s" % [name, occupied_by])
+			var nat : Nation = Globals.campaign_map.get_nation_by_tag(occupied_by)
+			if nat != null:
+				var new_color := nat.nation_color 
+				occupation_strips.get_material().set_shader_parameter("occupant_color", new_color)
+				print("alf")
+				occupation_strips.visible = true
 # used to get bonuses for resources
 var nation_owner : Nation  = null :
 	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
@@ -127,6 +143,7 @@ func _ready() -> void:
 	inside_color = color
 	outside_color = outline_color
 	outline_color = outline_color
+	occupation_strips.visible = true
 	loyalty = get_loyalty()
 	buildings_manager.sg_new_building_done.connect(update_province_data)
 	
@@ -355,6 +372,40 @@ func generate_resources() -> void:
 		
 	var resources_produced : Production = get_province_income() 
 	sg_resources_generated.emit(resources_produced)
+
+func update_armies_effects() -> void:
+	var diplo : DiplomacyManager = Globals.diplomacy_manager
+	if diplo == null:
+			push_error("Diplomacy manager not found on global script")
+			return 
+	
+	# NOTE it needs to separate the armies of every team and refactor
+	var allied_armies : Array[ArmyCampaing] = []
+	var enemy_armies : Array[ArmyCampaing] = []
+	for army in armies_in_province:
+		if army.ownership == ownership or diplo.is_allied_with(ownership, army.ownership):
+			allied_armies.push_back(army)
+		elif diplo.is_at_war_with(army.ownership, ownership):
+				enemy_armies.push_back(army)
+				
+	# Allied armies give loyalty bonus
+	for army in allied_armies:
+		if army.ownership == ownership:
+			# more loyalty
+			pass
+	
+	# If an army of the nation leading the siege is not present then they lose the leading
+	if sieged_by != "":
+		if enemy_armies.filter(func(el: ArmyCampaing) -> bool: return el.ownership == sieged_by).size() == 0:
+			sieged_by = ""
+	
+	
+	for army in enemy_armies:
+		if sieged_by == "":
+			sieged_by = army.ownership
+		
+		occupation_progress += 10
+		pass
 
 # Updates population growth, religion and cultural convertion
 func update_population() -> void:
