@@ -4,6 +4,7 @@ extends Resource
 
 # Contains all diplomatically relationships between one state and all the others
 var NATION_TAG  : String = ""
+var nation : Nation = null
 var culture : Cultures.list = Cultures.list.NONE
 var religion : int = 0 # currently nations dont have an official relationship
 var nation_color : Color = Color(0, 0, 0) 
@@ -11,16 +12,17 @@ var nation_color : Color = Color(0, 0, 0)
 var relationships : Array[DiplomacyRelationship] = [] # Temporarelly a simple array, should contain resources later
 
 # Function called on the diplomacy manager to set the properties of the resource
-func initialize(nation : Nation) -> void:
-	NATION_TAG = nation.NATION_TAG
-	culture = nation.culture
+func initialize(a_nation : Nation) -> void:
+	NATION_TAG = a_nation.NATION_TAG
+	nation = a_nation
+	culture = a_nation.culture
 	religion = 888888 # nothing yet
-	nation_color = nation.nation_color
+	nation_color = a_nation.nation_color
 
-func calculate_relationships(nations : Array[Nation]) -> void:
+func calculate_relationships(a_nations : Array[Nation]) -> void:
 	relationships.clear()
 	var temp_relationship : Array = []
-	for nation in nations:
+	for nation in a_nations:
 		# Skip adding themselves to the relationship list
 		if nation.NATION_TAG == NATION_TAG:
 			continue
@@ -30,6 +32,7 @@ func calculate_relationships(nations : Array[Nation]) -> void:
 			relations += 25
 		var new_relationship := DiplomacyRelationship.new()
 		new_relationship.nation_tag = nation.NATION_TAG
+		new_relationship.nation = nation
 		new_relationship.relations = relations
 		temp_relationship.push_back(new_relationship)
 	relationships.assign(temp_relationship)
@@ -89,8 +92,8 @@ func delete_relationship(nation_tag: String) -> void:
 			relationships.erase(relationships[i])
 			return
 
-func find_nation_relationship(nation: String) -> DiplomacyRelationship:
+func find_nation_relationship(a_nation: String) -> DiplomacyRelationship:
 	for relationship in relationships:
-		if relationship.nation_tag == nation:
+		if relationship.nation_tag == a_nation:
 			return relationship
 	return null

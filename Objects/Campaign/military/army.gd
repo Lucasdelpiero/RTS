@@ -27,6 +27,7 @@ const JUMP_VELOCITY = -400.0
 enum  { IDLE, MOVING, FIGHTING, SIEGING }
 var state : int = IDLE
 @export var ownership := ""
+@export var owner_nation : Nation = null
 @export_range( 10, 10000, 1) var SPEED : int = 500
 @onready var army_color : Color = Color(0.0, 0.0, 0.0, 1.0) : set = set_color
 var test : bool= true
@@ -58,7 +59,11 @@ func _ready() -> void:
 		return
 	
 	world = Globals.campaign_map
+	owner_nation = get_parent() as Nation
+	if owner_nation == null:
+		push_error("Nation as a parent of the army couldnt be found")
 	army_data.ownership = ownership
+	army_data.owner_nation = owner_nation
 	army_data.position = global_position
 	var army : Array[UnitData] = army_data.army_units
 	
