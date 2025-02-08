@@ -14,7 +14,6 @@ var building_start_path : String= "res://Objects/Campaign/buildings/buildings_st
 @onready var mouseDetector : Area2D = %MouseDetector
 @onready var collision : CollisionPolygon2D = $MouseDetector/CollisionPolygon2D
 @export var map_colors : MapColors
-@onready var occupation_strips : Sprite2D = %OccupationStrips
 
 var armies_in_province : Array[ArmyCampaing] = []
 
@@ -28,16 +27,17 @@ var occupation_progress : float = 0 :
 	set(value):
 		if sieged_by != occupied_by:
 			occupation_progress = value
-		if value >= 10:
+		if occupation_progress >= 10 :
 			occupied_by = sieged_by
 			occupation_progress = 0
-			print("%s was occupied by %s" % [name, occupied_by])
 			var nat : Nation = Globals.campaign_map.get_nation_by_tag(occupied_by)
 			if nat != null:
 				var new_color := nat.nation_color 
-				occupation_strips.get_material().set_shader_parameter("occupant_color", new_color)
-				print("alf")
-				occupation_strips.visible = true
+				var delta : float =  0.1
+				if new_color.r  <= 1.0 - delta : new_color.r = new_color.r + delta
+				if new_color.g  <= 1.0 - delta : new_color.g  = new_color.g + delta 
+				if new_color.b  <= 1.0 - delta: new_color.b = new_color.b + delta 
+				inside_color = new_color
 # used to get bonuses for resources
 var nation_owner : Nation  = null :
 	set(new_owner): # Changes the owner of the province and applies all the changes to work as intended
@@ -143,7 +143,6 @@ func _ready() -> void:
 	inside_color = color
 	outside_color = outline_color
 	outline_color = outline_color
-	occupation_strips.visible = true
 	loyalty = get_loyalty()
 	buildings_manager.sg_new_building_done.connect(update_province_data)
 	

@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjdrconndqyb4"]
+[gd_scene load_steps=6 format=3 uid="uid://bjdrconndqyb4"]
 
 [ext_resource type="Texture2D" uid="uid://cmid40lk2vvcp" path="res://Objects/Campaign/world/graphics/province_noise.tres" id="1_7hxuk"]
 [ext_resource type="Script" path="res://Objects/Campaign/world/province.gd" id="1_lhs2u"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/world/pos_province.tscn" id="2_h2bx7"]
-[ext_resource type="Texture2D" uid="uid://dhn1ytbegkmmu" path="res://Objects/Campaign/world/graphics/province_occupation_stripes.png" id="2_varc2"]
 [ext_resource type="Resource" uid="uid://dhnhandtoa6w6" path="res://Objects/Campaign/world/map_colors.tres" id="2_xfuls"]
 [ext_resource type="Resource" uid="uid://danxlrxr3d84l" path="res://Objects/Campaign/buildings/buildings_start.tres" id="4_kq3l2"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pcnak"]
 
 [node name="Province" type="Polygon2D" groups=["provinces"]]
 process_mode = 3
@@ -48,12 +45,6 @@ metadata/_edit_group_ = true
 visible = false
 z_index = 50
 z_as_relative = false
-
-[node name="OccupationStrips" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_pcnak")
-scale = Vector2(1.6875, 1.6875)
-texture = ExtResource("2_varc2")
 
 [connection signal="sg_mouse_over_self" from="." to="." method="_on_sg_mouse_over_self"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
