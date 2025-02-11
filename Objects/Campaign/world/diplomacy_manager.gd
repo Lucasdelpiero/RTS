@@ -21,6 +21,8 @@ func _init() -> void:
 	Signals.sg_nations_array_changed.connect(update_nations_array)
 	Signals.sg_nation_deleted.connect(delete_nation_from_relationships)
 	Signals.sg_declare_war.connect(set_war)
+	Signals.sg_declare_peace.connect(set_peace)
+	Signals.sg_make_client_state.connect(make_client_state)
 	Globals.diplomacy_manager = self
 	
 
@@ -81,6 +83,16 @@ func get_relationships_from(nation_tag: String) -> DiplomacyNation:
 		return null
 	return diplomacy_nations[nation_tag_position]
 
+func set_peace(nation_origin: String, nation_target: String) -> void:
+	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
+	var target : DiplomacyNation  = find_nation_relationship(nation_target)
+	if origin == null or target == null:
+		push_error("One of the nations doesnt exists or is not in the array")
+		return 
+	
+	origin.set_peace_status(target.NATION_TAG)
+	target.set_peace_status(origin.NATION_TAG)
+
 # Call functions on both nations to set the war between both nations
 func set_war(nation_origin: String, nation_target: String) -> void:
 	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
@@ -92,6 +104,18 @@ func set_war(nation_origin: String, nation_target: String) -> void:
 	
 	origin.set_war_status(target.NATION_TAG)
 	target.set_war_status(origin.NATION_TAG)
+
+func make_client_state(nation_origin: String, nation_target: String ) -> void:
+	var origin : DiplomacyNation = find_nation_relationship(nation_origin)
+	var target : DiplomacyNation  = find_nation_relationship(nation_target)
+	
+	if origin == null or target == null:
+		push_error("One of the nations doesnt exists or is not in the array")
+		return 
+	
+	origin.make_vassal_client_state(nation_target) #Overlord see target as vassal
+	target.make_owner_client_state(nation_origin) #Vassal see origin as overlord
+	set_peace(nation_origin, nation_target)
 
 func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
 	if nation_origin == nation_target:

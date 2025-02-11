@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn1pw3qq8o0oo"]
+[gd_scene load_steps=6 format=3 uid="uid://cn1pw3qq8o0oo"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_ekkjt"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.gd" id="1_p0bcd"]
 [ext_resource type="PackedScene" uid="uid://bv5ukbkf0qppu" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.tscn" id="3_tfvbl"]
 [ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="4_0fiu2"]
+[ext_resource type="PackedScene" uid="uid://cxuxm0bahlqam" path="res://Objects/UI/rich_text_label.tscn" id="5_047w8"]
 
 [node name="DiplomacyUI" type="Control"]
 layout_mode = 3
@@ -69,9 +70,16 @@ text = "Nation"
 horizontal_alignment = 1
 
 [node name="BtnDeclareWar" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Declare War"
+
+[node name="BtnOfferPeace" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Offer Peace"
 
 [node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
 layout_mode = 2
@@ -100,6 +108,7 @@ text = "Make client state"
 
 [node name="ProvincesDemanded" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 361.0
 offset_top = 2.0
@@ -148,9 +157,55 @@ layout_mode = 2
 focus_mode = 0
 text = "Accept"
 
+[node name="PeaceOffer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 459.0
+offset_top = 4.0
+offset_right = 1106.0
+offset_bottom = 209.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PeaceOffer"]
+layout_mode = 2
+
+[node name="RichTextLabel" parent="PeaceOffer/VBoxContainer" instance=ExtResource("5_047w8")]
+layout_mode = 2
+text = "[center]Peace offer:[/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PeaceOffer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BtnWhitePeace" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "White peace"
+
+[node name="BtnPoAnnex" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Annex State"
+
+[node name="BtnPoDemandProvinces" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Demand Provinces"
+
+[node name="BtnPoMakeClientState" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Make Client State"
+
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDeclareWar" to="." method="_on_btn_declare_war_pressed"]
+[connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnOfferPeace" to="." method="_on_btn_offer_peace_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnAnnex" to="." method="_on_btn_annex_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDemandProvinces" to="." method="_on_btn_demand_provinces_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDecreaseRelations" to="." method="_on_btn_decrease_relations_pressed"]
 [connection signal="pressed" from="ProvincesDemanded/HBoxContainer/VBoxContainer/BtnAcceptProvincesDemand" to="." method="_on_btn_accept_provinces_demand_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnWhitePeace" to="." method="_on_btn_white_peace_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoAnnex" to="." method="_on_btn_po_annex_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoDemandProvinces" to="." method="_on_btn_po_demand_provinces_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_pressed"]

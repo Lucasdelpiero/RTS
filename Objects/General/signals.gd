@@ -39,6 +39,10 @@ signal sg_annex_provinces(nation_tag: String, provinces: Array[Province])
 
 signal sg_declare_war(sender: String, reciever: String)
 
+signal sg_declare_peace(sender: String, reciever: String)
+
+signal sg_make_client_state(owner: String, client: String)
+
 # On right click open the diplomacy screen on the clicked province owner
 # Emmited by the province.gd script
 # Listened by the Globals.gd script

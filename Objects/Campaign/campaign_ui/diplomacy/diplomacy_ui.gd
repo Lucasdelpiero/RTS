@@ -9,6 +9,8 @@ extends Control
 @onready var nation_selected_label := %NationSelectedLabel as Label
 @export var BtnDiplomacyNationP : PackedScene 
 @export var BtnProvinceP : PackedScene
+@onready var btn_declare_war : Button = %BtnDeclareWar
+@onready var btn_offer_pleace : Button = %BtnOfferPeace
 
 # Nation that the player is interacting with right now 
 var current_diplomacy_tag : String = "" 
@@ -66,6 +68,19 @@ func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	diplo_actions_container.visible = true
 	# TODO hide the secondary menues properly
 	provinces_demanded_panel.visible = false
+	
+	# Show or hide buttons to declare war / peace
+	var diplo : DiplomacyManager = Globals.diplomacy_manager
+	if diplo == null:
+		push_error("Diplomacy manager not found on global script")
+	
+	var player_nation_tag : String = Globals.player_nation 
+	if diplo.is_at_war_with(player_nation_tag, nation_tag):
+		btn_declare_war.visible = false
+		btn_offer_pleace.visible = true
+	else:
+		btn_declare_war.visible = true
+		btn_offer_pleace.visible = false
 
 func open_relation_with_nation(nation_tag: String) -> void:
 	# Avoids interacting with ourselves
@@ -129,7 +144,6 @@ func provinces_demanded_create_buttons() -> void:
 		provinces_demanded_container.add_child(new_button)
 		new_button.toggle_mode = true # needed as this is not used by default
 		new_button.province = province
-	pass
 
 func _on_btn_accept_provinces_demand_pressed() -> void:
 	var demanded_provinces : Array[Province] = []
@@ -153,3 +167,54 @@ func _on_btn_declare_war_pressed() -> void:
 		push_error("not a nation selected to declare war")
 		return
 	Signals.sg_declare_war.emit(Globals.player_nation, current_diplomacy_tag)
+	set_current_diplomacy_nation_selected(current_diplomacy_tag) # Updates UI (chenges war button for peace button)
+
+
+#region diplomacy on peace offerings
+func _on_btn_offer_peace_pressed() -> void:
+	Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+
+
+func _on_btn_white_peace_pressed() -> void:
+	Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+
+
+func _on_btn_po_annex_pressed() -> void:
+	if current_diplomacy_tag == "":
+		push_error("not a nation selected to annex")
+		return
+	diplo_actions_container.hide()
+	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
+
+func _on_btn_po_demand_provinces_pressed() -> void:
+	Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+	
+	if BtnDiplomacyNationP == null:
+		push_error("There is no packedscene to instantiate")
+	provinces_demanded_panel.visible = true
+	var provinces : Array[Province] = []
+	provinces.assign(Globals.campaign_map.get_provinces_by_tag(current_diplomacy_tag))
+	
+	# Clean the conteiner
+	for button in provinces_demanded_container.get_children():
+		button.queue_free()
+	
+	# Add a button for each province
+	var diplo : DiplomacyManager = Globals.diplomacy_manager
+	if diplo == null:
+		push_error("There is not diplomacy manager from the diplo UI")
+	for province in provinces:
+		var new_button := BtnProvinceP.instantiate() as BtnProvince
+		provinces_demanded_container.add_child(new_button)
+		new_button.toggle_mode = true # needed as this is not used by default
+		new_button.province = province
+		if province.occupied_by == "":
+			new_button.disabled = true
+		elif province.occupied_by == Globals.player_nation or diplo.is_allied_with(province.occupied_by, Globals.player_nation):
+			new_button.disabled = false
+	
+
+func _on_btn_po_make_client_state_pressed() -> void:
+	Signals.sg_make_client_state.emit(Globals.player_nation, current_diplomacy_tag)
+
+#endregion

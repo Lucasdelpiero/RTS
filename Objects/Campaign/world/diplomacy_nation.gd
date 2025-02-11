@@ -82,6 +82,14 @@ func set_war_status(target: String) -> void:
 		
 	relationship.status = DiplomacyRelationship.Status.AT_WAR
 
+func set_peace_status(target: String) -> void:
+	var relationship : DiplomacyRelationship = find_nation_relationship(target)
+	if relationship == null:
+		push_error("Relationship with that nation doesnt exists")
+		return
+		
+	relationship.status = DiplomacyRelationship.Status.NEUTRAL
+
 # Used when a nation dissapears
 func delete_relationship(nation_tag: String) -> void:
 	for i in relationships.size():
@@ -94,3 +102,16 @@ func find_nation_relationship(nation: String) -> DiplomacyRelationship:
 		if relationship.nation_tag == nation:
 			return relationship
 	return null
+
+# Sent to the overlord so they change the relation with their new vassal
+func make_vassal_client_state(target: String) -> void:
+	for nation in relationships:
+		if nation.nation_tag == target:
+			nation.status = nation.Status.VASSAL
+
+# Sent to the client state so they change the relation with their new overlord
+func make_owner_client_state(target: String) -> void:
+	for nation in relationships:
+		if nation.nation_tag == target:
+			nation.status = nation.Status.OVERLORD
+	pass
