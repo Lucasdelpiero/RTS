@@ -160,10 +160,10 @@ text = "Accept"
 [node name="PeaceOffer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 459.0
-offset_top = 4.0
-offset_right = 1106.0
-offset_bottom = 209.0
+offset_left = 421.0
+offset_top = 63.0
+offset_right = 886.0
+offset_bottom = 268.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PeaceOffer"]
 layout_mode = 2
@@ -175,28 +175,73 @@ text = "[center]Peace offer:[/center]"
 [node name="HBoxContainer" type="HBoxContainer" parent="PeaceOffer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer"]
+[node name="PoList" type="VBoxContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BtnWhitePeace" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnPoWhitePeace" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+toggle_mode = true
 text = "White peace"
 
-[node name="BtnPoAnnex" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnPoAnnex" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+toggle_mode = true
 text = "Annex State"
 
-[node name="BtnPoDemandProvinces" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnPoDemandProvinces" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+toggle_mode = true
 text = "Demand Provinces"
 
-[node name="BtnPoMakeClientState" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnPoMakeClientState" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+toggle_mode = true
 text = "Make Client State"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="POProvincesDemanded" type="VBoxContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PeaceOffer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PeaceOffer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnAccept" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Accept"
+
+[node name="BtnCancel" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Cancel
+"
 
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDeclareWar" to="." method="_on_btn_declare_war_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnOfferPeace" to="." method="_on_btn_offer_peace_pressed"]
@@ -205,7 +250,11 @@ text = "Make Client State"
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnImproveRelations" to="." method="_on_btn_improve_relations_pressed"]
 [connection signal="pressed" from="DiploActionsContainer/VBoxContainer/BtnDecreaseRelations" to="." method="_on_btn_decrease_relations_pressed"]
 [connection signal="pressed" from="ProvincesDemanded/HBoxContainer/VBoxContainer/BtnAcceptProvincesDemand" to="." method="_on_btn_accept_provinces_demand_pressed"]
-[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnWhitePeace" to="." method="_on_btn_white_peace_pressed"]
-[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoAnnex" to="." method="_on_btn_po_annex_pressed"]
-[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoDemandProvinces" to="." method="_on_btn_po_demand_provinces_pressed"]
-[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/VBoxContainer/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_pressed"]
+[connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoWhitePeace" to="." method="_on_btn_po_white_peace_toggled"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoAnnex" to="." method="_on_btn_po_annex_pressed"]
+[connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoAnnex" to="." method="_on_btn_po_annex_toggled"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoDemandProvinces" to="." method="_on_btn_po_demand_provinces_pressed"]
+[connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoDemandProvinces" to="." method="_on_btn_po_demand_provinces_toggled"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_pressed"]
+[connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_toggled"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer/BtnCancel" to="." method="_on_btn_cancel_pressed"]
