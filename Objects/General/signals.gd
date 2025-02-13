@@ -35,13 +35,13 @@ signal sg_btn_diplomacy_nation_selected(nation_tag : String)
 
 signal sg_btn_diplomacy_annexed_nation(nation_tag: String, target_tag: String)
 
-signal sg_annex_provinces(nation_tag: String, provinces: Array[Province])
+signal sg_diplomacy_annex_provinces(nation_tag: String, provinces: Array[Province])
 
-signal sg_declare_war(sender: String, reciever: String)
+signal sg_diplomacy_declare_war(sender: String, reciever: String)
 
-signal sg_declare_peace(sender: String, reciever: String)
+signal sg_diplomacy_declare_peace(sender: String, reciever: String)
 
-signal sg_make_client_state(owner: String, client: String)
+signal sg_diplomacy_make_client_state(owner: String, client: String)
 
 # On right click open the diplomacy screen on the clicked province owner
 # Emmited by the province.gd script

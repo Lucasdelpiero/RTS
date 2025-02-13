@@ -230,13 +230,13 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 alignment = 1
 
-[node name="BtnAccept" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="BtnPoAccept" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 text = "Accept"
 
-[node name="BtnCancel" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="BtnPoCancel" type="Button" parent="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -257,4 +257,5 @@ text = "Cancel
 [connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoDemandProvinces" to="." method="_on_btn_po_demand_provinces_toggled"]
 [connection signal="pressed" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_pressed"]
 [connection signal="toggled" from="PeaceOffer/VBoxContainer/HBoxContainer/PoList/BtnPoMakeClientState" to="." method="_on_btn_po_make_client_state_toggled"]
-[connection signal="pressed" from="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer/BtnCancel" to="." method="_on_btn_cancel_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer/BtnPoAccept" to="." method="_on_btn_po_accept_pressed"]
+[connection signal="pressed" from="PeaceOffer/VBoxContainer/MarginContainer/HBoxContainer/BtnPoCancel" to="." method="_on_btn_po_cancel_pressed"]

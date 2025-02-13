@@ -30,7 +30,7 @@ var dictionary_ID_to_name : Dictionary = {}
 func _init() -> void:
 	Globals.campaign_map = self
 	Signals.sg_btn_diplomacy_annexed_nation.connect(annexed_nation)
-	Signals.sg_annex_provinces.connect(annex_provinces)
+	Signals.sg_diplomacy_annex_provinces.connect(annex_provinces)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

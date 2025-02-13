@@ -84,8 +84,13 @@ func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	var diplo : DiplomacyManager = Globals.diplomacy_manager
 	if diplo == null:
 		push_error("Diplomacy manager not found on global script")
+		return
+	if current_diplomacy_tag == null:
+		push_error("Current diplomacy tag is null")
+		return
 	
 	var player_nation_tag : String = Globals.player_nation 
+	
 	if diplo.is_at_war_with(player_nation_tag, nation_tag):
 		btn_declare_war.visible = false
 		btn_offer_pleace.visible = true
@@ -106,7 +111,17 @@ func open_relation_with_nation(nation_tag: String) -> void:
 	# Update the UI
 	request_diplomacy_nation_data()
 	set_current_diplomacy_nation_selected(nation_tag)
-	show()
+	#region show or hide diplomacy menu
+	# NOTE this code sucks, should be handled with return values
+	var diplo : DiplomacyManager = Globals.diplomacy_manager
+	var player_nation_tag : String = Globals.player_nation 
+	var player_relationship : DiplomacyNation = diplo.find_nation_relationship(player_nation_tag)
+	var relationship : DiplomacyRelationship = player_relationship.get_relationship_with(Globals.last_province_hovered_owner)
+	if relationship == null:
+		hide()
+	else:
+		show()
+	#endregion
 
 func delete_btn_diplomacy_nation(nation_tag : String) -> void:
 	for button  in list_relationships.get_children() as Array[BtnDiplomacyNation]:
@@ -157,50 +172,11 @@ func provinces_demanded_create_buttons() -> void:
 		new_button.toggle_mode = true # needed as this is not used by default
 		new_button.province = province
 
-func _on_btn_accept_provinces_demand_pressed() -> void:
-	var demanded_provinces : Array[Province] = []
-	var temp : Array = []
-	for button in provinces_demanded_container.get_children() as Array[BtnProvince]:
-		if button.is_pressed():
-			temp.push_back(button.province)
-	demanded_provinces.assign(temp)
-	Signals.sg_annex_provinces.emit(Globals.player_nation, demanded_provinces)
-	provinces_demanded_create_buttons()
-
-
-
-func _on_btn_diplomacy_pressed() -> void:
-	visible = !visible
-	update_diplomacy_nation_data()
-
-
-func _on_btn_declare_war_pressed() -> void:
-	if current_diplomacy_tag == "":
-		push_error("not a nation selected to declare war")
+func provinces_demanded_po_create_buttons() -> void:
+	#Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+	
+	if not btn_po_demand_provinces.button_pressed:
 		return
-	Signals.sg_declare_war.emit(Globals.player_nation, current_diplomacy_tag)
-	set_current_diplomacy_nation_selected(current_diplomacy_tag) # Updates UI (chenges war button for peace button)
-
-
-#region diplomacy on peace offerings
-func _on_btn_offer_peace_pressed() -> void:
-	peace_offer.visible = true
-
-
-func _on_btn_white_peace_pressed() -> void:
-	Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
-
-
-func _on_btn_po_annex_pressed() -> void:
-	return
-	if current_diplomacy_tag == "":
-		push_error("not a nation selected to annex")
-		return
-	diplo_actions_container.hide()
-	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
-
-func _on_btn_po_demand_provinces_pressed() -> void:
-	Signals.sg_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
 	
 	if BtnDiplomacyNationP == null:
 		push_error("There is no packedscene to instantiate")
@@ -225,14 +201,80 @@ func _on_btn_po_demand_provinces_pressed() -> void:
 			new_button.disabled = true
 		elif province.occupied_by == Globals.player_nation or diplo.is_allied_with(province.occupied_by, Globals.player_nation):
 			new_button.disabled = false
+
+func accept_provinces_demand() -> void:
+	var demanded_provinces : Array[Province] = []
+	var temp : Array = []
+	for button in provinces_demanded_container.get_children() as Array[BtnProvince]:
+		if button.is_pressed():
+			temp.push_back(button.province)
+	demanded_provinces.assign(temp)
+	Signals.sg_diplomacy_annex_provinces.emit(Globals.player_nation, demanded_provinces)
+	provinces_demanded_create_buttons()
+
+func _on_btn_accept_provinces_demand_pressed() -> void:
+	accept_provinces_demand()
+
+func _on_btn_diplomacy_pressed() -> void:
+	visible = !visible
+	update_diplomacy_nation_data()
+
+
+func _on_btn_declare_war_pressed() -> void:
+	if current_diplomacy_tag == "":
+		push_error("not a nation selected to declare war")
+		return
+	Signals.sg_diplomacy_declare_war.emit(Globals.player_nation, current_diplomacy_tag)
+	set_current_diplomacy_nation_selected(current_diplomacy_tag) # Updates UI (chenges war button for peace button)
+
+
+#region diplomacy on peace offerings
+func _on_btn_offer_peace_pressed() -> void:
+	peace_offer.visible = true
+
+
+func _on_btn_white_peace_pressed() -> void:
+	Signals.sg_diplomacy_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+
+# NOTE TO DELETE
+func _on_btn_po_annex_pressed() -> void:
+	return
+	if current_diplomacy_tag == "":
+		push_error("not a nation selected to annex")
+		return
+	diplo_actions_container.hide()
+	Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
+
+func _on_btn_po_demand_provinces_pressed() -> void:
+	provinces_demanded_po_create_buttons()
 	
 
 func _on_btn_po_make_client_state_pressed() -> void:
 	return
-	Signals.sg_make_client_state.emit(Globals.player_nation, current_diplomacy_tag)
+	Signals.sg_diplomacy_make_client_state.emit(Globals.player_nation, current_diplomacy_tag)
 
 
-func _on_btn_cancel_pressed() -> void:
+func _on_btn_po_accept_pressed() -> void:
+	if btn_po_white_peace.button_pressed:
+		Signals.sg_diplomacy_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
+	elif btn_po_annex.button_pressed:
+		if current_diplomacy_tag == "":
+			push_error("not a nation selected to annex")
+			return
+		diplo_actions_container.hide()
+		Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
+	if btn_po_demand_provinces.button_pressed:
+		accept_provinces_demand()
+	if btn_po_make_client_state.button_pressed:
+		Signals.sg_diplomacy_make_client_state.emit(Globals.player_nation, current_diplomacy_tag)
+	
+	
+	close_po_window()
+
+func _on_btn_po_cancel_pressed() -> void:
+	close_po_window()
+
+func close_po_window() -> void:
 	peace_offer.visible = false
 	panel_peace_offer_reset()
 #endregion
@@ -279,9 +321,9 @@ func _on_btn_po_annex_toggled(_toggled_on: bool) -> void:
 	pass # Replace with function body.
 
 
-func _on_btn_po_demand_provinces_toggled(_toggled_on: bool) -> void:
+func _on_btn_po_demand_provinces_toggled(toggled_on: bool) -> void:
 	check_btn_po_all()
-	pass # Replace with function body.
+	po_provinces_demanded.visible = toggled_on
 
 
 func _on_btn_po_make_client_state_toggled(_toggled_on: bool) -> void:

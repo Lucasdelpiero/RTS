@@ -20,9 +20,9 @@ func _init() -> void:
 	Signals.sg_diplomacy_nation_improve_relations.connect(improve_relationship)
 	Signals.sg_nations_array_changed.connect(update_nations_array)
 	Signals.sg_nation_deleted.connect(delete_nation_from_relationships)
-	Signals.sg_declare_war.connect(set_war)
-	Signals.sg_declare_peace.connect(set_peace)
-	Signals.sg_make_client_state.connect(make_client_state)
+	Signals.sg_diplomacy_declare_war.connect(set_war)
+	Signals.sg_diplomacy_declare_peace.connect(set_peace)
+	Signals.sg_diplomacy_make_client_state.connect(make_client_state)
 	Globals.diplomacy_manager = self
 	
 
@@ -127,6 +127,9 @@ func is_at_war_with(nation_origin: String, nation_target: String) -> bool:
 		push_error("Nation [%s] origin couldnt be found" % nation_origin)
 	
 	var relationship : DiplomacyRelationship = origin.get_relationship_with(nation_target)
+	if relationship == null:
+		push_error("Couldnt find relationship")
+		return false
 	
 	if relationship.status == relationship.Status.AT_WAR:
 		return true

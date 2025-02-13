@@ -65,6 +65,9 @@ func set_province_selected() -> void:
 
 func province_open_diplomacy_ui() -> void:
 	var nation_owner : String = Globals.last_province_hovered_owner
+	if nation_owner == null:
+		push_error("Province hovered has no owner")
+		return
 	Signals.sg_province_open_diplomacy.emit(nation_owner)
 	pass
 

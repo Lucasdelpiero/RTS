@@ -64,7 +64,8 @@ func get_relationship_with(nation_tag: String) -> DiplomacyRelationship:
 			return relation
 	
 	push_error("Couldnt find the nation to get relationship with")
-	return DiplomacyRelationship.new()
+	#return DiplomacyRelationship.new()
+	return null
 
 func get_relations_with(nation_tag: String) -> int:
 	for relation in relationships:
