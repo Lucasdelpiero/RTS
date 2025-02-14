@@ -212,6 +212,16 @@ func accept_provinces_demand() -> void:
 	Signals.sg_diplomacy_annex_provinces.emit(Globals.player_nation, demanded_provinces)
 	provinces_demanded_create_buttons()
 
+func accept_po_provinces_demand() -> void:
+	var demanded_provinces : Array[Province] = []
+	var temp : Array = []
+	for button in po_provinces_demanded.get_children() as Array[BtnProvince]:
+		if button.is_pressed():
+			temp.push_back(button.province)
+	demanded_provinces.assign(temp)
+	Signals.sg_diplomacy_annex_provinces.emit(Globals.player_nation, demanded_provinces)
+	provinces_demanded_create_buttons()
+
 func _on_btn_accept_provinces_demand_pressed() -> void:
 	accept_provinces_demand()
 
@@ -264,7 +274,7 @@ func _on_btn_po_accept_pressed() -> void:
 		diplo_actions_container.hide()
 		Signals.sg_btn_diplomacy_annexed_nation.emit(current_diplomacy_tag, Globals.player_nation)
 	if btn_po_demand_provinces.button_pressed:
-		accept_provinces_demand()
+		accept_po_provinces_demand()
 	if btn_po_make_client_state.button_pressed:
 		Signals.sg_diplomacy_make_client_state.emit(Globals.player_nation, current_diplomacy_tag)
 	
