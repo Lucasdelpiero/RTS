@@ -69,6 +69,13 @@ func set_relations_data(data: DiplomacyNation) -> void:
 		
 	
 
+func update_current_nation_selected() -> void:
+	if current_diplomacy_tag == "":
+		push_error("There is no nation selected")
+		return
+	set_current_diplomacy_nation_selected(current_diplomacy_tag)
+	
+
 # Sets the nation selected that will be the target of diplomatic actions in the menu
 func set_current_diplomacy_nation_selected(nation_tag : String) -> void:
 	current_diplomacy_tag = nation_tag
@@ -220,10 +227,11 @@ func accept_po_provinces_demand() -> void:
 			temp.push_back(button.province)
 	demanded_provinces.assign(temp)
 	Signals.sg_diplomacy_annex_provinces.emit(Globals.player_nation, demanded_provinces)
-	provinces_demanded_create_buttons()
+	Signals.sg_diplomacy_declare_peace.emit(Globals.player_nation, current_diplomacy_tag)
 
 func _on_btn_accept_provinces_demand_pressed() -> void:
 	accept_provinces_demand()
+	
 
 func _on_btn_diplomacy_pressed() -> void:
 	visible = !visible
@@ -280,6 +288,7 @@ func _on_btn_po_accept_pressed() -> void:
 	
 	
 	close_po_window()
+	update_current_nation_selected()
 
 func _on_btn_po_cancel_pressed() -> void:
 	close_po_window()
