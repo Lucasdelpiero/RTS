@@ -30,6 +30,7 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Signals.sg_translation_update_text.emit()
 	visible = false
 	diplo_actions_container.visible = false
 	provinces_demanded_panel.visible = false

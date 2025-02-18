@@ -203,6 +203,11 @@ battle_ia_debug={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Assets/ui/translations.en.translation", "res://Assets/ui/translations.es.translation")
+locale/test="es"
+
 [layer_names]
 
 2d_physics/layer_1="Province"

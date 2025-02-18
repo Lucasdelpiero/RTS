@@ -143,3 +143,5 @@ signal sg_battle_ia_stop_update
 
 
 #endregion
+
+signal sg_translation_update_text

@@ -345,23 +345,23 @@ theme_override_constants/separation = 0
 
 [node name="BtnPoliticalMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
-text = " Political "
+text = "POLITICAL"
 
 [node name="BtnTerrainMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
-text = " Terrain "
+text = "TERRAIN"
 
 [node name="BtnReligionMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
-text = " Religion "
+text = "RELIGION"
 
 [node name="BtnCultureMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
-text = " Culture"
+text = "CULTURE"
 
 [node name="BtnLoyaltyMap" parent="Container/MapTypesManager/HBoxContainer" instance=ExtResource("4_pss78")]
 layout_mode = 2
-text = " Loyalty "
+text = "LOYALTY"
 
 [node name="TimePanel" type="PanelContainer" parent="Container"]
 layout_mode = 1

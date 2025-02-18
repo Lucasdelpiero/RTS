@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn1pw3qq8o0oo"]
+[gd_scene load_steps=7 format=3 uid="uid://cn1pw3qq8o0oo"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_ekkjt"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.gd" id="1_p0bcd"]
 [ext_resource type="PackedScene" uid="uid://bv5ukbkf0qppu" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.tscn" id="3_tfvbl"]
 [ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="4_0fiu2"]
 [ext_resource type="PackedScene" uid="uid://cxuxm0bahlqam" path="res://Objects/UI/rich_text_label.tscn" id="5_047w8"]
+[ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="5_sjopv"]
 
 [node name="DiplomacyUI" type="Control"]
 layout_mode = 3
@@ -69,42 +70,35 @@ layout_mode = 2
 text = "Nation"
 horizontal_alignment = 1
 
-[node name="BtnDeclareWar" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnDeclareWar" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-text = "Declare War"
+text = "DECLARE_WAR"
 
-[node name="BtnOfferPeace" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnOfferPeace" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-text = "Offer Peace"
+text = "OFFER_PEACE"
 
-[node name="BtnAnnex" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnAnnex" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 layout_mode = 2
-focus_mode = 0
-text = "Annex state"
+text = "ANNEX_STATE"
 
-[node name="BtnDemandProvinces" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnDemandProvinces" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 layout_mode = 2
-focus_mode = 0
-text = "Demand Provinces"
+text = "DEMMAND_PROVINCES"
 
-[node name="BtnImproveRelations" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnImproveRelations" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 layout_mode = 2
-focus_mode = 0
-text = "Improve relations"
+text = "IMPROVE_REL"
 
-[node name="BtnDecreaseRelations" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnDecreaseRelations" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 layout_mode = 2
-focus_mode = 0
-text = "Decrease relations"
+text = "DECREASE_REL"
 
-[node name="BtnMakeClientState" type="Button" parent="DiploActionsContainer/VBoxContainer"]
+[node name="BtnMakeClientState" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
 layout_mode = 2
-focus_mode = 0
-text = "Make client state"
+text = "MAKE_CLIENT_STATE"
 
 [node name="ProvincesDemanded" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -184,28 +178,28 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
-text = "White peace"
+text = "WHITE_PEACE"
 
 [node name="BtnPoAnnex" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
-text = "Annex State"
+text = "ANNEX_STATE"
 
 [node name="BtnPoDemandProvinces" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
-text = "Demand Provinces"
+text = "DEMMAND_PROVINCES"
 
 [node name="BtnPoMakeClientState" type="Button" parent="PeaceOffer/VBoxContainer/HBoxContainer/PoList"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
-text = "Make Client State"
+text = "MAKE_CLIENT_STATE"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PeaceOffer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

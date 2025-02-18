@@ -1,6 +1,11 @@
-[gd_scene format=3 uid="uid://kplcxvwco21v"]
+[gd_scene load_steps=3 format=3 uid="uid://kplcxvwco21v"]
+
+[ext_resource type="Script" path="res://Objects/UI/button.gd" id="1_0nv0r"]
+[ext_resource type="FontFile" uid="uid://cn6uuk76ing1" path="res://Assets/ui/fonts/EBGaramond-Regular.ttf" id="1_anpii"]
 
 [node name="Button" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 149.0
+offset_bottom = 31.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("1_anpii")
+script = ExtResource("1_0nv0r")

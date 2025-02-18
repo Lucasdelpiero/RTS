@@ -1,0 +1,22 @@
+keys,en,es
+,,
+DECLARE_WAR,Declare war,Declarar guerra
+OFFER_PEACE,Offer peace,Ofrecer paz
+IMPROVE_REL,Improve relationship,Mejorar relaciones
+DECREASE_REL,Decrease relationship,Empeorar relaciones
+ANNEX_STATE,Annex State,Anexionar Estado
+DEMMAND_PROVINCES,Demmand provinces,Demandar provincias
+MAKE_CLIENT_STATE,Make client State,Hacer Estado cliente
+,,
+,,
+,,
+WHITE_PEACE,White Peace,Paz Blanca
+,,
+,,
+,,
+POLITICAL,Political,Político
+TERRAIN,Terrain,Terreno
+RELIGION,Religion,Religión
+CULTURE,Culture,Cultura
+LOYALTY,Loyalty,Lealtad
+DIPLOMATIC,Diplomatic,Diplomático
