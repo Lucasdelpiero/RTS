@@ -69,9 +69,9 @@ func update_data(data : TotalProductionData) -> void:
 func update_gold_label(current_amount : int) -> void:
 	var gold_compact : String = get_compact_num(current_amount)
 	gold_label.clear()
-	gold_label.push_hint("Gold is obtained from your provinces and buildings") # 1
+	gold_label.push_hint(tr("GOLD_HINT")) # 1
 	gold_label.push_color(COLOR_GOLD) # 2
-	gold_label.add_text("Gold" )
+	gold_label.add_text(tr("GOLD"))
 	gold_label.pop() # 2
 	gold_label.add_text(": %s" % [gold_compact])
 	gold_label.pop() # 1
@@ -82,7 +82,7 @@ func update_gold_change_label(change : int) -> void:
 	if sign(change) <= 0: # TODO refactor this
 		plus_minus = ""
 	gold_change_label.clear()
-	gold_change_label.push_hint("Gold is obtained from your provinces and buildings") # 1
+	gold_change_label.push_hint(tr("GOLD_HINT")) # 1
 	gold_change_label.push_color( get_color_by_sign(change) ) # 1
 	gold_change_label.add_text(" (%s%s) " % [plus_minus, gold_change_compact]) # 2
 	gold_change_label.pop() # 1
@@ -90,8 +90,8 @@ func update_gold_change_label(change : int) -> void:
 func update_manpower_label(current_amount: int) -> void:
 	var manpower_compact : String = get_compact_num(current_amount)
 	manpower_label.clear()
-	manpower_label.push_hint("Manpower is obtained from the provinces population and buildings") # 1
-	manpower_label.add_text("Manpower: %s" % [manpower_compact])
+	manpower_label.push_hint(tr("MANPOWER_HINT")) # 1
+	manpower_label.add_text("%s: %s" % [tr("MANPOWER"),manpower_compact])
 	manpower_label.pop() # 1
 	pass
 

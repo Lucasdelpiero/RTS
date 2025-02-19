@@ -98,7 +98,7 @@ func _on_btn_army_creation_pressed() -> void:
 		push_error("Couldnt find player nation")
 		return
 	province_to_spawn_in = player_nation.capital
-	btn_province_spawn.text = "Recruited in: %s" % [province_to_spawn_in.name]
+	btn_province_spawn.text = "%s: %s" % [tr("RECRUITED_IN"),province_to_spawn_in.name]
 	visible = !visible
 	
 	# Clean the list
@@ -162,6 +162,9 @@ func set_province_to_spawn_in(value : Province) -> void:
 # - The amount of money of the player changes in the UI
 # - There is a change in the list of units to create in the army
 func check_if_can_afford_army() -> void:
+	if new_army_manager == null:
+		return
+	
 	var can_afford_army : bool = Globals.player_gold > new_army_manager.army_cost
 	var new_units_amount : int = container_btn_new_army.get_children().size()
 	var has_enough_soldiers : int = Globals.player_manpower > new_army_manager.army_manpower_cost

@@ -13,6 +13,9 @@ signal units_list_changed # When an unit is added or removed to the Vbox contain
 var army_cost : int = 0
 var army_manpower_cost : int = 0
 
+func _ready() -> void:
+	update_label_cost() # so it updates with the language
+
 func add_unit_to_list(data : UnitData) -> void:
 	var new_button_unit := BtnArmyCreatorUnit.instantiate() as ButtonArmyCreatorUnit
 	container_btn_new_army.add_child(new_button_unit)
@@ -36,10 +39,10 @@ func update_label_cost() -> void:
 	
 	army_cost = cost # Used to know if the button to create the unit should be disabled or not
 	army_manpower_cost = manpower_cost # Used to know if the button to create the unit should be disabled or not
-	label_cost.text = "Cost: %s" % [cost]
-	label_mantanence.text = "Maintanence: %s" % [maintanence]
-	label_total_units.text = "Army size: %s" % [buttons_typed.size()]
-	label_manpower_cost.text = "Manpower needed: %s" % [manpower_cost]
+	label_cost.text = "%s: %s" % [tr("COST"),cost]
+	label_mantanence.text = "%s: %s" % [tr("UPKEEP"),maintanence]
+	label_total_units.text = "%s: %s" % [tr("SIZE"),buttons_typed.size()]
+	label_manpower_cost.text = "%s: %s" % [tr("MANPOWER_NEEDED") ,manpower_cost]
 	units_list_changed.emit()
 
 func delete_individual_button(node : ButtonArmyCreatorUnit) -> void:

@@ -2,12 +2,12 @@ keys,en,es
 ,,
 DECLARE_WAR,Declare war,Declarar guerra
 OFFER_PEACE,Offer peace,Ofrecer paz
+PEACE_OFFER,Peace offer,Oferta de paz
 IMPROVE_REL,Improve relationship,Mejorar relaciones
 DECREASE_REL,Decrease relationship,Empeorar relaciones
 ANNEX_STATE,Annex State,Anexionar Estado
 DEMMAND_PROVINCES,Demmand provinces,Demandar provincias
 MAKE_CLIENT_STATE,Make client State,Hacer Estado cliente
-,,
 ,,
 ,,
 WHITE_PEACE,White Peace,Paz Blanca
@@ -20,3 +20,19 @@ RELIGION,Religion,Religión
 CULTURE,Culture,Cultura
 LOYALTY,Loyalty,Lealtad
 DIPLOMATIC,Diplomatic,Diplomático
+,,
+,,
+GOLD,Gold,Oro
+GOLD_HINT,Gold is obtained from your provinces and buildings,El oro es obtenido de tus provincias y edificios
+MANPOWER,Manpower,Soldadezca
+MANPOWER_HINT,Manpower is obtained from the provinces population and buildings,La soldadezca se obtiene de la población de las provincias y edificios
+COST,Cost,Costo
+UPKEEP,Upkeep,Mantenimiento
+SIZE,Size,Tamaño
+CREATE_ARMY,Create army,Crear ejercito
+MANPOWER_NEEDED,Manpower needed,Soldadezca necesaria
+DIPLOMACY,Diplomacy,Diplomacia
+NATIONS,Nations,Naciones
+NATION,Nation,Nación
+RECRUITED_IN,Recruited in,Reclutados en
+PROVINCE_TO_SPAWN_IN,Province to spawn in:,Provincia en la que crearlo:

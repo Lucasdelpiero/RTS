@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn1pw3qq8o0oo"]
+[gd_scene load_steps=6 format=3 uid="uid://cn1pw3qq8o0oo"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_ekkjt"]
 [ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/diplomacy_ui.gd" id="1_p0bcd"]
 [ext_resource type="PackedScene" uid="uid://bv5ukbkf0qppu" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.tscn" id="3_tfvbl"]
 [ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="4_0fiu2"]
-[ext_resource type="PackedScene" uid="uid://cxuxm0bahlqam" path="res://Objects/UI/rich_text_label.tscn" id="5_047w8"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="5_sjopv"]
 
 [node name="DiplomacyUI" type="Control"]
@@ -32,8 +31,9 @@ layout_mode = 2
 
 [node name="CurrentNationsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Nations"
+text = "NATIONS"
 horizontal_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,7 +67,7 @@ layout_mode = 2
 [node name="NationSelectedLabel" type="Label" parent="DiploActionsContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Nation"
+text = "NATION"
 horizontal_alignment = 1
 
 [node name="BtnDeclareWar" parent="DiploActionsContainer/VBoxContainer" instance=ExtResource("5_sjopv")]
@@ -162,9 +162,10 @@ offset_bottom = 268.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PeaceOffer"]
 layout_mode = 2
 
-[node name="RichTextLabel" parent="PeaceOffer/VBoxContainer" instance=ExtResource("5_047w8")]
+[node name="Label" type="Label" parent="PeaceOffer/VBoxContainer"]
 layout_mode = 2
-text = "[center]Peace offer:[/center]"
+text = "PEACE_OFFER"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PeaceOffer/VBoxContainer"]
 layout_mode = 2

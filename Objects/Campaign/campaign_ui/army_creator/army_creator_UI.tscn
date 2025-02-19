@@ -32,6 +32,7 @@ custom_minimum_size = Vector2(730, 435)
 layout_mode = 0
 offset_right = 916.0
 offset_bottom = 435.0
+metadata/_edit_group_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(206, 200)
@@ -79,7 +80,8 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_q3krf")
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-text = "Create army"
+text = "CREATE_ARMY"
+metadata/_edit_group_ = true
 
 [node name="BtnProvinceSpawn" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -175,7 +177,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/SpawnProvincePanel/SpawnProvinceContainer"]
 layout_mode = 2
-text = "Province to spawn in:"
+text = "PROVINCE_TO_SPAWN_IN"
+metadata/_edit_group_ = true
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnCreateArmy" to="." method="_on_btn_create_army_pressed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/BtnProvinceSpawn" to="." method="_on_btn_province_spawn_pressed"]
