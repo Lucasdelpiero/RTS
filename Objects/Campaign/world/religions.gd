@@ -7,16 +7,16 @@ enum list {
 	CELTIC,
 	PUNIC,
 	JUDAISM,
-	ASSIRYAN_POLYTHEISM,
+	ASSYRIAN_POLYTHEISM,
 	ZOROASTRIANISM
 }
 const NONE = ""
-const HELLENIC = "hellenic"
-const CELTIC = "celtic"
-const PUNIC = "punic"
-const JUDAISM = "judaism"
-const ASSIRYAN_POLYTHEISM = "assyrian_polytheism"
-const ZOROASTRIANISM = "zoroastrianism"
+const HELLENIC = "HELLENIC"
+const CELTIC = "CELTIC"
+const PUNIC = "PUNIC"
+const JUDAISM = "JUDAISM"
+const ASSYRIAN_POLYTHEISM = "ASSYRIAN_POLYTHEISM"
+const ZOROASTRIANISM = "ZOROASTRIANISM"
 
 static var list_names : Array[String] = [
 	NONE,
@@ -24,7 +24,7 @@ static var list_names : Array[String] = [
 	CELTIC,
 	PUNIC,
 	JUDAISM,
-	ASSIRYAN_POLYTHEISM,
+	ASSYRIAN_POLYTHEISM,
 	ZOROASTRIANISM
 ]
 

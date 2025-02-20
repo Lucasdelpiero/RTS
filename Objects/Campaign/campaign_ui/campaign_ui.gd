@@ -116,12 +116,14 @@ func update_province_data(data : ProvinceData) -> void:
 	set_province_visibility(true)
 	last_province_updated = data.province
 	
-	population_label.text = "Population: %s" % [data.population]
-	income_label.text = "Income: %s" % [data.base_income]
+	population_label.text = "%s: %s" % [tr("POPULATION") ,data.population]
+	income_label.text = "%s: %s" % [tr("INCOME") ,data.base_income]
 	name_label.text = "%s" %[data.name]
 	var culture : String = Cultures.get_name_by_enum(data.culture)
-	culture_label.text = "Culture: %s" % [culture.capitalize()]
-	religion_label.text = "Religion: %s" % [Religions.get_name_by_enum(data.religion).capitalize()]
+	culture_label.text = "%s: %s" % [tr("CULTURE") ,tr(culture).capitalize()]
+	var religion : String = Religions.get_name_by_enum(data.religion)
+	print(religion)
+	religion_label.text = "%s: %s" % [tr("RELIGION") , tr(religion).capitalize()]
 	if data.conversion_religion_progress >= 100 or data.conversion_religion_progress == 0:
 		conversion_religion_bar.visible = false
 	else:

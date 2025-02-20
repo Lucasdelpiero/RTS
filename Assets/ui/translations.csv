@@ -36,3 +36,32 @@ NATIONS,Nations,Naciones
 NATION,Nation,Nación
 RECRUITED_IN,Recruited in,Reclutados en
 PROVINCE_TO_SPAWN_IN,Province to spawn in:,Provincia en la que crearlo:
+,,
+POPULATION,Population,Población
+INCOME,Income,Ingresos
+RELIGION,Religion,Religión
+CULTURE,Culture,Cultura
+,,
+LATIN,latin,latín
+CELT,celt,celta
+GREEK,greek,griego
+PHOENICIAN,phoenician,fenicio
+EGYPTIAN,egyptian,egipcio
+BRETON,breton,bretón
+GERMANIC,germanic,germano
+HEBREW,hebrew,hebreo
+ARAMEAN,aramean,arameo
+IBERIAN,iberian,íbero
+ASSYRIAN,assyirian,asirio
+CELTIBERIAN,celtiberian,celtibero
+ARMENIAN,armenian,armenio
+PERSIAN,persian,persa
+ILLYRIAN,illyrian,illirio
+TRACIAN,tracian,tracio
+,,
+HELLENIC,hellenic,heleno
+CELTIC,celtic,celta
+PUNIC,punic,púnico
+JUDAISM,judaism,judaísmo
+ASSYRIAN_POLYTHEISM,assyirian politeism,politeísmo asirio
+ZOROASTRIANISM,zoroastrianism,zoroastrianismo

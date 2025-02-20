@@ -118,7 +118,7 @@ offset_left = 189.0
 offset_top = 77.0
 offset_right = 247.0
 offset_bottom = 103.0
-text = "Income"
+text = "INCOME"
 
 [node name="PopulationLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true
@@ -127,7 +127,7 @@ offset_left = 12.0
 offset_top = 76.0
 offset_right = 97.0
 offset_bottom = 102.0
-text = "Population"
+text = "PUPULATION"
 
 [node name="NameLabel" type="Label" parent="Container/Province"]
 unique_name_in_owner = true

@@ -10,7 +10,7 @@ enum list {
 	CELT,
 	GREEK,
 	PHOENICIAN,
-	EGIPCIAN,
+	EGYPTIAN,
 	BRETON,
 	GERMANIC,
 	HEBREW,
@@ -27,22 +27,22 @@ enum list {
 # Constans for the names of the cultures to avoid mistakes
 
 const NONE := ""
-const LATIN := "latin"
-const CELT := "celt"
-const GREEK := "greek"
-const PHOENICIAN := "phoenician"
-const EGIPCIAN := "egipcian"
-const BRETON := "breton"
-const GERMANIC := "germanic"
-const HEBREW := "hebrew"
-const ARAMEAN := "aramean"
-const IBERIAN := "iberian"
-const ASSYRIAN := "assyrian"
-const CELTIBERIAN := "celtiberian"
-const ARMENIAN := "armenian"
-const PERSIAN := "persian"
-const ILLYRIAN := "illyrian"
-const TRACIAN := "tracian"
+const LATIN := "LATIN"
+const CELT := "CELT"
+const GREEK := "GREEK"
+const PHOENICIAN := "PHOENICIAN"
+const EGYPTIAN := "EGYPTIAN"
+const BRETON := "BRETON"
+const GERMANIC := "GERMANIC"
+const HEBREW := "HEBREW"
+const ARAMEAN := "ARAMEAN"
+const IBERIAN := "IBERIAN"
+const ASSYRIAN := "ASSYRIAN"
+const CELTIBERIAN := "CELTIBERIAN"
+const ARMENIAN := "ARMENIAN"
+const PERSIAN := "PERSIAN"
+const ILLYRIAN := "ILLYRIAN"
+const TRACIAN := "TRACIAN"
 
 
 # This array NEEDS to have the same order as the name constans
@@ -53,7 +53,7 @@ static var list_names : Array[String] = [
 	CELT,
 	GREEK,
 	PHOENICIAN,
-	EGIPCIAN,
+	EGYPTIAN,
 	BRETON,
 	GERMANIC,
 	HEBREW,
