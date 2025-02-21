@@ -47,10 +47,10 @@ unique_bonuses = Array[ExtResource("4_xq4cp")]([])
 [resource]
 script = ExtResource("3_ls77v")
 building_type = "BUILDING_TEMPLE"
-building_name = "Temple"
+building_name = "TEMPLE"
 is_built = false
 current_level = 0
 levels = Array[ExtResource("3_4becn")]([SubResource("Resource_be8om"), SubResource("Resource_42scd")])
-description = "PRAY THE SUN"
+description = "TEMPLE_DESC"
 building_religion = 0
 building_culture = 0

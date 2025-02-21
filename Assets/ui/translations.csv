@@ -39,7 +39,9 @@ PROVINCE_TO_SPAWN_IN,Province to spawn in:,Provincia en la que crearlo:
 ,,
 POPULATION,Population,Población
 INCOME,Income,Ingresos
+BUILD_TIME,Build time,Tiempo de construcción
 RELIGION,Religion,Religión
+RELIGIOUS_CONVERTION,Religious convertion,Conversión religiosa
 CULTURE,Culture,Cultura
 ,,
 LATIN,latin,latín
@@ -65,3 +67,19 @@ PUNIC,punic,púnico
 JUDAISM,judaism,judaísmo
 ASSYRIAN_POLYTHEISM,assyirian politeism,politeísmo asirio
 ZOROASTRIANISM,zoroastrianism,zoroastrianismo
+,,
+GOVERNMENT_HALL,Government  hall,Centro de gobierno
+FARM,Farm,Granja
+MARKET,Market,Mercado
+TEMPLE,Temple,Templo
+THEATER,Theater,Teatro
+,,
+GOVERNMENT_HALL_DESC,"A government building, that is really cool",Edificio gubernamental
+FARM_DESC,The farm than farms doing the farming.,La granja para granjear
+MARKET_DESC,Buy and sell,Vende y compra
+TEMPLE_DESC,PRAY THE SUN,PRAY THE SUN
+THEATER_DESC,LETS GET READY FOR GLADIATOR’S FIGHTS,VAMO ÑUEEELS
+,,
+NO_BONUS,No bonus,Sin bonificación
+BONUS_INCOME,Bonus income,Bonificación de ingresos
+BONUS_MANPOWER,Bonus manpower,Bonificación de soldadezca
