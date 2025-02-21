@@ -122,7 +122,6 @@ func update_province_data(data : ProvinceData) -> void:
 	var culture : String = Cultures.get_name_by_enum(data.culture)
 	culture_label.text = "%s: %s" % [tr("CULTURE") ,tr(culture).capitalize()]
 	var religion : String = Religions.get_name_by_enum(data.religion)
-	print(religion)
 	religion_label.text = "%s: %s" % [tr("RELIGION") , tr(religion).capitalize()]
 	if data.conversion_religion_progress >= 100 or data.conversion_religion_progress == 0:
 		conversion_religion_bar.visible = false

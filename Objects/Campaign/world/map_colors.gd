@@ -50,13 +50,13 @@ func get_terrain_color(terrain_type : String = "none") -> Color:
 	
 
 func get_religion_color(religion : int) -> Color:
-	var religion_color : Variant = get(Religions.get_name_by_enum(religion))
+	var religion_color : Variant = get(Religions.get_name_by_enum(religion).to_lower())
 	if religion_color == null:
 		return default_color
 	return religion_color
 
 func get_culture_color(culture : Cultures.list = Cultures.list.NONE) -> Color:
-	var culture_name : String = Cultures.get_name_by_enum(culture)
+	var culture_name : String = Cultures.get_name_by_enum(culture).to_lower()
 	var culture_color : Variant = get(culture_name) 
 	if culture_color == null:
 		return default_color
