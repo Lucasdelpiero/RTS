@@ -5,7 +5,9 @@ var player_army : Array = []
 var enemy_army : Array = []
 var player_nation : String = ""
 
-var World : Variant = preload("res://Objects/Campaign/world/world.tscn")
+# world changed from preload to load because the unit box couldt connect the signal 
+# from when they died to the other objects
+var World : Variant = load("res://Objects/Campaign/world/world.tscn")
 #var _save := SaveGameAsJSON.new()
 
 # Called when the node enters the scene tree for the first time.

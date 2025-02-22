@@ -35,8 +35,15 @@ var routed : bool = false
 #var troops_number : int = 0 : set = set_troops_number
 var troops_number : int = 0 : 
 	set(value):
-		troops_number = clamp(value,0 ,troops_number_max)
+		# was alive created so it only sends the signal one time when it dies
+		var was_alive : bool = troops_number > 0
+		troops_number = clampi(value,0 ,troops_number_max)
 		sg_troops_number_changed.emit(value, troops_number_max)
+		if troops_number <= 0 and was_alive:
+			unit_died()
+			was_alive = false
+			pass
+		
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
@@ -302,6 +309,15 @@ func recieved_attack(_data : AttackData) -> void:
 #	push_warning(data)
 	troops_number -= 10
 	pass
+
+func unit_died() -> void:
+	Signals.sg_unit_died.emit(self)
+	modulate.a = 0.3
+
+func is_alive() -> bool:
+	if troops_number > 0:
+		return true
+	return false
 
 func update_overlay() -> void :
 	await get_tree().create_timer(1.0).timeout

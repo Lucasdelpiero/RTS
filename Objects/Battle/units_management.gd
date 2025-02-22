@@ -86,7 +86,7 @@ func move_units(aUnits : Array,
 func get_enemy_groups( 
 		enemy_units : Array[Unit] = [], 
 		arg_distance_to_be_in_group : float = 500
-		) -> Array:
+		) -> Array[Array]:
 		
 	var group_to_add_units : int  = 0
 	if enemy_units.size() < 1 :
@@ -97,6 +97,9 @@ func get_enemy_groups(
 	# Creates temporal groups of units that are close to each other ( because of how it works usually creates multiple groups when it should create only 1, these will be put together below )
 	for i : int in enemy_units.size(): # Iteration of every unit
 		var unit := enemy_units[i] as Unit
+		if not unit.is_alive(): # Skips units that died
+			continue
+		
 		var has_to_create_new_group := true # If a unit has to create a new group when its not close enough to be part of an already existing group
 		
 		for o : int in groups.size(): # Iteration of every group
@@ -123,7 +126,7 @@ func get_enemy_groups(
 			groups.push_back([unit])
 	
 #	# Put together in the same group another entire group if this have at least one unit close to the first group ( put together multiples groups were into 1 group when it should )
-	var final_groups : Array = [groups[0].duplicate(true)]
+	var final_groups : Array[Array] = [groups[0].duplicate(true)]
 #	final_groups = groups.duplicate(true)
 	# Group to see if should be put in the same group as other group
 	var place_to_add_in_group : int = 0

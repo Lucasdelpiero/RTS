@@ -8,6 +8,7 @@ process_mode = 3
 script = ExtResource("1_uyp36")
 metadata/_edit_lock_ = true
 
-[node name="World" parent="." instance=ExtResource("2_sb100")]
+[node name="World" parent="." node_paths=PackedStringArray("main") instance=ExtResource("2_sb100")]
 process_mode = 3
+main = NodePath("..")
 metadata/_edit_lock_ = true

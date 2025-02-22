@@ -143,7 +143,7 @@ func get_text_bonus(bonus : Bonus) -> String:
 	var temp : String = ""
 	if bonus.type_produced == bonus.BONUS_INCOME or bonus.type_produced == bonus.BONUS_MANPOWER :
 		temp += "%s : %s" % [tr(bonus.type_produced.to_upper()), str(bonus.multiplier_bonus) + "%"]
-	elif bonus.type_produced == bonus.BONUS_LOYALTY:
+	elif bonus.type_produced == bonus.BONUS_LOYALTY:	
 		temp += tr("LOYALTY")
 		if bonus.multiplier_bonus >= 0:
 			temp += " +"

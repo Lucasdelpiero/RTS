@@ -25,7 +25,7 @@ var units : Array[Unit] = []
 @export var playerGroup : UnitsGroupControl = null
 var player_units : Array[Unit] = []
 var distance_to_be_in_group : int = 500
-var playerGroups : Array[Array] = []
+var player_groups : Array[Array] = []
 @export var general : General 
 @onready var groups_manager  := %GroupsManager as GroupsManager
 @onready var timerAdvance := %TimerAdvance as Timer
@@ -88,13 +88,11 @@ func _ready() -> void:
 	Signals.sg_ia_advance.connect(check_to_advance)
 	Signals.sg_ia_state_advancing.connect(advance_towards_player)
 	Signals.sg_ia_state_skirmishing.connect(send_skimishers_to_attack)
+	Signals.sg_unit_died.connect(update_player_units_count)
 	
 	
 	# get_enemy_groups needs a typed array, so to be safe
-	var player_units_temp : = playerGroup.get_children() 
-	var player_units_typed : Array[Unit] = []
-	player_units_typed.assign(player_units_temp)
-	player_units.assign(player_units_typed)
+	player_units = get_player_units()
 	var enemy_units_temp := armyGroup.get_children()
 	units.assign(enemy_units_temp)
 	
@@ -109,7 +107,8 @@ func _ready() -> void:
 	move_to_group_marker(units)
 #	push_warning(get_main_group(get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)))
 	# TEST
-	var main_group : Array = get_main_group(get_enemy_groups(player_units_typed, DISTANCE_TO_BE_IN_GROUP))
+	player_groups = get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
+	var main_group : Array = get_main_group(player_groups)
 	groups_manager.create_group(group_front, main_group, infantryMarker, true, false, "infantry")
 	groups_manager.create_group(group_archers, main_group, rangeMarker, true, false, "archers")
 	groups_manager.create_group(group_left_flank, main_group, leftFlankMarker, false, true, "flank_left")
@@ -123,6 +122,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func army_marker_face_towards(position: Vector2 ) -> void:
 	armyMarker.rotation = armyMarker.global_position.angle_to_point(position) + PI/2
 
+func get_player_units() -> Array[Unit]:
+	var player_units_temp : = playerGroup.get_children().filter(func(el: Unit) -> bool: return el.is_alive()) 
+	var player_units_typed : Array[Unit] = []
+	player_units_typed.assign(player_units_temp)
+	return player_units_typed
+
+# When an unit from the player dies, it updates the array with the units that are alive
+func update_player_units_count(_unit: Unit) -> void:
+	player_units = get_player_units()
 
 # Makes the IA focus on the largest group of enemies
 func focus_on_largest_group() -> void:

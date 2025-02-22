@@ -85,8 +85,9 @@ func _on_area_2d_area_entered(area : Area2D) -> void:
 	if closest != null:
 		melee_detected(targetArea)
 	else:
-		print("No hay area")
-		print("Units: ", units_colliding_with)
+		#print("No hay area")
+		#print("Units: ", units_colliding_with)
+		pass
 		
 
 
@@ -113,7 +114,8 @@ func _on_area_2d_area_entered_old(area : Area2D) -> void:
 				unitsCollidingWith[a.owner.name].push_back(a)
 	var test : Array[Unit] = get_units_colliding_with(area) 
 	for unit in test:
-		print(unit.name)
+		#print(unit.name)
+		pass
 
 	# Get the closest collision area
 	# Needs to not be occupied (by an attacking unit) and the melee point should be free
