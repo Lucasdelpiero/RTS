@@ -137,8 +137,11 @@ func set_scene_unit_data(data : SceneUnitData) -> void:
 	weapons.generate_weapon_from_scene_data(data.main_weapon, true)
 	weapons.generate_weapon_from_scene_data(data.secondary_weapon, false)
 
+# The inputs will go through the state machine and if they can do an action
+# it will be done in the state itself 
+#region State machine funnel
 
-
+#endregion
 func set_hovered(value: bool) -> void:
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
@@ -364,6 +367,14 @@ func get_type() -> int:
 func get_hurtbox_component() -> HurtBoxComponent:
 	return hurtBoxComponent
 
+# From weapon -> weapon_manager -> unit
+func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
+	for i in arr as Array[Unit]:
+		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
+			range_attack(target_unit)
+#			push_warning("Enemy is hereeeeeee")
+	pass
+
 func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
 	var unit : Unit = area.owner as Unit
 #	push_warning("enemy in range")
@@ -391,13 +402,6 @@ func _on_range_of_attack_area_exited(area : Area2D) -> void:
 
 	pass # Replace with function body.
 
-# From weapon -> weapon_manager -> unit
-func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
-	for i in arr as Array[Unit]:
-		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
-			range_attack(target_unit)
-#			push_warning("Enemy is hereeeeeee")
-	pass
 
 
 func _on_unit_detector_area_entered(area : Area2D) -> void:
