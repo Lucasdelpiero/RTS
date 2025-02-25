@@ -237,6 +237,11 @@ func attack_target(value : Unit) -> void:
 	if value == null:
 		push_warning(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
+	if not value.is_alive():
+		push_error("Unit is not alive, cant be attacked")
+		state = State.IDLE
+		return
+	
 	target_unit = value
 	weapons.go_to_attack()
 	var weapon_type : String = weapons.get_mouse_over_weapon_type()
@@ -254,8 +259,15 @@ func attack_target(value : Unit) -> void:
 			set_chase(value)
 
 func attack_again() -> void:
-#	push_warning_debug("attack again")
-#	push_warning(target_unit)
+	if target_unit == null:
+		state = State.IDLE
+		return
+	
+	if not target_unit.is_alive():
+		target_unit = null
+		state = State.IDLE
+		return
+	
 	if target_unit != null and state == State.FIRING:
 		var weapon_type : String = weapons.get_in_use_weapon_type()
 		if weapon_type == "Range":
@@ -268,9 +280,21 @@ func attack_again() -> void:
 		pass
 
 
+func target_unit_die(unit: Unit) -> void:
+	if unit == target_unit:
+		print("%s now doesnt has as target %s" % [name, target_unit.name])
+		target_unit = null
+		state = State.IDLE
+		
+	
+
 func melee(data : HurtboxData) -> void:
 	if data == null:
 		return
+	if not data.target.is_alive():
+		push_error("Target is not an unit that is alive")
+		return
+	
 	var new_data : Array = data["areas"]
 	var new_data_typed : Array[Area2D] = []
 	new_data_typed.assign(new_data)

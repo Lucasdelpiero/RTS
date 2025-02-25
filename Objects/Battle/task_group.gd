@@ -54,7 +54,13 @@ func _ready() -> void:
 	Signals.sg_battle_ia_start_update.connect(debug_start_update)
 	Signals.sg_battle_ia_stop_update.connect(debug_stop_update)
 	Signals.sg_ia_debug_send_one_to_attack.connect(debug_attack_one)
-	pass
+	Signals.sg_unit_died.connect(update_enemy_groups_when_unit_die)
+
+# Clears from the groups the enemies that died so the IA doesnt go after units that are dead
+func update_enemy_groups_when_unit_die(unit : Unit) -> void:
+	main_enemy_group.erase(unit)
+	group_units_attacking.erase(unit)
+	enemy_group_focused.erase(unit)
 
 func move_units_to_markers() -> void:
 	if move_to_marker == false:
