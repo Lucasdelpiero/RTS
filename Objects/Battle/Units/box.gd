@@ -140,6 +140,24 @@ func set_scene_unit_data(data : SceneUnitData) -> void:
 # The inputs will go through the state machine and if they can do an action
 # it will be done in the state itself 
 #region State machine funnel
+func set_chase(value : Unit) -> void:
+#	push_warning_debug("set chase")
+	if moveComponent == null:
+		return
+	moveComponent.chase(value)
+	moveComponent.chasing = true
+#	weaponsData.attack() # set te weapon to the alternative
+	weapons.go_to_attack()
+	if value == null:
+		push_warning("set_chase THE ERROR IS HERE")
+		return
+	target_unit = value
+	state = State.CHASING
+	if Input.is_action_pressed("Shift"):
+		moveComponent.chase_in_queue = true
+	else:
+		moveComponent.chase_in_queue = false
+
 
 #endregion
 func set_hovered(value: bool) -> void:
@@ -186,23 +204,7 @@ func set_face_direction(value : float = 0) -> void:
 	sg_move_component_set_face_direction.emit(value)
 #	moveComponent.face_direction = value
 
-func set_chase(value : Unit) -> void:
-#	push_warning_debug("set chase")
-	if moveComponent == null:
-		return
-	moveComponent.chase(value)
-	moveComponent.chasing = true
-#	weaponsData.attack() # set te weapon to the alternative
-	weapons.go_to_attack()
-	if value == null:
-		push_warning("set_chase THE ERROR IS HERE")
-		return
-	target_unit = value
-	state = State.CHASING
-	if Input.is_action_pressed("Shift"):
-		moveComponent.chase_in_queue = true
-	else:
-		moveComponent.chase_in_queue = false
+
 
 func set_troops_number(value : int) -> void:
 	troops_number = value
