@@ -21,18 +21,23 @@ enum states_movement_enum  {
 	CHASING = 2,
 	FLEEING = 3
 }
-var current_states_movement_enum : int = states_movement_enum.IDLE
+var current_state_movement_enum : int = states_movement_enum.IDLE
 
 
 @onready var states_action : Node = %StateAction as Node
 var current_state_action : StateUnitAction = null
 var states_action_list : Array[StateUnitAction]
+@onready var waiting := %Waiting as StateUnitAction
+@onready var melee := %Melee as StateUnitAction
+@onready var firing := %Firing as StateUnitAction
+
 enum states_action_enum {
 	WAITING = 0,
 	MELEE = 1,
 	FIRING = 2,
 }
 
+var current_state_action_enum : int = states_action_enum.WAITING
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,20 +59,32 @@ func _ready() -> void:
 		child.state_machine = self
 
 func set_state_movement(state: int) -> void:
-	current_states_movement_enum = state
+	current_state_movement_enum = state
+	match state:
+		states_movement_enum.IDLE: current_state_movement = idle
+		states_movement_enum.MOVING: current_state_movement = moving
+		states_movement_enum.CHASING: current_state_movement = chasing
+		states_movement_enum.FLEEING: current_state_movement = fleeing
 
 func get_state_movement() -> StateUnitMovement:
-	for child in states_movement_list:
-		pass
-	return null
+	return current_state_movement
+
+func get_state_movement_enum() -> int :
+	return current_state_movement_enum
 
 func set_state_action(state: int) -> void:
+	current_state_action_enum = state
 	match state:
-		states_movement_enum.IDLE: pass
-		states_movement_enum.MOVING: pass
-		states_movement_enum.CHASING: pass
-		states_movement_enum.FLEEING: pass 
+		states_action_enum.WAITING: current_state_action = waiting 
+		states_action_enum.MELEE: current_state_action = melee
+		states_action_enum.FIRING: current_state_action = firing
 	pass
+
+func get_state_action() -> StateUnitAction:
+	return current_state_action
+
+func get_state_action_enum() -> int :
+	return current_state_action_enum
 
 #region Intake from unit
 func set_chase(value : Unit) -> void:
@@ -77,18 +94,21 @@ func set_chase(value : Unit) -> void:
 		push_warning("set_chase THE ERROR IS HERE")
 		return
 	set_state_movement(states_movement_enum.CHASING)
-	
-	unit_owner.moveComponent.chase(value)
-	unit_owner.moveComponent.chasing = true
-#	weaponsData.attack() # set te weapon to the alternative
-	unit_owner.weapons.go_to_attack()
+	current_state_movement.set_chase(value)
 
-	unit_owner.target_unit = value
-	#state = State.CHASING
-	if Input.is_action_pressed("Shift"):
-		unit_owner.moveComponent.chase_in_queue = true
-	else:
-		unit_owner.moveComponent.chase_in_queue = false
-
+func move_to(aDestination : Vector2, face_direction : float) -> void:
+	if unit_owner.moveComponent == null:
+		push_error("There is no movement component")
+		return
+	#  Dont move if is attacking 
+	if unit_owner.state == unit_owner.State.MELEE and not unit_owner.can_move_in_melee:
+		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
+		unit_owner.destination = unit_owner.global_position
+		unit_owner.moveComponent.destination = unit_owner.global_position
+		return
+		
+	unit_owner.state = unit_owner.State.MOVING
+	unit_owner.moveComponent.move_to(aDestination, face_direction)
+	unit_owner.moveComponent.chasing = false
 
 #endregion

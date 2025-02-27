@@ -22,6 +22,7 @@ var routed : bool = false
 @onready var spriteType : Sprite2D = %SpriteType
 @onready var selectedPolygon : Polygon2D = %SelectedPolygon
 @onready var hurtBoxComponent : = %HurtBoxComponent as Node2D
+@onready var stateMachine := %StateMachine as StateMachineUnit
 @export var ownership : String = "ROME"
 @export_enum("Infantry:1", "Range:2", "Cavalry:3") var type : int = 1
 @onready var nameLabel : Label = %NameLabel as Label
@@ -141,6 +142,8 @@ func set_scene_unit_data(data : SceneUnitData) -> void:
 # it will be done in the state itself 
 #region State machine funnel
 func set_chase(value : Unit) -> void:
+	stateMachine.set_chase(value)
+	return #NOTE in the process of refactoring
 #	push_warning_debug("set chase")
 	if moveComponent == null:
 		return
@@ -158,8 +161,32 @@ func set_chase(value : Unit) -> void:
 	else:
 		moveComponent.chase_in_queue = false
 
+func move_to(aDestination : Vector2, face_direction : float) -> void:
+	stateMachine.move_to(aDestination, face_direction)
+	return
+	if moveComponent == null:
+		push_error("There is no movement component")
+		return
+	#  Dont move if is attacking 
+	if state == State.MELEE and not can_move_in_melee:
+		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
+		destination = global_position
+		moveComponent.destination = global_position
+		return
+		
+	state = State.MOVING
+	moveComponent.move_to(aDestination, face_direction)
+	moveComponent.chasing = false
+
+func reached_destination() -> void:
+	if target_unit == null:
+		stateMachine.set_state_movement(stateMachine.states_movement_enum.IDLE)
+		#state = State.IDLE # set conditions
+
 
 #endregion
+
+
 func set_hovered(value: bool) -> void:
 	hovered = value
 	world.set_units_hovered(self, value) # Add the unit to the hovered array
@@ -217,26 +244,6 @@ func _on_unit_detector_mouse_entered() -> void:
 
 func _on_unit_detector_mouse_exited() -> void:
 	hovered = false
-
-func move_to(aDestination : Vector2, face_direction : float) -> void:
-	if moveComponent == null:
-		return
-	#  Dont move if is attacking 
-	if state == State.MELEE and not can_move_in_melee:
-		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
-		destination = global_position
-		moveComponent.destination = global_position
-		return
-		
-	state = State.MOVING
-	moveComponent.move_to(aDestination, face_direction)
-	moveComponent.chasing = false
-
-func reached_destination() -> void:
-	if target_unit == null:
-		state = State.IDLE # set conditions
-		pass
-	pass
 
 func attack_target(value : Unit) -> void:
 	if value == null:
