@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq0pwg3sohksp"]
 
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Movement/idle.gd" id="1_ywtcm"]
+[ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/idle.gd" id="1_ywtcm"]
 
 [node name="Idle" type="Node"]
 script = ExtResource("1_ywtcm")

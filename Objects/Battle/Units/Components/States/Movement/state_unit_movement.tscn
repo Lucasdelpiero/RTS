@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn1uyxxwqdgym"]
-
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Movement/state_unit_movement.gd" id="1_0hu2u"]
-
-[node name="StateUnit" type="Node"]
-script = ExtResource("1_0hu2u")
