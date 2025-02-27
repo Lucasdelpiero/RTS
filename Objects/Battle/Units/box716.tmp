@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://6b22yls05sfo"]
+[gd_scene load_steps=40 format=3 uid="uid://6b22yls05sfo"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_h6a7m"]
@@ -26,7 +26,6 @@
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Movement/fleeing.gd" id="14_1bj2m"]
 [ext_resource type="PackedScene" uid="uid://d1y7cah7fc235" path="res://Objects/Battle/Units/Components/unit_detector.tscn" id="14_3mp3t"]
 [ext_resource type="PackedScene" uid="uid://ci1cysie5sbg" path="res://Objects/Battle/Units/Components/hurt_box.tscn" id="14_d14jk"]
-[ext_resource type="PackedScene" uid="uid://bsr7edxn36gf7" path="res://Objects/Battle/Units/Components/States/Actions/firing.tscn" id="15_eycdx"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HitBoxComponent.gd" id="15_u43wy"]
 
 [sub_resource type="Resource" id="Resource_xp73p"]
@@ -103,12 +102,9 @@ script = ExtResource("12_6i05j")
 script = ExtResource("14_1bj2m")
 
 [node name="StateAction" type="Node" parent="StateMachine"]
-unique_name_in_owner = true
 
 [node name="Melee" parent="StateMachine/StateAction" instance=ExtResource("9_7htkm")]
 script = ExtResource("10_3i0ns")
-
-[node name="Firing" parent="StateMachine/StateAction" instance=ExtResource("15_eycdx")]
 
 [node name="SelectedPolygon" type="Polygon2D" parent="."]
 unique_name_in_owner = true
