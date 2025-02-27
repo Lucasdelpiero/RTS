@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://6b22yls05sfo"]
+[gd_scene load_steps=41 format=3 uid="uid://6b22yls05sfo"]
 
 [ext_resource type="Script" path="res://Objects/Battle/Units/box.gd" id="1_qofug"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_h6a7m"]
@@ -23,11 +23,9 @@
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Movement/chasing.gd" id="12_6i05j"]
 [ext_resource type="PackedScene" uid="uid://caxy8pxdp4ks7" path="res://Objects/Battle/Units/Components/move_component.tscn" id="12_astyu"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HurtBoxComponent.gd" id="13_238ts"]
-[ext_resource type="PackedScene" uid="uid://by4wbcccust50" path="res://Objects/Battle/Units/Components/States/Actions/waiting.tscn" id="13_e8jt4"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Movement/fleeing.gd" id="14_1bj2m"]
 [ext_resource type="PackedScene" uid="uid://d1y7cah7fc235" path="res://Objects/Battle/Units/Components/unit_detector.tscn" id="14_3mp3t"]
 [ext_resource type="PackedScene" uid="uid://ci1cysie5sbg" path="res://Objects/Battle/Units/Components/hurt_box.tscn" id="14_d14jk"]
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Actions/waiting.gd" id="14_txydp"]
 [ext_resource type="PackedScene" uid="uid://bsr7edxn36gf7" path="res://Objects/Battle/Units/Components/States/Actions/firing.tscn" id="15_eycdx"]
 [ext_resource type="Script" path="res://Objects/Battle/Units/Components/HitBoxComponent.gd" id="15_u43wy"]
 
@@ -94,25 +92,18 @@ unit_owner = NodePath("..")
 unique_name_in_owner = true
 
 [node name="Idle" parent="StateMachine/StateMovement" instance=ExtResource("6_rsny0")]
-unique_name_in_owner = true
 
 [node name="Moving" parent="StateMachine/StateMovement" instance=ExtResource("7_8tmgh")]
-unique_name_in_owner = true
 script = ExtResource("8_i2sjp")
 
 [node name="Chasing" parent="StateMachine/StateMovement" instance=ExtResource("10_2f7re")]
-unique_name_in_owner = true
 script = ExtResource("12_6i05j")
 
 [node name="Fleeing" parent="StateMachine/StateMovement" instance=ExtResource("11_w8jca")]
-unique_name_in_owner = true
 script = ExtResource("14_1bj2m")
 
 [node name="StateAction" type="Node" parent="StateMachine"]
 unique_name_in_owner = true
-
-[node name="Waiting" parent="StateMachine/StateAction" instance=ExtResource("13_e8jt4")]
-script = ExtResource("14_txydp")
 
 [node name="Melee" parent="StateMachine/StateAction" instance=ExtResource("9_7htkm")]
 script = ExtResource("10_3i0ns")
