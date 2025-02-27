@@ -97,15 +97,12 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Moving" parent="StateMachine/StateMovement" instance=ExtResource("7_8tmgh")]
-unique_name_in_owner = true
 script = ExtResource("8_i2sjp")
 
 [node name="Chasing" parent="StateMachine/StateMovement" instance=ExtResource("10_2f7re")]
-unique_name_in_owner = true
 script = ExtResource("12_6i05j")
 
 [node name="Fleeing" parent="StateMachine/StateMovement" instance=ExtResource("11_w8jca")]
-unique_name_in_owner = true
 script = ExtResource("14_1bj2m")
 
 [node name="StateAction" type="Node" parent="StateMachine"]
