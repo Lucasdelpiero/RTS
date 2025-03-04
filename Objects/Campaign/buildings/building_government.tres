@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://4ec0d48qoin4"]
 
-[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="2_eir2x"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="3_23o50"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_thl1t"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="4_bviel"]
-[ext_resource type="Script" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_efi6s"]
-[ext_resource type="Script" path="res://Objects/General/unique_bonus/max_population.gd" id="5_k2dsg"]
+[ext_resource type="Script" uid="uid://djttr3wu1a4s5" path="res://Objects/General/bonus.gd" id="2_eir2x"]
+[ext_resource type="Script" uid="uid://bxa16c55oehtk" path="res://Objects/Campaign/buildings/flat_production.gd" id="3_23o50"]
+[ext_resource type="Script" uid="uid://0w14dwer6sy2" path="res://Objects/Campaign/buildings/building_data.gd" id="3_thl1t"]
+[ext_resource type="Script" uid="uid://q2dbr7xpixcd" path="res://Objects/Campaign/buildings/building.gd" id="4_bviel"]
+[ext_resource type="Script" uid="uid://bc3ktox8rydwv" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_efi6s"]
+[ext_resource type="Script" uid="uid://dp6ryfrw8uo1d" path="res://Objects/General/unique_bonus/max_population.gd" id="5_k2dsg"]
 
 [sub_resource type="Resource" id="Resource_gypxv"]
 script = ExtResource("5_k2dsg")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsr7edxn36gf7"]
 
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/States/Actions/firing.gd" id="1_yl153"]
+[ext_resource type="Script" uid="uid://brgj8br2jcfd" path="res://Objects/Battle/Units/Components/States/Actions/firing.gd" id="1_yl153"]
 
 [node name="Firing" type="Node"]
 script = ExtResource("1_yl153")

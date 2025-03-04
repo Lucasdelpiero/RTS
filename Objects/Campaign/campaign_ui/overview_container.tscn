@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxxkxansqr52n"]
 
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_ekf3w"]
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/overview_container.gd" id="1_qqife"]
+[ext_resource type="Script" uid="uid://b6253tkbc0gcs" path="res://Objects/Campaign/campaign_ui/overview_container.gd" id="1_qqife"]
 
 [node name="OverviewContainer" type="Control"]
 layout_mode = 3

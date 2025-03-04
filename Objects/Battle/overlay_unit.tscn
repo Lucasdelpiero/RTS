@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bocqp747crhq7"]
 
-[ext_resource type="Script" path="res://Objects/Battle/overlay_unit.gd" id="1_msp2c"]
+[ext_resource type="Script" uid="uid://bjnh3ukjtjxcv" path="res://Objects/Battle/overlay_unit.gd" id="1_msp2c"]
 [ext_resource type="PackedScene" uid="uid://bcmqucjtpgd1p" path="res://Objects/Battle/label_overlay_unit.tscn" id="2_0e27m"]
 
 [node name="OverlayUnit" type="PanelContainer"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf3sobbna605c"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/buildings_saver.gd" id="1_xsh8n"]
+[ext_resource type="Script" uid="uid://bbcl04oj21iwl" path="res://Objects/Campaign/buildings/buildings_saver.gd" id="1_xsh8n"]
 [ext_resource type="Resource" uid="uid://cflnuxx2fo6oi" path="res://Objects/Campaign/buildings/building_temple.tres" id="2_44sl7"]
 
 [node name="BuildingsSaver" type="Node"]

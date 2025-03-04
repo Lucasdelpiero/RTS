@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://ba3haq528ht28"]
 
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_bmoks"]
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_7jdv3"]
+[ext_resource type="Script" uid="uid://bm4nsiwwu5loj" path="res://Objects/Battle/Units/Components/melee_weapon_res.gd" id="2_7jdv3"]
 [ext_resource type="Texture2D" uid="uid://u7nx3cs5hm6s" path="res://Assets/units/unit_cavalry_icon_256.png" id="2_8vyiu"]
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_plfk6"]
+[ext_resource type="Script" uid="uid://c54axabaeba3m" path="res://Objects/Battle/Units/Components/weapons_data.gd" id="3_plfk6"]
 [ext_resource type="PackedScene" uid="uid://ylpovsehjr8l" path="res://Objects/Battle/Units/Components/melee_weapon.tscn" id="3_wkjjb"]
 
 [sub_resource type="Resource" id="Resource_jjyvy"]

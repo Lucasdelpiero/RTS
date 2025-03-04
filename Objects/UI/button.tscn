@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kplcxvwco21v"]
 
-[ext_resource type="Script" path="res://Objects/UI/button.gd" id="1_0nv0r"]
+[ext_resource type="Script" uid="uid://pwppb66xijm6" path="res://Objects/UI/button.gd" id="1_0nv0r"]
 [ext_resource type="FontFile" uid="uid://cn6uuk76ing1" path="res://Assets/ui/fonts/EBGaramond-Regular.ttf" id="1_anpii"]
 
 [node name="Button" type="Button"]

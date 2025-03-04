@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_6eupd"]
 [ext_resource type="PackedScene" uid="uid://clwesawyh31ay" path="res://Objects/Battle/Units/Components/projectile.tscn" id="2_8k2i3"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_ug3fo"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="3_jhfpu"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="4_04ha8"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="5_vdmho"]
+[ext_resource type="Script" uid="uid://bk5ceevj53xcp" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_ug3fo"]
+[ext_resource type="Script" uid="uid://d25fkbgfbt634" path="res://Objects/Campaign/military/unit_data/scene_weapon_range_data.gd" id="3_jhfpu"]
+[ext_resource type="Script" uid="uid://dvi6e55gl38ay" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="4_04ha8"]
+[ext_resource type="Script" uid="uid://c742m8d7a3d8i" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="5_vdmho"]
 
 [sub_resource type="Resource" id="Resource_fr2ol"]
 script = ExtResource("3_jhfpu")

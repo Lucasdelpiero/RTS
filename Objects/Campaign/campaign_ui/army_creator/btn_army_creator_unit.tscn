@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvfxbxjjelt38"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.gd" id="1_11eu8"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_4lglv"]
+[ext_resource type="Script" uid="uid://bir0niouagiwg" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.gd" id="1_11eu8"]
+[ext_resource type="Script" uid="uid://bk5ceevj53xcp" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_4lglv"]
 
 [node name="BtnArmyCreatorUnit" type="Button"]
 offset_right = 8.0

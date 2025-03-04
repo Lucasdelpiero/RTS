@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl7smlakh6u8f"]
 
-[ext_resource type="Script" path="res://Objects/General/mouse.gd" id="1_07bqd"]
+[ext_resource type="Script" uid="uid://10aftjpbd0dj" path="res://Objects/General/mouse.gd" id="1_07bqd"]
 [ext_resource type="Texture2D" uid="uid://dwiat6ws7kcf8" path="res://Assets/mouse.png" id="2_3jnpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rarq8"]

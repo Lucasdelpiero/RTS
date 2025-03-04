@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0x264mu5cyw1"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/hover_info.gd" id="1_hu50u"]
+[ext_resource type="Script" uid="uid://brerrc6onveq2" path="res://Objects/Campaign/campaign_ui/hover_info.gd" id="1_hu50u"]
 
 [node name="HoverInfo" type="PanelContainer"]
 anchors_preset = 15

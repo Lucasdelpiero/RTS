@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://v1d5ygtvkrrj"]
 
-[ext_resource type="Script" path="res://Objects/Battle/player_units_management.gd" id="1_7j668"]
+[ext_resource type="Script" uid="uid://2nhspbceulmr" path="res://Objects/Battle/player_units_management.gd" id="1_7j668"]
 [ext_resource type="Texture2D" uid="uid://comsh7vwnnugg" path="res://Assets/units/box_default_type.png" id="2_tyjbm"]
 [ext_resource type="Texture2D" uid="uid://bdf5vksbh1b5i" path="res://Assets/units/unit_infantry_icon_256.png" id="3_x0kdt"]
 [ext_resource type="Texture2D" uid="uid://dpxmospj4jobs" path="res://Assets/units/unit_bow_icon_256.png" id="4_k5tcu"]

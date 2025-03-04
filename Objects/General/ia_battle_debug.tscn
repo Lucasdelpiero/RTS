@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3j2q50uqcr56"]
 
-[ext_resource type="Script" path="res://Objects/General/ia_battle_debug.gd" id="1_v7j1k"]
+[ext_resource type="Script" uid="uid://bcfafme2aqcyc" path="res://Objects/General/ia_battle_debug.gd" id="1_v7j1k"]
 
 [node name="IABattleDebug" type="CanvasLayer"]
 script = ExtResource("1_v7j1k")

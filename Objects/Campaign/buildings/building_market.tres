@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Building" load_steps=17 format=3 uid="uid://l16ouy3lqh8k"]
 
-[ext_resource type="Script" path="res://Objects/General/bonus.gd" id="1_tacmw"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/flat_production.gd" id="2_4sm3l"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/building.gd" id="2_grkri"]
-[ext_resource type="Script" path="res://Objects/Campaign/buildings/building_data.gd" id="3_hifne"]
-[ext_resource type="Script" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_q3fqp"]
+[ext_resource type="Script" uid="uid://djttr3wu1a4s5" path="res://Objects/General/bonus.gd" id="1_tacmw"]
+[ext_resource type="Script" uid="uid://bxa16c55oehtk" path="res://Objects/Campaign/buildings/flat_production.gd" id="2_4sm3l"]
+[ext_resource type="Script" uid="uid://q2dbr7xpixcd" path="res://Objects/Campaign/buildings/building.gd" id="2_grkri"]
+[ext_resource type="Script" uid="uid://0w14dwer6sy2" path="res://Objects/Campaign/buildings/building_data.gd" id="3_hifne"]
+[ext_resource type="Script" uid="uid://bc3ktox8rydwv" path="res://Objects/General/unique_bonus/unique_bonus.gd" id="4_q3fqp"]
 
 [sub_resource type="Resource" id="Resource_qxpts"]
 script = ExtResource("1_tacmw")

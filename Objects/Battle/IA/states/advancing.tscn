@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://72dmev2edppx"]
 
-[ext_resource type="Script" path="res://Objects/Battle/IA/states/advancing.gd" id="1_du58r"]
+[ext_resource type="Script" uid="uid://cug7p6nve6ayq" path="res://Objects/Battle/IA/states/advancing.gd" id="1_du58r"]
 
 [node name="Advancing" type="Node"]
 script = ExtResource("1_du58r")

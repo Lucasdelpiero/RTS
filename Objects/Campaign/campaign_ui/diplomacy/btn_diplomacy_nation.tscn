@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv5ukbkf0qppu"]
 
 [ext_resource type="Texture2D" uid="uid://cgp6f6m73ehi7" path="res://icon.svg" id="1_8tfjq"]
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.gd" id="1_i2xsw"]
+[ext_resource type="Script" uid="uid://bvfooajp4hukx" path="res://Objects/Campaign/campaign_ui/diplomacy/btn_diplomacy_nation.gd" id="1_i2xsw"]
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_y2iiy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf1nk"]

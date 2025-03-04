@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://hpfmbt1e8tjr"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/military/army_campaign_ui.gd" id="1_nxcs3"]
+[ext_resource type="Script" uid="uid://b13g3i4ttivqk" path="res://Objects/Campaign/military/army_campaign_ui.gd" id="1_nxcs3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cpeh"]
 resource_local_to_scene = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddfga655y3eod"]
 
-[ext_resource type="Script" path="res://Objects/General/auto_updtate_label.gd" id="1_lgp73"]
+[ext_resource type="Script" uid="uid://holpfy8g3688" path="res://Objects/General/auto_updtate_label.gd" id="1_lgp73"]
 
 [node name="AutoUpdtateLabel" type="Label"]
 z_index = 4096

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="UnitData" load_steps=7 format=3 uid="uid://dhh2wqym2xrwe"]
 
 [ext_resource type="PackedScene" uid="uid://6b22yls05sfo" path="res://Objects/Battle/Units/box.tscn" id="1_4bx00"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="2_det8l"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_wh0o7"]
-[ext_resource type="Script" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="3_qsv4q"]
+[ext_resource type="Script" uid="uid://c742m8d7a3d8i" path="res://Objects/Campaign/military/unit_data/scene_weapon_melee_data.gd" id="2_det8l"]
+[ext_resource type="Script" uid="uid://bk5ceevj53xcp" path="res://Objects/Campaign/military/unit_data/unit_data.gd" id="2_wh0o7"]
+[ext_resource type="Script" uid="uid://dvi6e55gl38ay" path="res://Objects/Campaign/military/unit_data/scene_unit_data.gd" id="3_qsv4q"]
 
 [sub_resource type="Resource" id="Resource_sl7c8"]
 script = ExtResource("2_det8l")
@@ -29,3 +29,4 @@ experience = 0
 health = 100.0
 base_cost = 100
 base_maintanance_cost = 10
+base_manpower_cost = 200

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0evgiss0fg6h"]
 
-[ext_resource type="Script" path="res://Objects/UI/btn_province.gd" id="1_3e2tv"]
+[ext_resource type="Script" uid="uid://bqw5gvkmt8cbt" path="res://Objects/UI/btn_province.gd" id="1_3e2tv"]
 
 [node name="BtnProvince" type="Button"]
 offset_right = 8.0

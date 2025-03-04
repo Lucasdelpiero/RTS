@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://besh0hskqlkv7"]
 
-[ext_resource type="Script" path="res://Objects/Campaign/military/battle_menu.gd" id="1_32am3"]
+[ext_resource type="Script" uid="uid://elmvl4i0y343" path="res://Objects/Campaign/military/battle_menu.gd" id="1_32am3"]
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_fvykk"]
 [ext_resource type="PackedScene" uid="uid://kplcxvwco21v" path="res://Objects/UI/button.tscn" id="2_ejs2v"]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjdrconndqyb4"]
 
 [ext_resource type="Texture2D" uid="uid://cmid40lk2vvcp" path="res://Objects/Campaign/world/graphics/province_noise.tres" id="1_7hxuk"]
-[ext_resource type="Script" path="res://Objects/Campaign/world/province.gd" id="1_lhs2u"]
+[ext_resource type="Script" uid="uid://chnnqo11n5eo5" path="res://Objects/Campaign/world/province.gd" id="1_lhs2u"]
 [ext_resource type="PackedScene" uid="uid://hb4l2h7cpx1y" path="res://Objects/Campaign/world/pos_province.tscn" id="2_h2bx7"]
 [ext_resource type="Resource" uid="uid://dhnhandtoa6w6" path="res://Objects/Campaign/world/map_colors.tres" id="2_xfuls"]
 [ext_resource type="Resource" uid="uid://danxlrxr3d84l" path="res://Objects/Campaign/buildings/buildings_start.tres" id="4_kq3l2"]

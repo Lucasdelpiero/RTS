@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://clwesawyh31ay"]
 
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/projectile.gd" id="1_higqx"]
+[ext_resource type="Script" uid="uid://c14ndk5nx85q0" path="res://Objects/Battle/Units/Components/projectile.gd" id="1_higqx"]
 [ext_resource type="Texture2D" uid="uid://ds5712r20wjxw" path="res://Assets/units/arrows_2.png" id="2_277jd"]
 [ext_resource type="Texture2D" uid="uid://b12kh5ac5180y" path="res://Assets/units/arrow.png" id="3_kuevu"]
 
@@ -8,7 +8,7 @@
 size = Vector2(256, 128)
 
 [sub_resource type="Curve" id="Curve_wc8df"]
-max_value = 20.0
+_limits = [0.0, 20.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.220199, 20), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -17,7 +17,7 @@ _data = [Vector2(0, 0), 0.0, 4.0, 0, 0, Vector2(0.5, 4), 8.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_7lvjg"]
-min_value = 1.0
+_limits = [0.99, 1.0, 0.0, 1.0]
 _data = [Vector2(1, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 

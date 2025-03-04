@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdt4u750imp77"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_yppwb"]
-[ext_resource type="Script" path="res://Objects/UI/cards_group.gd" id="2_i4wrg"]
+[ext_resource type="Script" uid="uid://chvwmg1467nqw" path="res://Objects/UI/cards_group.gd" id="2_i4wrg"]
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("cards_container")]
 offset_left = 2.0

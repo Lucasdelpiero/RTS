@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgdotsgegticb"]
 
-[ext_resource type="Script" path="res://Objects/UI/cards_group.gd" id="1_v17ii"]
+[ext_resource type="Script" uid="uid://chvwmg1467nqw" path="res://Objects/UI/cards_group.gd" id="1_v17ii"]
 
 [node name="CardsUngrouped" type="VFlowContainer" node_paths=PackedStringArray("cards_container")]
 offset_right = 40.0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://orrvu5r345rm"]
 
 [ext_resource type="TileSet" uid="uid://chfu56ksb3gaw" path="res://Objects/Battle/navigation_tile_map.tres" id="1_uc4xs"]
-
 
 [node name="NavigationTileMap" type="TileMap"]
 tile_set = ExtResource("1_uc4xs")

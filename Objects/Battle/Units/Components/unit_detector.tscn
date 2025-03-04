@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1y7cah7fc235"]
 
-[ext_resource type="Script" path="res://Objects/Battle/Units/Components/unit_detector.gd" id="1_ipwwx"]
+[ext_resource type="Script" uid="uid://dp7y1g23ptl4t" path="res://Objects/Battle/Units/Components/unit_detector.gd" id="1_ipwwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo40t"]
 size = Vector2(215, 147)

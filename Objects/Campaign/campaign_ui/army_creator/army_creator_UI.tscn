@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bxcpvldpdl5np"]
 
 [ext_resource type="Theme" uid="uid://dg107ll84c5qe" path="res://Objects/Themes/theme_campaign_ui_1.tres" id="1_1txks"]
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.gd" id="2_8w0bf"]
+[ext_resource type="Script" uid="uid://dd4cm3r41vld4" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_UI.gd" id="2_8w0bf"]
 [ext_resource type="PackedScene" uid="uid://d1yjnep65j74a" path="res://Objects/Campaign/military/army.tscn" id="3_udnsm"]
 [ext_resource type="PackedScene" uid="uid://dvfxbxjjelt38" path="res://Objects/Campaign/campaign_ui/army_creator/btn_army_creator_unit.tscn" id="4_jqncl"]
 [ext_resource type="PackedScene" uid="uid://b0evgiss0fg6h" path="res://Objects/UI/btn_province.tscn" id="5_fixwj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://c6160o34jcgfy" path="res://Objects/Campaign/military/unit_data/generic/bowman.tres" id="6_gdan8"]
 [ext_resource type="Resource" uid="uid://c2cbjscuefr16" path="res://Objects/Campaign/military/unit_data/generic/cavalry.tres" id="7_bisgy"]
 [ext_resource type="PackedScene" uid="uid://c4h7u5gwt5l34" path="res://Objects/Campaign/campaign_ui/army_creator/army_creator_component.tscn" id="7_luj42"]
-[ext_resource type="Script" path="res://Objects/Campaign/campaign_ui/army_creator/new_army_manager.gd" id="7_vh664"]
+[ext_resource type="Script" uid="uid://ciuxhibmrfm0o" path="res://Objects/Campaign/campaign_ui/army_creator/new_army_manager.gd" id="7_vh664"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3krf"]
 

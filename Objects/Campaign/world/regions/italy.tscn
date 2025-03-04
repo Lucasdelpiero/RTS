@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bjdrconndqyb4" path="res://Objects/Campaign/world/province.tscn" id="1_r30rw"]
 
-
 [node name="Italy" type="Node2D"]
 position = Vector2(602.921, 388.188)
 metadata/_edit_lock_ = true

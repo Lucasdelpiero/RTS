@@ -1,18 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://db27uar15w555"]
 
-[ext_resource type="Shader" path="res://Objects/Campaign/world/graphics/water.gdshader" id="1_3m266"]
+[ext_resource type="Shader" uid="uid://xro15alqhehb" path="res://Objects/Campaign/world/graphics/water.gdshader" id="1_3m266"]
 [ext_resource type="Texture2D" uid="uid://bjojgo41sopy" path="res://Objects/Campaign/world/graphics/water_noise_texture.tres" id="2_y67as"]
 [ext_resource type="Texture2D" uid="uid://xcwekktds02l" path="res://Objects/Campaign/world/graphics/water_texture.tres" id="3_pc0lr"]
-[ext_resource type="Script" path="res://Objects/Campaign/world/graphics/WaterBackground.gd" id="4_2u4ln"]
+[ext_resource type="Script" uid="uid://ctsxi8ex5aj7q" path="res://Objects/Campaign/world/graphics/WaterBackground.gd" id="4_2u4ln"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smi75"]
 shader = ExtResource("1_3m266")
+shader_parameter/noise_secondary = ExtResource("2_y67as")
 shader_parameter/tile_factor = 60.0
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/time_factor = Vector2(0.6, 0.8)
 shader_parameter/offset_factor = Vector2(5, 2)
 shader_parameter/amplitude = Vector2(0.05, 0.05)
-shader_parameter/noise_secondary = ExtResource("2_y67as")
 
 [node name="WaterBackground" type="Sprite2D"]
 self_modulate = Color(0.00784314, 1, 1, 1)
