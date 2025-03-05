@@ -1,8 +1,6 @@
 class_name StateUnitMovement
-extends Node
+extends StateUnit
 
-@export var unit_owner : Unit = null
-var state_machine : StateMachineUnit = null
 
 func set_chase(_value : Unit) -> void:
 	pass
@@ -23,5 +21,8 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 	unit_owner.stateMachine.set_state_movement(unit_owner.stateMachine.states_movement_enum.MOVING)
 	# BUG temporarelly while refactoring it will cause bugs
 	#unit_owner.state = unit_owner.State.MOVING 
+	#unit_owner.state = unit_owner.State.MOVING
+	set_state_movement(state_machine.states_movement_enum.MOVING)
 	unit_owner.moveComponent.move_to(aDestination, face_direction)
 	unit_owner.moveComponent.chasing = false
+	

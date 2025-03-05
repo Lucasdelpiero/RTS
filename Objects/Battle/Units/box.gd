@@ -164,23 +164,10 @@ func set_chase(value : Unit) -> void:
 func move_to(aDestination : Vector2, face_direction : float) -> void:
 	stateMachine.move_to(aDestination, face_direction)
 	return
-	if moveComponent == null:
-		push_error("There is no movement component")
-		return
-	#  Dont move if is attacking 
-	if state == State.MELEE and not can_move_in_melee:
-		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
-		destination = global_position
-		moveComponent.destination = global_position
-		return
-		
-	state = State.MOVING
-	moveComponent.move_to(aDestination, face_direction)
-	moveComponent.chasing = false
 
 func reached_destination() -> void:
 	if target_unit == null:
-		stateMachine.set_state_movement(stateMachine.states_movement_enum.IDLE)
+		stateMachine.set_state_movement(stateMachine.states_movement_enum.STANDING)
 		#state = State.IDLE # set conditions
 
 

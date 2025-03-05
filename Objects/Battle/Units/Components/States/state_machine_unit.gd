@@ -10,18 +10,18 @@ extends Node
 @onready var states_movement : Node = %StateMovement as Node
 var current_state_movement : StateUnitMovement = null
 var states_movement_list : Array[StateUnitMovement] = []
-@onready var idle := %Idle as StateUnitMovement
+@onready var standing := %Standing as StateUnitMovement
 @onready var moving := %Moving as StateUnitMovement
 @onready var chasing := %Chasing as StateUnitMovement
 @onready var fleeing := %Fleeing as StateUnitMovement
 
 enum states_movement_enum  {
-	IDLE = 0,
+	STANDING = 0,
 	MOVING = 1,
 	CHASING = 2,
 	FLEEING = 3
 }
-var current_state_movement_enum : int = states_movement_enum.IDLE
+var current_state_movement_enum : int = states_movement_enum.STANDING
 
 
 @onready var states_action : Node = %StateAction as Node
@@ -57,11 +57,14 @@ func _ready() -> void:
 	for child in states_action_list:
 		child.unit_owner = unit_owner
 		child.state_machine = self
+	
+	current_state_movement = standing
+	current_state_action = waiting
 
 func set_state_movement(state: int) -> void:
 	current_state_movement_enum = state
 	match state:
-		states_movement_enum.IDLE: current_state_movement = idle
+		states_movement_enum.STANDING: current_state_movement = standing
 		states_movement_enum.MOVING: current_state_movement = moving
 		states_movement_enum.CHASING: current_state_movement = chasing
 		states_movement_enum.FLEEING: current_state_movement = fleeing
@@ -100,7 +103,14 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 	if unit_owner.moveComponent == null:
 		push_error("There is no movement component")
 		return
-	#  Dont move if is attacking 
+		
+	current_state_action.move_to(aDestination, face_direction)
+	current_state_movement.move_to(aDestination, face_direction)
+	
+		#  Dont move if is attacking 
+	return
+	# NOTE DELETE BELOW HERE ONCE THE REFACTOR IS DONE
+	######################################
 	if unit_owner.state == unit_owner.State.MELEE and not unit_owner.can_move_in_melee:
 		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
 		unit_owner.destination = unit_owner.global_position
@@ -110,5 +120,5 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 	unit_owner.state = unit_owner.State.MOVING
 	unit_owner.moveComponent.move_to(aDestination, face_direction)
 	unit_owner.moveComponent.chasing = false
-
+	#######################################
 #endregion

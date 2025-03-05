@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq0pwg3sohksp"]
+[gd_scene load_steps=2 format=3 uid="uid://dons0k6ok4mg2"]
 
-[ext_resource type="Script" uid="uid://ca33ogaknx1ex" path="res://Objects/Battle/Units/Components/States/Movement/idle.gd" id="1_ywtcm"]
+[sub_resource type="GDScript" id="GDScript_p2m16"]
+script/source = "extends StateUnitMovement
+"
 
 [node name="Idle" type="Node"]
-script = ExtResource("1_ywtcm")
+script = SubResource("GDScript_p2m16")
