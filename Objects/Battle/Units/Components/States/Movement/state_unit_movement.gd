@@ -26,3 +26,8 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 	unit_owner.moveComponent.move_to(aDestination, face_direction)
 	unit_owner.moveComponent.chasing = false
 	
+func attack_target(value : Unit) -> void:
+	if not value.is_alive():
+		push_error("Unit is not alive, cant be attacked")
+		set_state_movement(state_machine.states_movement_enum.STANDING)
+		return

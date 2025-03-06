@@ -121,4 +121,20 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 	unit_owner.moveComponent.move_to(aDestination, face_direction)
 	unit_owner.moveComponent.chasing = false
 	#######################################
+
+func attack_target(value : Unit) -> void:
+	current_state_action.attack_target(value)
+	current_state_movement.attack_target(value)
+	pass
+
+func attack_again() -> void:
+	if unit_owner.target_unit == null:
+		push_error("Target to attack again is null")
+		set_state_action(states_action_enum.WAITING)
+		set_state_movement(states_movement_enum.STANDING)
+		return
+	
+	current_state_action.attack_again()
+	current_state_movement.attack_again()
+	pass
 #endregion

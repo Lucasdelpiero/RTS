@@ -156,6 +156,7 @@ func set_chase(value : Unit) -> void:
 		return
 	target_unit = value
 	state = State.CHASING
+	stateMachine.set_state_movement(stateMachine.states_movement_enum.CHASING)
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -170,6 +171,58 @@ func reached_destination() -> void:
 		stateMachine.set_state_movement(stateMachine.states_movement_enum.STANDING)
 		#state = State.IDLE # set conditions
 
+func attack_target(value : Unit) -> void:
+	if value == null:
+		push_warning(" attack_target HERE IS THE FUCKING PROBLEM")
+		return
+	stateMachine.attack_target(value)
+	return
+	# NOTE delete below once the refactoring is done
+	
+	if not value.is_alive():
+		push_error("Unit is not alive, cant be attacked")
+		state = State.IDLE
+		return
+	
+	target_unit = value
+	weapons.go_to_attack()
+	var weapon_type : String = weapons.get_mouse_over_weapon_type()
+	if weapon_type == "Melee":
+		if state == State.MELEE:
+			#push_warning("melee")
+			weapons.in_use_weapon.attack(value)
+		else:
+			set_chase(value)
+#		melee(value)
+	if weapon_type == "Range":
+		if weapons.get_if_target_in_weapon_range(value):
+			range_attack(value)
+		else:
+			set_chase(value)
+
+func attack_again() -> void:
+	stateMachine.attack_again()
+	return
+	
+	# NOTE delete all below once the refactor is done
+	if target_unit == null:
+		state = State.IDLE
+		return
+	
+	if not target_unit.is_alive():
+		target_unit = null
+		state = State.IDLE
+		return
+	
+	if target_unit != null and state == State.FIRING:
+		var weapon_type : String = weapons.get_in_use_weapon_type()
+		if weapon_type == "Range":
+			if weapons.get_if_target_in_weapon_range(target_unit):
+				range_attack(target_unit)
+			else:
+				set_chase(target_unit)
+	if target_unit != null and state == State.MELEE:
+		attack_target(target_unit)
 
 #endregion
 
@@ -232,58 +285,14 @@ func _on_unit_detector_mouse_entered() -> void:
 func _on_unit_detector_mouse_exited() -> void:
 	hovered = false
 
-func attack_target(value : Unit) -> void:
-	if value == null:
-		push_warning(" attack_target HERE IS THE FUCKING PROBLEM")
-		return
-	if not value.is_alive():
-		push_error("Unit is not alive, cant be attacked")
-		state = State.IDLE
-		return
-	
-	target_unit = value
-	weapons.go_to_attack()
-	var weapon_type : String = weapons.get_mouse_over_weapon_type()
-	if weapon_type == "Melee":
-		if state == State.MELEE:
-			#push_warning("melee")
-			weapons.in_use_weapon.attack(value)
-		else:
-			set_chase(value)
-#		melee(value)
-	if weapon_type == "Range":
-		if weapons.get_if_target_in_weapon_range(value):
-			range_attack(value)
-		else:
-			set_chase(value)
-
-func attack_again() -> void:
-	if target_unit == null:
-		state = State.IDLE
-		return
-	
-	if not target_unit.is_alive():
-		target_unit = null
-		state = State.IDLE
-		return
-	
-	if target_unit != null and state == State.FIRING:
-		var weapon_type : String = weapons.get_in_use_weapon_type()
-		if weapon_type == "Range":
-			if weapons.get_if_target_in_weapon_range(target_unit):
-				range_attack(target_unit)
-			else:
-				set_chase(target_unit)
-	if target_unit != null and state == State.MELEE:
-		attack_target(target_unit)
-		pass
-
 
 func target_unit_die(unit: Unit) -> void:
 	if unit == target_unit:
 		print("%s now doesnt has as target %s" % [name, target_unit.name])
 		target_unit = null
 		state = State.IDLE
+		stateMachine.set_state_action(stateMachine.states_action_enum.WAITING) # TEMP
+		stateMachine.set_state_movement(stateMachine.states_movement_enum.STANDING) # TEMP
 		
 	
 
@@ -300,6 +309,7 @@ func melee(data : HurtboxData) -> void:
 	moveComponent.move_to_face_melee(new_data_typed)
 	moveComponent.destination = data.meleePoint.global_position
 	state = State.MELEE
+	stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) # TEMP
 	target_unit = data.target
 	if target_unit == null:
 		push_warning("melee HERE IS THE PROBLEM")
@@ -312,12 +322,15 @@ func melee(data : HurtboxData) -> void:
 #	pass
 
 func attacked_in_melee() -> void:
+	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.MELEE: #TEMP
+		stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) #TEMP
 	if state != State.MELEE:
 		state = State.MELEE
 
 func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
 	state = State.FIRING
+	stateMachine.set_state_action(stateMachine.states_action_enum.FIRING) # TEMPORAL
 	moveComponent.face_unit(target)
 	moveComponent.stop_movement()
 	weapons.attack(target)
@@ -366,8 +379,12 @@ func get_hurtbox_component() -> HurtBoxComponent:
 # From weapon -> weapon_manager -> unit
 func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
 	for i in arr as Array[Unit]:
-		if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
+		# NOTE needs refactor the state with the state machine
+		var is_chasing : bool = stateMachine.current_state_movement_enum == stateMachine.states_movement_enum.CHASING 
+		if i == target_unit and is_chasing and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
+		#if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
+			#range_attack(target_unit)
 #			push_warning("Enemy is hereeeeeee")
 	pass
 
@@ -424,6 +441,8 @@ func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
 #	push_warning(enemies)
 	if state != State.CHASING: # or is in fire at will
 		return
+	if stateMachine.current_state_action_enum != stateMachine.states_movement_enum.CHASING:
+		return
 	enemies_in_range = enemies.duplicate()
 	if enemies_in_range.has(target_unit):
 		range_attack(target_unit)
@@ -431,6 +450,8 @@ func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
 
 func _on_range_weapon_reload_time_over(_node : Node ) -> void:
 	if state != State.FIRING:
+		return
+	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.FIRING:
 		return
 	if enemies_in_range.has(target_unit):
 		range_attack(target_unit)

@@ -18,3 +18,9 @@ func set_state_action(value: int) -> void:
 
 func move_to(_aDestination : Vector2, _face_direction : float) -> void:
 	pass
+
+func attack_target(_value : Unit) -> void:
+	pass
+
+func attack_again() -> void:
+	pass
