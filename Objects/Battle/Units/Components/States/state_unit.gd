@@ -24,3 +24,6 @@ func attack_target(_value : Unit) -> void:
 
 func attack_again() -> void:
 	pass
+
+func melee(_data : HurtboxData) -> void:
+	pass

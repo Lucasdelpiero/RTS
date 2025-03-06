@@ -10,10 +10,10 @@ extends Node
 @onready var states_movement : Node = %StateMovement as Node
 var current_state_movement : StateUnitMovement = null
 var states_movement_list : Array[StateUnitMovement] = []
-@onready var standing := %Standing as StateUnitMovement
-@onready var moving := %Moving as StateUnitMovement
-@onready var chasing := %Chasing as StateUnitMovement
-@onready var fleeing := %Fleeing as StateUnitMovement
+@onready var m_standing := %Standing as StateUnitMovement
+@onready var m_moving := %Moving as StateUnitMovement
+@onready var m_chasing := %Chasing as StateUnitMovement
+@onready var m_fleeing := %Fleeing as StateUnitMovement
 
 enum states_movement_enum  {
 	STANDING = 0,
@@ -27,9 +27,9 @@ var current_state_movement_enum : int = states_movement_enum.STANDING
 @onready var states_action : Node = %StateAction as Node
 var current_state_action : StateUnitAction = null
 var states_action_list : Array[StateUnitAction]
-@onready var waiting := %Waiting as StateUnitAction
-@onready var melee := %Melee as StateUnitAction
-@onready var firing := %Firing as StateUnitAction
+@onready var a_waiting := %Waiting as StateUnitAction
+@onready var a_melee := %Melee as StateUnitAction
+@onready var a_firing := %Firing as StateUnitAction
 
 enum states_action_enum {
 	WAITING = 0,
@@ -58,16 +58,17 @@ func _ready() -> void:
 		child.unit_owner = unit_owner
 		child.state_machine = self
 	
-	current_state_movement = standing
-	current_state_action = waiting
+	current_state_movement = m_standing
+	current_state_action = a_waiting
 
+#regions main setters and getters
 func set_state_movement(state: int) -> void:
 	current_state_movement_enum = state
 	match state:
-		states_movement_enum.STANDING: current_state_movement = standing
-		states_movement_enum.MOVING: current_state_movement = moving
-		states_movement_enum.CHASING: current_state_movement = chasing
-		states_movement_enum.FLEEING: current_state_movement = fleeing
+		states_movement_enum.STANDING: current_state_movement = m_standing
+		states_movement_enum.MOVING: current_state_movement = m_moving
+		states_movement_enum.CHASING: current_state_movement = m_chasing
+		states_movement_enum.FLEEING: current_state_movement = m_fleeing
 
 func get_state_movement() -> StateUnitMovement:
 	return current_state_movement
@@ -78,9 +79,9 @@ func get_state_movement_enum() -> int :
 func set_state_action(state: int) -> void:
 	current_state_action_enum = state
 	match state:
-		states_action_enum.WAITING: current_state_action = waiting 
-		states_action_enum.MELEE: current_state_action = melee
-		states_action_enum.FIRING: current_state_action = firing
+		states_action_enum.WAITING: current_state_action = a_waiting 
+		states_action_enum.MELEE: current_state_action = a_melee
+		states_action_enum.FIRING: current_state_action = a_firing
 	pass
 
 func get_state_action() -> StateUnitAction:
@@ -89,6 +90,52 @@ func get_state_action() -> StateUnitAction:
 func get_state_action_enum() -> int :
 	return current_state_action_enum
 
+#endregion
+
+#region setter and getter easier
+func set_mov_standing() -> void:
+	set_state_movement(states_movement_enum.STANDING)
+
+func set_mov_moving() -> void:
+	set_state_movement(states_movement_enum.MOVING)
+
+func set_mov_chasing() -> void:
+	set_state_movement(states_movement_enum.CHASING)
+
+func set_mov_fleeing() -> void:
+	set_state_movement(states_movement_enum.FLEEING)
+
+func set_act_waiting() -> void:
+	set_state_action(states_action_enum.WAITING)
+
+func set_act_melee() -> void:
+	set_state_action(states_action_enum.MELEE)
+
+func set_act_firing() -> void:
+	set_state_action(states_action_enum.FIRING)
+
+func get_mov_is_standing() -> bool:
+	return current_state_movement_enum == states_movement_enum.STANDING
+
+func get_mov_is_moving() -> bool:
+	return current_state_movement_enum == states_movement_enum.MOVING
+
+func get_mov_is_chasing() -> bool:
+	return current_state_movement_enum == states_movement_enum.CHASING
+
+func get_mov_is_fleeing() -> bool:
+	return current_state_movement_enum == states_movement_enum.FLEEING
+
+func get_act_is_waiting() -> bool:
+	return current_state_action_enum == states_action_enum.WAITING
+
+func get_act_is_melee() -> bool:
+	return current_state_action_enum == states_action_enum.MELEE
+
+func get_act_is_firing() -> bool:
+	return current_state_action_enum == states_action_enum.FIRING
+#endregion
+
 #region Intake from unit
 func set_chase(value : Unit) -> void:
 	if unit_owner.moveComponent == null:
@@ -96,7 +143,7 @@ func set_chase(value : Unit) -> void:
 	if value == null:
 		push_warning("set_chase THE ERROR IS HERE")
 		return
-	set_state_movement(states_movement_enum.CHASING)
+	set_mov_chasing()
 	current_state_movement.set_chase(value)
 
 func move_to(aDestination : Vector2, face_direction : float) -> void:
@@ -130,11 +177,15 @@ func attack_target(value : Unit) -> void:
 func attack_again() -> void:
 	if unit_owner.target_unit == null:
 		push_error("Target to attack again is null")
-		set_state_action(states_action_enum.WAITING)
-		set_state_movement(states_movement_enum.STANDING)
+		set_act_waiting()
+		set_mov_standing()
 		return
 	
 	current_state_action.attack_again()
 	current_state_movement.attack_again()
 	pass
+
+func melee(data : HurtboxData) -> void:
+	current_state_action.melee(data)
+	current_state_movement.melee(data)
 #endregion

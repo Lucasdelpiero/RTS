@@ -4,16 +4,17 @@ extends StateUnit
 func attack_target(value : Unit) -> void:
 	if not value.is_alive():
 		push_error("Unit is not alive, cant be attacked")
-		set_state_action(state_machine.states_action_enum.WAITING)
+		state_machine.set_act_waiting()
 		return
 	
 	# NOTE the thing below need refactor to send function directly to the current action
 	unit_owner.target_unit = value
 	unit_owner.weapons.go_to_attack()
 	var weapon_type : String = unit_owner.weapons.get_mouse_over_weapon_type()
-	var is_in_melee : bool = state_machine.current_state_action_enum == state_machine.states_action_enum.MELEE
+	#var is_in_melee : bool = state_machine.current_state_action_enum == state_machine.states_action_enum.MELEE
+	
 	if weapon_type == "Melee":
-		if is_in_melee :
+		if state_machine.get_act_is_melee(): # it the state is in melee it attacks
 			#push_warning("melee")
 			unit_owner.weapons.in_use_weapon.attack(value)
 		else:

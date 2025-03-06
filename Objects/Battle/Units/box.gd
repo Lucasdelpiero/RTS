@@ -224,6 +224,58 @@ func attack_again() -> void:
 	if target_unit != null and state == State.MELEE:
 		attack_target(target_unit)
 
+func target_unit_die(unit: Unit) -> void:
+	if unit == target_unit:
+		print("%s now doesnt has as target %s" % [name, target_unit.name])
+		target_unit = null
+		state = State.IDLE
+		stateMachine.set_act_waiting() # temp
+		stateMachine.set_mov_standing() # temp
+	
+
+
+func melee(data : HurtboxData) -> void:
+	if data == null:
+		return
+	if not data.target.is_alive():
+		push_error("Target is not an unit that is alive")
+		return
+	
+	stateMachine.melee(data)
+	return
+	# NOTE delete all below once refactored
+	var new_data : Array = data["areas"]
+	var new_data_typed : Array[Area2D] = []
+	new_data_typed.assign(new_data)
+	moveComponent.move_to_face_melee(new_data_typed)
+	moveComponent.destination = data.meleePoint.global_position
+	state = State.MELEE
+	stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) # TEMP
+	target_unit = data.target
+	if target_unit == null:
+		push_warning("melee HERE IS THE PROBLEM")
+		return
+	weapons.attack(target_unit)
+	target_unit.attacked_in_melee()
+#	var attack = weapons.attack(target_unit)
+#	push_warning(data)
+#	push_warning("got into melee")
+#	pass
+
+func attacked_in_melee() -> void:
+	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.MELEE: #TEMP
+		stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) #TEMP
+	if state != State.MELEE:
+		state = State.MELEE
+
+func range_attack(target : Unit) -> void:
+	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
+	state = State.FIRING
+	stateMachine.set_state_action(stateMachine.states_action_enum.FIRING) # TEMPORAL
+	moveComponent.face_unit(target)
+	moveComponent.stop_movement()
+	weapons.attack(target)
+
 #endregion
 
 
@@ -286,55 +338,6 @@ func _on_unit_detector_mouse_exited() -> void:
 	hovered = false
 
 
-func target_unit_die(unit: Unit) -> void:
-	if unit == target_unit:
-		print("%s now doesnt has as target %s" % [name, target_unit.name])
-		target_unit = null
-		state = State.IDLE
-		stateMachine.set_state_action(stateMachine.states_action_enum.WAITING) # TEMP
-		stateMachine.set_state_movement(stateMachine.states_movement_enum.STANDING) # TEMP
-		
-	
-
-func melee(data : HurtboxData) -> void:
-	if data == null:
-		return
-	if not data.target.is_alive():
-		push_error("Target is not an unit that is alive")
-		return
-	
-	var new_data : Array = data["areas"]
-	var new_data_typed : Array[Area2D] = []
-	new_data_typed.assign(new_data)
-	moveComponent.move_to_face_melee(new_data_typed)
-	moveComponent.destination = data.meleePoint.global_position
-	state = State.MELEE
-	stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) # TEMP
-	target_unit = data.target
-	if target_unit == null:
-		push_warning("melee HERE IS THE PROBLEM")
-		return
-	weapons.attack(target_unit)
-	target_unit.attacked_in_melee()
-#	var attack = weapons.attack(target_unit)
-#	push_warning(data)
-#	push_warning("got into melee")
-#	pass
-
-func attacked_in_melee() -> void:
-	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.MELEE: #TEMP
-		stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) #TEMP
-	if state != State.MELEE:
-		state = State.MELEE
-
-func range_attack(target : Unit) -> void:
-	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
-	state = State.FIRING
-	stateMachine.set_state_action(stateMachine.states_action_enum.FIRING) # TEMPORAL
-	moveComponent.face_unit(target)
-	moveComponent.stop_movement()
-	weapons.attack(target)
-	pass
 
 func alternative_weapon(use_secondary : bool) -> void:
 #	weaponsData.change_weapon(use_secondary)

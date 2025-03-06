@@ -3,7 +3,7 @@ extends StateUnitAction
 func move_to(_aDestination : Vector2, _face_direction : float) -> void:
 	#NOTE add case when the unit can keep firing while moving then it would 
 	# change the state of action to waiting
-	set_state_action(state_machine.states_action_enum.WAITING)
+	state_machine.set_act_waiting()
 	push_error("stoped shooting to move ")
 	pass
 
