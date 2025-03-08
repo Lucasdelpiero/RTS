@@ -172,6 +172,9 @@ func attack_again() -> void:
 
 func melee(data : HurtboxData) -> void:
 	# NOTE need refactor
+	if get_mov_is_fleeing():
+		return
+	
 	var new_data : Array = data["areas"]
 	var new_data_typed : Array[Area2D] = []
 	new_data_typed.assign(new_data)
@@ -195,8 +198,8 @@ func attacked_in_melee() -> void:
 	pass
 
 func unit_died() -> void:
-	unit_owner.move_to(Vector2(20000, 20000), 0)
 	set_act_waiting()
+	unit_owner.move_to(Vector2(20000, 20000), 0)
 	set_mov_fleeing()
 	pass
 #endregion

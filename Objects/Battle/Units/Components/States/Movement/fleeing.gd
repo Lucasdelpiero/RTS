@@ -1,7 +1,9 @@
 extends StateUnitMovement
 
+# Unit can not be given orders to where to move when its fleeing
 func move_to(_aDestination : Vector2, _face_direction : float) -> void:
-	print("I wont obey, i have to run")
+	pass
 
+# Wont respond to being attacked when its fleeing
 func attacked_in_melee() -> void:
-	print("I wont be attacked i am dead")
+	pass
