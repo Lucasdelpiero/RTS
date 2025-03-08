@@ -43,8 +43,7 @@ var troops_number : int = 0 :
 		if troops_number <= 0 and was_alive:
 			unit_died()
 			was_alive = false
-			pass
-		
+
 @export_range(0, 10, 1) var veterany : int = 1
 @export_range(0, 50, 1) var armor : int = 1
 @export_enum("None:0", "Small:1", "Medium:2", "Large:3" ) var shield : int = 0
@@ -103,7 +102,6 @@ func _ready() -> void:
 		troops_number = troops_number_max
 	update_overlay()
 
-#	push_warning(weapons.selected_weapon.get_type())
 
 func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("delete"):
@@ -218,7 +216,6 @@ func attacked_in_melee() -> void:
 	stateMachine.attacked_in_melee()
 
 
-
 func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
 	stateMachine.set_act_firing() # TEMPORAL
@@ -280,21 +277,9 @@ func set_face_direction(value : float = 0) -> void:
 	sg_move_component_set_face_direction.emit(value)
 #	moveComponent.face_direction = value
 
-
-
 func set_troops_number(value : int) -> void:
 	troops_number = value
 	sg_troops_number_changed.emit(value, troops_number_max)
-
-
-func _on_unit_detector_mouse_entered() -> void:
-	hovered = true
-	update_overlay()
-
-func _on_unit_detector_mouse_exited() -> void:
-	hovered = false
-
-
 
 func alternative_weapon(use_secondary : bool) -> void:
 #	weaponsData.change_weapon(use_secondary)
@@ -309,6 +294,7 @@ func recieved_attack(_data : AttackData) -> void:
 func unit_died() -> void:
 	Signals.sg_unit_died.emit(self)
 	modulate.a = 0.3
+	stateMachine.unit_died()
 
 func is_alive() -> bool:
 	if troops_number > 0:
@@ -336,7 +322,13 @@ func get_type() -> int:
 func get_hurtbox_component() -> HurtBoxComponent:
 	return hurtBoxComponent
 
+#region signals
+func _on_unit_detector_mouse_entered() -> void:
+	hovered = true
+	update_overlay()
 
+func _on_unit_detector_mouse_exited() -> void:
+	hovered = false
 
 func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
 	var unit : Unit = area.owner as Unit
@@ -364,8 +356,6 @@ func _on_range_of_attack_area_exited(area : Area2D) -> void:
 	check_if_target_is_in_range(enemies_in_range)
 
 	pass # Replace with function body.
-
-
 
 func _on_unit_detector_area_entered(area : Area2D) -> void:
 	var unit : Unit = area.owner as Unit
@@ -400,3 +390,5 @@ func _on_range_weapon_reload_time_over(_node : Node ) -> void:
 	if enemies_in_range.has(target_unit):
 		range_attack(target_unit)
 	pass # Replace with function body.
+
+#endregion

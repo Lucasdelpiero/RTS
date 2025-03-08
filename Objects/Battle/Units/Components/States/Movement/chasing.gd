@@ -19,3 +19,6 @@ func set_chase(value : Unit) -> void:
 		unit_owner.moveComponent.chase_in_queue = true
 	else:
 		unit_owner.moveComponent.chase_in_queue = false
+
+func attacked_in_melee() -> void:
+	state_machine.set_mov_standing()

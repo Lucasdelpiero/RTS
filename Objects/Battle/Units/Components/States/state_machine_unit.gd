@@ -153,21 +153,6 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 		
 	current_state_action.move_to(aDestination, face_direction)
 	current_state_movement.move_to(aDestination, face_direction)
-	
-		#  Dont move if is attacking 
-	return
-	# NOTE DELETE BELOW HERE ONCE THE REFACTOR IS DONE
-	######################################
-	if unit_owner.state == unit_owner.State.MELEE and not unit_owner.can_move_in_melee:
-		# If its attacked the destination reseted will prevent teleporting when its attacked (the lerping in the move component when is in melee state
-		unit_owner.destination = unit_owner.global_position
-		unit_owner.moveComponent.destination = unit_owner.global_position
-		return
-		
-	unit_owner.state = unit_owner.State.MOVING
-	unit_owner.moveComponent.move_to(aDestination, face_direction)
-	unit_owner.moveComponent.chasing = false
-	#######################################
 
 func attack_target(value : Unit) -> void:
 	current_state_action.attack_target(value)
@@ -209,4 +194,9 @@ func attacked_in_melee() -> void:
 	current_state_movement.attacked_in_melee()
 	pass
 
+func unit_died() -> void:
+	unit_owner.move_to(Vector2(20000, 20000), 0)
+	set_act_waiting()
+	set_mov_fleeing()
+	pass
 #endregion

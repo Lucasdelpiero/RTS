@@ -30,5 +30,5 @@ func melee(_data : HurtboxData) -> void:
 	state_machine.set_act_melee()
 
 func attacked_in_melee() -> void:
-	if not state_machine.get_act_is_melee():
+	if not state_machine.get_mov_is_fleeing() and not state_machine.get_act_is_melee():
 		state_machine.set_act_melee()
