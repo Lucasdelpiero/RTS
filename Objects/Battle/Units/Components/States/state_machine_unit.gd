@@ -186,6 +186,28 @@ func attack_again() -> void:
 	pass
 
 func melee(data : HurtboxData) -> void:
+	# NOTE need refactor
+	var new_data : Array = data["areas"]
+	var new_data_typed : Array[Area2D] = []
+	new_data_typed.assign(new_data)
+	unit_owner.moveComponent.move_to_face_melee(new_data_typed)
+	unit_owner.moveComponent.destination = data.meleePoint.global_position
+	unit_owner.state = unit_owner.State.MELEE
+	set_act_melee()
+	unit_owner.target_unit = data.target
+	if unit_owner.target_unit == null:
+		push_warning("melee HERE IS THE PROBLEM")
+		return
+	unit_owner.weapons.attack(unit_owner.target_unit)
+	unit_owner.target_unit.attacked_in_melee()
+	
+	
 	current_state_action.melee(data)
 	current_state_movement.melee(data)
+
+func attacked_in_melee() -> void:
+	current_state_action.attacked_in_melee()
+	current_state_movement.attacked_in_melee()
+	pass
+
 #endregion

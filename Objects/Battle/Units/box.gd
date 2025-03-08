@@ -233,7 +233,6 @@ func target_unit_die(unit: Unit) -> void:
 		stateMachine.set_mov_standing() # temp
 	
 
-
 func melee(data : HurtboxData) -> void:
 	if data == null:
 		return
@@ -242,7 +241,7 @@ func melee(data : HurtboxData) -> void:
 		return
 	
 	stateMachine.melee(data)
-	return
+	return # BUG
 	# NOTE delete all below once refactored
 	var new_data : Array = data["areas"]
 	var new_data_typed : Array[Area2D] = []
@@ -263,18 +262,30 @@ func melee(data : HurtboxData) -> void:
 #	pass
 
 func attacked_in_melee() -> void:
-	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.MELEE: #TEMP
-		stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) #TEMP
 	if state != State.MELEE:
 		state = State.MELEE
+	stateMachine.attacked_in_melee()
+
+
 
 func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
 	state = State.FIRING
-	stateMachine.set_state_action(stateMachine.states_action_enum.FIRING) # TEMPORAL
+	stateMachine.set_act_firing() # TEMPORAL
 	moveComponent.face_unit(target)
 	moveComponent.stop_movement()
 	weapons.attack(target)
+
+# From weapon -> weapon_manager -> unit
+func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
+	for i in arr as Array[Unit]:
+		var is_chasing : bool = stateMachine.current_state_movement_enum == stateMachine.states_movement_enum.CHASING 
+		if i == target_unit and is_chasing and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
+			range_attack(target_unit)
+		#NOTE delete once refactored
+		#if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
+			#range_attack(target_unit)
+#			push_warning("Enemy is hereeeeeee")
 
 #endregion
 
@@ -379,17 +390,7 @@ func get_type() -> int:
 func get_hurtbox_component() -> HurtBoxComponent:
 	return hurtBoxComponent
 
-# From weapon -> weapon_manager -> unit
-func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
-	for i in arr as Array[Unit]:
-		# NOTE needs refactor the state with the state machine
-		var is_chasing : bool = stateMachine.current_state_movement_enum == stateMachine.states_movement_enum.CHASING 
-		if i == target_unit and is_chasing and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
-			range_attack(target_unit)
-		#if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
-			#range_attack(target_unit)
-#			push_warning("Enemy is hereeeeeee")
-	pass
+
 
 func _on_range_of_attack_area_entered(area : Area2D) -> void: # Used maybe for ia to charge or idk
 	var unit : Unit = area.owner as Unit

@@ -128,9 +128,12 @@ func move_to(to : Vector2, final_face_direction: float) -> void:
 		#push_error("%s doesnt have a nav_map or unit" % [owner.name])
 		push_error("%s doesnt have a nav_map or unit" % ["test"])
 		return
-	if unit.state == unit.State.MELEE:
+	if unit.stateMachine.get_act_is_melee():
 		stop_movement()
 		return
+	#if unit.state == unit.State.MELEE:
+		#stop_movement()
+		#return
 	destination  = to
 	
 	# Avoid having the units have a seizure when they move small distances or angles

@@ -27,3 +27,6 @@ func attack_again() -> void:
 
 func melee(_data : HurtboxData) -> void:
 	pass
+
+func attacked_in_melee() -> void:
+	pass

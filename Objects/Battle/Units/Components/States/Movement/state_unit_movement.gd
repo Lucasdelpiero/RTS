@@ -34,3 +34,7 @@ func attack_target(value : Unit) -> void:
 func melee(_data : HurtboxData) -> void:
 	state_machine.set_mov_standing()
 	pass
+
+func attacked_in_melee() -> void:
+	state_machine.set_mov_standing()
+	pass
