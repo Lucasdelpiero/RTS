@@ -59,7 +59,7 @@ enum State  {
 	FIRING = 4,
 	FLEEING = 5,
 }
-var state : int = State.IDLE
+#var state : int = State.IDLE
 @export_color_no_alpha var army_color : Color = Color(1.0, 1.0, 1.0) : set = set_color
 @export var moveComponent : MoveComponent = null
 var destination := Vector2.ZERO : set  = set_destination
@@ -155,8 +155,7 @@ func set_chase(value : Unit) -> void:
 		push_warning("set_chase THE ERROR IS HERE")
 		return
 	target_unit = value
-	state = State.CHASING
-	stateMachine.set_state_movement(stateMachine.states_movement_enum.CHASING)
+	stateMachine.set_mov_chasing()
 	if Input.is_action_pressed("Shift"):
 		moveComponent.chase_in_queue = true
 	else:
@@ -168,67 +167,22 @@ func move_to(aDestination : Vector2, face_direction : float) -> void:
 
 func reached_destination() -> void:
 	if target_unit == null:
-		stateMachine.set_state_movement(stateMachine.states_movement_enum.STANDING)
-		#state = State.IDLE # set conditions
+		stateMachine.set_mov_standing()
 
 func attack_target(value : Unit) -> void:
 	if value == null:
 		push_warning(" attack_target HERE IS THE FUCKING PROBLEM")
 		return
 	stateMachine.attack_target(value)
-	return
-	# NOTE delete below once the refactoring is done
-	
-	if not value.is_alive():
-		push_error("Unit is not alive, cant be attacked")
-		state = State.IDLE
-		return
-	
-	target_unit = value
-	weapons.go_to_attack()
-	var weapon_type : String = weapons.get_mouse_over_weapon_type()
-	if weapon_type == "Melee":
-		if state == State.MELEE:
-			#push_warning("melee")
-			weapons.in_use_weapon.attack(value)
-		else:
-			set_chase(value)
-#		melee(value)
-	if weapon_type == "Range":
-		if weapons.get_if_target_in_weapon_range(value):
-			range_attack(value)
-		else:
-			set_chase(value)
 
 func attack_again() -> void:
 	stateMachine.attack_again()
 	return
-	
-	# NOTE delete all below once the refactor is done
-	if target_unit == null:
-		state = State.IDLE
-		return
-	
-	if not target_unit.is_alive():
-		target_unit = null
-		state = State.IDLE
-		return
-	
-	if target_unit != null and state == State.FIRING:
-		var weapon_type : String = weapons.get_in_use_weapon_type()
-		if weapon_type == "Range":
-			if weapons.get_if_target_in_weapon_range(target_unit):
-				range_attack(target_unit)
-			else:
-				set_chase(target_unit)
-	if target_unit != null and state == State.MELEE:
-		attack_target(target_unit)
 
 func target_unit_die(unit: Unit) -> void:
 	if unit == target_unit:
 		print("%s now doesnt has as target %s" % [name, target_unit.name])
 		target_unit = null
-		state = State.IDLE
 		stateMachine.set_act_waiting() # temp
 		stateMachine.set_mov_standing() # temp
 	
@@ -248,8 +202,7 @@ func melee(data : HurtboxData) -> void:
 	new_data_typed.assign(new_data)
 	moveComponent.move_to_face_melee(new_data_typed)
 	moveComponent.destination = data.meleePoint.global_position
-	state = State.MELEE
-	stateMachine.set_state_action(stateMachine.states_action_enum.MELEE) # TEMP
+	stateMachine.set_act_melee() # TEMP
 	target_unit = data.target
 	if target_unit == null:
 		push_warning("melee HERE IS THE PROBLEM")
@@ -262,15 +215,12 @@ func melee(data : HurtboxData) -> void:
 #	pass
 
 func attacked_in_melee() -> void:
-	if state != State.MELEE:
-		state = State.MELEE
 	stateMachine.attacked_in_melee()
 
 
 
 func range_attack(target : Unit) -> void:
 	# fix bug when queueing firing after path, doesnt complete path and just attacks on range
-	state = State.FIRING
 	stateMachine.set_act_firing() # TEMPORAL
 	moveComponent.face_unit(target)
 	moveComponent.stop_movement()
@@ -279,13 +229,9 @@ func range_attack(target : Unit) -> void:
 # From weapon -> weapon_manager -> unit
 func check_if_target_is_in_range(arr : Array[Unit]) -> void: 
 	for i in arr as Array[Unit]:
-		var is_chasing : bool = stateMachine.current_state_movement_enum == stateMachine.states_movement_enum.CHASING 
+		var is_chasing : bool = stateMachine.get_mov_is_chasing()
 		if i == target_unit and is_chasing and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
 			range_attack(target_unit)
-		#NOTE delete once refactored
-		#if i == target_unit and state == State.CHASING and weapons.get_in_use_weapon_type() == "Range": # add fire at will later
-			#range_attack(target_unit)
-#			push_warning("Enemy is hereeeeeee")
 
 #endregion
 
@@ -442,19 +388,13 @@ func _on_unit_detector_area_exited(area : Area2D) -> void:
 
 
 func _on_range_weapon_reached_new_enemy(enemies : Array) -> void:
-#	push_warning(enemies)
-	if state != State.CHASING: # or is in fire at will
-		return
-	if stateMachine.current_state_action_enum != stateMachine.states_movement_enum.CHASING:
+	if not stateMachine.get_mov_is_chasing(): # or is in fire at will
 		return
 	enemies_in_range = enemies.duplicate()
 	if enemies_in_range.has(target_unit):
 		range_attack(target_unit)
-	pass # Replace with function body.
 
 func _on_range_weapon_reload_time_over(_node : Node ) -> void:
-	if state != State.FIRING:
-		return
 	if stateMachine.current_state_action_enum != stateMachine.states_action_enum.FIRING:
 		return
 	if enemies_in_range.has(target_unit):

@@ -203,8 +203,12 @@ func update_is_anchored(value : Variant = null) -> void:
 #		if path[path.size() - 1].distance_to(unit.global_position) > 128:
 #			anchored = false # should this be here?
 	
-	if unit.state == unit.State.FIRING or unit.state == unit.State.MELEE:
+	# NOTE to delete once refactor is done
+	if unit.stateMachine.get_act_is_firing() or unit.stateMachine.get_act_is_melee():
 		anchored = true
+	
+	#if unit.state == unit.State.FIRING or unit.state == unit.State.MELEE:
+		#anchored = true
 	
 	if value != null: # used to override the anchor value just in case
 		anchored = value
@@ -225,7 +229,8 @@ func draw_path() -> void:
 func move_to_face_melee(areas : Array[Area2D]) -> void:
 #	if unit.ownership != "ROME":
 #		return
-	if unit.state == unit.State.MELEE:
+
+	if unit.stateMachine.get_act_is_melee():
 		return
 	chase_in_queue = false
 	var closest : Area2D = areas[0] as Area2D # default value

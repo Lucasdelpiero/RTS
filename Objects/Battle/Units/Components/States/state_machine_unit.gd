@@ -192,7 +192,6 @@ func melee(data : HurtboxData) -> void:
 	new_data_typed.assign(new_data)
 	unit_owner.moveComponent.move_to_face_melee(new_data_typed)
 	unit_owner.moveComponent.destination = data.meleePoint.global_position
-	unit_owner.state = unit_owner.State.MELEE
 	set_act_melee()
 	unit_owner.target_unit = data.target
 	if unit_owner.target_unit == null:

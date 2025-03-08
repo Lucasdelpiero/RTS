@@ -137,7 +137,6 @@ metadata/_edit_lock_ = true
 [node name="DebugPersonal" parent="." instance=ExtResource("4_iawob")]
 scale = Vector2(1.41281, 1.32819)
 property_1 = "name"
-property_2 = "state"
 property_3 = "global_position"
 property_4 = "hovered"
 property_5 = "selected"

@@ -258,9 +258,9 @@ func get_units_ordered_by_distance(aUnits : Array[Unit], unit_position : Vector2
 	return units_ordered_typed
 
 func get_units_in_melee(aGroup : Array[Unit]) -> Array[Unit]:
-	return aGroup.filter(func(el : Unit) -> bool: return el.state == el.State.MELEE)
+	return aGroup.filter(func(el : Unit) -> bool: return el.stateMachine.get_act_is_melee())
 
 func get_units_not_in_melee(aUnits : Array[Unit]) -> Array[Unit]:
-	return aUnits.filter(func(el : Unit) -> bool: return el.state != el.State.MELEE )
+	return aUnits.filter(func(el : Unit) -> bool: return not el.stateMachine.get_act_is_melee() )
 	
 	
