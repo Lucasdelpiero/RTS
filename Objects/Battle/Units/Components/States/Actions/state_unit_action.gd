@@ -3,7 +3,7 @@ extends StateUnit
 
 func attack_target(value : Unit) -> void:
 	if not value.is_alive():
-		push_error("Unit is not alive, cant be attacked")
+		#push_error("Unit is not alive, cant be attacked")
 		state_machine.set_act_waiting()
 		return
 	

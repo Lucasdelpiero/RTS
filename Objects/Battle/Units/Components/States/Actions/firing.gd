@@ -4,7 +4,6 @@ func move_to(_aDestination : Vector2, _face_direction : float) -> void:
 	#NOTE add case when the unit can keep firing while moving then it would 
 	# change the state of action to waiting
 	state_machine.set_act_waiting()
-	push_error("stoped shooting to move ")
 	pass
 
 # In the state machine is checked that the target is not null so it always is valid

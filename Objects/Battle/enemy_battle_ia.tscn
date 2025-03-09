@@ -136,7 +136,6 @@ autostart = true
 [node name="StateManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_66v2g")
-debug = true
 
 [node name="Advancing" parent="StateManager" instance=ExtResource("9_xbj11")]
 distance_to_move = 1000.0

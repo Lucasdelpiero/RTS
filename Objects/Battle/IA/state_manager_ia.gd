@@ -41,7 +41,6 @@ func get_states_by_score() -> Array[StateIA]:
 
 
 func print_score() -> void:
-	return
 	for state in states:
 		print("Score of %s: %s" % [state.name, state.score])
 	print("Current state: [%s]" % current_state.name)

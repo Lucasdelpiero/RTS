@@ -189,7 +189,7 @@ func melee(data : HurtboxData) -> void:
 	if data == null:
 		return
 	if not data.target.is_alive():
-		push_error("Target is not an unit that is alive")
+		#push_error("Target is not an unit that is alive")
 		return
 	
 	stateMachine.melee(data)

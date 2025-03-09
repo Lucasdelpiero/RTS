@@ -53,7 +53,7 @@ func _update_score(data : DataForStates) -> void:
 	# TEST DIFFICULTY
 	var difficulty : String = "normal" # for testing purpuse
 	var difficulty_treshold : float = 50.0 # NOTE maybe should be set only once
-	var ammo_porcentage : float = (float(total_ammo) / float(current_ammo)) * 100.0
+	var ammo_porcentage : float = (float(current_ammo) / float(total_ammo)) * 100.0
 	
 	if difficulty == "easy":
 		difficulty_treshold = AMMO_EASY_TRESHOLD

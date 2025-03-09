@@ -468,7 +468,7 @@ func _on_timer_timeout() -> void:
 
 var testing : bool= true
 func _on_timer_advance_timeout() -> void:
-	return
+	#return
 	timerAdvance.start(5)
 	get_enemy_groups_flanking()
 	testing = false
@@ -477,7 +477,7 @@ func _on_timer_advance_timeout() -> void:
 
 
 func _on_timer_think_next_action_timeout() -> void:
-	return
+	#return
 	think_next_action()
 
 # Timer triggers the IA to think a next action based on circumstances like:
@@ -485,7 +485,7 @@ func _on_timer_think_next_action_timeout() -> void:
 # - Actions done before (starts with a advancing, skirmish, melee)
 # -  Difficulty (IA makes mistakes on purpose on easier diffculties)
 func think_next_action() -> void:
-	return
+	#return
 	var data : DataForStates = DataForStates.new()
 	data.set_data(self)
 	state_manager.update_data_to_process(data)
