@@ -451,6 +451,23 @@ func send_units_to_attack_one(unit : Unit, enemy_group : Array[Unit]) -> void:
 			unit.set_chase(enemy)
 			return
 
+#TEST
+@onready var player_marker : Marker2D = %PlayerMarker as Marker2D
+@onready var left_flank_area : Area2D = %LeftFlankArea as Area2D
+@onready var right_flank_area : Area2D = %RightFlankArea as Area2D
+
+# side left/right
+# flanking the right side of the player will use the left side of the IA
+func flank_enemy(_side: String) -> void:
+	var temp_player_units: Array[Unit] = get_player_units()
+	var avg_player_pos : Vector2 = get_average_position(temp_player_units)
+	var avg_ia_pos : Vector2 = get_average_position(units)
+	var angle_player_to_ia : float = avg_player_pos.angle_to_point(avg_ia_pos) - PI/4
+	angle_player_to_ia = avg_player_pos.angle_to_point(avg_ia_pos) 
+	player_marker.rotation = angle_player_to_ia + PI / 2
+	player_marker.global_position = avg_player_pos
+	pass
+
 func _on_timer_timeout() -> void:
 	#focus_on_largest_group()
 	#get_enemy_groups(player_units, DISTANCE_TO_BE_IN_GROUP)
@@ -489,4 +506,7 @@ func think_next_action() -> void:
 	var data : DataForStates = DataForStates.new()
 	data.set_data(self)
 	state_manager.update_data_to_process(data)
+	
+	# TEST
+	flank_enemy("left")
 	pass

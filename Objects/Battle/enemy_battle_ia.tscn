@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmavvajsmr1uu"]
+[gd_scene load_steps=15 format=3 uid="uid://bmavvajsmr1uu"]
 
 [ext_resource type="Script" uid="uid://dmy4b7n1gcdju" path="res://Objects/Battle/enemy_battle_ia.gd" id="1_61vt2"]
 [ext_resource type="Script" uid="uid://c4phjf7x4obbt" path="res://Objects/Battle/general_res.gd" id="2_p4dbk"]
@@ -21,6 +21,9 @@ skill = 5
 initiative = 5
 charisma = 5
 patience = 100
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o380k"]
+radius = 800.0
 
 [node name="EnemyBattleIA" type="Node"]
 script = ExtResource("1_61vt2")
@@ -107,6 +110,28 @@ modulate = Color(1, 1, 1, 0.45098)
 z_index = 20
 z_as_relative = false
 texture = ExtResource("4_1rwry")
+
+[node name="PlayerMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerMarker"]
+polygon = PackedVector2Array(-321, -15, 7, -415, 351, -20, 118, -15, 118, 313, -124, 313, -129, -10)
+
+[node name="LeftFlankArea" type="Area2D" parent="PlayerMarker"]
+unique_name_in_owner = true
+position = Vector2(-3046, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMarker/LeftFlankArea"]
+shape = SubResource("CircleShape2D_o380k")
+debug_color = Color(0.121614, 0.642851, 0.218956, 0.42)
+
+[node name="RightFlankArea" type="Area2D" parent="PlayerMarker"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMarker/RightFlankArea"]
+position = Vector2(2776, 0)
+shape = SubResource("CircleShape2D_o380k")
+debug_color = Color(0.984314, 0, 0.129412, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
